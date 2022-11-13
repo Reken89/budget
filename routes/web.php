@@ -21,6 +21,7 @@ Route::get('/', function () {
 
 //Роуты для Back
 Route::get('/user/communal/back', [CommunalController::class, 'index'])->middleware('auth');
+Route::patch('/user/communal/update', [CommunalController::class, 'update'])->middleware('auth');
 
 //Роуты для Front
 Route::get('/contact', [ContactController::class, 'create']);

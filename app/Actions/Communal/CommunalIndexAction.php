@@ -24,7 +24,7 @@ class CommunalIndexAction extends BaseAction
             $query
                 ->select()    
                 ->selectRaw("(`heat-sum` + `drainage-sum` + `negative-sum` +"
-                    . "`water-sum` + `power-sum` + `trash-sum` + `disposal-sum`) AS total")  
+                    . "`water-sum` + `power-sum` + `trash-sum` + `disposal-sum`) AS total")
                 ->where('year', $year);            
             }])
             ->get()

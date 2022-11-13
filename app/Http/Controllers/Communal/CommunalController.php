@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Communal;
 
 use Illuminate\Http\Request;
+use App\Request\CommunalRequest;
+use App\Dto\CommunalUpdateDto;
 use App\Http\Controllers\Controller;
 use App\Actions\Communal\CommunalIndexAction;
+use App\Actions\Communal\CommunalUpdateAction;
 
 class CommunalController extends Controller
 {
@@ -13,7 +16,7 @@ class CommunalController extends Controller
      * Возвращает коммунальные услуги за выбранный год
      *
      * @param Request $request
-     * @return 
+     * @return array
      */
     public function index(Request $request)
     {
@@ -28,11 +31,25 @@ class CommunalController extends Controller
      * Возвращает front шаблон и выбранный год
      *
      * @param int $year 
-     * @return 
+     * @return view
      */
     public function user(int $year)
     {      
         return view('communal.user', ['year' => $year]);
+    }
+    
+     /**
+     * Обновление значений в таблице communals для пользователей
+     * 
+     * @param CommunalRequest $request
+     * @return bool
+     */
+    public function update(CommunalRequest $request)
+    {
+        $dto = CommunalUpdateDto::fromRequest($request);
+        $status = $this->action(CommunalUpdateAction::class)->run($dto);
+        
+        return $status;
     }
 
 }
