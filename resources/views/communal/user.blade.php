@@ -70,6 +70,26 @@
             });  
         } 
      fetch_data(); 
+     
+        $(document).on('click', '#btn_two', function(){
+            var tr = this.closest('tr');
+            var id = $('.id', tr).val();
+            var mounth = $('.mounth', tr).val();
+            var year ='<?= $year ?>';
+                $.ajax({
+                    url:"/budget/public/user/communal/sending",  
+                    method:"patch",
+                    data:{
+                        "_token": "{{ csrf_token() }}",
+                        id, mounth, year
+                    },
+                    dataType:"text",  
+                    success:function(data){  
+                        alert(data);
+                        fetch_data();  
+                    } 
+                })               
+        })
     });
 </script>    
 

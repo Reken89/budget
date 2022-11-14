@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Dto;
+namespace App\Structure\CommunalSection\User\Dto;
 
-use App\Dto\BaseDto;
-use App\Request\CommunalRequest;
+use App\Core\Dto\BaseDto;
+use App\Structure\CommunalSection\User\Requests\CommunalUpdateRequest;
 
 class CommunalUpdateDto extends BaseDto
 {
@@ -26,10 +26,10 @@ class CommunalUpdateDto extends BaseDto
     /**
      * Возвращает DTO из объекта Request
      *
-     * @param CommunalRequest $request
+     * @param CommunalUpdateRequest $request
      * @return static
      */
-    public static function fromRequest(CommunalRequest $request): self
+    public static function fromRequest(CommunalUpdateRequest $request): self
     {
         return new self([
             'id'                => $request->get('id'),
@@ -50,4 +50,6 @@ class CommunalUpdateDto extends BaseDto
         ]);
     }
 }
+
+
 

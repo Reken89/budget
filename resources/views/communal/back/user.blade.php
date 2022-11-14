@@ -64,6 +64,7 @@
     <form id="communalform" method="patch">
     <tr>
         <input type="hidden" class="id" value="{{ $value['id'] }}">
+        <input type="hidden" class="mounth" value="{{ $value['mounth'] }}">
         <td>{{ $value['mounth'] }}</td>
         <td><input type="text" class="heat-volume" value="{{ number_format($value['heat-volume'], 3, ',', ' ') }}"></td>
         <td><input type="text" class="heat-sum" value="{{ number_format($value['heat-sum'], 2, ',', ' ') }}"></td>

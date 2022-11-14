@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Actions\Communal;
+namespace App\Structure\CommunalSection\User\Actions;
 
-use App\Actions\BaseAction;
-use App\Dto\CommunalUpdateDto;
-use App\Models\Communal\Communal;
+use App\Core\Actions\BaseAction;
+use App\Structure\CommunalSection\User\Dto\CommunalUpdateDto;
+use App\Structure\CommunalSection\User\Models\Communal;
 
 class CommunalUpdateAction extends BaseAction
 {
@@ -37,3 +37,4 @@ class CommunalUpdateAction extends BaseAction
         return $result == true ? true : false;        
     }
 }
+

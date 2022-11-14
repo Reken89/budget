@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Actions;
+namespace App\Core\Actions;
+
+use App\Core\Task\BaseTask;
 
 abstract class BaseAction
 {
@@ -15,4 +17,6 @@ abstract class BaseAction
         return new $class;
     }
 }
+
+
 

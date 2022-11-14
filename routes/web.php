@@ -1,8 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Contact\ContactController;
-use App\Http\Controllers\Communal\CommunalController;
+use App\Structure\CommunalSection\User\Controllers\CommunalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,14 +18,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Роуты для Back
+//Роуты для Back (Модуль коммунальные услуги)
 Route::get('/user/communal/back', [CommunalController::class, 'index'])->middleware('auth');
 Route::patch('/user/communal/update', [CommunalController::class, 'update'])->middleware('auth');
+Route::patch('/user/communal/sending', [CommunalController::class, 'sending'])->middleware('auth');
 
-//Роуты для Front
-Route::get('/contact', [ContactController::class, 'create']);
-Route::post('/contact', [ContactController::class, 'store']);
-Route::get('/test', [ContactController::class, 'test'])->middleware('auth');
+//Роуты для Front (Модуль коммунальные услуги)
 Route::get('/user/communal/{year}', [CommunalController::class, 'user'])->middleware('auth')->name('usercommunal');
 Auth::routes();
 

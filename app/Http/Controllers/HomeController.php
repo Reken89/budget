@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Core\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use App\Models\User;
+//use App\Structure\UserSection\Auth\Models\User;
 
 class HomeController extends Controller
 {

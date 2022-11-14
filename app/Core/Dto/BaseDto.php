@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Dto;
+namespace App\Core\Dto;
 
 /**
  * BaseDTO class
@@ -19,4 +19,6 @@ abstract class BaseDto
 		}
 	}
 }
+
+
 

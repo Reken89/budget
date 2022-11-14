@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Actions\Communal;
+namespace App\Structure\CommunalSection\User\Actions;
 
-use App\Actions\BaseAction;
-use App\Models\User;
+use App\Core\Actions\BaseAction;
+use App\Structure\UserSection\Auth\Models\User;
 use \Illuminate\Support\Facades\Auth;
 
 class CommunalIndexAction extends BaseAction
@@ -33,4 +33,6 @@ class CommunalIndexAction extends BaseAction
 
     }
 }
+
+
 

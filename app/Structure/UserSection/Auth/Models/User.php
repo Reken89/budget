@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Models;
+namespace App\Structure\UserSection\Auth\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use App\Models\Communal\Communal;
+use App\Structure\CommunalSection\User\Models\Communal;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Authenticatable
@@ -58,3 +58,5 @@ class User extends Authenticatable
         return $this->hasMany(Communal::class);
     }
 }
+
+

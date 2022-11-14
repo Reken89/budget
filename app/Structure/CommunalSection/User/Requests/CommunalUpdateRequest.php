@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Request;
+namespace App\Structure\CommunalSection\User\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CommunalRequest extends FormRequest
+class CommunalUpdateRequest extends FormRequest
 {
         /**
      * Get the validation rules that apply to the request.
@@ -32,4 +32,8 @@ class CommunalRequest extends FormRequest
         ];
     }   
 }
+
+
+
+
 

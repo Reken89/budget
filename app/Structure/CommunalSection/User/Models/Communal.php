@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Communal;
+namespace App\Structure\CommunalSection\User\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -30,3 +30,5 @@ class Communal extends Model
     
     public $timestamps = false;
 }
+
+
