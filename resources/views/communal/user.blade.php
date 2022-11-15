@@ -4,6 +4,7 @@
 <script>
     $(document).ready(function(){
         
+        //Выполняем запись в БД при нажатии на клавишу ENTER
         function setKeydownmyForm() {
             $('input').keydown(function(e) {
                 if (e.keyCode === 13) {
@@ -45,7 +46,6 @@
                         },
                         dataType:"text",  
                         success:function(data){  
-                            //alert(data);
                             fetch_data();  
                         } 
                     })                   
@@ -53,13 +53,13 @@
             })
         }
         
+        //Подгружаем BACK шаблон отрисовки
         function fetch_data(){              
             let year ='<?= $year ?>';
             $.ajax({  
                 url:"/budget/public/user/communal/back",  
                 method:"GET",
                 data:{
-                    //"_token": "{{ csrf_token() }}",
                     year:year
                 },
                 dataType:"text",
@@ -69,8 +69,28 @@
                 }   
             });  
         } 
-     fetch_data(); 
+        fetch_data(); 
      
+        //Выполняем действие (запрос редактирования) при нажатии на кнопку
+        $(document).on('click', '#btn_one', function(){
+            var tr = this.closest('tr');
+            var id = $('.id', tr).val();
+                $.ajax({
+                    url:"/budget/public/user/communal/change",  
+                    method:"patch",
+                    data:{
+                        "_token": "{{ csrf_token() }}",
+                        id
+                    },
+                    dataType:"text",  
+                    success:function(data){  
+                        alert(data);
+                        fetch_data();  
+                    } 
+                })               
+        })
+     
+        //Выполняем действие (отправка данных) при нажатии на кнопку
         $(document).on('click', '#btn_two', function(){
             var tr = this.closest('tr');
             var id = $('.id', tr).val();

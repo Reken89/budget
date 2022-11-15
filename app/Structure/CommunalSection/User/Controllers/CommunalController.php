@@ -11,6 +11,7 @@ use App\Structure\CommunalSection\User\Requests\CommunalSendingRequest;
 use App\Structure\CommunalSection\User\Actions\CommunalIndexAction;
 use App\Structure\CommunalSection\User\Actions\CommunalUpdateAction;
 use App\Structure\CommunalSection\User\Actions\CommunalSendingAction;
+use App\Structure\CommunalSection\User\Actions\CommunalChangeAction;
 
 class CommunalController extends Controller
 {
@@ -70,6 +71,23 @@ class CommunalController extends Controller
             echo "Информация отправлена в Финуправление";
         }
 
+    }
+    
+     /**
+     * Обновление статуса в таблице communals (запрос на редактирование)
+     * 
+     * @param Request $request
+     * @return string
+     */
+    public function change(Request $request)
+    { 
+        $id = $request->input('id');
+        if (!$this->action(CommunalChangeAction::class)->run($id)) {
+	    echo "Обнаружена системная ошибка, сообщите разработчику!";
+	} else {
+            echo "Запрос отправлен в Финуправление";
+        }
+       
     }
 
 }

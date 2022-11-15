@@ -22,7 +22,7 @@ Route::get('/', function () {
 Route::get('/user/communal/back', [CommunalController::class, 'index'])->middleware('auth');
 Route::patch('/user/communal/update', [CommunalController::class, 'update'])->middleware('auth');
 Route::patch('/user/communal/sending', [CommunalController::class, 'sending'])->middleware('auth');
-
+Route::patch('/user/communal/change', [CommunalController::class, 'change'])->middleware('auth');
 //Роуты для Front (Модуль коммунальные услуги)
 Route::get('/user/communal/{year}', [CommunalController::class, 'user'])->middleware('auth')->name('usercommunal');
 Auth::routes();

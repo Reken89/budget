@@ -3,33 +3,29 @@
 namespace App\Structure\CommunalSection\User\Actions;
 
 use App\Core\Actions\BaseAction;
-use App\Structure\UserSection\Auth\Models\User;
-use \Illuminate\Support\Facades\Auth;
+use App\Structure\CommunalSection\User\Tasks\CommunalSelectAllTask;
+use App\Structure\CommunalSection\User\Tasks\CommunalSelectTotalTask;
 
 class CommunalIndexAction extends BaseAction
 {
     /**
      * Возвращает коммунальные услуги за выбранный год
+     * Возвращает ИТОГИ коммунальных услуг за выбранный год
      *
      * @param int $year
      * @return array
      */
     public function run(int $year): array
-    {
-        $user = Auth::user(); 
+    {   
+        $result = $this->task(CommunalSelectAllTask::class)->run($year);
+        $total = $this->task(CommunalSelectTotalTask::class)->run($year);
         
-        $info = User::select('id', 'name')
-            ->where('id', $user->id)
-            ->with(['communal' => function ($query) use ($year) {
-            $query
-                ->select()    
-                ->selectRaw("(`heat-sum` + `drainage-sum` + `negative-sum` +"
-                    . "`water-sum` + `power-sum` + `trash-sum` + `disposal-sum`) AS total")
-                ->where('year', $year);            
-            }])
-            ->get()
-            ->toArray();
-        return $info;    
+        $info = [
+            "result" => $result,
+            "total"  => $total  
+        ];
+        
+        return $info;
 
     }
 }
