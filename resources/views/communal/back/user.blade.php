@@ -3,9 +3,24 @@
     <title>Таблица коммунальных услуг</title>
 </head>
 
-@include('layouts.main')
+<div class="post-header">
+    <div class="post-cat">
+        <a href="#">Информация:</a>
+    </div>
+    <div class="post-title">
+        <h2>
+            <a>Значение при делении суммы на объем, должно соответствовать диапазону тарифа</a>
+        </h2>
+    </div>
+    <div class="post-meta"><b>Таблица Коммунальные услуги</b></div>
+    <div class="border">
+        <span></span>
+        <span></span>
+    </div>
+</div>
 
 @php
+    $tarrifs = $info['tarrifs'];
     $totals = $info['total'];
     $values = $info['result'][0]['communal'];
     
@@ -16,6 +31,8 @@
     "Ноябрь", "Декабрь"
     ];
 @endphp
+
+</br>
 
 <table class="freeze-table" width="700px">
     <thead>
@@ -67,10 +84,10 @@
         <td>{{ number_format($value['disposal-volume'], 3, ',', ' ') }}</td>
         <td>{{ number_format($value['disposal-sum'], 2, ',', ' ') }}</td>
         <td>{{ number_format($value['total'], 2, ',', ' ') }}</td>
-        <td><input type=button id='btn_one' value='Изменить'></td>
+        <td><input type=button class="button" id='btn_one' value='Изменить'></td>
     </tr>
     @elseif ($value['status'] == 2)
-    <form id="communalform" method="patch">
+
     <tr>
         <input type="hidden" class="id" value="{{ $value['id'] }}">
         <input type="hidden" class="mounth" value="{{ $value['mounth'] }}">
@@ -90,9 +107,9 @@
         <td><input type="text" class="disposal-volume" value="{{ number_format($value['disposal-volume'], 3, ',', ' ') }}"></td>
         <td><input type="text" class="disposal-sum" value="{{ number_format($value['disposal-sum'], 2, ',', ' ') }}"></td>
         <td>{{ number_format($value['total'], 2, ',', ' ') }}</td>
-        <td><input type=button id='btn_two' value='Отправить'></td>
+        <td><input type=button class="button" id='btn_two' value='Отправить'></td>
     </tr>
-    </form>
+
     
     @elseif ($value['status'] == 3)
     <tr>
@@ -119,6 +136,7 @@
 @endforeach 
 
 @foreach ($totals as $total)
+    <tr>
         <td class="col-id-no" scope="row"><b>ИТОГО</b></td>
         <td><b>{{ number_format($total['heat_volume'], 3, ',', ' ') }}</b></td>
         <td><b>{{ number_format($total['heat_sum'], 2, ',', ' ') }}</b></td>
@@ -136,7 +154,53 @@
         <td><b>{{ number_format($total['disposal_sum'], 2, ',', ' ') }}</b></td>
         <td><b>{{ number_format($total['total'], 2, ',', ' ') }}</b></td>
         <td></td>
+    </tr>    
 @endforeach
 
     </tbody>
-</table>   
+</table>
+
+<br>
+<p></p>
+<table class="freeze-table" width="700px">
+    <thead>
+        <tr>
+            <th style="min-width: 100px; width: 100px;" class="col-id-no fixed-header">Месяц</th>
+            <th style="min-width: 200px; width: 200px;" colspan="2">Теплоснабжение</th>
+            <th style="min-width: 200px; width: 200px;" colspan="2">Водоотведение</th>
+            <th style="min-width: 200px; width: 200px;" colspan="2">Негативное воздействие</th>
+            <th style="min-width: 200px; width: 200px;" colspan="2">Водоснабжение</th>
+            <th style="min-width: 200px; width: 200px;" colspan="2">Электроснабжение</th>
+            <th style="min-width: 200px; width: 200px;" colspan="2">Вывоз мусора</th>
+        </tr>
+    </thead>    
+    <tbody>
+        <tr>
+            <td class="col-id-no" scope="row"></td>
+            <td><b>Тариф №1</b></td><td><b>Тариф №2</b></td>
+            <td><b>Тариф №1</b></td><td><b>Тариф №2</b></td>
+            <td><b>Тариф №1</b></td><td><b>Тариф №2</b></td>
+            <td><b>Тариф №1</b></td><td><b>Тариф №2</b></td>
+            <td><b>Тариф №1</b></td><td><b>Тариф №2</b></td>
+            <td><b>Тариф №1</b></td><td><b>Тариф №2</b></td>
+        </tr>
+        @foreach ($tarrifs as $tarif)
+            <tr>
+                <td class="col-id-no" scope="row"><b>{{ $mounth[$tarif['mounth']] }}</b></td>
+                <td>{{ number_format($tarif['heat-one'], 3, ',', ' ') }}</td>
+                <td>{{ number_format($tarif['heat-two'], 3, ',', ' ') }}</td>
+                <td>{{ number_format($tarif['drainage-one'], 3, ',', ' ') }}</td>
+                <td>{{ number_format($tarif['drainage-two'], 3, ',', ' ') }}</td>
+                <td>{{ number_format($tarif['negative-one'], 3, ',', ' ') }}</td>
+                <td>{{ number_format($tarif['negative-two'], 3, ',', ' ') }}</td>
+                <td>{{ number_format($tarif['water-one'], 3, ',', ' ') }}</td>
+                <td>{{ number_format($tarif['water-two'], 3, ',', ' ') }}</td>
+                <td>{{ number_format($tarif['power-one'], 3, ',', ' ') }}</td>
+                <td>{{ number_format($tarif['power-two'], 3, ',', ' ') }}</td>
+                <td>{{ number_format($tarif['trash-one'], 3, ',', ' ') }}</td>
+                <td>{{ number_format($tarif['trash-two'], 3, ',', ' ') }}</td>
+            </tr>
+        @endforeach
+        
+    </tbody> 
+</table>

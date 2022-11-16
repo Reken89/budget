@@ -18,6 +18,7 @@ class CommunalController extends Controller
      /**
      * Back отрисовка страницы
      * Возвращает коммунальные услуги за выбранный год
+     * Возвращает тарифы за выбранный год
      *
      * @param Request $request
      * @return array

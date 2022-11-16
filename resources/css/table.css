@@ -1,78 +1,171 @@
 .freeze-table {
-        border-spacing: 0;
-        font-family: "Segoe UI", sans-serif, "Helvetica Neue";
-        font-size: 14px;
-        padding: 0;
-        border: 1px solid #ccc;
-    }
+    border-spacing: 0;
+    font-family: "Segoe UI", sans-serif, "Helvetica Neue";
+    font-size: 14px;
+    padding: 0;
+    border: 1px solid #ccc;
+    /*
+    overflow: auto; 
+    position: relative; 
+    display: inline-block; 
+    vertical-align: top; 
+    max-width: 100%; 
+    overflow-x: auto; 
+    white-space: nowrap; 
+    -webkit-overflow-scrolling: touch; 
+    width:100%; 
+    */
+}
     
-    thead th {
-        top: 0;
-        position: sticky;
-        background-color: #666;
-        color: #fff;
-        z-index: 20;
-        min-height: 30px;
-        height: 30px;
-        text-align: left;
-    }
+thead th {
+    top: 0;
+    position: sticky;
+    background-color: #666;
+    color: #fff;
+    z-index: 20;
+    min-height: 30px;
+    height: 30px;
+    text-align: left;
+}
     
-    tr:nth-child(even) {
-        background-color: #f2f2f2;
-    }
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
     
-    th, td {
-        padding: 0;
-        outline: 1px solid #ccc;
-        border: none;
-        outline-offset: -1px;
-        padding-left: 5px;
-    }
+th, td {
+    padding: 0;
+    outline: 1px solid #ccc;
+    border: none;
+    outline-offset: -1px;
+    padding-left: 5px;
+}
     
-    tr {
-        min-height: 25px;
-        height: 25px;
-    }
+tr {
+    min-height: 25px;
+    height: 25px;
+}
     
-    .col-id-no {
-        left: 0;
-        position: sticky;
-    }
+.col-id-no {
+    left: 0;
+    position: sticky;
+}
     
-    .col-first-name {
-        left: 80px;
-        position: sticky;
-    }
+.col-first-name {
+    left: 80px;
+    position: sticky;
+}
     
-    .fixed-header {
-        z-index: 50;
-    }
+.fixed-header {
+    z-index: 50;
+}
     
-    tr:nth-child(even) td[scope=row] {
-        background-color: #f2f2f2;
-    }
+tr:nth-child(even) td[scope=row] {
+    background-color: #f2f2f2;
+}
     
-    tr:nth-child(odd) td[scope=row] {
-        background-color: white;
-    }
+tr:nth-child(odd) td[scope=row] {
+    background-color: white;
+}
     
-              #user {
-          width: 80px; /* Ширина заполняемого поля */
-           } 
+#user {
+    width: 80px; /* Ширина заполняемого поля */
+} 
 
-   .div {
+.div {
     background: #A9A9A9; /* Цвет фона */
     color: #000000; /* Цвет текста */
     padding: 10px; /* Поля вокруг текста */
-    border-radius: 5px; /* Уголки */
+    border-radius: 10px; /* Уголки */
     width: 800px;
-   }
-   
-   
-   .size_block {
-  column-count: 3;
+    height: 80px;
+}
+      
+.size_block {
+    column-count: 3;
 }
 
 label {
+    display: block;
+}
+
+.button{
+    background: #696969; /* Цвет кнопки */
+    color: #FFFFFF;      /* Цвет текста */
+    width: 80px;         /* Ширина кнопки */
+    height: 25px;        /* Высота кнопки */
+    border-radius: 10px; /* Закругление кнопки */
+}
+
+.button_menu{
+    background: #FFFFFF; /* Цвет кнопки */
+    color: #000000;      /* Цвет текста */
+    width: 250px;         /* Ширина кнопки */
+    height: 50px;        /* Высота кнопки */
+    border-radius: 10px; /* Закругление кнопки */
+}
+
+.custom-btn {
+  width: 250px;
+  height: 40px;
+  margin: 0 auto;
   display: block;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: #FFFFFF;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;
+}
+.btn-16 {
+  border: none;
+  color: #000;
+  z-index: 1;
+}
+.btn-16:after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 100%;
+  top: 0;
+  left: 0;
+  direction: rtl;
+  z-index: -1;
+  box-shadow:
+   -7px -7px 20px 0px #fff9,
+   -4px -4px 5px 0px #fff9,
+   7px 7px 20px 0px #0002,
+   4px 4px 5px 0px #0001;
+  transition: all 0.3s ease;
+}
+.btn-16:hover {
+  color: #000;
+}
+.btn-16:hover:after {
+  left: auto;
+  right: 0;
+  width: 100%;
+}
+.btn-16:active {
+  top: 2px;
+}
+
+.center { 
+  text-align: center; 
+}
+
+#footer {
+    position: fixed; /* Фиксированное положение */
+    left: 0; bottom: 0; /* Левый нижний угол */
+    padding: 10px; /* Поля вокруг текста */
+    background: #778899; /* Цвет фона */
+    color: #fff; /* Цвет текста */
+    width: 100%; /* Ширина слоя */
 }

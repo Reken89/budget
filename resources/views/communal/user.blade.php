@@ -46,7 +46,7 @@
                         },
                         dataType:"text",  
                         success:function(data){  
-                            fetch_data();  
+                            fetch_data(); 
                         } 
                     })                   
                 }               
