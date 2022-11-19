@@ -29,6 +29,14 @@
 <p class="shadow text1">Выберите раздел</p>
 
 @if ($role == "admin")
+</br>
+<div class = "center">
+    <form action="{{ route('admincommunal')}}" method="get">
+        <input type='hidden' name='year[]' value='2022'>
+        <input type='hidden' name='mounth[]' value='1'>
+        <button type="submit" class="custom-btn btn-16"><b>Коммунальные услуги<b></button>
+    </form>
+</div>
 
 @elseif ($role == "user")
 </br>

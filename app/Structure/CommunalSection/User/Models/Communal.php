@@ -2,7 +2,9 @@
 
 namespace App\Structure\CommunalSection\User\Models;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Structure\UserSection\Auth\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Communal extends Model
@@ -29,6 +31,12 @@ class Communal extends Model
     ];
     
     public $timestamps = false;
+    
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    
 }
 
 
