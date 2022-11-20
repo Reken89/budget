@@ -17,6 +17,8 @@ class CommunalSelectTask extends BaseTask
     public function run(CommunalIndexDto $dto): array
     {        
         $info = Communal::select()
+            ->selectRaw("(`heat-sum` + `drainage-sum` + `negative-sum` +"
+                    . "`water-sum` + `power-sum` + `trash-sum` + `disposal-sum`) AS total")    
             ->with(['user:id,name'])    
             ->whereIn('year', $dto->year)
             ->whereIn('mounth', $dto->mounth) 

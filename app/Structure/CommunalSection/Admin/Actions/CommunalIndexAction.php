@@ -21,12 +21,15 @@ class CommunalIndexAction extends BaseAction
     {   
         if (count($dto->year) == '1' AND count($dto->mounth) == '1'){
             $result = $this->task(CommunalSelectTask::class)->run($dto);
+            $variant = "one";
         } else {
-            $result = $this->task(CommunalSelectAllTask::class)->run($dto);  
+            $result = $this->task(CommunalSelectAllTask::class)->run($dto);
+            $variant = "many";
         }
         
         $info = [
             "result"  => $result,
+            "variant" => $variant,
         ];
         
         return $info;
