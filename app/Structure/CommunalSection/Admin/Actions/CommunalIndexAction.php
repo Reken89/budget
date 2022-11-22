@@ -6,6 +6,7 @@ use App\Core\Actions\BaseAction;
 use App\Structure\CommunalSection\Admin\Dto\CommunalIndexDto;
 use App\Structure\CommunalSection\Admin\Tasks\CommunalSelectTask;
 use App\Structure\CommunalSection\Admin\Tasks\CommunalSelectAllTask;
+use App\Structure\CommunalSection\Admin\Tasks\CommunalSelectTotalTask;
 
 class CommunalIndexAction extends BaseAction
 {
@@ -26,10 +27,12 @@ class CommunalIndexAction extends BaseAction
             $result = $this->task(CommunalSelectAllTask::class)->run($dto);
             $variant = "many";
         }
+        $total = $this->task(CommunalSelectTotalTask::class)->run($dto);
         
         $info = [
             "result"  => $result,
             "variant" => $variant,
+            "total"   => $total,
         ];
         
         return $info;

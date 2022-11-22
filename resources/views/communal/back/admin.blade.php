@@ -195,6 +195,31 @@
                 </tr>
             
             @endforeach
-        @endif       
+        @endif 
+        
+        @php
+            $total = $info['total'][0];
+        @endphp
+        
+        <tr>
+            <td><b>ИТОГО</b></td>
+            <td></td>
+            <td>{{ number_format($total['heat_volume'], 3, ',', ' ') }}</td>
+            <td>{{ number_format($total['heat_sum'], 2, ',', ' ') }}</td>
+            <td>{{ number_format($total['drainage_volume'], 3, ',', ' ') }}</td>
+            <td>{{ number_format($total['drainage_sum'], 2, ',', ' ') }}</td>
+            <td>{{ number_format($total['negative_volume'], 3, ',', ' ') }}</td>
+            <td>{{ number_format($total['negative_sum'], 2, ',', ' ') }}</td>
+            <td>{{ number_format($total['water_volume'], 3, ',', ' ') }}</td>
+            <td>{{ number_format($total['water_sum'], 2, ',', ' ') }}</td>
+            <td>{{ number_format($total['power_volume'], 3, ',', ' ') }}</td>
+            <td>{{ number_format($total['power_sum'], 2, ',', ' ') }}</td>
+            <td>{{ number_format($total['trash_volume'], 3, ',', ' ') }}</td>
+            <td>{{ number_format($total['trash_sum'], 2, ',', ' ') }}</td>
+            <td>{{ number_format($total['disposal_volume'], 3, ',', ' ') }}</td>
+            <td>{{ number_format($total['disposal_sum'], 2, ',', ' ') }}</td>
+            <td>{{ number_format($total['total'], 2, ',', ' ') }}</td>
+        </tr>
+        
     </tbody>
 </table>    
