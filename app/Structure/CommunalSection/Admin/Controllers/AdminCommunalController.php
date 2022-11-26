@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use App\Core\Controllers\Controller;
 use App\Structure\CommunalSection\Admin\Actions\CommunalIndexAction;
+use App\Structure\CommunalSection\Admin\Actions\CommunalUpdateStatusAction;
 use App\Structure\CommunalSection\Admin\Dto\CommunalIndexDto;
 use App\Structure\CommunalSection\Admin\Requests\CommunalIndexRequest;
 
@@ -40,6 +41,23 @@ class AdminCommunalController extends Controller
             'mounth' => $request->mounth,
         ];
         return view('communal.admin', ['info' => $info]);
+    }
+    
+     /**
+     * Обновление статуса в таблице communals
+     * 
+     * @param Request $request
+     * @return bool
+     */
+    public function updatestatus(Request $request)
+    { 
+        $id = $request->input('id');
+        if (!$this->action(CommunalUpdateStatusAction::class)->run($id)) {
+	    return false;
+	} else {
+            return true;
+        }
+
     }
     
 }

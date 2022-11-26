@@ -13,7 +13,7 @@
                 url:"/budget/public/admin/communal/back",  
                 method:"GET",
                 data:{
-                    "_token": "{{ csrf_token() }}",
+                    //"_token": "{{ csrf_token() }}",
                     year, mounth
                 },
                 dataType:"text",
@@ -59,6 +59,24 @@
                     setKeydownmyForm() 
                 } 
             })               
+        })
+        
+        //Выполняем действие (изменение статуса) при нажатии на кнопку
+        $(document).on('click', '#btn_two', function(){
+            var tr = this.closest('tr');
+            var id = $('.id', tr).val();
+                $.ajax({
+                    url:"/budget/public/admin/communal/updatestatus",  
+                    method:"patch",
+                    data:{
+                        "_token": "{{ csrf_token() }}",
+                        id
+                    },
+                    dataType:"text",  
+                    success:function(data){  
+                        fetch_data();  
+                    } 
+                })               
         })
         
     });

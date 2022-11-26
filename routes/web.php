@@ -22,6 +22,7 @@ Route::get('/', function () {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Роуты для Back (Модуль коммунальные услуги)
 Route::get('/admin/communal/back', [AdminCommunalController::class, 'index'])->middleware('auth', 'admin');
+Route::patch('/admin/communal/updatestatus', [AdminCommunalController::class, 'updatestatus'])->middleware('auth', 'admin');
 
 Route::get('/user/communal/back', [CommunalController::class, 'index'])->middleware('auth');
 Route::patch('/user/communal/update', [CommunalController::class, 'update'])->middleware('auth');
