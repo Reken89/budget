@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="/budget/resources/css/table.css">
 <link rel="stylesheet" href="/budget/resources/css/lora.css">
 <link rel="stylesheet" href="/budget/resources/css/style.css">
+<link rel="stylesheet" href="/budget/resources/css/style_checkbox.css">
 
 <body>
 

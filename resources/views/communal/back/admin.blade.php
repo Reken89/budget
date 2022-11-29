@@ -19,90 +19,107 @@
     </div>
 </div>
 
-<form id="communal" method="get">                 
+<form id="communal" method="get"> 
+
 <p><b>Выберите год </b></p>                 
     <div class="size_block">                  
-        <label class="container">
+        <label class="checkbox style-f">
             <input type="checkbox" name="year" value="2018">
-            <span class="checkmark">2018</span>
+            <div class="checkbox__checkmark"></div>
+            <div class="checkbox__body">2018</div>
         </label>                 
-        <label class="container">
+        <label class="checkbox style-f">
             <input type="checkbox" name="year" value="2019">
-            <span class="checkmark">2019</span>
+            <div class="checkbox__checkmark"></div>
+            <div class="checkbox__body">2019</div>
         </label>                  
-        <label class="container">
+        <label class="checkbox style-f">
             <input type="checkbox" name="year" value="2020">
-            <span class="checkmark">2020</span>
+            <div class="checkbox__checkmark"></div>
+            <div class="checkbox__body">2020</div>
         </label>                  
-        <label class="container">
+        <label class="checkbox style-f">
             <input type="checkbox" name="year" value="2021">
-            <span class="checkmark">2021</span>
+            <div class="checkbox__checkmark"></div>
+            <div class="checkbox__body">2021</div>
         </label>                 
-        <label class="container">
+        <label class="checkbox style-f">
             <input type="checkbox" name="year" value="2022">
-            <span class="checkmark">2022</span>
+            <div class="checkbox__checkmark"></div>
+            <div class="checkbox__body">2022</div>
         </label>                  
     </div>
                          
 <p><b>Выберите месяц</b></p>                                   
 <div class="size_block">                         
-    <label class="container">
+    <label class="checkbox style-f">
         <input type="checkbox" name="mounth" value="1">
-        <span class="checkmark">Январь</span>
+        <div class="checkbox__checkmark"></div>
+        <div class="checkbox__body">Январь</div>
     </label>
-    <label class="container">
+    <label class="checkbox style-f">
         <input type="checkbox" name="mounth" value="2">
-        <span class="checkmark">Февраль</span>
+        <div class="checkbox__checkmark"></div>
+        <div class="checkbox__body">Февраль</div>
     </label>
-    <label class="container">
+    <label class="checkbox style-f">
         <input type="checkbox" name="mounth" value="3">
-        <span class="checkmark">Март</span>
+        <div class="checkbox__checkmark"></div>
+        <div class="checkbox__body">Март</div>
     </label>
-    <label class="container">
+    <label class="checkbox style-f">
         <input type="checkbox" name="mounth" value="4">
-        <span class="checkmark">Апрель</span>
+        <div class="checkbox__checkmark"></div>
+        <div class="checkbox__body">Апрель</div>
     </label>
-    <label class="container">
+    <label class="checkbox style-f">
         <input type="checkbox" name="mounth" value="5">
-        <span class="checkmark">Май</span>
+        <div class="checkbox__checkmark"></div>
+        <div class="checkbox__body">Май</div>
     </label>
-    <label class="container">
+    <label class="checkbox style-f">
         <input type="checkbox" name="mounth" value="6">
-        <span class="checkmark">Июнь</span>
+        <div class="checkbox__checkmark"></div>
+        <div class="checkbox__body">Июнь</div>
     </label>
-    <label class="container">
+    <label class="checkbox style-f">
         <input type="checkbox" name="mounth" value="7">
-        <span class="checkmark">Июль</span>
+        <div class="checkbox__checkmark"></div>
+        <div class="checkbox__body">Июль</div>
     </label>
-    <label class="container">
+    <label class="checkbox style-f">
         <input type="checkbox" name="mounth" value="8">
-        <span class="checkmark">Август</span>
+        <div class="checkbox__checkmark"></div>
+        <div class="checkbox__body">Август</div>
     </label>
-    <label class="container">
+    <label class="checkbox style-f">
         <input type="checkbox" name="mounth" value="9">
-        <span class="checkmark">Сентябрь</span>
+        <div class="checkbox__checkmark"></div>
+        <div class="checkbox__body">Сентябрь</div>
     </label>
-    <label class="container">
+    <label class="checkbox style-f">
         <input type="checkbox" name="mounth" value="10">
-        <span class="checkmark">Октябрь</span>
+        <div class="checkbox__checkmark"></div>
+        <div class="checkbox__body">Октябрь</div>
     </label>
-    <label class="container">
+    <label class="checkbox style-f">
         <input type="checkbox" name="mounth" value="11">
-        <span class="checkmark">Ноябрь</span>
+        <div class="checkbox__checkmark"></div>
+        <div class="checkbox__body">Ноябрь</div>
     </label>
-    <label class="container">
+    <label class="checkbox style-f">
         <input type="checkbox" name="mounth" value="12">
-        <span class="checkmark">Декабрь</span>
+        <div class="checkbox__checkmark"></div>
+        <div class="checkbox__body">Декабрь</div>
     </label>                            
 </div>
                          
-<p><input type="button" style="width:250px;height:25px" name="formSubmit" id="btn_one" class="btn" value="Сформировать таблицу" /></p>                     
+<p><input type="button" style="width:250px;height:25px" name="formSubmit" id="btn_one" class="button5" value="Сформировать таблицу" /></p>                     
 </form>
 
-@php
-    //var_dump($info);
-
-@endphp
+<form action="/budget/public/admin/communal/export" method="get">
+    <button type="submit" style="width:250px;height:25px" class="button5">Выгрузка в EXCEL</button>
+</form>
 
 </br>
 

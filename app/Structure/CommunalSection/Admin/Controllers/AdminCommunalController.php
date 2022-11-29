@@ -3,8 +3,10 @@
 namespace App\Structure\CommunalSection\Admin\Controllers;
 
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\JsonResponse;
 use App\Core\Controllers\Controller;
+use App\Structure\CommunalSection\Admin\Exports\ExportAdminTable;
 use App\Structure\CommunalSection\Admin\Actions\CommunalIndexAction;
 use App\Structure\CommunalSection\Admin\Actions\CommunalUpdateStatusAction;
 use App\Structure\CommunalSection\Admin\Dto\CommunalIndexDto;
@@ -24,6 +26,7 @@ class AdminCommunalController extends Controller
     {
         $dto = CommunalIndexDto::fromRequest($request);
         $info = $this->action(CommunalIndexAction::class)->run($dto);
+        session(['info' => $info]);
         
         return view('communal.back.admin', ['info' => $info]);        
     }
@@ -57,6 +60,18 @@ class AdminCommunalController extends Controller
 	} else {
             return true;
         }
+
+    }
+    
+     /**
+     * Выгрузка таблицы в EXCEL
+     * 
+     * @param 
+     * @return Excel
+     */
+    public function export()
+    { 
+        return Excel::download(new ExportAdminTable, 'table.xlsx');
 
     }
     

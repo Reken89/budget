@@ -169,3 +169,15 @@ label {
     color: #fff; /* Цвет текста */
     width: 100%; /* Ширина слоя */
 }
+  
+.button5 {
+    background-color: white;
+    color: black;
+    border: 2px solid #555555;
+}
+
+.button5:hover {
+    background-color: #555555;
+    color: white;
+}
+   
