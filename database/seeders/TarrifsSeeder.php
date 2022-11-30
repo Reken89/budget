@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Communal\Tarrifs;
+use App\Structure\CommunalSection\User\Models\Tarrifs;
 use Illuminate\Database\Seeder;
 
 class TarrifsSeeder extends Seeder
