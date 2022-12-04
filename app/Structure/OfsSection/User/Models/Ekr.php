@@ -4,6 +4,8 @@ namespace App\Structure\OfsSection\User\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Structure\OfsSection\User\Models\Ofs;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Ekr extends Model
 {
@@ -13,5 +15,11 @@ class Ekr extends Model
     protected $guarded = [];
     
     public $timestamps = false;
+    
+    public function ofs(): HasMany
+    {
+        return $this->hasMany(Ofs::class);
+    }
+    
 }
 

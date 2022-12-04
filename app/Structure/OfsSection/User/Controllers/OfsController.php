@@ -19,8 +19,12 @@ class OfsController extends Controller
      */
     public function index(OfsIndexRequest $request)
     {   
-        $dto = OfsIndexDto::fromRequest($request);
-        $info = $this->action(OfsIndexAction::class)->run($dto);
+        //if ($request->info == "no"){
+        //    $info = ["info"   => 'no',];
+        //} else {       
+            $dto = OfsIndexDto::fromRequest($request);
+            $info = $this->action(OfsIndexAction::class)->run($dto);
+        //}
         
         return view('ofs.back.user', ['info' => $info]); 
     }

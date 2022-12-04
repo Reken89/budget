@@ -31,16 +31,23 @@ Route::patch('/user/communal/update', [CommunalController::class, 'update'])->mi
 Route::patch('/user/communal/sending', [CommunalController::class, 'sending'])->middleware('auth');
 Route::patch('/user/communal/change', [CommunalController::class, 'change'])->middleware('auth');
 
-//Роуты для Back (Модуль ОФС)
-Route::get('/user/ofs/back', [OfsController::class, 'index'])->middleware('auth');
-
 //Роуты для Front (Модуль коммунальные услуги)
 Route::get('/admin/communal', [AdminCommunalController::class, 'user'])->middleware('auth', 'admin')->name('admincommunal');
 Route::get('/user/communal/{year}', [CommunalController::class, 'user'])->middleware('auth')->name('usercommunal');
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+ * 
+ * 
+ * 
+ */
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Роуты для Back (Модуль ОФС)
+Route::get('/user/ofs/back', [OfsController::class, 'index'])->middleware('auth');
 
 //Роуты для Front (Модуль ОФС)
 Route::get('/user/ofs', [OfsController::class, 'user'])->middleware('auth')->name('userofs');
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

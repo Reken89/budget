@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Structure\CommunalSection\User\Models\Communal;
+use App\Structure\OfsSection\User\Models\Ofs;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Authenticatable
@@ -56,6 +57,11 @@ class User extends Authenticatable
     public function communal(): HasMany
     {
         return $this->hasMany(Communal::class);
+    }
+    
+    public function ofs(): HasMany
+    {
+        return $this->hasMany(Ofs::class);
     }
 }
 

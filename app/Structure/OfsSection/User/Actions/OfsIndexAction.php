@@ -4,6 +4,7 @@ namespace App\Structure\OfsSection\User\Actions;
 
 use App\Core\Actions\BaseAction;
 use App\Structure\OfsSection\User\Dto\OfsIndexDto;
+use App\Structure\OfsSection\User\Tasks\OfsSelectAllTask;
 
 class OfsIndexAction extends BaseAction
 {
@@ -16,17 +17,14 @@ class OfsIndexAction extends BaseAction
      */
     public function run(OfsIndexDto $dto): array
     {   
-        if ($dto->info == "no"){
-            $info = "no";
-        } else {
-            $info = "yes";
-        }
-   
-        $compilation = [
-            "info"   => $info,
+        $result = $this->task(OfsSelectAllTask::class)->run($dto);
+  
+        $info = [
+            "info"   => 'yes',
+            "result" => $result,
         ];
         
-        return $compilation;
+        return $info;
 
     }
 }
