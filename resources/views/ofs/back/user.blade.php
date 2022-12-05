@@ -20,6 +20,7 @@
 </div> 
 
 @php
+    #$number = $info['ekr']->max('number');
     var_dump($info);
 @endphp
 
