@@ -19,11 +19,6 @@
     </div>
 </div> 
 
-@php
-    #$number = $info['ekr']->max('number');
-    var_dump($info);
-@endphp
-
 <table class="freeze-table" width="700px">             
     <thead>
         <tr>
@@ -60,8 +55,62 @@
             <td></td><td></td><td></td>
         </tr>
         
-        
-        
+        @for ($n = 1; $n <= $info['number']; $n++)
+            @foreach ($info['result'] as $value)
+                @if ($value['ekr']['main'] == 'Yes' && $value['ekr']['number'] == $n)
+                    <tr>
+                        <td class="col-id-no" scope="row"><b>{{ $value['ekr']['title'] }}</b></td>
+                        <td></td>
+                        <td><b>{{ $value['ekr']['ekr'] }}</b></td>
+                        <td><b>{{ number_format($value['lbo'], 2, ',', ' ') }}</b></td>
+                        <td><b>{{ number_format($value['prepaid'], 2, ',', ' ') }}</b></td>
+                        <td><b>{{ number_format($value['credit_year_all'], 2, ',', ' ') }}</b></td>
+                        <td><b>{{ number_format($value['credit_year_term'], 2, ',', ' ') }}</b></td>
+                        <td><b>{{ number_format($value['debit_year_all'], 2, ',', ' ') }}</b></td>
+                        <td><b>{{ number_format($value['debit_year_term'], 2, ',', ' ') }}</b></td>
+                        <td><b>{{ number_format($value['fact_all'], 2, ',', ' ') }}</b></td>
+                        <td><b>{{ number_format($value['fact_mounth'], 2, ',', ' ') }}</b></td>
+                        <td><b>{{ number_format($value['kassa_all'], 2, ',', ' ') }}</b></td>
+                        <td><b>{{ number_format($value['kassa_mounth'], 2, ',', ' ') }}</b></td>
+                        <td><b>{{ number_format($value['credit_end_all'], 2, ',', ' ') }}</b></td>
+                        <td><b>{{ number_format($value['credit_end_term'], 2, ',', ' ') }}</b></td>
+                        <td><b>{{ number_format($value['debit_end_all'], 2, ',', ' ') }}</b></td>
+                        <td><b>{{ number_format($value['debit_end_term'], 2, ',', ' ') }}</b></td>
+                        <td><b>{{ number_format($value['return_old_year'], 2, ',', ' ') }}</b></td>
+                        <td><b></b></td>
+                        <td><b></b></td>
+                    </tr>
+                @endif
+                
+                @if ($value['ekr']['main'] == 'No' && $value['ekr']['number'] == $n)
+                    @if ($value['status'] == '2')
+                        <tr>
+                            <td class="col-id-no" scope="row">{{ $value['ekr']['title'] }}</td>
+                            <td><input type=button class='button' id='btn_one' value='Сброс'></td>
+                            <td>{{ $value['ekr']['ekr'] }}</td>
+                            <td><input type="text" class="lbo" value="{{ number_format($value['lbo'], 2, ',', ' ') }}"></td>  
+                            <td><input type="text" class="prepaid" value="{{ number_format($value['prepaid'], 2, ',', ' ') }}"></td>
+                            <td><input type="text" class="credit_year_all" value="{{ number_format($value['credit_year_all'], 2, ',', ' ') }}"></td>
+                            <td><input type="text" class="credit_year_term" value="{{ number_format($value['credit_year_term'], 2, ',', ' ') }}"></td>
+                            <td><input type="text" class="debit_year_all" value="{{ number_format($value['debit_year_all'], 2, ',', ' ') }}"></td>
+                            <td><input type="text" class="debit_year_term" value="{{ number_format($value['debit_year_term'], 2, ',', ' ') }}"></td>
+                            <td><input type="text" class="fact_all" value="{{ number_format($value['fact_all'], 2, ',', ' ') }}"></td>
+                            <td><input type="text" class="fact_mounth" value="{{ number_format($value['fact_mounth'], 2, ',', ' ') }}"></td>
+                            <td><input type="text" class="kassa_all" value="{{ number_format($value['kassa_all'], 2, ',', ' ') }}"></td>
+                            <td><input type="text" class="kassa_mounth" value="{{ number_format($value['kassa_mounth'], 2, ',', ' ') }}"></td>
+                            <td><input type="text" class="credit_end_all" value="{{ number_format($value['credit_end_all'], 2, ',', ' ') }}"></td>
+                            <td><input type="text" class="credit_end_term" value="{{ number_format($value['credit_end_term'], 2, ',', ' ') }}"></td>
+                            <td><input type="text" class="debit_end_all" value="{{ number_format($value['debit_end_all'], 2, ',', ' ') }}"></td>
+                            <td><input type="text" class="debit_end_term" value="{{ number_format($value['debit_end_term'], 2, ',', ' ') }}"></td>
+                            <td><input type="text" class="return_old_year" value="{{ number_format($value['return_old_year'], 2, ',', ' ') }}"></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    @elseif ($value['status'] == '1')
+                    @endif
+                @endif
+            @endforeach 
+        @endfor
     </tbody>
 </table>
 
