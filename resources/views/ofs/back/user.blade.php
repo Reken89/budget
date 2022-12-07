@@ -77,8 +77,8 @@
                         <td><b>{{ number_format($value['debit_end_all'], 2, ',', ' ') }}</b></td>
                         <td><b>{{ number_format($value['debit_end_term'], 2, ',', ' ') }}</b></td>
                         <td><b>{{ number_format($value['return_old_year'], 2, ',', ' ') }}</b></td>
-                        <td><b></b></td>
-                        <td><b></b></td>
+                        <td><b>{{ number_format($value['total1'], 2, ',', ' ') }}</b></td>
+                        <td><b>{{ number_format($value['total2'], 2, ',', ' ') }}</b></td>
                     </tr>
                 @endif
                 
@@ -94,17 +94,17 @@
                             <td><input type="text" class="credit_year_term" value="{{ number_format($value['credit_year_term'], 2, ',', ' ') }}"></td>
                             <td><input type="text" class="debit_year_all" value="{{ number_format($value['debit_year_all'], 2, ',', ' ') }}"></td>
                             <td><input type="text" class="debit_year_term" value="{{ number_format($value['debit_year_term'], 2, ',', ' ') }}"></td>
-                            <td><input type="text" class="fact_all" value="{{ number_format($value['fact_all'], 2, ',', ' ') }}"></td>
+                            <td>{{ number_format($value['fact_all'], 2, ',', ' ') }}</td>
                             <td><input type="text" class="fact_mounth" value="{{ number_format($value['fact_mounth'], 2, ',', ' ') }}"></td>
-                            <td><input type="text" class="kassa_all" value="{{ number_format($value['kassa_all'], 2, ',', ' ') }}"></td>
+                            <td>{{ number_format($value['kassa_all'], 2, ',', ' ') }}</td>
                             <td><input type="text" class="kassa_mounth" value="{{ number_format($value['kassa_mounth'], 2, ',', ' ') }}"></td>
                             <td><input type="text" class="credit_end_all" value="{{ number_format($value['credit_end_all'], 2, ',', ' ') }}"></td>
                             <td><input type="text" class="credit_end_term" value="{{ number_format($value['credit_end_term'], 2, ',', ' ') }}"></td>
                             <td><input type="text" class="debit_end_all" value="{{ number_format($value['debit_end_all'], 2, ',', ' ') }}"></td>
                             <td><input type="text" class="debit_end_term" value="{{ number_format($value['debit_end_term'], 2, ',', ' ') }}"></td>
                             <td><input type="text" class="return_old_year" value="{{ number_format($value['return_old_year'], 2, ',', ' ') }}"></td>
-                            <td></td>
-                            <td></td>
+                            <td>{{ number_format($value['total1'], 2, ',', ' ') }}</td>
+                            <td>{{ number_format($value['total2'], 2, ',', ' ') }}</td>
                         </tr>
                     @elseif ($value['status'] == '1')
                     @endif
