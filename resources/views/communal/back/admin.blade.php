@@ -51,7 +51,7 @@
     </div>
                          
 <p><b>Выберите месяц</b></p>                                   
-<div class="size_block">                         
+<div>                         
     <label class="checkbox style-f">
         <input type="checkbox" name="mounth" value="1">
         <div class="checkbox__checkmark"></div>
