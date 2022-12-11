@@ -1,3 +1,22 @@
+@php
+    use Illuminate\Support\Facades\Auth;
+    $role = Auth::user()->role();
+    $mounth = [
+        '1' => 'Январь',
+        '2' => 'Февраль',
+        '3' => 'Март',
+        '4' => 'Апрель',
+        '5' => 'Май',
+        '6' => 'Июнь',
+        '7' => 'Июль',
+        '8' => 'Август',
+        '9' => 'Сентябрь',
+        '10' => 'Октябрь',
+        '11' => 'Ноябрь',
+        '12' => 'Декабрь',
+    ];
+@endphp
+
 <head>
     <meta charset="utf-8">
     <title>Таблица ОФС</title>
@@ -9,7 +28,7 @@
     </div>
     <div class="post-title">
         <h2>
-            <a>Значение при делении суммы на объем, должно соответствовать диапазону тарифа</a>
+            <a>Отчет о финансовом состоянии</a>
         </h2>
     </div>
     <div class="post-meta"><b>Таблица ОФС</b></div>
@@ -19,6 +38,150 @@
     </div>
 </div> 
 
+<form id="ofs" method="get"> 
+<p><b>Выберите месяц</b></p>                                   
+<div>                         
+    <label class="checkbox style-f">
+        <input type="checkbox" name="mounth" value="1">
+        <div class="checkbox__checkmark"></div>
+        <div class="checkbox__body">Январь</div>
+    </label>
+    <label class="checkbox style-f">
+        <input type="checkbox" name="mounth" value="2">
+        <div class="checkbox__checkmark"></div>
+        <div class="checkbox__body">Февраль</div>
+    </label>
+    <label class="checkbox style-f">
+        <input type="checkbox" name="mounth" value="3">
+        <div class="checkbox__checkmark"></div>
+        <div class="checkbox__body">Март</div>
+    </label>
+    <label class="checkbox style-f">
+        <input type="checkbox" name="mounth" value="4">
+        <div class="checkbox__checkmark"></div>
+        <div class="checkbox__body">Апрель</div>
+    </label>
+    <label class="checkbox style-f">
+        <input type="checkbox" name="mounth" value="5">
+        <div class="checkbox__checkmark"></div>
+        <div class="checkbox__body">Май</div>
+    </label>
+    <label class="checkbox style-f">
+        <input type="checkbox" name="mounth" value="6">
+        <div class="checkbox__checkmark"></div>
+        <div class="checkbox__body">Июнь</div>
+    </label>
+    </br>
+    <label class="checkbox style-f">
+        <input type="checkbox" name="mounth" value="7">
+        <div class="checkbox__checkmark"></div>
+        <div class="checkbox__body">Июль</div>
+    </label>
+    <label class="checkbox style-f">
+        <input type="checkbox" name="mounth" value="8">
+        <div class="checkbox__checkmark"></div>
+        <div class="checkbox__body">Август</div>
+    </label>
+    <label class="checkbox style-f">
+        <input type="checkbox" name="mounth" value="9">
+        <div class="checkbox__checkmark"></div>
+        <div class="checkbox__body">Сентябрь</div>
+    </label>
+    <label class="checkbox style-f">
+        <input type="checkbox" name="mounth" value="10">
+        <div class="checkbox__checkmark"></div>
+        <div class="checkbox__body">Октябрь</div>
+    </label>
+    <label class="checkbox style-f">
+        <input type="checkbox" name="mounth" value="11">
+        <div class="checkbox__checkmark"></div>
+        <div class="checkbox__body">Ноябрь</div>
+    </label>
+    <label class="checkbox style-f">
+        <input type="checkbox" name="mounth" value="12">
+        <div class="checkbox__checkmark"></div>
+        <div class="checkbox__body">Декабрь</div>
+    </label>                            
+</div>
+
+</br>
+<p><b>Выберите раздел</b></p>                                   
+<div>                         
+    <label class="checkbox style-f">
+        <input type="checkbox" name="chapter" value="1">
+        <div class="checkbox__checkmark"></div>
+        <div class="checkbox__body">МБ МЗ(МБ)</div>
+    </label>
+    <label class="checkbox style-f">
+        <input type="checkbox" name="chapter" value="2">
+        <div class="checkbox__checkmark"></div>
+        <div class="checkbox__body">МБ ИЦ</div>
+    </label>
+    <label class="checkbox style-f">
+        <input type="checkbox" name="chapter" value="3">
+        <div class="checkbox__checkmark"></div>
+        <div class="checkbox__body">РК МЗ(РК)</div>
+    </label>
+    <label class="checkbox style-f">
+        <input type="checkbox" name="chapter" value="4">
+        <div class="checkbox__checkmark"></div>
+        <div class="checkbox__body">РК ИЦ</div>
+    </label>
+    <label class="checkbox style-f">
+        <input type="checkbox" name="chapter" value="5">
+        <div class="checkbox__checkmark"></div>
+        <div class="checkbox__body">ПД</div>
+    </label>
+</div>
+
+@if ($role == "cb_buh")
+</br>
+<p><b>Выберите учреждение</b></p>                                   
+<div>                         
+    <label class="checkbox style-f">
+        <input type="checkbox" name="user" value="25">
+        <div class="checkbox__checkmark"></div>
+        <div class="checkbox__body">Администрация</div>
+    </label>
+    <label class="checkbox style-f">
+        <input type="checkbox" name="user" value="26">
+        <div class="checkbox__checkmark"></div>
+        <div class="checkbox__body">Закупки</div>
+    </label>
+    <label class="checkbox style-f">
+        <input type="checkbox" name="user" value="23">
+        <div class="checkbox__checkmark"></div>
+        <div class="checkbox__body">КУМС</div>
+    </label>
+    <label class="checkbox style-f">
+        <input type="checkbox" name="user" value="27">
+        <div class="checkbox__checkmark"></div>
+        <div class="checkbox__body">Совет</div>
+    </label>
+    <label class="checkbox style-f">
+        <input type="checkbox" name="user" value="28">
+        <div class="checkbox__checkmark"></div>
+        <div class="checkbox__body">КСО</div>
+    </label>
+    <label class="checkbox style-f">
+        <input type="checkbox" name="user" value="29">
+        <div class="checkbox__checkmark"></div>
+        <div class="checkbox__body">Централизованная бухгалтерия</div>
+    </label>
+</div>
+@endif
+</br>
+<input type="button" style="width:250px;height:25px" name="formSubmit" id="btn_two" class="button5" value="Сформировать таблицу"> 
+</form>
+
+@if ($info['info'] == "yes")
+</br>
+<div class="shadowbox">
+    <p>Учреждение: {{ $info['result'][0]['user']['name'] }}</br>Месяц: {{ $mounth[$info['result'][0]['mounth']] }}</br>Раздел: {{ $info['result'][0]['chapter'] }}</p>
+</div>
+
+
+</br>
 <table class="freeze-table" width="700px">             
     <thead>
         <tr>
@@ -142,3 +305,9 @@
     </tbody>
 </table>
 
+@else
+</br>
+<div class="shadowbox">
+    <p>Выберите нужные параметры и сформируйте таблицу</p>
+</div>
+@endif
