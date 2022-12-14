@@ -248,6 +248,11 @@
                 @if ($value['ekr']['main'] == 'No' && $value['ekr']['number'] == $n)
                     @if ($value['status'] == '2')
                         <tr>
+                            <input type="hidden" class="id" value="{{ $value['id'] }}">
+                            <input type="hidden" class="number" value="{{ $n }}">
+                            <input type="hidden" class="year" value="{{ $value['year'] }}">
+                            <input type="hidden" class="mounth" value="{{ $value['mounth'] }}">
+                            <input type="hidden" class="chapter" value="{{ $value['chapter'] }}">
                             <td class="col-id-no" scope="row">{{ $value['ekr']['title'] }}</td>
                             <td><input type=button class='button' id='btn_one' value='Сброс'></td>
                             <td>{{ $value['ekr']['ekr'] }}</td>

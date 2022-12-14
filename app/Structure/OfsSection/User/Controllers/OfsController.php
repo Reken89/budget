@@ -5,8 +5,11 @@ namespace App\Structure\OfsSection\User\Controllers;
 use Illuminate\Http\Request;
 use App\Core\Controllers\Controller;
 use App\Structure\OfsSection\User\Dto\OfsIndexDto;
+use App\Structure\OfsSection\User\Dto\OfsUpdateDto;
 use App\Structure\OfsSection\User\Requests\OfsIndexRequest;
+use App\Structure\OfsSection\User\Requests\OfsUpdateRequest;
 use App\Structure\OfsSection\User\Actions\OfsIndexAction;
+use App\Structure\OfsSection\User\Actions\OfsUpdateAction;
 
 class OfsController extends Controller
 {
@@ -50,7 +53,19 @@ class OfsController extends Controller
         return view('ofs.user', ['info' => $info]);
     }
     
-     
+     /**
+     * Обновляет значения в таблице ofs
+     *
+     * @param OfsUpdateRequest $request
+     * @return 
+     */
+    public function update(OfsUpdateRequest $request)
+    { 
+        $dto = OfsUpdateDto::fromRequest($request);
+        $info = $this->action(OfsUpdateAction::class)->run($dto);
+
+    }
+        
 }
 
 

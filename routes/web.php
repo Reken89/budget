@@ -43,6 +43,7 @@ Route::get('/user/communal/{year}', [CommunalController::class, 'user'])->middle
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Роуты для Back (Модуль ОФС)
 Route::get('/user/ofs/back', [OfsController::class, 'index'])->middleware('auth');
+Route::patch('/user/ofs/update', [OfsController::class, 'update'])->middleware('auth');
 
 //Роуты для Front (Модуль ОФС)
 Route::get('/user/ofs', [OfsController::class, 'user'])->middleware('auth')->name('userofs');
