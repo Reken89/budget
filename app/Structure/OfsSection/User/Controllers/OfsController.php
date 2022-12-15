@@ -41,7 +41,7 @@ class OfsController extends Controller
      * @return view
      */
     public function user(OfsIndexRequest $request)
-    {      
+    {   
         $info = [
             'user'    => $request->user,
             'year'    => $request->year,
