@@ -20,7 +20,7 @@ class OfsUpdateAction extends BaseAction
         //$update = $this->task(OfsUpdateTask::class)->run($dto);          
         //return $update;
         $this->task(OfsUpdateTask::class)->run($dto);
-        //$main = $this->task(OfsSelectForMainTask::class)->run($dto);
+        $main = $this->task(OfsSelectForMainTask::class)->run($dto);
         
         return true;
     }

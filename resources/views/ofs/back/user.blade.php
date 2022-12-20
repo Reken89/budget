@@ -250,6 +250,7 @@
                     @if ($value['status'] == '2')
                         <tr>
                             <input type="hidden" class="id" value="{{ $value['id'] }}">
+                            <input type="hidden" class="user_id" value="{{ $value['user_id'] }}">
                             <input type="hidden" class="number" value="{{ $n }}">
                             <input type="hidden" class="year" value="{{ $value['year'] }}">
                             <input type="hidden" class="mounth" value="{{ $value['mounth'] }}">

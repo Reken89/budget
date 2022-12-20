@@ -8,6 +8,7 @@ use App\Structure\OfsSection\User\Requests\OfsUpdateRequest;
 class OfsUpdateDto extends BaseDto
 {
     public int      $id;
+    public int      $user_id;
     public int      $mounth;
     public int      $year;
     public int      $chapter;
@@ -36,6 +37,7 @@ class OfsUpdateDto extends BaseDto
     {
         return new self([
             'id'               => $request->get('id'),
+            'user_id'          => $request->get('user_id'),
             'mounth'           => $request->get('mounth'),
             'year'             => $request->get('year'),
             'chapter'          => $request->get('chapter'),

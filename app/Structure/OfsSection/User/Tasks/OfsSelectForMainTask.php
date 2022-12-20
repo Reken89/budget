@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Builder;
 class OfsSelectForMainTask extends BaseTask
 {
     /**
-     * Возвращает ИТОГИ ОФС по заданным параметрам
+     * Возвращает сумму для main по заданным параметрам
      *
      * @param OfsUpdateDto $dto
      * @return array
@@ -32,13 +32,14 @@ class OfsSelectForMainTask extends BaseTask
             ->selectRaw('SUM(`debit_end_all`) as debit_end_all')
             ->selectRaw('SUM(`debit_end_term`) as debit_end_term')
             ->selectRaw('SUM(`return_old_year`) as return_old_year')
-            ->where('user_id', $dto->id)
-            ->where('year', $year)
-            ->where('mounth', $mounth)
-            ->where('chapter', $chapter)
-            ->whereHas('ekr', function (Builder $query) {
+            ->where('user_id', $dto->user_id)
+            ->where('year', $dto->year)
+            ->where('mounth', $dto->mounth)
+            ->where('chapter', $dto->chapter)
+            ->whereHas('ekr', function (Builder $query) use ($dto) {
                 $query->where('shared', 'No');
-                $query->where('main', 'Yes');
+                $query->where('main', 'No');
+                $query->where('number', $dto->number);
             })
             ->groupBy('year')            
             ->get()

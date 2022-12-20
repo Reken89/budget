@@ -13,6 +13,7 @@
                     var year = $('.year', tr).val();
                     var mounth = $('.mounth', tr).val();
                     var chapter = $('.chapter', tr).val();
+                    var user_id = $('.user_id', tr).val();
                     
                     //Получаем значения, меняем запятую на точку и убираем пробелы в числе                   
                     function structure(title){
@@ -45,7 +46,7 @@
                             credit_year_term, debit_year_all, debit_year_term,
                             fact_mounth, kassa_mounth, credit_end_all, credit_end_term,
                             debit_end_all, debit_end_term, return_old_year,
-                            year, mounth, chapter
+                            year, mounth, chapter, user_id
                         },
                         dataType:"text",  
                         success:function(data){  
