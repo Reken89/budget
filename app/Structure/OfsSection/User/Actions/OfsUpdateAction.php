@@ -5,7 +5,7 @@ namespace App\Structure\OfsSection\User\Actions;
 use App\Core\Actions\BaseAction;
 use App\Structure\OfsSection\User\Dto\OfsUpdateDto;
 use App\Structure\OfsSection\User\Tasks\OfsUpdateTask;
-
+use App\Structure\OfsSection\User\Tasks\OfsSelectForMainTask;
 
 class OfsUpdateAction extends BaseAction
 {
@@ -17,10 +17,12 @@ class OfsUpdateAction extends BaseAction
      */
     public function run(OfsUpdateDto $dto)
     {   
-        $update = $this->task(OfsUpdateTask::class)->run($dto);
-          
-        return $update;
-
+        //$update = $this->task(OfsUpdateTask::class)->run($dto);          
+        //return $update;
+        $this->task(OfsUpdateTask::class)->run($dto);
+        //$main = $this->task(OfsSelectForMainTask::class)->run($dto);
+        
+        return true;
     }
 }
 

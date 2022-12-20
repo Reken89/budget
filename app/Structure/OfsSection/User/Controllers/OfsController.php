@@ -8,6 +8,7 @@ use App\Structure\OfsSection\User\Dto\OfsIndexDto;
 use App\Structure\OfsSection\User\Dto\OfsUpdateDto;
 use App\Structure\OfsSection\User\Requests\OfsIndexRequest;
 use App\Structure\OfsSection\User\Requests\OfsUpdateRequest;
+use App\Structure\OfsSection\User\Requests\OfsUserRequest;
 use App\Structure\OfsSection\User\Actions\OfsIndexAction;
 use App\Structure\OfsSection\User\Actions\OfsUpdateAction;
 
@@ -22,13 +23,34 @@ class OfsController extends Controller
      */
     public function index(OfsIndexRequest $request)
     {   
-        if ($request->info == "no"){
-            $info = ["info"   => 'no',];
-        } else {       
-            $dto = OfsIndexDto::fromRequest($request);
-            $info = $this->action(OfsIndexAction::class)->run($dto);
-        }
+        //Отрисовка таблицы при нажатии кнопки "сформировать таблицу"
+        if (session('option') == NULL || session('option') == FALSE){
+            if ($request->info == "no"){
+                $info = ['info' => 'no',];
+            } else {
+                $user = $request->user;
+                session(['user' => $request->user]);
+                $year = $request->year;
+                session(['year' => $request->year]);
+                $mounth = $request->mounth;
+                session(['mounth' => $request->mounth]);
+                $chapter = $request->chapter;
+                session(['chapter' => $request->chapter]);
+                
+                $info = $this->action(OfsIndexAction::class)->run($user, $year, $mounth, $chapter);
+            }
         
+        //Отрисовка таблице при нажатии клавиши "ENTER"    
+        } else {
+            $user = session('user');
+            $year = session('year');
+            $mounth = session('mounth');
+            $chapter = session('chapter');
+            
+            $info = $this->action(OfsIndexAction::class)->run($user, $year, $mounth, $chapter);
+            session(['option' => false]);
+        }
+               
         return view('ofs.back.user', ['info' => $info]); 
     }
     
@@ -37,17 +59,17 @@ class OfsController extends Controller
      * Возвращает front шаблон
      * Так же передает информацию 
      *
-     * @param OfsIndexRequest $request
+     * @param OfsUserRequest $request
      * @return view
      */
-    public function user(OfsIndexRequest $request)
-    {   
+    public function user()
+    {        
         $info = [
-            'user'    => $request->user,
-            'year'    => $request->year,
-            'mounth'  => $request->mounth,
-            'chapter' => $request->chapter,
-            'info'    => $request->info,
+            'user'    => 3,
+            'year'    => 2023,
+            'mounth'  => 1,
+            'chapter' => 1,
+            'info'    => 'no',
         ];
         
         return view('ofs.user', ['info' => $info]);
@@ -63,6 +85,9 @@ class OfsController extends Controller
     { 
         $dto = OfsUpdateDto::fromRequest($request);
         $info = $this->action(OfsUpdateAction::class)->run($dto);
+        
+        //Значение для варианта отрисовки таблицы
+        session(['option' => true]);
 
     }
         

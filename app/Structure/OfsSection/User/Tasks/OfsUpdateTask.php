@@ -31,9 +31,14 @@ class OfsUpdateTask extends BaseTask
                 'debit_end_all'    => $dto->debit_end_all,
                 'debit_end_term'   => $dto->debit_end_term,
                 'return_old_year'  => $dto->return_old_year,
+                'fact_all'         => Ofs::raw("fact_all + $dto->fact_mounth"),
+                'kassa_all'        => Ofs::raw("kassa_all + $dto->kassa_mounth"),
             ]);
         
-        return $result == true ? true : false;   
+        //$result = Ofs::find($dto->id)
+        //    ->increment(`fact_all`, $dto->fact_mounth);
+        
+        return $result == true ? true : false;
 
     }
 }
