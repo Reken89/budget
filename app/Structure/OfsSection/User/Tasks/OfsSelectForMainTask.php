@@ -42,7 +42,7 @@ class OfsSelectForMainTask extends BaseTask
                 $query->where('number', $dto->number);
             })
             ->groupBy('year')            
-            ->get()
+            ->first()
             ->toArray();
         return $total;  
 

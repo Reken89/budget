@@ -33,10 +33,7 @@ class OfsUpdateTask extends BaseTask
                 'return_old_year'  => $dto->return_old_year,
                 'fact_all'         => Ofs::raw("fact_all + $dto->fact_mounth"),
                 'kassa_all'        => Ofs::raw("kassa_all + $dto->kassa_mounth"),
-            ]);
-        
-        //$result = Ofs::find($dto->id)
-        //    ->increment(`fact_all`, $dto->fact_mounth);
+            ]);        
         
         return $result == true ? true : false;
 

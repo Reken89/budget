@@ -9,6 +9,8 @@ class OfsUpdateDto extends BaseDto
 {
     public int      $id;
     public int      $user_id;
+    public int      $main_id;
+    public int      $shared_id;
     public int      $mounth;
     public int      $year;
     public int      $chapter;
@@ -38,6 +40,8 @@ class OfsUpdateDto extends BaseDto
         return new self([
             'id'               => $request->get('id'),
             'user_id'          => $request->get('user_id'),
+            'main_id'          => $request->get('main_id'),
+            'shared_id'        => $request->get('shared_id'),
             'mounth'           => $request->get('mounth'),
             'year'             => $request->get('year'),
             'chapter'          => $request->get('chapter'),

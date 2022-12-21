@@ -221,7 +221,21 @@
         
         @for ($n = 1; $n <= $info['number']; $n++)
             @foreach ($info['result'] as $value)
+                    @php
+                        if (isset($shared_id) == FALSE){
+                            $shared_id = 10;
+                        }
+                    @endphp
+                @if ($value['ekr']['shared'] == 'Yes' && $value['ekr']['number'] == $n)
+                    @php
+                        $shared_id = $value['id'];
+                    @endphp
+                @endif    
+                
                 @if ($value['ekr']['main'] == 'Yes' && $value['ekr']['number'] == $n)
+                    @php
+                        $main_id = $value['id'];
+                    @endphp
                     <tr>
                         <td class="col-id-no" scope="row"><b>{{ $value['ekr']['title'] }}</b></td>
                         <td></td>
@@ -251,6 +265,8 @@
                         <tr>
                             <input type="hidden" class="id" value="{{ $value['id'] }}">
                             <input type="hidden" class="user_id" value="{{ $value['user_id'] }}">
+                            <input type="hidden" class="main_id" value="{{ $main_id }}">
+                            <input type="hidden" class="shared_id" value="{{ $shared_id }}">
                             <input type="hidden" class="number" value="{{ $n }}">
                             <input type="hidden" class="year" value="{{ $value['year'] }}">
                             <input type="hidden" class="mounth" value="{{ $value['mounth'] }}">

@@ -16,6 +16,8 @@ class OfsUpdateRequest extends FormRequest
         return [
             'id'               => 'required|integer',
             'user_id'          => 'required|integer',
+            'main_id'          => 'required|integer',
+            'shared_id'        => 'required|integer',
             'mounth'           => 'required|integer',
             'year'             => 'required|integer',
             'chapter'          => 'required|integer',
