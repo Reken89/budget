@@ -6,11 +6,14 @@ use Illuminate\Http\Request;
 use App\Core\Controllers\Controller;
 use App\Structure\OfsSection\User\Dto\OfsIndexDto;
 use App\Structure\OfsSection\User\Dto\OfsUpdateDto;
+use App\Structure\OfsSection\User\Dto\OfsResetDto;
 use App\Structure\OfsSection\User\Requests\OfsIndexRequest;
 use App\Structure\OfsSection\User\Requests\OfsUpdateRequest;
 use App\Structure\OfsSection\User\Requests\OfsUserRequest;
+use App\Structure\OfsSection\User\Requests\OfsResetRequest;
 use App\Structure\OfsSection\User\Actions\OfsIndexAction;
 use App\Structure\OfsSection\User\Actions\OfsUpdateAction;
+use App\Structure\OfsSection\User\Actions\OfsResetAction;
 
 class OfsController extends Controller
 {
@@ -85,6 +88,22 @@ class OfsController extends Controller
     { 
         $dto = OfsUpdateDto::fromRequest($request);
         $info = $this->action(OfsUpdateAction::class)->run($dto);
+        
+        //Значение для варианта отрисовки таблицы
+        session(['option' => true]);
+
+    }
+    
+    /**
+     * Выполняем сброс в таблице ofs
+     *
+     * @param OfsResetRequest $request
+     * @return 
+     */
+    public function reset(OfsResetRequest $request)
+    { 
+        $dto = OfsResetDto::fromRequest($request);
+        $info = $this->action(OfsResetAction::class)->run($dto);
         
         //Значение для варианта отрисовки таблицы
         session(['option' => true]);

@@ -128,6 +128,33 @@
                 } 
             })               
         })
+        
+        //Выполняем действие (сбрасываем значения) при нажатии на кнопку
+        $(document).on('click', '#btn_one', function(){          
+            var tr = this.closest('tr');
+                var id = $('.id', tr).val(); 
+                var number = $('.number', tr).val();
+                var year = $('.year', tr).val();
+                var mounth = $('.mounth', tr).val();
+                var chapter = $('.chapter', tr).val();
+                var user_id = $('.user_id', tr).val();
+                var main_id = $('.main_id', tr).val();
+                var shared_id = $('.shared_id', tr).val();
+                
+            $.ajax({
+                url:"/budget/public/user/ofs/reset",  
+                method:"patch",
+                data:{
+                    "_token": "{{ csrf_token() }}",
+                    id, number, year, mounth, chapter,
+                    user_id, main_id, shared_id
+                },
+                dataType:"text",  
+                success:function(data){ 
+                    fetch_data();
+                } 
+            })               
+        })
     
     });
 </script>    
