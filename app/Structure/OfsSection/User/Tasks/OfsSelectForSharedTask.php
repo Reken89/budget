@@ -15,15 +15,15 @@ class OfsSelectForSharedTask extends BaseTask
      * @param OfsUpdateDto $dto
      * @return array
      */
-    public function run(OfsUpdateDto $dto): array
+    public function run(int $user_id, int $year, int $mounth, int $chapter, int $num): array
     {   
-        if($dto->number >= 17 && $dto->number <= 19){
+        if($num >= 17 && $num <= 19){
             $number = [17, 18, 19];
-        } elseif($dto->number >= 21 && $dto->number <= 25){
+        } elseif($num >= 21 && $num <= 25){
             $number = [21, 22, 23, 24, 25];
-        } elseif($dto->number >= 27 && $dto->number <= 34){
+        } elseif($num >= 27 && $num <= 34){
             $number = [27, 28, 29, 30, 31, 32, 33, 34];
-        } elseif($dto->number >= 36 && $dto->number <= 42){
+        } elseif($num >= 36 && $num <= 42){
             $number = [36, 37, 38, 39, 40, 41, 42];
         }
         
@@ -42,10 +42,10 @@ class OfsSelectForSharedTask extends BaseTask
             ->selectRaw('SUM(`debit_end_all`) as debit_end_all')
             ->selectRaw('SUM(`debit_end_term`) as debit_end_term')
             ->selectRaw('SUM(`return_old_year`) as return_old_year')
-            ->where('user_id', $dto->user_id)
-            ->where('year', $dto->year)
-            ->where('mounth', $dto->mounth)
-            ->where('chapter', $dto->chapter)
+            ->where('user_id', $user_id)
+            ->where('year', $year)
+            ->where('mounth', $mounth)
+            ->where('chapter', $chapter)
             ->whereHas('ekr', function (Builder $query) use ($number) {
                 $query->where('shared', 'No');
                 $query->where('main', 'Yes');

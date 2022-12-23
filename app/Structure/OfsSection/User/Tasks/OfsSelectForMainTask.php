@@ -15,7 +15,7 @@ class OfsSelectForMainTask extends BaseTask
      * @param OfsUpdateDto $dto
      * @return array
      */
-    public function run(OfsUpdateDto $dto): array
+    public function run(int $user_id, int $year, int $mounth, int $chapter, int $number): array
     {        
         $total = Ofs::selectRaw('SUM(`lbo`) as lbo')
             ->selectRaw('SUM(`prepaid`) as prepaid')
@@ -32,14 +32,14 @@ class OfsSelectForMainTask extends BaseTask
             ->selectRaw('SUM(`debit_end_all`) as debit_end_all')
             ->selectRaw('SUM(`debit_end_term`) as debit_end_term')
             ->selectRaw('SUM(`return_old_year`) as return_old_year')
-            ->where('user_id', $dto->user_id)
-            ->where('year', $dto->year)
-            ->where('mounth', $dto->mounth)
-            ->where('chapter', $dto->chapter)
-            ->whereHas('ekr', function (Builder $query) use ($dto) {
+            ->where('user_id', $user_id)
+            ->where('year', $year)
+            ->where('mounth', $mounth)
+            ->where('chapter', $chapter)
+            ->whereHas('ekr', function (Builder $query) use ($number) {
                 $query->where('shared', 'No');
                 $query->where('main', 'No');
-                $query->where('number', $dto->number);
+                $query->where('number', $number);
             })
             ->groupBy('year')            
             ->first()

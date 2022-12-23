@@ -176,6 +176,12 @@
 </form>
 
 @if ($info['info'] == "yes")
+
+</br>
+<form action="/budget/public/admin/ofs/export" method="get">
+    <button type="submit" style="width:250px;height:25px" class="button5">Выгрузка в EXCEL</button>
+</form>
+
 </br>
 <div class="shadowbox">
     <p>Учреждение: {{ $info['result'][0]['user']['name'] }}</br>Месяц: {{ $mounth[$info['result'][0]['mounth']] }}</br>Раздел: {{ $info['result'][0]['chapter'] }}</p>
