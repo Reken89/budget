@@ -183,6 +183,9 @@
 </form>
 
 </br>
+<input type="button" style="width:250px;height:25px" name="formSubmit" id="btn_three" class="button5" value="Отправить в ФЭУ"> 
+
+</br>
 <div class="shadowbox">
     <p>Учреждение: {{ $info['result'][0]['user']['name'] }}</br>Месяц: {{ $mounth[$info['result'][0]['mounth']] }}</br>Раздел: {{ $info['result'][0]['chapter'] }}</p>
 </div>

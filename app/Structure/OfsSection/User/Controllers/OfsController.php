@@ -7,13 +7,16 @@ use App\Core\Controllers\Controller;
 use App\Structure\OfsSection\User\Dto\OfsIndexDto;
 use App\Structure\OfsSection\User\Dto\OfsUpdateDto;
 use App\Structure\OfsSection\User\Dto\OfsResetDto;
+use App\Structure\OfsSection\User\Dto\OfsStatusDto;
 use App\Structure\OfsSection\User\Requests\OfsIndexRequest;
 use App\Structure\OfsSection\User\Requests\OfsUpdateRequest;
 use App\Structure\OfsSection\User\Requests\OfsUserRequest;
 use App\Structure\OfsSection\User\Requests\OfsResetRequest;
+use App\Structure\OfsSection\User\Requests\OfsStatusRequest;
 use App\Structure\OfsSection\User\Actions\OfsIndexAction;
 use App\Structure\OfsSection\User\Actions\OfsUpdateAction;
 use App\Structure\OfsSection\User\Actions\OfsResetAction;
+use App\Structure\OfsSection\User\Actions\OfsStatusAction;
 
 class OfsController extends Controller
 {
@@ -104,6 +107,30 @@ class OfsController extends Controller
     { 
         $dto = OfsResetDto::fromRequest($request);
         $info = $this->action(OfsResetAction::class)->run($dto);
+        
+        //Значение для варианта отрисовки таблицы
+        session(['option' => true]);
+
+    }
+    
+     /**
+     * Меняем статус строк в таблице ofs
+     *
+     * @param OfsStatusRequest $request
+     * @return 
+     */
+    public function stat(OfsStatusRequest $request)
+    { 
+        $dto = OfsStatusDto::fromRequest($request);
+        if (!$this->action(OfsStatusAction::class)->run($dto)) {
+	    echo "В таблице присутствуют ошибки, отправку в ФЭУ невозможна";
+            $mounth = session('mounth');
+            var_dump($mounth);
+	} else {
+            echo "Информация успешно отправлена в ФЭУ";
+            $mounth = session('mounth');
+            var_dump($mounth);
+        }
         
         //Значение для варианта отрисовки таблицы
         session(['option' => true]);

@@ -155,6 +155,28 @@
                 } 
             })               
         })
+        
+        //Выполняем действие (меняем статус) при нажатии на кнопку
+        $(document).on('click', '#btn_three', function(){
+            let user = <?=session('user') == true ? session('user') : 10?>;
+            let year = <?=session('year') == true ? session('year') : 10?>;
+            let mounth = <?=session('mounth') == true ? session('mounth') : 10?>;
+            let chapter = <?=session('chapter') == true ? session('chapter') : 10?>;
+              
+            $.ajax({
+                url:"/budget/public/user/ofs/stat",  
+                method:"patch",
+                data:{
+                    "_token": "{{ csrf_token() }}",
+                    user, year, mounth, chapter
+                },
+
+                success:function(data){
+                    alert(data);
+                    fetch_data();
+                } 
+            })               
+        })
     
     });
 </script>    
