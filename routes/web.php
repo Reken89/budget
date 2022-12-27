@@ -46,6 +46,8 @@ Route::get('/user/ofs/back', [OfsController::class, 'index'])->middleware('auth'
 Route::patch('/user/ofs/update', [OfsController::class, 'update'])->middleware('auth');
 Route::patch('/user/ofs/reset', [OfsController::class, 'reset'])->middleware('auth');
 Route::patch('/user/ofs/stat', [OfsController::class, 'stat'])->middleware('auth');
+Route::patch('/user/ofs/synch', [OfsController::class, 'synch'])->middleware('auth');
+Route::get('/user/ofs/export', [OfsController::class, 'export'])->middleware('auth');
 
 //Роуты для Front (Модуль ОФС)
 Route::get('/user/ofs', [OfsController::class, 'user'])->middleware('auth')->name('userofs');

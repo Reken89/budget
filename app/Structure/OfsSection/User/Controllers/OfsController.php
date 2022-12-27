@@ -2,21 +2,20 @@
 
 namespace App\Structure\OfsSection\User\Controllers;
 
-use Illuminate\Http\Request;
 use App\Core\Controllers\Controller;
-use App\Structure\OfsSection\User\Dto\OfsIndexDto;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Structure\OfsSection\User\Dto\OfsUpdateDto;
 use App\Structure\OfsSection\User\Dto\OfsResetDto;
-use App\Structure\OfsSection\User\Dto\OfsStatusDto;
 use App\Structure\OfsSection\User\Requests\OfsIndexRequest;
 use App\Structure\OfsSection\User\Requests\OfsUpdateRequest;
 use App\Structure\OfsSection\User\Requests\OfsUserRequest;
 use App\Structure\OfsSection\User\Requests\OfsResetRequest;
-use App\Structure\OfsSection\User\Requests\OfsStatusRequest;
 use App\Structure\OfsSection\User\Actions\OfsIndexAction;
 use App\Structure\OfsSection\User\Actions\OfsUpdateAction;
 use App\Structure\OfsSection\User\Actions\OfsResetAction;
 use App\Structure\OfsSection\User\Actions\OfsStatusAction;
+use App\Structure\OfsSection\User\Actions\OfsSynchAction;
+use App\Structure\OfsSection\User\Exports\ExportUserTable;
 
 class OfsController extends Controller
 {
@@ -56,6 +55,7 @@ class OfsController extends Controller
             $info = $this->action(OfsIndexAction::class)->run($user, $year, $mounth, $chapter);
             session(['option' => false]);
         }
+        session(['info' => $info]);
                
         return view('ofs.back.user', ['info' => $info]); 
     }
@@ -94,7 +94,6 @@ class OfsController extends Controller
         
         //Значение для варианта отрисовки таблицы
         session(['option' => true]);
-
     }
     
     /**
@@ -110,33 +109,65 @@ class OfsController extends Controller
         
         //Значение для варианта отрисовки таблицы
         session(['option' => true]);
-
     }
     
      /**
      * Меняем статус строк в таблице ofs
      *
-     * @param OfsStatusRequest $request
+     * @param
      * @return 
      */
-    public function stat(OfsStatusRequest $request)
+    public function stat()
     { 
-        $dto = OfsStatusDto::fromRequest($request);
-        if (!$this->action(OfsStatusAction::class)->run($dto)) {
+        $user = session('user');
+        $year = session('year');
+        $mounth = session('mounth');
+        $chapter = session('chapter');
+        
+        if (!$this->action(OfsStatusAction::class)->run($user, $year, $mounth, $chapter)) {
 	    echo "В таблице присутствуют ошибки, отправку в ФЭУ невозможна";
-            $mounth = session('mounth');
-            var_dump($mounth);
 	} else {
             echo "Информация успешно отправлена в ФЭУ";
-            $mounth = session('mounth');
-            var_dump($mounth);
         }
-        
+
         //Значение для варианта отрисовки таблицы
         session(['option' => true]);
-
     }
+    
+     /**
+     * Выполняем заполнение значений за предыдущий месяц
+     *
+     * @param
+     * @return 
+     */
+    public function synch()
+    {     
+        $user = session('user');
+        $year = session('year');
+        $mounth = session('mounth');
+        $chapter = session('chapter');
         
+        if($mounth == '1'){
+            echo "Вы не можете синхронизировать январь!";
+        } else {
+            $this->action(OfsSynchAction::class)->run($user, $year, $mounth, $chapter);
+            echo "Синхронизация выполнена успешно";
+        }
+
+        //Значение для варианта отрисовки таблицы
+        session(['option' => true]);
+    }
+    
+    /**
+     * Выгрузка таблицы в EXCEL
+     * 
+     * @param 
+     * @return Excel
+     */
+    public function export()
+    { 
+        return Excel::download(new ExportUserTable, 'table.xlsx');
+    }        
 }
 
 

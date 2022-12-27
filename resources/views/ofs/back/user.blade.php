@@ -178,7 +178,7 @@
 @if ($info['info'] == "yes")
 
 </br>
-<form action="/budget/public/admin/ofs/export" method="get">
+<form action="/budget/public/user/ofs/export" method="get">
     <button type="submit" style="width:250px;height:25px" class="button5">Выгрузка в EXCEL</button>
 </form>
 
@@ -190,6 +190,9 @@
     <p>Учреждение: {{ $info['result'][0]['user']['name'] }}</br>Месяц: {{ $mounth[$info['result'][0]['mounth']] }}</br>Раздел: {{ $info['result'][0]['chapter'] }}</p>
 </div>
 
+</br>
+    <input type="button" style="width:250px;height:25px" name="formSubmit" id="btn_four" class="button5" value="Синхронизация"> 
+</br>
 
 </br>
 <table class="freeze-table" width="700px">             
@@ -302,6 +305,28 @@
                             <td>{{ number_format($value['total2'], 2, ',', ' ') }}</td>
                         </tr>
                     @elseif ($value['status'] == '1')
+                        <tr>
+                            <td class="col-id-no" scope="row">{{ $value['ekr']['title'] }}</td>
+                            <td></td>
+                            <td>{{ $value['ekr']['ekr'] }}</td>
+                            <td>{{ number_format($value['lbo'], 2, ',', ' ') }}</td>  
+                            <td>{{ number_format($value['prepaid'], 2, ',', ' ') }}</td>
+                            <td>{{ number_format($value['credit_year_all'], 2, ',', ' ') }}</td>
+                            <td>{{ number_format($value['credit_year_term'], 2, ',', ' ') }}</td>
+                            <td>{{ number_format($value['debit_year_all'], 2, ',', ' ') }}</td>
+                            <td>{{ number_format($value['debit_year_term'], 2, ',', ' ') }}</td>
+                            <td>{{ number_format($value['fact_all'], 2, ',', ' ') }}</td>
+                            <td>{{ number_format($value['fact_mounth'], 2, ',', ' ') }}</td>
+                            <td>{{ number_format($value['kassa_all'], 2, ',', ' ') }}</td>
+                            <td>{{ number_format($value['kassa_mounth'], 2, ',', ' ') }}</td>
+                            <td>{{ number_format($value['credit_end_all'], 2, ',', ' ') }}</td>
+                            <td>{{ number_format($value['credit_end_term'], 2, ',', ' ') }}</td>
+                            <td>{{ number_format($value['debit_end_all'], 2, ',', ' ') }}</td>
+                            <td>{{ number_format($value['debit_end_term'], 2, ',', ' ') }}</td>
+                            <td>{{ number_format($value['return_old_year'], 2, ',', ' ') }}</td>
+                            <td>{{ number_format($value['total1'], 2, ',', ' ') }}</td>
+                            <td>{{ number_format($value['total2'], 2, ',', ' ') }}</td>
+                        </tr>
                     @endif
                 @endif
             @endforeach 
