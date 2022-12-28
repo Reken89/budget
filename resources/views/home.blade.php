@@ -74,10 +74,6 @@
     </form>
 </div>
 
-<div id="footer">
-    <p class="script"><span>Laravel</span></p>
-</div>
-
 @elseif ($role == "cb_buh" || $role == "cb_school" || $role == "cb_kultura" || $role == "cb_kinder")
 </br>
 <div class = "center">
@@ -86,3 +82,7 @@
     </form>
 </div>
 @endif
+
+<div id="footer">
+    <p class="script"><span>Laravel</span></p>
+</div>
