@@ -170,6 +170,125 @@
         <div class="checkbox__body">Централизованная бухгалтерия</div>
     </label>
 </div>
+
+@elseif ($role == "cb_school")
+</br>
+<p><b>Выберите учреждение</b></p>                                   
+<div>                         
+    <label class="checkbox style-f">
+        <input type="checkbox" name="user" value="3">
+        <div class="checkbox__checkmark"></div>
+        <div class="checkbox__body">Школа №1</div>
+    </label>
+    <label class="checkbox style-f">
+        <input type="checkbox" name="user" value="4">
+        <div class="checkbox__checkmark"></div>
+        <div class="checkbox__body">Школа №2</div>
+    </label>
+    <label class="checkbox style-f">
+        <input type="checkbox" name="user" value="5">
+        <div class="checkbox__checkmark"></div>
+        <div class="checkbox__body">Школа №3</div>
+    </label>
+    <label class="checkbox style-f">
+        <input type="checkbox" name="user" value="7">
+        <div class="checkbox__checkmark"></div>
+        <div class="checkbox__body">Гимназия</div>
+    </label>
+    <label class="checkbox style-f">
+        <input type="checkbox" name="user" value="6">
+        <div class="checkbox__checkmark"></div>
+        <div class="checkbox__body">Лицей</div>
+    </label>
+    <label class="checkbox style-f">
+        <input type="checkbox" name="user" value="8">
+        <div class="checkbox__checkmark"></div>
+        <div class="checkbox__body">ВСОШ</div>
+    </label>
+</div>
+
+@elseif ($role == "cb_kultura")
+</br>
+<p><b>Выберите учреждение</b></p>                                   
+<div>                         
+    <label class="checkbox style-f">
+        <input type="checkbox" name="user" value="17">
+        <div class="checkbox__checkmark"></div>
+        <div class="checkbox__body">ЦВР</div>
+    </label>
+    <label class="checkbox style-f">
+        <input type="checkbox" name="user" value="18">
+        <div class="checkbox__checkmark"></div>
+        <div class="checkbox__body">ДХШ</div>
+    </label>
+    <label class="checkbox style-f">
+        <input type="checkbox" name="user" value="19">
+        <div class="checkbox__checkmark"></div>
+        <div class="checkbox__body">ДМШ</div>
+    </label>
+    <label class="checkbox style-f">
+        <input type="checkbox" name="user" value="16">
+        <div class="checkbox__checkmark"></div>
+        <div class="checkbox__body">ДЮСШ2</div>
+    </label>
+    <label class="checkbox style-f">
+        <input type="checkbox" name="user" value="20">
+        <div class="checkbox__checkmark"></div>
+        <div class="checkbox__body">МАиЦБ</div>
+    </label>
+    <label class="checkbox style-f">
+        <input type="checkbox" name="user" value="21">
+        <div class="checkbox__checkmark"></div>
+        <div class="checkbox__body">ЦКР</div>
+    </label>
+    <label class="checkbox style-f">
+        <input type="checkbox" name="user" value="22">
+        <div class="checkbox__checkmark"></div>
+        <div class="checkbox__body">ЦРО</div>
+    </label>
+</div>
+
+@elseif ($role == "cb_kinder")
+</br>
+<p><b>Выберите учреждение</b></p>                                   
+<div>                         
+    <label class="checkbox style-f">
+        <input type="checkbox" name="user" value="9">
+        <div class="checkbox__checkmark"></div>
+        <div class="checkbox__body">Ауринко</div>
+    </label>
+    <label class="checkbox style-f">
+        <input type="checkbox" name="user" value="15">
+        <div class="checkbox__checkmark"></div>
+        <div class="checkbox__body">Солнышко</div>
+    </label>
+    <label class="checkbox style-f">
+        <input type="checkbox" name="user" value="11">
+        <div class="checkbox__checkmark"></div>
+        <div class="checkbox__body">Гномик</div>
+    </label>
+    <label class="checkbox style-f">
+        <input type="checkbox" name="user" value="14">
+        <div class="checkbox__checkmark"></div>
+        <div class="checkbox__body">Сказка</div>
+    </label>
+    <label class="checkbox style-f">
+        <input type="checkbox" name="user" value="13">
+        <div class="checkbox__checkmark"></div>
+        <div class="checkbox__body">Кораблик</div>
+    </label>
+    <label class="checkbox style-f">
+        <input type="checkbox" name="user" value="12">
+        <div class="checkbox__checkmark"></div>
+        <div class="checkbox__body">Золотой Ключик</div>
+    </label>
+    <label class="checkbox style-f">
+        <input type="checkbox" name="user" value="10">
+        <div class="checkbox__checkmark"></div>
+        <div class="checkbox__body">Березка</div>
+    </label>
+</div>
+
 @endif
 </br>
 <input type="button" style="width:250px;height:25px" name="formSubmit" id="btn_two" class="button5" value="Сформировать таблицу"> 
