@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Structure\OfsSection\User\Controllers\OfsController;
+use App\Structure\OfsSection\Admin\Controllers\AdminOfsController;
 use App\Structure\CommunalSection\User\Controllers\CommunalController;
 use App\Structure\CommunalSection\Admin\Controllers\AdminCommunalController;
 
@@ -42,6 +43,8 @@ Route::get('/user/communal/{year}', [CommunalController::class, 'user'])->middle
  */
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Роуты для Back (Модуль ОФС)
+Route::get('/admin/ofs/back', [AdminOfsController::class, 'index'])->middleware('auth', 'admin');
+
 Route::get('/user/ofs/back', [OfsController::class, 'index'])->middleware('auth');
 Route::patch('/user/ofs/update', [OfsController::class, 'update'])->middleware('auth');
 Route::patch('/user/ofs/reset', [OfsController::class, 'reset'])->middleware('auth');
@@ -50,6 +53,7 @@ Route::patch('/user/ofs/synch', [OfsController::class, 'synch'])->middleware('au
 Route::get('/user/ofs/export', [OfsController::class, 'export'])->middleware('auth');
 
 //Роуты для Front (Модуль ОФС)
+Route::get('/admin/ofs', [AdminOfsController::class, 'user'])->middleware('auth', 'admin')->name('adminofs');
 Route::get('/user/ofs', [OfsController::class, 'user'])->middleware('auth')->name('userofs');
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

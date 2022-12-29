@@ -38,6 +38,13 @@
     </form>
 </div>
 
+</br>
+<div class = "center">
+    <form action="{{ route('adminofs')}}" method="get">
+        <button type="submit" class="custom-btn btn-16"><b>ОФС<b></button>
+    </form>
+</div>
+
 @elseif ($role == "user")
 </br>
 <div class = "center">
