@@ -4,6 +4,8 @@ namespace App\Structure\OfsSection\Admin\Controllers;
 
 use App\Core\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Structure\OfsSection\Admin\Dto\OfsIndexDto;
+use App\Structure\OfsSection\Admin\Requests\OfsIndexRequest;
 
 class AdminOfsController extends Controller
 {
@@ -11,12 +13,18 @@ class AdminOfsController extends Controller
      * Back отрисовка страницы
      * Возвращает ОФС
      *
-     * @param 
+     * @param OfsIndexRequest $request
      * @return array
      */
-    public function index()
-    {   
-
+    public function index(OfsIndexRequest $request)
+    { 
+        if ($request->info == "no"){
+            $info = ['info' => 'no',];
+        } else {
+            
+        }
+        
+        return view('ofs.back.admin', ['info' => $info]); 
     }
     
      /**
@@ -24,11 +32,19 @@ class AdminOfsController extends Controller
      * Возвращает front шаблон
      * Так же передает информацию 
      *
-     * @param 
+     * @param OfsIndexRequest $request
      * @return view
      */
-    public function user()
-    {        
+    public function user(OfsIndexRequest $request)
+    {    
+        $info = [
+            'year'    => $request->year,
+            'mounth'  => $request->mounth,
+            'user'    => $request->user,
+            'chapter' => $request->chapter,
+            'info'    => $request->info,
+        ];
+        return view('ofs.admin', ['info' => $info]);
 
     }
            
