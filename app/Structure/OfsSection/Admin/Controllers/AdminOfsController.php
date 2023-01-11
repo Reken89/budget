@@ -6,6 +6,7 @@ use App\Core\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Structure\OfsSection\Admin\Dto\OfsIndexDto;
 use App\Structure\OfsSection\Admin\Requests\OfsIndexRequest;
+use App\Structure\OfsSection\Admin\Actions\OfsIndexAction;
 
 class AdminOfsController extends Controller
 {
@@ -21,7 +22,8 @@ class AdminOfsController extends Controller
         if ($request->info == "no"){
             $info = ['info' => 'no',];
         } else {
-            
+            $dto = OfsIndexDto::fromRequest($request);
+            $info = $this->action(OfsIndexAction::class)->run($dto);
         }
         
         return view('ofs.back.admin', ['info' => $info]); 
