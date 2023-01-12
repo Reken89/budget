@@ -36,7 +36,7 @@ class OfsSelectAllTask extends BaseTask
             ->selectRaw('((SUM(`credit_year_all`) + SUM(`fact_all`) - SUM(`debit_year_all`) - SUM(`kassa_all`)) - '
                     . '(SUM(`credit_end_all`) - SUM(`debit_end_all`)) + SUM(`return_old_year`)) AS total1')
             ->selectRaw('(SUM(`lbo`) - SUM(`fact_all`) + SUM(`prepaid`) - SUM(`credit_year_all`)) AS total2')
-            ->with(['user'])
+            ->with(['ekr'])
             ->whereIn('user_id', $dto->user)    
             ->whereIn('year', $dto->year)
             ->whereIn('mounth', $dto->mounth) 

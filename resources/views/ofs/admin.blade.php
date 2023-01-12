@@ -30,7 +30,7 @@
         $(document).on('click', '#btn_one', function(){
             let infomany = $('#ofs').serializeArray();
            
-            let year = 2023;
+            let year = [2023];
             let info = 'yes';
 
             //Создаем пустые массивы
@@ -58,12 +58,12 @@
                 url:"/budget/public/admin/ofs/back",  
                 method:"get",
                 data:{
-                    mounth, user, chapter, year, info
+                    year, mounth, user, chapter, info
                 },
                 dataType:"text",  
                 success:function(data){ 
                     $('#live_data').html(data);  
-                    //setKeydownmyForm() 
+                    setKeydownmyForm() 
                     //alert(mounth);
                 } 
             })               
