@@ -18,7 +18,7 @@ use App\Structure\CommunalSection\Admin\Controllers\AdminCommunalController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
