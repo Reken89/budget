@@ -364,6 +364,32 @@
             @endforeach         
         @endfor
         
+        @php
+            $total = $info['total'];
+        @endphp
+        
+        <tr>
+            <td class="col-id-no" scope="row"><b>Итого</b></td>
+            <td></td>
+            <td><b>{{ number_format($total['lbo'], 2, ',', ' ') }}</b></td>
+            <td><b>{{ number_format($total['prepaid'], 2, ',', ' ') }}</b></td>
+            <td><b>{{ number_format($total['credit_year_all'], 2, ',', ' ') }}</b></td>
+            <td><b>{{ number_format($total['credit_year_term'], 2, ',', ' ') }}</b></td>
+            <td><b>{{ number_format($total['debit_year_all'], 2, ',', ' ') }}</b></td>
+            <td><b>{{ number_format($total['debit_year_term'], 2, ',', ' ') }}</b></td>
+            <td><b>{{ number_format($total['fact_all'], 2, ',', ' ') }}</b></td>
+            <td><b>{{ number_format($total['fact_mounth'], 2, ',', ' ') }}</b></td>
+            <td><b>{{ number_format($total['kassa_all'], 2, ',', ' ') }}</b></td>
+            <td><b>{{ number_format($total['kassa_mounth'], 2, ',', ' ') }}</b></td>
+            <td><b>{{ number_format($total['credit_end_all'], 2, ',', ' ') }}</b></td>
+            <td><b>{{ number_format($total['credit_end_term'], 2, ',', ' ') }}</b></td>
+            <td><b>{{ number_format($total['debit_end_all'], 2, ',', ' ') }}</b></td>
+            <td><b>{{ number_format($total['debit_end_term'], 2, ',', ' ') }}</b></td>
+            <td><b>{{ number_format($total['return_old_year'], 2, ',', ' ') }}</b></td>
+            <td><b>{{ number_format($total['total1'], 2, ',', ' ') }}</b></td>
+            <td><b>{{ number_format($total['total2'], 2, ',', ' ') }}</b></td>
+        </tr>
+        
     </tbody> 
 </table>
     

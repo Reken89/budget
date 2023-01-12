@@ -6,6 +6,7 @@ use App\Core\Actions\BaseAction;
 use App\Structure\OfsSection\Admin\Dto\OfsIndexDto;
 use App\Structure\OfsSection\Admin\Tasks\OfsSelectAllTask;
 use App\Structure\OfsSection\Admin\Tasks\OfsNumberMaxTask;
+use App\Structure\OfsSection\Admin\Tasks\OfsSelectTotalTask;
 
 class OfsIndexAction extends BaseAction
 {
@@ -25,11 +26,13 @@ class OfsIndexAction extends BaseAction
         }
         
         $result = $this->task(OfsSelectAllTask::class)->run($dto);
+        $total = $this->task(OfsSelectTotalTask::class)->run($dto);
         $number = $this->task(OfsNumberMaxTask::class)->run();
         
         $info = [
             'info'    => 'yes',
             'result'  => $result,
+            'total'   => $total,
             'number'  => $number,
             'variant' => $variant,
         ];
