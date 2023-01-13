@@ -1,6 +1,10 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 
 <style>
+    body { background: url(/budget/resources/image/dark.png); }
+</style>
+
+<style>
 input[type="button"]:not(.default), input[type="submit"]:not(.default) {
  -webkit-border-radius: 3px;
  -webkit-background-clip: padding-box;
