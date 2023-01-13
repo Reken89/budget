@@ -7,6 +7,7 @@ use App\Structure\CommunalSection\Admin\Dto\CommunalIndexDto;
 use App\Structure\CommunalSection\Admin\Tasks\CommunalSelectTask;
 use App\Structure\CommunalSection\Admin\Tasks\CommunalSelectAllTask;
 use App\Structure\CommunalSection\Admin\Tasks\CommunalSelectTotalTask;
+use App\Structure\CommunalSection\Admin\Tasks\TarrifsSelectTask;
 
 class CommunalIndexAction extends BaseAction
 {
@@ -15,24 +16,27 @@ class CommunalIndexAction extends BaseAction
      * Возвращает ИТОГИ коммунальных услуг
      * Возвращает тарифы
      *
-     * @param CommunalIndexDto $dto
+     * @param array $year, array $mounth
      * @return array
      */
-    public function run(CommunalIndexDto $dto): array
+    public function run(array $year, array $mounth): array
     {   
-        if (count($dto->year) == '1' AND count($dto->mounth) == '1'){
-            $result = $this->task(CommunalSelectTask::class)->run($dto);
+        if (count($year) == '1' AND count($mounth) == '1'){
+            $result = $this->task(CommunalSelectTask::class)->run($year, $mounth);
+            $tarrif = $this->task(TarrifsSelectTask::class)->run($year, $mounth);
             $variant = "one";
         } else {
-            $result = $this->task(CommunalSelectAllTask::class)->run($dto);
+            $result = $this->task(CommunalSelectAllTask::class)->run($year, $mounth);
+            $tarrif = false;
             $variant = "many";
         }
-        $total = $this->task(CommunalSelectTotalTask::class)->run($dto);
+        $total = $this->task(CommunalSelectTotalTask::class)->run($year, $mounth);
         
         $info = [
             "result"  => $result,
             "variant" => $variant,
             "total"   => $total,
+            "tarrif"  => $tarrif,
         ];
         
         return $info;

@@ -11,17 +11,17 @@ class CommunalSelectTask extends BaseTask
     /**
      * Возвращает коммунальные услуги за выбранный год и месяц
      *
-     * @param CommunalIndexDto $dto
+     * @param array $year, array $mounth
      * @return array
      */
-    public function run(CommunalIndexDto $dto): array
+    public function run(array $year, array $mounth): array
     {        
         $info = Communal::select()
             ->selectRaw("(`heat-sum` + `drainage-sum` + `negative-sum` +"
                     . "`water-sum` + `power-sum` + `trash-sum` + `disposal-sum`) AS total")    
             ->with(['user:id,name'])    
-            ->whereIn('year', $dto->year)
-            ->whereIn('mounth', $dto->mounth) 
+            ->whereIn('year', $year)
+            ->whereIn('mounth', $mounth) 
             ->get()
             ->toArray();
         

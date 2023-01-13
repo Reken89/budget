@@ -4,6 +4,53 @@
 <script>
     $(document).ready(function(){
         
+        //Выполняем запись в БД при нажатии на клавишу ENTER
+        function setKeydownmyForm() {
+            $('input').keydown(function(e) {
+                if (e.keyCode === 13) {
+                    var tr = this.closest('tr');
+                    var id = $('.id', tr).val(); 
+                    
+                    //Получаем значения, меняем запятую на точку и убираем пробелы в числе                   
+                    function structure(title){
+                        var volume = $(title, tr).val();
+                        var volume = volume.replace(",",".");
+                        var volume = volume.replace(" ","");
+                        return volume;
+                    }
+                    
+                    var heat_one = structure('.heat_one');
+                    var heat_two = structure('.heat_two');
+                    var drainage_one = structure('.drainage_one');
+                    var drainage_two = structure('.drainage_two');
+                    var negative_one = structure('.negative_one');
+                    var negative_two = structure('.negative_two');
+                    var water_one = structure('.water_one');
+                    var water_two = structure('.water_two');
+                    var power_one = structure('.power_one');
+                    var power_two = structure('.power_two');
+                    var trash_one = structure('.trash_one');
+                    var trash_two = structure('.trash_two');
+                                        
+                    $.ajax({
+                        url:"/budget/public/admin/communal/updatetarrif",  
+                        method:"patch",  
+                        data:{
+                            "_token": "{{ csrf_token() }}",
+                            id, heat_one, heat_two, drainage_one,
+                            drainage_two, negative_one, negative_two,
+                            water_one, water_two, power_one, power_two,
+                            trash_one, trash_two
+                        },
+                        dataType:"text",  
+                        success:function(data){  
+                            fetch_data(); 
+                        } 
+                    })                   
+                }               
+            })
+        }
+        
         //Подгружаем BACK шаблон отрисовки
         function fetch_data(){  
             var info = <?=json_encode($info)?>;
