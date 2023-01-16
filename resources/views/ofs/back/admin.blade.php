@@ -278,7 +278,7 @@
 @if ($info['info'] == "yes")
 
 </br>
-    <form action="#" method="get">
+    <form action="/budget/public/admin/ofs/export" method="get">
         <button type="submit" style="width:250px;height:25px" class="button5">Выгрузка в EXCEL</button>
     </form>
 

@@ -46,6 +46,7 @@ Route::get('/user/communal/{year}', [CommunalController::class, 'user'])->middle
 //Роуты для Back (Модуль ОФС)
 Route::get('/admin/ofs/back', [AdminOfsController::class, 'index'])->middleware('auth', 'admin');
 Route::patch('/admin/ofs/status', [AdminOfsController::class, 'status'])->middleware('auth', 'admin');
+Route::get('/admin/ofs/export', [AdminOfsController::class, 'export'])->middleware('auth', 'admin');
 
 Route::get('/user/ofs/back', [OfsController::class, 'index'])->middleware('auth');
 Route::patch('/user/ofs/update', [OfsController::class, 'update'])->middleware('auth');

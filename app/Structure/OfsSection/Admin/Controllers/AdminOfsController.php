@@ -8,6 +8,7 @@ use App\Structure\OfsSection\Admin\Dto\OfsIndexDto;
 use App\Structure\OfsSection\Admin\Requests\OfsIndexRequest;
 use App\Structure\OfsSection\Admin\Actions\OfsIndexAction;
 use App\Structure\OfsSection\Admin\Actions\OfsUpdateStatusAction;
+use App\Structure\OfsSection\Admin\Exports\ExportAdminTable;
 
 class AdminOfsController extends Controller
 {
@@ -31,6 +32,8 @@ class AdminOfsController extends Controller
             session(['mounth' => $request->mounth]);
             session(['chapter' => $request->chapter]);
         }
+        
+        session(['info' => $info]);
         
         return view('ofs.back.admin', ['info' => $info]); 
     }
@@ -77,6 +80,17 @@ class AdminOfsController extends Controller
         }
 
     }
+    
+     /**
+     * Выгрузка таблицы в EXCEL
+     * 
+     * @param 
+     * @return Excel
+     */
+    public function export()
+    { 
+        return Excel::download(new ExportAdminTable, 'table.xlsx');
+    }   
            
 }
 
