@@ -13,7 +13,7 @@
         '11' => 'Ноябрь',
         '12' => 'Декабрь',
     ];
-    //var_dump($info);
+    //var_dump($info['status']);
 @endphp
 
 <head>
@@ -276,6 +276,26 @@
 </form>
 
 @if ($info['info'] == "yes")
+
+</br>
+    <form action="#" method="get">
+        <button type="submit" style="width:250px;height:25px" class="button5">Выгрузка в EXCEL</button>
+    </form>
+
+@if ($info['variant'] == "one")
+    </br>
+        <input type="button" style="width:250px;height:25px" name="formSubmit" id="btn_two" class="button5" value="Разрешить редактировать"> 
+    </br>
+@endif 
+
+    @if ($info['status'] == "1")
+        @php $color = "green"; @endphp 
+    @elseif ($info['status'] == "2")
+        @php $color = "darkred"; @endphp
+    @elseif ($info['status'] == "no") 
+        @php $color = "white"; @endphp
+    @endif    
+    
 </br>
 <table class="freeze-table" width="700px">             
     <thead>
@@ -298,11 +318,11 @@
 
     <tbody>
         <tr>
-            <td class="col-id-no" scope="row">1</td><td>2</td><td>3</td><td>4</td>
-            <td>5</td><td>6</td><td>7</td><td>8</td>
-            <td>9</td><td>10</td><td>11</td><td>12</td>
-            <td>13</td><td>14</td><td>15</td><td>16</td>
-            <td>17</td><td>18</td><td>19</td>
+            <td class="col-id-no" scope="row">1</td><td bgcolor="{{ $color }}">2</td><td bgcolor="{{ $color }}">3</td><td bgcolor="{{ $color }}">4</td>
+            <td bgcolor="{{ $color }}">5</td><td bgcolor="{{ $color }}">6</td><td bgcolor="{{ $color }}">7</td><td bgcolor="{{ $color }}">8</td>
+            <td bgcolor="{{ $color }}">9</td><td bgcolor="{{ $color }}">10</td><td bgcolor="{{ $color }}">11</td><td bgcolor="{{ $color }}">12</td>
+            <td bgcolor="{{ $color }}">13</td><td bgcolor="{{ $color }}">14</td><td bgcolor="{{ $color }}">15</td><td bgcolor="{{ $color }}">16</td>
+            <td bgcolor="{{ $color }}">17</td><td bgcolor="{{ $color }}">18</td><td bgcolor="{{ $color }}">19</td>
         </tr>             
         <tr>
             <td class="col-id-no" scope="row"></td><td></td><td></td><td></td>
