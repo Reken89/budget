@@ -86,6 +86,13 @@
     </form>
 </div>
 
+</br>
+<div class = "center">
+    <form action="{{ route('usercommunal', 2023)}}" method="get">
+        <button type="submit" class="custom-btn btn-16"><b>Коммунальные услуги 2023</b></button>
+    </form>
+</div>
+
 @elseif ($role == "cb_buh" || $role == "cb_school" || $role == "cb_kultura" || $role == "cb_kinder")
 </br>
 <div class = "center">
