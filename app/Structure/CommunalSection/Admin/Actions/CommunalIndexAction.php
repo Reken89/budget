@@ -37,6 +37,8 @@ class CommunalIndexAction extends BaseAction
             "variant" => $variant,
             "total"   => $total,
             "tarrif"  => $tarrif,
+            "year"    => $year,
+            "mounth"  => $mounth,
         ];
         
         return $info;

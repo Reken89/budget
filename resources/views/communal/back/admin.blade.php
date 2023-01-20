@@ -3,6 +3,12 @@
     <title>Таблица коммунальных услуг</title>
 </head>
 
+@php
+    $total = $info['total'][0];
+    $year = $info['year'];
+    $mounth = $info['mounth'];
+@endphp
+
 <div class="post-header">
     <div class="post-cat">
         <a href="#">Информация:</a>
@@ -127,11 +133,17 @@
 </form>
 
 </br>
+<div class="shadowbox">
+    <p>Год: @foreach ($year as $y) {{$y}}, @endforeach</p>
+    <p>Месяц: @foreach ($mounth as $m) {{$m}}, @endforeach</p>
+</div>
+
+</br>
 
 <table class="freeze-table" width="700px">
     <thead>
         <tr>
-            <th style="min-width: 100px; width: 100px;" rowspan="2">Учреждение</th>
+            <th style="min-width: 100px; width: 100px;" class="col-id-no fixed-header">Учреждение</th>
             <th style="min-width: 100px; width: 100px;" rowspan="2"></th>
             <th style="min-width: 200px; width: 200px;" colspan="2">Теплоснабжение</th>
             <th style="min-width: 200px; width: 200px;" colspan="2">Водоотведение</th>
@@ -146,7 +158,7 @@
     
     <tbody>
         <tr>
-            <td></td>
+            <td class="col-id-no" scope="row"></td>
             <td></td>
             <td><b>Объем</b></td><td><b>Сумма</b></td>
             <td><b>Объем</b></td><td><b>Сумма</b></td>
@@ -165,7 +177,7 @@
             @endphp
             <tr>
                 <input type="hidden" class="id" value="{{ $tarrif['id'] }}">
-                <td></td>
+                <td class="col-id-no" scope="row"></td>
                 <td></td>
                 <td><input type="text" class="heat_one" value="{{ number_format($tarrif['heat-one'], 3, ',', ' ') }}"></td>
                 <td><input type="text" class="heat_two" value="{{ number_format($tarrif['heat-two'], 3, ',', ' ') }}"></td>
@@ -195,7 +207,7 @@
                 
                 <tr>
                     <input type="hidden" class="id" value="{{ $value['id'] }}">
-                    <td bgcolor="{{ $color }}">{{ $value['user']['name'] }}</td>
+                    <td class="col-id-no" bgcolor="{{ $color }}">{{ $value['user']['name'] }}</td>
                     @if ($value['status'] == 3)
                         <td><input type=button class="button" id='btn_two' value='Изменить'></td>
                     @else
@@ -222,7 +234,7 @@
         @elseif ($info['variant'] == "many")
             @foreach ($info['result'] as $value)
                 <tr>
-                    <td>{{ $value['user']['name'] }}</td>
+                    <td class="col-id-no" scope="row">{{ $value['user']['name'] }}</td>
                     <td></td>
                     <td>{{ number_format($value['heat_volume'], 3, ',', ' ') }}</td>
                     <td>{{ number_format($value['heat_sum'], 2, ',', ' ') }}</td>
@@ -244,12 +256,8 @@
             @endforeach
         @endif 
         
-        @php
-            $total = $info['total'][0];
-        @endphp
-        
         <tr>
-            <td><b>ИТОГО</b></td>
+            <td class="col-id-no" scope="row"><b>ИТОГО</b></td>
             <td></td>
             <td>{{ number_format($total['heat_volume'], 3, ',', ' ') }}</td>
             <td>{{ number_format($total['heat_sum'], 2, ',', ' ') }}</td>
