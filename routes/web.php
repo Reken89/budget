@@ -5,6 +5,7 @@ use App\Structure\OfsSection\User\Controllers\OfsController;
 use App\Structure\OfsSection\Admin\Controllers\AdminOfsController;
 use App\Structure\CommunalSection\User\Controllers\CommunalController;
 use App\Structure\CommunalSection\Admin\Controllers\AdminCommunalController;
+use App\Structure\BuildSection\Admin\Controllers\AdminBuildController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,6 +59,18 @@ Route::get('/user/ofs/export', [OfsController::class, 'export'])->middleware('au
 //Роуты для Front (Модуль ОФС)
 Route::get('/admin/ofs', [AdminOfsController::class, 'user'])->middleware('auth', 'admin')->name('adminofs');
 Route::get('/user/ofs', [OfsController::class, 'user'])->middleware('auth')->name('userofs');
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+ * 
+ * 
+ * 
+ */
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Роуты для Back (Модуль Строительство)
+Route::get('/admin/build/back', [AdminBuildController::class, 'index'])->middleware('auth', 'admin');
+
+//Роуты для Front (Модуль Строительство)
+Route::get('/admin/build', [AdminBuildController::class, 'user'])->middleware('auth', 'admin')->name('adminbuild');
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
