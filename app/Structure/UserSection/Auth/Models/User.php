@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Structure\CommunalSection\User\Models\Communal;
 use App\Structure\OfsSection\User\Models\Ofs;
+use App\Structure\BuildSection\Admin\Models\Repair;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Authenticatable
@@ -62,6 +63,11 @@ class User extends Authenticatable
     public function ofs(): HasMany
     {
         return $this->hasMany(Ofs::class);
+    }
+    
+    public function build(): HasMany
+    {
+        return $this->hasMany(Repair::class);
     }
 }
 

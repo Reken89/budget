@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Core\Controllers\Controller;
 use App\Structure\BuildSection\Admin\Requests\BuildIndexRequest;
+use App\Structure\BuildSection\Admin\Actions\BuildIndexAction;
 
 class AdminBuildController extends Controller
 {
@@ -18,7 +19,18 @@ class AdminBuildController extends Controller
      */
     public function index(BuildIndexRequest $request)
     {
-        $info = "ОК";
+        $year = $request->year;
+        $mounth = $request->mounth;
+        $variant = $request->variant;
+        
+        if ($variant == '1'){
+            $info = [
+                'result' => 'no',
+            ];
+        } else {
+            $info = $this->action(BuildIndexAction::class)->run($year, $mounth, $variant);
+        }
+
         return view('build.back.admin', ['info' => $info]);    
     }
     

@@ -16,7 +16,7 @@ class CreateRepairsTable extends Migration
         Schema::create('repairs', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
-            $table->integer('repair_type_id');
+            $table->integer('work_id');
             $table->decimal('build_sum', 15, 2);
             $table->decimal('fu_sum', 15, 2);
             $table->decimal('contract_sum', 15, 2);
@@ -25,6 +25,8 @@ class CreateRepairsTable extends Migration
             $table->string('number', 300);
             $table->string('period', 300);
             $table->string('creator', 100);
+            $table->integer('year');
+            $table->integer('mounth');
         });
     }
 

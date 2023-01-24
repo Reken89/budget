@@ -3,6 +3,10 @@
     <title>Таблица ремонты</title>
 </head>
 
+@php
+    var_dump($info);
+@endphp
+
 <div class="post-header">
     <div class="post-cat">
         <a href="#">Информация:</a>

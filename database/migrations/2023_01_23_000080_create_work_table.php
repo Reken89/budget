@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRepairTypesTable extends Migration
+class CreateWorkTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateRepairTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('repair_types', function (Blueprint $table) {
+        Schema::create('work', function (Blueprint $table) {
             $table->id();
             $table->string('title', 800);
             $table->integer('ekr');
@@ -27,7 +27,7 @@ class CreateRepairTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('repair_types');
+        Schema::dropIfExists('work');
     }
 }
 
