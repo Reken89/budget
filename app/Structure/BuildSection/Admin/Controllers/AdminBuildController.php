@@ -26,6 +26,7 @@ class AdminBuildController extends Controller
         if ($variant == '1'){
             $info = [
                 'result' => 'no',
+                'variant' => 1,
             ];
         } else {
             $info = $this->action(BuildIndexAction::class)->run($year, $mounth, $variant);

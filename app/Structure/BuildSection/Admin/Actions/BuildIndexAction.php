@@ -4,6 +4,7 @@ namespace App\Structure\BuildSection\Admin\Actions;
 
 use App\Core\Actions\BaseAction;
 use App\Structure\BuildSection\Admin\Tasks\BuildSelectAllTask;
+use App\Structure\BuildSection\Admin\Tasks\BuildCalculatorEkrTask;
 
 class BuildIndexAction extends BaseAction
 {
@@ -20,8 +21,15 @@ class BuildIndexAction extends BaseAction
         }
         
         $info = $this->task(BuildSelectAllTask::class)->run($year, $mounth, $user);
+        $ekr = $this->task(BuildCalculatorEkrTask::class)->run($info, $variant);
         
-        return $info;
+        $result = [
+            'info'    => $info,
+            'variant' => $variant,
+            'ekr'     => $ekr,
+        ];
+        
+        return $result;
 
     }
 }

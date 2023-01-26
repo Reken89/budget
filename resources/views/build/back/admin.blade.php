@@ -119,3 +119,46 @@
                          
 <p><input type="button" style="width:250px;height:25px" name="formSubmit" id="btn_one" class="button5" value="Сформировать таблицу" /></p>                     
 </form>
+
+</br>
+<table class="freeze-table" width="700px"> 
+    <thead>
+        <tr>
+            <th style="min-width: 200px; width: 200px;" class="col-id-no fixed-header">Учреждение</th>
+            <th style="min-width: 70px; width: 70px;"></th>
+            <th style="min-width: 200px; width: 200px;">Наименование вида работ</th>
+            <th style="min-width: 70px; width: 70px;">ЭКР</th>
+            <th style="min-width: 70px; width: 70px;">ЭКР(II)</th>
+            <th style="min-width: 200px; width: 200px;">Утверждено</th>
+            <th style="min-width: 200px; width: 200px;">Сумма отдела строительства</th>
+            <th style="min-width: 200px; width: 200px;">Сумма МК</th>
+            <th style="min-width: 200px; width: 200px;">Касса</th>
+            <th style="min-width: 200px; width: 200px;">Факт</th>
+            <th style="min-width: 200px; width: 200px;">№ и дата контракта</th>
+            <th style="min-width: 200px; width: 200px;">Срок исполнения</th>
+            <th style="min-width: 200px; width: 200px;">Создатель записи</th>
+        </tr>
+    </thead>
+       
+        
+    @if ($info['variant'] == '5')
+        <tr>
+            <td><b>Детская художественная школа</b></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        @if (!empty($ekr225))
+        <tr>
+            <td></td><td></td><td><b>ИТОГО</b></td>
+            <td><b>225</b></td><td></td>
+            <td><b>00</b></td>
+            <td><b>00</b></td>
+            <td><b>00</b></td>
+            <td><b>00</b></td>
+            <td><b>00</b></td>
+            <td></td><td></td><td></td>
+        </tr>
+        @endif        
+    @endif
+    
+</table>    

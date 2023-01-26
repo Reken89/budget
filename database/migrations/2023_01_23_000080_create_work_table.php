@@ -17,6 +17,7 @@ class CreateWorkTable extends Migration
             $table->id();
             $table->string('title', 800);
             $table->integer('ekr');
+            $table->integer('ekr_double');
         });
     }
 
