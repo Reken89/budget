@@ -36,5 +36,29 @@ class BuildSelectAllTask extends BaseTask
         return $info;
 
     }
+    
+    /**
+     * Возвращает ОФС по заданным параметрам (один месяц)
+     * Складывает значения
+     *
+     * @param int $year, array $mounth, array $user
+     * @return 
+     */
+    public function one(int $year, array $mounth, array $user)
+    {        
+        $info = Repair::select()  
+            ->with([
+                'user:id,name',
+                'work'
+                ])    
+            ->where('year', $year)
+            ->whereIn('mounth', $mounth) 
+            ->whereIn('user_id', $user)     
+            ->get() 
+            ->toArray();
+        
+        return $info;
+
+    }
 }
 

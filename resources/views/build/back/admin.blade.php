@@ -4,7 +4,7 @@
 </head>
 
 @php
-    var_dump($info);
+    //var_dump($info);
 @endphp
 
 <div class="post-header">
@@ -146,19 +146,107 @@
             <td><b>Детская художественная школа</b></td>
             <td></td><td></td><td></td><td></td><td></td>
             <td></td><td></td><td></td><td></td><td></td><td></td>
-        </tr>
-        @if (!empty($ekr225))
+        </tr>       
         <tr>
             <td></td><td></td><td><b>ИТОГО</b></td>
-            <td><b>225</b></td><td></td>
-            <td><b>00</b></td>
-            <td><b>00</b></td>
-            <td><b>00</b></td>
-            <td><b>00</b></td>
-            <td><b>00</b></td>
+            <td><b>225</b></td>
+            <td><b></b></td>
+            <td><b>{{ number_format($info['ekr']['dhsh']['dhsh225']['fu'], 2, ',', ' ') }}</b></td>
+            <td><b>{{ number_format($info['ekr']['dhsh']['dhsh225']['build'], 2, ',', ' ') }}</b></td>
+            <td><b>{{ number_format($info['ekr']['dhsh']['dhsh225']['contract'], 2, ',', ' ') }}</b></td>
+            <td><b>{{ number_format($info['ekr']['dhsh']['dhsh225']['kassa'], 2, ',', ' ') }}</b></td>
+            <td><b>{{ number_format($info['ekr']['dhsh']['dhsh225']['fact'], 2, ',', ' ') }}</b></td>
             <td></td><td></td><td></td>
         </tr>
-        @endif        
+        <tr>
+            <td></td><td></td><td><b>ИТОГО</b></td>
+            <td><b>226</b></td>
+            <td><b></b></td>
+            <td><b>{{ number_format($info['ekr']['dhsh']['dhsh226']['fu'], 2, ',', ' ') }}</b></td>
+            <td><b>{{ number_format($info['ekr']['dhsh']['dhsh226']['build'], 2, ',', ' ') }}</b></td>
+            <td><b>{{ number_format($info['ekr']['dhsh']['dhsh226']['contract'], 2, ',', ' ') }}</b></td>
+            <td><b>{{ number_format($info['ekr']['dhsh']['dhsh226']['kassa'], 2, ',', ' ') }}</b></td>
+            <td><b>{{ number_format($info['ekr']['dhsh']['dhsh226']['fact'], 2, ',', ' ') }}</b></td>
+            <td></td><td></td><td></td>
+        </tr>
+        <tr>
+            <td></td><td></td><td><b>ИТОГО</b></td>
+            <td><b>228</b></td>
+            <td><b></b></td>
+            <td><b>{{ number_format($info['ekr']['dhsh']['dhsh228']['fu'], 2, ',', ' ') }}</b></td>
+            <td><b>{{ number_format($info['ekr']['dhsh']['dhsh228']['build'], 2, ',', ' ') }}</b></td>
+            <td><b>{{ number_format($info['ekr']['dhsh']['dhsh228']['contract'], 2, ',', ' ') }}</b></td>
+            <td><b>{{ number_format($info['ekr']['dhsh']['dhsh228']['kassa'], 2, ',', ' ') }}</b></td>
+            <td><b>{{ number_format($info['ekr']['dhsh']['dhsh228']['fact'], 2, ',', ' ') }}</b></td>
+            <td></td><td></td><td></td>
+        </tr>
+        <tr>
+            <td></td><td></td><td><b>ИТОГО</b></td>
+            <td><b>344</b></td>
+            <td><b></b></td>
+            <td><b>{{ number_format($info['ekr']['dhsh']['dhsh344']['fu'], 2, ',', ' ') }}</b></td>
+            <td><b>{{ number_format($info['ekr']['dhsh']['dhsh344']['build'], 2, ',', ' ') }}</b></td>
+            <td><b>{{ number_format($info['ekr']['dhsh']['dhsh344']['contract'], 2, ',', ' ') }}</b></td>
+            <td><b>{{ number_format($info['ekr']['dhsh']['dhsh344']['kassa'], 2, ',', ' ') }}</b></td>
+            <td><b>{{ number_format($info['ekr']['dhsh']['dhsh344']['fact'], 2, ',', ' ') }}</b></td>
+            <td></td><td></td><td></td>
+        </tr>
+        <tr>
+            <td></td><td></td><td><b>ИТОГО</b></td>
+            <td><b>346</b></td>
+            <td><b></b></td>
+            <td><b>{{ number_format($info['ekr']['dhsh']['dhsh346']['fu'], 2, ',', ' ') }}</b></td>
+            <td><b>{{ number_format($info['ekr']['dhsh']['dhsh346']['build'], 2, ',', ' ') }}</b></td>
+            <td><b>{{ number_format($info['ekr']['dhsh']['dhsh346']['contract'], 2, ',', ' ') }}</b></td>
+            <td><b>{{ number_format($info['ekr']['dhsh']['dhsh346']['kassa'], 2, ',', ' ') }}</b></td>
+            <td><b>{{ number_format($info['ekr']['dhsh']['dhsh346']['fact'], 2, ',', ' ') }}</b></td>
+            <td></td><td></td><td></td>
+        </tr>
+        <tr>
+            <td></td><td></td><td><b>ИТОГО</b></td>
+            <td><b>310</b></td>
+            <td><b></b></td>
+            <td><b>{{ number_format($info['ekr']['dhsh']['dhsh310']['fu'], 2, ',', ' ') }}</b></td>
+            <td><b>{{ number_format($info['ekr']['dhsh']['dhsh310']['build'], 2, ',', ' ') }}</b></td>
+            <td><b>{{ number_format($info['ekr']['dhsh']['dhsh310']['contract'], 2, ',', ' ') }}</b></td>
+            <td><b>{{ number_format($info['ekr']['dhsh']['dhsh310']['kassa'], 2, ',', ' ') }}</b></td>
+            <td><b>{{ number_format($info['ekr']['dhsh']['dhsh310']['fact'], 2, ',', ' ') }}</b></td>
+            <td></td><td></td><td></td>
+        </tr>
+        
+        @foreach ($info['info'] as $value)
+            @if ($value['user']['id'] == 18)
+                <tr>
+                    <td>{{ $value['user']['name'] }}</td>
+                    <td></td>
+                    @if ($info['many_mounth'] == 'yes')
+                        <td>{{ $value['work']['title'] }}</td>
+                        <td>{{ $value['work']['ekr'] }}</td>
+                        <td></td>
+                        <td>{{ number_format($value['fu_sum'], 2, ',', ' ') }}</td>
+                    @elseif ($info['many_mounth'] == 'no')
+                        <input type="hidden" class="id" value="{{ $value['id'] }}">
+                        <input type="hidden" class="ekr_double" value="{{ $value['work']['ekr_double'] }}">
+                        <td><textarea rows='5' cols='45' type=text class='title'>{{ $value['work']['title'] }}</textarea>></td> 
+                        <td><input type="text" class="ekr" value="{{ $value['work']['ekr'] }}"></td>
+                        <td></td>
+                        <td><input type="text" class="fu_sum" value="{{ number_format($value['fu_sum'], 2, ',', ' ') }}"></td>
+                    @endif
+                    <td>{{ number_format($value['build_sum'], 2, ',', ' ') }}</td>
+                    <td>{{ number_format($value['contract_sum'], 2, ',', ' ') }}</td>
+                    <td>{{ number_format($value['kassa_sum'], 2, ',', ' ') }}</td>
+                    <td>{{ number_format($value['fact_sum'], 2, ',', ' ') }}</td>
+                    @if ($info['many_mounth'] == 'yes')
+                        <td></td><td></td><td></td>
+                    @elseif ($info['many_mounth'] == 'no')
+                        <td>{{ $value['number'] }}</td>
+                        <td>{{ $value['period'] }}</td>
+                        <td>{{ $value['creator'] }}</td>
+                    @endif
+                </tr>
+            @endif
+        @endforeach
+    
     @endif
     
 </table>    

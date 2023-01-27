@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Core\Controllers\Controller;
 use App\Structure\BuildSection\Admin\Requests\BuildIndexRequest;
+use App\Structure\BuildSection\Admin\Requests\BuildUpdateRequest;
+use App\Structure\BuildSection\Admin\Dto\BuildUpdateDto;
 use App\Structure\BuildSection\Admin\Actions\BuildIndexAction;
+use App\Structure\BuildSection\Admin\Actions\BuildUpdateAction;
 
 class AdminBuildController extends Controller
 {
@@ -50,6 +53,20 @@ class AdminBuildController extends Controller
             'variant' => $request->variant,
         ];
         return view('build.admin', ['info' => $info]);
-    }       
+    }    
+    
+    /**
+     * Обновляет значения в таблицах repairs и work по id
+     *
+     * @param BuildUpdateRequest $request
+     * @return 
+     */
+    public function update(BuildUpdateRequest $request)
+    {
+        $dto = BuildUpdateDto::fromRequest($request);
+        $status = $this->action(BuildUpdateAction::class)->run($dto);
+        
+        return $status;       
+    }
     
 }

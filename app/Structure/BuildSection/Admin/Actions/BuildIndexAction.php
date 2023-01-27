@@ -20,13 +20,20 @@ class BuildIndexAction extends BaseAction
             $user = [18, 19];
         }
         
-        $info = $this->task(BuildSelectAllTask::class)->run($year, $mounth, $user);
+        if (count($mounth) == '1'){
+            $info = $this->task(BuildSelectAllTask::class)->one($year, $mounth, $user);
+            $many = "no";
+        } else {
+            $info = $this->task(BuildSelectAllTask::class)->run($year, $mounth, $user);
+            $many = "yes";
+        }
         $ekr = $this->task(BuildCalculatorEkrTask::class)->run($info, $variant);
         
         $result = [
-            'info'    => $info,
-            'variant' => $variant,
-            'ekr'     => $ekr,
+            'info'        => $info,
+            'variant'     => $variant,
+            'ekr'         => $ekr,
+            'many_mounth' => $many,
         ];
         
         return $result;

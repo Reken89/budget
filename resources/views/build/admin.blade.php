@@ -3,6 +3,34 @@
 
 <script>
     $(document).ready(function(){
+        //Выполняем запись в БД при нажатии на клавишу ENTER
+        function setKeydownmyForm() {
+            $('input').keydown(function(e) {
+                if (e.keyCode === 13) {
+                    var tr = this.closest('tr');
+                    var id = $('.id', tr).val(); 
+                    var ekr_double = $('.ekr_double', tr).val();
+                    var title = $('.title', tr).val();
+                    var ekr = $('.ekr', tr).val();
+                    var fu_sum = $('.fu_sum', tr).val();
+                    var fu_sum = fu_sum.replace(",",".");
+                    var fu_sum = fu_sum.replace(" ","");
+                                        
+                    $.ajax({
+                        url:"/budget/public/admin/build/update",  
+                        method:"patch",  
+                        data:{
+                            "_token": "{{ csrf_token() }}",
+                            id, ekr_double, title, ekr, fu_sum
+                        },
+                        dataType:"text",  
+                        success:function(data){  
+                            fetch_data(); 
+                        } 
+                    })                   
+                }               
+            })
+        }
         
         //Подгружаем BACK шаблон отрисовки
         function fetch_data(){  
