@@ -4,7 +4,7 @@
 </head>
 
 @php
-    //var_dump($info);
+    var_dump($info);
 @endphp
 
 <div class="post-header">
@@ -246,7 +246,21 @@
                 </tr>
             @endif
         @endforeach
-    
+        
+        @if ($info['many_mounth'] == 'no')
+            <tr>
+                <input type="hidden" class="user_id" value="18">
+                <input type="hidden" class="ekr_double" value="1">
+                <input type="hidden" class="mounth" value="{{ $info['info'][0]['mounth'] }}">
+                <td></td>
+                <td><input type=button class="button" id='btn_two' value='Добавить'></td>
+                <td><textarea rows='5' cols='45' type=text class='title'>Новая запись</textarea></td>
+                <td><input type=text class='ekr'></td>
+                <td></td>
+                <td><input type=text class='fu_sum'></td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+        @endif
     @endif
     
 </table>    

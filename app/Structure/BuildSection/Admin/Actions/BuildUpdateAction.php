@@ -16,10 +16,15 @@ class BuildUpdateAction extends BaseAction
      */
     public function run(BuildUpdateDto $dto)
     {   
-        $result = Repair::find($dto->id)
-            ->update([                
-                 'fu_sum' => $dto->fu_sum,
-            ]);
+        $result = Repair::find($dto->id);
+        $result->update([                
+            'fu_sum' => $dto->fu_sum,
+        ]);
+        $result->work()->update([
+            'ekr'        => $dto->ekr,
+            'ekr_double' => $dto->ekr_double,
+            'title'      => $dto->title,
+        ]);
         
         return $result == true ? true : false;  
     }

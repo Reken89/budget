@@ -7,9 +7,12 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Core\Controllers\Controller;
 use App\Structure\BuildSection\Admin\Requests\BuildIndexRequest;
 use App\Structure\BuildSection\Admin\Requests\BuildUpdateRequest;
+use App\Structure\BuildSection\Admin\Requests\BuildAddRequest;
 use App\Structure\BuildSection\Admin\Dto\BuildUpdateDto;
+use App\Structure\BuildSection\Admin\Dto\BuildAddDto;
 use App\Structure\BuildSection\Admin\Actions\BuildIndexAction;
 use App\Structure\BuildSection\Admin\Actions\BuildUpdateAction;
+use App\Structure\BuildSection\Admin\Actions\BuildAddAction;
 
 class AdminBuildController extends Controller
 {
@@ -22,9 +25,20 @@ class AdminBuildController extends Controller
      */
     public function index(BuildIndexRequest $request)
     {
-        $year = $request->year;
-        $mounth = $request->mounth;
-        $variant = $request->variant;
+        if (session('option') == NULL || session('option') == FALSE){
+            $year = $request->year;
+            $mounth = $request->mounth;
+            $variant = $request->variant;
+            
+            session(['year' => $request->year]);
+            session(['mounth' => $request->mounth]);
+            session(['variant' => $request->variant]);
+        } else {
+            $year = session('year');
+            $mounth = session('mounth');
+            $variant = session('variant');
+            session(['option' => false]);
+        }
         
         if ($variant == '1'){
             $info = [
@@ -63,10 +77,30 @@ class AdminBuildController extends Controller
      */
     public function update(BuildUpdateRequest $request)
     {
+        //Значение для варианта отрисовки таблицы
+        session(['option' => true]);
+        
         $dto = BuildUpdateDto::fromRequest($request);
         $status = $this->action(BuildUpdateAction::class)->run($dto);
         
         return $status;       
+    }
+    
+    /**
+     * Добавляет строки в таблицах repairs и work
+     *
+     * @param BuildAddRequest $request
+     * @return 
+     */
+    public function add(BuildAddRequest $request)
+    {
+        //Значение для варианта отрисовки таблицы
+        session(['option' => true]);
+        
+        $dto = BuildAddDto::fromRequest($request);
+        $result = $this->action(BuildAddAction::class)->run($dto);
+        
+        return $result;       
     }
     
 }

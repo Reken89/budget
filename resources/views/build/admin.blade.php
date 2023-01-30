@@ -95,6 +95,35 @@
             })               
         })
         
+        //Выполняем действие (отправка данных) при нажатии на кнопку
+        $(document).on('click', '#btn_two', function(){
+            var tr = this.closest('tr');
+            var user_id = $('.user_id', tr).val();
+            var ekr = $('.ekr', tr).val();
+            var ekr_double = $('.ekr_double', tr).val();
+            var title = $('.title', tr).val();
+            var mounth = $('.mounth', tr).val();
+            var year = 2023;
+            var fu_sum = $('.fu_sum', tr).val();
+            var fu_sum = fu_sum.replace(",",".");
+            var fu_sum = fu_sum.replace(" ","");
+                $.ajax({
+                    url:"/budget/public/admin/build/add",  
+                    method:"post",
+                    data:{
+                        "_token": "{{ csrf_token() }}",
+                        user_id, mounth, year, 
+                        ekr, ekr_double, fu_sum,
+                        title
+                    },
+                    dataType:"text",  
+                    success:function(data){  
+                        //alert(data);
+                        fetch_data();  
+                    } 
+                })               
+        })
+        
     });
 </script>
 
