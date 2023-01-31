@@ -254,7 +254,7 @@
             <tr>
                 <input type="hidden" class="user_id" value="18">
                 <input type="hidden" class="ekr_double" value="1">
-                <input type="hidden" class="mounth" value="{{ $info['info'][0]['mounth'] }}">
+                <input type="hidden" class="mounth" value="{{ $info['mounth_double'] }}">
                 <td></td>
                 <td><input type=button class="button" id='btn_two' value='Добавить'></td>
                 <td><textarea rows='5' cols='45' type=text class='title'>Новая запись</textarea></td>
@@ -377,7 +377,7 @@
             <tr>
                 <input type="hidden" class="user_id" value="19">
                 <input type="hidden" class="ekr_double" value="1">
-                <input type="hidden" class="mounth" value="{{ $info['info'][0]['mounth'] }}">
+                <input type="hidden" class="mounth" value="{{ $info['mounth_double'] }}">
                 <td></td>
                 <td><input type=button class="button" id='btn_two' value='Добавить'></td>
                 <td><textarea rows='5' cols='45' type=text class='title'>Новая запись</textarea></td>
