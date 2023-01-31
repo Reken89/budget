@@ -12,7 +12,11 @@ class BuildUpdateDto extends BaseDto
     public string    $title;
     public int       $ekr;
     public float     $fu_sum;
-
+    public int       $work_id;
+    public int       $year;
+    public int       $mounth;
+    public int       $user_id;
+ 
 
     /**
      * Возвращает DTO из объекта Request
@@ -28,6 +32,10 @@ class BuildUpdateDto extends BaseDto
             'title'      => $request->get('title'),
             'ekr'        => $request->get('ekr'),
             'fu_sum'     => $request->get('fu_sum'),
+            'work_id'    => $request->get('work_id'),
+            'year'       => $request->get('year'),
+            'mounth'     => $request->get('mounth'),
+            'user_id'    => $request->get('user_id'),
         ]);
     }
 }

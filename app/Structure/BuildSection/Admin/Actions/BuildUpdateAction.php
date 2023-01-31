@@ -16,11 +16,26 @@ class BuildUpdateAction extends BaseAction
      */
     public function run(BuildUpdateDto $dto)
     {   
-        $result = Repair::find($dto->id);
+        if ($dto->mounth < 12){
+            $mounth = [];
+            $key = -1;
+            for ($i = $dto->mounth ; $i < 13 ; $i++){
+                $key += 1;
+                $mounth[$key] = $i;
+            }
+        } else {
+            $mounth = [$dto->mounth];
+        }
+        
+        $result_one = Repair::find($dto->id);
+        $result = Repair::where('work_id', $dto->work_id)
+                ->whereIn('mounth', $mounth)
+                ->where('year', $dto->year)
+                ->where('user_id', $dto->user_id);
         $result->update([                
             'fu_sum' => $dto->fu_sum,
         ]);
-        $result->work()->update([
+        $result_one->work()->update([
             'ekr'        => $dto->ekr,
             'ekr_double' => $dto->ekr_double,
             'title'      => $dto->title,

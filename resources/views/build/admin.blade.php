@@ -15,13 +15,18 @@
                     var fu_sum = $('.fu_sum', tr).val();
                     var fu_sum = fu_sum.replace(",",".");
                     var fu_sum = fu_sum.replace(" ","");
+                    var work_id = $('.work_id', tr).val(); 
+                    var mounth = $('.mounth', tr).val();
+                    var year = 2023;
+                    var user_id = $('.user_id', tr).val(); 
                                         
                     $.ajax({
                         url:"/budget/public/admin/build/update",  
                         method:"patch",  
                         data:{
                             "_token": "{{ csrf_token() }}",
-                            id, ekr_double, title, ekr, fu_sum
+                            id, ekr_double, title, ekr, fu_sum,
+                            work_id, mounth, year, user_id
                         },
                         dataType:"text",  
                         success:function(data){  

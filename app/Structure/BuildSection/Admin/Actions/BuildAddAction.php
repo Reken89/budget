@@ -34,13 +34,13 @@ class BuildAddAction extends BaseAction
         ]);
         
         foreach ($mounth as $moun) {
-            $work->build()->save([
+            $work->build()->create([
                 'user_id'      => $dto->user_id,
                 'fu_sum'       => $dto->fu_sum,
-                'build_sum'    => 1,
-                'contract_sum' => 1,
-                'kassa_sum'    => 1,
-                'fact_sum'     => 1,
+                'build_sum'    => 0,
+                'contract_sum' => 0,
+                'kassa_sum'    => 0,
+                'fact_sum'     => 0,
                 'number'       => 'Нет данных',
                 'period'       => 'Нет данных',
                 'creator'      => 'Администрация',

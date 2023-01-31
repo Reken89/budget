@@ -19,6 +19,10 @@ class BuildUpdateRequest extends FormRequest
             'title'      => 'required|string',
             'ekr'        => 'required|integer',
             'fu_sum'     => 'required|numeric',
+            'work_id'    => 'required|integer',
+            'year'       => 'required|integer',
+            'mounth'     => 'required|integer',
+            'user_id'    => 'required|integer',
         ];
     }   
 }

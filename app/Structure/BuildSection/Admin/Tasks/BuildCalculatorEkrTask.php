@@ -23,13 +23,24 @@ class BuildCalculatorEkrTask extends BaseTask
             $fact = 0;
             
             foreach ($info as $value){
-                if ($value['work']['ekr'] == $ekr && $value['user']['id'] == $user_id){
+                if ($user_id == 'total'){
+                    if ($value['work']['ekr'] == $ekr){
+                    $fu += $value['fu_sum'];  
+                    $build += $value['build_sum'];
+                    $contract += $value['contract_sum'];
+                    $kassa += $value['kassa_sum'];
+                    $fact += $value['fact_sum'];
+                    }
+                } else {
+                    if ($value['work']['ekr'] == $ekr && $value['user']['id'] == $user_id){
                     $fu += $value['fu_sum'];  
                     $build += $value['build_sum'];
                     $contract += $value['contract_sum'];
                     $kassa += $value['kassa_sum'];
                     $fact += $value['fact_sum'];                    
-                } 
+                    }                    
+                }
+                
             }
             $result = [
                 'fu' => $fu,
@@ -40,7 +51,7 @@ class BuildCalculatorEkrTask extends BaseTask
             ];
             
             return $result;
-        }
+        }        
         
         if ($variant == '2'){
             
@@ -66,6 +77,14 @@ class BuildCalculatorEkrTask extends BaseTask
                     'dmsh344' => ekr(19, $info, 344),
                     'dmsh346' => ekr(19, $info, 346),
                     'dmsh310' => ekr(19, $info, 310),
+                ],
+                'total' => [
+                    'total225' => ekr('total', $info, 225),
+                    'total226' => ekr('total', $info, 226),
+                    'total228' => ekr('total', $info, 228),
+                    'total344' => ekr('total', $info, 344),
+                    'total346' => ekr('total', $info, 346),
+                    'total310' => ekr('total', $info, 310),
                 ],
             ];
             

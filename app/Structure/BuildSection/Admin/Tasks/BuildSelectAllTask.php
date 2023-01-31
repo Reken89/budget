@@ -60,5 +60,6 @@ class BuildSelectAllTask extends BaseTask
         return $info;
 
     }
+    
 }
 
