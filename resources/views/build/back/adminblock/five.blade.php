@@ -1,7 +1,6 @@
-
-<tr>
+        <tr>
             <td><b>Детская художественная школа</b></td>
-            <td class="col-id-no" scope="row"></td><td></td><td></td><td></td><td></td>
+            <td class="col-id-no" scope="row">Детская художественная школа</td><td></td><td></td><td></td><td></td>
             <td></td><td></td><td></td><td></td><td></td>
         </tr>
         <tr>
@@ -144,7 +143,7 @@
         
         <tr>
             <td><b>Детская музыкальная школа</b></td>
-            <td class="col-id-no" scope="row"></td><td></td><td></td><td></td><td></td>
+            <td class="col-id-no" scope="row">Детская музыкальная школа</td><td></td><td></td><td></td><td></td>
             <td></td><td></td><td></td><td></td><td></td>
         </tr>  
         <tr>
