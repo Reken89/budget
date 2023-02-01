@@ -14,7 +14,8 @@
                     var ekr = $('.ekr', tr).val();
                     var fu_sum = $('.fu_sum', tr).val();
                     var fu_sum = fu_sum.replace(",",".");
-                    var fu_sum = fu_sum.replace(" ","");
+                    //var fu_sum = fu_sum.replace(" ","");
+                    var fu_sum = fu_sum.replace(/ /g,'');
                     var work_id = $('.work_id', tr).val(); 
                     var mounth = $('.mounth', tr).val();
                     var year = 2023;
