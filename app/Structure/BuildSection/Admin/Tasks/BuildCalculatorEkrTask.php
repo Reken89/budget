@@ -25,19 +25,35 @@ class BuildCalculatorEkrTask extends BaseTask
             foreach ($info as $value){
                 if ($user_id == 'total'){
                     if ($value['work']['ekr'] == $ekr){
-                    $fu += $value['fu_sum'];  
-                    $build += $value['build_sum'];
-                    $contract += $value['contract_sum'];
-                    $kassa += $value['kassa_sum'];
-                    $fact += $value['fact_sum'];
+                        $fu += $value['fu_sum'];  
+                        $build += $value['build_sum'];
+                        $contract += $value['contract_sum'];
+                        $kassa += $value['kassa_sum'];
+                        $fact += $value['fact_sum'];
+                    }
+                } elseif ($ekr == 'ekr_one'){
+                    if ($value['user']['id'] == $user_id){
+                        $fu += $value['fu_sum'];  
+                        $build += $value['build_sum'];
+                        $contract += $value['contract_sum'];
+                        $kassa += $value['kassa_sum'];
+                        $fact += $value['fact_sum'];                    
+                    }
+                } elseif ($ekr == 'ekr_many'){
+                    if ($value['user']['id'] == TRUE){
+                        $fu += $value['fu_sum'];  
+                        $build += $value['build_sum'];
+                        $contract += $value['contract_sum'];
+                        $kassa += $value['kassa_sum'];
+                        $fact += $value['fact_sum']; 
                     }
                 } else {
                     if ($value['work']['ekr'] == $ekr && $value['user']['id'] == $user_id){
-                    $fu += $value['fu_sum'];  
-                    $build += $value['build_sum'];
-                    $contract += $value['contract_sum'];
-                    $kassa += $value['kassa_sum'];
-                    $fact += $value['fact_sum'];                    
+                        $fu += $value['fu_sum'];  
+                        $build += $value['build_sum'];
+                        $contract += $value['contract_sum'];
+                        $kassa += $value['kassa_sum'];
+                        $fact += $value['fact_sum'];                    
                     }                    
                 }
                 
@@ -85,6 +101,15 @@ class BuildCalculatorEkrTask extends BaseTask
                     'total344' => ekr('total', $info, 344),
                     'total346' => ekr('total', $info, 346),
                     'total310' => ekr('total', $info, 310),
+                ],
+                'dhsh_ekr' => [
+                    'ekr_one' => ekr(18, $info, 'ekr_one'),
+                ],
+                'dmsh_ekr' => [
+                    'ekr_one' => ekr(19, $info, 'ekr_one'),
+                ],
+                'total_ekr' => [
+                    'total' => ekr(18, $info, 'ekr_many'),
                 ],
             ];
             
