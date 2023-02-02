@@ -16,8 +16,16 @@ class BuildIndexAction extends BaseAction
      */
     public function run(int $year, array $mounth, int $variant)
     {   
-        if ($variant == '5'){
+        if ($variant == '2'){
+
+        } elseif ($variant == '3'){
+            
+        } elseif ($variant == '4'){
+            $user = [25, 23];
+        } elseif ($variant == '5'){
             $user = [18, 19];
+        } elseif ($variant == '6'){
+            
         }
         
         if (count($mounth) == '1'){

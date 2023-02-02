@@ -140,7 +140,9 @@
     </thead>
        
         
-    @if ($info['variant'] == '5')
+    @if ($info['variant'] == '4')
+        @include('build.back.adminblock.four')
+    @elseif ($info['variant'] == '5')
         @include('build.back.adminblock.five')
     @endif
     

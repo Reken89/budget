@@ -21,7 +21,7 @@
                     function structure(title){
                         var volume = $(title, tr).val();
                         var volume = volume.replace(",",".");
-                        var volume = volume.replace(" ","");
+                        var volume = volume.replace(/ /g,'');
                         return volume;
                     }
                     

@@ -15,7 +15,7 @@ class BuildCalculatorEkrTask extends BaseTask
      */
     public function run(array $info, int $variant): array
     {    
-        function ekr($user_id, $info, $ekr){
+        function ekr($user_id, $info, $ekr, $variant){
             $fu = 0;
             $build = 0;
             $contract = 0;
@@ -23,7 +23,7 @@ class BuildCalculatorEkrTask extends BaseTask
             $fact = 0;
             
             foreach ($info as $value){
-                if ($user_id == 'total'){
+                if ($variant == 'total'){
                     if ($value['work']['ekr'] == $ekr){
                         $fu += $value['fu_sum'];  
                         $build += $value['build_sum'];
@@ -31,7 +31,7 @@ class BuildCalculatorEkrTask extends BaseTask
                         $kassa += $value['kassa_sum'];
                         $fact += $value['fact_sum'];
                     }
-                } elseif ($ekr == 'ekr_one'){
+                } elseif ($variant == 'ekr_one'){
                     if ($value['user']['id'] == $user_id){
                         $fu += $value['fu_sum'];  
                         $build += $value['build_sum'];
@@ -39,7 +39,7 @@ class BuildCalculatorEkrTask extends BaseTask
                         $kassa += $value['kassa_sum'];
                         $fact += $value['fact_sum'];                    
                     }
-                } elseif ($ekr == 'ekr_many'){
+                } elseif ($variant == 'ekr_many'){
                     if ($value['user']['id'] == TRUE){
                         $fu += $value['fu_sum'];  
                         $build += $value['build_sum'];
@@ -74,42 +74,79 @@ class BuildCalculatorEkrTask extends BaseTask
         } elseif ($variant == '3'){
             
         } elseif ($variant == '4'){
+            $result = [
+                'adm' => [
+                    'adm225' => ekr(25, $info, 225, 'no'),
+                    'adm226' => ekr(25, $info, 226, 'no'),
+                    'adm228' => ekr(25, $info, 228, 'no'),
+                    'adm344' => ekr(25, $info, 344, 'no'),
+                    'adm346' => ekr(25, $info, 346, 'no'),
+                    'adm310' => ekr(25, $info, 310, 'no'),
+                ],
+                'kums' => [
+                    'kums225' => ekr(23, $info, 225, 'no'),
+                    'kums226' => ekr(23, $info, 226, 'no'),
+                    'kums228' => ekr(23, $info, 228, 'no'),
+                    'kums344' => ekr(23, $info, 344, 'no'),
+                    'kums346' => ekr(23, $info, 346, 'no'),
+                    'kums310' => ekr(23, $info, 310, 'no'),
+                ],
+                'total' => [
+                    'total225' => ekr(0, $info, 225, 'total'),
+                    'total226' => ekr(0, $info, 226, 'total'),
+                    'total228' => ekr(0, $info, 228, 'total'),
+                    'total344' => ekr(0, $info, 344, 'total'),
+                    'total346' => ekr(0, $info, 346, 'total'),
+                    'total310' => ekr(0, $info, 310, 'total'),
+                ],
+                'adm_ekr' => [
+                    'ekr_one' => ekr(25, $info, 0, 'ekr_one'),
+                ],
+                'kums_ekr' => [
+                    'ekr_one' => ekr(23, $info, 0, 'ekr_one'),
+                ],
+                'total_ekr' => [
+                    'total' => ekr(0, $info, 0, 'ekr_many'),
+                ],
+            ];
+            
+            return $result;
             
         } elseif ($variant == '5'){
                        
             $result = [
                 'dhsh' => [
-                    'dhsh225' => ekr(18, $info, 225),
-                    'dhsh226' => ekr(18, $info, 226),
-                    'dhsh228' => ekr(18, $info, 228),
-                    'dhsh344' => ekr(18, $info, 344),
-                    'dhsh346' => ekr(18, $info, 346),
-                    'dhsh310' => ekr(18, $info, 310),
+                    'dhsh225' => ekr(18, $info, 225, 'no'),
+                    'dhsh226' => ekr(18, $info, 226, 'no'),
+                    'dhsh228' => ekr(18, $info, 228, 'no'),
+                    'dhsh344' => ekr(18, $info, 344, 'no'),
+                    'dhsh346' => ekr(18, $info, 346, 'no'),
+                    'dhsh310' => ekr(18, $info, 310, 'no'),
                 ],
                 'dmsh' => [
-                    'dmsh225' => ekr(19, $info, 225),
-                    'dmsh226' => ekr(19, $info, 226),
-                    'dmsh228' => ekr(19, $info, 228),
-                    'dmsh344' => ekr(19, $info, 344),
-                    'dmsh346' => ekr(19, $info, 346),
-                    'dmsh310' => ekr(19, $info, 310),
+                    'dmsh225' => ekr(19, $info, 225, 'no'),
+                    'dmsh226' => ekr(19, $info, 226, 'no'),
+                    'dmsh228' => ekr(19, $info, 228, 'no'),
+                    'dmsh344' => ekr(19, $info, 344, 'no'),
+                    'dmsh346' => ekr(19, $info, 346, 'no'),
+                    'dmsh310' => ekr(19, $info, 310, 'no'),
                 ],
                 'total' => [
-                    'total225' => ekr('total', $info, 225),
-                    'total226' => ekr('total', $info, 226),
-                    'total228' => ekr('total', $info, 228),
-                    'total344' => ekr('total', $info, 344),
-                    'total346' => ekr('total', $info, 346),
-                    'total310' => ekr('total', $info, 310),
+                    'total225' => ekr(0, $info, 225, 'total'),
+                    'total226' => ekr(0, $info, 226, 'total'),
+                    'total228' => ekr(0, $info, 228, 'total'),
+                    'total344' => ekr(0, $info, 344, 'total'),
+                    'total346' => ekr(0, $info, 346, 'total'),
+                    'total310' => ekr(0, $info, 310, 'total'),
                 ],
                 'dhsh_ekr' => [
-                    'ekr_one' => ekr(18, $info, 'ekr_one'),
+                    'ekr_one' => ekr(18, $info, 0, 'ekr_one'),
                 ],
                 'dmsh_ekr' => [
-                    'ekr_one' => ekr(19, $info, 'ekr_one'),
+                    'ekr_one' => ekr(19, $info, 0, 'ekr_one'),
                 ],
                 'total_ekr' => [
-                    'total' => ekr(18, $info, 'ekr_many'),
+                    'total' => ekr(0, $info, 0, 'ekr_many'),
                 ],
             ];
             
