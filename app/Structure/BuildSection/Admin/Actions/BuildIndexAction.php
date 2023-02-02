@@ -19,13 +19,13 @@ class BuildIndexAction extends BaseAction
         if ($variant == '2'){
 
         } elseif ($variant == '3'){
-            
+            $user = [9, 10, 11, 12, 13, 14, 15];
         } elseif ($variant == '4'){
             $user = [25, 23];
         } elseif ($variant == '5'){
             $user = [18, 19];
         } elseif ($variant == '6'){
-            
+            $user = [8];
         }
         
         if (count($mounth) == '1'){

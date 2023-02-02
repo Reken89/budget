@@ -139,11 +139,16 @@
         </tr>
     </thead>
        
+    @if ($info['variant'] == '2')
         
-    @if ($info['variant'] == '4')
+    @elseif ($info['variant'] == '3')
+        @include('build.back.adminblock.three')
+    @elseif ($info['variant'] == '4')
         @include('build.back.adminblock.four')
     @elseif ($info['variant'] == '5')
         @include('build.back.adminblock.five')
+    @elseif ($info['variant'] == '6')
+        @include('build.back.adminblock.six')    
     @endif
     
 </table>    
