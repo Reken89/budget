@@ -5,6 +5,7 @@ namespace App\Structure\BuildSection\Admin\Actions;
 use App\Core\Actions\BaseAction;
 use App\Structure\BuildSection\Admin\Tasks\BuildSelectAllTask;
 use App\Structure\BuildSection\Admin\Tasks\BuildCalculatorEkrTask;
+use App\Structure\BuildSection\Admin\Tasks\BuildCalculatorSpecialTask;
 
 class BuildIndexAction extends BaseAction
 {
@@ -17,7 +18,7 @@ class BuildIndexAction extends BaseAction
     public function run(int $year, array $mounth, int $variant)
     {   
         if ($variant == '2'){
-
+            $user = [3, 4, 5, 6, 7, 16, 17, 20, 21, 22];
         } elseif ($variant == '3'){
             $user = [9, 10, 11, 12, 13, 14, 15];
         } elseif ($variant == '4'){
@@ -37,7 +38,11 @@ class BuildIndexAction extends BaseAction
             $many = "yes";
             $mounth_double = "no";
         }
-        $ekr = $this->task(BuildCalculatorEkrTask::class)->run($info, $variant);
+        if ($variant == '2'){
+            $ekr = $this->task(BuildCalculatorSpecialTask::class)->run($info, $variant);
+        } else {
+            $ekr = $this->task(BuildCalculatorEkrTask::class)->run($info, $variant);
+        }
         
         $result = [
             'info'          => $info,

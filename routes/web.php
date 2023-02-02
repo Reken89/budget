@@ -70,6 +70,7 @@ Route::get('/user/ofs', [OfsController::class, 'user'])->middleware('auth')->nam
 Route::get('/admin/build/back', [AdminBuildController::class, 'index'])->middleware('auth', 'admin');
 Route::patch('/admin/build/update', [AdminBuildController::class, 'update'])->middleware('auth', 'admin');
 Route::post('/admin/build/add', [AdminBuildController::class, 'add'])->middleware('auth', 'admin');
+Route::get('/admin/build/plug', [AdminBuildController::class, 'plug'])->middleware('auth', 'admin');
 
 //Роуты для Front (Модуль Строительство)
 Route::get('/admin/build', [AdminBuildController::class, 'user'])->middleware('auth', 'admin')->name('adminbuild');

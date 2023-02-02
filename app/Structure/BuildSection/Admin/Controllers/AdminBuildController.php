@@ -103,4 +103,18 @@ class AdminBuildController extends Controller
         return $result;       
     }
     
+    /**
+     * Заглушка без логики
+     *
+     * @param 
+     * @return string
+     */
+    public function plug()
+    {
+        //Значение для варианта отрисовки таблицы
+        session(['option' => true]);
+        
+        echo "Складывайте самостоятельно в EXCEL))";     
+    }
+    
 }

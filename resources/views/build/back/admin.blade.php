@@ -121,6 +121,10 @@
 </form>
 
 </br>
+    <input type="button" style="width:250px;height:25px" name="formSubmit" id="btn_three" class="button5" value="Свод по учреждениям"> 
+</br>
+    
+</br>
 <table class="freeze-table" width="700px"> 
     <thead>
         <tr>
@@ -140,7 +144,7 @@
     </thead>
        
     @if ($info['variant'] == '2')
-        
+        @include('build.back.adminblock.two')
     @elseif ($info['variant'] == '3')
         @include('build.back.adminblock.three')
     @elseif ($info['variant'] == '4')
