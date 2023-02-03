@@ -25,7 +25,7 @@
 
 <form id="build" method="get"> 
 <p><b>Выберите вариант таблицы</b></p>                 
-    <div class="size_block">                  
+    <div>                  
         <label class="checkbox style-f">
             <input type="checkbox" name="variant" value="2">
             <div class="checkbox__checkmark"></div>
