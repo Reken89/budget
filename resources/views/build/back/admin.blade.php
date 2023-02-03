@@ -120,10 +120,24 @@
 <p><input type="button" style="width:250px;height:25px" name="formSubmit" id="btn_one" class="button5" value="Сформировать таблицу" /></p>                     
 </form>
 
+<input type="button" style="width:250px;height:25px" name="formSubmit" id="btn_three" class="button5" value="Свод по учреждениям"> 
 </br>
-    <input type="button" style="width:250px;height:25px" name="formSubmit" id="btn_three" class="button5" value="Свод по учреждениям"> 
-</br>
+
+@if ($info['variant'] == '1')
+        
+@else
+    </br>
+    <form action="/budget/public/admin/build/export" method="get">
+        <button type="submit" style="width:250px;height:25px" class="button5">Выгрузка в EXCEL</button>
+    </form>
     
+    </br>
+<div class="shadowbox">
+    <p>Год: 2023</p>
+    <p>Месяц: {{ $info['mounth_double'] }}</p>
+</div>
+@endif
+
 </br>
 <table class="freeze-table" width="700px"> 
     <thead>

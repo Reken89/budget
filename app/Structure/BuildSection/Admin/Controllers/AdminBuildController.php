@@ -13,6 +13,7 @@ use App\Structure\BuildSection\Admin\Dto\BuildAddDto;
 use App\Structure\BuildSection\Admin\Actions\BuildIndexAction;
 use App\Structure\BuildSection\Admin\Actions\BuildUpdateAction;
 use App\Structure\BuildSection\Admin\Actions\BuildAddAction;
+use App\Structure\BuildSection\Admin\Exports\ExportAdminTable;
 
 class AdminBuildController extends Controller
 {
@@ -48,6 +49,9 @@ class AdminBuildController extends Controller
         } else {
             $info = $this->action(BuildIndexAction::class)->run($year, $mounth, $variant);
         }
+        
+        //Записываем $info в сессию, для работы с ним в шаблоне excel
+        session(['info' => $info]);
 
         return view('build.back.admin', ['info' => $info]);    
     }
@@ -115,6 +119,18 @@ class AdminBuildController extends Controller
         session(['option' => true]);
         
         echo "Складывайте самостоятельно в EXCEL))";     
+    }
+    
+    /**
+     * Выгрузка таблицы в EXCEL
+     * 
+     * @param 
+     * @return Excel
+     */
+    public function export()
+    { 
+        return Excel::download(new ExportAdminTable, 'table.xlsx');
+
     }
     
 }
