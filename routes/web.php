@@ -28,6 +28,7 @@ Route::get('/admin/communal/back', [AdminCommunalController::class, 'index'])->m
 Route::patch('/admin/communal/updatestatus', [AdminCommunalController::class, 'updatestatus'])->middleware('auth', 'admin');
 Route::patch('/admin/communal/updatetarrif', [AdminCommunalController::class, 'updatetarrif'])->middleware('auth', 'admin');
 Route::get('/admin/communal/export', [AdminCommunalController::class, 'export'])->middleware('auth', 'admin');
+Route::get('/admin/communal/email', [AdminCommunalController::class, 'email'])->middleware('auth', 'admin');
 
 Route::get('/user/communal/back', [CommunalController::class, 'index'])->middleware('auth');
 Route::patch('/user/communal/update', [CommunalController::class, 'update'])->middleware('auth');

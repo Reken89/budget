@@ -126,6 +126,19 @@
                 })               
         })
         
+        //Отправляем email при нажатии на кнопку
+        $(document).on('click', '#btn_three', function(){
+                $.ajax({
+                    url:"/budget/public/admin/communal/email",  
+                    method:"get",
+                    dataType:"text",  
+                    success:function(data){  
+                        alert(data);
+                        fetch_data();  
+                    } 
+                })               
+        })
+        
     });
 </script>
 

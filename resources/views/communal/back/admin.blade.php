@@ -133,6 +133,10 @@
 </form>
 
 </br>
+<input type="button" style="width:250px;height:25px" name="formSubmit" id="btn_three" class="button5" value="Отправить email"> 
+</br>
+
+</br>
 <div class="shadowbox">
     <p>Год: @foreach ($year as $y) {{$y}}, @endforeach</p>
     <p>Месяц: @foreach ($mounth as $m) {{$m}}, @endforeach</p>

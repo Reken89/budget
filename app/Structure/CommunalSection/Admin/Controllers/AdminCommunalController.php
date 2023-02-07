@@ -3,6 +3,7 @@
 namespace App\Structure\CommunalSection\Admin\Controllers;
 
 use Illuminate\Http\Request;
+//use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\JsonResponse;
 use App\Core\Controllers\Controller;
@@ -109,6 +110,20 @@ class AdminCommunalController extends Controller
     public function export()
     { 
         return Excel::download(new ExportAdminTable, 'table.xlsx');
+
+    }
+    
+    /**
+     * Выгрузка таблицы в EXCEL
+     * 
+     * @param 
+     * @return Excel
+     */
+    public function email()
+    { 
+        mail("admin@kostamail.ru", "Портал коммунальные услуги", "Вы не заполнили информацию на портале коммунальные услуги","FROM: portal@kostamail.ru \r\n");
+        
+        echo "Сообщение отправлено";
 
     }
     
