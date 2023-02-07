@@ -22,7 +22,7 @@ class OfsSelectForSharedTask extends BaseTask
         } elseif($num >= 21 && $num <= 25){
             $number = [21, 22, 23, 24, 25];
         } elseif($num >= 27 && $num <= 34){
-            $number = [27, 28, 29, 30, 31, 32, 33, 34];
+            $number = [27, 28, 29, 30, 31, 32];
         } elseif($num >= 36 && $num <= 42){
             $number = [36, 37, 38, 39, 40, 41, 42];
         }

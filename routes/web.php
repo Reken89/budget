@@ -6,6 +6,7 @@ use App\Structure\OfsSection\Admin\Controllers\AdminOfsController;
 use App\Structure\CommunalSection\User\Controllers\CommunalController;
 use App\Structure\CommunalSection\Admin\Controllers\AdminCommunalController;
 use App\Structure\BuildSection\Admin\Controllers\AdminBuildController;
+use App\Structure\BuildSection\User\Controllers\UserBuildController;
 
 /*
 |--------------------------------------------------------------------------
@@ -74,8 +75,11 @@ Route::post('/admin/build/add', [AdminBuildController::class, 'add'])->middlewar
 Route::get('/admin/build/plug', [AdminBuildController::class, 'plug'])->middleware('auth', 'admin');
 Route::get('/admin/build/export', [AdminBuildController::class, 'export'])->middleware('auth', 'admin');
 
+Route::get('/user/build/back', [UserBuildController::class, 'index'])->middleware('auth');
+
 //Роуты для Front (Модуль Строительство)
 Route::get('/admin/build', [AdminBuildController::class, 'user'])->middleware('auth', 'admin')->name('adminbuild');
+Route::get('/user/build', [UserBuildController::class, 'user'])->middleware('auth')->name('userbuild');
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
