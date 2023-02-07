@@ -3,7 +3,6 @@
 namespace App\Structure\CommunalSection\Admin\Controllers;
 
 use Illuminate\Http\Request;
-//use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\JsonResponse;
 use App\Core\Controllers\Controller;
@@ -11,6 +10,7 @@ use App\Structure\CommunalSection\Admin\Exports\ExportAdminTable;
 use App\Structure\CommunalSection\Admin\Actions\CommunalIndexAction;
 use App\Structure\CommunalSection\Admin\Actions\CommunalUpdateStatusAction;
 use App\Structure\CommunalSection\Admin\Actions\CommunalUpdateTarrifAction;
+use App\Structure\CommunalSection\Admin\Actions\CommunalSendEmailAction;
 use App\Structure\CommunalSection\Admin\Dto\CommunalIndexDto;
 use App\Structure\CommunalSection\Admin\Dto\CommunalUpdateTarrifDto;
 use App\Structure\CommunalSection\Admin\Requests\CommunalIndexRequest;
@@ -114,17 +114,27 @@ class AdminCommunalController extends Controller
     }
     
     /**
-     * Выгрузка таблицы в EXCEL
+     * Отправка уведомлений по email
      * 
      * @param 
      * @return Excel
      */
     public function email()
     { 
-        mail("admin@kostamail.ru", "Портал коммунальные услуги", "Вы не заполнили информацию на портале коммунальные услуги","FROM: portal@kostamail.ru \r\n");
+        //Значение для варианта отрисовки таблицы
+        session(['option' => true]);
         
-        echo "Сообщение отправлено";
+        $year = session('year');
+        $mounth = session('mounth');
+        
+        if (count($year) == '1' AND count($mounth) == '1'){
+            $info = $this->action(CommunalSendEmailAction::class)->run($year, $mounth); 
+            echo "Уведомления отправлены!";
+        } else {
+            echo "Уведомления отправляются только при выборе одного месяца и года!";
 
+        }
+            
     }
     
 }
