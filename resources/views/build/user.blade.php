@@ -11,7 +11,7 @@
             var mounth = info['mounth'];
             var variant = info['variant'];
             $.ajax({  
-                url:"/budget/public/admin/build/back",  
+                url:"/budget/public/user/build/back",  
                 method:"GET",
                 data:{
                     year, mounth, variant
@@ -53,7 +53,7 @@
             let mounth = mounth_many[0];
                 
             $.ajax({
-                url:"/budget/public/admin/build/back",  
+                url:"/budget/public/user/build/back",  
                 method:"get",
                 data:{
                     year, mounth, variant
