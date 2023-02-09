@@ -123,7 +123,6 @@
 @if ($info['variant'] == '1')
         
 @else
-    </br>
     <form action="#" method="get">
         <button type="submit" style="width:250px;height:25px" class="button5">Выгрузка в EXCEL</button>
     </form>
@@ -159,7 +158,7 @@
     @elseif ($info['variant'] == '3')
         @include('build.back.adminblock.three')
     @elseif ($info['variant'] == '4')
-        @include('build.back.adminblock.four')
+        @include('build.back.userblock.four')
     @elseif ($info['variant'] == '5')
         @include('build.back.adminblock.five')
     @elseif ($info['variant'] == '6')

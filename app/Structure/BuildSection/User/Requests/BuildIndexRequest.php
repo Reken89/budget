@@ -14,7 +14,7 @@ class BuildIndexRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'mounth'  => 'required|integer',
+            'mounth'  => 'required|array',
             'year'    => 'required|integer',
             'variant' => 'required|integer',
         ];

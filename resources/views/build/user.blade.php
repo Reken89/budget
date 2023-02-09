@@ -2,7 +2,48 @@
 <div id="live_data"></div>
 
 <script>
-    $(document).ready(function(){       
+    $(document).ready(function(){
+        //Выполняем запись в БД при нажатии на клавишу ENTER
+        function setKeydownmyForm() {
+            $('input').keydown(function(e) {
+                if (e.keyCode === 13) {
+                    var tr = this.closest('tr');
+                    var id = $('.id', tr).val(); 
+                    var user_id = $('.user_id', tr).val();
+                    var work_id = $('.work_id', tr).val();
+                    var mounth = $('.mounth', tr).val();
+                    var number = $('.number', tr).val();
+                    var period = $('.period', tr).val();
+                    var year = 2023;
+                    
+                    //Получаем значения, меняем запятую на точку и убираем пробелы в числе                   
+                    function structure(title){
+                        var volume = $(title, tr).val();
+                        var volume = volume.replace(",",".");
+                        var volume = volume.replace(/ /g,'');
+                        return volume;
+                    }
+                    
+                    var contract_sum = structure('.contract_sum');
+                    var kassa_sum = structure('.kassa_sum');
+                    var fact_sum = structure('.fact_sum');
+                                        
+                    $.ajax({
+                        url:"/budget/public/user/build/update",  
+                        method:"patch",  
+                        data:{
+                            "_token": "{{ csrf_token() }}",
+                            id, user_id, work_id, mounth, number, period, year,
+                            contract_sum, kassa_sum, fact_sum
+                        },
+                        dataType:"text",  
+                        success:function(data){  
+                            fetch_data(); 
+                        } 
+                    })                   
+                }               
+            })
+        }
         
         //Подгружаем BACK шаблон отрисовки
         function fetch_data(){  
@@ -32,7 +73,7 @@
             let year = 2023;
 
             //Создаем пустые массивы
-            let mounth_many = [];
+            let mounth = [];
             let variant_many = [];
             
             //Заполняем в массив year, все значения
@@ -43,14 +84,13 @@
             for (const item of infomany) {
                 const value = item.value;
                 if (item.name === 'mounth') {
-                    mounth_many.push(value);
+                    mounth.push(value);
                 } else if (item.name === 'variant') {
                     variant_many.push(value);
                 }
             }
             
             let variant = variant_many[0];
-            let mounth = mounth_many[0];
                 
             $.ajax({
                 url:"/budget/public/user/build/back",  

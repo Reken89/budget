@@ -76,6 +76,7 @@ Route::get('/admin/build/plug', [AdminBuildController::class, 'plug'])->middlewa
 Route::get('/admin/build/export', [AdminBuildController::class, 'export'])->middleware('auth', 'admin');
 
 Route::get('/user/build/back', [UserBuildController::class, 'index'])->middleware('auth');
+Route::patch('/user/build/update', [UserBuildController::class, 'update'])->middleware('auth');
 
 //Роуты для Front (Модуль Строительство)
 Route::get('/admin/build', [AdminBuildController::class, 'user'])->middleware('auth', 'admin')->name('adminbuild');

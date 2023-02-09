@@ -5,6 +5,10 @@ namespace App\Structure\BuildSection\User\Controllers;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Core\Controllers\Controller;
 use App\Structure\BuildSection\User\Requests\BuildIndexRequest;
+use App\Structure\BuildSection\User\Requests\BuildUpdateRequest;
+use App\Structure\BuildSection\User\Dto\BuildUpdateDto;
+use App\Structure\BuildSection\User\Actions\BuildIndexAction;
+use App\Structure\BuildSection\User\Actions\BuildUpdateAction;
 
 class UserBuildController extends Controller
 {
@@ -38,7 +42,7 @@ class UserBuildController extends Controller
                 'variant' => 1,
             ];
         } else {
-
+            $info = $this->action(BuildIndexAction::class)->run($year, $mounth, $variant);
         }
         
         //Записываем $info в сессию, для работы с ним в шаблоне excel
@@ -62,6 +66,23 @@ class UserBuildController extends Controller
             'variant' => $request->variant,
         ];
         return view('build.user', ['info' => $info]);
-    }         
+    } 
+    
+     /**
+     * Обновляет значения в таблицах repairs
+     *
+     * @param BuildUpdateRequest $request
+     * @return 
+     */
+    public function update(BuildUpdateRequest $request)
+    {
+        //Значение для варианта отрисовки таблицы
+        session(['option' => true]);
+        
+        $dto = BuildUpdateDto::fromRequest($request);
+        $status = $this->action(BuildUpdateAction::class)->run($dto);
+        
+        return $status;       
+    }
     
 }

@@ -115,7 +115,7 @@
 <div class = "center">
     <form action="{{ route('userbuild')}}" method="get">
         <input type='hidden' name='year' value='2023'>
-        <input type='hidden' name='mounth' value='1'>
+        <input type='hidden' name='mounth[]' value='1'>
         <input type='hidden' name='variant' value='1'>
         <button type="submit" class="custom-btn btn-16"><b>Строительство<b></button>
     </form>
