@@ -123,7 +123,7 @@
 @if ($info['variant'] == '1')
         
 @else
-    <form action="#" method="get">
+    <form action="/budget/public/admin/build/export" method="get">
         <button type="submit" style="width:250px;height:25px" class="button5">Выгрузка в EXCEL</button>
     </form>
     
@@ -154,15 +154,15 @@
     </thead>
        
     @if ($info['variant'] == '2')
-        @include('build.back.adminblock.two')
+        @include('build.back.userblock.two')
     @elseif ($info['variant'] == '3')
-        @include('build.back.adminblock.three')
+        @include('build.back.userblock.three')
     @elseif ($info['variant'] == '4')
         @include('build.back.userblock.four')
     @elseif ($info['variant'] == '5')
-        @include('build.back.adminblock.five')
+        @include('build.back.userblock.five')
     @elseif ($info['variant'] == '6')
-        @include('build.back.adminblock.six')    
+        @include('build.back.userblock.six')    
     @endif
     
 </table>    
