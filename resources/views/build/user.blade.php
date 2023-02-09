@@ -106,6 +106,48 @@
                 } 
             })               
         })
+        
+        //Выполняем действие (отправка данных) при нажатии на кнопку
+        $(document).on('click', '#btn_two', function(){
+            var tr = this.closest('tr');
+            var user_id = $('.user_id', tr).val();
+            var ekr = $('.ekr', tr).val();
+            var ekr_double = $('.ekr_double', tr).val();
+            var title = $('.title', tr).val();
+            var mounth = $('.mounth', tr).val();
+            var number = $('.number', tr).val();
+            var period = $('.period', tr).val();
+            var year = 2023;
+            
+            //Получаем значения, меняем запятую на точку и убираем пробелы в числе                   
+            function structure(title){
+                var volume = $(title, tr).val();
+                var volume = volume.replace(",",".");
+                var volume = volume.replace(/ /g,'');
+                return volume;
+            }
+                    
+            var contract_sum = structure('.contract_sum');
+            var kassa_sum = structure('.kassa_sum');
+            var fact_sum = structure('.fact_sum');
+            
+            $.ajax({
+                url:"/budget/public/user/build/add",  
+                method:"post",
+                data:{
+                    "_token": "{{ csrf_token() }}",
+                    user_id, mounth, year, 
+                    ekr, ekr_double, number,
+                    title, period, contract_sum,
+                    kassa_sum, fact_sum
+                },
+                dataType:"text",  
+                success:function(data){  
+                    //alert(data);
+                    fetch_data();  
+                } 
+            })               
+        })
                        
     });
 </script>

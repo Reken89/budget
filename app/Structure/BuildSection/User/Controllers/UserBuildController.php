@@ -6,9 +6,12 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Core\Controllers\Controller;
 use App\Structure\BuildSection\User\Requests\BuildIndexRequest;
 use App\Structure\BuildSection\User\Requests\BuildUpdateRequest;
+use App\Structure\BuildSection\User\Requests\BuildAddRequest;
 use App\Structure\BuildSection\User\Dto\BuildUpdateDto;
+use App\Structure\BuildSection\User\Dto\BuildAddDto;
 use App\Structure\BuildSection\User\Actions\BuildIndexAction;
 use App\Structure\BuildSection\User\Actions\BuildUpdateAction;
+use App\Structure\BuildSection\User\Actions\BuildAddAction;
 
 class UserBuildController extends Controller
 {
@@ -83,6 +86,23 @@ class UserBuildController extends Controller
         $status = $this->action(BuildUpdateAction::class)->run($dto);
         
         return $status;       
+    }
+    
+    /**
+     * Добавляет строки в таблицах repairs и work
+     *
+     * @param BuildAddRequest $request
+     * @return 
+     */
+    public function add(BuildAddRequest $request)
+    {
+        //Значение для варианта отрисовки таблицы
+        session(['option' => true]);
+        
+        $dto = BuildAddDto::fromRequest($request);
+        $result = $this->action(BuildAddAction::class)->run($dto);
+        
+        return $result;       
     }
     
 }
