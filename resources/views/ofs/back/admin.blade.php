@@ -38,7 +38,7 @@
 </div> 
 
 <form id="ofs" method="get"> 
-<p><b>Выберите месяц</b></p>                                   
+<h3>Выберите месяц</h3>                                   
 <div>                         
     <label class="checkbox style-f">
         <input type="checkbox" name="mounth" value="1">
@@ -104,7 +104,7 @@
 </div>
 
 </br>
-<p><b>Выберите раздел</b></p>                                   
+<h3>Выберите раздел</h3>                                   
 <div>                         
     <label class="checkbox style-f">
         <input type="checkbox" name="chapter" value="1">
@@ -134,7 +134,7 @@
 </div>
 
 </br>
-<p><b>Выберите учреждение</b></p>                                   
+<h3>Выберите учреждение</h3>                                   
 <div>                         
     <label class="checkbox style-f">
         <input type="checkbox" name="user" value="25">

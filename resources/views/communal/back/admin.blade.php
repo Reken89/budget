@@ -27,7 +27,7 @@
 
 <form id="communal" method="get"> 
 
-<p><b>Выберите год </b></p>                 
+<h3>Выберите год </h3>                 
     <div class="size_block">                  
         <label class="checkbox style-f">
             <input type="checkbox" name="year" value="2018">
@@ -61,7 +61,7 @@
         </label> 
     </div>
                          
-<p><b>Выберите месяц</b></p>                                   
+<h3>Выберите месяц</h3>                                   
 <div>                         
     <label class="checkbox style-f">
         <input type="checkbox" name="mounth" value="1">

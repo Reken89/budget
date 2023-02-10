@@ -24,7 +24,7 @@
 </div>
 
 <form id="build" method="get"> 
-<p><b>Выберите вариант таблицы</b></p>                 
+<h3>Выберите вариант таблицы</h3>                 
     <div>                  
         <label class="checkbox style-f">
             <input type="checkbox" name="variant" value="2">
@@ -53,7 +53,7 @@
         </label>
     </div>
                          
-<p><b>Выберите месяц</b></p>                                   
+<h3>Выберите месяц</h3>                                   
 <div>                         
     <label class="checkbox style-f">
         <input type="checkbox" name="mounth" value="1">
