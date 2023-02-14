@@ -26,9 +26,9 @@ class EkrOfsAddSeeder extends Seeder
         $ekr = Ekr::create([
             'shared' => 'No',
             'main'   => 'No',
-            'number' => 23,
-            'ekr'    => 263,
-            'title'  => 'Продуктовые пакеты (питание школьников)',
+            'number' => 4,
+            'ekr'    => 214,
+            'title'  => 'Компенсация арендной платы по договорам аренды (найма) жилья',
         ]);
         
         foreach ($users as $user) {
