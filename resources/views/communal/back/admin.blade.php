@@ -221,7 +221,7 @@
                 
                 <tr>
                     <input type="hidden" class="id" value="{{ $value['id'] }}">
-                    <td class="col-id-no" bgcolor="{{ $color }}">{{ $value['user']['name'] }}</td>
+                    <td class="col-id-no" bgcolor="{{ $color }}"><font color='white'>{{ $value['user']['name'] }}</font></td>
                     @if ($value['status'] == 3)
                         <td><input type=button class="button" id='btn_two' value='Изменить'></td>
                     @else
