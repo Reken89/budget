@@ -77,7 +77,6 @@ tr:nth-child(odd) td[scope=row] {
     padding: 10px; /* Поля вокруг текста */
     border-radius: 10px; /* Уголки */
     width: 800px;
-    height: 80px;
 }
       
 .size_block {
