@@ -11,10 +11,13 @@ use App\Structure\CommunalSection\Admin\Actions\CommunalIndexAction;
 use App\Structure\CommunalSection\Admin\Actions\CommunalUpdateStatusAction;
 use App\Structure\CommunalSection\Admin\Actions\CommunalUpdateTarrifAction;
 use App\Structure\CommunalSection\Admin\Actions\CommunalSendEmailAction;
+use App\Structure\CommunalSection\Admin\Actions\CommunalSynchAction;
 use App\Structure\CommunalSection\Admin\Dto\CommunalIndexDto;
 use App\Structure\CommunalSection\Admin\Dto\CommunalUpdateTarrifDto;
+use App\Structure\CommunalSection\Admin\Dto\CommunalSynchDto;
 use App\Structure\CommunalSection\Admin\Requests\CommunalIndexRequest;
 use App\Structure\CommunalSection\Admin\Requests\CommunalUpdateTarrifRequest;
+use App\Structure\CommunalSection\Admin\Requests\CommunalSynchRequest;
 
 class AdminCommunalController extends Controller
 {
@@ -135,6 +138,28 @@ class AdminCommunalController extends Controller
 
         }
             
+    }
+    
+    /**
+     * Синхронизация тарифов
+     * 
+     * @param CommunalSynchRequest $request
+     * @return string
+     */
+    public function synchronization(CommunalSynchRequest $request)
+    { 
+        //Значение для варианта отрисовки таблицы
+        session(['option' => true]);
+        
+        if ($request->mounth > 1){
+            $dto = CommunalSynchDto::fromRequest($request);
+            $info = $this->action(CommunalSynchAction::class)->run($dto); 
+            
+            echo "Работа по заполнению тарифов, выполнена за Вас))";
+        } else {
+            echo "До января нет месяца, не с чем синхронизировать...";
+        }
+                          
     }
     
 }

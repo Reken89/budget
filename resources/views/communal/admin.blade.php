@@ -139,7 +139,7 @@
                 })               
         })
         
-        //Выполняем действие (изменение статуса) при нажатии на кнопку
+        //Выполняем действие (синхронзировать тарифы) при нажатии на кнопку
         $(document).on('click', '#btn_four', function(){
             let info = $('#tarrifs').serializeArray();
             let year = info[0]['value'];
@@ -147,16 +147,16 @@
             let id = info[2]['value'];
             
                 $.ajax({
-                    //url:"/budget/public/admin/communal/updatestatus",  
-                    //method:"patch",
+                    url:"/budget/public/admin/communal/synchronization",  
+                    method:"patch",
                     data:{
                         "_token": "{{ csrf_token() }}",
-                        //id
+                        year, mounth, id
                     },
                     dataType:"text",  
                     success:function(data){ 
-                        alert(id);
-                        //fetch_data();  
+                        alert(data);
+                        fetch_data();  
                     } 
                 })               
         })

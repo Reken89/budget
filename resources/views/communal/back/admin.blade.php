@@ -136,13 +136,15 @@
 <input type="button" style="width:250px;height:25px" name="formSubmit" id="btn_three" class="button5" value="Отправить email"> 
 </br>
 
+@if ($info['variant'] == "one")
 </br>
 <form id="tarrifs" method="patch"> 
     <input type='hidden' name='year' value="{{ $year[0] }}">
     <input type='hidden' name='mounth' value="{{ $mounth[0] }}">
     <input type='hidden' name='id' value="{{ $info['tarrif']['id'] }}">
-    <input type="button" style="width:250px;height:25px" name="formSubmit" id="btn_four" class="button5" value="синхронизация тарифов"> 
+    <input type="button" style="width:250px;height:25px" name="formSubmit" id="btn_four" class="button5" value="Синхронизация тарифов"> 
 </form>    
+@endif
 
 </br>
 <div class="shadowbox">
