@@ -335,6 +335,11 @@
     <input type="button" style="width:250px;height:25px" name="formSubmit" id="btn_four" class="button5" value="Синхронизация"> 
 </br>
 
+<blockquote class="blockquote-7">
+    <p><b><font color='red'>Процесс синхронизации может длится около минуты! После нажатия на кнопку «Синхронизация», дождитесь результата, не нужно нажимать кнопку повторно во время выполнения процесса!</font></b></p>
+    <cite></cite>
+</blockquote>
+
 </br>
 <table class="freeze-table" width="700px">             
     <thead>

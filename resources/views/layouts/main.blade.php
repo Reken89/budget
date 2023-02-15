@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="/budget/resources/css/style.css">
 <link rel="stylesheet" href="/budget/resources/css/style_checkbox.css">
 <link rel="stylesheet" href="/budget/resources/css/lenta.css">
+<link rel="stylesheet" href="/budget/resources/css/citata.css">
 
 <body>
 
