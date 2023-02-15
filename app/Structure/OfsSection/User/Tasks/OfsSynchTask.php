@@ -17,8 +17,10 @@ class OfsSynchTask extends BaseTask
     public function run(int $user, int $year, int $mounth, int $chapter, array $info)
     {  
         foreach ($info as $inf){
-            if($inf['total2'] !== 0){
-            Ofs::where('user_id', $user)
+            if($inf['total2'] == '0'){
+                //Заглушка
+            } else {
+                Ofs::where('user_id', $user)
                 ->where('year', $year)
                 ->where('mounth', $mounth)  
                 ->where('chapter', $chapter) 
