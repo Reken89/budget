@@ -13,7 +13,7 @@
         '11' => 'Ноябрь',
         '12' => 'Декабрь',
     ];
-    //var_dump($info['status']);
+    var_dump($info);
 @endphp
 
 <head>
