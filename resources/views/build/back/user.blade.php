@@ -85,6 +85,7 @@
         <div class="checkbox__checkmark"></div>
         <div class="checkbox__body">Июнь</div>
     </label>
+    </br>
     <label class="checkbox style-f">
         <input type="checkbox" name="mounth" value="7">
         <div class="checkbox__checkmark"></div>

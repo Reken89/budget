@@ -93,6 +93,7 @@
         <div class="checkbox__checkmark"></div>
         <div class="checkbox__body">Июнь</div>
     </label>
+    </br>
     <label class="checkbox style-f">
         <input type="checkbox" name="mounth" value="7">
         <div class="checkbox__checkmark"></div>
@@ -221,7 +222,7 @@
                 
                 <tr>
                     <input type="hidden" class="id" value="{{ $value['id'] }}">
-                    <td class="col-id-no" bgcolor="{{ $color }}"><font color='white'>{{ $value['user']['name'] }}</font></td>
+                    <th class="col-id-no" bgcolor="{{ $color }}"><font color='white'>{{ $value['user']['name'] }}</font></th>
                     @if ($value['status'] == 3)
                         <td><input type=button class="button" id='btn_two' value='Изменить'></td>
                     @else

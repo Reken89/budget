@@ -341,11 +341,11 @@
 
     <tbody>
         <tr>
-            <td class="col-id-no" scope="row">1</td><td bgcolor="{{ $color }}">2</td><td bgcolor="{{ $color }}">3</td><td bgcolor="{{ $color }}">4</td>
-            <td bgcolor="{{ $color }}">5</td><td bgcolor="{{ $color }}">6</td><td bgcolor="{{ $color }}">7</td><td bgcolor="{{ $color }}">8</td>
-            <td bgcolor="{{ $color }}">9</td><td bgcolor="{{ $color }}">10</td><td bgcolor="{{ $color }}">11</td><td bgcolor="{{ $color }}">12</td>
-            <td bgcolor="{{ $color }}">13</td><td bgcolor="{{ $color }}">14</td><td bgcolor="{{ $color }}">15</td><td bgcolor="{{ $color }}">16</td>
-            <td bgcolor="{{ $color }}">17</td><td bgcolor="{{ $color }}">18</td><td bgcolor="{{ $color }}">19</td>
+            <th class="col-id-no" scope="row">1</th><th bgcolor="{{ $color }}">2</th><th bgcolor="{{ $color }}">3</th><th bgcolor="{{ $color }}">4</th>
+            <th bgcolor="{{ $color }}">5</th><th bgcolor="{{ $color }}">6</th><th bgcolor="{{ $color }}">7</th><th bgcolor="{{ $color }}">8</th>
+            <th bgcolor="{{ $color }}">9</th><th bgcolor="{{ $color }}">10</th><th bgcolor="{{ $color }}">11</th><th bgcolor="{{ $color }}">12</th>
+            <th bgcolor="{{ $color }}">13</th><th bgcolor="{{ $color }}">14</th><th bgcolor="{{ $color }}">15</th><th bgcolor="{{ $color }}">16</th>
+            <th bgcolor="{{ $color }}">17</th><th bgcolor="{{ $color }}">18</th><th bgcolor="{{ $color }}">19</th>
         </tr>             
         <tr>
             <td class="col-id-no" scope="row"></td><td></td><td></td><td></td>

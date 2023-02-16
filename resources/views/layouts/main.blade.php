@@ -18,7 +18,7 @@
 </div>
     
 <style>
-    body { background: url(/budget/resources/image/background_one.png); }
+    body { background: url(/budget/resources/image/background_two.jpg); }
 </style>    
     
 
