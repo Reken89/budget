@@ -46,8 +46,8 @@
 
 
 <form id="ofs" method="get"> 
-<h3>Выберите месяц</h3>                                   
-<div>                         
+<h3>Выберите месяц</h3> 
+<div>
     <label class="checkbox style-f">
         <input type="checkbox" name="mounth" value="1">
         <div class="checkbox__checkmark"></div>
