@@ -14,7 +14,7 @@ class OfsSelectTotalTask extends BaseTask
      * @param int $user, int $year, int $mounth, int $chapter
      * @return array
      */
-    public function run(int $user, int $year, int $mounth, int $chapter): array
+    public function run(int $user, int $year, int $mounth, array $chapter): array
     {        
         $total = Ofs::selectRaw('SUM(`lbo`) as lbo')
             ->selectRaw('SUM(`prepaid`) as prepaid')
@@ -37,7 +37,7 @@ class OfsSelectTotalTask extends BaseTask
             ->where('user_id', $user)
             ->where('year', $year)
             ->where('mounth', $mounth)
-            ->where('chapter', $chapter)
+            ->whereIn('chapter', $chapter)
             ->whereHas('ekr', function (Builder $query) {
                 $query->where('shared', 'No');
                 $query->where('main', 'Yes');

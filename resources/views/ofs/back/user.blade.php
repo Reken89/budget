@@ -323,22 +323,26 @@
     <button type="submit" style="width:250px;height:25px" class="button5">Выгрузка в EXCEL</button>
 </form>
 
-</br>
-<input type="button" style="width:250px;height:25px" name="formSubmit" id="btn_three" class="button5" value="Отправить в ФЭУ"> 
+@if ($info['variant'] == 'one')
+    </br>
+    <input type="button" style="width:250px;height:25px" name="formSubmit" id="btn_three" class="button5" value="Отправить в ФЭУ"> 
+@endif
 
 </br>
 <div class="shadowbox">
-    <p>Учреждение: {{ $info['result'][0]['user']['name'] }}</br>Месяц: {{ $mounth[$info['result'][0]['mounth']] }}</br>Раздел: {{ $info['result'][0]['chapter'] }}</p>
+    <p>Учреждение: {{ $info['result'][0]['user']['name'] }}</br>Месяц: {{ $info['mounth'] }}</br>Раздел: @foreach ($info['chapter'] as $chap) {{ $chap }}, @endforeach</p>
 </div>
 
-</br>
-    <input type="button" style="width:250px;height:25px" name="formSubmit" id="btn_four" class="button5" value="Синхронизация"> 
-</br>
+@if ($info['variant'] == 'one')
+    </br>
+        <input type="button" style="width:250px;height:25px" name="formSubmit" id="btn_four" class="button5" value="Синхронизация"> 
+    </br>
 
-<blockquote class="blockquote-7">
-    <p><b><font color='red'>Процесс синхронизации может длится около минуты! После нажатия на кнопку «Синхронизация», дождитесь результата, не нужно нажимать кнопку повторно во время выполнения процесса!</font></b></p>
-    <cite></cite>
-</blockquote>
+    <blockquote class="blockquote-7">
+        <p><b><font color='red'>Процесс синхронизации может длится около минуты! После нажатия на кнопку «Синхронизация», дождитесь результата, не нужно нажимать кнопку повторно во время выполнения процесса!</font></b></p>
+        <cite></cite>
+    </blockquote>
+@endif
 
 </br>
 <table class="freeze-table" width="700px">             
@@ -384,7 +388,7 @@
                             $shared_id = 10;
                         }
                     @endphp
-                @if ($value['ekr']['shared'] == 'Yes' && $value['ekr']['number'] == $n)
+                @if ($value['ekr']['shared'] == 'Yes' && $value['ekr']['number'] == $n && $info['variant'] == 'one')
                     @php
                         $shared_id = $value['id'];
                     @endphp
@@ -392,7 +396,9 @@
                 
                 @if ($value['ekr']['main'] == 'Yes' && $value['ekr']['number'] == $n)
                     @php
-                        $main_id = $value['id'];
+                        if ($info['variant'] == 'one'){
+                            $main_id = $value['id']; 
+                        }
                     @endphp
                     <tr>
                         <td class="col-id-no" scope="row"><b>{{ $value['ekr']['title'] }}</b></td>
@@ -419,38 +425,63 @@
                 @endif
                 
                 @if ($value['ekr']['main'] == 'No' && $value['ekr']['number'] == $n)
-                    @if ($value['status'] == '2')
-                        <tr>
-                            <input type="hidden" class="id" value="{{ $value['id'] }}">
-                            <input type="hidden" class="user_id" value="{{ $value['user_id'] }}">
-                            <input type="hidden" class="main_id" value="{{ $main_id }}">
-                            <input type="hidden" class="shared_id" value="{{ $shared_id }}">
-                            <input type="hidden" class="number" value="{{ $n }}">
-                            <input type="hidden" class="year" value="{{ $value['year'] }}">
-                            <input type="hidden" class="mounth" value="{{ $value['mounth'] }}">
-                            <input type="hidden" class="chapter" value="{{ $value['chapter'] }}">
-                            <td class="col-id-no" scope="row">{{ $value['ekr']['title'] }}</td>
-                            <td><input type=button class='button' id='btn_one' value='Сброс'></td>
-                            <td>{{ $value['ekr']['ekr'] }}</td>
-                            <td><input type="text" class="lbo" value="{{ number_format($value['lbo'], 2, ',', ' ') }}"></td>  
-                            <td><input type="text" class="prepaid" value="{{ number_format($value['prepaid'], 2, ',', ' ') }}"></td>
-                            <td><input type="text" class="credit_year_all" value="{{ number_format($value['credit_year_all'], 2, ',', ' ') }}"></td>
-                            <td><input type="text" class="credit_year_term" value="{{ number_format($value['credit_year_term'], 2, ',', ' ') }}"></td>
-                            <td><input type="text" class="debit_year_all" value="{{ number_format($value['debit_year_all'], 2, ',', ' ') }}"></td>
-                            <td><input type="text" class="debit_year_term" value="{{ number_format($value['debit_year_term'], 2, ',', ' ') }}"></td>
-                            <td>{{ number_format($value['fact_all'], 2, ',', ' ') }}</td>
-                            <td><input type="text" class="fact_mounth" value="{{ number_format($value['fact_mounth'], 2, ',', ' ') }}"></td>
-                            <td>{{ number_format($value['kassa_all'], 2, ',', ' ') }}</td>
-                            <td><input type="text" class="kassa_mounth" value="{{ number_format($value['kassa_mounth'], 2, ',', ' ') }}"></td>
-                            <td><input type="text" class="credit_end_all" value="{{ number_format($value['credit_end_all'], 2, ',', ' ') }}"></td>
-                            <td><input type="text" class="credit_end_term" value="{{ number_format($value['credit_end_term'], 2, ',', ' ') }}"></td>
-                            <td><input type="text" class="debit_end_all" value="{{ number_format($value['debit_end_all'], 2, ',', ' ') }}"></td>
-                            <td><input type="text" class="debit_end_term" value="{{ number_format($value['debit_end_term'], 2, ',', ' ') }}"></td>
-                            <td><input type="text" class="return_old_year" value="{{ number_format($value['return_old_year'], 2, ',', ' ') }}"></td>
-                            <td>{{ number_format($value['total1'], 2, ',', ' ') }}</td>
-                            <td>{{ number_format($value['total2'], 2, ',', ' ') }}</td>
-                        </tr>
-                    @elseif ($value['status'] == '1')
+                    @if ($info['variant'] == 'one')
+                        @if ($value['status'] == '2')
+                            <tr>
+                                <input type="hidden" class="id" value="{{ $value['id'] }}">
+                                <input type="hidden" class="user_id" value="{{ $value['user_id'] }}">
+                                <input type="hidden" class="main_id" value="{{ $main_id }}">
+                                <input type="hidden" class="shared_id" value="{{ $shared_id }}">
+                                <input type="hidden" class="number" value="{{ $n }}">
+                                <input type="hidden" class="year" value="{{ $value['year'] }}">
+                                <input type="hidden" class="mounth" value="{{ $value['mounth'] }}">
+                                <input type="hidden" class="chapter" value="{{ $value['chapter'] }}">
+                                <td class="col-id-no" scope="row">{{ $value['ekr']['title'] }}</td>
+                                <td><input type=button class='button' id='btn_one' value='Сброс'></td>
+                                <td>{{ $value['ekr']['ekr'] }}</td>
+                                <td><input type="text" class="lbo" value="{{ number_format($value['lbo'], 2, ',', ' ') }}"></td>  
+                                <td><input type="text" class="prepaid" value="{{ number_format($value['prepaid'], 2, ',', ' ') }}"></td>
+                                <td><input type="text" class="credit_year_all" value="{{ number_format($value['credit_year_all'], 2, ',', ' ') }}"></td>
+                                <td><input type="text" class="credit_year_term" value="{{ number_format($value['credit_year_term'], 2, ',', ' ') }}"></td>
+                                <td><input type="text" class="debit_year_all" value="{{ number_format($value['debit_year_all'], 2, ',', ' ') }}"></td>
+                                <td><input type="text" class="debit_year_term" value="{{ number_format($value['debit_year_term'], 2, ',', ' ') }}"></td>
+                                <td>{{ number_format($value['fact_all'], 2, ',', ' ') }}</td>
+                                <td><input type="text" class="fact_mounth" value="{{ number_format($value['fact_mounth'], 2, ',', ' ') }}"></td>
+                                <td>{{ number_format($value['kassa_all'], 2, ',', ' ') }}</td>
+                                <td><input type="text" class="kassa_mounth" value="{{ number_format($value['kassa_mounth'], 2, ',', ' ') }}"></td>
+                                <td><input type="text" class="credit_end_all" value="{{ number_format($value['credit_end_all'], 2, ',', ' ') }}"></td>
+                                <td><input type="text" class="credit_end_term" value="{{ number_format($value['credit_end_term'], 2, ',', ' ') }}"></td>
+                                <td><input type="text" class="debit_end_all" value="{{ number_format($value['debit_end_all'], 2, ',', ' ') }}"></td>
+                                <td><input type="text" class="debit_end_term" value="{{ number_format($value['debit_end_term'], 2, ',', ' ') }}"></td>
+                                <td><input type="text" class="return_old_year" value="{{ number_format($value['return_old_year'], 2, ',', ' ') }}"></td>
+                                <td>{{ number_format($value['total1'], 2, ',', ' ') }}</td>
+                                <td>{{ number_format($value['total2'], 2, ',', ' ') }}</td>
+                            </tr>
+                        @elseif ($value['status'] == '1')
+                            <tr>
+                                <td class="col-id-no" scope="row">{{ $value['ekr']['title'] }}</td>
+                                <td></td>
+                                <td>{{ $value['ekr']['ekr'] }}</td>
+                                <td>{{ number_format($value['lbo'], 2, ',', ' ') }}</td>  
+                                <td>{{ number_format($value['prepaid'], 2, ',', ' ') }}</td>
+                                <td>{{ number_format($value['credit_year_all'], 2, ',', ' ') }}</td>
+                                <td>{{ number_format($value['credit_year_term'], 2, ',', ' ') }}</td>
+                                <td>{{ number_format($value['debit_year_all'], 2, ',', ' ') }}</td>
+                                <td>{{ number_format($value['debit_year_term'], 2, ',', ' ') }}</td>
+                                <td>{{ number_format($value['fact_all'], 2, ',', ' ') }}</td>
+                                <td>{{ number_format($value['fact_mounth'], 2, ',', ' ') }}</td>
+                                <td>{{ number_format($value['kassa_all'], 2, ',', ' ') }}</td>
+                                <td>{{ number_format($value['kassa_mounth'], 2, ',', ' ') }}</td>
+                                <td>{{ number_format($value['credit_end_all'], 2, ',', ' ') }}</td>
+                                <td>{{ number_format($value['credit_end_term'], 2, ',', ' ') }}</td>
+                                <td>{{ number_format($value['debit_end_all'], 2, ',', ' ') }}</td>
+                                <td>{{ number_format($value['debit_end_term'], 2, ',', ' ') }}</td>
+                                <td>{{ number_format($value['return_old_year'], 2, ',', ' ') }}</td>
+                                <td>{{ number_format($value['total1'], 2, ',', ' ') }}</td>
+                                <td>{{ number_format($value['total2'], 2, ',', ' ') }}</td>
+                            </tr>
+                        @endif
+                    @else  
                         <tr>
                             <td class="col-id-no" scope="row">{{ $value['ekr']['title'] }}</td>
                             <td></td>
@@ -473,7 +504,7 @@
                             <td>{{ number_format($value['total1'], 2, ',', ' ') }}</td>
                             <td>{{ number_format($value['total2'], 2, ',', ' ') }}</td>
                         </tr>
-                    @endif
+                    @endif    
                 @endif
             @endforeach 
         @endfor

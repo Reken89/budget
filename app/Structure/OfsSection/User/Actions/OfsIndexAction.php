@@ -16,17 +16,26 @@ class OfsIndexAction extends BaseAction
      * @param int $user, int $year, int $mounth, int $chapter
      * @return array
      */
-    public function run(int $user, int $year, int $mounth, int $chapter): array
+    public function run(int $user, int $year, int $mounth, array $chapter): array
     {   
-        $result = $this->task(OfsSelectAllTask::class)->run($user, $year, $mounth, $chapter);
+        if(count($chapter) == '1'){
+            $result = $this->task(OfsSelectAllTask::class)->run($user, $year, $mounth, $chapter);
+            $variant = "one";
+        } else {
+            $result = $this->task(OfsSelectAllTask::class)->many($user, $year, $mounth, $chapter);
+            $variant = "many";
+        }
         $total = $this->task(OfsSelectTotalTask::class)->run($user, $year, $mounth, $chapter);
         $number = $this->task(OfsNumberMaxTask::class)->run();
   
         $info = [
-            'info'   => 'yes',
-            'result' => $result,
-            'number' => $number,
-            'total'  => $total,
+            'info'    => 'yes',
+            'result'  => $result,
+            'number'  => $number,
+            'total'   => $total,
+            'variant' => $variant,
+            'chapter' => $chapter,
+            'mounth'  => $mounth,
         ];
         
         return $info;

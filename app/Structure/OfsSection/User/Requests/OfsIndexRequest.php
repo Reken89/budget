@@ -17,7 +17,7 @@ class OfsIndexRequest extends FormRequest
             'user'    => 'required|integer',
             'mounth'  => 'required|integer',
             'year'    => 'required|integer',
-            'chapter' => 'required|integer',
+            'chapter' => 'required|array',
             'info'    => 'required|string',
         ];
     }   

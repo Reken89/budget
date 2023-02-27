@@ -10,7 +10,7 @@ class OfsIndexDto extends BaseDto
     public int    $mounth;
     public int    $year;
     public int    $user;
-    public int    $chapter;
+    public array  $chapter;
     public string $info;
 
     /**

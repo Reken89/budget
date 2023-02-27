@@ -68,14 +68,14 @@ class OfsController extends Controller
      * @param OfsUserRequest $request
      * @return view
      */
-    public function user()
+    public function user(OfsIndexRequest $request)
     {        
         $info = [
-            'user'    => 3,
-            'year'    => 2023,
-            'mounth'  => 1,
-            'chapter' => 1,
-            'info'    => 'no',
+            'year'    => $request->year,
+            'mounth'  => $request->mounth,
+            'user'    => $request->user,
+            'chapter' => $request->chapter,
+            'info'    => $request->info,
         ];
         
         return view('ofs.user', ['info' => $info]);

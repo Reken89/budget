@@ -92,7 +92,7 @@
             //Создаем пустые массивы
             let user_many = [];
             let mounth_many = [];
-            let chapter_many = [];
+            let chapter = [];
             
             //Заполняем в массив year, все значения
             //из массива info, где ключ равен 'year'
@@ -106,13 +106,12 @@
                 } else if (item.name === 'user') {
                     user_many.push(value);
                 } else if (item.name === 'chapter') {
-                    chapter_many.push(value);
+                    chapter.push(value);
                 }
             }
             
             let mounth = mounth_many[0];
             let user = user_many[0];
-            let chapter = chapter_many[0];
                 
             $.ajax({
                 url:"/budget/public/user/ofs/back",  
