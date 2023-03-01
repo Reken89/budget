@@ -14,7 +14,7 @@ class OfsSynchAction extends BaseAction
      * @param int $user, int $year, int $mounth, int $chapter
      * @return 
      */
-    public function run(int $user, int $year, int $mounth, int $chapter)
+    public function run(int $user, int $year, int $mounth, array $chapter)
     {   
         $old_mounth = $mounth - 1;
         $info = $this->task(OfsSelectAllTask::class)->run($user, $year, $old_mounth, $chapter);

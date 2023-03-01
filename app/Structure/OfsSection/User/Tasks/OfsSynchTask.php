@@ -14,7 +14,7 @@ class OfsSynchTask extends BaseTask
      * @param int $user, int $year, int $mounth, int $chapter, array $info
      * @return 
      */
-    public function run(int $user, int $year, int $mounth, int $chapter, array $info)
+    public function run(int $user, int $year, int $mounth, array $chapter, array $info)
     {  
         foreach ($info as $inf){
             if($inf['total2'] == '0'){
@@ -23,7 +23,7 @@ class OfsSynchTask extends BaseTask
                 Ofs::where('user_id', $user)
                 ->where('year', $year)
                 ->where('mounth', $mounth)  
-                ->where('chapter', $chapter) 
+                ->where('chapter', $chapter[0]) 
                 ->whereHas('ekr', function (Builder $query) use ($inf) {
                     $query->where('id', $inf['ekr_id']);
                 })
