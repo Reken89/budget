@@ -123,6 +123,7 @@ class OfsController extends Controller
         $year = session('year');
         $mounth = session('mounth');
         $chapter = session('chapter');
+        $chapter = $chapter[0];
         
         if (!$this->action(OfsStatusAction::class)->run($user, $year, $mounth, $chapter)) {
 	    echo "В таблице присутствуют ошибки, отправку в ФЭУ невозможна";
