@@ -38,10 +38,10 @@ class OfsSynchTask extends BaseTask
                     'fact_mounth'      => 0,
                     'kassa_all'        => $inf['kassa_all'],
                     'kassa_mounth'     => 0,
-                    'credit_end_all'   => $inf['credit_end_all'],
-                    'credit_end_term'  => $inf['credit_end_term'],
-                    'debit_end_all'    => $inf['debit_end_all'],
-                    'debit_end_term'   => $inf['debit_end_term'],
+                    'credit_end_all'   => 0,
+                    'credit_end_term'  => 0,
+                    'debit_end_all'    => 0,
+                    'debit_end_term'   => 0,
                     'return_old_year'  => $inf['return_old_year'],
                 ]);
             }    
