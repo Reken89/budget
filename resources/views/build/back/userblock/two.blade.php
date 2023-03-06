@@ -74,7 +74,7 @@
                         <input type="hidden" class="work_id" value="{{ $value['work_id'] }}">
                         <input type="hidden" class="user_id" value="{{ $value['user_id'] }}">
                         <input type="hidden" class="mounth" value="{{ $value['mounth'] }}">
-                        <td>{{ $value['work']['title'] }}</td>
+                        <td class="col-id-no" scope="row">{{ $value['work']['title'] }}</td>
                         <td>{{ $value['work']['ekr'] }}</td>
                         <td>{{ $value['work']['ekr_double'] }}</td>
                         <td>{{ number_format($value['build_sum'], 2, ',', ' ') }}</td>                        
@@ -185,7 +185,7 @@
                         <input type="hidden" class="work_id" value="{{ $value['work_id'] }}">
                         <input type="hidden" class="user_id" value="{{ $value['user_id'] }}">
                         <input type="hidden" class="mounth" value="{{ $value['mounth'] }}">
-                        <td>{{ $value['work']['title'] }}</td>
+                        <td class="col-id-no" scope="row">{{ $value['work']['title'] }}</td>
                         <td>{{ $value['work']['ekr'] }}</td>
                         <td>{{ $value['work']['ekr_double'] }}</td>
                         <td>{{ number_format($value['build_sum'], 2, ',', ' ') }}</td>                        
@@ -296,7 +296,7 @@
                         <input type="hidden" class="work_id" value="{{ $value['work_id'] }}">
                         <input type="hidden" class="user_id" value="{{ $value['user_id'] }}">
                         <input type="hidden" class="mounth" value="{{ $value['mounth'] }}">
-                        <td>{{ $value['work']['title'] }}</td>
+                        <td class="col-id-no" scope="row">{{ $value['work']['title'] }}</td>
                         <td>{{ $value['work']['ekr'] }}</td>
                         <td>{{ $value['work']['ekr_double'] }}</td>
                         <td>{{ number_format($value['build_sum'], 2, ',', ' ') }}</td>                        
@@ -407,7 +407,7 @@
                         <input type="hidden" class="work_id" value="{{ $value['work_id'] }}">
                         <input type="hidden" class="user_id" value="{{ $value['user_id'] }}">
                         <input type="hidden" class="mounth" value="{{ $value['mounth'] }}">
-                        <td>{{ $value['work']['title'] }}</td>
+                        <td class="col-id-no" scope="row">{{ $value['work']['title'] }}</td>
                         <td>{{ $value['work']['ekr'] }}</td>
                         <td>{{ $value['work']['ekr_double'] }}</td>
                         <td>{{ number_format($value['build_sum'], 2, ',', ' ') }}</td>                        
@@ -518,7 +518,7 @@
                         <input type="hidden" class="work_id" value="{{ $value['work_id'] }}">
                         <input type="hidden" class="user_id" value="{{ $value['user_id'] }}">
                         <input type="hidden" class="mounth" value="{{ $value['mounth'] }}">
-                        <td>{{ $value['work']['title'] }}</td>
+                        <td class="col-id-no" scope="row">{{ $value['work']['title'] }}</td>
                         <td>{{ $value['work']['ekr'] }}</td>
                         <td>{{ $value['work']['ekr_double'] }}</td>
                         <td>{{ number_format($value['build_sum'], 2, ',', ' ') }}</td>                        
@@ -629,7 +629,7 @@
                         <input type="hidden" class="work_id" value="{{ $value['work_id'] }}">
                         <input type="hidden" class="user_id" value="{{ $value['user_id'] }}">
                         <input type="hidden" class="mounth" value="{{ $value['mounth'] }}">
-                        <td>{{ $value['work']['title'] }}</td>
+                        <td class="col-id-no" scope="row">{{ $value['work']['title'] }}</td>
                         <td>{{ $value['work']['ekr'] }}</td>
                         <td>{{ $value['work']['ekr_double'] }}</td>
                         <td>{{ number_format($value['build_sum'], 2, ',', ' ') }}</td>                        
@@ -740,7 +740,7 @@
                         <input type="hidden" class="work_id" value="{{ $value['work_id'] }}">
                         <input type="hidden" class="user_id" value="{{ $value['user_id'] }}">
                         <input type="hidden" class="mounth" value="{{ $value['mounth'] }}">
-                        <td>{{ $value['work']['title'] }}</td>
+                        <td class="col-id-no" scope="row">{{ $value['work']['title'] }}</td>
                         <td>{{ $value['work']['ekr'] }}</td>
                         <td>{{ $value['work']['ekr_double'] }}</td>
                         <td>{{ number_format($value['build_sum'], 2, ',', ' ') }}</td>                        
@@ -851,7 +851,7 @@
                         <input type="hidden" class="work_id" value="{{ $value['work_id'] }}">
                         <input type="hidden" class="user_id" value="{{ $value['user_id'] }}">
                         <input type="hidden" class="mounth" value="{{ $value['mounth'] }}">
-                        <td>{{ $value['work']['title'] }}</td>
+                        <td class="col-id-no" scope="row">{{ $value['work']['title'] }}</td>
                         <td>{{ $value['work']['ekr'] }}</td>
                         <td>{{ $value['work']['ekr_double'] }}</td>
                         <td>{{ number_format($value['build_sum'], 2, ',', ' ') }}</td>                        
@@ -962,7 +962,7 @@
                         <input type="hidden" class="work_id" value="{{ $value['work_id'] }}">
                         <input type="hidden" class="user_id" value="{{ $value['user_id'] }}">
                         <input type="hidden" class="mounth" value="{{ $value['mounth'] }}">
-                        <td>{{ $value['work']['title'] }}</td>
+                        <td class="col-id-no" scope="row">{{ $value['work']['title'] }}</td>
                         <td>{{ $value['work']['ekr'] }}</td>
                         <td>{{ $value['work']['ekr_double'] }}</td>
                         <td>{{ number_format($value['build_sum'], 2, ',', ' ') }}</td>                        
@@ -1073,7 +1073,7 @@
                         <input type="hidden" class="work_id" value="{{ $value['work_id'] }}">
                         <input type="hidden" class="user_id" value="{{ $value['user_id'] }}">
                         <input type="hidden" class="mounth" value="{{ $value['mounth'] }}">
-                        <td>{{ $value['work']['title'] }}</td>
+                        <td class="col-id-no" scope="row">{{ $value['work']['title'] }}</td>
                         <td>{{ $value['work']['ekr'] }}</td>
                         <td>{{ $value['work']['ekr_double'] }}</td>
                         <td>{{ number_format($value['build_sum'], 2, ',', ' ') }}</td>                        
