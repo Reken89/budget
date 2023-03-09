@@ -20,8 +20,12 @@
                     //Получаем значения, меняем запятую на точку и убираем пробелы в числе                   
                     function structure(title){
                         var volume = $(title, tr).val();
-                        var volume = volume.replace(",",".");
+                        //Меняем запятую на точку
+                        //Убираем лишние пробелы
+                        //Выполняем арифметические действия в строке
+                        var volume = volume.replace(/\,/g,'.');
                         var volume = volume.replace(/ /g,'');
+                        var volume = eval(volume);
                         return volume;
                     }
                     
