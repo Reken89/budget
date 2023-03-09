@@ -15,7 +15,7 @@
         '11' => 'Ноябрь',
         '12' => 'Декабрь',
     ];
-    //var_dump($info);
+    var_dump($info);
 @endphp
 
 <head>
