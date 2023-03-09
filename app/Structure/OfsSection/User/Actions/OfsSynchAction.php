@@ -18,8 +18,7 @@ class OfsSynchAction extends BaseAction
     {   
         $old_mounth = $mounth - 1;
         $info = $this->task(OfsSelectAllTask::class)->run($user, $year, $old_mounth, $chapter);
-        var_dump($info[36]);
-        //$this->task(OfsSynchTask::class)->run($user, $year, $mounth, $chapter, $info);
+        $this->task(OfsSynchTask::class)->run($user, $year, $mounth, $chapter, $info);
         
     }
 }
