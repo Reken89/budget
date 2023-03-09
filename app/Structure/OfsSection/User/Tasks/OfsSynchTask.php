@@ -23,7 +23,8 @@ class OfsSynchTask extends BaseTask
                 Ofs::where('user_id', $user)
                 ->where('year', $year)
                 ->where('mounth', $mounth)  
-                ->where('chapter', $chapter[0]) 
+                //->where('chapter', $chapter[0]) 
+                ->whereIn('chapter', $chapter)        
                 ->whereHas('ekr', function (Builder $query) use ($inf) {
                     $query->where('id', $inf['ekr_id']);
                 })
