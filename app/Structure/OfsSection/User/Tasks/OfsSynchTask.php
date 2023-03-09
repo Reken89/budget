@@ -20,6 +20,8 @@ class OfsSynchTask extends BaseTask
             if($inf['total2'] == '0'){
                 //Заглушка
             } else {
+                var_dump($inf);
+                /*
                 Ofs::where('user_id', $user)
                 ->where('year', $year)
                 ->where('mounth', $mounth)  
@@ -44,6 +46,8 @@ class OfsSynchTask extends BaseTask
                     'debit_end_term'   => 0,
                     'return_old_year'  => $inf['return_old_year'],
                 ]);
+                 * 
+                 */
             }    
         }
 
