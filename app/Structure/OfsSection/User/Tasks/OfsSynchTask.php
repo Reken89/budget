@@ -20,7 +20,9 @@ class OfsSynchTask extends BaseTask
             if($inf['total2'] == '0'){
                 //Заглушка
             } else {
-                var_dump($inf);
+                if ($inf['id'] == 86406){
+                    echo "OK";
+                }
                 /*
                 Ofs::where('user_id', $user)
                 ->where('year', $year)
