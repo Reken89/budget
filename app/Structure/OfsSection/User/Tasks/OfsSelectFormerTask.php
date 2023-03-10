@@ -22,11 +22,12 @@ class OfsSelectFormerTask extends BaseTask
             ->where('year', $dto->year) 
             ->where('mounth', $dto->mounth - 1) 
             ->where('chapter', $dto->chapter)
-            ->whereHas('ekr', function (Builder $query) use ($dto) {
-                $query->where('shared', 'No');
-                $query->where('main', 'No');
-                $query->where('number', $dto->number);
-            })
+            //->whereHas('ekr', function (Builder $query) use ($dto) {
+            //    $query->where('shared', 'No');
+            //    $query->where('main', 'No');
+            //    $query->where('number', $dto->number);
+            //})
+            ->where('ekr_id', $dto->ekr_id)    
 
             ->first()
             ->toArray();

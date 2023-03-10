@@ -143,6 +143,7 @@
                 var user_id = $('.user_id', tr).val();
                 var main_id = $('.main_id', tr).val();
                 var shared_id = $('.shared_id', tr).val();
+                var ekr_id = $('.ekr_id', tr).val();
                 
             $.ajax({
                 url:"/budget/public/user/ofs/reset",  
@@ -150,10 +151,11 @@
                 data:{
                     "_token": "{{ csrf_token() }}",
                     id, number, year, mounth, chapter,
-                    user_id, main_id, shared_id
+                    user_id, main_id, shared_id, ekr_id
                 },
                 dataType:"text",  
-                success:function(data){ 
+                success:function(data){
+                    //alert(data);
                     fetch_data();
                 } 
             })               

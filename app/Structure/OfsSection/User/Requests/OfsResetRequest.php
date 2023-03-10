@@ -22,6 +22,7 @@ class OfsResetRequest extends FormRequest
             'user_id'   => 'required|string',
             'main_id'   => 'required|string',
             'shared_id' => 'required|string',
+            'ekr_id'    => 'required|string',
         ];
     }   
 }

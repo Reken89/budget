@@ -436,6 +436,7 @@
                                 <input type="hidden" class="year" value="{{ $value['year'] }}">
                                 <input type="hidden" class="mounth" value="{{ $value['mounth'] }}">
                                 <input type="hidden" class="chapter" value="{{ $value['chapter'] }}">
+                                <input type="hidden" class="ekr_id" value="{{ $value['ekr_id'] }}">
                                 <td class="col-id-no" scope="row">{{ $value['ekr']['title'] }}</td>
                                 <td><input type=button class='button' id='btn_one' value='Сброс'></td>
                                 <td>{{ $value['ekr']['ekr'] }}</td>

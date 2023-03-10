@@ -15,6 +15,7 @@ class OfsResetDto extends BaseDto
     public int    $user_id;
     public int    $main_id;
     public int    $shared_id;
+    public int    $ekr_id;
 
     /**
      * Возвращает DTO из объекта Request
@@ -33,6 +34,7 @@ class OfsResetDto extends BaseDto
             'user_id'   => $request->get('user_id'),
             'main_id'   => $request->get('main_id'),
             'shared_id' => $request->get('shared_id'),
+            'ekr_id'    => $request->get('ekr_id'),
         ]);
     }
 }
