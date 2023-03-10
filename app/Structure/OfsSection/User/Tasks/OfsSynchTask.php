@@ -19,15 +19,17 @@ class OfsSynchTask extends BaseTask
         foreach ($info as $inf){
             if($inf['total2'] == 0){
                 //Заглушка
-            } else {               
+            } else {
+
                 Ofs::where('user_id', $user)
                 ->where('year', $year)
                 ->where('mounth', $mounth)  
                 //->where('chapter', $chapter[0]) 
-                ->whereIn('chapter', $chapter)        
-                ->whereHas('ekr', function (Builder $query) use ($inf) {
-                    $query->where('id', $inf['ekr_id']);
-                })
+                ->whereIn('chapter', $chapter) 
+                ->where('ekr_id', $inf['ekr_id'])        
+                //->whereHas('ekr', function (Builder $query) use ($inf) {
+                //    $query->where('id', $inf['ekr_id']);
+                //})
                 ->update([
                     'lbo'              => $inf['lbo'],
                     'prepaid'          => $inf['prepaid'],
