@@ -128,5 +128,5 @@
 @endif
 
 <div id="footer">
-    <p class="script"><span>Laravel</span></p>
+    <p class="script"><span>kostamail</span></p>
 </div>
