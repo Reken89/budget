@@ -17,7 +17,7 @@ class OfsSynchTask extends BaseTask
     public function run(int $user, int $year, int $mounth, array $chapter, array $info)
     {  
         foreach ($info as $inf){
-            if($inf['total2'] == 0){
+            if($inf['total2'] == 0 AND $inf['lbo'] == 0){
                 //Заглушка
             } else {
 
