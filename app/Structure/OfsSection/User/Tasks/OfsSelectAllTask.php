@@ -27,7 +27,9 @@ class OfsSelectAllTask extends BaseTask
             ->with([
                 'ekr', 
                 'user:id,name',
-            ])   
+            ])
+            //->join('ekr', 'ofs.ekr_id', '=', 'ekr.id')
+            //->orderBy('ekr.number', 'ASC')   
             ->get()
             ->toArray();
         return $info; 
