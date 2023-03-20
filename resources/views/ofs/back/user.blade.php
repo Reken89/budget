@@ -397,13 +397,13 @@
                 @if ($value['total1'] < "0" || $value['total1'] > "0")
                     @php $color_t1 = "darkred"; @endphp 
                 @else
-                    @php $color_t1 = "f2f2f2"; @endphp 
+                    @php $color_t1 = "black"; @endphp 
                 @endif  
                 
                 @if ($value['total2'] < "0")
                     @php $color_t2 = "darkred"; @endphp 
                 @else
-                    @php $color_t2 = "f2f2f2"; @endphp 
+                    @php $color_t2 = "black"; @endphp 
                 @endif  
                 
                 @if ($value['ekr']['main'] == 'Yes' && $value['ekr']['number'] == $n)
@@ -431,8 +431,8 @@
                         <td><b>{{ number_format($value['debit_end_all'], 2, ',', ' ') }}</b></td>
                         <td><b>{{ number_format($value['debit_end_term'], 2, ',', ' ') }}</b></td>
                         <td><b>{{ number_format($value['return_old_year'], 2, ',', ' ') }}</b></td>
-                        <th bgcolor="{{ $color_t1 }}">{{ number_format($value['total1'], 2, ',', ' ') }}</th>
-                        <th bgcolor="{{ $color_t2 }}">{{ number_format($value['total2'], 2, ',', ' ') }}</th>
+                        <td><b><font color="{{ $color_t1 }}">{{ number_format($value['total1'], 2, ',', ' ') }}</b></td>
+                        <td><b><font color="{{ $color_t2 }}">{{ number_format($value['total2'], 2, ',', ' ') }}</b></td>
                     </tr>
                 @endif
                 
@@ -467,8 +467,8 @@
                                 <td><input type="text" class="debit_end_all" value="{{ number_format($value['debit_end_all'], 2, ',', ' ') }}"></td>
                                 <td><input type="text" class="debit_end_term" value="{{ number_format($value['debit_end_term'], 2, ',', ' ') }}"></td>
                                 <td><input type="text" class="return_old_year" value="{{ number_format($value['return_old_year'], 2, ',', ' ') }}"></td>
-                                <th bgcolor="{{ $color_t1 }}">{{ number_format($value['total1'], 2, ',', ' ') }}</th>
-                                <th bgcolor="{{ $color_t2 }}">{{ number_format($value['total2'], 2, ',', ' ') }}</th>
+                                <td><font color="{{ $color_t1 }}">{{ number_format($value['total1'], 2, ',', ' ') }}</td>
+                                <td><font color="{{ $color_t2 }}">{{ number_format($value['total2'], 2, ',', ' ') }}</td>
                             </tr>
                         @elseif ($value['status'] == '1')
                             <tr>
