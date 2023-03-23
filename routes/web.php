@@ -7,6 +7,7 @@ use App\Structure\CommunalSection\User\Controllers\CommunalController;
 use App\Structure\CommunalSection\Admin\Controllers\AdminCommunalController;
 use App\Structure\BuildSection\Admin\Controllers\AdminBuildController;
 use App\Structure\BuildSection\User\Controllers\UserBuildController;
+use App\Structure\BuildSection\Build\Controllers\BuildController;
 
 /*
 |--------------------------------------------------------------------------
@@ -80,9 +81,12 @@ Route::get('/user/build/back', [UserBuildController::class, 'index'])->middlewar
 Route::patch('/user/build/update', [UserBuildController::class, 'update'])->middleware('auth');
 Route::post('/user/build/add', [UserBuildController::class, 'add'])->middleware('auth');
 
+Route::get('/build/back', [BuildController::class, 'index'])->middleware('auth');
+
 //Роуты для Front (Модуль Строительство)
 Route::get('/admin/build', [AdminBuildController::class, 'user'])->middleware('auth', 'admin')->name('adminbuild');
 Route::get('/user/build', [UserBuildController::class, 'user'])->middleware('auth')->name('userbuild');
+Route::get('/build', [BuildController::class, 'user'])->middleware('auth')->name('build');
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 

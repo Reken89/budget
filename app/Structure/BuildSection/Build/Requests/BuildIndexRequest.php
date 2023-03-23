@@ -1,0 +1,22 @@
+<?php
+
+namespace App\Structure\BuildSection\Build\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class BuildIndexRequest extends FormRequest
+{
+     /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules(): array
+    {
+        return [
+            'mounth'  => 'required|array',
+            'year'    => 'required|integer',
+            'variant' => 'required|integer',
+        ];
+    }   
+}
