@@ -59,7 +59,31 @@
             <div class="checkbox__body">ВСОШ</div>
         </label>
     </div>
-                         
+ 
+<h3>Выберите год</h3>                 
+    <div>                  
+        <label class="checkbox style-f">
+            <input type="checkbox" name="year" value="2023">
+            <div class="checkbox__checkmark"></div>
+            <div class="checkbox__body">2023</div>
+        </label>
+        <label class="checkbox style-f">
+            <input type="checkbox" name="year" value="2024">
+            <div class="checkbox__checkmark"></div>
+            <div class="checkbox__body">2024</div>
+        </label>
+        <label class="checkbox style-f">
+            <input type="checkbox" name="year" value="2025">
+            <div class="checkbox__checkmark"></div>
+            <div class="checkbox__body">2025</div>
+        </label>                  
+        <label class="checkbox style-f">
+            <input type="checkbox" name="year" value="2026">
+            <div class="checkbox__checkmark"></div>
+            <div class="checkbox__body">2026</div>
+        </label>                 
+    </div>
+
 <h3>Выберите месяц</h3>                                   
 <div>                         
     <label class="checkbox style-f">
@@ -159,7 +183,7 @@
     
     </br>
 <div class="shadowbox">
-    <p>Год: 2023</p>
+    <p>Год: {{ $info['year_double'] }}</p>
     <p>Месяц: {{ $info['mounth_double'] }}</p>
 </div>
 @endif

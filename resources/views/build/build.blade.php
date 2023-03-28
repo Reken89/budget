@@ -28,10 +28,9 @@
         $(document).on('click', '#btn_one', function(){
             let infomany = $('#build').serializeArray();
            
-            let year = 2023;
-
             //Создаем пустые массивы
             let mounth = [];
+            let year_many = [];
             let variant_many = [];
             
             //Заполняем в массив year, все значения
@@ -45,10 +44,13 @@
                     mounth.push(value);
                 } else if (item.name === 'variant') {
                     variant_many.push(value);
+                } else if (item.name === 'year') {
+                    year_many.push(value);
                 }
             }
             
             let variant = variant_many[0];
+            let year = year_many[0];
                 
             $.ajax({
                 url:"/budget/public/build/back",  

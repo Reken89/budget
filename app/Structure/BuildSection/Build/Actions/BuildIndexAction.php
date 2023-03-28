@@ -33,10 +33,12 @@ class BuildIndexAction extends BaseAction
             $info = $this->task(BuildSelectAllTask::class)->one($year, $mounth, $user);
             $many = "no";
             $mounth_double = $mounth[0];
+            $year_double = $year;
         } else {
             $info = $this->task(BuildSelectAllTask::class)->run($year, $mounth, $user);
             $many = "yes";
             $mounth_double = "no";
+            $year_double = "no";
         }
         if ($variant == '2'){
             $ekr = $this->task(BuildCalculatorSpecialTask::class)->run($info, $variant);
@@ -50,6 +52,7 @@ class BuildIndexAction extends BaseAction
             'ekr'           => $ekr,
             'many_mounth'   => $many,
             'mounth_double' => $mounth_double,
+            'year_double'   => $year_double,
         ];
         
         return $result;

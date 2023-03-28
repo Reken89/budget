@@ -110,6 +110,7 @@
                         <input type="hidden" class="work_id" value="{{ $value['work_id'] }}">
                         <input type="hidden" class="user_id" value="{{ $value['user_id'] }}">
                         <input type="hidden" class="mounth" value="{{ $value['mounth'] }}">
+                        <input type="hidden" class="year" value="{{ $value['year'] }}">
                         <td class="col-id-no" scope="row">{{ $value['work']['title'] }}</td>
                         <td>{{ $value['work']['ekr'] }}</td>
                         <td></td>
@@ -131,6 +132,7 @@
                 <input type="hidden" class="user_id" value="9">
                 <input type="hidden" class="ekr_double" value="1">
                 <input type="hidden" class="mounth" value="{{ $info['mounth_double'] }}">
+                <input type="hidden" class="year" value="{{ $info['year_double'] }}">
                 <td><input type=button class="button" id='btn_two' value='Добавить'></td>
                 <td class="col-id-no" scope="row"><textarea rows='5' cols='45' type=text class='title'>Новая запись</textarea></td>
                 <td><input type=text class='ekr'></td>
@@ -258,6 +260,7 @@
                         <input type="hidden" class="work_id" value="{{ $value['work_id'] }}">
                         <input type="hidden" class="user_id" value="{{ $value['user_id'] }}">
                         <input type="hidden" class="mounth" value="{{ $value['mounth'] }}">
+                        <input type="hidden" class="year" value="{{ $value['year'] }}">
                         <td class="col-id-no" scope="row">{{ $value['work']['title'] }}</td>
                         <td>{{ $value['work']['ekr'] }}</td>
                         <td></td>
@@ -279,6 +282,7 @@
                 <input type="hidden" class="user_id" value="10">
                 <input type="hidden" class="ekr_double" value="1">
                 <input type="hidden" class="mounth" value="{{ $info['mounth_double'] }}">
+                <input type="hidden" class="year" value="{{ $info['year_double'] }}">
                 <td><input type=button class="button" id='btn_two' value='Добавить'></td>
                 <td class="col-id-no" scope="row"><textarea rows='5' cols='45' type=text class='title'>Новая запись</textarea></td>
                 <td><input type=text class='ekr'></td>
@@ -406,6 +410,7 @@
                         <input type="hidden" class="work_id" value="{{ $value['work_id'] }}">
                         <input type="hidden" class="user_id" value="{{ $value['user_id'] }}">
                         <input type="hidden" class="mounth" value="{{ $value['mounth'] }}">
+                        <input type="hidden" class="year" value="{{ $value['year'] }}">
                         <td class="col-id-no" scope="row">{{ $value['work']['title'] }}</td>
                         <td>{{ $value['work']['ekr'] }}</td>
                         <td></td>
@@ -427,6 +432,7 @@
                 <input type="hidden" class="user_id" value="11">
                 <input type="hidden" class="ekr_double" value="1">
                 <input type="hidden" class="mounth" value="{{ $info['mounth_double'] }}">
+                <input type="hidden" class="year" value="{{ $info['year_double'] }}">
                 <td><input type=button class="button" id='btn_two' value='Добавить'></td>
                 <td class="col-id-no" scope="row"><textarea rows='5' cols='45' type=text class='title'>Новая запись</textarea></td>
                 <td><input type=text class='ekr'></td>
@@ -554,6 +560,7 @@
                         <input type="hidden" class="work_id" value="{{ $value['work_id'] }}">
                         <input type="hidden" class="user_id" value="{{ $value['user_id'] }}">
                         <input type="hidden" class="mounth" value="{{ $value['mounth'] }}">
+                        <input type="hidden" class="year" value="{{ $value['year'] }}">
                         <td class="col-id-no" scope="row">{{ $value['work']['title'] }}</td>
                         <td>{{ $value['work']['ekr'] }}</td>
                         <td></td>
@@ -575,6 +582,7 @@
                 <input type="hidden" class="user_id" value="12">
                 <input type="hidden" class="ekr_double" value="1">
                 <input type="hidden" class="mounth" value="{{ $info['mounth_double'] }}">
+                <input type="hidden" class="year" value="{{ $info['year_double'] }}">
                 <td><input type=button class="button" id='btn_two' value='Добавить'></td>
                 <td class="col-id-no" scope="row"><textarea rows='5' cols='45' type=text class='title'>Новая запись</textarea></td>
                 <td><input type=text class='ekr'></td>
@@ -702,6 +710,7 @@
                         <input type="hidden" class="work_id" value="{{ $value['work_id'] }}">
                         <input type="hidden" class="user_id" value="{{ $value['user_id'] }}">
                         <input type="hidden" class="mounth" value="{{ $value['mounth'] }}">
+                        <input type="hidden" class="year" value="{{ $value['year'] }}">
                         <td class="col-id-no" scope="row">{{ $value['work']['title'] }}</td>
                         <td>{{ $value['work']['ekr'] }}</td>
                         <td></td>
@@ -723,6 +732,7 @@
                 <input type="hidden" class="user_id" value="13">
                 <input type="hidden" class="ekr_double" value="1">
                 <input type="hidden" class="mounth" value="{{ $info['mounth_double'] }}">
+                <input type="hidden" class="year" value="{{ $info['year_double'] }}">
                 <td><input type=button class="button" id='btn_two' value='Добавить'></td>
                 <td class="col-id-no" scope="row"><textarea rows='5' cols='45' type=text class='title'>Новая запись</textarea></td>
                 <td><input type=text class='ekr'></td>
@@ -850,6 +860,7 @@
                         <input type="hidden" class="work_id" value="{{ $value['work_id'] }}">
                         <input type="hidden" class="user_id" value="{{ $value['user_id'] }}">
                         <input type="hidden" class="mounth" value="{{ $value['mounth'] }}">
+                        <input type="hidden" class="year" value="{{ $value['year'] }}">
                         <td class="col-id-no" scope="row">{{ $value['work']['title'] }}</td>
                         <td>{{ $value['work']['ekr'] }}</td>
                         <td></td>
@@ -871,6 +882,7 @@
                 <input type="hidden" class="user_id" value="14">
                 <input type="hidden" class="ekr_double" value="1">
                 <input type="hidden" class="mounth" value="{{ $info['mounth_double'] }}">
+                <input type="hidden" class="year" value="{{ $info['year_double'] }}">
                 <td><input type=button class="button" id='btn_two' value='Добавить'></td>
                 <td class="col-id-no" scope="row"><textarea rows='5' cols='45' type=text class='title'>Новая запись</textarea></td>
                 <td><input type=text class='ekr'></td>
@@ -998,6 +1010,7 @@
                         <input type="hidden" class="work_id" value="{{ $value['work_id'] }}">
                         <input type="hidden" class="user_id" value="{{ $value['user_id'] }}">
                         <input type="hidden" class="mounth" value="{{ $value['mounth'] }}">
+                        <input type="hidden" class="year" value="{{ $value['year'] }}">
                         <td class="col-id-no" scope="row">{{ $value['work']['title'] }}</td>
                         <td>{{ $value['work']['ekr'] }}</td>
                         <td></td>
@@ -1019,6 +1032,7 @@
                 <input type="hidden" class="user_id" value="15">
                 <input type="hidden" class="ekr_double" value="1">
                 <input type="hidden" class="mounth" value="{{ $info['mounth_double'] }}">
+                <input type="hidden" class="year" value="{{ $info['year_double'] }}">
                 <td><input type=button class="button" id='btn_two' value='Добавить'></td>
                 <td class="col-id-no" scope="row"><textarea rows='5' cols='45' type=text class='title'>Новая запись</textarea></td>
                 <td><input type=text class='ekr'></td>

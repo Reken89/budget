@@ -14,7 +14,7 @@
                     var mounth = $('.mounth', tr).val();
                     var number = $('.number', tr).val();
                     var period = $('.period', tr).val();
-                    var year = 2023;
+                    var year = $('.year', tr).val();
                     
                     //Получаем значения, меняем запятую на точку и убираем пробелы в числе                   
                     function structure(title){
@@ -70,10 +70,9 @@
         $(document).on('click', '#btn_one', function(){
             let infomany = $('#build').serializeArray();
            
-            let year = 2023;
-
             //Создаем пустые массивы
             let mounth = [];
+            let year_many = [];
             let variant_many = [];
             
             //Заполняем в массив year, все значения
@@ -87,10 +86,13 @@
                     mounth.push(value);
                 } else if (item.name === 'variant') {
                     variant_many.push(value);
+                } else if (item.name === 'year') {
+                    year_many.push(value);
                 }
             }
             
             let variant = variant_many[0];
+            let year = year_many[0];
                 
             $.ajax({
                 url:"/budget/public/user/build/back",  
@@ -117,7 +119,7 @@
             var mounth = $('.mounth', tr).val();
             var number = $('.number', tr).val();
             var period = $('.period', tr).val();
-            var year = 2023;
+            var year = $('.year', tr).val();
             
             //Получаем значения, меняем запятую на точку и убираем пробелы в числе                   
             function structure(title){

@@ -18,7 +18,7 @@
                     var fu_sum = fu_sum.replace(/ /g,'');
                     var work_id = $('.work_id', tr).val(); 
                     var mounth = $('.mounth', tr).val();
-                    var year = 2023;
+                    var year = $('.year', tr).val();
                     var user_id = $('.user_id', tr).val(); 
                                         
                     $.ajax({
@@ -62,11 +62,10 @@
         
         //Выполняем действие (формируем таблицу) при нажатии на кнопку
         $(document).on('click', '#btn_one', function(){
-            let infomany = $('#build').serializeArray();
-           
-            let year = 2023;
+            let infomany = $('#build').serializeArray();           
 
             //Создаем пустые массивы
+            let year_many = [];
             let mounth = [];
             let variant_many = [];
             
@@ -81,10 +80,13 @@
                     mounth.push(value);
                 } else if (item.name === 'variant') {
                     variant_many.push(value);
+                } else if (item.name === 'year') {
+                    year_many.push(value);
                 }
             }
             
             let variant = variant_many[0];
+            let year = year_many[0];
                 
             $.ajax({
                 url:"/budget/public/admin/build/back",  
@@ -109,7 +111,7 @@
             var ekr_double = $('.ekr_double', tr).val();
             var title = $('.title', tr).val();
             var mounth = $('.mounth', tr).val();
-            var year = 2023;
+            var year = $('.year', tr).val();
             var fu_sum = $('.fu_sum', tr).val();
             var fu_sum = fu_sum.replace(",",".");
             var fu_sum = fu_sum.replace(" ","");
