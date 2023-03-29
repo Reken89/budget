@@ -10,6 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 use App\Structure\CommunalSection\User\Models\Communal;
 use App\Structure\OfsSection\User\Models\Ofs;
 use App\Structure\BuildSection\Admin\Models\Repair;
+use App\Structure\ForecastSection\Admin\Models\Forecastcommunal;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Authenticatable
@@ -68,6 +69,11 @@ class User extends Authenticatable
     public function build(): HasMany
     {
         return $this->hasMany(Repair::class);
+    }
+    
+    public function forecast(): HasMany
+    {
+        return $this->hasMany(Forecastcommunal::class);
     }
 }
 

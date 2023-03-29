@@ -60,6 +60,14 @@
     </form>
 </div>
 
+</br>
+<div class = "center">
+    <form action="{{ route('forecast')}}" method="get">
+        <input type='hidden' name='chapter' value='heat'>
+        <button type="submit" class="custom-btn btn-16"><b>Прогноз коммуналки<b></button>
+    </form>
+</div>
+
 @elseif ($role == "user")
 </br>
 <div class = "center">

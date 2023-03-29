@@ -8,6 +8,7 @@ use App\Structure\CommunalSection\Admin\Controllers\AdminCommunalController;
 use App\Structure\BuildSection\Admin\Controllers\AdminBuildController;
 use App\Structure\BuildSection\User\Controllers\UserBuildController;
 use App\Structure\BuildSection\Build\Controllers\BuildController;
+use App\Structure\ForecastSection\Admin\Controllers\ForecastController;
 
 /*
 |--------------------------------------------------------------------------
@@ -87,6 +88,19 @@ Route::get('/build/back', [BuildController::class, 'index'])->middleware('auth')
 Route::get('/admin/build', [AdminBuildController::class, 'user'])->middleware('auth', 'admin')->name('adminbuild');
 Route::get('/user/build', [UserBuildController::class, 'user'])->middleware('auth')->name('userbuild');
 Route::get('/build', [BuildController::class, 'user'])->middleware('auth')->name('build');
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+ * 
+ * 
+ * 
+ */
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Роуты для Back (Модуль прогноз коммуналки)
+Route::get('/forecast/back', [ForecastController::class, 'index'])->middleware('auth', 'admin');
+Route::patch('/forecast/updatetarrif', [ForecastController::class, 'update'])->middleware('auth', 'admin');
+
+//Роуты для Front (Модуль прогноз коммуналки)
+Route::get('/forecast', [ForecastController::class, 'user'])->middleware('auth', 'admin')->name('forecast');
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
