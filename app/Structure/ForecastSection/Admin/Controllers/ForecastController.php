@@ -5,6 +5,7 @@ namespace App\Structure\ForecastSection\Admin\Controllers;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Core\Controllers\Controller;
+use App\Structure\ForecastSection\Admin\Exports\ExportTable;
 use App\Structure\ForecastSection\Admin\Dto\ForecastIndexDto;
 use App\Structure\ForecastSection\Admin\Dto\ForecastUpdateDto;
 use App\Structure\ForecastSection\Admin\Requests\ForecastIndexRequest;
@@ -25,6 +26,10 @@ class ForecastController extends Controller
     {
         $dto = ForecastIndexDto::fromRequest($request);
         $info = $this->action(ForecastIndexAction::class)->run($dto);
+        
+        //Записываем результат таблицы в сессию
+        //Для последующей выгрузки в EXCEL
+        session(['info' => $info]);
         
         return view('forecast.back.forecast', ['info' => $info]);  
     }
@@ -57,6 +62,18 @@ class ForecastController extends Controller
         $update = $this->action(ForecastUpdateAction::class)->run($dto);
 
     }  
+    
+    /**
+     * Выгрузка таблицы в EXCEL
+     * 
+     * @param 
+     * @return Excel
+     */
+    public function export()
+    { 
+        return Excel::download(new ExportTable, 'table.xlsx');
+
+    }
     
 }
 

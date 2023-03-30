@@ -26,6 +26,19 @@
     </style>
 </head>
 
+@php
+    $variant = [
+    'heat'     => 'Теплоснабжение',
+    'water'    => 'Водоснабжение',
+    'drainage' => 'Водоотведение',
+    'energy'   => 'Электроснабжение',
+    'trash'    => 'Вывоз мусора',
+    'negative' => 'Негативное воздействие',
+    ];
+    
+    $key = $info['variant'];
+@endphp
+
 </br>
 <table class="freeze-table" width="700px">
     <thead>
@@ -159,9 +172,53 @@
     <p><input type="button" style="width:250px;height:25px" name="formSubmit" id="btn_two" class="button5" value="Сформировать таблицу" /></p> 
 </form>   
 
-    <form action="#" method="get">
+    <form action="/budget/public/forecast/export" method="get">
         <button type="submit" style="width:250px;height:25px" class="button5">Выгрузка в EXCEL</button>
     </form>
+
+</br>
+<div class="shadowbox">
+    <p>Раздел: {{ $variant[$key] }}</p>
+</div>
+
+</br>
+<table class="freeze-table" width="700px">
+    <thead>
+        <tr>
+            <th style="min-width: 150px; width: 150px;" class="col-id-no fixed-header">Учреждение</th>
+            <th style="min-width: 150px; width: 150px;">Объем 1-полугодие</th>
+            <th style="min-width: 150px; width: 150px;">Сумма 1-полугодие</th>
+            <th style="min-width: 150px; width: 150px;">Объем 2-полугодие</th>
+            <th style="min-width: 150px; width: 150px;">Сумма 2-полугодие</th>
+            <th style="min-width: 150px; width: 150px;">Объем за год</th>
+            <th style="min-width: 150px; width: 150px;">Сумма за год</th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        @foreach ($info['communal'] as $value)
+            <tr>
+                <td>{{ $value['user']['name'] }}</td>
+                <td>{{ number_format($value['volume_one'], 3, ',', ' ') }}</td>
+                <td>{{ number_format($value['sum_one'], 2, ',', ' ') }}</td>
+                <td>{{ number_format($value['volume_two'], 3, ',', ' ') }}</td>
+                <td>{{ number_format($value['sum_two'], 2, ',', ' ') }}</td>
+                <td>{{ number_format($value['volume_year'], 3, ',', ' ') }}</td>
+                <td>{{ number_format($value['sum_year'], 2, ',', ' ') }}</td>
+            </tr>
+        @endforeach
+    </tbody>
+    
+    <tr>
+        <td><b>ИТОГ</b></td>
+        <td><b>{{ number_format($info['total']['volume_one'], 3, ',', ' ') }}</b></td>
+        <td><b>{{ number_format($info['total']['sum_one'], 2, ',', ' ') }}</b></td>
+        <td><b>{{ number_format($info['total']['volume_two'], 3, ',', ' ') }}</b></td>
+        <td><b>{{ number_format($info['total']['sum_two'], 2, ',', ' ') }}</b></td>
+        <td><b>{{ number_format($info['total']['volume_year'], 3, ',', ' ') }}</b></td>
+        <td><b>{{ number_format($info['total']['sum_year'], 2, ',', ' ') }}</b></td>
+    </tr>
+</table>    
 
 @php
     //var_dump($info);
