@@ -19,8 +19,31 @@ class ForecastIndexAction extends BaseAction
     public function run(ForecastIndexDto $dto)
     {    
         $tarrifs = $this->task(ForecasSelectTarrifTask::class)->run();
-        $communal = $this->task(ForecasSelectCommunalTask::class)->run($dto);
-        $total = $this->task(ForecasSelectCommunalTotalTask::class)->run($dto);
+        $chapter = $dto->chapter;
+        
+        if($dto->chapter == "svod"){
+            $communal = [
+                'heat'     => $this->task(ForecasSelectCommunalTask::class)->run('heat'),
+                'water'    => $this->task(ForecasSelectCommunalTask::class)->run('water'),
+                'drainage' => $this->task(ForecasSelectCommunalTask::class)->run('drainage'),
+                'energy'   => $this->task(ForecasSelectCommunalTask::class)->run('energy'),
+                'trash'    => $this->task(ForecasSelectCommunalTask::class)->run('trash'),
+                'negative' => $this->task(ForecasSelectCommunalTask::class)->run('negative'),
+                'total'    => $this->task(ForecasSelectCommunalTask::class)->sum(),
+            ];
+            $total = [
+                'heat'     => $this->task(ForecasSelectCommunalTotalTask::class)->run('heat'),
+                'water'    => $this->task(ForecasSelectCommunalTotalTask::class)->run('water'),
+                'drainage' => $this->task(ForecasSelectCommunalTotalTask::class)->run('drainage'),
+                'energy'   => $this->task(ForecasSelectCommunalTotalTask::class)->run('energy'),
+                'trash'    => $this->task(ForecasSelectCommunalTotalTask::class)->run('trash'),
+                'negative' => $this->task(ForecasSelectCommunalTotalTask::class)->run('negative'),
+                'total'    => $this->task(ForecasSelectCommunalTotalTask::class)->sum(),
+            ];
+        }else{
+            $communal = $this->task(ForecasSelectCommunalTask::class)->run($chapter);
+            $total = $this->task(ForecasSelectCommunalTotalTask::class)->run($chapter);
+        }
         
         $result = [
             'tarrifs'  => $tarrifs,

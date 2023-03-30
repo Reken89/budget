@@ -34,6 +34,7 @@
     'energy'   => 'Электроснабжение',
     'trash'    => 'Вывоз мусора',
     'negative' => 'Негативное воздействие',
+    'svod'     => 'Походу это свод ))',
     ];
     
     $key = $info['variant'];
@@ -166,7 +167,12 @@
             <input type="checkbox" name="chapter" value="negative">
             <div class="checkbox__checkmark"></div>
             <div class="checkbox__body">Негативное воздействие</div>
-        </label>   
+        </label> 
+        <label class="checkbox style-f">
+            <input type="checkbox" name="chapter" value="svod">
+            <div class="checkbox__checkmark"></div>
+            <div class="checkbox__body">Свод</div>
+        </label>  
     </div>
     
     <p><input type="button" style="width:250px;height:25px" name="formSubmit" id="btn_two" class="button5" value="Сформировать таблицу" /></p> 
@@ -180,6 +186,69 @@
 <div class="shadowbox">
     <p>Раздел: {{ $variant[$key] }}</p>
 </div>
+
+@if ($info['variant'] == "svod")
+</br>
+    <table class="freeze-table" width="700px">             
+        <thead>
+            <tr>
+                <th style="min-width: 200px; width: 200px;" class="col-id-no fixed-header">Учреждение</th>
+                <th style="min-width: 200px; width: 200px;" colspan="2">Теплоснабжение</th>
+                <th style="min-width: 200px; width: 200px;" colspan="2">Водоснабжение</th>
+                <th style="min-width: 200px; width: 200px;" colspan="2">Водоотведение</th>
+                <th style="min-width: 200px; width: 200px;" colspan="2">Электроснабжение</th>
+                <th style="min-width: 200px; width: 200px;" colspan="2">Вывоз мусора</th>
+                <th style="min-width: 200px; width: 200px;" colspan="2">Негативное воздействие</th>
+                <th style="min-width: 200px; width: 200px;">Итог сумма</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="col-id-no" scope="row"></td>
+                <td>Объём</td><td>Сумма</td><td>Объём</td><td>Сумма</td>
+                <td>Объём</td><td>Сумма</td><td>Объём</td><td>Сумма</td>
+                <td>Объём</td><td>Сумма</td><td>Объём</td><td>Сумма</td>
+                <td></td>
+            </tr>
+
+            @for ($n = 0; $n < 21; $n++)
+            <tr>
+                <td>{{ $info['communal']['heat'][$n]['user']['name'] }}</td>
+                <td>{{ number_format($info['communal']['heat'][$n]['volume_year'], 3, ',', ' ') }}</td>
+                <td>{{ number_format($info['communal']['heat'][$n]['sum_year'], 2, ',', ' ') }}</td>
+                <td>{{ number_format($info['communal']['water'][$n]['volume_year'], 3, ',', ' ') }}</td>
+                <td>{{ number_format($info['communal']['water'][$n]['sum_year'], 2, ',', ' ') }}</td>
+                <td>{{ number_format($info['communal']['drainage'][$n]['volume_year'], 3, ',', ' ') }}</td>
+                <td>{{ number_format($info['communal']['drainage'][$n]['sum_year'], 2, ',', ' ') }}</td>
+                <td>{{ number_format($info['communal']['energy'][$n]['volume_year'], 3, ',', ' ') }}</td>
+                <td>{{ number_format($info['communal']['energy'][$n]['sum_year'], 2, ',', ' ') }}</td>
+                <td>{{ number_format($info['communal']['trash'][$n]['volume_year'], 3, ',', ' ') }}</td>
+                <td>{{ number_format($info['communal']['trash'][$n]['sum_year'], 2, ',', ' ') }}</td>
+                <td>{{ number_format($info['communal']['negative'][$n]['volume_year'], 3, ',', ' ') }}</td>
+                <td>{{ number_format($info['communal']['negative'][$n]['sum_year'], 2, ',', ' ') }}</td>
+                <td>{{ number_format($info['communal']['total'][$n]['sum'], 2, ',', ' ') }}</td>
+            </tr>
+            @endfor
+
+            <tr>
+                <td>ИТОГО</td>
+                <td>{{ number_format($info['total']['heat']['volume_year'], 3, ',', ' ') }}</td>
+                <td>{{ number_format($info['total']['heat']['sum_year'], 2, ',', ' ') }}</td>
+                <td>{{ number_format($info['total']['water']['volume_year'], 3, ',', ' ') }}</td>
+                <td>{{ number_format($info['total']['water']['sum_year'], 2, ',', ' ') }}</td>
+                <td>{{ number_format($info['total']['drainage']['volume_year'], 3, ',', ' ') }}</td>
+                <td>{{ number_format($info['total']['drainage']['sum_year'], 2, ',', ' ') }}</td>
+                <td>{{ number_format($info['total']['energy']['volume_year'], 3, ',', ' ') }}</td>
+                <td>{{ number_format($info['total']['energy']['sum_year'], 2, ',', ' ') }}</td>
+                <td>{{ number_format($info['total']['trash']['volume_year'], 3, ',', ' ') }}</td>
+                <td>{{ number_format($info['total']['trash']['sum_year'], 2, ',', ' ') }}</td>
+                <td>{{ number_format($info['total']['negative']['volume_year'], 3, ',', ' ') }}</td>
+                <td>{{ number_format($info['total']['negative']['sum_year'], 2, ',', ' ') }}</td>
+                <td>{{ number_format($info['total']['total']['sum'], 2, ',', ' ') }}</td>
+            </tr>
+        </tbody>
+    </table>
+@else
 
 </br>
 <table class="freeze-table" width="700px">
@@ -210,7 +279,7 @@
     </tbody>
     
     <tr>
-        <td><b>ИТОГ</b></td>
+        <td><b>ИТОГО</b></td>
         <td><b>{{ number_format($info['total']['volume_one'], 3, ',', ' ') }}</b></td>
         <td><b>{{ number_format($info['total']['sum_one'], 2, ',', ' ') }}</b></td>
         <td><b>{{ number_format($info['total']['volume_two'], 3, ',', ' ') }}</b></td>
@@ -219,6 +288,8 @@
         <td><b>{{ number_format($info['total']['sum_year'], 2, ',', ' ') }}</b></td>
     </tr>
 </table>    
+@endif
+
 
 @php
     //var_dump($info);

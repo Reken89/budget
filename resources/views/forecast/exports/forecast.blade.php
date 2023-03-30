@@ -1,4 +1,66 @@
-<table class="freeze-table" width="700px">
+@if ($info['variant'] == "svod")
+<table>             
+        <thead>
+            <tr>
+                <th style="min-width: 200px; width: 200px;">Учреждение</th>
+                <th style="min-width: 200px; width: 200px;" colspan="2">Теплоснабжение</th>
+                <th style="min-width: 200px; width: 200px;" colspan="2">Водоснабжение</th>
+                <th style="min-width: 200px; width: 200px;" colspan="2">Водоотведение</th>
+                <th style="min-width: 200px; width: 200px;" colspan="2">Электроснабжение</th>
+                <th style="min-width: 200px; width: 200px;" colspan="2">Вывоз мусора</th>
+                <th style="min-width: 200px; width: 200px;" colspan="2">Негативное воздействие</th>
+                <th style="min-width: 200px; width: 200px;">Итог сумма</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td>Объём</td><td>Сумма</td><td>Объём</td><td>Сумма</td>
+                <td>Объём</td><td>Сумма</td><td>Объём</td><td>Сумма</td>
+                <td>Объём</td><td>Сумма</td><td>Объём</td><td>Сумма</td>
+                <td></td>
+            </tr>
+
+            @for ($n = 0; $n < 21; $n++)
+            <tr>
+                <td>{{ $info['communal']['heat'][$n]['user']['name'] }}</td>
+                <td>{{ $info['communal']['heat'][$n]['volume_year'] }}</td>
+                <td>{{ $info['communal']['heat'][$n]['sum_year'] }}</td>
+                <td>{{ $info['communal']['water'][$n]['volume_year'] }}</td>
+                <td>{{ $info['communal']['water'][$n]['sum_year'] }}</td>
+                <td>{{ $info['communal']['drainage'][$n]['volume_year'] }}</td>
+                <td>{{ $info['communal']['drainage'][$n]['sum_year'] }}</td>
+                <td>{{ $info['communal']['energy'][$n]['volume_year'] }}</td>
+                <td>{{ $info['communal']['energy'][$n]['sum_year'] }}</td>
+                <td>{{ $info['communal']['trash'][$n]['volume_year'] }}</td>
+                <td>{{ $info['communal']['trash'][$n]['sum_year'] }}</td>
+                <td>{{ $info['communal']['negative'][$n]['volume_year'] }}</td>
+                <td>{{ $info['communal']['negative'][$n]['sum_year'] }}</td>
+                <td>{{ $info['communal']['total'][$n]['sum'] }}</td>
+            </tr>
+            @endfor
+
+            <tr>
+                <td>ИТОГО</td>
+                <td>{{ $info['total']['heat']['volume_year'] }}</td>
+                <td>{{ $info['total']['heat']['sum_year'] }}</td>
+                <td>{{ $info['total']['water']['volume_year'] }}</td>
+                <td>{{ $info['total']['water']['sum_year'] }}</td>
+                <td>{{ $info['total']['drainage']['volume_year'] }}</td>
+                <td>{{ $info['total']['drainage']['sum_year'] }}</td>
+                <td>{{ $info['total']['energy']['volume_year'] }}</td>
+                <td>{{ $info['total']['energy']['sum_year'] }}</td>
+                <td>{{ $info['total']['trash']['volume_year'] }}</td>
+                <td>{{ $info['total']['trash']['sum_year'] }}</td>
+                <td>{{ $info['total']['negative']['volume_year'] }}</td>
+                <td>{{ $info['total']['negative']['sum_year'] }}</td>
+                <td>{{ $info['total']['total']['sum'] }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+@else
+<table>
     <thead>
         <tr>
             <th style="min-width: 150px; width: 150px;">Учреждение</th>
@@ -35,4 +97,4 @@
         <td><b>{{ $info['total']['sum_year'] }}</b></td>
     </tr>
 </table> 
-
+@endif

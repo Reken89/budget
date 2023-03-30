@@ -11,10 +11,10 @@ class ForecasSelectCommunalTotalTask extends BaseTask
     /**
      * Возвращает итоговую строчку из таблицы прогноза
      *
-     * @param ForecastIndexDto $dto
+     * @param $chapter
      * @return array
      */
-    public function run(ForecastIndexDto $dto): array
+    public function run($chapter): array
     {        
         $info = Forecastcommunal::selectRaw('SUM(`volume_one`) as volume_one')
             ->selectRaw('SUM(`volume_two`) as volume_two')
@@ -22,11 +22,26 @@ class ForecasSelectCommunalTotalTask extends BaseTask
             ->selectRaw('SUM(`sum_two`) as sum_two') 
             ->selectRaw('SUM(`volume_one`) + SUM(`volume_two`) as volume_year') 
             ->selectRaw('SUM(`sum_one`) + SUM(`sum_two`) as sum_year')
-            ->where('chapter', $dto->chapter)
+            ->where('chapter', $chapter)
             ->first()
             ->toArray();
 
         return $info; 
-    }       
+    }
+    
+    /**
+     * Возвращает сумму по всей таблице
+     *
+     * @param 
+     * @return array
+     */
+    public function sum(): array
+    {        
+        $info = Forecastcommunal::selectRaw('SUM(`sum_one`) + SUM(`sum_two`) as sum')
+            ->first()
+            ->toArray();
+
+        return $info; 
+    }
 }
 
