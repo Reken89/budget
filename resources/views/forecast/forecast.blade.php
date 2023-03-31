@@ -90,8 +90,48 @@
                     setKeydownmyForm() 
                 } 
             })               
-        })               
+        })   
         
+        //Выполняем действие (формируем таблицу) при нажатии на кнопку
+        $(document).on('click', '#btn_one', function(){
+            let info = $('#synch').serializeArray();
+           
+            //Создаем пустые массивы
+            let one = [];
+            let two = [];
+            
+            //Заполняем в массив year, все значения
+            //из массива info, где ключ равен 'year'
+            // *
+            //Заполняем в массив mounth, все значения
+            //из массива info, где ключ равен 'mounth'          
+            for (const item of info) {
+                const value = item.value;
+                if (item.name === 'year_one') {
+                    one.push(value);
+                } else if (item.name === 'year_two') {
+                    two.push(value);
+                }
+            }
+            
+            let year_one = one[0];
+            let year_two = two[0];
+                
+            $.ajax({
+                url:"/budget/public/forecast/synch",  
+                method:"patch",
+                data:{
+                    "_token": "{{ csrf_token() }}",
+                    year_one, year_two
+                },
+                dataType:"text",  
+                success:function(data){ 
+                    alert(data);
+                    fetch_data();
+                } 
+            })               
+        }) 
+            
     });
 </script>
 

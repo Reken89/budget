@@ -211,7 +211,11 @@
                 <td></td>
             </tr>
 
-            @for ($n = 0; $n < 21; $n++)
+            @php
+                $quantity = count($info['communal']['heat']);
+            @endphp
+            
+            @for ($n = 0; $n < $quantity; $n++)
             <tr>
                 <td>{{ $info['communal']['heat'][$n]['user']['name'] }}</td>
                 <td>{{ number_format($info['communal']['heat'][$n]['volume_year'], 3, ',', ' ') }}</td>

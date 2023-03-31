@@ -8,10 +8,14 @@ use App\Core\Controllers\Controller;
 use App\Structure\ForecastSection\Admin\Exports\ExportTable;
 use App\Structure\ForecastSection\Admin\Dto\ForecastIndexDto;
 use App\Structure\ForecastSection\Admin\Dto\ForecastUpdateDto;
+use App\Structure\ForecastSection\Admin\Dto\ForecastSynchDto;
 use App\Structure\ForecastSection\Admin\Requests\ForecastIndexRequest;
 use App\Structure\ForecastSection\Admin\Requests\ForecastUpdateRequest;
+use App\Structure\ForecastSection\Admin\Requests\ForecastSynchRequest;
 use App\Structure\ForecastSection\Admin\Actions\ForecastIndexAction;
 use App\Structure\ForecastSection\Admin\Actions\ForecastUpdateAction;
+use App\Structure\ForecastSection\Admin\Actions\ForecastSynchAction;
+use App\Structure\ForecastSection\Admin\Actions\ForecastExaminAction;
 
 class ForecastController extends Controller
 {
@@ -72,6 +76,28 @@ class ForecastController extends Controller
     public function export()
     { 
         return Excel::download(new ExportTable, 'table.xlsx');
+
+    }
+    
+    /**
+     * Синхронизация таблиц
+     * Коммунальные услуги и прогноза
+     * 
+     * @param ForecastSynchRequest $request
+     * @return string
+     */
+    public function synch(ForecastSynchRequest $request)
+    { 
+        $dto = ForecastSynchDto::fromRequest($request);
+        $synch = $this->action(ForecastSynchAction::class)->run($dto);
+        
+        //$examin = $this->action(ForecastExaminAction::class)->run($dto);
+        
+        if ($synch == true){
+            echo "Синхронизация успешно выполненна";
+        } else {
+            echo "Что то пошло не так!";
+        }
 
     }
     

@@ -98,6 +98,7 @@ Route::get('/build', [BuildController::class, 'user'])->middleware('auth')->name
 //Роуты для Back (Модуль прогноз коммуналки)
 Route::get('/forecast/back', [ForecastController::class, 'index'])->middleware('auth', 'admin');
 Route::patch('/forecast/updatetarrif', [ForecastController::class, 'update'])->middleware('auth', 'admin');
+Route::patch('/forecast/synch', [ForecastController::class, 'synch'])->middleware('auth', 'admin');
 Route::get('/forecast/export', [ForecastController::class, 'export'])->middleware('auth');
 
 //Роуты для Front (Модуль прогноз коммуналки)
