@@ -91,10 +91,23 @@ class ForecastController extends Controller
         $dto = ForecastSynchDto::fromRequest($request);
         $synch = $this->action(ForecastSynchAction::class)->run($dto);
         
-        //$examin = $this->action(ForecastExaminAction::class)->run($dto);
+        $examin = $this->action(ForecastExaminAction::class)->run($dto);
         
         if ($synch == true){
-            echo "Синхронизация успешно выполненна";
+            $text = "\n";
+            echo "Синхронизация успешно выполнена!";
+            echo $text;
+            echo "Ошибки обнаруженные в таблице коммунальных услуг";
+            echo $text;
+            echo "Год: $dto->year_one, Месяца:";           
+            foreach ($examin['year_one'] as $exam) {
+                echo "$exam,";
+            }
+            echo $text;
+            echo "Год: $dto->year_two, Месяца:";           
+            foreach ($examin['year_two'] as $exam) {
+                echo "$exam,";
+            }
         } else {
             echo "Что то пошло не так!";
         }

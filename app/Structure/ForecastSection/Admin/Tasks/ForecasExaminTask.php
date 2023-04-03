@@ -16,7 +16,8 @@ class ForecasExaminTask extends BaseTask
      */
     public function run(int $year, array $mounth): array
     {        
-        $info = Communal::selectRaw('group_concat(mounth) as mounth')
+        //$info = Communal::selectRaw('group_concat(mounth) as mounth')
+        $info = Communal::select('mounth')        
             ->where('year', $year)
             ->whereIn('mounth', $mounth)
             ->where('status', 2)    
@@ -24,7 +25,13 @@ class ForecasExaminTask extends BaseTask
             ->get()
             ->toArray();
         
-        return $info; 
+        $result = [];
+        foreach ($info as $inf) {
+            $key = $inf['mounth'];
+            $result[$key] = $inf['mounth'];
+        }
+        
+        return $result; 
         
     }   
    
