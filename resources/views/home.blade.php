@@ -68,6 +68,15 @@
     </form>
 </div>
 
+</br>
+<div class = "center">
+    <form action="{{ route('admincount')}}" method="get">
+        <input type='hidden' name='variant' value='1'>
+        <input type='hidden' name='year[]' value='2024'>
+        <button type="submit" class="custom-btn btn-16"><b>Смета<b></button>
+    </form>
+</div>
+
 @elseif ($role == "user")
 </br>
 <div class = "center">

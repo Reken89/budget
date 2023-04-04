@@ -10,6 +10,7 @@ use App\Structure\BuildSection\Admin\Controllers\AdminBuildController;
 use App\Structure\BuildSection\User\Controllers\UserBuildController;
 use App\Structure\BuildSection\Build\Controllers\BuildController;
 use App\Structure\ForecastSection\Admin\Controllers\ForecastController;
+use App\Structure\CountSection\Admin\Controllers\AdminCountController;
 
 /*
 |--------------------------------------------------------------------------
@@ -107,6 +108,19 @@ Route::get('/forecast/export', [ForecastController::class, 'export'])->middlewar
 
 //Роуты для Front (Модуль прогноз коммуналки)
 Route::get('/forecast', [ForecastController::class, 'user'])->middleware('auth', 'admin')->name('forecast');
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+ * 
+ * 
+ * 
+ */
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Роуты для Back (Модуль смета)
+Route::get('/admin/count/back', [AdminCountController::class, 'index'])->middleware('auth', 'admin');
+
+
+//Роуты для Front (Модуль смета)
+Route::get('/admin/count', [AdminCountController::class, 'user'])->middleware('auth', 'admin')->name('admincount');
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
