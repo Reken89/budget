@@ -29,7 +29,8 @@ class CountsSeeder extends Seeder
                         'user_id' => $user,
                         'ekr_id'  => $ekr,
                         'year'    => $year,
-                        'sum'     => 0,                              
+                        'sum_fu'  => 0, 
+                        'sum_cb'  => 0,   
                     ]); 
                 }                
             }           

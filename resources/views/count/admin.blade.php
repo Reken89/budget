@@ -3,6 +3,43 @@
 
 <script>
     $(document).ready(function(){   
+        //Выполняем запись в БД при нажатии на клавишу ENTER
+        function setKeydownmyForm() {
+            $('input').keydown(function(e) {
+                if (e.keyCode === 13) {
+                    var td = this.closest('td');
+                    var id = $('.id', td).val(); 
+                    
+                    //Получаем значения, меняем запятую на точку и убираем пробелы в числе                   
+                    function structure(title){
+                        var volume = $(title, td).val();
+                        //Меняем запятую на точку
+                        //Убираем лишние пробелы
+                        //Выполняем арифметические действия в строке
+                        var volume = volume.replace(/\,/g,'.');
+                        var volume = volume.replace(/ /g,'');
+                        var volume = eval(volume);
+                        return volume;
+                    }
+                    
+                    var sum_fu = structure('.sum_fu');
+                                        
+                    $.ajax({
+                        url:"/budget/public/admin/count/update",  
+                        method:"patch",  
+                        data:{
+                            "_token": "{{ csrf_token() }}",
+                            id, sum_fu
+                        },
+                        dataType:"text",  
+                        success:function(data){
+                            fetch_data(); 
+                        } 
+                    })                   
+                }               
+            })
+        }
+        
         //Подгружаем BACK шаблон отрисовки
         function fetch_data(){ 
             var form = <?=json_encode($info)?>;

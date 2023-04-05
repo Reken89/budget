@@ -82,3 +82,77 @@
 </br>
 <input type="button" style="width:250px;height:25px" name="formSubmit" id="btn_one" class="button5" value="Сформировать таблицу"> 
 </form>  
+
+@php
+    //var_dump($info);
+    $number = (count($info['glava']));
+@endphp
+
+</br>
+<table class="freeze-table" width="700px">
+    
+    <thead>
+        <tr>
+            <th style="min-width: 200px; width: 200px;" class="col-id-no fixed-header">Наименование расходов</th>
+            <th style="min-width: 70px; width: 70px;">ЭКР</th>
+            <th style="min-width: 200px; width: 200px;">ИТОГ ФУ</th>
+            <th style="min-width: 200px; width: 200px;">Глава</th>
+            <th style="min-width: 200px; width: 200px;">Администрация КГО</th>
+            <th style="min-width: 200px; width: 200px;">Совет КГО</th>
+            <th style="min-width: 200px; width: 200px;">КСО Костомукша</th>
+            <th style="min-width: 200px; width: 200px;">ИТОГ ЦБ</th>
+            <th style="min-width: 200px; width: 200px;">(ЦБ) Глава</th>
+            <th style="min-width: 200px; width: 200px;">(ЦБ) Администрация КГО</th>
+            <th style="min-width: 200px; width: 200px;">(ЦБ) Совет КГО</th>
+            <th style="min-width: 200px; width: 200px;">(ЦБ) КСО Костомукша</th>
+        </tr>
+    </thead>
+    
+    <tbody>
+    
+    @for ($n = 1; $n <= 44; $n++)
+        @for ($numb = 0; $numb < $number; $numb++)
+            @if ($info['glava'][$numb]['ekr']['main'] == 'Yes' && $info['glava'][$numb]['ekr']['number'] == $n)
+                <tr>
+                    <td class="col-id-no" scope="row"><b>{{ $info['glava'][$numb]['ekr']['title'] }}</b></td>
+                    <td><b>{{ $info['glava'][$numb]['ekr']['ekr'] }}</b></td>
+                    <td><b>{{ $info['glava'][$numb]['sum_fu'] + $info['adm'][$numb]['sum_fu'] + $info['sovet'][$numb]['sum_fu'] + $info['kso'][$numb]['sum_fu'] }}</b></td>                   
+                    <td><b>{{ $info['glava'][$numb]['sum_fu'] }}</b></td>
+                    <td><b>{{ $info['adm'][$numb]['sum_fu'] }}</b></td>
+                    <td><b>{{ $info['sovet'][$numb]['sum_fu'] }}</b></td>
+                    <td><b>{{ $info['kso'][$numb]['sum_fu'] }}</b></td>
+                    
+                    <td><b>{{ $info['glava'][$numb]['sum_cb'] + $info['adm'][$numb]['sum_cb'] + $info['sovet'][$numb]['sum_cb'] + $info['kso'][$numb]['sum_cb'] }}</b></td>
+                    <td><b>{{ $info['glava'][$numb]['sum_cb'] }}</b></td>
+                    <td><b>{{ $info['adm'][$numb]['sum_cb'] }}</b></td>
+                    <td><b>{{ $info['sovet'][$numb]['sum_cb'] }}</b></td>
+                    <td><b>{{ $info['kso'][$numb]['sum_cb'] }}</b></td>
+                </tr>
+            @endif
+            
+            @if ($info['glava'][$numb]['ekr']['main'] == 'No' && $info['glava'][$numb]['ekr']['number'] == $n)
+                <tr>
+                    <td class="col-id-no" scope="row">{{ $info['glava'][$numb]['ekr']['title'] }}</td>
+                    <td>{{ $info['glava'][$numb]['ekr']['ekr'] }}</td>
+                    <td>{{ $info['glava'][$numb]['sum_fu'] + $info['adm'][$numb]['sum_fu'] + $info['sovet'][$numb]['sum_fu'] + $info['kso'][$numb]['sum_fu'] }}</td>
+                    <td><input type="hidden" class="id" value="{{ $info['glava'][$numb]['id'] }}">
+                        <input type="text" class="sum_fu" value="{{ number_format($info['glava'][$numb]['sum_fu'], 2, ',', ' ') }}"></td>  
+                    <td><input type="hidden" class="id" value="{{ $info['adm'][$numb]['id'] }}">
+                        <input type="text" class="sum_fu" value="{{ number_format($info['adm'][$numb]['sum_fu'], 2, ',', ' ') }}"></td> 
+                    <td><input type="hidden" class="id" value="{{ $info['sovet'][$numb]['id'] }}">
+                        <input type="text" class="sum_fu" value="{{ number_format($info['sovet'][$numb]['sum_fu'], 2, ',', ' ') }}"></td> 
+                    <td><input type="hidden" class="id" value="{{ $info['kso'][$numb]['id'] }}">
+                        <input type="text" class="sum_fu" value="{{ number_format($info['kso'][$numb]['sum_fu'], 2, ',', ' ') }}"></td> 
+                    
+                    <td>{{ $info['glava'][$numb]['sum_cb'] + $info['adm'][$numb]['sum_cb'] + $info['sovet'][$numb]['sum_cb'] + $info['kso'][$numb]['sum_cb'] }}</td>
+                    <td>{{ $info['glava'][$numb]['sum_cb'] }}</td>
+                    <td>{{ $info['adm'][$numb]['sum_cb'] }}</td>
+                    <td>{{ $info['sovet'][$numb]['sum_cb'] }}</td>
+                    <td>{{ $info['kso'][$numb]['sum_cb'] }}</td>
+                </tr>
+            @endif
+        @endfor  
+    @endfor
+        
+    </tbody>
+</table>
