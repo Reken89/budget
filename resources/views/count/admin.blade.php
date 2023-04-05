@@ -9,6 +9,12 @@
                 if (e.keyCode === 13) {
                     var td = this.closest('td');
                     var id = $('.id', td).val(); 
+                    var user_id = $('.user_id', td).val();
+                    var main_id = $('.main_id', td).val();
+                    
+                    var tr = this.closest('tr');
+                    var number = $('.number', tr).val();
+                    var year = $('.year', tr).val();
                     
                     //Получаем значения, меняем запятую на точку и убираем пробелы в числе                   
                     function structure(title){
@@ -29,7 +35,7 @@
                         method:"patch",  
                         data:{
                             "_token": "{{ csrf_token() }}",
-                            id, sum_fu
+                            id, sum_fu, main_id, number, user_id, year
                         },
                         dataType:"text",  
                         success:function(data){
@@ -65,7 +71,7 @@
             let infomany = $('#count').serializeArray();
 
             //Создаем пустые массивы
-            let year = [];
+            let many_year = [];
             let many_variant = [];
             
             //Заполняем в массив year, все значения
@@ -76,13 +82,14 @@
             for (const item of infomany) {
                 const value = item.value;
                 if (item.name === 'year') {
-                    year.push(value);
+                    many_year.push(value);
                 } else if (item.name === 'variant') {
                     many_variant.push(value);
                 } 
             }   
             
             let variant = many_variant[0];
+            let year = many_year[0];
                 
             $.ajax({
                 url:"/budget/public/admin/count/back",  

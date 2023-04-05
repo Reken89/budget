@@ -10,10 +10,10 @@ class CountIndexAction extends BaseAction
     /**
      * Возвращает смету по заданным параметрам
      *
-     * @param int $variant, array $year
+     * @param int $variant, int $year
      * @return array
      */
-    public function run(int $variant, array $year): array
+    public function run(int $variant, int $year): array
     {   
         $result = [
             'glava' => $this->task(CountSelectAllTask::class)->run(35, $year),
@@ -22,7 +22,12 @@ class CountIndexAction extends BaseAction
             'kso'   => $this->task(CountSelectAllTask::class)->run(28, $year),
         ];
         
-        return $result;
+        $info = [
+            'result' => $result,
+            'year'   => $year,
+        ];
+        
+        return $info;
 
     }
 }

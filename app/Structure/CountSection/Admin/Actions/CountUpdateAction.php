@@ -5,6 +5,8 @@ namespace App\Structure\CountSection\Admin\Actions;
 use App\Core\Actions\BaseAction;
 use App\Structure\CountSection\Admin\Dto\CountUpdateDto;
 use App\Structure\CountSection\Admin\Tasks\CountUpdateTask;
+use App\Structure\CountSection\Admin\Tasks\CountSelectForMainTask;
+use App\Structure\CountSection\Admin\Tasks\CountMainUpdateTask;
 
 class CountUpdateAction extends BaseAction
 {
@@ -14,11 +16,12 @@ class CountUpdateAction extends BaseAction
      * @param CountUpdateDto $dto
      * @return bool
      */
-    public function run(CountUpdateDto $dto): bool
+    public function run(CountUpdateDto $dto)
     {   
-        $result = $this->task(CountUpdateTask::class)->run($dto);
+        $this->task(CountUpdateTask::class)->run($dto);
         
-        return $result;
+        $main = $this->task(CountSelectForMainTask::class)->run($dto);
+        $this->task(CountMainUpdateTask::class)->run($dto->main_id, $main);
 
     }
 }

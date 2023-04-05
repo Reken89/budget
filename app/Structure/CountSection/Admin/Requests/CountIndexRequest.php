@@ -14,7 +14,7 @@ class CountIndexRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'year'    => 'required|array',
+            'year'    => 'required|integer',
             'variant' => 'required|integer',
         ];
     }   
