@@ -26,7 +26,7 @@ class CountSelectForMainTask extends BaseTask
                 $query->where('main', 'No');
                 $query->where('number', $dto->number);
             })    
-            ->get()
+            ->first()
             ->toArray();
         
         return $info;  

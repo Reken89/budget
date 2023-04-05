@@ -40,6 +40,7 @@
                         dataType:"text",  
                         success:function(data){
                             fetch_data(); 
+                            //alert(data);
                         } 
                     })                   
                 }               
