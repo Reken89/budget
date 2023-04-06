@@ -11,6 +11,7 @@
                     var id = $('.id', td).val(); 
                     var user_id = $('.user_id', td).val();
                     var main_id = $('.main_id', td).val();
+                    var shared_id = $('.shared_id', td).val();
                     
                     var tr = this.closest('tr');
                     var number = $('.number', tr).val();
@@ -35,7 +36,8 @@
                         method:"patch",  
                         data:{
                             "_token": "{{ csrf_token() }}",
-                            id, sum_fu, main_id, number, user_id, year
+                            id, sum_fu, main_id, number, 
+                            user_id, year, shared_id
                         },
                         dataType:"text",  
                         success:function(data){

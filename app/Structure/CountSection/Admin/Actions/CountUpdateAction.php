@@ -7,6 +7,7 @@ use App\Structure\CountSection\Admin\Dto\CountUpdateDto;
 use App\Structure\CountSection\Admin\Tasks\CountUpdateTask;
 use App\Structure\CountSection\Admin\Tasks\CountSelectForMainTask;
 use App\Structure\CountSection\Admin\Tasks\CountMainUpdateTask;
+use App\Structure\CountSection\Admin\Tasks\CountSelectForSharedTask;
 
 class CountUpdateAction extends BaseAction
 {
@@ -22,6 +23,11 @@ class CountUpdateAction extends BaseAction
         
         $main = $this->task(CountSelectForMainTask::class)->run($dto);
         $this->task(CountMainUpdateTask::class)->run($dto->main_id, $main);
-
+        
+        if($dto->number >= 17 && $dto->number <=42){
+            $shared = $this->task(CountSelectForSharedTask::class)->run($dto);
+            $this->task(CountMainUpdateTask::class)->run($dto->shared_id, $shared);
+        }
+        
     }
 }

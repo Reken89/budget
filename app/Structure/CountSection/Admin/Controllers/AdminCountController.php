@@ -20,7 +20,16 @@ class AdminCountController extends Controller
      */
     public function index(CountIndexRequest $request)
     { 
-        $info = $this->action(CountIndexAction::class)->run($request->variant, $request->year);
+        if (session('option') == NULL || session('option') == FALSE){
+            session(['variant' => $request->variant]);
+            session(['year' => $request->year]);
+            $info = $this->action(CountIndexAction::class)->run($request->variant, $request->year);
+        }else{
+            $year = session('year');
+            $variant = session('variant');
+            $info = $this->action(CountIndexAction::class)->run($variant, $year);
+            session(['option' => false]);
+        }
         
         return view('count.back.admin', ['info' => $info]);
 
@@ -54,6 +63,9 @@ class AdminCountController extends Controller
     { 
         $dto = CountUpdateDto::fromRequest($request);
         $info = $this->action(CountUpdateAction::class)->run($dto);
+        
+        //Значение для варианта отрисовки таблицы
+        session(['option' => true]);
 
     }
            

@@ -13,6 +13,7 @@ class CountUpdateDto extends BaseDto
     public int      $number;
     public int      $user_id;
     public int      $year;
+    public int      $shared_id;
 
     /**
      * Возвращает DTO из объекта Request
@@ -23,12 +24,13 @@ class CountUpdateDto extends BaseDto
     public static function fromRequest(CountUpdateRequest $request): self
     {
         return new self([
-            'id'      => $request->get('id'),
-            'sum_fu'  => $request->get('sum_fu'),
-            'main_id' => $request->get('main_id'),
-            'number'  => $request->get('number'),
-            'user_id' => $request->get('user_id'),
-            'year'    => $request->get('year'),
+            'id'        => $request->get('id'),
+            'sum_fu'    => $request->get('sum_fu'),
+            'main_id'   => $request->get('main_id'),
+            'number'    => $request->get('number'),
+            'user_id'   => $request->get('user_id'),
+            'year'      => $request->get('year'),
+            'shared_id' => $request->get('shared_id'),
         ]);
     }
 }
