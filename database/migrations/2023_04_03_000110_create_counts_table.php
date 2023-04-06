@@ -18,6 +18,7 @@ class CreateCountsTable extends Migration
             $table->integer('user_id');
             $table->integer('ekr_id');
             $table->integer('year');
+            $table->integer('status');
             $table->decimal('sum_fu', 15, 2);
             $table->decimal('sum_cb', 15, 2);
         });

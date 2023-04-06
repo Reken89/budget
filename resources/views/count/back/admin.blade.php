@@ -91,9 +91,9 @@
 @if ($info['variant'] == '1')
     @include('count.back.adminblock.one')
 @elseif ($info['variant'] == '2')
-
+    @include('count.back.adminblock.two')
 @elseif ($info['variant'] == '3')
-
+    @include('count.back.adminblock.three')
 @elseif ($info['variant'] == '4')
 
 @elseif ($info['variant'] == '5')

@@ -1,3 +1,10 @@
+@if ($info['result']['glava'][2]['status'] == '2')
+    <blockquote class="blockquote-7">
+        <p><b><font color='red'>Централизованная бухгалтерия ещё работает с таблицей!</font></b></p>
+        <cite></cite>
+    </blockquote>
+@endif
+
 @php
     $number = (count($info['result']['glava']));
 @endphp
@@ -24,14 +31,14 @@
     
     <tbody>
     
-    @for ($n = 1; $n <= 44; $n++)
+    @for ($n = 1; $n <= $info['max_number']; $n++)
         @for ($numb = 0; $numb < $number; $numb++)
             @php
                 if (isset($shared_glava_id) == FALSE){
-                    $shared_glava_id = 10;
-                    $shared_adm_id = 10;
-                    $shared_sovet_id = 10;
-                    $shared_kso_id = 10;
+                    $shared_glava_id = 89;
+                    $shared_adm_id = 89;
+                    $shared_sovet_id = 89;
+                    $shared_kso_id = 89;
                 }
             @endphp
             @if ($info['result']['glava'][$numb]['ekr']['shared'] == 'Yes' && $info['result']['glava'][$numb]['ekr']['number'] == $n)
