@@ -3,11 +3,13 @@
 namespace App\Structure\CountSection\Admin\Controllers;
 
 use App\Core\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Structure\CountSection\Admin\Requests\CountIndexRequest;
 use App\Structure\CountSection\Admin\Requests\CountUpdateRequest;
 use App\Structure\CountSection\Admin\Dto\CountUpdateDto;
 use App\Structure\CountSection\Admin\Actions\CountIndexAction;
 use App\Structure\CountSection\Admin\Actions\CountUpdateAction;
+use App\Structure\CountSection\Admin\Exports\ExportAdminTable;
 
 class AdminCountController extends Controller
 {
@@ -30,6 +32,9 @@ class AdminCountController extends Controller
             $info = $this->action(CountIndexAction::class)->run($variant, $year);
             session(['option' => false]);
         }
+        
+        //Сессия для выгрузки в EXCEL
+        session(['info' => $info]);
         
         return view('count.back.admin', ['info' => $info]);
 
@@ -68,6 +73,17 @@ class AdminCountController extends Controller
         session(['option' => true]);
 
     }
+    
+    /**
+     * Выгрузка таблицы в EXCEL
+     * 
+     * @param 
+     * @return Excel
+     */
+    public function export()
+    { 
+        return Excel::download(new ExportAdminTable, 'table.xlsx');
+    }  
            
 }
 

@@ -118,7 +118,7 @@ Route::get('/forecast', [ForecastController::class, 'user'])->middleware('auth',
 //Роуты для Back (Модуль смета)
 Route::get('/admin/count/back', [AdminCountController::class, 'index'])->middleware('auth', 'admin');
 Route::patch('/admin/count/update', [AdminCountController::class, 'update'])->middleware('auth', 'admin');
-
+Route::get('/admin/count/export', [AdminCountController::class, 'export'])->middleware('auth', 'admin');
 
 //Роуты для Front (Модуль смета)
 Route::get('/admin/count', [AdminCountController::class, 'user'])->middleware('auth', 'admin')->name('admincount');

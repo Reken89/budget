@@ -81,7 +81,12 @@
 
 </br>
 <input type="button" style="width:250px;height:25px" name="formSubmit" id="btn_one" class="button5" value="Сформировать таблицу"> 
-</form>  
+</form> 
+
+</br>
+    <form action="/budget/public/admin/count/export" method="get">
+        <button type="submit" style="width:250px;height:25px" class="button5">Выгрузка в EXCEL</button>
+    </form>
 
 </br>
 <div class="shadowbox">
