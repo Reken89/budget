@@ -128,6 +128,7 @@
         <td><b>{{ number_format($info['total']['glava']['sum_cb'], 2, ',', ' ') }}</b></td>
         <td><b>{{ number_format($info['total']['adm']['sum_cb'], 2, ',', ' ') }}</b></td>
         <td><b>{{ number_format($info['total']['sovet']['sum_cb'], 2, ',', ' ') }}</b></td>
-        <td><b>{{ number_format($info['total']['kso']['sum_cb'], 2, ',', ' ') }}</b></td>  
+        <td><b>{{ number_format($info['total']['kso']['sum_cb'], 2, ',', ' ') }}</b></td> 
+    </tr>
     </tbody>
 </table>

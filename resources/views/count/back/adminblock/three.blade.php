@@ -177,5 +177,6 @@
         <td><b>{{ number_format($info['total']['korablik']['sum_cb'], 2, ',', ' ') }}</b></td>
         <td><b>{{ number_format($info['total']['skazka']['sum_cb'], 2, ',', ' ') }}</b></td>
         <td><b>{{ number_format($info['total']['solnce']['sum_cb'], 2, ',', ' ') }}</b></td>
+    </tr>
     </tbody>
 </table>

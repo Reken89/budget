@@ -60,9 +60,48 @@ class CountIndexAction extends BaseAction
                 'skazka'   => $this->task(CountSelectAllTask::class)->total(14, $year),
                 'solnce'   => $this->task(CountSelectAllTask::class)->total(15, $year),
             ]; 
-        }
-
+        } elseif($variant == '4'){
+            $result = [
+                'dhsh' => $this->task(CountSelectAllTask::class)->run(18, $year),
+                'dmsh' => $this->task(CountSelectAllTask::class)->run(19, $year),
+            ];
         
+            $total = [
+                'dhsh' => $this->task(CountSelectAllTask::class)->total(18, $year),
+                'dmsh' => $this->task(CountSelectAllTask::class)->total(19, $year),
+            ]; 
+        } elseif($variant == '5'){
+            $result = [
+                'school' => $this->task(CountSelectAllTask::class)->run(8, $year),
+                'kinder' => $this->task(CountSelectAllTask::class)->run(36, $year),
+            ];
+        
+            $total = [
+                'school' => $this->task(CountSelectAllTask::class)->total(8, $year),
+                'kinder' => $this->task(CountSelectAllTask::class)->total(36, $year),
+            ]; 
+        } elseif($variant == '6'){
+            $result = [
+                'kums' => $this->task(CountSelectAllTask::class)->run(23, $year),
+                'us'   => $this->task(CountSelectAllTask::class)->run(37, $year),
+                'edds' => $this->task(CountSelectAllTask::class)->run(38, $year),
+            ];
+        
+            $total = [
+                'kums' => $this->task(CountSelectAllTask::class)->total(23, $year),
+                'us'   => $this->task(CountSelectAllTask::class)->total(37, $year),
+                'edds' => $this->task(CountSelectAllTask::class)->total(38, $year),
+            ]; 
+        } elseif($variant == '7'){
+            $result = [
+                'svod' => $this->task(CountSelectAllTask::class)->svod($year),
+            ];
+        
+            $total = [
+                'svod' => $this->task(CountSelectAllTask::class)->svod_total($year),
+            ]; 
+        }
+       
         $info = [
             'result'     => $result,
             'year'       => $year,

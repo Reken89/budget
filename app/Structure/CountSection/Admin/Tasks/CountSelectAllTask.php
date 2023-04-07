@@ -52,4 +52,50 @@ class CountSelectAllTask extends BaseTask
         return $info;  
 
     }
+    
+    /**
+     * Возвращает свод сметы
+     *
+     * @param int $year
+     * @return array
+     */
+    public function svod(int $year): array
+    {       
+        
+        $info = Count::select('ekr_id')
+            ->selectRaw('SUM(`sum_fu`) as sum_fu')
+            ->selectRaw('SUM(`sum_cb`) as sum_cb') 
+            ->with(['ekr'])
+            ->where('year', $year)
+            ->groupBy('ekr_id')
+            ->get()
+            ->toArray();
+        
+        return $info;  
+
+    }
+    
+    /**
+     * Возвращает свод сметы
+     * Итоговая строка
+     *
+     * @param int $year
+     * @return array
+     */
+    public function svod_total(int $year): array
+    {       
+        
+        $info = Count::selectRaw('SUM(`sum_fu`) as sum_fu')
+            ->selectRaw('SUM(`sum_cb`) as sum_cb')  
+            ->where('year', $year) 
+            ->whereHas('ekr', function (Builder $query){
+                $query->where('shared', 'No');
+                $query->where('main', 'Yes');
+            })      
+            ->first()
+            ->toArray();
+        
+        return $info;  
+
+    }
 }

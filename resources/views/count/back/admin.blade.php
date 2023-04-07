@@ -95,7 +95,11 @@
 @elseif ($info['variant'] == '3')
     @include('count.back.adminblock.three')
 @elseif ($info['variant'] == '4')
-
+    @include('count.back.adminblock.four')
 @elseif ($info['variant'] == '5')
-
+    @include('count.back.adminblock.five')
+@elseif ($info['variant'] == '6')
+    @include('count.back.adminblock.six')   
+@elseif ($info['variant'] == '7')
+    @include('count.back.adminblock.seven') 
 @endif

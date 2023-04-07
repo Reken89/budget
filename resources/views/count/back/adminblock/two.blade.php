@@ -97,5 +97,6 @@
         <td><b>{{ number_format($info['total']['cb']['sum_cb'] + $info['total']['zakupki']['sum_cb'], 2, ',', ' ') }}</b></td>
         <td><b>{{ number_format($info['total']['cb']['sum_cb'], 2, ',', ' ') }}</b></td>
         <td><b>{{ number_format($info['total']['zakupki']['sum_cb'], 2, ',', ' ') }}</b></td> 
+    </tr>
     </tbody>
 </table>
