@@ -84,6 +84,10 @@
 </form> 
 
 </br>
+    <input type="button" style="width:250px;height:25px" name="formSubmit" id="btn_two" class="button5" value="Синхронизация с прогнозом"> 
+</br>    
+
+</br>
     <form action="/budget/public/admin/count/export" method="get">
         <button type="submit" style="width:250px;height:25px" class="button5">Выгрузка в EXCEL</button>
     </form>

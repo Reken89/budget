@@ -10,6 +10,7 @@ use App\Structure\CountSection\Admin\Dto\CountUpdateDto;
 use App\Structure\CountSection\Admin\Actions\CountIndexAction;
 use App\Structure\CountSection\Admin\Actions\CountUpdateAction;
 use App\Structure\CountSection\Admin\Exports\ExportAdminTable;
+use App\Structure\CountSection\Admin\Actions\CountSynchAction;
 
 class AdminCountController extends Controller
 {
@@ -84,6 +85,17 @@ class AdminCountController extends Controller
     { 
         return Excel::download(new ExportAdminTable, 'table.xlsx');
     }  
-           
+    
+    /**
+     * Синхронизация таблиц ПРОГНОЗ и СМЕТА
+     * 
+     * @param 
+     * @return 
+     */
+    public function synch()
+    { 
+        $result = $this->action(CountSynchAction::class)->run();
+        echo "Синхронизация выполнена успешно!";      
+    }  
 }
 
