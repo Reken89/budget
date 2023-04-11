@@ -58,23 +58,30 @@
                     <input type="hidden" class="year" value="{{ $info['year'] }}">
                     <td class="col-id-no" scope="row">{{ $info['result']['kums'][$numb]['ekr']['title'] }}</td>
                     <td>{{ $info['result']['kums'][$numb]['ekr']['ekr'] }}</td>
-                    <td><input type="hidden" class="shared_id" value="{{ $shared_kums_id }}">
-                        <input type="hidden" class="main_id" value="{{ $main_kums_id }}">
-                        <input type="hidden" class="user_id" value="23">
-                        <input type="hidden" class="id" value="{{ $info['result']['kums'][$numb]['id'] }}">
-                        <input type="text" class="sum_cb" value="{{ number_format($info['result']['kums'][$numb]['sum_cb'], 2, ',', ' ') }}"></td>
                     
-                    <td><input type="hidden" class="shared_id" value="{{ $shared_us_id }}">
-                        <input type="hidden" class="main_id" value="{{ $main_us_id }}">
-                        <input type="hidden" class="user_id" value="37">
-                        <input type="hidden" class="id" value="{{ $info['result']['us'][$numb]['id'] }}">
-                        <input type="text" class="sum_cb" value="{{ number_format($info['result']['us'][$numb]['sum_cb'], 2, ',', ' ') }}"></td> 
-                    
-                    <td><input type="hidden" class="shared_id" value="{{ $shared_edds_id }}">
-                        <input type="hidden" class="main_id" value="{{ $main_edds_id }}">
-                        <input type="hidden" class="user_id" value="38">
-                        <input type="hidden" class="id" value="{{ $info['result']['edds'][$numb]['id'] }}">
-                        <input type="text" class="sum_cb" value="{{ number_format($info['result']['edds'][$numb]['sum_cb'], 2, ',', ' ') }}"></td> 
+                    @if ($info['result']['kums'][2]['status'] == '2')
+                        <td><input type="hidden" class="shared_id" value="{{ $shared_kums_id }}">
+                            <input type="hidden" class="main_id" value="{{ $main_kums_id }}">
+                            <input type="hidden" class="user_id" value="23">
+                            <input type="hidden" class="id" value="{{ $info['result']['kums'][$numb]['id'] }}">
+                            <input type="text" class="sum_cb" value="{{ number_format($info['result']['kums'][$numb]['sum_cb'], 2, ',', ' ') }}"></td>
+
+                        <td><input type="hidden" class="shared_id" value="{{ $shared_us_id }}">
+                            <input type="hidden" class="main_id" value="{{ $main_us_id }}">
+                            <input type="hidden" class="user_id" value="37">
+                            <input type="hidden" class="id" value="{{ $info['result']['us'][$numb]['id'] }}">
+                            <input type="text" class="sum_cb" value="{{ number_format($info['result']['us'][$numb]['sum_cb'], 2, ',', ' ') }}"></td> 
+
+                        <td><input type="hidden" class="shared_id" value="{{ $shared_edds_id }}">
+                            <input type="hidden" class="main_id" value="{{ $main_edds_id }}">
+                            <input type="hidden" class="user_id" value="38">
+                            <input type="hidden" class="id" value="{{ $info['result']['edds'][$numb]['id'] }}">
+                            <input type="text" class="sum_cb" value="{{ number_format($info['result']['edds'][$numb]['sum_cb'], 2, ',', ' ') }}"></td> 
+                    @else
+                        <td>{{ number_format($info['result']['kums'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
+                        <td>{{ number_format($info['result']['us'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
+                        <td>{{ number_format($info['result']['edds'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
+                    @endif
                                        
                     <td>{{ number_format($info['result']['kums'][$numb]['sum_cb'] + $info['result']['us'][$numb]['sum_cb'] + $info['result']['edds'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
                 </tr>

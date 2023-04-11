@@ -53,17 +53,23 @@
                     <input type="hidden" class="year" value="{{ $info['year'] }}">
                     <td class="col-id-no" scope="row">{{ $info['result']['school'][$numb]['ekr']['title'] }}</td>
                     <td>{{ $info['result']['school'][$numb]['ekr']['ekr'] }}</td>
-                    <td><input type="hidden" class="shared_id" value="{{ $shared_school_id }}">
-                        <input type="hidden" class="main_id" value="{{ $main_school_id }}">
-                        <input type="hidden" class="user_id" value="8">
-                        <input type="hidden" class="id" value="{{ $info['result']['school'][$numb]['id'] }}">
-                        <input type="text" class="sum_cb" value="{{ number_format($info['result']['school'][$numb]['sum_cb'], 2, ',', ' ') }}"></td>
                     
-                    <td><input type="hidden" class="shared_id" value="{{ $shared_kinder_id }}">
-                        <input type="hidden" class="main_id" value="{{ $main_kinder_id }}">
-                        <input type="hidden" class="user_id" value="36">
-                        <input type="hidden" class="id" value="{{ $info['result']['kinder'][$numb]['id'] }}">
-                        <input type="text" class="sum_cb" value="{{ number_format($info['result']['kinder'][$numb]['sum_cb'], 2, ',', ' ') }}"></td>                    
+                    @if ($info['result']['school'][2]['status'] == '2')
+                        <td><input type="hidden" class="shared_id" value="{{ $shared_school_id }}">
+                            <input type="hidden" class="main_id" value="{{ $main_school_id }}">
+                            <input type="hidden" class="user_id" value="8">
+                            <input type="hidden" class="id" value="{{ $info['result']['school'][$numb]['id'] }}">
+                            <input type="text" class="sum_cb" value="{{ number_format($info['result']['school'][$numb]['sum_cb'], 2, ',', ' ') }}"></td>
+
+                        <td><input type="hidden" class="shared_id" value="{{ $shared_kinder_id }}">
+                            <input type="hidden" class="main_id" value="{{ $main_kinder_id }}">
+                            <input type="hidden" class="user_id" value="36">
+                            <input type="hidden" class="id" value="{{ $info['result']['kinder'][$numb]['id'] }}">
+                            <input type="text" class="sum_cb" value="{{ number_format($info['result']['kinder'][$numb]['sum_cb'], 2, ',', ' ') }}"></td> 
+                    @else
+                        <td>{{ number_format($info['result']['school'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
+                        <td>{{ number_format($info['result']['kinder'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
+                    @endif
                     
                     <td>{{ number_format($info['result']['school'][$numb]['sum_cb'] + $info['result']['kinder'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
                 </tr>

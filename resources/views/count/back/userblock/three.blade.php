@@ -77,48 +77,59 @@
                     <input type="hidden" class="number" value="{{ $info['result']['aurinko'][$numb]['ekr']['number'] }}">
                     <input type="hidden" class="year" value="{{ $info['year'] }}">
                     <td class="col-id-no" scope="row">{{ $info['result']['aurinko'][$numb]['ekr']['title'] }}</td>
-                    <td>{{ $info['result']['aurinko'][$numb]['ekr']['ekr'] }}</td>                   
-                    <td><input type="hidden" class="shared_id" value="{{ $shared_aurinko_id }}">
-                        <input type="hidden" class="main_id" value="{{ $main_aurinko_id }}">
-                        <input type="hidden" class="user_id" value="9">
-                        <input type="hidden" class="id" value="{{ $info['result']['aurinko'][$numb]['id'] }}">
-                        <input type="text" class="sum_cb" value="{{ number_format($info['result']['aurinko'][$numb]['sum_cb'], 2, ',', ' ') }}"></td>
+                    <td>{{ $info['result']['aurinko'][$numb]['ekr']['ekr'] }}</td> 
                     
-                    <td><input type="hidden" class="shared_id" value="{{ $shared_berezka_id }}">
-                        <input type="hidden" class="main_id" value="{{ $main_berezka_id }}">
-                        <input type="hidden" class="user_id" value="10">
-                        <input type="hidden" class="id" value="{{ $info['result']['berezka'][$numb]['id'] }}">
-                        <input type="text" class="sum_cb" value="{{ number_format($info['result']['berezka'][$numb]['sum_cb'], 2, ',', ' ') }}"></td> 
-                    
-                    <td><input type="hidden" class="shared_id" value="{{ $shared_gnomik_id }}">
-                        <input type="hidden" class="main_id" value="{{ $main_gnomik_id }}">
-                        <input type="hidden" class="user_id" value="11">
-                        <input type="hidden" class="id" value="{{ $info['result']['gnomik'][$numb]['id'] }}">
-                        <input type="text" class="sum_cb" value="{{ number_format($info['result']['gnomik'][$numb]['sum_cb'], 2, ',', ' ') }}"></td>  
-                    
-                    <td><input type="hidden" class="shared_id" value="{{ $shared_zoloto_id }}">
-                        <input type="hidden" class="main_id" value="{{ $main_zoloto_id }}">
-                        <input type="hidden" class="user_id" value="12">
-                        <input type="hidden" class="id" value="{{ $info['result']['zoloto'][$numb]['id'] }}">
-                        <input type="text" class="sum_cb" value="{{ number_format($info['result']['zoloto'][$numb]['sum_cb'], 2, ',', ' ') }}"></td> 
-                    
-                    <td><input type="hidden" class="shared_id" value="{{ $shared_korablik_id }}">
-                        <input type="hidden" class="main_id" value="{{ $main_korablik_id }}">
-                        <input type="hidden" class="user_id" value="13">
-                        <input type="hidden" class="id" value="{{ $info['result']['korablik'][$numb]['id'] }}">
-                        <input type="text" class="sum_cb" value="{{ number_format($info['result']['korablik'][$numb]['sum_cb'], 2, ',', ' ') }}"></td> 
-                    
-                    <td><input type="hidden" class="shared_id" value="{{ $shared_skazka_id }}">
-                        <input type="hidden" class="main_id" value="{{ $main_skazka_id }}">
-                        <input type="hidden" class="user_id" value="14">
-                        <input type="hidden" class="id" value="{{ $info['result']['skazka'][$numb]['id'] }}">
-                        <input type="text" class="sum_cb" value="{{ number_format($info['result']['skazka'][$numb]['sum_cb'], 2, ',', ' ') }}"></td> 
-                    
-                    <td><input type="hidden" class="shared_id" value="{{ $shared_solnce_id }}">
-                        <input type="hidden" class="main_id" value="{{ $main_solnce_id }}">
-                        <input type="hidden" class="user_id" value="15">
-                        <input type="hidden" class="id" value="{{ $info['result']['solnce'][$numb]['id'] }}">
-                        <input type="text" class="sum_cb" value="{{ number_format($info['result']['solnce'][$numb]['sum_cb'], 2, ',', ' ') }}"></td> 
+                    @if ($info['result']['aurinko'][2]['status'] == '2')
+                        <td><input type="hidden" class="shared_id" value="{{ $shared_aurinko_id }}">
+                            <input type="hidden" class="main_id" value="{{ $main_aurinko_id }}">
+                            <input type="hidden" class="user_id" value="9">
+                            <input type="hidden" class="id" value="{{ $info['result']['aurinko'][$numb]['id'] }}">
+                            <input type="text" class="sum_cb" value="{{ number_format($info['result']['aurinko'][$numb]['sum_cb'], 2, ',', ' ') }}"></td>
+
+                        <td><input type="hidden" class="shared_id" value="{{ $shared_berezka_id }}">
+                            <input type="hidden" class="main_id" value="{{ $main_berezka_id }}">
+                            <input type="hidden" class="user_id" value="10">
+                            <input type="hidden" class="id" value="{{ $info['result']['berezka'][$numb]['id'] }}">
+                            <input type="text" class="sum_cb" value="{{ number_format($info['result']['berezka'][$numb]['sum_cb'], 2, ',', ' ') }}"></td> 
+
+                        <td><input type="hidden" class="shared_id" value="{{ $shared_gnomik_id }}">
+                            <input type="hidden" class="main_id" value="{{ $main_gnomik_id }}">
+                            <input type="hidden" class="user_id" value="11">
+                            <input type="hidden" class="id" value="{{ $info['result']['gnomik'][$numb]['id'] }}">
+                            <input type="text" class="sum_cb" value="{{ number_format($info['result']['gnomik'][$numb]['sum_cb'], 2, ',', ' ') }}"></td>  
+
+                        <td><input type="hidden" class="shared_id" value="{{ $shared_zoloto_id }}">
+                            <input type="hidden" class="main_id" value="{{ $main_zoloto_id }}">
+                            <input type="hidden" class="user_id" value="12">
+                            <input type="hidden" class="id" value="{{ $info['result']['zoloto'][$numb]['id'] }}">
+                            <input type="text" class="sum_cb" value="{{ number_format($info['result']['zoloto'][$numb]['sum_cb'], 2, ',', ' ') }}"></td> 
+
+                        <td><input type="hidden" class="shared_id" value="{{ $shared_korablik_id }}">
+                            <input type="hidden" class="main_id" value="{{ $main_korablik_id }}">
+                            <input type="hidden" class="user_id" value="13">
+                            <input type="hidden" class="id" value="{{ $info['result']['korablik'][$numb]['id'] }}">
+                            <input type="text" class="sum_cb" value="{{ number_format($info['result']['korablik'][$numb]['sum_cb'], 2, ',', ' ') }}"></td> 
+
+                        <td><input type="hidden" class="shared_id" value="{{ $shared_skazka_id }}">
+                            <input type="hidden" class="main_id" value="{{ $main_skazka_id }}">
+                            <input type="hidden" class="user_id" value="14">
+                            <input type="hidden" class="id" value="{{ $info['result']['skazka'][$numb]['id'] }}">
+                            <input type="text" class="sum_cb" value="{{ number_format($info['result']['skazka'][$numb]['sum_cb'], 2, ',', ' ') }}"></td> 
+
+                        <td><input type="hidden" class="shared_id" value="{{ $shared_solnce_id }}">
+                            <input type="hidden" class="main_id" value="{{ $main_solnce_id }}">
+                            <input type="hidden" class="user_id" value="15">
+                            <input type="hidden" class="id" value="{{ $info['result']['solnce'][$numb]['id'] }}">
+                            <input type="text" class="sum_cb" value="{{ number_format($info['result']['solnce'][$numb]['sum_cb'], 2, ',', ' ') }}"></td>
+                    @else
+                        <td>{{ number_format($info['result']['aurinko'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
+                        <td>{{ number_format($info['result']['berezka'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
+                        <td>{{ number_format($info['result']['gnomik'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
+                        <td>{{ number_format($info['result']['zoloto'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
+                        <td>{{ number_format($info['result']['korablik'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
+                        <td>{{ number_format($info['result']['skazka'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
+                        <td>{{ number_format($info['result']['solnce'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
+                    @endif
                     
                     <td>{{ number_format($info['result']['aurinko'][$numb]['sum_cb'] + $info['result']['berezka'][$numb]['sum_cb'] + $info['result']['gnomik'][$numb]['sum_cb'] + $info['result']['zoloto'][$numb]['sum_cb'] + $info['result']['korablik'][$numb]['sum_cb'] + $info['result']['skazka'][$numb]['sum_cb'] + $info['result']['solnce'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
                 </tr>

@@ -9,6 +9,7 @@ use App\Structure\CountSection\User\Requests\CountUpdateRequest;
 use App\Structure\CountSection\User\Dto\CountUpdateDto;
 use App\Structure\CountSection\User\Actions\CountIndexAction;
 use App\Structure\CountSection\User\Actions\CountUpdateAction;
+use App\Structure\CountSection\User\Actions\CountUpdateStatusAction;
 
 class CountController extends Controller
 {
@@ -82,6 +83,30 @@ class CountController extends Controller
     public function export()
     { 
         return Excel::download(new ExportAdminTable, 'table.xlsx');
+    }  
+    
+    /**
+     * Меняем статус в таблице СМЕТА
+     * Закрываем возможность редактировать таблицу для ЦБ
+     * 
+     * @param 
+     * @return 
+     */
+    public function status()
+    { 
+        $year = session('year');
+        $variant = session('variant');
+        $result = $this->action(CountUpdateStatusAction::class)->run($variant, $year);
+        
+        if ($result == true){
+            echo "Вы успешно отправили информацию в ФЭУ";
+        } else {
+            echo "Что то пошло не так...";
+        }
+        
+        //Значение для варианта отрисовки таблицы
+        session(['option' => true]);
+        
     }  
 
 }

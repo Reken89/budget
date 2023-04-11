@@ -124,6 +124,7 @@ Route::patch('/admin/count/synch', [AdminCountController::class, 'synch'])->midd
 
 Route::get('/user/count/back', [CountController::class, 'index'])->middleware('auth');
 Route::patch('/user/count/update', [CountController::class, 'update'])->middleware('auth');
+Route::patch('/user/count/update/status', [CountController::class, 'status'])->middleware('auth');
 
 //Роуты для Front (Модуль смета)
 Route::get('/admin/count', [AdminCountController::class, 'user'])->middleware('auth', 'admin')->name('admincount');

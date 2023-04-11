@@ -108,6 +108,21 @@
                 } 
             })               
         })
+        
+        //Выполняем действие (синхронизация) при нажатии на кнопку
+        $(document).on('click', '#btn_two', function(){              
+            $.ajax({
+                url:"/budget/public/user/count/update/status",  
+                method:"patch",
+                data:{
+                    "_token": "{{ csrf_token() }}"
+                },
+                success:function(data){
+                    alert(data);
+                    fetch_data();
+                } 
+            })               
+        })
                
     });
 </script>

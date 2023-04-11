@@ -84,6 +84,10 @@
     </form>
 
 </br>
+    <input type="button" style="width:250px;height:25px" name="formSubmit" id="btn_two" class="button5" value="Отправка в ФЭУ"> 
+</br>   
+
+</br>
 <div class="shadowbox">
     <p>Выбранный год: {{$info['year']}} </p>
 </div>
