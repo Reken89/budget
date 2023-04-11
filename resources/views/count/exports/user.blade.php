@@ -1,0 +1,13 @@
+@if ($info['variant'] == '1')
+    @include('count.exports.userblock.one')
+@elseif ($info['variant'] == '2')
+    @include('count.exports.userblock.two')
+@elseif ($info['variant'] == '3')
+    @include('count.exports.userblock.three')
+@elseif ($info['variant'] == '4')
+    @include('count.exports.userblock.four')
+@elseif ($info['variant'] == '5')
+    @include('count.exports.userblock.five')
+@elseif ($info['variant'] == '6')
+    @include('count.exports.userblock.six')   
+@endif
