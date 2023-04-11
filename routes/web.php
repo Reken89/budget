@@ -11,6 +11,7 @@ use App\Structure\BuildSection\User\Controllers\UserBuildController;
 use App\Structure\BuildSection\Build\Controllers\BuildController;
 use App\Structure\ForecastSection\Admin\Controllers\ForecastController;
 use App\Structure\CountSection\Admin\Controllers\AdminCountController;
+use App\Structure\CountSection\User\Controllers\CountController;
 
 /*
 |--------------------------------------------------------------------------
@@ -121,8 +122,12 @@ Route::patch('/admin/count/update', [AdminCountController::class, 'update'])->mi
 Route::get('/admin/count/export', [AdminCountController::class, 'export'])->middleware('auth', 'admin');
 Route::patch('/admin/count/synch', [AdminCountController::class, 'synch'])->middleware('auth', 'admin');
 
+Route::get('/user/count/back', [CountController::class, 'index'])->middleware('auth');
+Route::patch('/user/count/update', [CountController::class, 'update'])->middleware('auth');
+
 //Роуты для Front (Модуль смета)
 Route::get('/admin/count', [AdminCountController::class, 'user'])->middleware('auth', 'admin')->name('admincount');
+Route::get('/user/count', [CountController::class, 'user'])->middleware('auth')->name('usercount');
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
