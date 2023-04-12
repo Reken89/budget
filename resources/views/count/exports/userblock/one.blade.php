@@ -2,7 +2,6 @@
     $number = (count($info['result']['glava']));
 @endphp
 
-</br>
 <table>
     
     <thead>

@@ -10,6 +10,7 @@ use App\Structure\CountSection\User\Dto\CountUpdateDto;
 use App\Structure\CountSection\User\Actions\CountIndexAction;
 use App\Structure\CountSection\User\Actions\CountUpdateAction;
 use App\Structure\CountSection\User\Actions\CountUpdateStatusAction;
+use App\Structure\CountSection\User\Exports\ExportUserTable;
 
 class CountController extends Controller
 {
@@ -82,7 +83,7 @@ class CountController extends Controller
      */
     public function export()
     { 
-        return Excel::download(new ExportAdminTable, 'table.xlsx');
+        return Excel::download(new ExportUserTable, 'table.xlsx');
     }  
     
     /**

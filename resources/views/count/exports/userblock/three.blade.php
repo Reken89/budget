@@ -2,7 +2,6 @@
     $number = (count($info['result']['aurinko']));
 @endphp
 
-</br>
 <table>
     
     <thead>
