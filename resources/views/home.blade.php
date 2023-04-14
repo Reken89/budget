@@ -77,6 +77,13 @@
     </form>
 </div>
 
+</br>
+<div class = "center">
+    <form action="{{ route('admintax')}}" method="get">
+        <button type="submit" class="custom-btn btn-16"><b>ЕНП<b></button>
+    </form>
+</div>
+
 @elseif ($role == "user")
 </br>
 <div class = "center">

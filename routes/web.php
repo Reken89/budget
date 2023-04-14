@@ -12,6 +12,7 @@ use App\Structure\BuildSection\Build\Controllers\BuildController;
 use App\Structure\ForecastSection\Admin\Controllers\ForecastController;
 use App\Structure\CountSection\Admin\Controllers\AdminCountController;
 use App\Structure\CountSection\User\Controllers\CountController;
+use App\Structure\TaxSection\Admin\Controllers\TaxController;
 
 /*
 |--------------------------------------------------------------------------
@@ -131,7 +132,20 @@ Route::get('/user/count/export', [CountController::class, 'export'])->middleware
 Route::get('/admin/count', [AdminCountController::class, 'user'])->middleware('auth', 'admin')->name('admincount');
 Route::get('/user/count', [CountController::class, 'user'])->middleware('auth')->name('usercount');
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+ * 
+ * 
+ * 
+ */
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Роуты для Back (Модуль налоги)
+Route::get('/admin/tax/back', [TaxController::class, 'index'])->middleware('auth', 'admin');
+Route::post('/admin/tax/upload', [TaxController::class, 'upload'])->middleware('auth', 'admin');
 
+
+//Роуты для Front (Модуль налоги)
+Route::get('/admin/tax', [TaxController::class, 'user'])->middleware('auth', 'admin')->name('admintax');
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
