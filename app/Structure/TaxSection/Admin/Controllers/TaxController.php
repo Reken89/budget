@@ -4,7 +4,12 @@ namespace App\Structure\TaxSection\Admin\Controllers;
 
 use App\Core\Controllers\Controller;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Structure\TaxSection\Admin\Exports\ExportTaxTable;
+use App\Structure\TaxSection\Admin\Requests\TaxIndexRequest;
+use App\Structure\TaxSection\Admin\Dto\TaxIndexDto;
 use App\Structure\TaxSection\Admin\Actions\TaxUploadAction;
+use App\Structure\TaxSection\Admin\Actions\TaxIndexAction;
 
 class TaxController extends Controller
 {
@@ -12,24 +17,34 @@ class TaxController extends Controller
      * Back отрисовка страницы
      * Возвращает ЕНП
      *
-     * @param 
+     * @param TaxIndexRequest $request
      * @return 
      */
-    public function index()
-    {        
-        return view('tax.back.admin'); 
+    public function index(TaxIndexRequest $request)
+    {    
+        $dto = TaxIndexDto::fromRequest($request);
+        $info = $this->action(TaxIndexAction::class)->run($dto);
+        
+        //Информация для выгрузки в EXCEL
+        session(['info' => $info]);
+        
+        return view('tax.back.admin', ['info' => $info]); 
     }
     
      /**
      * Front отрисовка страницы
      * Возвращает front шаблон
      *
-     * @param OfsIndexRequest $request
+     * @param TaxIndexRequest $request
      * @return view
      */
-    public function user()
+    public function user(TaxIndexRequest $request)
     {    
-        return view('tax.admin');
+        $info = [
+            'mounth' => $request->mounth,
+        ];
+        
+        return view('tax.admin', ['info' => $info]);
     }
     
      /**
@@ -42,13 +57,33 @@ class TaxController extends Controller
     public function upload(Request $request)
     {   
         $info = $request->file;
-        $result = $this->action(TaxUploadAction::class)->run($info);
+        $type = $_FILES['file']['type'];
         
-        if ($result == true){
-            echo "XML файл загружен в БД Laravel";
+        if ($type == 'text/xml'){ 
+            $result = $this->action(TaxUploadAction::class)->run($info);        
+            if ($result == true){
+                $status = 1;
+            } else {
+                $status = 2;
+            }
+            
         } else {
-            echo "Загрузка в Laravel не удалась";
+            $status = 3;         
         }
+        
+        return view('tax.back.report', ['status' => $status]); 
+
+    }
+    
+    /**
+     * Выгрузка таблицы в EXCEL
+     * 
+     * @param 
+     * @return Excel
+     */
+    public function export()
+    { 
+        return Excel::download(new ExportTaxTable, 'table.xlsx');
 
     }
     

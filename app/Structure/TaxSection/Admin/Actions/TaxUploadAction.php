@@ -52,6 +52,7 @@ class TaxUploadAction extends BaseAction
                         'kbk'     => $kbk,
                         'inn_adb' => $adb,
                         'mounth'  => $mounth,
+                        'year'    => 2023,
                     ]);
                 }
             }

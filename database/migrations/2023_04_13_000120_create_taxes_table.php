@@ -21,6 +21,7 @@ class CreateTaxesTable extends Migration
             $table->string('kbk', 20);
             $table->string('inn_adb', 10);
             $table->integer('mounth');
+            $table->integer('year');
         });
     }
 
