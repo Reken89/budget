@@ -37,13 +37,18 @@ class TaxUploadAction extends BaseAction
                 
                 //Получаем из массива нужные нам значения
                 if ($result[0] == true && $result[6] == true && $result[8] == true && $result[2] == true && $result[3] == true && $result[1] == true){
-                    $mounth = substr($result[0],43,2);
+                    //$mounth = substr($result[0],43,2);
                     $title = substr($result[6],17);
                     $title = str_replace("&quot;", "", $title);
                     $sum = preg_replace("/[^,.0-9]/", '', $result[8]);
-                    $inn = substr($result[2],12,10);
-                    $kbk = substr($result[3],8,20);
-                    $adb = substr($result[1],14,10);
+                    //$inn = substr($result[2],12,10);
+                    //$kbk = substr($result[3],8,20);
+                    //$adb = substr($result[1],14,10);
+                    $mounth = preg_replace("/[^,.0-9]/", '', $result[0]);
+                    $mounth = substr($mounth,4,2);
+                    $inn = preg_replace("/[^,.0-9]/", '', $result[2]);
+                    $kbk = preg_replace("/[^,.0-9]/", '', $result[3]);
+                    $adb = preg_replace("/[^,.0-9]/", '', $result[1]);
 
                     $finish = Tax::create([
                         'inn'     => $inn,
