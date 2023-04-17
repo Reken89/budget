@@ -16,28 +16,23 @@ class TaxUploadAction extends BaseAction
     public function run($info): bool
     {   
         //Открываем полученный XML файл
-        $file = fopen($info, 'r');
-       
-        //examin содержит строчку "2023-"
-        //Если строчка присутствует в строке XML файла, то она будет считываться
-        //Если в строчке XML файла нет "2023-", то считываться она не будет
-        $examin = "2023-";
+        $file = fopen($info, 'r');              
         $result = [];
 
         //Цикл, который просмотрит 2000 строк XML файла
         for ($i = 0; $i < 2000; $i++) {
-            //Если строчка содержит символы "2023-"
-            //Тогда выполняем чтение
-            if(strpos(fgets($file), $examin) !== false){
-                //Разбиваем XML на строки
-                $helper = fgets($file);
-                
-                //Делим полученные строки на массив
-                $result = explode("\" ", $helper);
-                
-                //Получаем из массива нужные нам значения
-                if ($result[0] == true && $result[6] == true && $result[8] == true && $result[2] == true && $result[3] == true && $result[1] == true){
-                    //$mounth = substr($result[0],43,2);
+            //Разбиваем XML на строки
+            $helper = fgets($file);
+
+            //Делим полученные строки на массив
+            $result = explode("\" ", $helper);
+
+            //Получаем из массива нужные нам значения
+            if ($result[0] == true){    
+
+                $inn = preg_replace("/[^,.0-9]/", '', $result[2]);
+                //Выполняем проверку, если ИНН равно 10 символов (цифр)
+                if (iconv_strlen($inn) == 10 && ctype_digit($inn)){
                     $title = substr($result[6],17);
                     $title = str_replace("&quot;", "", $title);
                     $sum = preg_replace("/[^,.0-9]/", '', $result[8]);
@@ -50,7 +45,7 @@ class TaxUploadAction extends BaseAction
                     $kbk = preg_replace("/[^,.0-9]/", '', $result[3]);
                     $adb = preg_replace("/[^,.0-9]/", '', $result[1]);
 
-                    $finish = Tax::create([
+                    $finish = Tax::insert([
                         'inn'     => $inn,
                         'title'   => $title,
                         'sum'     => $sum,
@@ -59,7 +54,7 @@ class TaxUploadAction extends BaseAction
                         'mounth'  => $mounth,
                         'year'    => 2023,
                     ]);
-                }
+                }   
             }
         }
         fclose($file);
