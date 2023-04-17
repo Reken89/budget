@@ -19,6 +19,13 @@
     </div>
 </div>
 
+<head>       
+    <style>    
+       #left { position: absolute; left: 0; top: 0; width: 50%; }
+       #right { position: absolute; right: 0; top: 25%; width: 50%; } 
+    </style>
+</head>
+
 </br>
 <h3>Загрузите файл из Digital МЭВ</h3>   
 <form enctype="multipart/form-data" action="/budget/public/admin/tax/upload" method="POST">
@@ -96,6 +103,16 @@
 
 <p><input type="button" style="width:250px;height:25px" name="formSubmit" id="btn_one" class="button5" value="Сформировать таблицу" /></p>                     
 </form>
+
+<div class="div" id="right">
+    Модуль «Распределение ЕНП», разработан для загрузки «xml» файлов из системы “Digit МЭВ” на портал “Laravel”
+    </br>
+    </br>
+    При загрузке, на портале “Laravel” отображаются значения суммы, сложенной по одинаковым «КБК», для каждого учреждения.
+    </br>
+    </br>
+    В случае возникновения ошибки при загрузке xml файла, (<b>СТРУКТУРА</b> загружаемого файла не приемлема для фреймворка Laravel) необходимо обратиться к разработчику модуля.
+</div>
 
 @php
     $number = (count($info['info']));
