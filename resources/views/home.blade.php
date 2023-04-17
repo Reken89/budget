@@ -81,7 +81,7 @@
 <div class = "center">
     <form action="{{ route('admintax')}}" method="get">
         <input type='hidden' name='mounth' value='3'>
-        <button type="submit" class="custom-btn btn-16"><b>ЕНП<b></button>
+        <button type="submit" class="custom-btn btn-16"><b>Распределение ЕНП<b></button>
     </form>
 </div>
 

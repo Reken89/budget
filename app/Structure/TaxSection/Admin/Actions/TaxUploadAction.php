@@ -20,7 +20,7 @@ class TaxUploadAction extends BaseAction
         $result = [];
 
         //Цикл, который просмотрит 2000 строк XML файла
-        for ($i = 0; $i < 2000; $i++) {
+        for ($i = 0; $i < 3000; $i++) {
             //Разбиваем XML на строки
             $helper = fgets($file);
 
