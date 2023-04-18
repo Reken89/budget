@@ -10,6 +10,7 @@ use App\Structure\TaxSection\Admin\Requests\TaxIndexRequest;
 use App\Structure\TaxSection\Admin\Dto\TaxIndexDto;
 use App\Structure\TaxSection\Admin\Actions\TaxUploadAction;
 use App\Structure\TaxSection\Admin\Actions\TaxIndexAction;
+use App\Structure\TaxSection\Admin\Actions\TaxUploadKbkAction;
 
 class TaxController extends Controller
 {
@@ -85,6 +86,19 @@ class TaxController extends Controller
     { 
         return Excel::download(new ExportTaxTable, 'table.xlsx');
 
+    }
+    
+    /**
+     * Загружаем КБК из EXCEL таблицы
+     *
+     * @param 
+     * @return 
+     */
+    public function kbk(Request $request)
+    {   
+        Excel::import(new TaxUploadKbkAction,
+        $request->file('file')->store('files'));
+        
     }
     
            

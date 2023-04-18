@@ -141,6 +141,7 @@ Route::get('/user/count', [CountController::class, 'user'])->middleware('auth')-
 //Роуты для Back (Модуль налоги)
 Route::get('/admin/tax/back', [TaxController::class, 'index'])->middleware('auth', 'admin');
 Route::post('/admin/tax/upload', [TaxController::class, 'upload'])->middleware('auth', 'admin');
+Route::post('/admin/tax/upload/kbk', [TaxController::class, 'kbk'])->middleware('auth', 'admin');
 Route::get('/admin/tax/export', [TaxController::class, 'export'])->middleware('auth', 'admin');
 
 
