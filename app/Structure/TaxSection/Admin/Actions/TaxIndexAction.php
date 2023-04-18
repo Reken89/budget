@@ -17,7 +17,8 @@ class TaxIndexAction extends BaseAction
     public function run(TaxIndexDto $dto)
     {   
         $info = Tax::select('inn', 'title', 'kbk', 'inn_adb')  
-            ->selectRaw('SUM(`sum`) as sum')  
+            ->selectRaw('SUM(`sum`) as sum')
+            ->with('tax_kbk')
             ->where('mounth', $dto->mounth)   
             ->groupBy(['inn', 'title', 'kbk', 'inn_adb'])
             ->get() 

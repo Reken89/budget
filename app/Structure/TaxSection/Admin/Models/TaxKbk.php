@@ -4,20 +4,22 @@ namespace App\Structure\TaxSection\Admin\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Structure\TaxSection\Admin\Models\TaxKbk;
+use App\Structure\TaxSection\Admin\Models\Tax;
 
-class Tax extends Model
+class TaxKbk extends Model
 {
     use HasFactory;
-    protected $table = 'taxes';
+    protected $table = 'tax_kbk';
     
     protected $guarded = [];
     
     public $timestamps = false;
     
-    public function tax_kbk()
+    public function Tax(): HasMany
     {
-        return $this->belongsTo(TaxKbk::class, 'kbk', 'kbk');
+        return $this->hasMany(Tax::class, 'kbk', 'kbk');
     }
 
 }
+
+
