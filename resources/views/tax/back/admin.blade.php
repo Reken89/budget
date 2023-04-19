@@ -164,7 +164,7 @@
             <td>{{ $info['info'][$n]['inn'] }}</td>
             <td>{{ $info['info'][$n]['kbk'] }}</td>
             @if ($info['info'][$n]['tax_kbk'] == NULL)
-                <td>Неизвестный КБК</td>
+                <td>КБК отсутствует в базе Laravel</td>
             @else
                 <td>{{ $info['info'][$n]['tax_kbk']['title'] }}</td>
             @endif
