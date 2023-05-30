@@ -36,7 +36,7 @@ class TaxUploadAction extends BaseAction
                     $title = substr($result[6],17);
                     $title = str_replace("&quot;", "", $title);
                     
-                    $sum = preg_replace("/[^,.0-9]/", '', $result[8]);
+                    $sum = preg_replace("/[^-,.0-9]/", '', $result[8]);
                     
                     $mounth = preg_replace("/[^,.0-9]/", '', $result[0]);
                     $mounth = substr($mounth,4,2);
