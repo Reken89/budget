@@ -14,7 +14,7 @@ class EkrOfsAddSeeder extends Seeder
      */
     public function run()
     {
-        //id из таблицы users
+        //id из таблицы users (Для таблицы ОФС)
         $users = [
             3, 4, 5, 6, 7, 8,
             9, 10, 11, 12, 13,
@@ -22,15 +22,25 @@ class EkrOfsAddSeeder extends Seeder
             19, 20, 21, 22, 23,
             25, 26, 27, 28, 29
             ];
+        
+        //id из таблицы users (Для таблицы СМЕТА)
+        $users_smeta = [
+            8, 9, 10, 11, 12,
+            13, 14, 15, 18, 19,
+            23, 25, 26, 27, 28, 
+            29, 35, 36, 37, 38
+            ];
  
+        // Добавляем значения в таблице Ekr
         $ekr = Ekr::create([
             'shared' => 'No',
             'main'   => 'No',
-            'number' => 7,
-            'ekr'    => 223,
-            'title'  => 'Работы по обслуживанию канализационных систем',
+            'number' => 22,
+            'ekr'    => 262,
+            'title'  => 'Компенсация стоимости бесплатного двухразового питания родителям (ОВЗ)',
         ]);
         
+        // Через связи добавляем значение в таблицу Ofs
         foreach ($users as $user) {
             for ($mounth = 1; $mounth < 13; $mounth++){
                 for ($chapter = 1; $chapter < 6; $chapter++){
@@ -57,6 +67,19 @@ class EkrOfsAddSeeder extends Seeder
                         'return_old_year'  => 0, 
                     ]);
                 }
+            }                                             
+        }
+        
+        // Через связи добавляем значение в таблицу Counts
+        foreach ($users_smeta as $smeta) {
+            for ($year = 2024; $year < 2027; $year++){
+                $ekr->count()->create([
+                    'user_id' => $smeta,
+                    'year'    => $year,
+                    'status'  => 2,
+                    'sum_fu'  => 0,
+                    'sum_cb'  => 0, 
+                ]);                
             }                                             
         }
     }       
