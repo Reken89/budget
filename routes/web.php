@@ -13,6 +13,7 @@ use App\Structure\ForecastSection\Admin\Controllers\ForecastController;
 use App\Structure\CountSection\Admin\Controllers\AdminCountController;
 use App\Structure\CountSection\User\Controllers\CountController;
 use App\Structure\TaxSection\Admin\Controllers\TaxController;
+use App\Structure\BlockSection\Admin\Controllers\BlockController;
 
 /*
 |--------------------------------------------------------------------------
@@ -92,9 +93,12 @@ Route::post('/user/build/add', [UserBuildController::class, 'add'])->middleware(
 Route::get('/build/back', [BuildController::class, 'index'])->middleware('auth');
 
 //Роуты для Front (Модуль Строительство)
-Route::get('/admin/build', [AdminBuildController::class, 'user'])->middleware('auth', 'admin')->name('adminbuild');
-Route::get('/user/build', [UserBuildController::class, 'user'])->middleware('auth')->name('userbuild');
-Route::get('/build', [BuildController::class, 'user'])->middleware('auth')->name('build');
+//Route::get('/admin/build', [AdminBuildController::class, 'user'])->middleware('auth', 'admin')->name('adminbuild');
+//Route::get('/user/build', [UserBuildController::class, 'user'])->middleware('auth')->name('userbuild');
+//Route::get('/build', [BuildController::class, 'user'])->middleware('auth')->name('build');
+Route::get('/admin/build', [BlockController::class, 'index'])->middleware('auth')->name('adminbuild');
+Route::get('/user/build', [BlockController::class, 'index'])->middleware('auth')->name('userbuild');
+Route::get('/build', [BlockController::class, 'index'])->middleware('auth')->name('build');
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
  * 
