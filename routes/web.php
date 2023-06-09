@@ -30,6 +30,9 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+// Роут на страницу с контактами
+Route::get('/contact', function () {return view('contact');});
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Роуты для Back (Модуль коммунальные услуги)
 Route::get('/admin/communal/back', [AdminCommunalController::class, 'index'])->middleware('auth', 'admin');
