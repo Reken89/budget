@@ -14,6 +14,7 @@ use App\Structure\CountSection\Admin\Controllers\AdminCountController;
 use App\Structure\CountSection\User\Controllers\CountController;
 use App\Structure\TaxSection\Admin\Controllers\TaxController;
 use App\Structure\BlockSection\Admin\Controllers\BlockController;
+use App\Structure\ReportingSection\Admin\Controllers\ReportingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -154,6 +155,20 @@ Route::get('/admin/tax/export', [TaxController::class, 'export'])->middleware('a
 
 //Роуты для Front (Модуль налоги)
 Route::get('/admin/tax', [TaxController::class, 'user'])->middleware('auth', 'admin')->name('admintax');
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+ * 
+ * 
+ * 
+ */
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Роуты для Back (Модуль исполнение бюджета)
+Route::get('/admin/reporting/back', [ReportingController::class, 'index'])->middleware('auth', 'admin');
+Route::post('/admin/reporting/upload', [ReportingController::class, 'upload'])->middleware('auth', 'admin');
+
+
+//Роуты для Front (Модуль исполнение бюджета)
+Route::get('/admin/reporting', [ReportingController::class, 'user'])->middleware('auth', 'admin')->name('reporting');
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 Auth::routes();

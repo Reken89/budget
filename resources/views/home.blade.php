@@ -165,6 +165,11 @@
                                                     <button type="submit" class="custom-btn btn-16">Распределение ЕНП</button>
                                                 </form>
                                              </li>
+                                             <li>
+                                                <form action="{{ route('reporting')}}" method="get">
+                                                    <button type="submit" class="custom-btn btn-16">Исполнение бюджета</button>
+                                                </form>
+                                             </li>
                                              @elseif ($role == "user")
                                              <li>
                                                  <form action="{{ route('usercommunal', 2018)}}" method="get">
