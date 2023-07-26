@@ -6,6 +6,7 @@ use App\Core\Controllers\Controller;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Structure\ReportingSection\Admin\Actions\ReportingUploadAction;
+use App\Structure\ReportingSection\Admin\Actions\ReportingExaminAction;
 
 class ReportingController extends Controller
 {
@@ -50,5 +51,7 @@ class ReportingController extends Controller
         
         Excel::import(new ReportingUploadAction,
         $request->file('file')->store('files'));
+        
+        $this->action(ReportingExaminAction::class)->run($request->mounth, $request->year, $request->meaning);
     }
 }
