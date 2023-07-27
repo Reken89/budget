@@ -186,9 +186,113 @@
     </thead>
     
     <tbody>
+        <tr>
+            <th>2023 год</th>
+            @php              
+                $mounth = ["red", "red", "red", "red", "red", "red", "red", "red", "red", "red", "red", "red", "red"];
+            @endphp
+                @foreach ($info as $value)
+                    @for ($m = 1; $m < 13; $m++)
+                        @if ($value['year'] == '2023' && $value['mounth'] == $m)
+                            @php
+                                $mounth[$m] = "green";
+                            @endphp    
+                        @endif
+                    @endfor    
+                @endforeach
+            <th bgcolor="{{ $mounth[1] }}"></th>   
+            <th bgcolor="{{ $mounth[2] }}"></th>
+            <th bgcolor="{{ $mounth[3] }}"></th>
+            <th bgcolor="{{ $mounth[4] }}"></th>
+            <th bgcolor="{{ $mounth[5] }}"></th>
+            <th bgcolor="{{ $mounth[6] }}"></th>
+            <th bgcolor="{{ $mounth[7] }}"></th>
+            <th bgcolor="{{ $mounth[8] }}"></th>
+            <th bgcolor="{{ $mounth[9] }}"></th>
+            <th bgcolor="{{ $mounth[10] }}"></th>
+            <th bgcolor="{{ $mounth[11] }}"></th>
+            <th bgcolor="{{ $mounth[12] }}"></th>
+        </tr>      
+        <tr>
+            <th>2022 год</th>
+            @php              
+                $mounth = ["red", "red", "red", "red", "red", "red", "red", "red", "red", "red", "red", "red", "red"];
+            @endphp
+                @foreach ($info as $value)
+                    @for ($m = 1; $m < 13; $m++)
+                        @if ($value['year'] == '2022' && $value['mounth'] == $m)
+                            @php
+                                $mounth[$m] = "green";
+                            @endphp    
+                        @endif
+                    @endfor    
+                @endforeach
+            <th bgcolor="{{ $mounth[1] }}"></th>   
+            <th bgcolor="{{ $mounth[2] }}"></th>
+            <th bgcolor="{{ $mounth[3] }}"></th>
+            <th bgcolor="{{ $mounth[4] }}"></th>
+            <th bgcolor="{{ $mounth[5] }}"></th>
+            <th bgcolor="{{ $mounth[6] }}"></th>
+            <th bgcolor="{{ $mounth[7] }}"></th>
+            <th bgcolor="{{ $mounth[8] }}"></th>
+            <th bgcolor="{{ $mounth[9] }}"></th>
+            <th bgcolor="{{ $mounth[10] }}"></th>
+            <th bgcolor="{{ $mounth[11] }}"></th>
+            <th bgcolor="{{ $mounth[12] }}"></th>
+        </tr>
+        <tr>
+            <th>2021 год</th>
+            @php              
+                $mounth = ["red", "red", "red", "red", "red", "red", "red", "red", "red", "red", "red", "red", "red"];
+            @endphp
+                @foreach ($info as $value)
+                    @for ($m = 1; $m < 13; $m++)
+                        @if ($value['year'] == '2021' && $value['mounth'] == $m)
+                            @php
+                                $mounth[$m] = "green";
+                            @endphp    
+                        @endif
+                    @endfor    
+                @endforeach
+            <th bgcolor="{{ $mounth[1] }}"></th>   
+            <th bgcolor="{{ $mounth[2] }}"></th>
+            <th bgcolor="{{ $mounth[3] }}"></th>
+            <th bgcolor="{{ $mounth[4] }}"></th>
+            <th bgcolor="{{ $mounth[5] }}"></th>
+            <th bgcolor="{{ $mounth[6] }}"></th>
+            <th bgcolor="{{ $mounth[7] }}"></th>
+            <th bgcolor="{{ $mounth[8] }}"></th>
+            <th bgcolor="{{ $mounth[9] }}"></th>
+            <th bgcolor="{{ $mounth[10] }}"></th>
+            <th bgcolor="{{ $mounth[11] }}"></th>
+            <th bgcolor="{{ $mounth[12] }}"></th>
+        </tr>
+        <tr>
+            <th>2020 год</th>
+            @php              
+                $mounth = ["red", "red", "red", "red", "red", "red", "red", "red", "red", "red", "red", "red", "red"];
+            @endphp
+                @foreach ($info as $value)
+                    @for ($m = 1; $m < 13; $m++)
+                        @if ($value['year'] == '2020' && $value['mounth'] == $m)
+                            @php
+                                $mounth[$m] = "green";
+                            @endphp    
+                        @endif
+                    @endfor    
+                @endforeach
+            <th bgcolor="{{ $mounth[1] }}"></th>   
+            <th bgcolor="{{ $mounth[2] }}"></th>
+            <th bgcolor="{{ $mounth[3] }}"></th>
+            <th bgcolor="{{ $mounth[4] }}"></th>
+            <th bgcolor="{{ $mounth[5] }}"></th>
+            <th bgcolor="{{ $mounth[6] }}"></th>
+            <th bgcolor="{{ $mounth[7] }}"></th>
+            <th bgcolor="{{ $mounth[8] }}"></th>
+            <th bgcolor="{{ $mounth[9] }}"></th>
+            <th bgcolor="{{ $mounth[10] }}"></th>
+            <th bgcolor="{{ $mounth[11] }}"></th>
+            <th bgcolor="{{ $mounth[12] }}"></th>
+        </tr>
     </tbody>
 </table>    
-
-@php
-    var_dump($info);
-@endphp
