@@ -148,3 +148,47 @@
     </br>
     В случае обнаружения ошибки в таблице excel, Laravel сообщит Вам об этом.
 </div>
+
+</br>
+<div class="shadowbox">
+    <p>Таблица с информацией о наличие загруженных сведений</p>
+</div>
+
+</br>
+<form action="#" method="get">
+        <button type="submit" style="width:250px;height:25px" class="button5">Детализация таблицы</button>
+</form>
+
+</br>
+<form action="#" method="get">
+        <button type="submit" style="width:250px;height:25px" class="button5">Просмотр диаграмм</button>
+</form>
+
+</br>
+<table class="freeze-table" width="700px">
+    
+    <thead>
+        <tr>
+            <th style="min-width: 200px; width: 200px;" class="col-id-no fixed-header">Год/месяц</th>
+            <th style="min-width: 100px; width: 100px;">январь</th>
+            <th style="min-width: 100px; width: 100px;">февраль</th>
+            <th style="min-width: 100px; width: 100px;">март</th>
+            <th style="min-width: 100px; width: 100px;">апрель</th>
+            <th style="min-width: 100px; width: 100px;">май</th>
+            <th style="min-width: 100px; width: 100px;">июнь</th>
+            <th style="min-width: 100px; width: 100px;">июль</th>
+            <th style="min-width: 100px; width: 100px;">август</th>
+            <th style="min-width: 100px; width: 100px;">сентябрь</th>
+            <th style="min-width: 100px; width: 100px;">октябрь</th>
+            <th style="min-width: 100px; width: 100px;">ноябрь</th>
+            <th style="min-width: 100px; width: 100px;">декабрь</th>
+        </tr>
+    </thead>
+    
+    <tbody>
+    </tbody>
+</table>    
+
+@php
+    var_dump($info);
+@endphp

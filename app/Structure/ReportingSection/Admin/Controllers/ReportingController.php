@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Structure\ReportingSection\Admin\Actions\ReportingUploadAction;
 use App\Structure\ReportingSection\Admin\Actions\ReportingExaminAction;
+use App\Structure\ReportingSection\Admin\Actions\ReportingIndexAction;
 
 class ReportingController extends Controller
 {
@@ -19,7 +20,9 @@ class ReportingController extends Controller
      */
     public function index()
     {          
-        return view('reporting.back.admin'); 
+        $info = $this->action(ReportingIndexAction::class)->run();
+        
+        return view('reporting.back.admin', ['info' => $info]); 
     }
     
      /**
