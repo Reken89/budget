@@ -118,7 +118,7 @@ class AdminBuildController extends Controller
         //Значение для варианта отрисовки таблицы
         session(['option' => true]);
         
-        echo "Складывайте самостоятельно в EXCEL))";     
+        echo "Функция находится в разработке!";     
     }
     
     /**

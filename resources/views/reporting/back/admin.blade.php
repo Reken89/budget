@@ -102,16 +102,6 @@
 <h3>Выберите год</h3>                                   
 <div>                         
     <label class="checkbox style-f">
-        <input type="checkbox" name="year" value="2018">
-        <div class="checkbox__checkmark"></div>
-        <div class="checkbox__body">2018</div>
-    </label>
-    <label class="checkbox style-f">
-        <input type="checkbox" name="year" value="2019">
-        <div class="checkbox__checkmark"></div>
-        <div class="checkbox__body">2019</div>
-    </label>
-    <label class="checkbox style-f">
         <input type="checkbox" name="year" value="2020">
         <div class="checkbox__checkmark"></div>
         <div class="checkbox__body">2020</div>
@@ -148,3 +138,13 @@
     </label>
 </div>    
 </form>
+
+<div class="div" id="right">
+    Модуль «Исполнение бюджета», разработан для загрузки excel таблиц из системы “АС Бюджет” для последующей автоматической отрисовки диаграмм
+    </br>
+    </br>
+    При загрузке, внимательно выбирайте разделы (Год, месяц, раздел), только после выбора разделов нажимайте кнопку загрузить
+    </br>
+    </br>
+    В случае обнаружения ошибки в таблице excel, Laravel сообщит Вам об этом.
+</div>

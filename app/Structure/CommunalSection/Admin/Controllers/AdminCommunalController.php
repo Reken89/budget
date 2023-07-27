@@ -155,9 +155,9 @@ class AdminCommunalController extends Controller
             $dto = CommunalSynchDto::fromRequest($request);
             $info = $this->action(CommunalSynchAction::class)->run($dto); 
             
-            echo "Работа по заполнению тарифов, выполнена за Вас))";
+            echo "Тарифы успешно обновлены!";
         } else {
-            echo "До января нет месяца, не с чем синхронизировать...";
+            echo "Автоматическое обновление тарифов возможно только начиная с февраля месяца!";
         }
                           
     }

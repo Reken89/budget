@@ -14,40 +14,58 @@ class ReportingExaminAction extends BaseAction
      * @param int $year, int $mounth, string $meaning
      * @return 
      */
-    public function run(int $mounth, int $year, string $meaning)
-   {   
-        $total = Reporting::selectRaw('SUM(`approved`) as approved')
+    public function run(int $mounth, int $year, string $meaning): string
+    {
+        //Если документ относится к РАСХОДАМ
+        if($meaning == "expenses"){            
+            $total = Reporting::selectRaw('SUM(`approved`) as approved')
             ->selectRaw('SUM(`fulfilled`) as fulfilled')
-            ->selectRaw('SUM(`unused`) as unused')
             ->where('year', $year)    
             ->where('mounth', $mounth)  
             ->where('meaning', $meaning) 
             ->where('kbk', '!=', 'no')
             ->first()
             ->toArray();
+
+        //Если документ относится к ДОХОДАМ    
+        } elseif ($meaning == "income"){           
+            $total = Reporting::selectRaw('SUM(`approved`) as approved')
+            ->selectRaw('SUM(`fulfilled`) as fulfilled')
+            ->where('year', $year)    
+            ->where('mounth', $mounth)  
+            ->where('meaning', $meaning) 
+            ->where('kbk', '!=', 'no')
+            ->where('kbk', '!=', '00010000000000000000')
+            ->where('kbk', '!=', '00020000000000000000')
+            ->first()
+            ->toArray();
+        }
         
+        //Получаем сумму с которой будем сравнивать
         $sum = Reporting::selectRaw('SUM(`approved`) as approved')
             ->selectRaw('SUM(`fulfilled`) as fulfilled')
-            ->selectRaw('SUM(`unused`) as unused')
             ->where('year', $year)    
             ->where('mounth', $mounth)  
             ->where('meaning', $meaning) 
             ->where('kbk', 'no')
             ->first()
             ->toArray();       
-        
-        
-        if ($sum["approved"] == $total["approved"] && $sum["fulfilled"] == $total["fulfilled"] && $sum["unused"] == $total["unused"]){
-            echo "Проверка пройдена";
+                
+        //Если суммы равны, проверка пройдена
+        if ($sum["approved"] == $total["approved"] && $sum["fulfilled"] == $total["fulfilled"]){
+        $result = "yes";    
+            
+        //Если суммы не равны, то удаляем записи из таблицы    
         } else {
             Reporting::where('year', $year)
                 ->where('mounth', $mounth)  
                 ->where('meaning', $meaning)
                 ->delete();   
                     
-            echo "Ты че? В файле ошибка";
+        $result = "no";
         }
-          
-   }
+        
+        return $result;
+    }
 
 }

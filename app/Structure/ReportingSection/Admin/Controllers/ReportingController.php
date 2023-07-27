@@ -43,15 +43,22 @@ class ReportingController extends Controller
      */
     public function upload(Request $request)
     {    
-        session([
+        if(isset($request->mounth) && isset($request->year) && isset($request->meaning)){
+            session([
             'mounth'  => $request->mounth,
             'year'    => $request->year,
             'meaning' => $request->meaning,
             ]);
         
-        Excel::import(new ReportingUploadAction,
-        $request->file('file')->store('files'));
+            Excel::import(new ReportingUploadAction,
+            $request->file('file')->store('files'));
+
+            $status = $this->action(ReportingExaminAction::class)->run($request->mounth, $request->year, $request->meaning);
+        } else {
+            $status = "error";
+        }
         
-        $this->action(ReportingExaminAction::class)->run($request->mounth, $request->year, $request->meaning);
+        
+        return view('reporting.back.report', ['status' => $status]); 
     }
 }
