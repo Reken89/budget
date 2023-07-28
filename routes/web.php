@@ -15,6 +15,7 @@ use App\Structure\CountSection\User\Controllers\CountController;
 use App\Structure\TaxSection\Admin\Controllers\TaxController;
 use App\Structure\BlockSection\Admin\Controllers\BlockController;
 use App\Structure\ReportingSection\Admin\Controllers\ReportingController;
+use App\Structure\ReportingSection\Admin\Controllers\ReportingDetailingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -165,10 +166,13 @@ Route::get('/admin/tax', [TaxController::class, 'user'])->middleware('auth', 'ad
 //Роуты для Back (Модуль исполнение бюджета)
 Route::get('/admin/reporting/back', [ReportingController::class, 'index'])->middleware('auth', 'admin');
 Route::post('/admin/reporting/upload', [ReportingController::class, 'upload'])->middleware('auth', 'admin');
+Route::get('/admin/reporting/detailing/back', [ReportingDetailingController::class, 'index'])->middleware('auth', 'admin');
+Route::delete('/admin/reporting/detailing/delete', [ReportingDetailingController::class, 'delete'])->middleware('auth', 'admin');
 
 
 //Роуты для Front (Модуль исполнение бюджета)
 Route::get('/admin/reporting', [ReportingController::class, 'user'])->middleware('auth', 'admin')->name('reporting');
+Route::get('/admin/reporting/detailing', [ReportingDetailingController::class, 'user'])->middleware('auth', 'admin')->name('detailing');
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 Auth::routes();

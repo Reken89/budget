@@ -155,13 +155,16 @@
 </div>
 
 </br>
-<form action="#" method="get">
-        <button type="submit" style="width:250px;height:25px" class="button5">Детализация таблицы</button>
+<form action="{{ route('detailing')}}" method="get">
+    <input type='hidden' name='year' value='2023'>
+    <input type='hidden' name='mounth' value='5'>
+    <input type='hidden' name='meaning' value='expenses'>
+    <button type="submit" style="width:250px;height:25px" class="button5">Детализация таблицы</button>
 </form>
 
 </br>
 <form action="#" method="get">
-        <button type="submit" style="width:250px;height:25px" class="button5">Просмотр диаграмм</button>
+    <button type="submit" style="width:250px;height:25px" class="button5">Просмотр диаграмм</button>
 </form>
 
 </br>
