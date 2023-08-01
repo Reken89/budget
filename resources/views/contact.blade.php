@@ -70,9 +70,6 @@
                            <div class="main-menu main-menu-5 main-menu-12 mr-40">
                               <nav id="mobile-menu">
                                  <ul>                                      
-                                       <li>
-                                          <a href="">Прочее</a>
-                                       </li>
 
                                        <li>
                                           <a href="">Новости <i class="fal fa-plus"></i></a>
@@ -177,10 +174,9 @@
                                     <div class="contact__input contact__input-2 mb-30">
                                        <select>
                                           <option>Тема</option>
-                                          <option>Option 1</option>
-                                          <option>Option 2</option>
-                                          <option>Option 3</option>
-                                          <option>Option 4</option>
+                                          <option>Технический вопрос</option>
+                                          <option>Организационный вопрос</option>
+                                          <option>Прочие вопросы</option>
                                        </select>
                                     </div>
                                  </div>
@@ -272,29 +268,16 @@
                      <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-5">
                         <div class="footer__widget footer__widget-padding footer__ml-95">
                            <div class="footer__widget-top">
-                              <h3 class="footer__widget-title footer__widget-title-3">Учреждение</h3>
-                           </div>
-                           <div class="footer__widget-content">
-                              <div class="footer__link footer__link-4">
-                                 <ul>
-                                    <li>
-                                       <a href="https://kostomuksha-city.ru/">Администрация КГО</a>
-                                    </li>
-                                 </ul>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                        <div class="footer__widget footer__widget-padding footer__ml-65">
-                           <div class="footer__widget-top">
                               <h3 class="footer__widget-title footer__widget-title-3">Ссылки</h3>
                            </div>
                            <div class="footer__widget-content">
                               <div class="footer__link footer__link-4">
                                  <ul>
                                     <li>
-                                       <a href="https://gov.karelia.ru/power/executive/minfinkarelia/">Министерство финансов</a>
+                                       <a href="https://kostomuksha-city.ru/">Официальный сайт Костомукшского городского округа</a>
+                                    </li>  
+                                    <li>
+                                       <a href="http://minfin.karelia.ru/">Министерство финансов Республики Карелия</a>
                                     </li>
                                  </ul>
                               </div>
