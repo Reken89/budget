@@ -247,9 +247,6 @@
                                              @endif
                                           </ul>
                                        </li>
-                                       <li>
-                                          <a href="">Прочее</a>
-                                       </li>
 
                                        <li>
                                           <a href="">Новости <i class="fal fa-plus"></i></a>
@@ -368,17 +365,7 @@
                                     </div>
                                  </div>
                               </div>
-                              <div class="col-xxl-6 col-xl-6">
-                                 <div class="about__features-item d-flex align-items-start mb-30">
-                                    <div class="about__features-icon mr-20">
-                                       <i class="flaticon-credibility"></i>
-                                    </div>
-                                    <div class="about__features-content">
-                                       <h3 class="text-rubik">Репутация</h3>
-                                       <p>Отзывы пользователей</p>
-                                    </div>
-                                 </div>
-                              </div>
+
                            </div>
                         </div>
                         <div class="about__btn d-sm-flex align-items-center">
@@ -405,7 +392,7 @@
                      <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-7">
                         <div class="footer__widget footer__info-padding-2">
                            <div class="footer__logo mb-25">
-                              <a href="index.html">
+                              <a>
                                  <img src="{{ asset('assets/img/logo/logo-4.png') }}" alt="">
                               </a>
                            </div>
@@ -420,35 +407,23 @@
                      <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-5">
                         <div class="footer__widget footer__widget-padding footer__ml-95">
                            <div class="footer__widget-top">
-                              <h3 class="footer__widget-title footer__widget-title-3">Учреждение</h3>
-                           </div>
-                           <div class="footer__widget-content">
-                              <div class="footer__link footer__link-4">
-                                 <ul>
-                                    <li>
-                                       <a href="https://kostomuksha-city.ru/">Администрация КГО</a>
-                                    </li>
-                                 </ul>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                        <div class="footer__widget footer__widget-padding footer__ml-65">
-                           <div class="footer__widget-top">
                               <h3 class="footer__widget-title footer__widget-title-3">Ссылки</h3>
                            </div>
                            <div class="footer__widget-content">
                               <div class="footer__link footer__link-4">
                                  <ul>
                                     <li>
-                                       <a href="https://gov.karelia.ru/power/executive/minfinkarelia/">Министерство финансов</a>
-                                    </li>
+                                       <a href="https://kostomuksha-city.ru/">Официальный сайт Костомукшского городского округа</a>
+                                    </li>  
+                                    <li>
+                                       <a href="http://minfin.karelia.ru/">Министерство финансов Республики Карелия</a>
+                                    </li> 
                                  </ul>
                               </div>
                            </div>
                         </div>
                      </div>
+
 
                   </div>
                </div>
