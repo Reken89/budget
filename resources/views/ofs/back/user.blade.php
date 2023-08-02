@@ -229,7 +229,7 @@
     <label class="checkbox style-f">
         <input type="checkbox" name="user" value="16">
         <div class="checkbox__checkmark"></div>
-        <div class="checkbox__body">ДЮСШ2</div>
+        <div class="checkbox__body">Спортивная школа</div>
     </label>
     <label class="checkbox style-f">
         <input type="checkbox" name="user" value="20">
