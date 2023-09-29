@@ -6,6 +6,7 @@ use App\Core\Controllers\Controller;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Structure\ReportingSection\Admin\Actions\PlanUploadAction;
+use App\Structure\ReportingSection\Admin\Actions\PlanIndexAction;
 
 class PlanController extends Controller
 {
@@ -17,8 +18,7 @@ class PlanController extends Controller
      */
     public function index()
     {          
-        $info = [];
-        
+        $info = $this->action(PlanIndexAction::class)->run();        
         return view('reporting.back.plan', ['info' => $info]); 
     }
     

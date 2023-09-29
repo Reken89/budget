@@ -111,4 +111,60 @@
     В случае обнаружения ошибки в таблице excel, Laravel сообщит Вам об этом.
 </div>
 
+</br>
+<div class="shadowbox">
+    <p>Таблица с информацией о наличие загруженных сведений</p>
+</div>
+
+</br>
+<table class="freeze-table" width="700px">
+    
+    <thead>
+        <tr>
+            <th style="min-width: 200px; width: 200px;" class="col-id-no fixed-header">Год/месяц</th>
+            <th style="min-width: 100px; width: 100px;">январь</th>
+            <th style="min-width: 100px; width: 100px;">февраль</th>
+            <th style="min-width: 100px; width: 100px;">март</th>
+            <th style="min-width: 100px; width: 100px;">апрель</th>
+            <th style="min-width: 100px; width: 100px;">май</th>
+            <th style="min-width: 100px; width: 100px;">июнь</th>
+            <th style="min-width: 100px; width: 100px;">июль</th>
+            <th style="min-width: 100px; width: 100px;">август</th>
+            <th style="min-width: 100px; width: 100px;">сентябрь</th>
+            <th style="min-width: 100px; width: 100px;">октябрь</th>
+            <th style="min-width: 100px; width: 100px;">ноябрь</th>
+            <th style="min-width: 100px; width: 100px;">декабрь</th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        <tr>
+            <th>2023 год</th>
+            @php              
+                $mounth = ["red", "red", "red", "red", "red", "red", "red", "red", "red", "red", "red", "red", "red"];
+            @endphp
+                @foreach ($info as $value)
+                    @for ($m = 1; $m < 13; $m++)
+                        @if ($value['year'] == '2023' && $value['mounth'] == $m)
+                            @php
+                                $mounth[$m] = "green";
+                            @endphp    
+                        @endif
+                    @endfor    
+                @endforeach
+            <th bgcolor="{{ $mounth[1] }}"></th>   
+            <th bgcolor="{{ $mounth[2] }}"></th>
+            <th bgcolor="{{ $mounth[3] }}"></th>
+            <th bgcolor="{{ $mounth[4] }}"></th>
+            <th bgcolor="{{ $mounth[5] }}"></th>
+            <th bgcolor="{{ $mounth[6] }}"></th>
+            <th bgcolor="{{ $mounth[7] }}"></th>
+            <th bgcolor="{{ $mounth[8] }}"></th>
+            <th bgcolor="{{ $mounth[9] }}"></th>
+            <th bgcolor="{{ $mounth[10] }}"></th>
+            <th bgcolor="{{ $mounth[11] }}"></th>
+            <th bgcolor="{{ $mounth[12] }}"></th>
+        </tr>  
+    </tbody>
+</table>    
 

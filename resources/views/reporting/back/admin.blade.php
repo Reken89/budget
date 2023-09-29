@@ -163,11 +163,6 @@
 </form>
 
 </br>
-<form action="#" method="get">
-    <button type="submit" style="width:250px;height:25px" class="button5">Просмотр диаграмм</button>
-</form>
-
-</br>
 <table class="freeze-table" width="700px">
     
     <thead>
