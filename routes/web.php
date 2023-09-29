@@ -16,6 +16,7 @@ use App\Structure\TaxSection\Admin\Controllers\TaxController;
 use App\Structure\BlockSection\Admin\Controllers\BlockController;
 use App\Structure\ReportingSection\Admin\Controllers\ReportingController;
 use App\Structure\ReportingSection\Admin\Controllers\ReportingDetailingController;
+use App\Structure\ReportingSection\Admin\Controllers\PlanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -168,6 +169,8 @@ Route::get('/admin/reporting/back', [ReportingController::class, 'index'])->midd
 Route::post('/admin/reporting/upload', [ReportingController::class, 'upload'])->middleware('auth', 'admin');
 Route::get('/admin/reporting/detailing/back', [ReportingDetailingController::class, 'index'])->middleware('auth', 'admin');
 Route::delete('/admin/reporting/detailing/delete', [ReportingDetailingController::class, 'delete'])->middleware('auth', 'admin');
+Route::get('/admin/plan/back', [PlanController::class, 'index'])->middleware('auth', 'admin')->name('plan');
+Route::post('/admin/plan/upload', [PlanController::class, 'upload'])->middleware('auth', 'admin');
 
 
 //Роуты для Front (Модуль исполнение бюджета)

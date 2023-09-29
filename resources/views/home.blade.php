@@ -167,7 +167,12 @@
                                              </li>
                                              <li>
                                                 <form action="{{ route('reporting')}}" method="get">
-                                                    <button type="submit" class="custom-btn btn-16">Исполнение бюджета</button>
+                                                    <button type="submit" class="custom-btn btn-16">Исполнение бюджета (I)</button>
+                                                </form>
+                                             </li>
+                                             <li>
+                                                <form action="{{ route('plan')}}" method="get">
+                                                    <button type="submit" class="custom-btn btn-16">Исполнение бюджета (II)</button>
                                                 </form>
                                              </li>
                                              @elseif ($role == "user")
