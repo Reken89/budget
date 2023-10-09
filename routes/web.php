@@ -17,6 +17,7 @@ use App\Structure\BlockSection\Admin\Controllers\BlockController;
 use App\Structure\ReportingSection\Admin\Controllers\ReportingController;
 use App\Structure\ReportingSection\Admin\Controllers\ReportingDetailingController;
 use App\Structure\ReportingSection\Admin\Controllers\PlanController;
+use App\Structure\ReportingSection\Admin\Controllers\DebtController;
 
 /*
 |--------------------------------------------------------------------------
@@ -171,11 +172,14 @@ Route::get('/admin/reporting/detailing/back', [ReportingDetailingController::cla
 Route::delete('/admin/reporting/detailing/delete', [ReportingDetailingController::class, 'delete'])->middleware('auth', 'admin');
 Route::get('/admin/plan/back', [PlanController::class, 'index'])->middleware('auth', 'admin')->name('plan');
 Route::post('/admin/plan/upload', [PlanController::class, 'upload'])->middleware('auth', 'admin');
+Route::get('/admin/debts/back', [DebtController::class, 'index'])->middleware('auth', 'admin');
+Route::patch('/admin/debts/update', [DebtController::class, 'update'])->middleware('auth', 'admin');
 
 
 //Роуты для Front (Модуль исполнение бюджета)
 Route::get('/admin/reporting', [ReportingController::class, 'user'])->middleware('auth', 'admin')->name('reporting');
 Route::get('/admin/reporting/detailing', [ReportingDetailingController::class, 'user'])->middleware('auth', 'admin')->name('detailing');
+Route::get('/admin/debts', [DebtController::class, 'user'])->middleware('auth', 'admin')->name('debts');
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 Auth::routes();

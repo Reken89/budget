@@ -175,6 +175,12 @@
                                                     <button type="submit" class="custom-btn btn-16">Исполнение бюджета (II)</button>
                                                 </form>
                                              </li>
+                                             <li>
+                                                <form action="{{ route('debts')}}" method="get">
+                                                    <input type='hidden' name='year' value='2023'>
+                                                    <button type="submit" class="custom-btn btn-16">Исполнение бюджета (III)</button>
+                                                </form>
+                                             </li>
                                              @elseif ($role == "user")
                                              <li>
                                                  <form action="{{ route('usercommunal', 2018)}}" method="get">
