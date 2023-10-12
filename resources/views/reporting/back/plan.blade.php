@@ -271,6 +271,9 @@
     <tbody>
         <tr>
             <th>2023 год</th>
+                @php              
+                    $mounth = ["red", "red", "red", "red", "red", "red", "red", "red", "red", "red", "red", "red", "red"];
+                @endphp
                 @foreach ($info['mbt'] as $value)
                     @for ($m = 1; $m < 13; $m++)
                         @if ($value['year'] == '2023' && $value['mounth'] == $m)
