@@ -175,6 +175,7 @@ Route::post('/admin/plan/upload', [PlanController::class, 'upload'])->middleware
 Route::get('/admin/debts/back', [DebtController::class, 'index'])->middleware('auth', 'admin');
 Route::patch('/admin/debts/update', [DebtController::class, 'update'])->middleware('auth', 'admin');
 Route::post('/admin/mbt/upload', [PlanController::class, 'uploadmbt'])->middleware('auth', 'admin');
+Route::get('/admin/mbt/delete', [PlanController::class, 'delete'])->middleware('auth', 'admin');
 
 
 //Роуты для Front (Модуль исполнение бюджета)

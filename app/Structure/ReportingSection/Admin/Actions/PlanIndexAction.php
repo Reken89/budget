@@ -22,6 +22,6 @@ class PlanIndexAction extends BaseAction
         
         return $info;
     }
-    
+           
 }
 

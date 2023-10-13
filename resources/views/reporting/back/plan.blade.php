@@ -300,3 +300,9 @@
 </table> 
 
 </br>
+<form action="/budget/public/admin/mbt/delete" method="get">
+    @method('DELETE')
+    @csrf
+    <button type="submit" style="width:250px;height:25px" class="button5">Удалить последний месяц</button>
+</form>
+<br>    

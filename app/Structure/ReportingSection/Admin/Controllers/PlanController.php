@@ -80,4 +80,19 @@ class PlanController extends Controller
         return view('reporting.back.report', ['status' => $status]); 
     }
     
+    /**
+     * Удаляем строки из таблицы mbt
+     * Удаляем по последнему месяцу
+     *
+     * @param 
+     * @return 
+     */
+    public function delete()
+    {    
+        $delete = $this->action(MbtIndexAction::class)->delete();
+        $status = $delete == true ? "deleted" : "nodeleted";
+        
+        return view('reporting.back.report', ['status' => $status]);        
+    }
+    
 }

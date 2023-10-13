@@ -31,7 +31,15 @@
 @elseif ($status == 'error')
     @php
         $text = "Вы пропустили один из параметров выбора (Год, месяц, раздел)";
-    @endphp    
+    @endphp 
+@elseif ($status == 'deleted')
+    @php
+        $text = "Вы удалили информацию за последний месяц из таблицы МБТ";
+    @endphp 
+@elseif ($status == 'nodeleted')
+    @php
+        $text = "Удаление из таблицы МБТ не получилось";
+    @endphp 
 @endif
 
 </br>

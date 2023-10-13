@@ -21,8 +21,8 @@ class MbtUploadAction implements ToModel{
                 'year'     => 2023,
                 'mounth'   => $mounth,
                 'title'    => $row[0],
-                'approved' => str_replace(",", ".", $row[1]),
-                'expenses' => str_replace(",", ".", $row[2]),
+                'approved' => str_replace(",", ".", $row[3]+$row[4]),
+                'expenses' => str_replace(",", ".", $row[5]+$row[6]),
             ]);        
 
      
