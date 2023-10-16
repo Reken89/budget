@@ -164,23 +164,7 @@
                                                     <input type='hidden' name='mounth' value='3'>
                                                     <button type="submit" class="custom-btn btn-16">Распределение ЕНП</button>
                                                 </form>
-                                             </li>
-                                             <li>
-                                                <form action="{{ route('reporting')}}" method="get">
-                                                    <button type="submit" class="custom-btn btn-16">Исполнение бюджета (I)</button>
-                                                </form>
-                                             </li>
-                                             <li>
-                                                <form action="{{ route('plan')}}" method="get">
-                                                    <button type="submit" class="custom-btn btn-16">Исполнение бюджета (II)</button>
-                                                </form>
-                                             </li>
-                                             <li>
-                                                <form action="{{ route('debts')}}" method="get">
-                                                    <input type='hidden' name='year' value='2023'>
-                                                    <button type="submit" class="custom-btn btn-16">Исполнение бюджета (III)</button>
-                                                </form>
-                                             </li>
+                                             </li>                                            
                                              @elseif ($role == "user")
                                              <li>
                                                  <form action="{{ route('usercommunal', 2018)}}" method="get">
@@ -254,6 +238,30 @@
                                                     <input type='hidden' name='mounth[]' value='1'>
                                                     <button type="submit" class="custom-btn btn-16"><b>Коммунальные услуги<b></button>
                                                  </form>
+                                             </li>
+                                             @endif
+                                          </ul>
+                                       </li>
+                                       
+                                       <li>
+                                          <a href="">Сайт <i class="fal fa-plus"></i></a>
+                                          <ul class="submenu">
+                                             @if ($role == "admin") 
+                                             <li>
+                                                <a href="/budget/public/admin/reporting">доходы и расходы</a>
+                                             </li>
+                                             <li>
+                                                <a href="/budget/public/admin/plan/back">кассовый план и МБТ</a>
+                                             </li>
+                                             <li>
+                                                <form action="{{ route('debts')}}" method="get">
+                                                    <input type='hidden' name='year' value='2023'>
+                                                    <button type="submit" class="custom-btn btn-16"><a>Муниципальный долг</a></button>
+                                                </form>
+                                             </li>
+                                             @else
+                                             <li>
+                                                <a href="https://kostamail.ru/finance/">Бюджет для граждан</a>
                                              </li>
                                              @endif
                                           </ul>
