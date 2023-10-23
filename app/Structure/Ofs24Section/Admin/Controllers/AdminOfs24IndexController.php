@@ -6,7 +6,7 @@ use App\Core\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Structure\OfsSection\Admin\Dto\OfsIndexDto;
 use App\Structure\OfsSection\Admin\Requests\OfsIndexRequest;
-use App\Structure\OfsSection\Admin\Actions\OfsIndexAction;
+use App\Structure\Ofs24Section\Admin\Actions\Ofs24IndexAction;
 use App\Structure\OfsSection\Admin\Actions\OfsUpdateStatusAction;
 use App\Structure\OfsSection\Admin\Exports\ExportAdminTable;
 
@@ -24,9 +24,8 @@ class AdminOfs24IndexController extends Controller
         if ($request->info == "no"){
             $info = ['info' => 'no',];
         } else {
-            //$dto = OfsIndexDto::fromRequest($request);
-            //$info = $this->action(OfsIndexAction::class)->run($dto);
-            $info = ['info' => 'yes',];
+            $dto = OfsIndexDto::fromRequest($request);
+            $info = $this->action(Ofs24IndexAction::class)->run($dto);
             
             session(['user' => $request->user]);
             session(['year' => $request->year]);

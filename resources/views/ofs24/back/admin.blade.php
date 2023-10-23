@@ -301,6 +301,103 @@
         <button type="submit" style="width:250px;height:25px" class="button5">Выгрузка в EXCEL</button>
     </form>
 
+@php
+    //echo "<pre>";
+    //var_dump($info['result']);
+@endphp
+
+    @if ($info['status'] == "1")
+        @php $color = "green"; @endphp 
+    @elseif ($info['status'] == "2")
+        @php $color = "darkred"; @endphp
+    @elseif ($info['status'] == "no") 
+        @php $color = "white"; @endphp
+    @endif    
+    
+</br>
+<table class="freeze-table" width="700px">             
+    <thead>
+        <tr>
+            <th style="min-width: 200px; width: 200px;" class="col-id-no fixed-header">Наименование расходов</th>
+            <th style="min-width: 70px; width: 70px;">ЭКР</th>
+            <th style="min-width: 200px; width: 200px;">Плановые назначения ЛБО</th>
+            <th style="min-width: 200px; width: 200px;">Зачет авансов, выплаченных в прошлом году</th>
+            <th style="min-width: 200px; width: 200px;" colspan="2">Кредиторская задолженность</br> на начало года</th>
+            <th style="min-width: 200px; width: 200px;" colspan="2">Дебиторская задолженность</br> на начало года</th>
+            <th style="min-width: 200px; width: 200px;" colspan="2">Факт</th>
+            <th style="min-width: 200px; width: 200px;" colspan="2">Кассовые расходы</th>
+            <th style="min-width: 200px; width: 200px;" colspan="2">Кредиторская задолженность на</br> конец отчетного периода</th>
+            <th style="min-width: 200px; width: 200px;" colspan="2">Дебиторская задолженность на</br> конец отчетного периода</th>
+            <th style="min-width: 200px; width: 200px;">Возвращено Дт прошлых лет в доход бюджета</th>
+            <th style="min-width: 200px; width: 200px;">Контрольное соотношение</th>
+            <th style="min-width: 200px; width: 200px;">Контрольное соотношение к плану ЛБО</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <th class="col-id-no" scope="row">1</th><th bgcolor="{{ $color }}">2</th><th bgcolor="{{ $color }}">3</th><th bgcolor="{{ $color }}">4</th>
+            <th bgcolor="{{ $color }}">5</th><th bgcolor="{{ $color }}">6</th><th bgcolor="{{ $color }}">7</th><th bgcolor="{{ $color }}">8</th>
+            <th bgcolor="{{ $color }}">9</th><th bgcolor="{{ $color }}">10</th><th bgcolor="{{ $color }}">11</th><th bgcolor="{{ $color }}">12</th>
+            <th bgcolor="{{ $color }}">13</th><th bgcolor="{{ $color }}">14</th><th bgcolor="{{ $color }}">15</th><th bgcolor="{{ $color }}">16</th>
+            <th bgcolor="{{ $color }}">17</th><th bgcolor="{{ $color }}">18</th><th bgcolor="{{ $color }}">19</th>
+        </tr>             
+        <tr>
+            <td class="col-id-no" scope="row"></td><td></td><td></td><td></td>
+            <td>Всего</td><td>Просроченная</td><td>Всего</td><td>Просроченная</td>
+            <td>Всего</td><td>Текущий месяц</td><td>Всего</td><td>Текущий месяц</td>
+            <td>Всего</td><td>Просроченная</td><td>Всего</td><td>Просроченная</td>
+            <td></td><td></td><td></td>
+        </tr>
+        @foreach ($info['result'] as $value)
+            @if ($value['ekr']['main'] == 'Yes' || $value['ekr']['shared'] == 'Yes')
+                <tr>
+                    <td class="col-id-no" scope="row"><b>{{ $value['ekr']['title'] }}</b></td>
+                    <td><b>{{ $value['ekr']['ekr'] }}</b></td>
+                    <td><b>{{ number_format($value['lbo'], 2, ',', ' ') }}</b></td>
+                    <td><b>{{ number_format($value['prepaid'], 2, ',', ' ') }}</b></td>
+                    <td><b>{{ number_format($value['credit_year_all'], 2, ',', ' ') }}</b></td>
+                    <td><b>{{ number_format($value['credit_year_term'], 2, ',', ' ') }}</b></td>
+                    <td><b>{{ number_format($value['debit_year_all'], 2, ',', ' ') }}</b></td>
+                    <td><b>{{ number_format($value['debit_year_term'], 2, ',', ' ') }}</b></td>
+                    <td><b>{{ number_format($value['fact_all'], 2, ',', ' ') }}</b></td>
+                    <td><b>{{ number_format($value['fact_mounth'], 2, ',', ' ') }}</b></td>
+                    <td><b>{{ number_format($value['kassa_all'], 2, ',', ' ') }}</b></td>
+                    <td><b>{{ number_format($value['kassa_mounth'], 2, ',', ' ') }}</b></td>
+                    <td><b>{{ number_format($value['credit_end_all'], 2, ',', ' ') }}</b></td>
+                    <td><b>{{ number_format($value['credit_end_term'], 2, ',', ' ') }}</b></td>
+                    <td><b>{{ number_format($value['debit_end_all'], 2, ',', ' ') }}</b></td>
+                    <td><b>{{ number_format($value['debit_end_term'], 2, ',', ' ') }}</b></td>
+                    <td><b>{{ number_format($value['return_old_year'], 2, ',', ' ') }}</b></td>
+                    <td><b>{{ number_format($value['total1'], 2, ',', ' ') }}</b></td>
+                    <td><b>{{ number_format($value['total2'], 2, ',', ' ') }}</b></td>
+                </tr>
+            @else
+                <tr>
+                    <td class="col-id-no" scope="row">{{ $value['ekr']['title'] }}</td>
+                    <td>{{ $value['ekr']['ekr'] }}</td>
+                    <td>{{ number_format($value['lbo'], 2, ',', ' ') }}</td>  
+                    <td>{{ number_format($value['prepaid'], 2, ',', ' ') }}</td>
+                    <td>{{ number_format($value['credit_year_all'], 2, ',', ' ') }}</td>
+                    <td>{{ number_format($value['credit_year_term'], 2, ',', ' ') }}</td>
+                    <td>{{ number_format($value['debit_year_all'], 2, ',', ' ') }}</td>
+                    <td>{{ number_format($value['debit_year_term'], 2, ',', ' ') }}</td>
+                    <td>{{ number_format($value['fact_all'], 2, ',', ' ') }}</td>
+                    <td>{{ number_format($value['fact_mounth'], 2, ',', ' ') }}</td>
+                    <td>{{ number_format($value['kassa_all'], 2, ',', ' ') }}</td>
+                    <td>{{ number_format($value['kassa_mounth'], 2, ',', ' ') }}</td>
+                    <td>{{ number_format($value['credit_end_all'], 2, ',', ' ') }}</td>
+                    <td>{{ number_format($value['credit_end_term'], 2, ',', ' ') }}</td>
+                    <td>{{ number_format($value['debit_end_all'], 2, ',', ' ') }}</td>
+                    <td>{{ number_format($value['debit_end_term'], 2, ',', ' ') }}</td>
+                    <td>{{ number_format($value['return_old_year'], 2, ',', ' ') }}</td>
+                    <td>{{ number_format($value['total1'], 2, ',', ' ') }}</td>
+                    <td>{{ number_format($value['total2'], 2, ',', ' ') }}</td>
+                </tr>
+            @endif 
+        @endforeach 
+    </tbody> 
+</table>    
 
     
 @else
