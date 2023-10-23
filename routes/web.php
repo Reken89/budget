@@ -18,6 +18,7 @@ use App\Structure\ReportingSection\Admin\Controllers\ReportingController;
 use App\Structure\ReportingSection\Admin\Controllers\ReportingDetailingController;
 use App\Structure\ReportingSection\Admin\Controllers\PlanController;
 use App\Structure\ReportingSection\Admin\Controllers\DebtController;
+use App\Structure\Ofs24Section\Admin\Controllers\AdminOfs24IndexController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,6 +58,19 @@ Route::get('/ugkh/communal/back', [UgkhCommunalController::class, 'index'])->mid
 Route::get('/admin/communal', [AdminCommunalController::class, 'user'])->middleware('auth', 'admin')->name('admincommunal');
 Route::get('/user/communal/{year}', [CommunalController::class, 'user'])->middleware('auth')->name('usercommunal');
 Route::get('/ugkh/communal', [UgkhCommunalController::class, 'user'])->middleware('auth')->name('ugkh');
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+ * 
+ * 
+ * 
+ */
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Роуты для Back (Модуль ОФС 2024)
+Route::get('/admin/ofs24/back', [AdminOfs24IndexController::class, 'index'])->middleware('auth', 'admin');
+
+
+//Роуты для Front (Модуль ОФС 2024)
+Route::get('/admin/ofs24', [AdminOfs24IndexController::class, 'front'])->middleware('auth', 'admin')->name('adminofs24');
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
  * 
