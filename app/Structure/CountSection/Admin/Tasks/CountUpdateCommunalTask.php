@@ -61,7 +61,12 @@ class CountUpdateCommunalTask extends BaseTask
         $total = Count::where('user_id', $user)
             ->where('ekr_id', 25);
         $total->update([                
-            'sum_fu' => $communal[0]['sum_fu'] + $communal[1]['sum_fu'] + $communal[2]['sum_fu'] + $communal[3]['sum_fu'] + $communal[4]['sum_fu'] + $communal[5]['sum_fu'],
+            'sum_fu' => $communal[0]['sum_fu'] + 
+                $communal[1]['sum_fu'] + 
+                $communal[2]['sum_fu'] + 
+                $communal[3]['sum_fu'] + 
+                $communal[4]['sum_fu'] + 
+                $communal[5]['sum_fu'],
         ]);
         
         return $heat == true ? true : false; 
