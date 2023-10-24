@@ -19,6 +19,7 @@ use App\Structure\ReportingSection\Admin\Controllers\ReportingDetailingControlle
 use App\Structure\ReportingSection\Admin\Controllers\PlanController;
 use App\Structure\ReportingSection\Admin\Controllers\DebtController;
 use App\Structure\Ofs24Section\Admin\Controllers\AdminOfs24IndexController;
+use App\Structure\Ofs24Section\User\Controllers\Ofs24Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,9 +71,11 @@ Route::get('/admin/ofs24/back', [AdminOfs24IndexController::class, 'index'])->mi
 Route::get('/admin/ofs24/export', [AdminOfs24IndexController::class, 'export'])->middleware('auth', 'admin');
 Route::patch('/admin/ofs24/status', [AdminOfs24IndexController::class, 'status'])->middleware('auth', 'admin');
 
+Route::get('/user/ofs24/back', [Ofs24Controller::class, 'index'])->middleware('auth');
 
 //Роуты для Front (Модуль ОФС 2024)
 Route::get('/admin/ofs24', [AdminOfs24IndexController::class, 'front'])->middleware('auth', 'admin')->name('adminofs24');
+Route::get('/user/ofs24', [Ofs24Controller::class, 'front'])->middleware('auth')->name('userofs24');
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
  * 

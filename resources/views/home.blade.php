@@ -214,7 +214,17 @@
                                                     <input type='hidden' name='user' value='3'>
                                                     <input type='hidden' name='chapter[]' value='1'>
                                                     <input type='hidden' name='info' value='no'>
-                                                    <button type="submit" class="custom-btn btn-16"><b>ОФС<b></button>
+                                                    <button type="submit" class="custom-btn btn-16"><b>ОФС 2023 год<b></button>
+                                                </form>
+                                             </li>
+                                             <li>
+                                                 <form action="{{ route('userofs24')}}" method="get">
+                                                    <input type='hidden' name='year' value='2024'>
+                                                    <input type='hidden' name='mounth' value='1'>
+                                                    <input type='hidden' name='user' value='3'>
+                                                    <input type='hidden' name='chapter[]' value='1'>
+                                                    <input type='hidden' name='info' value='no'>
+                                                    <button type="submit" class="custom-btn btn-16"><b>ОФС 2024 год<b></button>
                                                 </form>
                                              </li>
                                              <li>
