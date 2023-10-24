@@ -7,8 +7,8 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Structure\OfsSection\Admin\Dto\OfsIndexDto;
 use App\Structure\OfsSection\Admin\Requests\OfsIndexRequest;
 use App\Structure\Ofs24Section\Admin\Actions\Ofs24IndexAction;
-use App\Structure\OfsSection\Admin\Actions\OfsUpdateStatusAction;
-use App\Structure\OfsSection\Admin\Exports\ExportAdminTable;
+use App\Structure\Ofs24Section\Admin\Actions\Ofs24UpdateStatusAction;
+use App\Structure\Ofs24Section\Admin\Exports\AdminTable;
 
 class AdminOfs24IndexController extends Controller
 {
@@ -56,6 +56,39 @@ class AdminOfs24IndexController extends Controller
             'info'    => $request->info,
         ];
         return view('ofs24.admin', ['info' => $info]);
+
+    }
+
+    /**
+     * Выгрузка таблицы в EXCEL
+     * 
+     * @param 
+     * @return Excel
+     */
+    public function export()
+    { 
+        return Excel::download(new AdminTable, 'table.xlsx');
+    } 
+
+    /**
+     * Обновляем статусы в таблице ofs24 по заданным параметрам
+     *
+     * @param 
+     * @return 
+     */
+    public function status()
+    {    
+        $user = session('user');
+        $year = session('year');
+        $mounth = session('mounth');
+        $chapter = session('chapter');
+        
+        $result = $this->action(Ofs24UpdateStatusAction::class)->run($user, $year, $mounth, $chapter);
+        if ($result == true){
+            echo "Вы разрешили редактировать таблицу";
+        } else {
+            echo "Что то пошло не так! Сообщите разработчику...";
+        }
 
     }    
            

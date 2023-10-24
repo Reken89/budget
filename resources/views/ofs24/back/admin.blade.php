@@ -1,20 +1,3 @@
-@php
-    $mounth = [
-        '1' => 'Январь',
-        '2' => 'Февраль',
-        '3' => 'Март',
-        '4' => 'Апрель',
-        '5' => 'Май',
-        '6' => 'Июнь',
-        '7' => 'Июль',
-        '8' => 'Август',
-        '9' => 'Сентябрь',
-        '10' => 'Октябрь',
-        '11' => 'Ноябрь',
-        '12' => 'Декабрь',
-    ];
-    //var_dump($info);
-@endphp
 
 <head>
     <meta charset="utf-8">
@@ -297,14 +280,15 @@
 @if ($info['info'] == "yes")
 
 </br>
-    <form action="/budget/public/admin/ofs/export" method="get">
+    <form action="/budget/public/admin/ofs24/export" method="get">
         <button type="submit" style="width:250px;height:25px" class="button5">Выгрузка в EXCEL</button>
     </form>
 
-@php
-    //echo "<pre>";
-    //var_dump($info['result']);
-@endphp
+@if ($info['variant'] == "one")
+    </br>
+        <input type="button" style="width:250px;height:25px" name="formSubmit" id="btn_two" class="button5" value="Разрешить редактировать"> 
+    </br>
+@endif 
 
     @if ($info['status'] == "1")
         @php $color = "green"; @endphp 
@@ -396,10 +380,30 @@
                 </tr>
             @endif 
         @endforeach 
+        <tr>
+            <td class="col-id-no" scope="row"><b>Итого</b></td>
+            <td></td>
+            <td><b>{{ number_format($info['total']['lbo'], 2, ',', ' ') }}</b></td>
+            <td><b>{{ number_format($info['total']['prepaid'], 2, ',', ' ') }}</b></td>
+            <td><b>{{ number_format($info['total']['credit_year_all'], 2, ',', ' ') }}</b></td>
+            <td><b>{{ number_format($info['total']['credit_year_term'], 2, ',', ' ') }}</b></td>
+            <td><b>{{ number_format($info['total']['debit_year_all'], 2, ',', ' ') }}</b></td>
+            <td><b>{{ number_format($info['total']['debit_year_term'], 2, ',', ' ') }}</b></td>
+            <td><b>{{ number_format($info['total']['fact_all'], 2, ',', ' ') }}</b></td>
+            <td><b>{{ number_format($info['total']['fact_mounth'], 2, ',', ' ') }}</b></td>
+            <td><b>{{ number_format($info['total']['kassa_all'], 2, ',', ' ') }}</b></td>
+            <td><b>{{ number_format($info['total']['kassa_mounth'], 2, ',', ' ') }}</b></td>
+            <td><b>{{ number_format($info['total']['credit_end_all'], 2, ',', ' ') }}</b></td>
+            <td><b>{{ number_format($info['total']['credit_end_term'], 2, ',', ' ') }}</b></td>
+            <td><b>{{ number_format($info['total']['debit_end_all'], 2, ',', ' ') }}</b></td>
+            <td><b>{{ number_format($info['total']['debit_end_term'], 2, ',', ' ') }}</b></td>
+            <td><b>{{ number_format($info['total']['return_old_year'], 2, ',', ' ') }}</b></td>
+            <td><b>{{ number_format($info['total']['total1'], 2, ',', ' ') }}</b></td>
+            <td><b>{{ number_format($info['total']['total2'], 2, ',', ' ') }}</b></td>
+        </tr>
     </tbody> 
 </table>    
-
-    
+   
 @else
 </br>
 <div class="shadowbox">
