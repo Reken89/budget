@@ -415,12 +415,11 @@
                     </tr>                
                 @elseif ($info['variant'] == 'one' && $value['status'] == '2')
                     <tr>
-                        <input type="hidden" class="id" value="{{ $value['id'] }}">
+                        <input type="hidden" class="ekr_id" value="{{ $value['ekr_id'] }}">
                         <input type="hidden" class="user_id" value="{{ $value['user_id'] }}">
-                        <input type="hidden" class="year" value="{{ $value['year'] }}">
+                        <input type="hidden" class="number" value="{{ $value['ekr']['number'] }}">
                         <input type="hidden" class="mounth" value="{{ $value['mounth'] }}">
                         <input type="hidden" class="chapter" value="{{ $value['chapter'] }}">
-                        <input type="hidden" class="ekr_id" value="{{ $value['ekr_id'] }}">
                         <td class="col-id-no" scope="row">{{ $value['ekr']['title'] }}</td>
                         <td>{{ $value['ekr']['ekr'] }}</td>
                         <td><input type=button class='button' id='btn_one' value='Сброс'></td>

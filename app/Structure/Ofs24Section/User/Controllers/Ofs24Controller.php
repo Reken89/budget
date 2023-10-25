@@ -4,13 +4,14 @@ namespace App\Structure\Ofs24Section\User\Controllers;
 
 use App\Core\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Structure\OfsSection\User\Dto\OfsUpdateDto;
+use App\Structure\Ofs24Section\User\Dto\Ofs24UpdateDto;
 use App\Structure\OfsSection\User\Dto\OfsResetDto;
 use App\Structure\OfsSection\User\Requests\OfsIndexRequest;
-use App\Structure\OfsSection\User\Requests\OfsUpdateRequest;
+use App\Structure\Ofs24Section\User\Requests\Ofs24UpdateRequest;
 use App\Structure\OfsSection\User\Requests\OfsUserRequest;
 use App\Structure\OfsSection\User\Requests\OfsResetRequest;
 use App\Structure\Ofs24Section\User\Actions\Ofs24IndexAction;
+use App\Structure\Ofs24Section\User\Actions\Ofs24UpdateAction;
 
 class Ofs24Controller extends Controller
 {
@@ -74,6 +75,21 @@ class Ofs24Controller extends Controller
         ];
         
         return view('ofs24.user', ['info' => $info]);
+    }
+    
+    /**
+     * Обновляет значения в таблице ofs24
+     *
+     * @param OfsUpdateRequest $request
+     * @return 
+     */
+    public function update(Ofs24UpdateRequest $request)
+    { 
+        $dto = Ofs24UpdateDto::fromRequest($request);
+        $info = $this->action(Ofs24UpdateAction::class)->run($dto);
+        
+        //Значение для варианта отрисовки таблицы
+        session(['option' => true]);
     }
         
 }

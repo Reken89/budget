@@ -15,7 +15,7 @@ class Ofs24SelectAllTask extends BaseTask
      */
     public function run(int $user, int $year, int $mounth, array $chapter): array
     {
-        $info = Ofs24::select()
+        $info = Ofs24::select()  
             ->selectRaw('((`credit_year_all` + `fact_all` - `debit_year_all` - `kassa_all`) - '
                     . '(`credit_end_all` - `debit_end_all`) + `return_old_year`) AS total1')
             ->selectRaw('(`lbo` - `fact_all` + `prepaid` - `credit_year_all`) AS total2')
@@ -23,7 +23,7 @@ class Ofs24SelectAllTask extends BaseTask
             ->where('year', $year) 
             ->where('mounth', $mounth) 
             ->whereIn('chapter', $chapter)  
-            ->join('ekr', 'ekr.id', '=', 'ekr_id')    
+            ->join('ekr', 'ofs24.ekr_id', '=', 'ekr.id')    
             ->with([
                 'ekr', 
                 'user:id,name',
