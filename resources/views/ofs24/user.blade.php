@@ -81,7 +81,31 @@
                 }   
             });  
         } 
-        fetch_data(); 
+        fetch_data();
+        
+        //Выполняем действие (сбрасываем значения) при нажатии на кнопку
+        $(document).on('click', '#btn_one', function(){          
+            var tr = this.closest('tr');
+                var number = $('.number', tr).val();
+                var mounth = $('.mounth', tr).val();
+                var chapter = $('.chapter', tr).val();
+                var user_id = $('.user_id', tr).val();
+                var ekr_id = $('.ekr_id', tr).val();
+                
+            $.ajax({
+                url:"/budget/public/user/ofs24/reset",  
+                method:"patch",
+                data:{
+                    "_token": "{{ csrf_token() }}",
+                    number, mounth, chapter,
+                    user_id, ekr_id
+                },
+                dataType:"text",  
+                success:function(data){
+                    fetch_data();
+                } 
+            })               
+        })
         
         //Выполняем действие (формируем таблицу) при нажатии на кнопку
         $(document).on('click', '#btn_two', function(){
