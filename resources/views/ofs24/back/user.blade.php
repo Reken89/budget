@@ -325,7 +325,7 @@
 
 </br>
 <div class="shadowbox">
-    <p>Учреждение: {{ $info['result'][0]['user']['name'] }}</br>Месяц: {{ $info['mounth'] }}</br>Раздел: @foreach ($info['chapter'] as $chap) {{ $chap }}, @endforeach</p>
+    <p>Учреждение: {{ $info['result'][0]['user']['name'] }}</br>Месяц: {{ $mounth[$info['mounth']] }}</br>Раздел: @foreach ($info['chapter'] as $chap) {{ $chap }}, @endforeach</p>
 </div>
 
 @if ($info['variant'] == 'one')
