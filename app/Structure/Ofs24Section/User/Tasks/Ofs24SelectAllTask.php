@@ -30,7 +30,8 @@ class Ofs24SelectAllTask extends BaseTask
             ])   
             ->orderBy('ekr.number', 'asc')
             ->orderBy('ekr.main', 'desc')
-            ->orderBy('ekr.shared', 'desc')    
+            ->orderBy('ekr.shared', 'desc')
+            ->orderBy('ekr.title', 'asc')    
             ->get()
             ->toArray();
         return $info; 
