@@ -14,6 +14,7 @@ use App\Structure\Ofs24Section\User\Actions\Ofs24IndexAction;
 use App\Structure\Ofs24Section\User\Actions\Ofs24UpdateAction;
 use App\Structure\Ofs24Section\User\Actions\Ofs24ResetAction;
 use App\Structure\Ofs24Section\User\Actions\Ofs24SynchAction;
+use App\Structure\Ofs24Section\User\Actions\Ofs24StatusAction;
 
 class Ofs24Controller extends Controller
 {
@@ -125,6 +126,29 @@ class Ofs24Controller extends Controller
         $this->action(Ofs24SynchAction::class)->run($user, $year, $mounth, $chapter);
         echo "Синхронизация выполнена успешно";
 
+        //Значение для варианта отрисовки таблицы
+        session(['option' => true]);
+    }
+    
+    /**
+     * Меняем статус строк в таблице ofs24
+     *
+     * @param
+     * @return 
+     */
+    public function stat()
+    { 
+        $user = session('user');
+        $mounth = session('mounth');
+        $chapter = session('chapter');
+        
+        $result = $this->action(Ofs24StatusAction::class)->run($user, $mounth, $chapter[0]);
+        if ($result == true){
+            echo "Информация отправлена в ФЭУ";
+        }else{
+            echo "Информация не отправлена в ФЭУ, в таблице присутствуют ошибки";
+        }
+	
         //Значение для варианта отрисовки таблицы
         session(['option' => true]);
     }

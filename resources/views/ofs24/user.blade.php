@@ -151,7 +151,22 @@
                     //alert(mounth);
                 } 
             })               
-        })  
+        }) 
+        
+        //Выполняем действие (меняем статус) при нажатии на кнопку
+        $(document).on('click', '#btn_three', function(){              
+            $.ajax({
+                url:"/budget/public/user/ofs24/stat",  
+                method:"patch",
+                data:{
+                    "_token": "{{ csrf_token() }}"
+                },
+                success:function(data){
+                    alert(data);
+                    fetch_data();
+                } 
+            })               
+        })
         
         //Выполняем действие (синхронизация) при нажатии на кнопку
         $(document).on('click', '#btn_four', function(){              
