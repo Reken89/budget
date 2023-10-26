@@ -13,6 +13,7 @@ use App\Structure\Ofs24Section\User\Requests\Ofs24ResetRequest;
 use App\Structure\Ofs24Section\User\Actions\Ofs24IndexAction;
 use App\Structure\Ofs24Section\User\Actions\Ofs24UpdateAction;
 use App\Structure\Ofs24Section\User\Actions\Ofs24ResetAction;
+use App\Structure\Ofs24Section\User\Actions\Ofs24SynchAction;
 
 class Ofs24Controller extends Controller
 {
@@ -104,6 +105,26 @@ class Ofs24Controller extends Controller
         $dto = Ofs24ResetDto::fromRequest($request);
         $info = $this->action(Ofs24ResetAction::class)->run($dto);
         
+        //Значение для варианта отрисовки таблицы
+        session(['option' => true]);
+    }
+    
+    /**
+     * Выполняем заполнение значений за предыдущий месяц
+     *
+     * @param
+     * @return 
+     */
+    public function synch()
+    {     
+        $user = session('user');
+        $year = session('year');
+        $mounth = session('mounth');
+        $chapter = session('chapter');
+        
+        $this->action(Ofs24SynchAction::class)->run($user, $year, $mounth, $chapter);
+        echo "Синхронизация выполнена успешно";
+
         //Значение для варианта отрисовки таблицы
         session(['option' => true]);
     }

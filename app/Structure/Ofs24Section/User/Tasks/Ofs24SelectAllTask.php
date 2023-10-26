@@ -4,6 +4,7 @@ namespace App\Structure\Ofs24Section\User\Tasks;
 
 use App\Core\Task\BaseTask;
 use App\Structure\Ofs24Section\Admin\Models\Ofs24;
+use App\Structure\OfsSection\User\Models\Ofs;
 
 class Ofs24SelectAllTask extends BaseTask
 {
@@ -81,6 +82,26 @@ class Ofs24SelectAllTask extends BaseTask
             ->get()
             ->toArray();
         
+        return $info; 
+                
+    }
+    
+    /**
+     * Возвращает из базы ОФС 2023 года
+     * Колонки 14 15 16 17
+     *
+     * @param int $user, array $chapter
+     * @return array
+     */
+    public function old(int $user, array $chapter): array
+    {
+        $info = Ofs::select('credit_end_all', 'credit_end_term', 'debit_end_all', 'debit_end_term', 'ekr_id')  
+            ->where('user_id', $user)
+            ->where('year', 2023) 
+            ->where('mounth', 12) 
+            ->whereIn('chapter', $chapter)     
+            ->get()
+            ->toArray();
         return $info; 
                 
     }
