@@ -15,6 +15,7 @@ use App\Structure\Ofs24Section\User\Actions\Ofs24UpdateAction;
 use App\Structure\Ofs24Section\User\Actions\Ofs24ResetAction;
 use App\Structure\Ofs24Section\User\Actions\Ofs24SynchAction;
 use App\Structure\Ofs24Section\User\Actions\Ofs24StatusAction;
+use App\Structure\Ofs24Section\User\Exports\Export24UserTable;
 
 class Ofs24Controller extends Controller
 {
@@ -152,6 +153,17 @@ class Ofs24Controller extends Controller
         //Значение для варианта отрисовки таблицы
         session(['option' => true]);
     }
+    
+    /**
+     * Выгрузка таблицы в EXCEL
+     * 
+     * @param 
+     * @return Excel
+     */
+    public function export()
+    { 
+        return Excel::download(new Export24UserTable, 'table.xlsx');
+    } 
         
 }
 

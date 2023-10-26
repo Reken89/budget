@@ -32,8 +32,8 @@
             <td>Всего</td><td>Просроченная</td><td>Всего</td><td>Просроченная</td>
             <td></td><td></td><td></td>
         </tr>
-        @foreach ($info['result'] as $value)
-            @if ($value['ekr']['main'] == 'Yes' || $value['ekr']['shared'] == 'Yes')
+        @foreach ($info['result'] as $value)                  
+            @if ($value['ekr']['main'] == 'Yes' || $value['ekr']['main'] == 'Yes')
                 <tr>
                     <td><b>{{ $value['ekr']['title'] }}</b></td>
                     <td><b>{{ $value['ekr']['ekr'] }}</b></td>
@@ -54,7 +54,7 @@
                     <td><b>{{ $value['return_old_year'] }}</b></td>
                     <td><b>{{ $value['total1'] }}</b></td>
                     <td><b>{{ $value['total2'] }}</b></td>
-                </tr>
+                </tr>                               
             @else
                 <tr>
                     <td>{{ $value['ekr']['title'] }}</td>
@@ -77,8 +77,8 @@
                     <td>{{ $value['total1'] }}</td>
                     <td>{{ $value['total2'] }}</td>
                 </tr>
-            @endif 
-        @endforeach 
+            @endif                   
+        @endforeach  
         <tr>
             <td><b>Итого</b></td>
             <td></td>

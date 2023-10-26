@@ -76,6 +76,7 @@ Route::patch('/user/ofs24/update', [Ofs24Controller::class, 'update'])->middlewa
 Route::patch('/user/ofs24/reset', [Ofs24Controller::class, 'reset'])->middleware('auth');
 Route::patch('/user/ofs24/synch', [Ofs24Controller::class, 'synch'])->middleware('auth');
 Route::patch('/user/ofs24/stat', [Ofs24Controller::class, 'stat'])->middleware('auth');
+Route::get('/user/ofs24/export', [Ofs24Controller::class, 'export'])->middleware('auth');
 
 //Роуты для Front (Модуль ОФС 2024)
 Route::get('/admin/ofs24', [AdminOfs24IndexController::class, 'front'])->middleware('auth', 'admin')->name('adminofs24');

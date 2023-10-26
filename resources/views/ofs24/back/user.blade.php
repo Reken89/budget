@@ -29,7 +29,7 @@
     </div>
     <div class="post-title">
         <h2>
-            <a>!!!МОДУЛЬ В РАЗРАБОТКЕ!!! ЦИФРЫ НЕ ВНОСИТЬ !!!</a>
+            <a>Отчет о финансовом состоянии на 2024 год</a>
         </h2>
     </div>
     <div class="post-meta"><b>Таблица ОФС на 2024</b></div>
@@ -314,7 +314,7 @@
 @if ($info['info'] == "yes")
 
 </br>
-<form action="/budget/public/user/ofs/export" method="get">
+<form action="/budget/public/user/ofs24/export" method="get">
     <button type="submit" style="width:250px;height:25px" class="button5">Выгрузка в EXCEL</button>
 </form>
 
