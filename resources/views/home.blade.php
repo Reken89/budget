@@ -206,6 +206,11 @@
                                                         <button type="submit" class="custom-btn btn-16">Коммунальные 2023</button>
                                                  </form>
                                              </li>
+                                             <li>
+                                                 <form action="{{ route('usercommunal', 2024)}}" method="get">
+                                                        <button type="submit" class="custom-btn btn-16">Коммунальные 2024</button>
+                                                 </form>
+                                             </li>
                                              @elseif ($role == "cb_buh" || $role == "cb_school" || $role == "cb_kultura" || $role == "cb_kinder")
                                              <li>
                                                  <form action="{{ route('userofs')}}" method="get">

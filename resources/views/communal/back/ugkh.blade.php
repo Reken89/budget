@@ -59,6 +59,11 @@
             <div class="checkbox__checkmark"></div>
             <div class="checkbox__body">2023</div>
         </label> 
+        <label class="checkbox style-f">
+            <input type="checkbox" name="year" value="2024">
+            <div class="checkbox__checkmark"></div>
+            <div class="checkbox__body">2024</div>
+        </label> 
     </div>
                          
 <h3>Выберите месяц</h3>                                   
