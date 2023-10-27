@@ -318,7 +318,7 @@
     <button type="submit" style="width:250px;height:25px" class="button5">Выгрузка в EXCEL</button>
 </form>
 
-@if ($info['variant'] == 'one')
+@if ($info['variant'] == 'one' && $info['result'][0]['status'] == '2')
     </br>
     <input type="button" style="width:250px;height:25px" name="formSubmit" id="btn_three" class="button5" value="Отправить в ФЭУ"> 
 @endif
@@ -328,13 +328,19 @@
     <p>Учреждение: {{ $info['result'][0]['user']['name'] }}</br>Месяц: {{ $mounth[$info['mounth']] }}</br>Раздел: @foreach ($info['chapter'] as $chap) {{ $chap }}, @endforeach</p>
 </div>
 
-@if ($info['variant'] == 'one')
+@if ($info['variant'] == 'one' && $info['result'][0]['status'] == '2')
+<div id="block">
     </br>
         <input type="button" style="width:250px;height:25px" name="formSubmit" id="btn_four" class="button5" value="Синхронизация"> 
     </br>
+</div>    
 
     <blockquote class="blockquote-7">
-        <p><b><font color='red'>Процесс синхронизации может длится около минуты! После нажатия на кнопку «Синхронизация», дождитесь результата, не нужно нажимать кнопку повторно во время выполнения процесса!</font></b></p>
+        <p><b><font color='red'>Обращаем Ваше внимание, что при выполнении синхронизации в январе, значения из колонок 14, 15, 16, 17 
+                (Кредиторская и дебиторская задолженность на конец отчетного периода) с декабря 2023г. скопируются в колонки 6, 7, 8, 9 
+                (Кредиторская и дебиторская задолженность на начало года) в январь 2024г.
+                </br>Процесс выполнения синхронизации может длится до 60 сек!
+                </font></b></p>
         <cite></cite>
     </blockquote>
 @endif

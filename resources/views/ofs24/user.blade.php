@@ -169,7 +169,8 @@
         })
         
         //Выполняем действие (синхронизация) при нажатии на кнопку
-        $(document).on('click', '#btn_four', function(){              
+        $(document).on('click', '#btn_four', function(){ 
+            $("#block").css("display", "none");//Скрываем кнопку
             $.ajax({
                 url:"/budget/public/user/ofs24/synch",  
                 method:"patch",
@@ -180,7 +181,8 @@
                     alert(data);
                     fetch_data();
                 } 
-            })               
+            })
+            //$("#block").css("display", "none");
         })
     
     });
