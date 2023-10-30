@@ -16,14 +16,15 @@ class CommunalSendingAction extends BaseAction
      * @param CommunalSendingDto $dto
      * @return bool
      */
-    public function run(CommunalSendingDto $dto): bool
+    public function run(CommunalSendingDto $dto)
     {
-        //$result = $this->task(CommunalExaminationTask::class)->run($dto);
-        if (!$this->task(CommunalExaminationTask::class)->run($dto)) {
-	    return false;
+        $examin = $this->task(CommunalExaminationTask::class)->run($dto);
+
+        if ($examin['status'] == "NO") {
+	    return $examin;
 	} else {
             $this->task(CommunalSendingTask::class)->run($dto);
-            return true;
+            return $examin;
         }
            
     }

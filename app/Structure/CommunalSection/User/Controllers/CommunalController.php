@@ -66,8 +66,21 @@ class CommunalController extends Controller
     public function sending(CommunalSendingRequest $request)
     { 
         $dto = CommunalSendingDto::fromRequest($request);
-        if (!$this->action(CommunalSendingAction::class)->run($dto)) {
-	    echo "Обнаружена ошибка в расчете тарифа. Отправка в Финуправление невозможна!";
+        $status = $this->action(CommunalSendingAction::class)->run($dto);
+        
+        if ($status['status'] == "NO") {
+            $text = "\n";
+	    echo "Обнаружены ошибки. Отправка в Финуправление невозможна!";
+            echo $text;
+            echo "Список ошибок:";
+            echo $text;
+            foreach ($status['result'] as $result) {
+                echo $text;
+                echo "В значении '$result[title]' Ваш тариф равен $result[tarif]";
+                echo $text;
+                echo "Не укладывается в диапазон от $result[one] до $result[two]";
+                echo $text;
+            }
 	} else {
             echo "Информация отправлена в Финуправление";
         }
