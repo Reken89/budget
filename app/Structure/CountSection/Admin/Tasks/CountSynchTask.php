@@ -35,17 +35,12 @@ class CountSynchTask extends BaseTask
         $year = [2025, 2026];
         
         foreach ($info as $inf){
-            if($inf['sum_fu'] == 0){
-                //Заглушка
-            } else {
-
-                Count::where('user_id', $user)
-                ->whereIn('year', $year)
-                ->where('ekr_id', $inf['ekr_id'])        
-                ->update([
-                    'sum_fu' => $inf['sum_fu'],
-                ]);
-            }    
+            Count::where('user_id', $user)
+            ->whereIn('year', $year)
+            ->where('ekr_id', $inf['ekr_id'])        
+            ->update([
+                'sum_fu' => $inf['sum_fu'],
+            ]);                
         } 
     }
 }

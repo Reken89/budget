@@ -124,8 +124,9 @@
             })               
         })
         
-        //Выполняем действие (синхронизация) при нажатии на кнопку
-        $(document).on('click', '#btn_three', function(){              
+        //Выполняем действие (синхронизация 2025 и 2026) при нажатии на кнопку
+        $(document).on('click', '#btn_three', function(){
+            $("#block").css("display", "none");//Скрываем кнопку
             $.ajax({
                 url:"/budget/public/admin/count/synchyears",  
                 method:"patch",
