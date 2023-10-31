@@ -85,7 +85,11 @@
 
 </br>
     <input type="button" style="width:250px;height:25px" name="formSubmit" id="btn_two" class="button5" value="Синхронизация с прогнозом"> 
-</br>    
+</br> 
+
+</br>
+    <input type="button" style="width:250px;height:25px" name="formSubmit" id="btn_three" class="button5" value="Синхронизация года"> 
+</br>  
 
 </br>
     <form action="/budget/public/admin/count/export" method="get">

@@ -123,6 +123,21 @@
                 } 
             })               
         })
+        
+        //Выполняем действие (синхронизация) при нажатии на кнопку
+        $(document).on('click', '#btn_three', function(){              
+            $.ajax({
+                url:"/budget/public/admin/count/synchyears",  
+                method:"patch",
+                data:{
+                    "_token": "{{ csrf_token() }}"
+                },
+                success:function(data){
+                    alert(data);
+                    fetch_data();
+                } 
+            })               
+        })
                
     });
 </script>

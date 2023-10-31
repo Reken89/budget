@@ -11,6 +11,7 @@ use App\Structure\CountSection\Admin\Actions\CountIndexAction;
 use App\Structure\CountSection\Admin\Actions\CountUpdateAction;
 use App\Structure\CountSection\Admin\Exports\ExportAdminTable;
 use App\Structure\CountSection\Admin\Actions\CountSynchAction;
+use App\Structure\CountSection\Admin\Actions\CountSynchYearsAction;
 
 class AdminCountController extends Controller
 {
@@ -96,6 +97,18 @@ class AdminCountController extends Controller
     { 
         $result = $this->action(CountSynchAction::class)->run();
         echo "Синхронизация выполнена успешно!";      
+    }  
+    
+    /**
+     * Синхронизация 2025/2026 с 2024
+     * 
+     * @param 
+     * @return 
+     */
+    public function synchyears()
+    { 
+        $result = $this->action(CountSynchYearsAction::class)->run();
+        echo "Синхронизация выполнена!";      
     }  
 }
 

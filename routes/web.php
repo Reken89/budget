@@ -157,6 +157,7 @@ Route::get('/admin/count/back', [AdminCountController::class, 'index'])->middlew
 Route::patch('/admin/count/update', [AdminCountController::class, 'update'])->middleware('auth', 'admin');
 Route::get('/admin/count/export', [AdminCountController::class, 'export'])->middleware('auth', 'admin');
 Route::patch('/admin/count/synch', [AdminCountController::class, 'synch'])->middleware('auth', 'admin');
+Route::patch('/admin/count/synchyears', [AdminCountController::class, 'synchyears'])->middleware('auth', 'admin');
 
 Route::get('/user/count/back', [CountController::class, 'index'])->middleware('auth');
 Route::patch('/user/count/update', [CountController::class, 'update'])->middleware('auth');
