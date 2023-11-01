@@ -174,7 +174,14 @@
                                                     <input type='hidden' name='mounth' value='3'>
                                                     <button type="submit" class="custom-btn btn-16">Распределение ЕНП</button>
                                                 </form>
-                                             </li>                                            
+                                             </li>  
+                                             <li>
+                                                 <form action="{{ route('dev')}}" method="get">
+                                                    <input type='hidden' name='year[]' value='2022'>
+                                                    <input type='hidden' name='mounth[]' value='1'>
+                                                    <button type="submit">Разработка</button>
+                                                </form>
+                                             </li>
                                              @elseif ($role == "user")
                                              <li>
                                                  <form action="{{ route('usercommunal', 2018)}}" method="get">

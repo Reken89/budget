@@ -20,6 +20,7 @@ use App\Structure\ReportingSection\Admin\Controllers\PlanController;
 use App\Structure\ReportingSection\Admin\Controllers\DebtController;
 use App\Structure\Ofs24Section\Admin\Controllers\AdminOfs24IndexController;
 use App\Structure\Ofs24Section\User\Controllers\Ofs24Controller;
+use App\Structure\DevSection\Admin\Controllers\DevController;
 
 /*
 |--------------------------------------------------------------------------
@@ -207,6 +208,19 @@ Route::get('/admin/mbt/delete', [PlanController::class, 'delete'])->middleware('
 Route::get('/admin/reporting', [ReportingController::class, 'user'])->middleware('auth', 'admin')->name('reporting');
 Route::get('/admin/reporting/detailing', [ReportingDetailingController::class, 'user'])->middleware('auth', 'admin')->name('detailing');
 Route::get('/admin/debts', [DebtController::class, 'user'])->middleware('auth', 'admin')->name('debts');
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+ * 
+ * 
+ * 
+ */
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Роуты для Back (Модуль разработки)
+Route::get('/admin/dev/back', [DevController::class, 'index'])->middleware('auth', 'admin');
+
+
+//Роуты для Front (Модуль разработки)
+Route::get('/admin/dev', [DevController::class, 'user'])->middleware('auth', 'admin')->name('dev');
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 Auth::routes();
