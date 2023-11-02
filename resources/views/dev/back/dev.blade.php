@@ -138,18 +138,120 @@
         
         <!-- my account section start -->
         <section class="my__account--section section--padding">
-            <div class="container">
-                <p class="account__welcome--text">Выберите нужные параметры и сформируйте таблицу</p>
+            <div class="container2">
+                <p class="account__welcome--text">Выберите нужные параметры и сформируйте таблицу</p>                
                 <div class="my__account--section__inner border-radius-10 d-flex">
                     <div class="account__left--sidebar">
-                        <h2 class="account__content--title mb-20">My Profile</h2>
-                        <ul class="account__menu">
-                            <li class="account__menu--list active"><a href="my-account.html">Dashboard</a></li>
-                            <li class="account__menu--list"><a href="my-account-2.html">Addresses</a></li>
-                            <li class="account__menu--list"><a href="wishlist.html">Wishlist</a></li>
-                            <li class="account__menu--list"><a href="login.html">Log Out</a></li>
-                        </ul>
+                        <div class="single__widget widget__bg">
+                            <h2 class="widget__title h3">Год</h2>
+                            <ul class="widget__form--check">
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check6">2024</label>
+                                    <input class="widget__form--check__input" name="year" value="2024" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check7">2023</label>
+                                    <input class="widget__form--check__input" name="year" value="2023" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check8">2022</label>
+                                    <input class="widget__form--check__input" name="year" value="2022" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check9">2021</label>
+                                    <input class="widget__form--check__input" name="year" value="2021" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check10">2020</label>
+                                    <input class="widget__form--check__input" name="year" value="2020" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="single__widget widget__bg">
+                            <h2 class="widget__title h3">Месяц</h2>
+                            <ul class="widget__form--check">
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check6">Январь</label>
+                                    <input class="widget__form--check__input" name="mounth" value="1" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check7">Февраль</label>
+                                    <input class="widget__form--check__input" name="mounth" value="2" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check8">Март</label>
+                                    <input class="widget__form--check__input" name="mounth" value="3" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check9">Апрель</label>
+                                    <input class="widget__form--check__input" name="mounth" value="4" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check10">Май</label>
+                                    <input class="widget__form--check__input" name="mounth" value="5" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check10">Июнь</label>
+                                    <input class="widget__form--check__input" name="mounth" value="6" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check10">Июль</label>
+                                    <input class="widget__form--check__input" name="mounth" value="7" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check10">Август</label>
+                                    <input class="widget__form--check__input" name="mounth" value="8" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check10">Сентябрь</label>
+                                    <input class="widget__form--check__input" name="mounth" value="9" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check10">Октябрь</label>
+                                    <input class="widget__form--check__input" name="mounth" value="10" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check10">Ноябрь</label>
+                                    <input class="widget__form--check__input" name="mounth" value="11" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check10">Декабрь</label>
+                                    <input class="widget__form--check__input" name="mounth" value="12" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                            </ul>
+                        </div>
+                        <button style="width:200px;height:50px" class="primary__btn price__filter--btn" type="submit">Сформировать</button>
+                        </br>
+                        <br>
+                        <button style="width:200px;height:50px" class="primary__btn price__filter--btn" type="submit">Синхронизация</button>
+                        </br>
+                        <br>
+                        <button style="width:200px;height:50px" class="primary__btn price__filter--btn" type="submit">Email</button>
+                        </br>
+                        <br>
+                        <button style="width:200px;height:50px" class="primary__btn price__filter--btn" type="submit">Excel</button>
+                        </br>
+
                     </div>
+                
                     <div class="account__wrapper">
                         <div class="account__content">
                             <h2 class="account__content--title h3 mb-20">Orders History</h2>
@@ -158,8 +260,14 @@
                                     <thead class="account__table--header">
                                         <tr class="account__table--header__child">
                                             <th class="account__table--header__child--items">Учреждение</th>
-                                            <th class="account__table--header__child--items">Статус</th>
-                                            <th class="account__table--header__child--items">Доработка</th> 
+                                            <th class="account__table--header__child--items"></th>
+                                            <th class="account__table--header__child--items">Теплоснабжение</th> 
+                                            <th class="account__table--header__child--items">Водоотведение</th> 
+                                            <th class="account__table--header__child--items">Негативное воздействие</th> 
+                                            <th class="account__table--header__child--items">Водоснабжение</th> 
+                                            <th class="account__table--header__child--items">Электроснабжение</th> 
+                                            <th class="account__table--header__child--items">Вывоз мусора</th>    
+                                            <th class="account__table--header__child--items">ИТОГО</th> 
                                         </tr>
                                     </thead>
                                     <tbody class="account__table--body mobile__none">

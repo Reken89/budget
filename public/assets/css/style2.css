@@ -433,6 +433,11 @@ hr {
   padding-left: var(--bs-gutter-x, 1.5rem);
 }
 
+.container2 {    
+    padding-right: 80px;    
+    padding-left: 80px;
+}
+
 .container-fluid {
   --offset-fluid: 1.5rem;
   padding-right: var(--offset-fluid);
