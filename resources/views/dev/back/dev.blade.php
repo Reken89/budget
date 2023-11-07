@@ -1,3 +1,9 @@
+@php
+    $total = $info['total'][0];
+    $year = $info['year'];
+    $mounth = $info['mounth'];
+@endphp
+
 <!doctype html>
 <html lang="en">
 
@@ -259,59 +265,72 @@
                                 <table class="account__table">
                                     <thead class="account__table--header">
                                         <tr class="account__table--header__child">
-                                            <th class="account__table--header__child--items">Учреждение</th>
-                                            <th class="account__table--header__child--items"></th>
-                                            <th class="account__table--header__child--items">Теплоснабжение</th> 
-                                            <th class="account__table--header__child--items">Водоотведение</th> 
-                                            <th class="account__table--header__child--items">Негативное воздействие</th> 
-                                            <th class="account__table--header__child--items">Водоснабжение</th> 
-                                            <th class="account__table--header__child--items">Электроснабжение</th> 
-                                            <th class="account__table--header__child--items">Вывоз мусора</th>    
-                                            <th class="account__table--header__child--items">ИТОГО</th> 
+                                            <th style="min-width: 80px; width: 80px;" class="account__table--header__child--items">Учреждение</th>
+                                            <th style="min-width: 80px; width: 80px;" class="account__table--header__child--items">Статус</th>
+                                            <th style="min-width: 140px; width: 150px;" colspan="2" class="account__table--header__child--items">Теплоснабжение</th> 
+                                            <th style="min-width: 140px; width: 150px;" colspan="2" class="account__table--header__child--items">Водоотведение</th> 
+                                            <th style="min-width: 140px; width: 150px;" colspan="2" class="account__table--header__child--items">Негативное воздействие</th> 
+                                            <th style="min-width: 140px; width: 150px;" colspan="2" class="account__table--header__child--items">Водоснабжение</th> 
+                                            <th style="min-width: 140px; width: 150px;" colspan="2" class="account__table--header__child--items">Электроснабжение</th> 
+                                            <th style="min-width: 140px; width: 150px;" colspan="2" class="account__table--header__child--items">Вывоз мусора</th>    
+                                            <th style="min-width: 80px; width: 80px;" rowspan="2" class="account__table--header__child--items">ИТОГО</th> 
                                         </tr>
                                     </thead>
                                     <tbody class="account__table--body mobile__none">
                                         <tr class="account__table--body__child">
-                                            <td class="account__table--body__child--items">#2014</td>
-                                            <td class="account__table--body__child--items">November 24, 2022</td>
-                                            <td class="account__table--body__child--items">Paid</td>
-                                            
+                                            <td></td>
+                                            <td></td>
+                                            <td><b>Объем</b></td><td><b>Сумма</b></td>
+                                            <td><b>Объем</b></td><td><b>Сумма</b></td>
+                                            <td><b>Объем</b></td><td><b>Сумма</b></td>
+                                            <td><b>Объем</b></td><td><b>Сумма</b></td>
+                                            <td><b>Объем</b></td><td><b>Сумма</b></td>
+                                            <td><b>Объем</b></td><td><b>Сумма</b></td>
+                                            <td></td>
                                         </tr>
-                                        <tr class="account__table--body__child">
-                                            <td class="account__table--body__child--items">#2024</td>
-                                            <td class="account__table--body__child--items">November 24, 2022</td>
-                                            <td class="account__table--body__child--items">Paid</td>
-                                           
-                                        </tr>
-                                        <tr class="account__table--body__child">
-                                            <td class="account__table--body__child--items">#2164</td>
-                                            <td class="account__table--body__child--items">November 24, 2022</td>
-                                            <td class="account__table--body__child--items">Paid</td>
-                                           
-                                        </tr>
-                                        <tr class="account__table--body__child">
-                                            <td class="account__table--body__child--items">#2345</td>
-                                            <td class="account__table--body__child--items">November 24, 2022</td>
-                                            <td class="account__table--body__child--items">Paid</td>
-                                           
-                                        </tr>
-                                        <tr class="account__table--body__child">
-                                            <td class="account__table--body__child--items">#1244</td>
-                                            <td class="account__table--body__child--items">November 24, 2022</td>
-                                            <td class="account__table--body__child--items">Paid</td>
-                                           
-                                        </tr>
-                                        <tr class="account__table--body__child">
-                                            <td class="account__table--body__child--items">#3455</td>
-                                            <td class="account__table--body__child--items">November 24, 2022</td>
-                                            <td class="account__table--body__child--items">Paid</td>
-                                            
-                                        </tr>
-                                        <tr class="account__table--body__child">
-                                            <td class="account__table--body__child--items">#4566</td>
-                                            <td class="account__table--body__child--items">November 24, 2022</td>
-                                            <td class="account__table--body__child--items">Paid</td>
-                                            
+                                        
+                                        @foreach ($info['result'] as $value)                                         
+                                            <tr>                                                
+                                                <th>{{ $value['user']['name'] }}</th>
+                                                @if ($value['status'] == 3)
+                                                    <td><input type=button class="button" id='btn_two' value='Изменить'></td>
+                                                @elseif ($value['status'] == 1)
+                                                    <td>отправлено</td>
+                                                @else
+                                                    <td>В работе</td>
+                                                @endif
+                                                <td>{{ number_format($value['heat-volume'], 3, ',', ' ') }}</td>
+                                                <td>{{ number_format($value['heat-sum'], 2, ',', ' ') }}</td>
+                                                <td>{{ number_format($value['drainage-volume'], 3, ',', ' ') }}</td>
+                                                <td>{{ number_format($value['drainage-sum'], 2, ',', ' ') }}</td>
+                                                <td>{{ number_format($value['negative-volume'], 3, ',', ' ') }}</td>
+                                                <td>{{ number_format($value['negative-sum'], 2, ',', ' ') }}</td>
+                                                <td>{{ number_format($value['water-volume'], 3, ',', ' ') }}</td>
+                                                <td>{{ number_format($value['water-sum'], 2, ',', ' ') }}</td>
+                                                <td>{{ number_format($value['power-volume'], 3, ',', ' ') }}</td>
+                                                <td>{{ number_format($value['power-sum'], 2, ',', ' ') }}</td>
+                                                <td>{{ number_format($value['trash-volume'], 3, ',', ' ') }}</td>
+                                                <td>{{ number_format($value['trash-sum'], 2, ',', ' ') }}</td>                                                
+                                                <td>{{ number_format($value['total'], 2, ',', ' ') }}</td>
+                                            </tr>
+
+                                        @endforeach
+                                        <tr>
+                                            <td class="col-id-no" scope="row"><b>ИТОГО</b></td>
+                                            <td></td>
+                                            <td>{{ number_format($total['heat_volume'], 3, ',', ' ') }}</td>
+                                            <td>{{ number_format($total['heat_sum'], 2, ',', ' ') }}</td>
+                                            <td>{{ number_format($total['drainage_volume'], 3, ',', ' ') }}</td>
+                                            <td>{{ number_format($total['drainage_sum'], 2, ',', ' ') }}</td>
+                                            <td>{{ number_format($total['negative_volume'], 3, ',', ' ') }}</td>
+                                            <td>{{ number_format($total['negative_sum'], 2, ',', ' ') }}</td>
+                                            <td>{{ number_format($total['water_volume'], 3, ',', ' ') }}</td>
+                                            <td>{{ number_format($total['water_sum'], 2, ',', ' ') }}</td>
+                                            <td>{{ number_format($total['power_volume'], 3, ',', ' ') }}</td>
+                                            <td>{{ number_format($total['power_sum'], 2, ',', ' ') }}</td>
+                                            <td>{{ number_format($total['trash_volume'], 3, ',', ' ') }}</td>
+                                            <td>{{ number_format($total['trash_sum'], 2, ',', ' ') }}</td>
+                                            <td>{{ number_format($total['total'], 2, ',', ' ') }}</td>
                                         </tr>
                                     </tbody>
                                     <tbody class="account__table--body mobile__block">
