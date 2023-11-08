@@ -142,11 +142,15 @@
         <section class="my__account--section section--padding">
             <div class="container2">
                 <form id="communal" method="get"> 
-                <p class="account__welcome--text">Выберите нужные параметры и сформируйте таблицу</p>                
-                <div class="my__account--section__inner border-radius-10 d-flex">
-                    <div class="account__left--sidebar">
-                        <div class="single__widget widget__bg">
-                            <h2 class="widget__title h3">Год</h2>
+                
+                <section class="shipping__section">
+            <div class="container">
+                <div class="shipping__inner style2 d-flex">
+                    <div class="shipping__items style2 d-flex align-items-center">
+                        
+                        <div class="shipping__content">
+                            <h2 class="shipping__content--title h3">Год</h2>
+                            <div class="single__widget widget__bg">
                             <ul class="widget__form--check">
                                 <li class="widget__form--check__list">
                                     <label class="widget__form--check__label" for="check6">2024</label>
@@ -174,10 +178,14 @@
                                     <span class="widget__form--checkmark"></span>
                                 </li>
                             </ul>
+                            </div>    
                         </div>
+                    </div>
+                    <div class="shipping__items style2 d-flex align-items-center">
                         
-                        <div class="single__widget widget__bg">
-                            <h2 class="widget__title h3">Месяц</h2>
+                        <div class="shipping__content">
+                            <h2 class="shipping__content--title h3">Месяц</h2>
+                            <div class="single__widget widget__bg">
                             <ul class="widget__form--check">
                                 <li class="widget__form--check__list">
                                     <label class="widget__form--check__label" for="check6">Январь</label>
@@ -208,7 +216,17 @@
                                     <label class="widget__form--check__label" for="check10">Июнь</label>
                                     <input class="widget__form--check__input" name="mounth" value="6" type="checkbox">
                                     <span class="widget__form--checkmark"></span>
-                                </li>
+                                </li>                            
+                            </ul>
+                            </div>    
+                        </div>
+                    </div>
+                    <div class="shipping__items style2 d-flex align-items-center">
+                        
+                        <div class="shipping__content">
+                            <h2 class="shipping__content--title h3">Месяц</h2>
+                            <div class="single__widget widget__bg">
+                            <ul class="widget__form--check">                                
                                 <li class="widget__form--check__list">
                                     <label class="widget__form--check__label" for="check10">Июль</label>
                                     <input class="widget__form--check__input" name="mounth" value="7" type="checkbox">
@@ -240,8 +258,14 @@
                                     <span class="widget__form--checkmark"></span>
                                 </li>
                             </ul>
+                            </div>    
                         </div>
-                        <button style="width:200px;height:50px" class="primary__btn price__filter--btn" id="btn_one" type="button">Сформировать</button>
+                    </div>
+                    <div class="shipping__items style2 d-flex align-items-center">
+                        
+                        <div class="shipping__content">
+                            
+                            <button style="width:200px;height:50px" class="primary__btn price__filter--btn" id="btn_one" type="button">Сформировать</button>
                         </br>
                         </form>
                         <br>
@@ -253,8 +277,13 @@
                         <br>
                         <button style="width:200px;height:50px" class="primary__btn price__filter--btn" type="submit">Excel</button>
                         </br>
-
+                        </div>
                     </div>
+                </div>
+            </div>
+        </section>
+                <div class="my__account--section__inner border-radius-10 d-flex">
+                    
                 
                     <div class="account__wrapper">
                         <div class="account__content">
