@@ -27,7 +27,7 @@
         
         //Выполняем действие (формируем таблицу) при нажатии на кнопку
         $(document).on('click', '#btn_one', function(){
-            let info = $('#dev').serializeArray();
+            let info = $('#communal').serializeArray();
            
             //Создаем пустые массивы
             let year = [];
