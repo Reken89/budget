@@ -35,7 +35,7 @@
                 <div class="header__topbar--inner d-flex align-items-center justify-content-between">
                     <ul class="header__topbar--info d-none d-lg-flex">
                         <li class="header__info--list">
-                            <a class="header__info--link" href="shop.html">ГЛАВНАЯ</a>
+                            <a class="header__info--link">ГЛАВНАЯ</a>
                         </li>
                         <li class="header__info--list">
                             <a class="header__info--link" href="mailto:info@example.com">
@@ -44,7 +44,7 @@
                     </ul>
                     <div class="header__top--right d-flex align-items-center">
                         <ul class="header__top--link d-flex align-items-center">
-                            <li class="header__link--menu"><a class="header__link--menu__text" href="wishlist.html">
+                            <li class="header__link--menu"><a class="header__link--menu__text">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class=" -heart"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg> Таблица</a>
                             </li>
                        
@@ -265,7 +265,7 @@
                         
                         <div class="shipping__content">
                             
-                            <button style="width:200px;height:50px" class="primary__btn price__filter--btn" id="btn_one" type="button">Сформировать</button>
+                        <button style="width:200px;height:50px" class="primary__btn price__filter--btn" id="btn_one" type="button">Сформировать</button>
                         </br>
                         </form>
                         <br>
@@ -344,7 +344,7 @@
                                                 <tr>                                                
                                                     <th>{{ $value['user']['name'] }}</th>
                                                     @if ($value['status'] == 3)
-                                                        <td><input type=button class="button" id='btn_two' value='Изменить'></td>
+                                                        <td><input type=button class="button" id='btn_two' value='Изменить'></td>                                                       
                                                     @elseif ($value['status'] == 1)
                                                         <td>отправлено</td>
                                                     @else
