@@ -147,15 +147,7 @@
                                                     <input type='hidden' name='info' value='no'>
                                                     <button type="submit">ОФС 2024</button>
                                                 </form>
-                                             </li>
-                                             <li>
-                                                <form action="{{ route('adminbuild')}}" method="get">
-                                                    <input type='hidden' name='year' value='2023'>
-                                                    <input type='hidden' name='mounth[]' value='1'>
-                                                    <input type='hidden' name='variant' value='1'>
-                                                    <button type="submit" class="custom-btn btn-16">Строительство</button>
-                                                </form>
-                                             </li>
+                                             </li>                                            
                                              <li>
                                                 <form action="{{ route('forecast')}}" method="get">
                                                     <input type='hidden' name='chapter' value='heat'>
@@ -245,15 +237,7 @@
                                                     <input type='hidden' name='year' value='2024'>
                                                     <button type="submit" class="custom-btn btn-16"><b>Смета<b></button>
                                                 </form>
-                                             </li>
-                                             <li>
-                                                 <form action="{{ route('userbuild')}}" method="get">
-                                                    <input type='hidden' name='year' value='2023'>
-                                                    <input type='hidden' name='mounth[]' value='1'>
-                                                    <input type='hidden' name='variant' value='1'>
-                                                    <button type="submit" class="custom-btn btn-16"><b>Строительство<b></button>
-                                                 </form>
-                                             </li>
+                                             </li>                                            
                                              @elseif ($role == "build")
                                              <li>
                                                  <form action="{{ route('build')}}" method="get">
