@@ -365,7 +365,8 @@
                                         </tr>
                                         
                                             @foreach ($info['result'] as $value)                                         
-                                                <tr>                                                
+                                                <tr> 
+                                                    <input type="hidden" class="id" value="{{ $value['id'] }}">
                                                     <th>{{ $value['user']['name'] }}</th>
                                                     @if ($value['status'] == 3)
                                                         <td><input type=button class="button" id='btn_two' value='Изменить'></td>                                                       
