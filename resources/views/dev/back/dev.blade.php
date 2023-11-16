@@ -440,7 +440,7 @@
                             <form action="/budget/public/admin/dev/web" method="get" target="_blank">
                                 <button style="width:200px;height:50px" class="primary__btn price__filter--btn" type="submit">WEB форма</button>
                             </form>
-                            </br>
+                            
                             @if ($info['variant'] == "one")
                                 <br>
                                 <button style="width:200px;height:50px" class="primary__btn price__filter--btn" type="submit">Редактировать</button>
