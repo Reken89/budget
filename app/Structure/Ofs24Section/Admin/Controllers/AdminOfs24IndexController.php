@@ -90,6 +90,19 @@ class AdminOfs24IndexController extends Controller
             echo "Что то пошло не так! Сообщите разработчику...";
         }
 
-    }    
+    } 
+    
+    /**
+     * Front отрисовка страницы
+     * Возвращает front шаблон и выбранный год и месяц
+     *
+     * @return view
+     */
+    public function web()
+    {
+        $info = session('info');
+        
+        return view('ofs24.web', ['info' => $info]);
+    }
            
 }

@@ -71,6 +71,7 @@ Route::get('/ugkh/communal', [UgkhCommunalController::class, 'user'])->middlewar
 Route::get('/admin/ofs24/back', [AdminOfs24IndexController::class, 'index'])->middleware('auth', 'admin');
 Route::get('/admin/ofs24/export', [AdminOfs24IndexController::class, 'export'])->middleware('auth', 'admin');
 Route::patch('/admin/ofs24/status', [AdminOfs24IndexController::class, 'status'])->middleware('auth', 'admin');
+Route::get('/admin/ofs24/web', [AdminOfs24IndexController::class, 'web'])->middleware('auth', 'admin');
 
 Route::get('/user/ofs24/back', [Ofs24Controller::class, 'index'])->middleware('auth');
 Route::patch('/user/ofs24/update', [Ofs24Controller::class, 'update'])->middleware('auth');
