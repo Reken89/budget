@@ -6,15 +6,18 @@
         
         //Подгружаем BACK шаблон отрисовки
         function fetch_data(){  
-            var info = <?=json_encode($info)?>;
-            var year = info['year'];
-            var mounth = info['mounth'];
+            var form = <?=json_encode($info)?>;
+            var year = form['year'];
+            var mounth = form['mounth'];
+            var user = form['user'];
+            var chapter = form['chapter'];
+            var info = form['info'];
             $.ajax({  
                 url:"/budget/public/admin/dev/back",  
                 method:"GET",
                 data:{
                     //"_token": "{{ csrf_token() }}",
-                    year, mounth
+                    year, mounth, user, chapter, info
                 },
                 dataType:"text",
                 success:function(data){  
@@ -27,31 +30,37 @@
         
         //Выполняем действие (формируем таблицу) при нажатии на кнопку
         $(document).on('click', '#btn_one', function(){
-            let info = $('#communal').serializeArray();
+            let infomany = $('#ofs24').serializeArray();
            
+            let year = [2024];
+            let info = 'yes';
+
             //Создаем пустые массивы
-            let year = [];
+            let user = [];
             let mounth = [];
+            let chapter = [];
             
             //Заполняем в массив year, все значения
             //из массива info, где ключ равен 'year'
             // *
             //Заполняем в массив mounth, все значения
             //из массива info, где ключ равен 'mounth'          
-            for (const item of info) {
+            for (const item of infomany) {
                 const value = item.value;
-                if (item.name === 'year') {
-                    year.push(value);
-                } else if (item.name === 'mounth') {
+                if (item.name === 'mounth') {
                     mounth.push(value);
+                } else if (item.name === 'user') {
+                    user.push(value);
+                } else if (item.name === 'chapter') {
+                    chapter.push(value);
                 }
-            }            
+            }             
                 
             $.ajax({
                 url:"/budget/public/admin/dev/back",  
                 method:"get",
                 data:{
-                    year, mounth
+                    year, mounth, user, chapter, info
                 },
                 dataType:"text",  
                 success:function(data){ 

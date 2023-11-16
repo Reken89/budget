@@ -3,8 +3,9 @@
 namespace App\Structure\DevSection\Admin\Controllers;
 
 use App\Core\Controllers\Controller;
-use App\Structure\CommunalSection\Admin\Actions\CommunalIndexAction;
-use App\Structure\CommunalSection\Admin\Requests\CommunalIndexRequest;
+use App\Structure\OfsSection\Admin\Dto\OfsIndexDto;
+use App\Structure\Ofs24Section\Admin\Actions\Ofs24IndexAction;
+use App\Structure\OfsSection\Admin\Requests\OfsIndexRequest;
 
 class DevController extends Controller
 {
@@ -13,22 +14,21 @@ class DevController extends Controller
      * Возвращает коммунальные услуги за выбранный год и месяц
      * Возвращает тарифы за выбранный год
      *
-     * @param CommunalIndexRequest $request
+     * @param OfsIndexRequest $request
      * @return array
      */
-    public function index(CommunalIndexRequest $request)
+    public function index(OfsIndexRequest $request)
     {
-        if (session('option') == NULL || session('option') == FALSE){
-            $year = $request->year;
-            $mounth = $request->mounth;
+        if ($request->info == "no"){
+            $info = ['info' => 'no',];
+        } else {
+            $dto = OfsIndexDto::fromRequest($request);
+            $info = $this->action(Ofs24IndexAction::class)->run($dto);
+            
+            session(['user' => $request->user]);
             session(['year' => $request->year]);
             session(['mounth' => $request->mounth]);
-            $info = $this->action(CommunalIndexAction::class)->run($year, $mounth);
-        } else {
-            $year = session('year');
-            $mounth = session('mounth');
-            $info = $this->action(CommunalIndexAction::class)->run($year, $mounth);
-            session(['option' => false]);           
+            session(['chapter' => $request->chapter]);
         }
         
         session(['info' => $info]);
@@ -42,13 +42,30 @@ class DevController extends Controller
      *
      * @return view
      */
-    public function user(CommunalIndexRequest $request)
+    public function user(OfsIndexRequest $request)
     {
         $info = [
-            'year'   => $request->year,
-            'mounth' => $request->mounth,
+            'year'    => $request->year,
+            'mounth'  => $request->mounth,
+            'user'    => $request->user,
+            'chapter' => $request->chapter,
+            'info'    => $request->info,
         ];
+        
         return view('dev.dev', ['info' => $info]);
+    }
+    
+    /**
+     * Front отрисовка страницы
+     * Возвращает front шаблон и выбранный год и месяц
+     *
+     * @return view
+     */
+    public function web()
+    {
+        $info = session('info');
+        
+        return view('dev.web', ['info' => $info]);
     }
     
 }

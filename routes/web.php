@@ -217,6 +217,7 @@ Route::get('/admin/debts', [DebtController::class, 'user'])->middleware('auth', 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Роуты для Back (Модуль разработки)
 Route::get('/admin/dev/back', [DevController::class, 'index'])->middleware('auth', 'admin');
+Route::get('/admin/dev/web', [DevController::class, 'web'])->middleware('auth', 'admin');
 
 
 //Роуты для Front (Модуль разработки)

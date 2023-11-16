@@ -169,8 +169,11 @@
                                              </li>  
                                              <li>
                                                  <form action="{{ route('dev')}}" method="get">
-                                                    <input type='hidden' name='year[]' value='2022'>
+                                                    <input type='hidden' name='year[]' value='2024'>
                                                     <input type='hidden' name='mounth[]' value='1'>
+                                                    <input type='hidden' name='user[]' value='3'>
+                                                    <input type='hidden' name='chapter[]' value='1'>
+                                                    <input type='hidden' name='info' value='no'>
                                                     <button type="submit">Разработка</button>
                                                 </form>
                                              </li>
