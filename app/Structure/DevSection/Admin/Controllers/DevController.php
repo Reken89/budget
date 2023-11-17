@@ -3,9 +3,9 @@
 namespace App\Structure\DevSection\Admin\Controllers;
 
 use App\Core\Controllers\Controller;
-use App\Structure\OfsSection\Admin\Dto\OfsIndexDto;
-use App\Structure\Ofs24Section\Admin\Actions\Ofs24IndexAction;
-use App\Structure\OfsSection\Admin\Requests\OfsIndexRequest;
+use App\Structure\DevSection\Admin\Dto\DevIndexDto;
+use App\Structure\DevSection\Admin\Actions\DevIndexAction;
+use App\Structure\DevSection\Admin\Requests\DevIndexRequest;
 
 class DevController extends Controller
 {
@@ -14,21 +14,27 @@ class DevController extends Controller
      * Возвращает коммунальные услуги за выбранный год и месяц
      * Возвращает тарифы за выбранный год
      *
-     * @param OfsIndexRequest $request
+     * @param DevIndexRequest $request
      * @return array
      */
-    public function index(OfsIndexRequest $request)
+    public function index(DevIndexRequest $request)
     {
-        if ($request->info == "no"){
-            $info = ['info' => 'no',];
+        if (session('option') == NULL || session('option') == FALSE){
+            if ($request->info == "no"){
+                $info = ['info' => 'no',];
+            } else {
+                $year = $request->year;
+                $mounth = $request->mounth;
+                session(['year' => $request->year]);
+                session(['mounth' => $request->mounth]);
+                
+                $info = $this->action(DevIndexAction::class)->run($year, $mounth);            
+            }
         } else {
-            $dto = OfsIndexDto::fromRequest($request);
-            $info = $this->action(Ofs24IndexAction::class)->run($dto);
-            
-            session(['user' => $request->user]);
-            session(['year' => $request->year]);
-            session(['mounth' => $request->mounth]);
-            session(['chapter' => $request->chapter]);
+            $year = session('year');
+            $mounth = session('mounth');
+            $info = $this->action(DevIndexAction::class)->run($year, $mounth);
+            session(['option' => false]);
         }
         
         session(['info' => $info]);
@@ -42,13 +48,11 @@ class DevController extends Controller
      *
      * @return view
      */
-    public function user(OfsIndexRequest $request)
+    public function user(DevIndexRequest $request)
     {
         $info = [
             'year'    => $request->year,
             'mounth'  => $request->mounth,
-            'user'    => $request->user,
-            'chapter' => $request->chapter,
             'info'    => $request->info,
         ];
         

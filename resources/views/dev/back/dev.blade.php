@@ -1,5 +1,7 @@
 @php
-    
+    if($info['info'] == "yes"){
+        var_dump($info);
+    }
 @endphp
 
 <!doctype html>
@@ -7,7 +9,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>ОФС 2024 год</title>
+  <title>Коммунальные услуги</title>
   <meta name="description" content="Morden Bootstrap HTML5 Template">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/img/favicon.ico') }}">
@@ -59,7 +61,7 @@
                         
                     </div>
                     <div class="main__logo">
-                        <h2 class="main__logo--title"><a>Отчет о финансовом состоянии 2024 год</a></h2>
+                        <h2 class="main__logo--title"><a>Коммунальные услуги</a></h2>
                     </div>                                                          
                 </div>
             </div>
@@ -139,40 +141,40 @@
         <!-- my account section start -->
         <section class="my__account--section section--padding">
             
-                <form id="ofs24" method="get"> 
+                <form id="communal" method="get"> 
                 
                 <section class="shipping__section">
-            <div class="container2">
+            <div class="container">
                 <div class="shipping__inner style2 d-flex">
                     <div class="shipping__items style2 d-flex align-items-center">
                         
                         <div class="shipping__content">
-                            <h2 class="shipping__content--title h3">Раздел</h2>
+                            <h2 class="shipping__content--title h3">Год</h2>
                             <div class="single__widget widget__bg">
                             <ul class="widget__form--check">                               
                                 <li class="widget__form--check__list">
-                                    <label class="widget__form--check__label" for="check7">МБ МЗ(МБ)</label>
-                                    <input class="widget__form--check__input" name="chapter" value="1" type="checkbox">
+                                    <label class="widget__form--check__label" for="check7">2024</label>
+                                    <input class="widget__form--check__input" name="year" value="2024" type="checkbox">
                                     <span class="widget__form--checkmark"></span>
                                 </li>
                                 <li class="widget__form--check__list">
-                                    <label class="widget__form--check__label" for="check8">МБ ИЦ</label>
-                                    <input class="widget__form--check__input" name="chapter" value="2" type="checkbox">
+                                    <label class="widget__form--check__label" for="check8">2023</label>
+                                    <input class="widget__form--check__input" name="year" value="2023" type="checkbox">
                                     <span class="widget__form--checkmark"></span>
                                 </li>
                                 <li class="widget__form--check__list">
-                                    <label class="widget__form--check__label" for="check9">РК МЗ(РК)</label>
-                                    <input class="widget__form--check__input" name="chapter" value="3" type="checkbox">
+                                    <label class="widget__form--check__label" for="check9">2022</label>
+                                    <input class="widget__form--check__input" name="year" value="2022" type="checkbox">
                                     <span class="widget__form--checkmark"></span>
                                 </li>
                                 <li class="widget__form--check__list">
-                                    <label class="widget__form--check__label" for="check10">РК ИЦ</label>
-                                    <input class="widget__form--check__input" name="chapter" value="4" type="checkbox">
+                                    <label class="widget__form--check__label" for="check10">2021</label>
+                                    <input class="widget__form--check__input" name="year" value="2021" type="checkbox">
                                     <span class="widget__form--checkmark"></span>
                                 </li>
                                 <li class="widget__form--check__list">
-                                    <label class="widget__form--check__label" for="check10">ПД</label>
-                                    <input class="widget__form--check__input" name="chapter" value="5" type="checkbox">
+                                    <label class="widget__form--check__label" for="check10">2020</label>
+                                    <input class="widget__form--check__input" name="year" value="2020" type="checkbox">
                                     <span class="widget__form--checkmark"></span>
                                 </li>
                             </ul>
@@ -258,172 +260,7 @@
                             </ul>
                             </div>    
                         </div>
-                    </div>
-                    
-                    <div class="shipping__items style2 d-flex align-items-center">                      
-                        <div class="shipping__content">
-                            <h2 class="shipping__content--title h3">Учреждение</h2>
-                            <div class="single__widget widget__bg">
-                            <ul class="widget__form--check">                                
-                                <li class="widget__form--check__list">
-                                    <label class="widget__form--check__label" for="check10">Администрация</label>
-                                    <input class="widget__form--check__input" name="user" value="25" type="checkbox">
-                                    <span class="widget__form--checkmark"></span>
-                                </li>
-                                <li class="widget__form--check__list">
-                                    <label class="widget__form--check__label" for="check10">Закупки</label>
-                                    <input class="widget__form--check__input" name="user" value="26" type="checkbox">
-                                    <span class="widget__form--checkmark"></span>
-                                </li>
-                                <li class="widget__form--check__list">
-                                    <label class="widget__form--check__label" for="check10">КУМС</label>
-                                    <input class="widget__form--check__input" name="user" value="23" type="checkbox">
-                                    <span class="widget__form--checkmark"></span>
-                                </li>
-                                <li class="widget__form--check__list">
-                                    <label class="widget__form--check__label" for="check10">Совет</label>
-                                    <input class="widget__form--check__input" name="user" value="27" type="checkbox">
-                                    <span class="widget__form--checkmark"></span>
-                                </li>
-                                <li class="widget__form--check__list">
-                                    <label class="widget__form--check__label" for="check10">КСО</label>
-                                    <input class="widget__form--check__input" name="user" value="28" type="checkbox">
-                                    <span class="widget__form--checkmark"></span>
-                                </li>
-                                <li class="widget__form--check__list">
-                                    <label class="widget__form--check__label" for="check10">ЦБ</label>
-                                    <input class="widget__form--check__input" name="user" value="29" type="checkbox">
-                                    <span class="widget__form--checkmark"></span>
-                                </li>
-                            </ul>
-                            </div>    
-                        </div>
-                    </div>
-                    
-                    <div class="shipping__items style2 d-flex align-items-center">                      
-                        <div class="shipping__content">
-                            <h2 class="shipping__content--title h3">Учреждение</h2>
-                            <div class="single__widget widget__bg">
-                            <ul class="widget__form--check">                                
-                                <li class="widget__form--check__list">
-                                    <label class="widget__form--check__label" for="check10">Школа №1</label>
-                                    <input class="widget__form--check__input" name="user" value="3" type="checkbox">
-                                    <span class="widget__form--checkmark"></span>
-                                </li>
-                                <li class="widget__form--check__list">
-                                    <label class="widget__form--check__label" for="check10">Школа №2</label>
-                                    <input class="widget__form--check__input" name="user" value="4" type="checkbox">
-                                    <span class="widget__form--checkmark"></span>
-                                </li>
-                                <li class="widget__form--check__list">
-                                    <label class="widget__form--check__label" for="check10">Школа №3</label>
-                                    <input class="widget__form--check__input" name="user" value="5" type="checkbox">
-                                    <span class="widget__form--checkmark"></span>
-                                </li>
-                                <li class="widget__form--check__list">
-                                    <label class="widget__form--check__label" for="check10">Гимназия</label>
-                                    <input class="widget__form--check__input" name="user" value="7" type="checkbox">
-                                    <span class="widget__form--checkmark"></span>
-                                </li>
-                                <li class="widget__form--check__list">
-                                    <label class="widget__form--check__label" for="check10">ВСОШ</label>
-                                    <input class="widget__form--check__input" name="user" value="8" type="checkbox">
-                                    <span class="widget__form--checkmark"></span>
-                                </li>
-                                <li class="widget__form--check__list">
-                                    <label class="widget__form--check__label" for="check10">ЦВР</label>
-                                    <input class="widget__form--check__input" name="user" value="17" type="checkbox">
-                                    <span class="widget__form--checkmark"></span>
-                                </li>
-                            </ul>
-                            </div>    
-                        </div>
-                    </div>
-                    
-                    <div class="shipping__items style2 d-flex align-items-center">                      
-                        <div class="shipping__content">
-                            <h2 class="shipping__content--title h3">Учреждение</h2>
-                            <div class="single__widget widget__bg">
-                            <ul class="widget__form--check">                                
-                                <li class="widget__form--check__list">
-                                    <label class="widget__form--check__label" for="check10">ДХШ</label>
-                                    <input class="widget__form--check__input" name="user" value="18" type="checkbox">
-                                    <span class="widget__form--checkmark"></span>
-                                </li>
-                                <li class="widget__form--check__list">
-                                    <label class="widget__form--check__label" for="check10">ДМШ</label>
-                                    <input class="widget__form--check__input" name="user" value="19" type="checkbox">
-                                    <span class="widget__form--checkmark"></span>
-                                </li>
-                                <li class="widget__form--check__list">
-                                    <label class="widget__form--check__label" for="check10">Спорт-школа</label>
-                                    <input class="widget__form--check__input" name="user" value="16" type="checkbox">
-                                    <span class="widget__form--checkmark"></span>
-                                </li>
-                                <li class="widget__form--check__list">
-                                    <label class="widget__form--check__label" for="check10">МАиЦБ</label>
-                                    <input class="widget__form--check__input" name="user" value="20" type="checkbox">
-                                    <span class="widget__form--checkmark"></span>
-                                </li>
-                                <li class="widget__form--check__list">
-                                    <label class="widget__form--check__label" for="check10">ЦКР</label>
-                                    <input class="widget__form--check__input" name="user" value="21" type="checkbox">
-                                    <span class="widget__form--checkmark"></span>
-                                </li>
-                                <li class="widget__form--check__list">
-                                    <label class="widget__form--check__label" for="check10">ЦРО</label>
-                                    <input class="widget__form--check__input" name="user" value="22" type="checkbox">
-                                    <span class="widget__form--checkmark"></span>
-                                </li>
-                            </ul>
-                            </div>    
-                        </div>
-                    </div>
-                    
-                    <div class="shipping__items style2 d-flex align-items-center">                      
-                        <div class="shipping__content">
-                            <h2 class="shipping__content--title h3">Учреждение</h2>
-                            <div class="single__widget widget__bg">
-                            <ul class="widget__form--check">                                
-                                <li class="widget__form--check__list">
-                                    <label class="widget__form--check__label" for="check10">Ауринко</label>
-                                    <input class="widget__form--check__input" name="user" value="9" type="checkbox">
-                                    <span class="widget__form--checkmark"></span>
-                                </li>
-                                <li class="widget__form--check__list">
-                                    <label class="widget__form--check__label" for="check10">Солнышко</label>
-                                    <input class="widget__form--check__input" name="user" value="15" type="checkbox">
-                                    <span class="widget__form--checkmark"></span>
-                                </li>
-                                <li class="widget__form--check__list">
-                                    <label class="widget__form--check__label" for="check10">Гномик</label>
-                                    <input class="widget__form--check__input" name="user" value="11" type="checkbox">
-                                    <span class="widget__form--checkmark"></span>
-                                </li>
-                                <li class="widget__form--check__list">
-                                    <label class="widget__form--check__label" for="check10">Сказка</label>
-                                    <input class="widget__form--check__input" name="user" value="14" type="checkbox">
-                                    <span class="widget__form--checkmark"></span>
-                                </li>
-                                <li class="widget__form--check__list">
-                                    <label class="widget__form--check__label" for="check10">Кораблик</label>
-                                    <input class="widget__form--check__input" name="user" value="13" type="checkbox">
-                                    <span class="widget__form--checkmark"></span>
-                                </li>
-                                <li class="widget__form--check__list">
-                                    <label class="widget__form--check__label" for="check10">Ключик</label>
-                                    <input class="widget__form--check__input" name="user" value="12" type="checkbox">
-                                    <span class="widget__form--checkmark"></span>
-                                </li>
-                                <li class="widget__form--check__list">
-                                    <label class="widget__form--check__label" for="check10">Березка</label>
-                                    <input class="widget__form--check__input" name="user" value="10" type="checkbox">
-                                    <span class="widget__form--checkmark"></span>
-                                </li>
-                            </ul>
-                            </div>    
-                        </div>
-                    </div>
+                    </div>                   
                     
                     <div class="shipping__items style2 d-flex align-items-center">
                         
@@ -432,26 +269,99 @@
                         <button style="width:200px;height:50px" class="primary__btn price__filter--btn" id="btn_one" type="button">Сформировать</button>
                         </br>
                         </form>
-                        @if ($info['info'] == "yes")
-                            <br>
-                            <button style="width:200px;height:50px" class="primary__btn price__filter--btn" type="submit">Excel</button>
-                            </br>
-                            <br>
-                            <form action="/budget/public/admin/dev/web" method="get" target="_blank">
-                                <button style="width:200px;height:50px" class="primary__btn price__filter--btn" type="submit">WEB форма</button>
-                            </form>
-                            
-                            @if ($info['variant'] == "one")
-                                <br>
-                                <button style="width:200px;height:50px" class="primary__btn price__filter--btn" type="submit">Редактировать</button>
-                                </br> 
-                            @endif 
-                        @endif 
+                        
+                        <br>
+                        <button style="width:200px;height:50px" class="primary__btn price__filter--btn" type="submit">Excel</button>
+                        </br>
+                        <br>
+                        <form action="/budget/public/admin/dev/web" method="get" target="_blank">
+                            <button style="width:200px;height:50px" class="primary__btn price__filter--btn" type="submit">WEB форма</button>
+                        </form>
+                                                   
+                        <br>
+                        <button style="width:200px;height:50px" class="primary__btn price__filter--btn" type="submit">Редактировать</button>
+                        </br> 
+                          
                         </div>
                     </div>
                 </div>
-            </div>
+                
+                <div class="my__account--section__inner border-radius-10 d-flex">
+                    <div class="account__wrapper">
+                        <div class="account__content">
+                            <h2 class="account__content--title h3 mb-20">Год: 2023, месяц: ноябрь</h2>
+                            <div class="account__table--area">
+                                <table class="account__table">
+                                    <thead class="account__table--header">
+                                        <tr class="account__table--header__child">
+                                            <th style="min-width: 150px; width: 150px;" class="account__table--header__child--items">Услуга</th>
+                                            <th style="min-width: 100px; width: 100px;" class="account__table--header__child--items">Объем</th>
+                                            <th style="min-width: 100px; width: 100px;" class="account__table--header__child--items">Сумма</th>
+                                            <th style="min-width: 100px; width: 100px;" class="account__table--header__child--items">Ваш тариф</th>
+                                            <th style="min-width: 100px; width: 100px;" class="account__table--header__child--items">Тариф min</th>
+                                            <th style="min-width: 100px; width: 100px;" class="account__table--header__child--items">Тариф max</th>                                           
+                                        </tr>
+                                    </thead>
+                                    <tbody class="account__table--body mobile__none">
+                                        <tr>
+                                            <td>Теплоснабжение</td>
+                                            <td><input style="min-width: 100px; width: 100px;" type="text" class="heat-volume" value="10"></td>
+                                            <td><input style="min-width: 100px; width: 100px;" type="text" class="heat-sum" value="10"></td>
+                                            <td>20</td>
+                                            <td>18</td>
+                                            <td>27</td>
+                                        </tr> 
+                                        <tr>
+                                            <td>Водоотведение</td>
+                                            <td><input style="min-width: 100px; width: 100px;" type="text" class="drainage-volume" value="10"></td>
+                                            <td><input style="min-width: 100px; width: 100px;" type="text" class="drainage-sum" value="10"></td>
+                                            <td>20</td>
+                                            <td>18</td>
+                                            <td>27</td>
+                                        </tr>  
+                                        <tr>
+                                            <td>Негативное воздействие</td>
+                                            <td><input style="min-width: 100px; width: 100px;" type="text" class="negative-volume" value="10"></td>
+                                            <td><input style="min-width: 100px; width: 100px;" type="text" class="negative-sum" value="10"></td>
+                                            <td>20</td>
+                                            <td>18</td>
+                                            <td>27</td>
+                                        </tr> 
+                                        <tr>
+                                            <td>Водоснабжение</td>
+                                            <td><input style="min-width: 100px; width: 100px;" type="text" class="water-volume" value="10"></td>
+                                            <td><input style="min-width: 100px; width: 100px;" type="text" class="water-sum" value="10"></td>
+                                            <td>20</td>
+                                            <td>18</td>
+                                            <td>27</td>
+                                        </tr> 
+                                        <tr>
+                                            <td>Электроснабжение</td>
+                                            <td><input style="min-width: 100px; width: 100px;" type="text" class="power-volume" value="10"></td>
+                                            <td><input style="min-width: 100px; width: 100px;" type="text" class="power-sum" value="10"></td>
+                                            <td>20</td>
+                                            <td>18</td>
+                                            <td>27</td>
+                                        </tr> 
+                                        <tr>
+                                            <td>Вывоз мусора</td>
+                                            <td><input style="min-width: 100px; width: 100px;" type="text" class="trash-volume" value="10"></td>
+                                            <td><input style="min-width: 100px; width: 100px;" type="text" class="trash-sum" value="10"></td>
+                                            <td>20</td>
+                                            <td>18</td>
+                                            <td>27</td>
+                                        </tr>                                            
+                                    </tbody>                                
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>                   
         </section>
+        
+                      
                 
             
         </section>
