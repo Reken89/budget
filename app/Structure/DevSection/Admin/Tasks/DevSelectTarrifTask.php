@@ -18,7 +18,7 @@ class DevSelectTarrifTask extends BaseTask
         
         $info = Tarrifs::select()
             ->where('year', $year)
-            ->get()
+            ->get() 
             ->toArray();
         return $info;  
 

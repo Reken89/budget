@@ -17,7 +17,7 @@ class DevSelectAllTask extends BaseTask
     {
         $user = 14; 
         
-        $info = User::select('id', 'name')
+        $info = User::select('id', 'name', 'email')
             ->where('id', $user)
             ->with(['communal' => function ($query) use ($year) {
             $query
@@ -26,7 +26,8 @@ class DevSelectAllTask extends BaseTask
                     . "`water-sum` + `power-sum` + `trash-sum` + `disposal-sum`) AS total")
                 ->where('year', $year);            
             }])
-            ->get()
+            //->get()
+            ->first()
             ->toArray();
         return $info;  
 

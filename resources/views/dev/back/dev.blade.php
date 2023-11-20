@@ -1,6 +1,22 @@
 @php
-    if($info['info'] == "yes"){
-        var_dump($info);
+    if($info['info'] == "yes"){   
+        //var_dump($info);
+        $key = $info['mounth'] - 1;
+        
+        $mounth = [
+            '1'  => 'январь',
+            '2'  => 'февраль',
+            '3'  => 'март',
+            '4'  => 'апрель',
+            '5'  => 'май',
+            '6'  => 'июнь',
+            '7'  => 'июль',
+            '8'  => 'август',
+            '9'  => 'сентябрь',
+            '10' => 'октябрь',
+            '11' => 'ноябрь',
+            '12' => 'декабрь',
+        ];
     }
 @endphp
 
@@ -39,7 +55,7 @@
                         </li>
                         <li class="header__info--list">
                             <a class="header__info--link" href="mailto:info@example.com">
-                                finanse@kostamail.ru</a>
+                                email</a>
                         </li>
                     </ul>
                     <div class="header__top--right d-flex align-items-center">
@@ -145,6 +161,13 @@
                 
                 <section class="shipping__section">
             <div class="container">
+                <p>Описание функций кнопок:</p>
+                <p><b>Сформировать</b> - Формирует таблицу, за выбранный год и месяц</br>
+                    <b>Excel</b> - Выгрузка таблицы за выбранный год в excel файл</br>
+                    <b>WEB форма</b> - Открывает таблицу (все месяца) за выбранный год в новой вкладке</br>
+                    <b>Отправить</b> - Отправляет введенные значения в ФЭУ</br>
+                    <b>Редактировать</b> - Отправляет в ФЭУ запрос на редактирование данных, за выбранный период
+                </p>
                 <div class="shipping__inner style2 d-flex">
                     <div class="shipping__items style2 d-flex align-items-center">
                         
@@ -286,10 +309,11 @@
                     </div>
                 </div>
                 
+                @if ($info['info'] == "yes")
                 <div class="my__account--section__inner border-radius-10 d-flex">
                     <div class="account__wrapper">
                         <div class="account__content">
-                            <h2 class="account__content--title h3 mb-20">Год: 2023, месяц: ноябрь</h2>
+                            <h2 class="account__content--title h3 mb-20">Год: {{ $info['result']['communal'][$key]['year'] }}, месяц: {{ $mounth[$info['result']['communal'][$key]['mounth']] }}</h2>
                             <div class="account__table--area">
                                 <table class="account__table">
                                     <thead class="account__table--header">
@@ -297,7 +321,7 @@
                                             <th style="min-width: 150px; width: 150px;" class="account__table--header__child--items">Услуга</th>
                                             <th style="min-width: 100px; width: 100px;" class="account__table--header__child--items">Объем</th>
                                             <th style="min-width: 100px; width: 100px;" class="account__table--header__child--items">Сумма</th>
-                                            <th style="min-width: 100px; width: 100px;" class="account__table--header__child--items">Ваш тариф</th>
+                                            <th style="min-width: 100px; width: 100px;" class="account__table--header__child--items">Ваш тариф*</th>
                                             <th style="min-width: 100px; width: 100px;" class="account__table--header__child--items">Тариф min</th>
                                             <th style="min-width: 100px; width: 100px;" class="account__table--header__child--items">Тариф max</th>                                           
                                         </tr>
@@ -305,58 +329,165 @@
                                     <tbody class="account__table--body mobile__none">
                                         <tr>
                                             <td>Теплоснабжение</td>
-                                            <td><input style="min-width: 100px; width: 100px;" type="text" class="heat-volume" value="10"></td>
-                                            <td><input style="min-width: 100px; width: 100px;" type="text" class="heat-sum" value="10"></td>
-                                            <td>20</td>
-                                            <td>18</td>
-                                            <td>27</td>
+                                            @if ($info['result']['communal'][$key]['status'] == 2)
+                                                <td><input style="min-width: 100px; width: 100px;" type="text" class="heat-volume" value="{{ number_format($info['result']['communal'][$key]['heat-volume'], 3, ',', ' ') }}"></td>
+                                                <td><input style="min-width: 100px; width: 100px;" type="text" class="heat-sum" value="{{ number_format($info['result']['communal'][$key]['heat-sum'], 2, ',', ' ') }}"></td>
+                                            @else
+                                                <td>{{ number_format($info['result']['communal'][$key]['heat-volume'], 3, ',', ' ') }}</td>
+                                                <td>{{ number_format($info['result']['communal'][$key]['heat-sum'], 2, ',', ' ') }}</td>
+                                            @endif
+                                            
+                                            @if ($info['result']['communal'][$key]['heat-volume'] == 0)
+                                                <td><font color="green">0</td>
+                                            @else
+                                                @php
+                                                    if($info['result']['communal'][$key]['heat-sum'] / $info['result']['communal'][$key]['heat-volume'] >= $info['tarrifs'][$key]['heat-one'] && 
+                                                    $info['result']['communal'][$key]['heat-sum'] / $info['result']['communal'][$key]['heat-volume'] <= $info['tarrifs'][$key]['heat-two']){
+                                                        $color = "green";
+                                                    }else{
+                                                        $color = "red";
+                                                    }
+                                                @endphp
+                                                <td><font color="{{ $color }}">{{ number_format($info['result']['communal'][$key]['heat-sum'] / $info['result']['communal'][$key]['heat-volume'], 3, ',', ' ') }}</td>
+                                            @endif
+                                            <td>{{ number_format($info['tarrifs'][$key]['heat-one'], 3, ',', ' ') }}</td>
+                                            <td>{{ number_format($info['tarrifs'][$key]['heat-two'], 3, ',', ' ') }}</td>
                                         </tr> 
                                         <tr>
                                             <td>Водоотведение</td>
-                                            <td><input style="min-width: 100px; width: 100px;" type="text" class="drainage-volume" value="10"></td>
-                                            <td><input style="min-width: 100px; width: 100px;" type="text" class="drainage-sum" value="10"></td>
-                                            <td>20</td>
-                                            <td>18</td>
-                                            <td>27</td>
+                                            @if ($info['result']['communal'][$key]['status'] == 2)
+                                                <td><input style="min-width: 100px; width: 100px;" type="text" class="drainage-volume" value="{{ number_format($info['result']['communal'][$key]['drainage-volume'], 3, ',', ' ') }}"></td>
+                                                <td><input style="min-width: 100px; width: 100px;" type="text" class="drainage-sum" value="{{ number_format($info['result']['communal'][$key]['drainage-sum'], 2, ',', ' ') }}"></td>
+                                            @else
+                                                <td>{{ number_format($info['result']['communal'][$key]['drainage-volume'], 3, ',', ' ') }}</td>
+                                                <td>{{ number_format($info['result']['communal'][$key]['drainage-sum'], 2, ',', ' ') }}</td>
+                                            @endif
+                                            @if ($info['result']['communal'][$key]['drainage-volume'] == 0)
+                                                <td><font color="green">0</td>
+                                            @else
+                                                @php
+                                                    if($info['result']['communal'][$key]['drainage-sum'] / $info['result']['communal'][$key]['drainage-volume'] >= $info['tarrifs'][$key]['drainage-one'] && 
+                                                    $info['result']['communal'][$key]['drainage-sum'] / $info['result']['communal'][$key]['drainage-volume'] <= $info['tarrifs'][$key]['drainage-two']){
+                                                        $color = "green";
+                                                    }else{
+                                                        $color = "red";
+                                                    }
+                                                @endphp
+                                                <td><font color="{{ $color }}">{{ number_format($info['result']['communal'][$key]['drainage-sum'] / $info['result']['communal'][$key]['drainage-volume'], 3, ',', ' ') }}</td>
+                                            @endif
+                                            <td>{{ number_format($info['tarrifs'][$key]['drainage-one'], 3, ',', ' ') }}</td>
+                                            <td>{{ number_format($info['tarrifs'][$key]['drainage-two'], 3, ',', ' ') }}</td>
                                         </tr>  
                                         <tr>
                                             <td>Негативное воздействие</td>
-                                            <td><input style="min-width: 100px; width: 100px;" type="text" class="negative-volume" value="10"></td>
-                                            <td><input style="min-width: 100px; width: 100px;" type="text" class="negative-sum" value="10"></td>
-                                            <td>20</td>
-                                            <td>18</td>
-                                            <td>27</td>
+                                            @if ($info['result']['communal'][$key]['status'] == 2)
+                                                <td><input style="min-width: 100px; width: 100px;" type="text" class="negative-volume" value="{{ number_format($info['result']['communal'][$key]['negative-volume'], 3, ',', ' ') }}"></td>
+                                                <td><input style="min-width: 100px; width: 100px;" type="text" class="negative-sum" value="{{ number_format($info['result']['communal'][$key]['negative-sum'], 2, ',', ' ') }}"></td>
+                                            @else
+                                                <td>{{ number_format($info['result']['communal'][$key]['negative-volume'], 3, ',', ' ') }}</td>
+                                                <td>{{ number_format($info['result']['communal'][$key]['negative-sum'], 2, ',', ' ') }}</td>
+                                            @endif
+                                            @if ($info['result']['communal'][$key]['negative-volume'] == 0)
+                                                <td><font color="green">0</td>
+                                            @else
+                                                @php
+                                                    if($info['result']['communal'][$key]['negative-sum'] / $info['result']['communal'][$key]['negative-volume'] >= $info['tarrifs'][$key]['negative-one'] && 
+                                                    $info['result']['communal'][$key]['negative-sum'] / $info['result']['communal'][$key]['negative-volume'] <= $info['tarrifs'][$key]['negative-two']){
+                                                        $color = "green";
+                                                    }else{
+                                                        $color = "red";
+                                                    }
+                                                @endphp
+                                                <td><font color="{{ $color }}">{{ number_format($info['result']['communal'][$key]['negative-sum'] / $info['result']['communal'][$key]['negative-volume'], 3, ',', ' ') }}</td>
+                                            @endif
+                                            <td>{{ number_format($info['tarrifs'][$key]['negative-one'], 3, ',', ' ') }}</td>
+                                            <td>{{ number_format($info['tarrifs'][$key]['negative-two'], 3, ',', ' ') }}</td>
                                         </tr> 
                                         <tr>
                                             <td>Водоснабжение</td>
-                                            <td><input style="min-width: 100px; width: 100px;" type="text" class="water-volume" value="10"></td>
-                                            <td><input style="min-width: 100px; width: 100px;" type="text" class="water-sum" value="10"></td>
-                                            <td>20</td>
-                                            <td>18</td>
-                                            <td>27</td>
+                                            @if ($info['result']['communal'][$key]['status'] == 2)
+                                                <td><input style="min-width: 100px; width: 100px;" type="text" class="water-volume" value="{{ number_format($info['result']['communal'][$key]['water-volume'], 3, ',', ' ') }}"></td>
+                                                <td><input style="min-width: 100px; width: 100px;" type="text" class="water-sum" value="{{ number_format($info['result']['communal'][$key]['water-sum'], 2, ',', ' ') }}"></td>
+                                            @else
+                                                <td>{{ number_format($info['result']['communal'][$key]['water-volume'], 3, ',', ' ') }}</td>
+                                                <td>{{ number_format($info['result']['communal'][$key]['water-sum'], 2, ',', ' ') }}</td>
+                                            @endif
+                                            @if ($info['result']['communal'][$key]['water-volume'] == 0)
+                                                <td><font color="green">0</td>
+                                            @else
+                                                @php
+                                                    if($info['result']['communal'][$key]['water-sum'] / $info['result']['communal'][$key]['water-volume'] >= $info['tarrifs'][$key]['water-one'] && 
+                                                    $info['result']['communal'][$key]['water-sum'] / $info['result']['communal'][$key]['water-volume'] <= $info['tarrifs'][$key]['water-two']){
+                                                        $color = "green";
+                                                    }else{
+                                                        $color = "red";
+                                                    }
+                                                @endphp
+                                                <td><font color="{{ $color }}">{{ number_format($info['result']['communal'][$key]['water-sum'] / $info['result']['communal'][$key]['water-volume'], 3, ',', ' ') }}</td>
+                                            @endif
+                                            <td>{{ number_format($info['tarrifs'][$key]['water-one'], 3, ',', ' ') }}</td>
+                                            <td>{{ number_format($info['tarrifs'][$key]['water-two'], 3, ',', ' ') }}</td>
                                         </tr> 
                                         <tr>
                                             <td>Электроснабжение</td>
-                                            <td><input style="min-width: 100px; width: 100px;" type="text" class="power-volume" value="10"></td>
-                                            <td><input style="min-width: 100px; width: 100px;" type="text" class="power-sum" value="10"></td>
-                                            <td>20</td>
-                                            <td>18</td>
-                                            <td>27</td>
+                                            @if ($info['result']['communal'][$key]['status'] == 2)
+                                                <td><input style="min-width: 100px; width: 100px;" type="text" class="power-volume" value="{{ number_format($info['result']['communal'][$key]['power-volume'], 3, ',', ' ') }}"></td>
+                                                <td><input style="min-width: 100px; width: 100px;" type="text" class="power-sum" value="{{ number_format($info['result']['communal'][$key]['power-sum'], 3, ',', ' ') }}"></td>
+                                            @else
+                                                <td>{{ number_format($info['result']['communal'][$key]['power-volume'], 3, ',', ' ') }}</td>
+                                                <td>{{ number_format($info['result']['communal'][$key]['power-sum'], 2, ',', ' ') }}</td>
+                                            @endif
+                                            @if ($info['result']['communal'][$key]['power-volume'] == 0)
+                                                <td><font color="green">0</td>
+                                            @else
+                                                @php
+                                                    if($info['result']['communal'][$key]['power-sum'] / $info['result']['communal'][$key]['power-volume'] >= $info['tarrifs'][$key]['power-one'] && 
+                                                    $info['result']['communal'][$key]['power-sum'] / $info['result']['communal'][$key]['power-volume'] <= $info['tarrifs'][$key]['power-two']){
+                                                        $color = "green";
+                                                    }else{
+                                                        $color = "red";
+                                                    }
+                                                @endphp
+                                                <td><font color="{{ $color }}">{{ number_format($info['result']['communal'][$key]['power-sum'] / $info['result']['communal'][$key]['power-volume'], 3, ',', ' ') }}</td>
+                                            @endif
+                                            <td>{{ number_format($info['tarrifs'][$key]['power-one'], 3, ',', ' ') }}</td>
+                                            <td>{{ number_format($info['tarrifs'][$key]['power-two'], 3, ',', ' ') }}</td>
                                         </tr> 
                                         <tr>
                                             <td>Вывоз мусора</td>
-                                            <td><input style="min-width: 100px; width: 100px;" type="text" class="trash-volume" value="10"></td>
-                                            <td><input style="min-width: 100px; width: 100px;" type="text" class="trash-sum" value="10"></td>
-                                            <td>20</td>
-                                            <td>18</td>
-                                            <td>27</td>
+                                            @if ($info['result']['communal'][$key]['status'] == 2)
+                                                <td><input style="min-width: 100px; width: 100px;" type="text" class="trash-volume" value="{{ number_format($info['result']['communal'][$key]['trash-volume'], 3, ',', ' ') }}"></td>
+                                                <td><input style="min-width: 100px; width: 100px;" type="text" class="trash-sum" value="{{ number_format($info['result']['communal'][$key]['trash-sum'], 3, ',', ' ') }}"></td>
+                                            @else
+                                                <td>{{ number_format($info['result']['communal'][$key]['trash-volume'], 3, ',', ' ') }}</td>
+                                                <td>{{ number_format($info['result']['communal'][$key]['trash-sum'], 2, ',', ' ') }}</td>
+                                            @endif
+                                            @if ($info['result']['communal'][$key]['trash-volume'] == 0)
+                                                <td><font color="green">0</td>
+                                            @else
+                                                @php
+                                                    if($info['result']['communal'][$key]['trash-sum'] / $info['result']['communal'][$key]['trash-volume'] >= $info['tarrifs'][$key]['trash-one'] && 
+                                                    $info['result']['communal'][$key]['trash-sum'] / $info['result']['communal'][$key]['trash-volume'] <= $info['tarrifs'][$key]['trash-two']){
+                                                        $color = "green";
+                                                    }else{
+                                                        $color = "red";
+                                                    }
+                                                @endphp
+                                                <td><font color="{{ $color }}">{{ number_format($info['result']['communal'][$key]['trash-sum'] / $info['result']['communal'][$key]['trash-volume'], 3, ',', ' ') }}</td>
+                                            @endif
+                                            <td>{{ number_format($info['tarrifs'][$key]['trash-one'], 3, ',', ' ') }}</td>
+                                            <td>{{ number_format($info['tarrifs'][$key]['trash-two'], 3, ',', ' ') }}</td>
                                         </tr>                                            
                                     </tbody>                                
                                 </table>
+                                </br>
+                                <p><b>*Ваш тариф</b> = Тариф получается в результате деления суммы на объем.</br>
+                                Если цифра зеленого цвета, Вы укладываетесь в допустимый диапозон</p>
                             </div>
                         </div>
                     </div>
                 </div>
+                @endif
                 
             </div>                   
         </section>
