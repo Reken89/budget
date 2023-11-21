@@ -3,6 +3,43 @@
 
 <script>
     $(document).ready(function(){
+        //Выполняем запись в БД при нажатии на клавишу ENTER
+        function setKeydownmyForm() {
+            $('input').keydown(function(e) {
+                if (e.keyCode === 13) {
+                    //var tr = this.closest('tr');
+                    //var id = $('.id', tr).val(); 
+                    //var service = $('.service', tr).val(); 
+                    var reken = 10;
+                    
+                    //Получаем значения, меняем запятую на точку и убираем пробелы в числе                   
+                    //function structure(title){
+                        //var volume = $(title, tr).val();
+                        //var volume = volume.replace(",",".");
+                        //var volume = volume.replace(/ /g,'');
+                        //return volume;
+                    //}
+                    
+                    //var volume = structure('.volume');
+                    //var sum = structure('.sum');
+                                        
+                    $.ajax({
+                        url:"/budget/public/admin/dev/change",  
+                        method:"patch",  
+                        data:{
+                            "_token": "{{ csrf_token() }}",
+                            //id, volume, sum, service
+                            reken
+                        },
+                        dataType:"text",  
+                        success:function(data){  
+                            alert(data);
+                            fetch_data(); 
+                        } 
+                    })                   
+                }               
+            })
+        }
         
         //Подгружаем BACK шаблон отрисовки
         function fetch_data(){  
@@ -64,6 +101,35 @@
                     setKeydownmyForm() 
                 } 
             })               
+        })
+        
+        //Выполняем действие (запрос редактирования) при нажатии на кнопку
+        $(document).on('click', '#btn_two', function(){
+            let infomany = $('#update').serializeArray();
+            let id_many = [];
+            
+            for (const item of infomany) {
+                const value = item.value;
+                if (item.name === 'id') {
+                    id_many.push(value);
+                } 
+            }
+            
+            let id = id_many[0];
+            
+                $.ajax({
+                    url:"/budget/public/admin/dev/update",  
+                    method:"patch",
+                    data:{
+                        "_token": "{{ csrf_token() }}",
+                        id
+                    },
+                    dataType:"text",  
+                    success:function(data){  
+                        alert(data);
+                        fetch_data();  
+                    } 
+                })               
         })
         
     });

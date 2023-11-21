@@ -219,7 +219,10 @@ Route::get('/admin/debts', [DebtController::class, 'user'])->middleware('auth', 
 //Роуты для Back (Модуль разработки)
 Route::get('/admin/dev/back', [DevController::class, 'index'])->middleware('auth', 'admin');
 Route::get('/admin/dev/web', [DevController::class, 'web'])->middleware('auth', 'admin');
-
+Route::get('/admin/dev/export', [DevController::class, 'export'])->middleware('auth');
+Route::patch('/admin/dev/update', [DevController::class, 'update'])->middleware('auth', 'admin');
+Route::patch('/admin/dev/sending', [DevController::class, 'sending'])->middleware('auth', 'admin');
+Route::patch('/admin/dev/change', [DevController::class, 'change'])->middleware('auth', 'admin');
 
 //Роуты для Front (Модуль разработки)
 Route::get('/admin/dev', [DevController::class, 'user'])->middleware('auth', 'admin')->name('dev');

@@ -20,11 +20,13 @@ class DevIndexAction extends BaseAction
     {   
         $result = $this->task(DevSelectAllTask::class)->run($year);
         $tarrifs = $this->task(DevSelectTarrifTask::class)->run($year);
+        $total = $this->task(DevSelectAllTask::class)->total($year);
         
         $info = [
             "info"    => 'yes',
             "result"  => $result,
             "tarrifs" => $tarrifs,
+            "total"   => $total,
             "mounth"  => $mounth
         ];
         

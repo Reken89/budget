@@ -293,17 +293,29 @@
                         </br>
                         </form>
                         
-                        <br>
-                        <button style="width:200px;height:50px" class="primary__btn price__filter--btn" type="submit">Excel</button>
-                        </br>
-                        <br>
-                        <form action="/budget/public/admin/dev/web" method="get" target="_blank">
-                            <button style="width:200px;height:50px" class="primary__btn price__filter--btn" type="submit">WEB форма</button>
-                        </form>
-                                                   
-                        <br>
-                        <button style="width:200px;height:50px" class="primary__btn price__filter--btn" type="submit">Редактировать</button>
-                        </br> 
+                        @if ($info['info'] == "yes")
+                            <br>
+                            <form action="/budget/public/admin/dev/export" method="get">
+                                <button style="width:200px;height:50px" class="primary__btn price__filter--btn" type="submit">Excel</button>
+                            </form>
+                            </br>
+                            
+                            <form action="/budget/public/admin/dev/web" method="get" target="_blank">
+                                <button style="width:200px;height:50px" class="primary__btn price__filter--btn" type="submit">WEB форма</button>
+                            </form>
+                            @if ($info['result']['communal'][$key]['status'] == 2)
+                                <br>
+                                <button style="width:200px;height:50px" class="primary__btn price__filter--btn" type="submit">Отправить</button>
+                                </br> 
+                            @elseif ($info['result']['communal'][$key]['status'] == 1)
+                                <br>
+                                <form id="update" method="get"> 
+                                <input type='hidden' name='id' value='{{ $info['result']['communal'][$key]['id'] }}'>    
+                                <button style="width:200px;height:50px" class="primary__btn price__filter--btn" id='btn_two' type="button">Редактировать</button>
+                                </form>
+                                </br> 
+                            @endif
+                        @endif
                           
                         </div>
                     </div>
@@ -328,10 +340,12 @@
                                     </thead>
                                     <tbody class="account__table--body mobile__none">
                                         <tr>
+                                            <input type="hidden" class="id" value="{{ $info['result']['communal'][$key]['id'] }}">
+                                            <input type="hidden" class="service" value="heat">
                                             <td>Теплоснабжение</td>
                                             @if ($info['result']['communal'][$key]['status'] == 2)
-                                                <td><input style="min-width: 100px; width: 100px;" type="text" class="heat-volume" value="{{ number_format($info['result']['communal'][$key]['heat-volume'], 3, ',', ' ') }}"></td>
-                                                <td><input style="min-width: 100px; width: 100px;" type="text" class="heat-sum" value="{{ number_format($info['result']['communal'][$key]['heat-sum'], 2, ',', ' ') }}"></td>
+                                                <td><input style="min-width: 100px; width: 100px;" type="text" class="volume" value="{{ number_format($info['result']['communal'][$key]['heat-volume'], 3, ',', ' ') }}"></td>
+                                                <td><input style="min-width: 100px; width: 100px;" type="text" class="sum" value="{{ number_format($info['result']['communal'][$key]['heat-sum'], 2, ',', ' ') }}"></td>
                                             @else
                                                 <td>{{ number_format($info['result']['communal'][$key]['heat-volume'], 3, ',', ' ') }}</td>
                                                 <td>{{ number_format($info['result']['communal'][$key]['heat-sum'], 2, ',', ' ') }}</td>
@@ -432,7 +446,7 @@
                                             <td>Электроснабжение</td>
                                             @if ($info['result']['communal'][$key]['status'] == 2)
                                                 <td><input style="min-width: 100px; width: 100px;" type="text" class="power-volume" value="{{ number_format($info['result']['communal'][$key]['power-volume'], 3, ',', ' ') }}"></td>
-                                                <td><input style="min-width: 100px; width: 100px;" type="text" class="power-sum" value="{{ number_format($info['result']['communal'][$key]['power-sum'], 3, ',', ' ') }}"></td>
+                                                <td><input style="min-width: 100px; width: 100px;" type="text" class="power-sum" value="{{ number_format($info['result']['communal'][$key]['power-sum'], 2, ',', ' ') }}"></td>
                                             @else
                                                 <td>{{ number_format($info['result']['communal'][$key]['power-volume'], 3, ',', ' ') }}</td>
                                                 <td>{{ number_format($info['result']['communal'][$key]['power-sum'], 2, ',', ' ') }}</td>
@@ -457,7 +471,7 @@
                                             <td>Вывоз мусора</td>
                                             @if ($info['result']['communal'][$key]['status'] == 2)
                                                 <td><input style="min-width: 100px; width: 100px;" type="text" class="trash-volume" value="{{ number_format($info['result']['communal'][$key]['trash-volume'], 3, ',', ' ') }}"></td>
-                                                <td><input style="min-width: 100px; width: 100px;" type="text" class="trash-sum" value="{{ number_format($info['result']['communal'][$key]['trash-sum'], 3, ',', ' ') }}"></td>
+                                                <td><input style="min-width: 100px; width: 100px;" type="text" class="trash-sum" value="{{ number_format($info['result']['communal'][$key]['trash-sum'], 2, ',', ' ') }}"></td>
                                             @else
                                                 <td>{{ number_format($info['result']['communal'][$key]['trash-volume'], 3, ',', ' ') }}</td>
                                                 <td>{{ number_format($info['result']['communal'][$key]['trash-sum'], 2, ',', ' ') }}</td>
