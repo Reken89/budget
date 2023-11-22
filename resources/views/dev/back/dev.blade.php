@@ -305,13 +305,18 @@
                             </form>
                             @if ($info['result']['communal'][$key]['status'] == 2)
                                 <br>
-                                <button style="width:200px;height:50px" class="primary__btn price__filter--btn" id='btn_three' type="button">Отправить</button>
+                                <form id="sending" method="get"> 
+                                    <input type='hidden' name='id' value='{{ $info['result']['communal'][$key]['id'] }}'> 
+                                    <input type='hidden' name='year' value='{{ $info['result']['communal'][$key]['year'] }}'> 
+                                    <input type='hidden' name='mounth' value='{{ $info['result']['communal'][$key]['mounth'] }}'> 
+                                    <button style="width:200px;height:50px" class="primary__btn price__filter--btn" id='btn_three' type="button">Отправить</button>
+                                </form>
                                 </br> 
                             @elseif ($info['result']['communal'][$key]['status'] == 1)
                                 <br>
                                 <form id="update" method="get"> 
-                                <input type='hidden' name='id' value='{{ $info['result']['communal'][$key]['id'] }}'>    
-                                <button style="width:200px;height:50px" class="primary__btn price__filter--btn" id='btn_two' type="button">Редактировать</button>
+                                    <input type='hidden' name='id' value='{{ $info['result']['communal'][$key]['id'] }}'>    
+                                    <button style="width:200px;height:50px" class="primary__btn price__filter--btn" id='btn_two' type="button">Редактировать</button>
                                 </form>
                                 </br> 
                             @endif
@@ -325,6 +330,7 @@
                 <div class="my__account--section__inner border-radius-10 d-flex">
                     <div class="account__wrapper">
                         <div class="account__content">
+                            <p><u>После ввода каждой цифры, необходимо нажать клавишу «enter»</u></p>
                             <h2 class="account__content--title h3 mb-20">Год: {{ $info['result']['communal'][$key]['year'] }}, месяц: {{ $mounth[$info['result']['communal'][$key]['mounth']] }}</h2>
                             <div class="account__table--area">
                                 <table class="account__table">

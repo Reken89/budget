@@ -7,10 +7,12 @@ use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 use App\Structure\DevSection\Admin\Dto\DevIndexDto;
 use App\Structure\DevSection\Admin\Dto\DevChangeDto;
+use App\Structure\DevSection\Admin\Dto\DevSendingDto;
 use App\Structure\DevSection\Admin\Actions\DevIndexAction;
 use App\Structure\DevSection\Admin\Actions\DevUpdateAction;
 use App\Structure\DevSection\Admin\Requests\DevIndexRequest;
 use App\Structure\DevSection\Admin\Requests\DevChangeRequest;
+use App\Structure\DevSection\Admin\Requests\DevSendingRequest;
 use App\Structure\DevSection\Admin\Exports\ExportTable;
 
 class DevController extends Controller
@@ -123,6 +125,40 @@ class DevController extends Controller
         $dto = DevChangeDto::fromRequest($request);
         $result = $this->action(DevUpdateAction::class)->change($dto);
         return $result == true ? true : false;
+
+    }
+    
+    /**
+     * Изменение статуса в таблице communal
+     * Статус отправлено
+     * 
+     * @param DevChangeRequest $request
+     * @return bool
+     */
+    public function sending(DevSendingRequest $request)
+    {                
+        //Значение для варианта отрисовки таблицы
+        session(['option' => true]);
+        
+        $dto = DevSendingDto::fromRequest($request);
+        $status = $this->action(DevUpdateAction::class)->status_send($dto);
+        
+        if ($status['status'] == "NO") {
+            $text = "\n";
+	    echo "Обнаружены ошибки. Отправка в Финуправление невозможна!";
+            echo $text;
+            echo "Список ошибок:";
+            echo $text;
+            foreach ($status['result'] as $result) {
+                echo $text;
+                echo "В значении '$result[title]' Ваш тариф равен $result[tarif]";
+                echo $text;
+                echo "Не укладывается в диапазон от $result[one] до $result[two]";
+                echo $text;
+            }
+	} else {
+            echo "Информация отправлена в финансово-экономическое управление";
+        }
 
     }
     

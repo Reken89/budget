@@ -117,19 +117,56 @@
             
             let id = id_many[0];
             
-                $.ajax({
-                    url:"/budget/public/admin/dev/update",  
-                    method:"patch",
-                    data:{
-                        "_token": "{{ csrf_token() }}",
-                        id
-                    },
-                    dataType:"text",  
-                    success:function(data){  
-                        alert(data);
-                        fetch_data();  
-                    } 
-                })               
+            $.ajax({
+                url:"/budget/public/admin/dev/update",  
+                method:"patch",
+                data:{
+                    "_token": "{{ csrf_token() }}",
+                    id
+                },
+                dataType:"text",  
+                success:function(data){  
+                    alert(data);
+                    fetch_data();  
+                } 
+            })               
+        })
+        
+        //Выполняем действие (запрос редактирования) при нажатии на кнопку
+        $(document).on('click', '#btn_three', function(){
+            let infomany = $('#sending').serializeArray();
+            let id_array = [];
+            let year_array = [];
+            let mounth_array = [];
+            
+            for (const item of infomany) {
+                const value = item.value;
+                if (item.name === 'id') {
+                    id_array.push(value);
+                } else if (item.name === 'year') {
+                    year_array.push(value);
+                } else if (item.name === 'mounth') {
+                    mounth_array.push(value);
+                }   
+            }
+            
+            let id = id_array[0];
+            let year = year_array[0];
+            let mounth = mounth_array[0];
+            
+            $.ajax({
+                url:"/budget/public/admin/dev/sending",  
+                method:"patch",
+                data:{
+                    "_token": "{{ csrf_token() }}",
+                    id, year, mounth
+                },
+                dataType:"text",  
+                success:function(data){  
+                    alert(data);
+                    fetch_data();  
+                } 
+            })               
         })
         
     });
