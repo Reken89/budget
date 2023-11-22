@@ -162,11 +162,11 @@
                 <section class="shipping__section">
             <div class="container">
                 <p>Описание функций кнопок:</p>
-                <p><b>Сформировать</b> - Формирует таблицу, за выбранный год и месяц</br>
-                    <b>Excel</b> - Выгрузка таблицы за выбранный год в excel файл</br>
-                    <b>WEB форма</b> - Открывает таблицу (все месяца) за выбранный год в новой вкладке</br>
-                    <b>Отправить</b> - Отправляет введенные значения в ФЭУ</br>
-                    <b>Редактировать</b> - Отправляет в ФЭУ запрос на редактирование данных, за выбранный период
+                <p><b><u>Сформировать</u></b> - Формирует таблицу, за выбранный год и месяц</br>
+                    <b><u>Excel</u></b> - Выгрузка таблицы за выбранный год в excel файл</br>
+                    <b><u>WEB форма</u></b> - Открывает таблицу (все месяца) за выбранный год в новой вкладке</br>
+                    <b><u>Отправить</u></b> - Отправляет введенные значения в ФЭУ</br>
+                    <b><u>Редактировать</u></b> - Отправляет в ФЭУ запрос на редактирование данных, за выбранный период
                 </p>
                 <div class="shipping__inner style2 d-flex">
                     <div class="shipping__items style2 d-flex align-items-center">
@@ -305,7 +305,7 @@
                             </form>
                             @if ($info['result']['communal'][$key]['status'] == 2)
                                 <br>
-                                <button style="width:200px;height:50px" class="primary__btn price__filter--btn" type="submit">Отправить</button>
+                                <button style="width:200px;height:50px" class="primary__btn price__filter--btn" id='btn_three' type="button">Отправить</button>
                                 </br> 
                             @elseif ($info['result']['communal'][$key]['status'] == 1)
                                 <br>
@@ -368,10 +368,12 @@
                                             <td>{{ number_format($info['tarrifs'][$key]['heat-two'], 3, ',', ' ') }}</td>
                                         </tr> 
                                         <tr>
+                                            <input type="hidden" class="id" value="{{ $info['result']['communal'][$key]['id'] }}">
+                                            <input type="hidden" class="service" value="drainage">
                                             <td>Водоотведение</td>
                                             @if ($info['result']['communal'][$key]['status'] == 2)
-                                                <td><input style="min-width: 100px; width: 100px;" type="text" class="drainage-volume" value="{{ number_format($info['result']['communal'][$key]['drainage-volume'], 3, ',', ' ') }}"></td>
-                                                <td><input style="min-width: 100px; width: 100px;" type="text" class="drainage-sum" value="{{ number_format($info['result']['communal'][$key]['drainage-sum'], 2, ',', ' ') }}"></td>
+                                                <td><input style="min-width: 100px; width: 100px;" type="text" class="volume" value="{{ number_format($info['result']['communal'][$key]['drainage-volume'], 3, ',', ' ') }}"></td>
+                                                <td><input style="min-width: 100px; width: 100px;" type="text" class="sum" value="{{ number_format($info['result']['communal'][$key]['drainage-sum'], 2, ',', ' ') }}"></td>
                                             @else
                                                 <td>{{ number_format($info['result']['communal'][$key]['drainage-volume'], 3, ',', ' ') }}</td>
                                                 <td>{{ number_format($info['result']['communal'][$key]['drainage-sum'], 2, ',', ' ') }}</td>
@@ -393,10 +395,12 @@
                                             <td>{{ number_format($info['tarrifs'][$key]['drainage-two'], 3, ',', ' ') }}</td>
                                         </tr>  
                                         <tr>
+                                            <input type="hidden" class="id" value="{{ $info['result']['communal'][$key]['id'] }}">
+                                            <input type="hidden" class="service" value="negative">
                                             <td>Негативное воздействие</td>
                                             @if ($info['result']['communal'][$key]['status'] == 2)
-                                                <td><input style="min-width: 100px; width: 100px;" type="text" class="negative-volume" value="{{ number_format($info['result']['communal'][$key]['negative-volume'], 3, ',', ' ') }}"></td>
-                                                <td><input style="min-width: 100px; width: 100px;" type="text" class="negative-sum" value="{{ number_format($info['result']['communal'][$key]['negative-sum'], 2, ',', ' ') }}"></td>
+                                                <td><input style="min-width: 100px; width: 100px;" type="text" class="volume" value="{{ number_format($info['result']['communal'][$key]['negative-volume'], 3, ',', ' ') }}"></td>
+                                                <td><input style="min-width: 100px; width: 100px;" type="text" class="sum" value="{{ number_format($info['result']['communal'][$key]['negative-sum'], 2, ',', ' ') }}"></td>
                                             @else
                                                 <td>{{ number_format($info['result']['communal'][$key]['negative-volume'], 3, ',', ' ') }}</td>
                                                 <td>{{ number_format($info['result']['communal'][$key]['negative-sum'], 2, ',', ' ') }}</td>
@@ -418,10 +422,12 @@
                                             <td>{{ number_format($info['tarrifs'][$key]['negative-two'], 3, ',', ' ') }}</td>
                                         </tr> 
                                         <tr>
+                                            <input type="hidden" class="id" value="{{ $info['result']['communal'][$key]['id'] }}">
+                                            <input type="hidden" class="service" value="water">
                                             <td>Водоснабжение</td>
                                             @if ($info['result']['communal'][$key]['status'] == 2)
-                                                <td><input style="min-width: 100px; width: 100px;" type="text" class="water-volume" value="{{ number_format($info['result']['communal'][$key]['water-volume'], 3, ',', ' ') }}"></td>
-                                                <td><input style="min-width: 100px; width: 100px;" type="text" class="water-sum" value="{{ number_format($info['result']['communal'][$key]['water-sum'], 2, ',', ' ') }}"></td>
+                                                <td><input style="min-width: 100px; width: 100px;" type="text" class="volume" value="{{ number_format($info['result']['communal'][$key]['water-volume'], 3, ',', ' ') }}"></td>
+                                                <td><input style="min-width: 100px; width: 100px;" type="text" class="sum" value="{{ number_format($info['result']['communal'][$key]['water-sum'], 2, ',', ' ') }}"></td>
                                             @else
                                                 <td>{{ number_format($info['result']['communal'][$key]['water-volume'], 3, ',', ' ') }}</td>
                                                 <td>{{ number_format($info['result']['communal'][$key]['water-sum'], 2, ',', ' ') }}</td>
@@ -443,10 +449,12 @@
                                             <td>{{ number_format($info['tarrifs'][$key]['water-two'], 3, ',', ' ') }}</td>
                                         </tr> 
                                         <tr>
+                                            <input type="hidden" class="id" value="{{ $info['result']['communal'][$key]['id'] }}">
+                                            <input type="hidden" class="service" value="power">
                                             <td>Электроснабжение</td>
                                             @if ($info['result']['communal'][$key]['status'] == 2)
-                                                <td><input style="min-width: 100px; width: 100px;" type="text" class="power-volume" value="{{ number_format($info['result']['communal'][$key]['power-volume'], 3, ',', ' ') }}"></td>
-                                                <td><input style="min-width: 100px; width: 100px;" type="text" class="power-sum" value="{{ number_format($info['result']['communal'][$key]['power-sum'], 2, ',', ' ') }}"></td>
+                                                <td><input style="min-width: 100px; width: 100px;" type="text" class="volume" value="{{ number_format($info['result']['communal'][$key]['power-volume'], 3, ',', ' ') }}"></td>
+                                                <td><input style="min-width: 100px; width: 100px;" type="text" class="sum" value="{{ number_format($info['result']['communal'][$key]['power-sum'], 2, ',', ' ') }}"></td>
                                             @else
                                                 <td>{{ number_format($info['result']['communal'][$key]['power-volume'], 3, ',', ' ') }}</td>
                                                 <td>{{ number_format($info['result']['communal'][$key]['power-sum'], 2, ',', ' ') }}</td>
@@ -468,10 +476,12 @@
                                             <td>{{ number_format($info['tarrifs'][$key]['power-two'], 3, ',', ' ') }}</td>
                                         </tr> 
                                         <tr>
+                                            <input type="hidden" class="id" value="{{ $info['result']['communal'][$key]['id'] }}">
+                                            <input type="hidden" class="service" value="trash">
                                             <td>Вывоз мусора</td>
                                             @if ($info['result']['communal'][$key]['status'] == 2)
-                                                <td><input style="min-width: 100px; width: 100px;" type="text" class="trash-volume" value="{{ number_format($info['result']['communal'][$key]['trash-volume'], 3, ',', ' ') }}"></td>
-                                                <td><input style="min-width: 100px; width: 100px;" type="text" class="trash-sum" value="{{ number_format($info['result']['communal'][$key]['trash-sum'], 2, ',', ' ') }}"></td>
+                                                <td><input style="min-width: 100px; width: 100px;" type="text" class="volume" value="{{ number_format($info['result']['communal'][$key]['trash-volume'], 3, ',', ' ') }}"></td>
+                                                <td><input style="min-width: 100px; width: 100px;" type="text" class="sum" value="{{ number_format($info['result']['communal'][$key]['trash-sum'], 2, ',', ' ') }}"></td>
                                             @else
                                                 <td>{{ number_format($info['result']['communal'][$key]['trash-volume'], 3, ',', ' ') }}</td>
                                                 <td>{{ number_format($info['result']['communal'][$key]['trash-sum'], 2, ',', ' ') }}</td>
@@ -539,8 +549,8 @@
                             </h2>
                             <ul class="footer__widget--menu footer__widget--inner">
                                 
-                                <li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="https://kostomuksha-city.ru/">Сайт Костомукшского городского округа</a></li>
-                                <li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="http://minfin.karelia.ru/">Министерство финансов Республики Карелия</a></li>
+                                <li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="https://kostomuksha-city.ru/" target="_blank">Сайт Костомукшского городского округа</a></li>
+                                <li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="http://minfin.karelia.ru/" target="_blank">Министерство финансов Республики Карелия</a></li>
                                 
                             </ul>
                         </div>

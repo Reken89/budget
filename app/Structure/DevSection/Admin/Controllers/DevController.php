@@ -6,6 +6,7 @@ use App\Core\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 use App\Structure\DevSection\Admin\Dto\DevIndexDto;
+use App\Structure\DevSection\Admin\Dto\DevChangeDto;
 use App\Structure\DevSection\Admin\Actions\DevIndexAction;
 use App\Structure\DevSection\Admin\Actions\DevUpdateAction;
 use App\Structure\DevSection\Admin\Requests\DevIndexRequest;
@@ -101,7 +102,7 @@ class DevController extends Controller
         //Значение для варианта отрисовки таблицы
         session(['option' => true]);
         
-        if (!$this->action(DevUpdateAction::class)->status($id)) {
+        if (!$this->action(DevUpdateAction::class)->status_editor($id)) {
 	    echo "Обнаружена системная ошибка, сообщите разработчику!";
 	} else {
             echo "Запрос отправлен в финансово-экономическое управление";
@@ -114,13 +115,15 @@ class DevController extends Controller
      * @param DevChangeRequest $request
      * @return bool
      */
-    public function change(Request $request)
-    {             
-        var_dump($request);
-        
+    public function change(DevChangeRequest $request)
+    {                
         //Значение для варианта отрисовки таблицы
         session(['option' => true]);
         
+        $dto = DevChangeDto::fromRequest($request);
+        $result = $this->action(DevUpdateAction::class)->change($dto);
+        return $result == true ? true : false;
+
     }
     
 }

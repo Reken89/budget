@@ -3,7 +3,8 @@
 namespace App\Structure\DevSection\Admin\Actions;
 
 use App\Core\Actions\BaseAction;
-use App\Structure\CommunalSection\User\Models\Communal;
+use App\Structure\DevSection\Admin\Tasks\DevUpdateTask;
+use App\Structure\DevSection\Admin\Dto\DevChangeDto;
 
 class DevUpdateAction extends BaseAction
 {
@@ -13,13 +14,21 @@ class DevUpdateAction extends BaseAction
      * @param string $id
      * @return bool
      */
-    public function status(string $id): bool
+    public function status_editor(string $id): bool
     {   
-        $result = Communal::find($id)
-            ->update([                
-                 'status' => 3
-            ]);
-        
+        $result = $this->task(DevUpdateTask::class)->status($id, 3);        
+        return $result == true ? true : false;        
+    }
+    
+    /**
+     * Обновляет значения таблицы communals по id
+     *
+     * @param DevChangeDto $dto
+     * @return
+     */
+    public function change(DevChangeDto $dto): bool
+    {         
+        $result = $this->task(DevUpdateTask::class)->change($dto);
         return $result == true ? true : false;        
     }
 }

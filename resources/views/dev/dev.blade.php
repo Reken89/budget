@@ -3,43 +3,43 @@
 
 <script>
     $(document).ready(function(){
+        
         //Выполняем запись в БД при нажатии на клавишу ENTER
         function setKeydownmyForm() {
             $('input').keydown(function(e) {
                 if (e.keyCode === 13) {
-                    //var tr = this.closest('tr');
-                    //var id = $('.id', tr).val(); 
-                    //var service = $('.service', tr).val(); 
-                    var reken = 10;
+                    var tr = this.closest('tr');
+                    var id = $('.id', tr).val();
+                    var service = $('.service', tr).val();
                     
                     //Получаем значения, меняем запятую на точку и убираем пробелы в числе                   
-                    //function structure(title){
-                        //var volume = $(title, tr).val();
-                        //var volume = volume.replace(",",".");
-                        //var volume = volume.replace(/ /g,'');
-                        //return volume;
-                    //}
+                    function structure(title){
+                        var volume = $(title, tr).val();
+                        var volume = volume.replace(",",".");
+                        var volume = volume.replace(/ /g,'');
+                        return volume;
+                    }
                     
-                    //var volume = structure('.volume');
-                    //var sum = structure('.sum');
+                    var volume = structure('.volume');
+                    var sum = structure('.sum');
                                         
                     $.ajax({
                         url:"/budget/public/admin/dev/change",  
                         method:"patch",  
                         data:{
                             "_token": "{{ csrf_token() }}",
-                            //id, volume, sum, service
-                            reken
+                            id, service, volume, sum
                         },
                         dataType:"text",  
-                        success:function(data){  
-                            alert(data);
+                        success:function(data){ 
+                            //alert(data);
                             fetch_data(); 
                         } 
                     })                   
                 }               
             })
         }
+        
         
         //Подгружаем BACK шаблон отрисовки
         function fetch_data(){  
