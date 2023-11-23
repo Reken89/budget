@@ -7,7 +7,7 @@ use App\Structure\CommunalSection\User\Models\Tarrifs;
 use App\Structure\CommunalSection\User\Models\Communal;
 use App\Structure\CommunalSection\User\Dto\CommunalSendingDto;
 
-class CommunalExaminationTask extends BaseTask
+class CommunalExaminTask extends BaseTask
 {
     /**
      * Выполняем проверку согласно тарифу
@@ -124,6 +124,7 @@ class CommunalExaminationTask extends BaseTask
             }
     }
 }
+
 
 
 

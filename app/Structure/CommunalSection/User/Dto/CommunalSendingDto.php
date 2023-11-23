@@ -8,8 +8,8 @@ use App\Structure\CommunalSection\User\Requests\CommunalSendingRequest;
 class CommunalSendingDto extends BaseDto
 {
     public int    $id;
-    public int    $mounth;
     public int    $year;
+    public int    $mounth;
 
     /**
      * Возвращает DTO из объекта Request
@@ -21,13 +21,8 @@ class CommunalSendingDto extends BaseDto
     {
         return new self([
             'id'     => $request->get('id'),
-            'mounth' => $request->get('mounth'),
             'year'   => $request->get('year'),
+            'mounth' => $request->get('mounth'),
         ]);
     }
 }
-
-
-
-
-

@@ -5,7 +5,7 @@ namespace App\Structure\CommunalSection\User\Tasks;
 use App\Core\Task\BaseTask;
 use App\Structure\CommunalSection\User\Models\Tarrifs;
 
-class TarrifsSelectTask extends BaseTask
+class CommunalSelectTarrifTask extends BaseTask
 {
     /**
      * Возвращает тарифы за выбранный год
@@ -18,10 +18,9 @@ class TarrifsSelectTask extends BaseTask
         
         $info = Tarrifs::select()
             ->where('year', $year)
-            ->get()
+            ->get() 
             ->toArray();
         return $info;  
 
     }
 }
-

@@ -4,9 +4,9 @@ namespace App\Structure\CommunalSection\User\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CommunalSendingRequest extends FormRequest
+class CommunalIndexRequest extends FormRequest
 {
-        /**
+     /**
      * Get the validation rules that apply to the request.
      *
      * @return array
@@ -14,9 +14,10 @@ class CommunalSendingRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id'     => 'required|string',
-            'year'   => 'required|string',
-            'mounth' => 'required|string',
+            'year'    => 'required|integer',
+            'mounth'  => 'required|integer',
+            'info'    => 'required|string',
         ];
     }   
 }
+

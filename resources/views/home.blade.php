@@ -177,39 +177,12 @@
                                              </li>
                                              @elseif ($role == "user")
                                              <li>
-                                                 <form action="{{ route('usercommunal', 2018)}}" method="get">
-                                                        <button type="submit" class="custom-btn btn-16">Коммунальные 2018</button>
-                                                 </form>
-                                             </li>
-                                             <li>
-                                                 <form action="{{ route('usercommunal', 2019)}}" method="get">
-                                                        <button type="submit" class="custom-btn btn-16">Коммунальные 2019</button>
-                                                 </form>
-                                             </li>
-                                             <li>
-                                                 <form action="{{ route('usercommunal', 2020)}}" method="get">
-                                                        <button type="submit" class="custom-btn btn-16">Коммунальные 2020</button>
-                                                 </form>
-                                             </li>
-                                             <li>
-                                                 <form action="{{ route('usercommunal', 2021)}}" method="get">
-                                                        <button type="submit" class="custom-btn btn-16">Коммунальные 2021</button>
-                                                 </form>
-                                             </li>
-                                             <li>
-                                                 <form action="{{ route('usercommunal', 2022)}}" method="get">
-                                                        <button type="submit" class="custom-btn btn-16">Коммунальные 2022</button>
-                                                 </form>
-                                             </li>
-                                             <li>
-                                                 <form action="{{ route('usercommunal', 2023)}}" method="get">
-                                                        <button type="submit" class="custom-btn btn-16">Коммунальные 2023</button>
-                                                 </form>
-                                             </li>
-                                             <li>
-                                                 <form action="{{ route('usercommunal', 2024)}}" method="get">
-                                                        <button type="submit" class="custom-btn btn-16">Коммунальные 2024</button>
-                                                 </form>
+                                                 <form action="{{ route('usercommunal')}}" method="get">
+                                                    <input type='hidden' name='year' value='2024'>
+                                                    <input type='hidden' name='mounth' value='1'>                                                    
+                                                    <input type='hidden' name='info' value='no'>
+                                                    <button type="submit">Коммунальные услуги</button>
+                                                </form>
                                              </li>
                                              @elseif ($role == "cb_buh" || $role == "cb_school" || $role == "cb_kultura" || $role == "cb_kinder")
                                              <li>

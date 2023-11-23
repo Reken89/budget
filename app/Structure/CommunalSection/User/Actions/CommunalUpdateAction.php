@@ -3,38 +3,53 @@
 namespace App\Structure\CommunalSection\User\Actions;
 
 use App\Core\Actions\BaseAction;
-use App\Structure\CommunalSection\User\Dto\CommunalUpdateDto;
-use App\Structure\CommunalSection\User\Models\Communal;
+use App\Structure\CommunalSection\User\Tasks\CommunalUpdateTask;
+use App\Structure\CommunalSection\User\Tasks\CommunalExaminTask;
+use App\Structure\CommunalSection\User\Dto\CommunalChangeDto;
+use App\Structure\CommunalSection\User\Dto\CommunalSendingDto;
 
 class CommunalUpdateAction extends BaseAction
 {
     /**
      * Обновляет значения таблицы communals по id
      *
-     * @param CommunalUpdateDto $dto
+     * @param string $id
      * @return bool
      */
-    public function run(CommunalUpdateDto $dto): bool
+    public function status_editor(string $id): bool
     {   
-        $result = Communal::find($dto->id)
-            ->update([                
-                 'heat-volume'     => $dto->heat_volume,
-                 'heat-sum'        => $dto->heat_sum,
-                 'drainage-volume' => $dto->drainage_volume,
-                 'drainage-sum'    => $dto->drainage_sum,
-                 'negative-volume' => $dto->negative_volume,
-                 'negative-sum'    => $dto->negative_sum,
-                 'water-volume'    => $dto->water_volume,
-                 'water-sum'       => $dto->water_sum,
-                 'power-volume'    => $dto->power_volume,
-                 'power-sum'       => $dto->power_sum,
-                 'trash-volume'    => $dto->trash_volume,
-                 'trash-sum'       => $dto->trash_sum,
-                 'disposal-volume' => $dto->disposal_volume,
-                 'disposal-sum'    => $dto->disposal_sum
-            ]);
-        
+        $result = $this->task(CommunalUpdateTask::class)->status($id, 3);        
         return $result == true ? true : false;        
     }
-}
+    
+    /**
+     * Обновляет значения таблицы communals по id
+     *
+     * @param CommunalChangeDto $dto
+     * @return
+     */
+    public function change(CommunalChangeDto $dto): bool
+    {         
+        $result = $this->task(CommunalUpdateTask::class)->change($dto);
+        return $result == true ? true : false;        
+    }
+    
+    /**
+     * Обновляет значения таблицы communals по id
+     * Выполняет проверку введенных данных
+     *
+     * @param CommunalSendingDto $dto
+     * @return
+     */
+    public function status_send(CommunalSendingDto $dto)
+    {      
+        $examin = $this->task(CommunalExaminTask::class)->run($dto);
 
+        if ($examin['status'] == "NO") {
+	    return $examin;
+	} else {
+            $this->task(CommunalUpdateTask::class)->status($dto->id, 1); 
+            return $examin;
+        }       
+    }
+}

@@ -50,6 +50,8 @@ Route::get('/admin/communal/export', [AdminCommunalController::class, 'export'])
 Route::get('/admin/communal/email', [AdminCommunalController::class, 'email'])->middleware('auth', 'admin');
 
 Route::get('/user/communal/back', [CommunalController::class, 'index'])->middleware('auth');
+Route::get('/user/communal/web', [CommunalController::class, 'web'])->middleware('auth');
+Route::get('/user/communal/export', [CommunalController::class, 'export'])->middleware('auth');
 Route::patch('/user/communal/update', [CommunalController::class, 'update'])->middleware('auth');
 Route::patch('/user/communal/sending', [CommunalController::class, 'sending'])->middleware('auth');
 Route::patch('/user/communal/change', [CommunalController::class, 'change'])->middleware('auth');
@@ -58,7 +60,7 @@ Route::get('/ugkh/communal/back', [UgkhCommunalController::class, 'index'])->mid
 
 //Роуты для Front (Модуль коммунальные услуги)
 Route::get('/admin/communal', [AdminCommunalController::class, 'user'])->middleware('auth', 'admin')->name('admincommunal');
-Route::get('/user/communal/{year}', [CommunalController::class, 'user'])->middleware('auth')->name('usercommunal');
+Route::get('/user/communal', [CommunalController::class, 'user'])->middleware('auth')->name('usercommunal');
 Route::get('/ugkh/communal', [UgkhCommunalController::class, 'user'])->middleware('auth')->name('ugkh');
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*

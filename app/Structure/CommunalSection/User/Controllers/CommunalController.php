@@ -2,45 +2,93 @@
 
 namespace App\Structure\CommunalSection\User\Controllers;
 
-use Illuminate\Http\Request;
 use App\Core\Controllers\Controller;
-use App\Structure\CommunalSection\User\Dto\CommunalUpdateDto;
+use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Http\Request;
+use App\Structure\CommunalSection\User\Dto\CommunalChangeDto;
 use App\Structure\CommunalSection\User\Dto\CommunalSendingDto;
-use App\Structure\CommunalSection\User\Requests\CommunalUpdateRequest;
-use App\Structure\CommunalSection\User\Requests\CommunalSendingRequest;
 use App\Structure\CommunalSection\User\Actions\CommunalIndexAction;
 use App\Structure\CommunalSection\User\Actions\CommunalUpdateAction;
-use App\Structure\CommunalSection\User\Actions\CommunalSendingAction;
-use App\Structure\CommunalSection\User\Actions\CommunalChangeAction;
+use App\Structure\CommunalSection\User\Requests\CommunalIndexRequest;
+use App\Structure\CommunalSection\User\Requests\CommunalChangeRequest;
+use App\Structure\CommunalSection\User\Requests\CommunalSendingRequest;
+use App\Structure\CommunalSection\User\Exports\ExportTable;
 
 class CommunalController extends Controller
 {
      /**
      * Back отрисовка страницы
-     * Возвращает коммунальные услуги за выбранный год
+     * Возвращает коммунальные услуги за выбранный год и месяц
      * Возвращает тарифы за выбранный год
      *
-     * @param Request $request
+     * @param CommunalIndexRequest $request
      * @return array
      */
-    public function index(Request $request)
+    public function index(CommunalIndexRequest $request)
     {
-        $year = $request->input('year');
-        $result = $this->action(CommunalIndexAction::class)->run($year);
+        if (session('option') == NULL || session('option') == FALSE){
+            if ($request->info == "no"){
+                $info = ['info' => 'no',];
+            } else {
+                $year = $request->year;
+                $mounth = $request->mounth;
+                session(['year' => $request->year]);
+                session(['mounth' => $request->mounth]);
+                
+                $info = $this->action(CommunalIndexAction::class)->run($year, $mounth);            
+            }
+        } else {
+            $year = session('year');
+            $mounth = session('mounth');
+            $info = $this->action(CommunalIndexAction::class)->run($year, $mounth);
+            session(['option' => false]);
+        }
         
-        return view('communal.back.user', ['info' => $result]);
+        session(['info' => $info]);
+        
+        return view('communal.back.user', ['info' => $info]);        
     }
     
      /**
      * Front отрисовка страницы
-     * Возвращает front шаблон и выбранный год
+     * Возвращает front шаблон и выбранный год и месяц
      *
-     * @param int $year 
      * @return view
      */
-    public function user(int $year)
-    {      
-        return view('communal.user', ['year' => $year]);
+    public function user(CommunalIndexRequest $request)
+    {
+        $info = [
+            'year'    => $request->year,
+            'mounth'  => $request->mounth,
+            'info'    => $request->info,
+        ];
+        
+        return view('communal.user', ['info' => $info]);
+    }
+    
+    /**
+     * Front отрисовка страницы
+     * Возвращает front шаблон и выбранный год и месяц
+     *
+     * @return view
+     */
+    public function web()
+    {
+        $info = session('info');
+        
+        return view('communal.web', ['info' => $info]);
+    }
+    
+    /**
+     * Выгрузка таблицы в EXCEL
+     * 
+     * @param 
+     * @return Excel
+     */
+    public function export()
+    { 
+        return Excel::download(new ExportTable, 'table.xlsx');
+
     }
     
      /**
@@ -49,24 +97,50 @@ class CommunalController extends Controller
      * @param CommunalUpdateRequest $request
      * @return bool
      */
-    public function update(CommunalUpdateRequest $request)
+    public function update(Request $request)
     {
-        $dto = CommunalUpdateDto::fromRequest($request);
-        $status = $this->action(CommunalUpdateAction::class)->run($dto);
+        $id = $request->input('id');
+        //Значение для варианта отрисовки таблицы
+        session(['option' => true]);
         
-        return $status;
+        if (!$this->action(CommunalUpdateAction::class)->status_editor($id)) {
+	    echo "Обнаружена системная ошибка, сообщите разработчику!";
+	} else {
+            echo "Запрос отправлен в финансово-экономическое управление";
+        }
     }
     
-     /**
-     * Обновление статуса в таблице communals (отправка)
+    /**
+     * Обновление значений в таблице communals для пользователей
      * 
-     * @param CommunalSendingRequest $request
-     * @return string
+     * @param CommunalChangeRequest $request
+     * @return bool
+     */
+    public function change(CommunalChangeRequest $request)
+    {                
+        //Значение для варианта отрисовки таблицы
+        session(['option' => true]);
+        
+        $dto = CommunalChangeDto::fromRequest($request);
+        $result = $this->action(CommunalUpdateAction::class)->change($dto);
+        return $result == true ? true : false;
+
+    }
+    
+    /**
+     * Изменение статуса в таблице communal
+     * Статус отправлено
+     * 
+     * @param CommunalChangeRequest $request
+     * @return bool
      */
     public function sending(CommunalSendingRequest $request)
-    { 
+    {                
+        //Значение для варианта отрисовки таблицы
+        session(['option' => true]);
+        
         $dto = CommunalSendingDto::fromRequest($request);
-        $status = $this->action(CommunalSendingAction::class)->run($dto);
+        $status = $this->action(CommunalUpdateAction::class)->status_send($dto);
         
         if ($status['status'] == "NO") {
             $text = "\n";
@@ -82,27 +156,10 @@ class CommunalController extends Controller
                 echo $text;
             }
 	} else {
-            echo "Информация отправлена в Финуправление";
+            echo "Информация отправлена в финансово-экономическое управление";
         }
 
     }
     
-     /**
-     * Обновление статуса в таблице communals (запрос на редактирование)
-     * 
-     * @param Request $request
-     * @return string
-     */
-    public function change(Request $request)
-    { 
-        $id = $request->input('id');
-        if (!$this->action(CommunalChangeAction::class)->run($id)) {
-	    echo "Обнаружена системная ошибка, сообщите разработчику!";
-	} else {
-            echo "Запрос отправлен в Финуправление";
-        }
-       
-    }
-
 }
 
