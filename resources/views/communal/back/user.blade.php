@@ -340,12 +340,12 @@
                                 <table class="account__table">
                                     <thead class="account__table--header">
                                         <tr class="account__table--header__child">
-                                            <th style="min-width: 150px; width: 150px;" class="account__table--header__child--items">Услуга</th>
-                                            <th style="min-width: 100px; width: 100px;" class="account__table--header__child--items">Объем</th>
-                                            <th style="min-width: 100px; width: 100px;" class="account__table--header__child--items">Сумма</th>
-                                            <th style="min-width: 100px; width: 100px;" class="account__table--header__child--items">Ваш тариф*</th>
-                                            <th style="min-width: 100px; width: 100px;" class="account__table--header__child--items">Тариф min</th>
-                                            <th style="min-width: 100px; width: 100px;" class="account__table--header__child--items">Тариф max</th>                                           
+                                            <th style="min-width: 150px; width: 150px;" class="account__table--header__child--items" bgcolor="#66CDAA">Услуга</th>
+                                            <th style="min-width: 100px; width: 100px;" class="account__table--header__child--items" bgcolor="#66CDAA">Объем</th>
+                                            <th style="min-width: 100px; width: 100px;" class="account__table--header__child--items" bgcolor="#66CDAA">Сумма</th>
+                                            <th style="min-width: 100px; width: 100px;" class="account__table--header__child--items" bgcolor="#66CDAA">Ваш тариф*</th>
+                                            <th style="min-width: 100px; width: 100px;" class="account__table--header__child--items" bgcolor="#66CDAA">Тариф min</th>
+                                            <th style="min-width: 100px; width: 100px;" class="account__table--header__child--items" bgcolor="#66CDAA">Тариф max</th>                                           
                                         </tr>
                                     </thead>
                                     <tbody class="account__table--body mobile__none">
