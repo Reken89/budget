@@ -371,9 +371,9 @@
                                                     @if ($value['status'] == 3)
                                                         <td><input type=button class="button" id='btn_two' value='Изменить'></td>                                                       
                                                     @elseif ($value['status'] == 1)
-                                                        <td>отправлено</td>
+                                                        <td><font color="green">отправлено</td>
                                                     @else
-                                                        <td>В работе</td>
+                                                        <td><font color="red">В работе</td>
                                                     @endif
                                                     <td>{{ number_format($value['heat-volume'], 3, ',', ' ') }}</td>
                                                     <td>{{ number_format($value['heat-sum'], 2, ',', ' ') }}</td>
