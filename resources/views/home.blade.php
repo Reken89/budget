@@ -160,19 +160,13 @@
                                                     <input type='hidden' name='year' value='2024'>
                                                     <button type="submit" class="custom-btn btn-16">Смета</button>
                                                 </form>
-                                             </li>
-                                             <li>
-                                                <form action="{{ route('admintax')}}" method="get">
-                                                    <input type='hidden' name='mounth' value='3'>
-                                                    <button type="submit" class="custom-btn btn-16">Распределение ЕНП</button>
-                                                </form>
-                                             </li>  
+                                             </li>                                            
                                              <li>
                                                  <form action="{{ route('dev')}}" method="get">
                                                     <input type='hidden' name='year' value='2024'>
                                                     <input type='hidden' name='mounth' value='1'>                                                    
                                                     <input type='hidden' name='info' value='no'>
-                                                    <button type="submit">Разработка</button>
+                                                    <button type="submit">Для Разработчика</button>
                                                 </form>
                                              </li>
                                              @elseif ($role == "user")
@@ -238,17 +232,8 @@
                                           <ul class="submenu">
                                              @if ($role == "admin") 
                                              <li>
-                                                <a href="/budget/public/admin/reporting">доходы и расходы</a>
-                                             </li>
-                                             <li>
-                                                <a href="/budget/public/admin/plan/back">кассовый план и МБТ</a>
-                                             </li>
-                                             <li>
-                                                <form action="{{ route('debts')}}" method="get">
-                                                    <input type='hidden' name='year' value='2023'>
-                                                    <button type="submit" class="custom-btn btn-16"><a>Муниципальный долг</a></button>
-                                                </form>
-                                             </li>
+                                                <a href="/finance/">Модуль выключен</a>
+                                             </li>                                             
                                              @else
                                              <li>
                                                 <a href="https://kostamail.ru/finance/">Бюджет для граждан</a>
