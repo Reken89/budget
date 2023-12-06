@@ -330,28 +330,6 @@
                                         
                                         @if ($info['variant'] == "one")
                                         
-                                        @php
-                                            $tarrif = $info['tarrif'];
-                                        @endphp
-                                        <tr>
-                                            <input type="hidden" class="id" value="{{ $tarrif['id'] }}">
-                                            <td>Диапазон тарифов</td>
-                                            <td></td>
-                                            <td>{{ number_format($tarrif['heat-one'], 3, ',', ' ') }}</td>
-                                            <td>{{ number_format($tarrif['heat-two'], 3, ',', ' ') }}</td>
-                                            <td>{{ number_format($tarrif['drainage-one'], 3, ',', ' ') }}</td>
-                                            <td>{{ number_format($tarrif['drainage-two'], 3, ',', ' ') }}</td>
-                                            <td>{{ number_format($tarrif['negative-one'], 3, ',', ' ') }}</td>
-                                            <td>{{ number_format($tarrif['negative-two'], 3, ',', ' ') }}</td>
-                                            <td>{{ number_format($tarrif['water-one'], 3, ',', ' ') }}</td>
-                                            <td>{{ number_format($tarrif['water-two'], 3, ',', ' ') }}</td>
-                                            <td>{{ number_format($tarrif['power-one'], 3, ',', ' ') }}</td>
-                                            <td>{{ number_format($tarrif['power-two'], 3, ',', ' ') }}</td>
-                                            <td>{{ number_format($tarrif['trash-one'], 3, ',', ' ') }}</td>
-                                            <td>{{ number_format($tarrif['trash-two'], 3, ',', ' ') }}</td>
-                                            <td></td>               
-                                        </tr>
-                                        
                                             @foreach ($info['result'] as $value)                                         
                                                 <tr> 
                                                     <input type="hidden" class="id" value="{{ $value['id'] }}">
