@@ -16,6 +16,14 @@
             <th style="min-width: 200px; width: 200px;">Сказка</th>
             <th style="min-width: 200px; width: 200px;">Солнышко</th>
             <th style="min-width: 200px; width: 200px;">ИТОГ</th>
+            <th style="min-width: 200px; width: 200px;">Ауринко (ФЭУ)</th>
+            <th style="min-width: 200px; width: 200px;">Березка (ФЭУ)</th>
+            <th style="min-width: 200px; width: 200px;">Гномик (ФЭУ)</th>
+            <th style="min-width: 200px; width: 200px;">Золотой (ФЭУ)</th>
+            <th style="min-width: 200px; width: 200px;">Кораблик (ФЭУ)</th>
+            <th style="min-width: 200px; width: 200px;">Сказка (ФЭУ)</th>
+            <th style="min-width: 200px; width: 200px;">Солнышко (ФЭУ)</th>
+            <th style="min-width: 200px; width: 200px;">ИТОГ (ФЭУ)</th>
         </tr>
     </thead>
     
@@ -34,7 +42,16 @@
                     <td><b>{{ $info['result']['korablik'][$numb]['sum_cb'] }}</b></td>
                     <td><b>{{ $info['result']['skazka'][$numb]['sum_cb'] }}</b></td>
                     <td><b>{{ $info['result']['solnce'][$numb]['sum_cb'] }}</b></td>                   
-                    <td><b>{{ $info['result']['aurinko'][$numb]['sum_cb'] + $info['result']['berezka'][$numb]['sum_cb'] + $info['result']['gnomik'][$numb]['sum_cb'] + $info['result']['zoloto'][$numb]['sum_cb'] + $info['result']['korablik'][$numb]['sum_cb'] + $info['result']['skazka'][$numb]['sum_cb'] + $info['result']['solnce'][$numb]['sum_cb'] }}</b></td>                   
+                    <td><b>{{ $info['result']['aurinko'][$numb]['sum_cb'] + $info['result']['berezka'][$numb]['sum_cb'] + $info['result']['gnomik'][$numb]['sum_cb'] + $info['result']['zoloto'][$numb]['sum_cb'] + $info['result']['korablik'][$numb]['sum_cb'] + $info['result']['skazka'][$numb]['sum_cb'] + $info['result']['solnce'][$numb]['sum_cb'] }}</b></td>   
+                    
+                    <td><b>{{ $info['result']['aurinko'][$numb]['sum_fu'] }}</b></td>
+                    <td><b>{{ $info['result']['berezka'][$numb]['sum_fu'] }}</b></td>
+                    <td><b>{{ $info['result']['gnomik'][$numb]['sum_fu'] }}</b></td>
+                    <td><b>{{ $info['result']['zoloto'][$numb]['sum_fu'] }}</b></td>
+                    <td><b>{{ $info['result']['korablik'][$numb]['sum_fu'] }}</b></td>
+                    <td><b>{{ $info['result']['skazka'][$numb]['sum_fu'] }}</b></td>
+                    <td><b>{{ $info['result']['solnce'][$numb]['sum_fu'] }}</b></td>                   
+                    <td><b>{{ $info['result']['aurinko'][$numb]['sum_fu'] + $info['result']['berezka'][$numb]['sum_fu'] + $info['result']['gnomik'][$numb]['sum_fu'] + $info['result']['zoloto'][$numb]['sum_fu'] + $info['result']['korablik'][$numb]['sum_fu'] + $info['result']['skazka'][$numb]['sum_fu'] + $info['result']['solnce'][$numb]['sum_fu'] }}</b></td> 
                 </tr>
             @endif
             
@@ -50,6 +67,15 @@
                     <td>{{ $info['result']['skazka'][$numb]['sum_cb'] }}</td>
                     <td>{{ $info['result']['solnce'][$numb]['sum_cb'] }}</td>                   
                     <td>{{ $info['result']['aurinko'][$numb]['sum_cb'] + $info['result']['berezka'][$numb]['sum_cb'] + $info['result']['gnomik'][$numb]['sum_cb'] + $info['result']['zoloto'][$numb]['sum_cb'] + $info['result']['korablik'][$numb]['sum_cb'] + $info['result']['skazka'][$numb]['sum_cb'] + $info['result']['solnce'][$numb]['sum_cb'] }}</td>
+                    
+                    <td>{{ $info['result']['aurinko'][$numb]['sum_fu'] }}</td>
+                    <td>{{ $info['result']['berezka'][$numb]['sum_fu'] }}</td>
+                    <td>{{ $info['result']['gnomik'][$numb]['sum_fu'] }}</td>
+                    <td>{{ $info['result']['zoloto'][$numb]['sum_fu'] }}</td>
+                    <td>{{ $info['result']['korablik'][$numb]['sum_fu'] }}</td>
+                    <td>{{ $info['result']['skazka'][$numb]['sum_fu'] }}</td>
+                    <td>{{ $info['result']['solnce'][$numb]['sum_fu'] }}</td>                   
+                    <td>{{ $info['result']['aurinko'][$numb]['sum_fu'] + $info['result']['berezka'][$numb]['sum_fu'] + $info['result']['gnomik'][$numb]['sum_fu'] + $info['result']['zoloto'][$numb]['sum_fu'] + $info['result']['korablik'][$numb]['sum_fu'] + $info['result']['skazka'][$numb]['sum_fu'] + $info['result']['solnce'][$numb]['sum_fu'] }}</td>
                 </tr>
             @endif
         @endfor  
@@ -66,6 +92,15 @@
         <td><b>{{ $info['total']['skazka']['sum_cb'] }}</b></td>
         <td><b>{{ $info['total']['solnce']['sum_cb'] }}</b></td>
         <td><b>{{ $info['total']['aurinko']['sum_cb'] + $info['total']['berezka']['sum_cb'] + $info['total']['gnomik']['sum_cb'] + $info['total']['zoloto']['sum_cb'] + $info['total']['korablik']['sum_cb'] + $info['total']['skazka']['sum_cb'] + $info['total']['solnce']['sum_cb'] }}</b></td>
+        
+        <td><b>{{ $info['total']['aurinko']['sum_fu'] }}</b></td>
+        <td><b>{{ $info['total']['berezka']['sum_fu'] }}</b></td>
+        <td><b>{{ $info['total']['gnomik']['sum_fu'] }}</b></td>
+        <td><b>{{ $info['total']['zoloto']['sum_fu'] }}</b></td>
+        <td><b>{{ $info['total']['korablik']['sum_fu'] }}</b></td>
+        <td><b>{{ $info['total']['skazka']['sum_fu'] }}</b></td>
+        <td><b>{{ $info['total']['solnce']['sum_fu'] }}</b></td>
+        <td><b>{{ $info['total']['aurinko']['sum_fu'] + $info['total']['berezka']['sum_fu'] + $info['total']['gnomik']['sum_fu'] + $info['total']['zoloto']['sum_fu'] + $info['total']['korablik']['sum_fu'] + $info['total']['skazka']['sum_fu'] + $info['total']['solnce']['sum_fu'] }}</b></td>
     </tr>
     </tbody>
 </table>

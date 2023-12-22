@@ -17,6 +17,14 @@
             <th style="min-width: 200px; width: 200px;">Сказка</th>
             <th style="min-width: 200px; width: 200px;">Солнышко</th>
             <th style="min-width: 200px; width: 200px;">ИТОГ</th>
+            <th style="min-width: 200px; width: 200px;">Ауринко (ФЭУ)</th>
+            <th style="min-width: 200px; width: 200px;">Березка (ФЭУ)</th>
+            <th style="min-width: 200px; width: 200px;">Гномик (ФЭУ)/th>
+            <th style="min-width: 200px; width: 200px;">Золотой (ФЭУ)</th>
+            <th style="min-width: 200px; width: 200px;">Кораблик (ФЭУ)</th>
+            <th style="min-width: 200px; width: 200px;">Сказка (ФЭУ)</th>
+            <th style="min-width: 200px; width: 200px;">Солнышко (ФЭУ)</th>
+            <th style="min-width: 200px; width: 200px;">ИТОГ (ФЭУ)</th>
         </tr>
     </thead>
     
@@ -68,7 +76,16 @@
                     <td><b>{{ number_format($info['result']['korablik'][$numb]['sum_cb'], 2, ',', ' ') }}</b></td>
                     <td><b>{{ number_format($info['result']['skazka'][$numb]['sum_cb'], 2, ',', ' ') }}</b></td>
                     <td><b>{{ number_format($info['result']['solnce'][$numb]['sum_cb'], 2, ',', ' ') }}</b></td>                   
-                    <td><b>{{ number_format($info['result']['aurinko'][$numb]['sum_cb'] + $info['result']['berezka'][$numb]['sum_cb'] + $info['result']['gnomik'][$numb]['sum_cb'] + $info['result']['zoloto'][$numb]['sum_cb'] + $info['result']['korablik'][$numb]['sum_cb'] + $info['result']['skazka'][$numb]['sum_cb'] + $info['result']['solnce'][$numb]['sum_cb'], 2, ',', ' ') }}</b></td>                   
+                    <td><b>{{ number_format($info['result']['aurinko'][$numb]['sum_cb'] + $info['result']['berezka'][$numb]['sum_cb'] + $info['result']['gnomik'][$numb]['sum_cb'] + $info['result']['zoloto'][$numb]['sum_cb'] + $info['result']['korablik'][$numb]['sum_cb'] + $info['result']['skazka'][$numb]['sum_cb'] + $info['result']['solnce'][$numb]['sum_cb'], 2, ',', ' ') }}</b></td>   
+                    
+                    <td><b>{{ number_format($info['result']['aurinko'][$numb]['sum_fu'], 2, ',', ' ') }}</b></td>
+                    <td><b>{{ number_format($info['result']['berezka'][$numb]['sum_fu'], 2, ',', ' ') }}</b></td>
+                    <td><b>{{ number_format($info['result']['gnomik'][$numb]['sum_fu'], 2, ',', ' ') }}</b></td>
+                    <td><b>{{ number_format($info['result']['zoloto'][$numb]['sum_fu'], 2, ',', ' ') }}</b></td>
+                    <td><b>{{ number_format($info['result']['korablik'][$numb]['sum_fu'], 2, ',', ' ') }}</b></td>
+                    <td><b>{{ number_format($info['result']['skazka'][$numb]['sum_fu'], 2, ',', ' ') }}</b></td>
+                    <td><b>{{ number_format($info['result']['solnce'][$numb]['sum_fu'], 2, ',', ' ') }}</b></td>                   
+                    <td><b>{{ number_format($info['result']['aurinko'][$numb]['sum_fu'] + $info['result']['berezka'][$numb]['sum_fu'] + $info['result']['gnomik'][$numb]['sum_fu'] + $info['result']['zoloto'][$numb]['sum_fu'] + $info['result']['korablik'][$numb]['sum_fu'] + $info['result']['skazka'][$numb]['sum_fu'] + $info['result']['solnce'][$numb]['sum_fu'], 2, ',', ' ') }}</b></td>  
                 </tr>
             @endif
             
@@ -121,6 +138,14 @@
                             <input type="hidden" class="user_id" value="15">
                             <input type="hidden" class="id" value="{{ $info['result']['solnce'][$numb]['id'] }}">
                             <input type="text" class="sum_cb" value="{{ number_format($info['result']['solnce'][$numb]['sum_cb'], 2, ',', ' ') }}"></td>
+                        
+                        <td>{{ number_format($info['result']['aurinko'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
+                        <td>{{ number_format($info['result']['berezka'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
+                        <td>{{ number_format($info['result']['gnomik'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
+                        <td>{{ number_format($info['result']['zoloto'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
+                        <td>{{ number_format($info['result']['korablik'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
+                        <td>{{ number_format($info['result']['skazka'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
+                        <td>{{ number_format($info['result']['solnce'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
                     @else
                         <td>{{ number_format($info['result']['aurinko'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
                         <td>{{ number_format($info['result']['berezka'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
@@ -129,9 +154,18 @@
                         <td>{{ number_format($info['result']['korablik'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
                         <td>{{ number_format($info['result']['skazka'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
                         <td>{{ number_format($info['result']['solnce'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
+                        
+                        <td>{{ number_format($info['result']['aurinko'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
+                        <td>{{ number_format($info['result']['berezka'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
+                        <td>{{ number_format($info['result']['gnomik'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
+                        <td>{{ number_format($info['result']['zoloto'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
+                        <td>{{ number_format($info['result']['korablik'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
+                        <td>{{ number_format($info['result']['skazka'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
+                        <td>{{ number_format($info['result']['solnce'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
                     @endif
                     
                     <td>{{ number_format($info['result']['aurinko'][$numb]['sum_cb'] + $info['result']['berezka'][$numb]['sum_cb'] + $info['result']['gnomik'][$numb]['sum_cb'] + $info['result']['zoloto'][$numb]['sum_cb'] + $info['result']['korablik'][$numb]['sum_cb'] + $info['result']['skazka'][$numb]['sum_cb'] + $info['result']['solnce'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
+                    <td>{{ number_format($info['result']['aurinko'][$numb]['sum_fu'] + $info['result']['berezka'][$numb]['sum_fu'] + $info['result']['gnomik'][$numb]['sum_fu'] + $info['result']['zoloto'][$numb]['sum_fu'] + $info['result']['korablik'][$numb]['sum_fu'] + $info['result']['skazka'][$numb]['sum_fu'] + $info['result']['solnce'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
                 </tr>
             @endif
         @endfor  
@@ -148,6 +182,15 @@
         <td><b>{{ number_format($info['total']['skazka']['sum_cb'], 2, ',', ' ') }}</b></td>
         <td><b>{{ number_format($info['total']['solnce']['sum_cb'], 2, ',', ' ') }}</b></td>
         <td><b>{{ number_format($info['total']['aurinko']['sum_cb'] + $info['total']['berezka']['sum_cb'] + $info['total']['gnomik']['sum_cb'] + $info['total']['zoloto']['sum_cb'] + $info['total']['korablik']['sum_cb'] + $info['total']['skazka']['sum_cb'] + $info['total']['solnce']['sum_cb'], 2, ',', ' ') }}</b></td>
+        
+        <td><b>{{ number_format($info['total']['aurinko']['sum_fu'], 2, ',', ' ') }}</b></td>
+        <td><b>{{ number_format($info['total']['berezka']['sum_fu'], 2, ',', ' ') }}</b></td>
+        <td><b>{{ number_format($info['total']['gnomik']['sum_fu'], 2, ',', ' ') }}</b></td>
+        <td><b>{{ number_format($info['total']['zoloto']['sum_fu'], 2, ',', ' ') }}</b></td>
+        <td><b>{{ number_format($info['total']['korablik']['sum_fu'], 2, ',', ' ') }}</b></td>
+        <td><b>{{ number_format($info['total']['skazka']['sum_fu'], 2, ',', ' ') }}</b></td>
+        <td><b>{{ number_format($info['total']['solnce']['sum_fu'], 2, ',', ' ') }}</b></td>
+        <td><b>{{ number_format($info['total']['aurinko']['sum_fu'] + $info['total']['berezka']['sum_fu'] + $info['total']['gnomik']['sum_fu'] + $info['total']['zoloto']['sum_fu'] + $info['total']['korablik']['sum_fu'] + $info['total']['skazka']['sum_fu'] + $info['total']['solnce']['sum_fu'], 2, ',', ' ') }}</b></td>
     </tr>
     </tbody>
 </table>

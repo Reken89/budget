@@ -14,6 +14,11 @@
             <th style="min-width: 200px; width: 200px;">Совет КГО</th>
             <th style="min-width: 200px; width: 200px;">КСО Костомукша</th>
             <th style="min-width: 200px; width: 200px;">ИТОГ</th>
+            <th style="min-width: 200px; width: 200px;">Глава (ФЭУ)</th>
+            <th style="min-width: 200px; width: 200px;">Администрация КГО (ФЭУ)</th>
+            <th style="min-width: 200px; width: 200px;">Совет КГО (ФЭУ)</th>
+            <th style="min-width: 200px; width: 200px;">КСО Костомукша (ФЭУ)</th>
+            <th style="min-width: 200px; width: 200px;">ИТОГ (ФЭУ)</th>
         </tr>
     </thead>
     
@@ -54,6 +59,12 @@
                     <td><b>{{ number_format($info['result']['sovet'][$numb]['sum_cb'], 2, ',', ' ') }}</b></td>
                     <td><b>{{ number_format($info['result']['kso'][$numb]['sum_cb'], 2, ',', ' ') }}</b></td>                   
                     <td><b>{{ number_format($info['result']['glava'][$numb]['sum_cb'] + $info['result']['adm'][$numb]['sum_cb'] + $info['result']['sovet'][$numb]['sum_cb'] + $info['result']['kso'][$numb]['sum_cb'], 2, ',', ' ') }}</b></td>
+                    
+                    <td><b>{{ number_format($info['result']['glava'][$numb]['sum_fu'], 2, ',', ' ') }}</b></td>
+                    <td><b>{{ number_format($info['result']['adm'][$numb]['sum_fu'], 2, ',', ' ') }}</b></td>
+                    <td><b>{{ number_format($info['result']['sovet'][$numb]['sum_fu'], 2, ',', ' ') }}</b></td>
+                    <td><b>{{ number_format($info['result']['kso'][$numb]['sum_fu'], 2, ',', ' ') }}</b></td>                   
+                    <td><b>{{ number_format($info['result']['glava'][$numb]['sum_fu'] + $info['result']['adm'][$numb]['sum_fu'] + $info['result']['sovet'][$numb]['sum_fu'] + $info['result']['kso'][$numb]['sum_fu'], 2, ',', ' ') }}</b></td>
                 </tr>
             @endif
             
@@ -88,14 +99,25 @@
                             <input type="hidden" class="user_id" value="28">
                             <input type="hidden" class="id" value="{{ $info['result']['kso'][$numb]['id'] }}">
                             <input type="text" class="sum_cb" value="{{ number_format($info['result']['kso'][$numb]['sum_cb'], 2, ',', ' ') }}"></td> 
+                        
+                        <td>{{ number_format($info['result']['glava'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
+                        <td>{{ number_format($info['result']['adm'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
+                        <td>{{ number_format($info['result']['sovet'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
+                        <td>{{ number_format($info['result']['kso'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
                     @else
                         <td>{{ number_format($info['result']['glava'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
                         <td>{{ number_format($info['result']['adm'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
                         <td>{{ number_format($info['result']['sovet'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
                         <td>{{ number_format($info['result']['kso'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
+                        
+                        <td>{{ number_format($info['result']['glava'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
+                        <td>{{ number_format($info['result']['adm'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
+                        <td>{{ number_format($info['result']['sovet'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
+                        <td>{{ number_format($info['result']['kso'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
                     @endif
                     
                     <td>{{ number_format($info['result']['glava'][$numb]['sum_cb'] + $info['result']['adm'][$numb]['sum_cb'] + $info['result']['sovet'][$numb]['sum_cb'] + $info['result']['kso'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
+                    <td>{{ number_format($info['result']['glava'][$numb]['sum_fu'] + $info['result']['adm'][$numb]['sum_fu'] + $info['result']['sovet'][$numb]['sum_fu'] + $info['result']['kso'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
                 </tr>
             @endif
         @endfor  
@@ -109,6 +131,12 @@
         <td><b>{{ number_format($info['total']['sovet']['sum_cb'], 2, ',', ' ') }}</b></td>
         <td><b>{{ number_format($info['total']['kso']['sum_cb'], 2, ',', ' ') }}</b></td> 
         <td><b>{{ number_format($info['total']['glava']['sum_cb'] + $info['total']['adm']['sum_cb'] + $info['total']['sovet']['sum_cb'] + $info['total']['kso']['sum_cb'], 2, ',', ' ') }}</b></td>
+        
+        <td><b>{{ number_format($info['total']['glava']['sum_fu'], 2, ',', ' ') }}</b></td>
+        <td><b>{{ number_format($info['total']['adm']['sum_fu'], 2, ',', ' ') }}</b></td>
+        <td><b>{{ number_format($info['total']['sovet']['sum_fu'], 2, ',', ' ') }}</b></td>
+        <td><b>{{ number_format($info['total']['kso']['sum_fu'], 2, ',', ' ') }}</b></td> 
+        <td><b>{{ number_format($info['total']['glava']['sum_fu'] + $info['total']['adm']['sum_fu'] + $info['total']['sovet']['sum_fu'] + $info['total']['kso']['sum_fu'], 2, ',', ' ') }}</b></td>
     </tr>
     </tbody>
 </table>

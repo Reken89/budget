@@ -11,6 +11,9 @@
             <th style="min-width: 200px; width: 200px;">Школа</th>
             <th style="min-width: 200px; width: 200px;">Сад</th>
             <th style="min-width: 200px; width: 200px;">ИТОГ</th>
+            <th style="min-width: 200px; width: 200px;">Школа (ФЭУ)</th>
+            <th style="min-width: 200px; width: 200px;">Сад (ФЭУ)</th>
+            <th style="min-width: 200px; width: 200px;">ИТОГ (ФЭУ)</th>
         </tr>
     </thead>
     
@@ -25,6 +28,10 @@
                     <td><b>{{ $info['result']['school'][$numb]['sum_cb'] }}</b></td>
                     <td><b>{{ $info['result']['kinder'][$numb]['sum_cb'] }}</b></td>                    
                     <td><b>{{ $info['result']['school'][$numb]['sum_cb'] + $info['result']['kinder'][$numb]['sum_cb'] }}</b></td>
+                    
+                    <td><b>{{ $info['result']['school'][$numb]['sum_fu'] }}</b></td>
+                    <td><b>{{ $info['result']['kinder'][$numb]['sum_fu'] }}</b></td>                    
+                    <td><b>{{ $info['result']['school'][$numb]['sum_fu'] + $info['result']['kinder'][$numb]['sum_fu'] }}</b></td>
                 </tr>
             @endif
             
@@ -36,6 +43,11 @@
                     <td>{{ $info['result']['kinder'][$numb]['sum_cb'] }}</td>
                     
                     <td>{{ $info['result']['school'][$numb]['sum_cb'] + $info['result']['kinder'][$numb]['sum_cb'] }}</td>
+                    
+                    <td>{{ $info['result']['school'][$numb]['sum_fu'] }}</td>
+                    <td>{{ $info['result']['kinder'][$numb]['sum_fu'] }}</td>
+                    
+                    <td>{{ $info['result']['school'][$numb]['sum_fu'] + $info['result']['kinder'][$numb]['sum_fu'] }}</td>
                 </tr>
             @endif
         @endfor  
@@ -47,6 +59,10 @@
         <td><b>{{ $info['total']['school']['sum_cb'] }}</b></td>
         <td><b>{{ $info['total']['kinder']['sum_cb'] }}</b></td> 
         <td><b>{{ $info['total']['school']['sum_cb'] + $info['total']['kinder']['sum_cb'] }}</b></td>
+        
+        <td><b>{{ $info['total']['school']['sum_fu'] }}</b></td>
+        <td><b>{{ $info['total']['kinder']['sum_fu'] }}</b></td> 
+        <td><b>{{ $info['total']['school']['sum_fu'] + $info['total']['kinder']['sum_fu'] }}</b></td>
     </tr>
     </tbody>
 </table>

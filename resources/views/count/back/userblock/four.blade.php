@@ -12,6 +12,9 @@
             <th style="min-width: 200px; width: 200px;">ДХШ</th>
             <th style="min-width: 200px; width: 200px;">ДМШ</th>
             <th style="min-width: 200px; width: 200px;">ИТОГ</th>
+            <th style="min-width: 200px; width: 200px;">ДХШ (ФЭУ)</th>
+            <th style="min-width: 200px; width: 200px;">ДМШ (ФЭУ)</th>
+            <th style="min-width: 200px; width: 200px;">ИТОГ (ФЭУ)</th>
         </tr>
     </thead>
     
@@ -44,6 +47,10 @@
                     <td><b>{{ number_format($info['result']['dhsh'][$numb]['sum_cb'], 2, ',', ' ') }}</b></td>
                     <td><b>{{ number_format($info['result']['dmsh'][$numb]['sum_cb'], 2, ',', ' ') }}</b></td>                    
                     <td><b>{{ number_format($info['result']['dhsh'][$numb]['sum_cb'] + $info['result']['dmsh'][$numb]['sum_cb'], 2, ',', ' ') }}</b></td>
+                    
+                    <td><b>{{ number_format($info['result']['dhsh'][$numb]['sum_fu'], 2, ',', ' ') }}</b></td>
+                    <td><b>{{ number_format($info['result']['dmsh'][$numb]['sum_fu'], 2, ',', ' ') }}</b></td>                    
+                    <td><b>{{ number_format($info['result']['dhsh'][$numb]['sum_fu'] + $info['result']['dmsh'][$numb]['sum_fu'], 2, ',', ' ') }}</b></td>
                 </tr>
             @endif
             
@@ -66,12 +73,18 @@
                             <input type="hidden" class="user_id" value="19">
                             <input type="hidden" class="id" value="{{ $info['result']['dmsh'][$numb]['id'] }}">
                             <input type="text" class="sum_cb" value="{{ number_format($info['result']['dmsh'][$numb]['sum_cb'], 2, ',', ' ') }}"></td>
+                        
+                        <td>{{ number_format($info['result']['dhsh'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
+                        <td>{{ number_format($info['result']['dmsh'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
                     @else
                         <td>{{ number_format($info['result']['dhsh'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
                         <td>{{ number_format($info['result']['dmsh'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
+                        <td>{{ number_format($info['result']['dhsh'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
+                        <td>{{ number_format($info['result']['dmsh'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
                     @endif
                     
                     <td>{{ number_format($info['result']['dhsh'][$numb]['sum_cb'] + $info['result']['dmsh'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
+                    <td>{{ number_format($info['result']['dhsh'][$numb]['sum_fu'] + $info['result']['dmsh'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
                 </tr>
             @endif
         @endfor  
@@ -83,6 +96,10 @@
         <td><b>{{ number_format($info['total']['dhsh']['sum_cb'], 2, ',', ' ') }}</b></td>
         <td><b>{{ number_format($info['total']['dmsh']['sum_cb'], 2, ',', ' ') }}</b></td> 
         <td><b>{{ number_format($info['total']['dhsh']['sum_cb'] + $info['total']['dmsh']['sum_cb'], 2, ',', ' ') }}</b></td>
+        
+        <td><b>{{ number_format($info['total']['dhsh']['sum_fu'], 2, ',', ' ') }}</b></td>
+        <td><b>{{ number_format($info['total']['dmsh']['sum_fu'], 2, ',', ' ') }}</b></td> 
+        <td><b>{{ number_format($info['total']['dhsh']['sum_fu'] + $info['total']['dmsh']['sum_fu'], 2, ',', ' ') }}</b></td>
     </tr>
     </tbody>
 </table>

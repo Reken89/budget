@@ -11,6 +11,9 @@
             <th style="min-width: 200px; width: 200px;">Централизованная бухгалтерия</th>
             <th style="min-width: 200px; width: 200px;">Закупки КГО</th>
             <th style="min-width: 200px; width: 200px;">ИТОГ</th>
+            <th style="min-width: 200px; width: 200px;">Централизованная бухгалтерия (ФЭУ)</th>
+            <th style="min-width: 200px; width: 200px;">Закупки КГО (ФЭУ)</th>
+            <th style="min-width: 200px; width: 200px;">ИТОГ (ФЭУ)</th>
         </tr>
     </thead>
     
@@ -25,6 +28,10 @@
                     <td><b>{{ $info['result']['cb'][$numb]['sum_cb'] }}</b></td>
                     <td><b>{{ $info['result']['zakupki'][$numb]['sum_cb'] }}</b></td>                    
                     <td><b>{{ $info['result']['cb'][$numb]['sum_cb'] + $info['result']['zakupki'][$numb]['sum_cb'] }}</b></td>
+                    
+                    <td><b>{{ $info['result']['cb'][$numb]['sum_fu'] }}</b></td>
+                    <td><b>{{ $info['result']['zakupki'][$numb]['sum_fu'] }}</b></td>                    
+                    <td><b>{{ $info['result']['cb'][$numb]['sum_fu'] + $info['result']['zakupki'][$numb]['sum_fu'] }}</b></td>
                 </tr>
             @endif
             
@@ -36,6 +43,11 @@
                     <td>{{ $info['result']['zakupki'][$numb]['sum_cb'] }}</td>
                    
                     <td>{{ $info['result']['cb'][$numb]['sum_cb'] + $info['result']['zakupki'][$numb]['sum_cb'] }}</td>
+                    
+                    <td>{{ $info['result']['cb'][$numb]['sum_fu'] }}</td>
+                    <td>{{ $info['result']['zakupki'][$numb]['sum_fu'] }}</td>
+                   
+                    <td>{{ $info['result']['cb'][$numb]['sum_fu'] + $info['result']['zakupki'][$numb]['sum_fu'] }}</td>
                 </tr>
             @endif
         @endfor  
@@ -47,6 +59,10 @@
         <td><b>{{ $info['total']['cb']['sum_cb'] }}</b></td>
         <td><b>{{ $info['total']['zakupki']['sum_cb'] }}</b></td> 
         <td><b>{{ $info['total']['cb']['sum_cb'] + $info['total']['zakupki']['sum_cb'] }}</b></td>
+        
+        <td><b>{{ $info['total']['cb']['sum_fu'] }}</b></td>
+        <td><b>{{ $info['total']['zakupki']['sum_fu'] }}</b></td> 
+        <td><b>{{ $info['total']['cb']['sum_fu'] + $info['total']['zakupki']['sum_fu'] }}</b></td>
     </tr>
     </tbody>
 </table>

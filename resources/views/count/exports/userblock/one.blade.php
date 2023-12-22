@@ -13,6 +13,11 @@
             <th style="min-width: 200px; width: 200px;">Совет КГО</th>
             <th style="min-width: 200px; width: 200px;">КСО Костомукша</th>
             <th style="min-width: 200px; width: 200px;">ИТОГ</th>
+            <th style="min-width: 200px; width: 200px;">Глава (ФЭУ)</th>
+            <th style="min-width: 200px; width: 200px;">Администрация КГО (ФЭУ)</th>
+            <th style="min-width: 200px; width: 200px;">Совет КГО (ФЭУ)</th>
+            <th style="min-width: 200px; width: 200px;">КСО Костомукша (ФЭУ)</th>
+            <th style="min-width: 200px; width: 200px;">ИТОГ (ФЭУ)</th>
         </tr>
     </thead>
     
@@ -30,6 +35,12 @@
                     <td><b>{{ $info['result']['sovet'][$numb]['sum_cb'] }}</b></td>
                     <td><b>{{ $info['result']['kso'][$numb]['sum_cb'] }}</b></td>                   
                     <td><b>{{ $info['result']['glava'][$numb]['sum_cb'] + $info['result']['adm'][$numb]['sum_cb'] + $info['result']['sovet'][$numb]['sum_cb'] + $info['result']['kso'][$numb]['sum_cb'] }}</b></td>
+                    
+                    <td><b>{{ $info['result']['glava'][$numb]['sum_fu'] }}</b></td>
+                    <td><b>{{ $info['result']['adm'][$numb]['sum_fu'] }}</b></td>
+                    <td><b>{{ $info['result']['sovet'][$numb]['sum_fu'] }}</b></td>
+                    <td><b>{{ $info['result']['kso'][$numb]['sum_fu'] }}</b></td>                   
+                    <td><b>{{ $info['result']['glava'][$numb]['sum_fu'] + $info['result']['adm'][$numb]['sum_fu'] + $info['result']['sovet'][$numb]['sum_fu'] + $info['result']['kso'][$numb]['sum_fu'] }}</b></td>
                 </tr>
             @endif
             
@@ -44,6 +55,13 @@
                     <td>{{ $info['result']['kso'][$numb]['sum_cb'] }}</td>
                     
                     <td>{{ $info['result']['glava'][$numb]['sum_cb'] + $info['result']['adm'][$numb]['sum_cb'] + $info['result']['sovet'][$numb]['sum_cb'] + $info['result']['kso'][$numb]['sum_cb'] }}</td>
+                    
+                    <td>{{ $info['result']['glava'][$numb]['sum_fu'] }}</td>
+                    <td>{{ $info['result']['adm'][$numb]['sum_fu'] }}</td>
+                    <td>{{ $info['result']['sovet'][$numb]['sum_fu'] }}</td>
+                    <td>{{ $info['result']['kso'][$numb]['sum_fu'] }}</td>
+                    
+                    <td>{{ $info['result']['glava'][$numb]['sum_fu'] + $info['result']['adm'][$numb]['sum_fu'] + $info['result']['sovet'][$numb]['sum_fu'] + $info['result']['kso'][$numb]['sum_fu'] }}</td>
                 </tr>
             @endif
         @endfor  
@@ -57,6 +75,12 @@
         <td><b>{{ $info['total']['sovet']['sum_cb'] }}</b></td>
         <td><b>{{ $info['total']['kso']['sum_cb'] }}</b></td> 
         <td><b>{{ $info['total']['glava']['sum_cb'] + $info['total']['adm']['sum_cb'] + $info['total']['sovet']['sum_cb'] + $info['total']['kso']['sum_cb'] }}</b></td>
+        
+        <td><b>{{ $info['total']['glava']['sum_fu'] }}</b></td>
+        <td><b>{{ $info['total']['adm']['sum_fu'] }}</b></td>
+        <td><b>{{ $info['total']['sovet']['sum_fu'] }}</b></td>
+        <td><b>{{ $info['total']['kso']['sum_fu'] }}</b></td> 
+        <td><b>{{ $info['total']['glava']['sum_fu'] + $info['total']['adm']['sum_fu'] + $info['total']['sovet']['sum_fu'] + $info['total']['kso']['sum_fu'] }}</b></td>
     </tr>
     </tbody>
 </table>
