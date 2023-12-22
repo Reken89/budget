@@ -100,24 +100,28 @@
                             <input type="hidden" class="id" value="{{ $info['result']['kso'][$numb]['id'] }}">
                             <input type="text" class="sum_cb" value="{{ number_format($info['result']['kso'][$numb]['sum_cb'], 2, ',', ' ') }}"></td> 
                         
-                        <td>{{ number_format($info['result']['glava'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
-                        <td>{{ number_format($info['result']['adm'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
-                        <td>{{ number_format($info['result']['sovet'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
-                        <td>{{ number_format($info['result']['kso'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
-                    @else
-                        <td>{{ number_format($info['result']['glava'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
-                        <td>{{ number_format($info['result']['adm'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
-                        <td>{{ number_format($info['result']['sovet'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
-                        <td>{{ number_format($info['result']['kso'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
+                        <td>{{ number_format($info['result']['glava'][$numb]['sum_cb'] + $info['result']['adm'][$numb]['sum_cb'] + $info['result']['sovet'][$numb]['sum_cb'] + $info['result']['kso'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
                         
                         <td>{{ number_format($info['result']['glava'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
                         <td>{{ number_format($info['result']['adm'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
                         <td>{{ number_format($info['result']['sovet'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
                         <td>{{ number_format($info['result']['kso'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
+                        <td>{{ number_format($info['result']['glava'][$numb]['sum_fu'] + $info['result']['adm'][$numb]['sum_fu'] + $info['result']['sovet'][$numb]['sum_fu'] + $info['result']['kso'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
+                        
+                    @else
+                        <td>{{ number_format($info['result']['glava'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
+                        <td>{{ number_format($info['result']['adm'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
+                        <td>{{ number_format($info['result']['sovet'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
+                        <td>{{ number_format($info['result']['kso'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
+                        <td>{{ number_format($info['result']['glava'][$numb]['sum_cb'] + $info['result']['adm'][$numb]['sum_cb'] + $info['result']['sovet'][$numb]['sum_cb'] + $info['result']['kso'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
+                        
+                        <td>{{ number_format($info['result']['glava'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
+                        <td>{{ number_format($info['result']['adm'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
+                        <td>{{ number_format($info['result']['sovet'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
+                        <td>{{ number_format($info['result']['kso'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
+                        <td>{{ number_format($info['result']['glava'][$numb]['sum_fu'] + $info['result']['adm'][$numb]['sum_fu'] + $info['result']['sovet'][$numb]['sum_fu'] + $info['result']['kso'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
                     @endif
-                    
-                    <td>{{ number_format($info['result']['glava'][$numb]['sum_cb'] + $info['result']['adm'][$numb]['sum_cb'] + $info['result']['sovet'][$numb]['sum_cb'] + $info['result']['kso'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
-                    <td>{{ number_format($info['result']['glava'][$numb]['sum_fu'] + $info['result']['adm'][$numb]['sum_fu'] + $info['result']['sovet'][$numb]['sum_fu'] + $info['result']['kso'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
+                                                            
                 </tr>
             @endif
         @endfor  
