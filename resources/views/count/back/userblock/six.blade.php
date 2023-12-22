@@ -86,22 +86,24 @@
                             <input type="hidden" class="user_id" value="38">
                             <input type="hidden" class="id" value="{{ $info['result']['edds'][$numb]['id'] }}">
                             <input type="text" class="sum_cb" value="{{ number_format($info['result']['edds'][$numb]['sum_cb'], 2, ',', ' ') }}"></td> 
+                        <td>{{ number_format($info['result']['kums'][$numb]['sum_cb'] + $info['result']['us'][$numb]['sum_cb'] + $info['result']['edds'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
                         
                         <td>{{ number_format($info['result']['kums'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
                         <td>{{ number_format($info['result']['us'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
                         <td>{{ number_format($info['result']['edds'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
+                        <td>{{ number_format($info['result']['kums'][$numb]['sum_fu'] + $info['result']['us'][$numb]['sum_fu'] + $info['result']['edds'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
                     @else
                         <td>{{ number_format($info['result']['kums'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
                         <td>{{ number_format($info['result']['us'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
                         <td>{{ number_format($info['result']['edds'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
+                        <td>{{ number_format($info['result']['kums'][$numb]['sum_cb'] + $info['result']['us'][$numb]['sum_cb'] + $info['result']['edds'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
                         
                         <td>{{ number_format($info['result']['kums'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
                         <td>{{ number_format($info['result']['us'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
                         <td>{{ number_format($info['result']['edds'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
+                        <td>{{ number_format($info['result']['kums'][$numb]['sum_fu'] + $info['result']['us'][$numb]['sum_fu'] + $info['result']['edds'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
                     @endif
-                                       
-                    <td>{{ number_format($info['result']['kums'][$numb]['sum_cb'] + $info['result']['us'][$numb]['sum_cb'] + $info['result']['edds'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
-                    <td>{{ number_format($info['result']['kums'][$numb]['sum_fu'] + $info['result']['us'][$numb]['sum_fu'] + $info['result']['edds'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
+                    
                 </tr>
             @endif
         @endfor  

@@ -73,19 +73,21 @@
                             <input type="hidden" class="user_id" value="26">
                             <input type="hidden" class="id" value="{{ $info['result']['zakupki'][$numb]['id'] }}">
                             <input type="text" class="sum_cb" value="{{ number_format($info['result']['zakupki'][$numb]['sum_cb'], 2, ',', ' ') }}"></td> 
+                        <td>{{ number_format($info['result']['cb'][$numb]['sum_cb'] + $info['result']['zakupki'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
                         
                         <td>{{ number_format($info['result']['cb'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
                         <td>{{ number_format($info['result']['zakupki'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
+                        <td>{{ number_format($info['result']['cb'][$numb]['sum_fu'] + $info['result']['zakupki'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
                     @else
                         <td>{{ number_format($info['result']['cb'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
                         <td>{{ number_format($info['result']['zakupki'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
+                        <td>{{ number_format($info['result']['cb'][$numb]['sum_cb'] + $info['result']['zakupki'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
                         
                         <td>{{ number_format($info['result']['cb'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
                         <td>{{ number_format($info['result']['zakupki'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
+                        <td>{{ number_format($info['result']['cb'][$numb]['sum_fu'] + $info['result']['zakupki'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
                     @endif
                     
-                    <td>{{ number_format($info['result']['cb'][$numb]['sum_cb'] + $info['result']['zakupki'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
-                    <td>{{ number_format($info['result']['cb'][$numb]['sum_fu'] + $info['result']['zakupki'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
                 </tr>
             @endif
         @endfor  

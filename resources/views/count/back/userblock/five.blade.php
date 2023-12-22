@@ -73,19 +73,20 @@
                             <input type="hidden" class="user_id" value="36">
                             <input type="hidden" class="id" value="{{ $info['result']['kinder'][$numb]['id'] }}">
                             <input type="text" class="sum_cb" value="{{ number_format($info['result']['kinder'][$numb]['sum_cb'], 2, ',', ' ') }}"></td> 
+                        <td>{{ number_format($info['result']['school'][$numb]['sum_cb'] + $info['result']['kinder'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
                         
                         <td>{{ number_format($info['result']['school'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
                         <td>{{ number_format($info['result']['kinder'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
+                        <td>{{ number_format($info['result']['school'][$numb]['sum_fu'] + $info['result']['kinder'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
                     @else
                         <td>{{ number_format($info['result']['school'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
                         <td>{{ number_format($info['result']['kinder'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
+                        <td>{{ number_format($info['result']['school'][$numb]['sum_cb'] + $info['result']['kinder'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
                         
                         <td>{{ number_format($info['result']['school'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
                         <td>{{ number_format($info['result']['kinder'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
+                        <td>{{ number_format($info['result']['school'][$numb]['sum_fu'] + $info['result']['kinder'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
                     @endif
-                    
-                    <td>{{ number_format($info['result']['school'][$numb]['sum_cb'] + $info['result']['kinder'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
-                    <td>{{ number_format($info['result']['school'][$numb]['sum_fu'] + $info['result']['kinder'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
                 </tr>
             @endif
         @endfor  
