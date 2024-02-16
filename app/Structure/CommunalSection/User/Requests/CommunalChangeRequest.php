@@ -16,7 +16,7 @@ class CommunalChangeRequest extends FormRequest
         return [
             'id'      => 'required|integer',
             'volume'  => 'required|numeric|between:0.000,999999.999',
-            'sum'     => 'required|numeric|between:0.00,999999.99',
+            'sum'     => 'required|numeric|between:0.00,1999999.99',
             'service' => 'required|string',
         ];
     }   
