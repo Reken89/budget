@@ -52,7 +52,7 @@ class Ofs24UpdateMainTask extends BaseTask
      * @return bool
      */
     public function update(int $user_id, int $mounth, int $chapter, int $number, array $main): bool
-    {        
+    {    
         $result = Ofs24::where('user_id', $user_id)
             ->where('mounth', $mounth)
             ->where('chapter', $chapter) 

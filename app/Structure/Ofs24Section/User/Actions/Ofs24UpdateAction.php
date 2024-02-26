@@ -22,7 +22,7 @@ class Ofs24UpdateAction extends BaseAction
         $this->task(Ofs24UpdateTask::class)->kassa($dto);
         $this->task(Ofs24UpdateTask::class)->run($dto);
         
-        $main = $this->task(Ofs24UpdateMainTask::class)->select($dto->user_id, $dto->mounth, $dto->chapter, $dto->number);
+        $main = $this->task(Ofs24UpdateMainTask::class)->select($dto->user_id, $dto->mounth, $dto->chapter, $dto->number);        
         $this->task(Ofs24UpdateMainTask::class)->update($dto->user_id, $dto->mounth, $dto->chapter, $dto->number, $main);
         
         if($dto->number >= 17 && $dto->number <=42){
