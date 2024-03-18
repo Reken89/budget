@@ -25,7 +25,23 @@ class CommunalEmailTask extends BaseTask
             ->where('id', $info['user_id'])
             ->first();
         $name = $user_info['name'];
-        $mounth = $info['mounth'];
+        
+        $mounths = [
+            '1'  => 'январь',
+            '2'  => 'февраль',
+            '3'  => 'март',
+            '4'  => 'апрель',
+            '5'  => 'май',
+            '6'  => 'июнь',
+            '7'  => 'июль',
+            '8'  => 'август',
+            '9'  => 'сентябрь',
+            '10' => 'октябрь',
+            '11' => 'ноябрь',
+            '12' => 'декабрь'
+        ];
+        
+        $mounth = $mounths[$info['mounth']];
         
         mail('portal@kostamail.ru', "Запрос на редактирование", "$name просит открыть на редактирование информацию за $mounth месяц!","FROM: portal@kostamail.ru \r\n");
 
