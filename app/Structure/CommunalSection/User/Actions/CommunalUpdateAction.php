@@ -5,6 +5,7 @@ namespace App\Structure\CommunalSection\User\Actions;
 use App\Core\Actions\BaseAction;
 use App\Structure\CommunalSection\User\Tasks\CommunalUpdateTask;
 use App\Structure\CommunalSection\User\Tasks\CommunalExaminTask;
+use App\Structure\CommunalSection\User\Tasks\CommunalEmailTask;
 use App\Structure\CommunalSection\User\Dto\CommunalChangeDto;
 use App\Structure\CommunalSection\User\Dto\CommunalSendingDto;
 
@@ -18,7 +19,8 @@ class CommunalUpdateAction extends BaseAction
      */
     public function status_editor(string $id): bool
     {   
-        $result = $this->task(CommunalUpdateTask::class)->status($id, 3);        
+        $result = $this->task(CommunalUpdateTask::class)->status($id, 3);  
+        $this->task(CommunalEmailTask::class)->sendEmail($id);  
         return $result == true ? true : false;        
     }
     
