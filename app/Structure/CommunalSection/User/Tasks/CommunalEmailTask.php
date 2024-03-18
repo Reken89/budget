@@ -17,7 +17,7 @@ class CommunalEmailTask extends BaseTask
      */
     public function sendEmail(string $id)
     {
-        $info = Communal::select('user_id', 'mounth')
+        $info = Communal::select('user_id', 'mounth', 'year')
             ->where('id', $id)
             ->first();
         
@@ -25,6 +25,7 @@ class CommunalEmailTask extends BaseTask
             ->where('id', $info['user_id'])
             ->first();
         $name = $user_info['name'];
+        $year = $info['year'];
         
         $mounths = [
             '1'  => 'январь',
@@ -43,7 +44,7 @@ class CommunalEmailTask extends BaseTask
         
         $mounth = $mounths[$info['mounth']];
         
-        mail('portal@kostamail.ru', "Запрос на редактирование", "$name просит открыть на редактирование информацию за $mounth месяц!","FROM: portal@kostamail.ru \r\n");
+        mail('portal@kostamail.ru', "Запрос на редактирование", "$name просит открыть на редактирование информацию за $mounth месяц $year года!","FROM: portal@kostamail.ru \r\n");
 
     }
 }
