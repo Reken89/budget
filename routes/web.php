@@ -21,6 +21,7 @@ use App\Structure\ReportingSection\Admin\Controllers\DebtController;
 use App\Structure\Ofs24Section\Admin\Controllers\AdminOfs24IndexController;
 use App\Structure\Ofs24Section\User\Controllers\Ofs24Controller;
 use App\Structure\DevSection\Admin\Controllers\DevController;
+use App\Structure\DeloSection\User\Controllers\DeloController;
 
 /*
 |--------------------------------------------------------------------------
@@ -228,6 +229,18 @@ Route::patch('/admin/dev/change', [DevController::class, 'change'])->middleware(
 
 //Роуты для Front (Модуль разработки)
 Route::get('/admin/dev', [DevController::class, 'user'])->middleware('auth', 'admin')->name('dev');
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+ * 
+ * 
+ * 
+ */
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Роуты для Back (Модуль Дело)
+Route::get('/delo/back', [DeloController::class, 'BackView'])->middleware('auth');
+
+//Роуты для Front (Модуль Дело)
+Route::get('/delo', [DeloController::class, 'FrontView'])->middleware('auth')->name('delo');
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 Auth::routes();

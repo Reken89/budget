@@ -223,6 +223,14 @@
                                                     <button type="submit" class="custom-btn btn-16"><b>Коммунальные услуги<b></button>
                                                  </form>
                                              </li>
+                                             @elseif ($role == "delo")
+                                             <li>
+                                                 <form action="{{ route('delo')}}" method="get">
+                                                    <input type='hidden' name='year[]' value='2022'>
+                                                    <input type='hidden' name='mounth[]' value='1'>
+                                                    <button type="submit" class="custom-btn btn-16"><b>Делопроизводство<b></button>
+                                                 </form>
+                                             </li>
                                              @endif
                                           </ul>
                                        </li>
