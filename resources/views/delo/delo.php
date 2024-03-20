@@ -15,6 +15,18 @@
             });  
         } 
         fetch_data();
+        
+        //Выполняем действие (добавляем строку в таблицу)
+        $(document).on('click', '#btn_add', function(){
+            var tr = this.closest('tr');
+            var number = $('.number', tr).val();
+            var npa = $('.npa', tr).val();
+            var correspondent = $('.correspondent', tr).val();
+            var date = $('.date', tr).val();
+            var content = $('.content', tr).val();
+            
+            alert(content);                      
+        })
       
     });
 </script>

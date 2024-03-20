@@ -73,7 +73,7 @@
                                 <rect y="13.3333" width="17" height="1.5" fill="currentColor"/>
                                 </svg>
 
-                            <span class="categories__menu--title">Laravel</span>
+                            <span class="categories__menu--title">Меню</span>
                             <svg class="categories__arrowdown--icon" xmlns="http://www.w3.org/2000/svg" width="12.355" height="8.394" viewBox="0 0 10.355 6.394">
                                 <path  d="M15.138,8.59l-3.961,3.952L7.217,8.59,6,9.807l5.178,5.178,5.178-5.178Z" transform="translate(-6 -8.59)" fill="currentColor"/>
                             </svg>
@@ -112,12 +112,14 @@
                 
                 <section class="shipping__section">
             <div class="container">
-                <p>Описание функций кнопок:</p>
-                <p><b><u>Сформировать</u></b> - Формирует таблицу, за выбранный год и месяц</br>
-                    <b><u>Excel</u></b> - Выгрузка таблицы за выбранный год в excel файл</br>
-                    <b><u>WEB форма</u></b> - Открывает таблицу (все месяца) за выбранный год в новой вкладке</br>
-                    <b><u>Отправить</u></b> - Отправляет введенные значения в ФЭУ</br>
-                    <b><u>Редактировать</u></b> - Отправляет в ФЭУ запрос на редактирование данных, за выбранный период
+                <p>Описание таблицы:</p>
+                <p><b><u>Номер</u></b> - Номер регистрации</br>
+                    <b><u>НПА</u></b> - Тип регистрируемого документа</br>
+                    <b><u>Корреспондент</u></b> - Выбирается из списка</br>
+                    <b><u>Дата</u></b> - Дата регистрации</br>
+                    <b><u>Исполнитель</u></b> - Ответственное лицо</br>
+                    <b><u>Содержание</u></b> - Краткое содержание документа</br>
+                    <b><u>Автор</u></b> - Автор записи
                 </p>
                 
                 <div class="my__account--section__inner border-radius-10 d-flex">
@@ -136,15 +138,45 @@
                                             <th style="min-width: 100px; width: 100px;" class="account__table--header__child--items" bgcolor="#66CDAA">Исполнитель</th>
                                             <th style="min-width: 200px; width: 200px;" class="account__table--header__child--items" bgcolor="#66CDAA">Содержание</th>    
                                             <th style="min-width: 80px; width: 80px;" class="account__table--header__child--items" bgcolor="#66CDAA">Автор</th> 
-                                            <th style="min-width: 80px; width: 80px;" class="account__table--header__child--items" bgcolor="#66CDAA">Кнопка</th> 
                                         </tr>
                                     </thead>
-                                    <tbody>                                           
+                                    <tbody>
+                                        <tr>
+                                            <td><input style="min-width: 70px; width: 70px;" type="text" name="number" class="number"></td>
+                                            <td>
+                                                <select id="fruits" style="min-width: 70px; width: 70px;" name="npa" class="npa">
+                                                    <option value="apple">Яблоко</option>
+                                                    <option value="banana">Банан</option>
+                                                    <option value="orange">Апельсин</option>
+                                                </select>
+                                            </td>
+                                            <td>   
+                                                <select id="fruits" style="min-width: 130px; width: 130px;" name="correspondent" class="correspondent">
+                                                    <option value="apple">Яблоко</option>
+                                                    <option value="banana">Банан</option>
+                                                    <option value="orange">Апельсин</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <input type="date" id="date" name="date" class="date"/>
+                                            </td>
+                                            <td>   
+                                                <select id="fruits" style="min-width: 130px; width: 130px;" name="user">
+                                                    <option value="apple">Яблоко</option>
+                                                    <option value="banana">Банан</option>
+                                                    <option value="orange">Апельсин</option>
+                                                </select>
+                                            </td>                                           
+                                            <td class="col-id-no" scope="row"><textarea rows='3' cols='20' type=text name="content" class="content"></textarea></td> 
+                                            <td>
+                                                <button style="width:200px;height:50px" class="primary__btn" id='btn_add' type="button">Добавить</button>
+                                            </td>
+                                        </tr>
                                     </tbody>                                
                                 </table>
                                 </br>
-                                <p><b>*Ваш тариф</b> = Тариф получается в результате деления суммы на объем.</br>
-                                Если цифра зеленого цвета, Вы укладываетесь в допустимый диапозон</p>
+                                <p><b>*Сноска</b> Тут будет какойто текст...</br>
+                                Тут будет какойто текст...</p>
                             </div>
                         </div>
                     </div>
