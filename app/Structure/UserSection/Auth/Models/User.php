@@ -56,6 +56,14 @@ class User extends Authenticatable
         return $this->role;
     }
     
+    /**
+     * Определяем имя пользователя
+     */
+    public function name()
+    {
+        return $this->name;
+    }
+    
     public function communal(): HasMany
     {
         return $this->hasMany(Communal::class);

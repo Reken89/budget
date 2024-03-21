@@ -1,5 +1,5 @@
 @php
-    //var_dump($info['users']);
+    //var_dump($info['documents']);
 @endphp
 
 <!doctype html>
@@ -142,6 +142,7 @@
                                     </thead>
                                     <tbody>
                                         <tr>
+                                            <input type="hidden" class="author" value="{{ $info['name'] }}">
                                             <td><input style="min-width: 70px; width: 70px;" type="text" name="number" class="number"></td>
                                             <td>
                                                 <select id="fruits" style="min-width: 100px; width: 100px;" name="npa" class="npa">
@@ -172,6 +173,17 @@
                                                 <button style="width:200px;height:50px" class="primary__btn" id='btn_add' type="button">Добавить</button>
                                             </td>
                                         </tr>
+                                        @foreach ($info['documents'] as $value) 
+                                            <tr>
+                                                <td>{{ $value['number'] }}</td>
+                                                <td>{{ $value['npa']['title'] }}</td>
+                                                <td>{{ $value['correspondent']['title'] }}</td>
+                                                <td>{{ $value['date'] }}</td>
+                                                <td>{{ $value['user']['name'] }}</td>
+                                                <td>{{ $value['content'] }}</td>
+                                                <td>{{ $value['author'] }}</td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>                                
                                 </table>
                                 </br>
