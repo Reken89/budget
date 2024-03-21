@@ -238,6 +238,8 @@ Route::get('/admin/dev', [DevController::class, 'user'])->middleware('auth', 'ad
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Роуты для Back (Модуль Дело)
 Route::get('/delo/back', [DeloController::class, 'BackView'])->middleware('auth');
+Route::post('/delo/upload', [DeloController::class, 'Upload'])->middleware('auth');
+Route::get('/delo/uploadview', [DeloController::class, 'UploadView'])->middleware('auth')->name('uploadview');
 
 //Роуты для Front (Модуль Дело)
 Route::get('/delo', [DeloController::class, 'FrontView'])->middleware('auth')->name('delo');

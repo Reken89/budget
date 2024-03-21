@@ -1,5 +1,5 @@
 @php
-    //var_dump($info);
+    //var_dump($info['users']);
 @endphp
 
 <!doctype html>
@@ -144,17 +144,17 @@
                                         <tr>
                                             <td><input style="min-width: 70px; width: 70px;" type="text" name="number" class="number"></td>
                                             <td>
-                                                <select id="fruits" style="min-width: 70px; width: 70px;" name="npa" class="npa">
-                                                    <option value="apple">Яблоко</option>
-                                                    <option value="banana">Банан</option>
-                                                    <option value="orange">Апельсин</option>
+                                                <select id="fruits" style="min-width: 100px; width: 100px;" name="npa" class="npa">
+                                                    @foreach ($info['npa'] as $value) 
+                                                        <option value="{{ $value['id'] }}">{{ $value['title'] }}</option>
+                                                    @endforeach
                                                 </select>
                                             </td>
                                             <td>   
                                                 <select id="fruits" style="min-width: 130px; width: 130px;" name="correspondent" class="correspondent">
-                                                    <option value="apple">Яблоко</option>
-                                                    <option value="banana">Банан</option>
-                                                    <option value="orange">Апельсин</option>
+                                                    @foreach ($info['corr'] as $value) 
+                                                        <option value="{{ $value['id'] }}">{{ $value['title'] }}</option>
+                                                    @endforeach
                                                 </select>
                                             </td>
                                             <td>
@@ -162,9 +162,9 @@
                                             </td>
                                             <td>   
                                                 <select id="fruits" style="min-width: 130px; width: 130px;" name="user">
-                                                    <option value="apple">Яблоко</option>
-                                                    <option value="banana">Банан</option>
-                                                    <option value="orange">Апельсин</option>
+                                                    @foreach ($info['users'] as $value) 
+                                                        <option value="{{ $value['id'] }}">{{ $value['name'] }}</option>
+                                                    @endforeach
                                                 </select>
                                             </td>                                           
                                             <td class="col-id-no" scope="row"><textarea rows='3' cols='20' type=text name="content" class="content"></textarea></td> 

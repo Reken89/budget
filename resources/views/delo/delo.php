@@ -25,7 +25,7 @@
             var date = $('.date', tr).val();
             var content = $('.content', tr).val();
             
-            alert(content);                      
+            alert(npa);                      
         })
       
     });
