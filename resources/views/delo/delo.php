@@ -5,9 +5,15 @@
     $(document).ready(function(){
    
         //Подгружаем BACK шаблон отрисовки
-        function fetch_data(){  
+        function fetch_data(){
+            var variant = <?=json_encode($variant)?>;
             $.ajax({  
-                url:"/budget/public/delo/back",  
+                url:"/budget/public/delo/back", 
+                method:"GET",
+                data:{
+                    variant
+                },
+                dataType:"text",
                 success:function(data){  
                     $('#live_data').html(data);  
                     //setKeydownmyForm()

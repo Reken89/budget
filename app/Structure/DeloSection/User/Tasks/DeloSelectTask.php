@@ -10,17 +10,18 @@ class DeloSelectTask extends BaseTask
     /**
      * Возвращает таблицу documents
      *
-     * @param
+     * @param string $variant
      * @return
      */
-    public function SelectAll()
+    public function SelectAll(string $variant)
     {
-        $result = Document::select() 
+        $result = Document::select()      
             ->with([
                 'user:id,name',
                 'npa',
                 'correspondent'
                 ]) 
+            ->where('type', $variant)    
             ->get()
             ->toArray();
         return $result;

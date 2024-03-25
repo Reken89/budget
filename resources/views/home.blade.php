@@ -225,7 +225,7 @@
                                              </li>
                                              @elseif ($role == "delo")
                                              <li>
-                                                 <form action="{{ route('delo')}}" method="get">
+                                                 <form action="{{ route('delo', 'out')}}" method="get">
                                                     <button type="submit" class="custom-btn btn-16"><b>Делопроизводство<b></button>
                                                  </form>
                                              </li>

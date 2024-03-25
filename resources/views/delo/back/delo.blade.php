@@ -78,7 +78,20 @@
                                 <path  d="M15.138,8.59l-3.961,3.952L7.217,8.59,6,9.807l5.178,5.178,5.178-5.178Z" transform="translate(-6 -8.59)" fill="currentColor"/>
                             </svg>
                         </div>
-                        
+                        <div class="dropdown__categories--menu border-radius-5 active collapse" id="categoriesAccordion">
+                            <ul class="d-none d-lg-block">
+                                <li class="categories__menu--items">
+                                    <a class="categories__menu--link" href="{{ route('delo', 'in')}}">
+                                        Исходящая почта
+                                    </a>
+                                </li>
+                                <li class="categories__menu--items">
+                                    <a class="categories__menu--link" href="{{ route('delo', 'out')}}">
+                                        Входящая почта
+                                    </a>
+                                </li>
+                            </ul>   
+                        </div>
                     </div>
                     <div class="header__right--area d-flex justify-content-between align-items-center">
                         <div class="header__menu">

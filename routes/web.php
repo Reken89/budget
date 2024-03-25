@@ -242,7 +242,7 @@ Route::post('/delo/upload', [DeloController::class, 'Upload'])->middleware('auth
 Route::get('/delo/uploadview', [DeloController::class, 'UploadView'])->middleware('auth')->name('uploadview');
 
 //Роуты для Front (Модуль Дело)
-Route::get('/delo', [DeloController::class, 'FrontView'])->middleware('auth')->name('delo');
+Route::get('/delo{variant}', [DeloController::class, 'FrontView'])->middleware('auth')->name('delo');
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 Auth::routes();

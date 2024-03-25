@@ -14,13 +14,13 @@ class DeloInfoAction extends BaseAction
     /**
      * Получаем всю информацию из таблицы documents
      *
-     * @param
+     * @param string $variant
      * @return
      */
-    public function SelectAll(): array
+    public function SelectAll(string $variant): array
     {   
         return [
-            'documents' => $this->task(DeloSelectTask::class)->SelectAll(),
+            'documents' => $this->task(DeloSelectTask::class)->SelectAll($variant),
             'npa'       => $this->task(DeloSelectNpaTask::class)->SelectAll(),
             'users'     => $this->task(DeloSelectUsersTask::class)->SelectAll(),
             'corr'      => $this->task(DeloSelectCorrTask::class)->SelectAll(),

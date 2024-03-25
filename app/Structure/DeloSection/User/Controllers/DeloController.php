@@ -13,23 +13,32 @@ class DeloController extends Controller
      /**
      * Front отрисовка страницы
      *
-     * @param 
+     * @param string $variant
      * @return 
      */
-    public function FrontView()
+    public function FrontView(string $variant)
     {
-        return view('delo.delo');   
+        return view('delo.delo', ['variant' => $variant]);   
     }
     
      /**
      * Back отрисовка страницы
      * Возвращает таблицу documents
      *
+     * @param Request $request
      * @return 
      */
-    public function BackView()
+    public function BackView(Request $request)
     {
-        $info = $this->action(DeloInfoAction::class)->SelectAll();  
+        if(!isset(session('variant'))){
+            //$variant = $_SESSION['variant'];
+            $variant = $request->variant;
+            session(['variant' => $request->variant]); 
+            //echo 123456789;
+        }else{
+            $variant = session('variant');
+        }
+        $info = $this->action(DeloInfoAction::class)->SelectAll($variant);  
         return view('delo.back.delo', ['info' => $info]);         
     }
     
