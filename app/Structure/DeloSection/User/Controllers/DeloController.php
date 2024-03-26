@@ -5,6 +5,7 @@ namespace App\Structure\DeloSection\User\Controllers;
 use App\Core\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
+use App\Structure\DeloSection\User\Requests\DeloDocAddRequest;
 use App\Structure\DeloSection\User\Actions\DeloInfoAction;
 use App\Structure\DeloSection\User\Actions\DeloUploadAction;
 
@@ -22,24 +23,42 @@ class DeloController extends Controller
     }
     
      /**
-     * Back отрисовка страницы
+     * Back отрисовка исходящей корреспонденции
      * Возвращает таблицу documents
      *
-     * @param Request $request
+     * @param 
      * @return 
      */
-    public function BackView(Request $request)
+    public function OutView()
     {
-        if(!isset(session('variant'))){
-            //$variant = $_SESSION['variant'];
-            $variant = $request->variant;
-            session(['variant' => $request->variant]); 
-            //echo 123456789;
-        }else{
-            $variant = session('variant');
-        }
-        $info = $this->action(DeloInfoAction::class)->SelectAll($variant);  
+        $info = $this->action(DeloInfoAction::class)->SelectAll("out");  
         return view('delo.back.delo', ['info' => $info]);         
+    }
+    
+    /**
+     * Back отрисовка исходящей корреспонденции
+     * Возвращает таблицу documents
+     *
+     * @param 
+     * @return 
+     */
+    public function InView()
+    {
+        $info = $this->action(DeloInfoAction::class)->SelectAll("in");  
+        return view('delo.back.delo', ['info' => $info]);         
+    }
+    
+    /**
+     * Проверяем оригинальность номера
+     * Добавляем информацию в таблицу documents
+     *
+     * @param DeloDocAddRequest $request
+     * @return 
+     */
+    public function DocAdd()
+    {
+       $reken = "Успех";
+       return $reken;
     }
     
     /**

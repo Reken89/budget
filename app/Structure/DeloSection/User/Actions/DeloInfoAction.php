@@ -25,7 +25,8 @@ class DeloInfoAction extends BaseAction
             'users'     => $this->task(DeloSelectUsersTask::class)->SelectAll(),
             'corr'      => $this->task(DeloSelectCorrTask::class)->SelectAll(),
             'role'      => Auth::user()->role(),
-            'name'      => Auth::user()->name()
+            'name'      => Auth::user()->name(),
+            'variant'   => $variant
         ];
     }
 }

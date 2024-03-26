@@ -33,7 +33,7 @@
                 <div class="header__topbar--inner d-flex align-items-center justify-content-between">
                     <ul class="header__topbar--info d-none d-lg-flex">
                         <li class="header__info--list">
-                            <a class="header__info--link">ГЛАВНАЯ</a>
+                            <a class="header__info--link" href="{{ route('home')}}">ГЛАВНАЯ</a>
                         </li>
                     </ul>
                     <div class="header__top--right d-flex align-items-center">
@@ -81,12 +81,12 @@
                         <div class="dropdown__categories--menu border-radius-5 active collapse" id="categoriesAccordion">
                             <ul class="d-none d-lg-block">
                                 <li class="categories__menu--items">
-                                    <a class="categories__menu--link" href="{{ route('delo', 'in')}}">
+                                    <a class="categories__menu--link" href="{{ route('delo', 'out')}}">
                                         Исходящая почта
                                     </a>
                                 </li>
                                 <li class="categories__menu--items">
-                                    <a class="categories__menu--link" href="{{ route('delo', 'out')}}">
+                                    <a class="categories__menu--link" href="{{ route('delo', 'in')}}">
                                         Входящая почта
                                     </a>
                                 </li>
@@ -138,7 +138,12 @@
                 <div class="my__account--section__inner border-radius-10 d-flex">
                     <div class="account__wrapper">
                         <div class="account__content">
-                            <p><u>Исходящая почта</u></p>
+                            @if ($info['variant'] == "out")
+                                <p><u>Исходящая почта</u></p>
+                            @endif
+                            @if ($info['variant'] == "in")
+                                <p><u>Входящая почта</u></p>
+                            @endif
                             
                             <div class="account__table--area">
                                 <table class="account__table">
@@ -155,6 +160,7 @@
                                     </thead>
                                     <tbody>
                                         <tr>
+                                            <input type="hidden" class="variant" value="{{ $info['variant'] }}">
                                             <input type="hidden" class="author" value="{{ $info['name'] }}">
                                             <td><input style="min-width: 70px; width: 70px;" type="text" name="number" class="number"></td>
                                             <td>
