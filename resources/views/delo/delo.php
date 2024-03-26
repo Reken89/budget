@@ -39,7 +39,7 @@
             var correspondent = $('.correspondent', tr).val();
             var date = $('.date', tr).val();
             var content = $('.content', tr).val();
-            
+                        
             $.ajax({
                 url:"/budget/public/delo/docadd",  
                 method:"get",
@@ -53,7 +53,7 @@
                     alert(data);
                     fetch_data();  
                 } 
-            })          
+            }) 
         })
       
     });

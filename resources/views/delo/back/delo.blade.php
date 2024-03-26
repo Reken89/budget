@@ -162,9 +162,10 @@
                                         <tr>
                                             <input type="hidden" class="variant" value="{{ $info['variant'] }}">
                                             <input type="hidden" class="author" value="{{ $info['name'] }}">
-                                            <td><input style="min-width: 70px; width: 70px;" type="text" name="number" class="number"></td>
+                                            <td><input style="min-width: 70px; width: 70px;" type="text" name="number" class="number" value="0"></td>
                                             <td>
                                                 <select id="fruits" style="min-width: 100px; width: 100px;" name="npa" class="npa">
+                                                    <option selected value="6">Письмо</option>
                                                     @foreach ($info['npa'] as $value) 
                                                         <option value="{{ $value['id'] }}">{{ $value['title'] }}</option>
                                                     @endforeach
@@ -172,22 +173,24 @@
                                             </td>
                                             <td>   
                                                 <select id="fruits" style="min-width: 130px; width: 130px;" name="correspondent" class="correspondent">
+                                                    <option selected value="6">Администрация КГО</option>
                                                     @foreach ($info['corr'] as $value) 
                                                         <option value="{{ $value['id'] }}">{{ $value['title'] }}</option>
                                                     @endforeach
                                                 </select>
                                             </td>
                                             <td>
-                                                <input type="date" id="date" name="date" class="date"/>
+                                                <input type="date" value="<?php echo date('Y-m-d'); ?>" id="date" name="date" class="date"/>
                                             </td>
                                             <td>   
-                                                <select id="fruits" style="min-width: 130px; width: 130px;" name="user">
+                                                <select id="fruits" style="min-width: 130px; width: 130px;" name="user" class="user">
+                                                    <option selected value="40">Стременовская Ж.В.</option>
                                                     @foreach ($info['users'] as $value) 
                                                         <option value="{{ $value['id'] }}">{{ $value['name'] }}</option>
                                                     @endforeach
                                                 </select>
                                             </td>                                           
-                                            <td class="col-id-no" scope="row"><textarea rows='3' cols='20' type=text name="content" class="content"></textarea></td> 
+                                            <td class="col-id-no" scope="row"><textarea rows='3' cols='20' type=text name="content" class="content">Содержание</textarea></td> 
                                             <td>
                                                 <button style="width:200px;height:50px" class="primary__btn" id='btn_add' type="button">Добавить</button>
                                             </td>

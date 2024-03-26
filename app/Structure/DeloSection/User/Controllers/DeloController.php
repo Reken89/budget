@@ -5,9 +5,11 @@ namespace App\Structure\DeloSection\User\Controllers;
 use App\Core\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
+use App\Structure\DeloSection\User\Dto\DeloDocAddDto;
 use App\Structure\DeloSection\User\Requests\DeloDocAddRequest;
 use App\Structure\DeloSection\User\Actions\DeloInfoAction;
 use App\Structure\DeloSection\User\Actions\DeloUploadAction;
+use App\Structure\DeloSection\User\Actions\DeloExaminAction;
 
 class DeloController extends Controller
 {
@@ -55,10 +57,16 @@ class DeloController extends Controller
      * @param DeloDocAddRequest $request
      * @return 
      */
-    public function DocAdd()
+    public function DocAdd(DeloDocAddRequest $request)
     {
-       $reken = "Успех";
-       return $reken;
+        $dto = DeloDocAddDto::fromRequest($request);
+        $examin = $this->action(DeloExaminAction::class)->ExaminNumber($dto);
+        
+        if($examin == true){
+            return "Номер занят...";
+        }else{
+            return "Номер свободен";
+        }
     }
     
     /**
