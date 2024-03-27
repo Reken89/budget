@@ -21,7 +21,8 @@ class DeloSelectTask extends BaseTask
                 'npa',
                 'correspondent'
                 ]) 
-            ->where('type', $variant)    
+            ->where('type', $variant)  
+            ->orderBy('id', 'desc')
             ->get()
             ->toArray();
         return $result;

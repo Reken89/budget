@@ -10,6 +10,7 @@ use App\Structure\DeloSection\User\Requests\DeloDocAddRequest;
 use App\Structure\DeloSection\User\Actions\DeloInfoAction;
 use App\Structure\DeloSection\User\Actions\DeloUploadAction;
 use App\Structure\DeloSection\User\Actions\DeloExaminAction;
+use App\Structure\DeloSection\User\Actions\DeloAddAction;
 
 class DeloController extends Controller
 {
@@ -65,7 +66,10 @@ class DeloController extends Controller
         if($examin == true){
             return "Номер занят...";
         }else{
-            return "Номер свободен";
+            $result = $this->action(DeloAddAction::class)->DocAdd($dto);
+            if($result){
+                return "Запись добавлена!";
+            }
         }
     }
     

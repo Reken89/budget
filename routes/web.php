@@ -22,6 +22,7 @@ use App\Structure\Ofs24Section\Admin\Controllers\AdminOfs24IndexController;
 use App\Structure\Ofs24Section\User\Controllers\Ofs24Controller;
 use App\Structure\DevSection\Admin\Controllers\DevController;
 use App\Structure\DeloSection\User\Controllers\DeloController;
+use App\Structure\DeloSection\User\Controllers\DeloCorrController;
 
 /*
 |--------------------------------------------------------------------------
@@ -240,11 +241,14 @@ Route::get('/admin/dev', [DevController::class, 'user'])->middleware('auth', 'ad
 Route::get('/delo/out', [DeloController::class, 'OutView'])->middleware('auth');
 Route::get('/delo/in', [DeloController::class, 'InView'])->middleware('auth');
 Route::get('/delo/docadd', [DeloController::class, 'DocAdd'])->middleware('auth');
+Route::get('/delo/correspondents/table', [DeloCorrController::class, 'TableView'])->middleware('auth');
+Route::patch('/delo/correspondents/update', [DeloCorrController::class, 'UpdateTable'])->middleware('auth');
 Route::post('/delo/upload', [DeloController::class, 'Upload'])->middleware('auth');
 Route::get('/delo/uploadview', [DeloController::class, 'UploadView'])->middleware('auth')->name('uploadview');
 
 //Роуты для Front (Модуль Дело)
 Route::get('/delo{variant}', [DeloController::class, 'FrontView'])->middleware('auth')->name('delo');
+Route::get('/delo/correspondents', [DeloCorrController::class, 'FrontView'])->middleware('auth')->name('correspondents');
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 Auth::routes();

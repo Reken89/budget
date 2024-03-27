@@ -1,5 +1,5 @@
 @php
-    //var_dump($info['documents']);
+    
 @endphp
 
 <!doctype html>
@@ -133,84 +133,38 @@
                 <section class="shipping__section">
             <div class="container">
                 <p>Описание таблицы:</p>
-                <p><b><u>Номер</u></b> - Номер регистрации</br>
-                    <b><u>НПА</u></b> - Тип регистрируемого документа</br>
-                    <b><u>Корреспондент</u></b> - Выбирается из списка</br>
-                    <b><u>Дата</u></b> - Дата регистрации</br>
-                    <b><u>Исполнитель</u></b> - Ответственное лицо</br>
-                    <b><u>Содержание</u></b> - Краткое содержание документа</br>
-                    <b><u>Автор</u></b> - Автор записи
+                <p><b><u>Корреспондент</u></b> - Введите название корреспондента</br>
+                    <b><u>Добавить</u></b> - Кнопка добавления нового корреспондента</br>
+                    <b><u>Изменить</u></b> - Кнопка изменения корреспондента</br>
                 </p>
                 
                 <div class="my__account--section__inner border-radius-10 d-flex">
                     <div class="account__wrapper">
                         <div class="account__content">
-                            @if ($info['variant'] == "out")
-                                <p><u>Исходящая почта</u></p>
-                            @endif
-                            @if ($info['variant'] == "in")
-                                <p><u>Входящая почта</u></p>
-                            @endif
-                            
+                            <p><u>Корреспонденты</u></p>
+                           
                             <div class="account__table--area">
                                 <table class="account__table">
                                     <thead class="account__table--header">
                                         <tr class="account__table--header__child">
-                                            <th style="min-width: 70px; width: 70px;" class="account__table--header__child--items" bgcolor="#66CDAA">Номер</th>
-                                            <th style="min-width: 70px; width: 70px;" class="account__table--header__child--items" bgcolor="#66CDAA">НПА</th>
-                                            <th style="min-width: 100px; width: 100px;" class="account__table--header__child--items" bgcolor="#66CDAA">Корреспондент</th>
-                                            <th style="min-width: 100px; width: 100px;" class="account__table--header__child--items" bgcolor="#66CDAA">Дата</th>
-                                            <th style="min-width: 100px; width: 100px;" class="account__table--header__child--items" bgcolor="#66CDAA">Исполнитель</th>
-                                            <th style="min-width: 200px; width: 200px;" class="account__table--header__child--items" bgcolor="#66CDAA">Содержание</th>    
-                                            <th style="min-width: 80px; width: 80px;" class="account__table--header__child--items" bgcolor="#66CDAA">Автор</th> 
+                                            <th style="min-width: 150px; width: 150px;" class="account__table--header__child--items" bgcolor="#66CDAA">Корреспондент</th>
+                                            <th style="min-width: 80px; width: 80px;" class="account__table--header__child--items" bgcolor="#66CDAA">Кнопка</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <input type="hidden" class="variant" value="{{ $info['variant'] }}">
-                                            <input type="hidden" class="author" value="{{ $info['name'] }}">
-                                            <td><input style="min-width: 70px; width: 70px;" type="text" name="number" class="number" value="0"></td>
-                                            <td>
-                                                <select id="fruits" style="min-width: 100px; width: 100px;" name="npa" class="npa">
-                                                    <option selected value="6">Письмо</option>
-                                                    @foreach ($info['npa'] as $value) 
-                                                        <option value="{{ $value['id'] }}">{{ $value['title'] }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </td>
-                                            <td>   
-                                                <select id="fruits" style="min-width: 130px; width: 130px;" name="correspondent" class="correspondent">
-                                                    <option selected value="6">Администрация КГО</option>
-                                                    @foreach ($info['corr'] as $value) 
-                                                        <option value="{{ $value['id'] }}">{{ $value['title'] }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </td>
-                                            <td>
-                                                <input type="date" value="<?php echo date('Y-m-d'); ?>" id="date" name="date" class="date"/>
-                                            </td>
-                                            <td>   
-                                                <select id="fruits" style="min-width: 130px; width: 130px;" name="user" class="user">
-                                                    <option selected value="40">Стременовская Ж.В.</option>
-                                                    @foreach ($info['users'] as $value) 
-                                                        <option value="{{ $value['id'] }}">{{ $value['name'] }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </td>                                           
-                                            <td class="col-id-no" scope="row"><textarea rows='3' cols='20' type=text name="content" class="content">Содержание</textarea></td> 
+                                        <tr>                                                                                      
+                                            <td class="col-id-no" scope="row"><textarea rows='3' cols='70' type=text name="content" class="title">Корреспондент</textarea></td> 
                                             <td>
                                                 <button style="width:200px;height:50px" class="primary__btn" id='btn_add' type="button">Добавить</button>
                                             </td>
                                         </tr>
-                                        @foreach ($info['documents'] as $value) 
+                                        @foreach ($info['corr'] as $value) 
                                             <tr>
-                                                <td>{{ $value['number'] }}</td>
-                                                <td>{{ $value['npa']['title'] }}</td>
-                                                <td>{{ $value['correspondent']['title'] }}</td>
-                                                <td>{{ $value['date'] }}</td>
-                                                <td>{{ $value['user']['name'] }}</td>
-                                                <td>{{ $value['content'] }}</td>
-                                                <td>{{ $value['author'] }}</td>
+                                                <input type="hidden" class="id" value="{{ $value['id'] }}">
+                                                <td class="col-id-no" scope="row"><textarea rows='3' cols='70' type=text name="content" class="title">{{ $value['title'] }}</textarea></td>
+                                                <td>
+                                                <button style="width:200px;height:50px" class="primary__btn" id='btn_change' type="button">Изменить</button>
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>                                
@@ -293,4 +247,5 @@
   
 </body>
 </html>
+
 

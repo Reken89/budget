@@ -223,7 +223,7 @@
                                                     <button type="submit" class="custom-btn btn-16"><b>Коммунальные услуги<b></button>
                                                  </form>
                                              </li>
-                                             @elseif ($role == "delo")
+                                             @elseif ($role == "delo" || $role == "deloadm")
                                              <li>
                                                  <form action="{{ route('delo', 'out')}}" method="get">
                                                     <button type="submit" class="custom-btn btn-16"><b>Делопроизводство<b></button>

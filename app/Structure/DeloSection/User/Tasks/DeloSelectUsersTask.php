@@ -17,7 +17,7 @@ class DeloSelectUsersTask extends BaseTask
     public function SelectAll()
     {
         $result = User::select('id', 'name') 
-            ->where('role', 'delo')  
+            ->whereIn('role', ['delo', 'deloadm'])  
             ->orderBy('name', 'asc')     
             ->get()
             ->toArray();
