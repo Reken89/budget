@@ -42,9 +42,9 @@
                         
             $.ajax({
                 url:"/budget/public/delo/docadd",  
-                method:"get",
+                method:"post",
                 data:{
-                    //"_token": "{{ csrf_token() }}",
+                    "_token": "{{ csrf_token() }}",
                     author, variant, number, npa,
                     correspondent, date, content, user
                 },

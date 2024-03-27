@@ -6,6 +6,7 @@ use App\Core\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Structure\DeloSection\User\Actions\DeloCorrAction;
 use App\Structure\DeloSection\User\Actions\DeloUpdateCorrAction;
+use App\Structure\DeloSection\User\Actions\DeloAddCorrAction;
 
 class DeloCorrController extends Controller
 {
@@ -35,12 +36,24 @@ class DeloCorrController extends Controller
     /**
      * Обновляем значения в таблице correspondents
      *
-     * @param 
+     * @param Request $request
      * @return 
      */
     public function UpdateTable(Request $request)
     {
         return $this->action(DeloUpdateCorrAction::class)->UpdateCorr($request->id, $request->title);        
+    }
+    
+    /**
+     * Добавляем строку в таблицу correspondents
+     *
+     * @param Request $request
+     * @return 
+     */
+    public function AddCorr(Request $request)
+    {
+        $result = $this->action(DeloAddCorrAction::class)->CreateCorr($request->title);
+        return $result == true ? "Корреспондент успешно добавлен!" : "Что то пошло не так!";       
     }
     
 }

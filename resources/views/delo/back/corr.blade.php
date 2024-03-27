@@ -159,7 +159,7 @@
                                             </td>
                                         </tr>
                                         @foreach ($info['corr'] as $value) 
-                                            <tr>
+                                            <tr>                                                
                                                 <input type="hidden" class="id" value="{{ $value['id'] }}">
                                                 <td class="col-id-no" scope="row"><textarea rows='3' cols='70' type=text name="content" class="title">{{ $value['title'] }}</textarea></td>
                                                 <td>
@@ -170,8 +170,7 @@
                                     </tbody>                                
                                 </table>
                                 </br>
-                                <p><b>*Сноска</b> Тут будет какойто текст...</br>
-                                Тут будет какойто текст...</p>
+                                <p><b>*Для информации:</b> Модуль разработан, для замены рабочего места «Делопроизводство», системы «АС Бюджет»</p>
                             </div>
                         </div>
                     </div>
