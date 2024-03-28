@@ -22,6 +22,7 @@
             var tr = this.closest('tr');
             var id = $('.id', tr).val();
             var variant = $('.variant', tr).val();
+            var exception = $('.exception', tr).val();
             var number = $('.number', tr).val();
             var user = $('.user', tr).val();
             var npa = $('.npa', tr).val();
@@ -34,7 +35,7 @@
                 method:"patch",
                 data:{
                     "_token": "{{ csrf_token() }}",
-                    id, variant, number, npa,
+                    id, variant, exception, number, npa,
                     correspondent, date, content, user
                 },
                 dataType:"text",  

@@ -165,6 +165,7 @@
                                         <tr>
                                             <input type="hidden" class="id" value="{{ $info['doc']['id'] }}">
                                             <input type="hidden" class="variant" value="{{ $info['doc']['type'] }}">
+                                            <input type="hidden" class="exception" value="{{ $info['doc']['number'] }}">
                                             <td><input style="min-width: 70px; width: 70px;" type="text" name="number" class="number" value="{{ $info['doc']['number'] }}"></td>
                                             <td>
                                                 <select id="fruits" style="min-width: 100px; width: 100px;" name="npa" class="npa">

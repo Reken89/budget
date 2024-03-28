@@ -18,7 +18,7 @@ class CreateDocumentsTable extends Migration
             $table->string('number', 100);
             $table->integer('npa_id');
             $table->integer('correspondent_id');
-            $table->string('date', 100);
+            $table->date('date');
             $table->integer('user_id');
             $table->string('content', 3000);
             $table->string('author', 100);

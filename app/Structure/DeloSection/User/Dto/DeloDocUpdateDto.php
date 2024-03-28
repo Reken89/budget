@@ -9,6 +9,7 @@ class DeloDocUpdateDto extends BaseDto
 {
     public int       $id;
     public string    $variant;
+    public string    $exception;
     public string    $number;
     public int       $user;
     public int       $npa;
@@ -27,6 +28,7 @@ class DeloDocUpdateDto extends BaseDto
         return new self([
             'id'            => $request->get('id'),
             'variant'       => $request->get('variant'),
+            'exception'     => $request->get('exception'),
             'number'        => $request->get('number'),
             'user'          => $request->get('user'),
             'npa'           => $request->get('npa'),

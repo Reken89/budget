@@ -5,6 +5,7 @@ namespace App\Structure\DeloSection\User\Controllers;
 use App\Core\Controllers\Controller;
 use App\Structure\DeloSection\User\Actions\DeloEditorAction;
 use App\Structure\DeloSection\User\Actions\DeloExaminAction;
+use App\Structure\DeloSection\User\Actions\DeloUpdateDocAction;
 use App\Structure\DeloSection\User\Requests\DeloDocUpdateRequest;
 use App\Structure\DeloSection\User\Dto\DeloDocUpdateDto;
 
@@ -45,12 +46,19 @@ class DeloEditorController extends Controller
     public function UpdateDoc(DeloDocUpdateRequest $request)
     {
         $dto = DeloDocUpdateDto::fromRequest($request);
-        $examin = $this->action(DeloExaminAction::class)->ExaminNumber($dto->number, $dto->variant);
+        if($dto->exception == $dto->number){
+            $examin = false;
+        }else{
+            $examin = $this->action(DeloExaminAction::class)->ExaminNumber($dto->number, $dto->variant);
+        }
         
         if($examin == true){
             return "Номер занят...";
         }else{
-            return "Номер свободен...";
+            $result = $this->action(DeloUpdateDocAction::class)->UpdateDoc($dto);
+            if($result){
+                return "Информация обновлена!";
+            }
         }       
     }
     

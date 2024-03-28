@@ -16,6 +16,7 @@ class DeloDocUpdateRequest extends FormRequest
         return [
             'id'            => 'required|integer',
             'variant'       => 'required|string',
+            'exception'     => 'required|string',
             'number'        => 'required|string',
             'user'          => 'required|integer',
             'npa'           => 'required|integer',
