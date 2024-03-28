@@ -61,7 +61,7 @@ class DeloController extends Controller
     public function DocAdd(DeloDocAddRequest $request)
     {
         $dto = DeloDocAddDto::fromRequest($request);
-        $examin = $this->action(DeloExaminAction::class)->ExaminNumber($dto);
+        $examin = $this->action(DeloExaminAction::class)->ExaminNumber($dto->number, $dto->variant);
         
         if($examin == true){
             return "Номер занят...";

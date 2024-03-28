@@ -3,7 +3,6 @@
 namespace App\Structure\DeloSection\User\Actions;
 
 use App\Core\Actions\BaseAction;
-use App\Structure\DeloSection\User\Dto\DeloDocAddDto;
 use App\Structure\DeloSection\User\Models\Document;
 
 class DeloExaminAction extends BaseAction
@@ -11,14 +10,14 @@ class DeloExaminAction extends BaseAction
     /**
      * Выполняем поиск номера в таблице documents
      *
-     * @param DeloDocAddDto $dto
+     * @param string $number, string $variant
      * @return bool
      */
-    public function ExaminNumber(DeloDocAddDto $dto): bool
+    public function ExaminNumber(string $number, string $variant): bool
     {
         $result = Document::select()      
-            ->where('number', $dto->number)   
-            ->where('type', $dto->variant)     
+            ->where('number', $number)   
+            ->where('type', $variant)     
             ->first();
         return $result == true ? true : false;   
     }

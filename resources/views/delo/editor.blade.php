@@ -7,7 +7,7 @@
         //Подгружаем BACK шаблон отрисовки
         function fetch_data(){
             $.ajax({                
-                url:"/budget/public/delo/correspondents/table", 
+                url:"/budget/public/delo/editor/table", 
                 method:"GET",
                 success:function(data){  
                     $('#live_data').html(data); 
@@ -21,36 +21,24 @@
         $(document).on('click', '#btn_change', function(){
             var tr = this.closest('tr');
             var id = $('.id', tr).val();
-            var title = $('.title', tr).val();
+            var variant = $('.variant', tr).val();
+            var number = $('.number', tr).val();
+            var user = $('.user', tr).val();
+            var npa = $('.npa', tr).val();
+            var correspondent = $('.correspondent', tr).val();
+            var date = $('.date', tr).val();
+            var content = $('.content', tr).val();
                         
             $.ajax({
-                url:"/budget/public/delo/correspondents/update",  
+                url:"/budget/public/delo/editor/update",  
                 method:"patch",
                 data:{
                     "_token": "{{ csrf_token() }}",
-                    id, title
+                    id, variant, number, npa,
+                    correspondent, date, content, user
                 },
                 dataType:"text",  
-                success:function(data){  
-                    fetch_data();  
-                } 
-            }) 
-        })
-        
-        //Выполняем действие (добавляем строку в таблицу)
-        $(document).on('click', '#btn_add', function(){
-            var tr = this.closest('tr');
-            var title = $('.title', tr).val();
-                        
-            $.ajax({
-                url:"/budget/public/delo/correspondents/add",  
-                method:"post",
-                data:{
-                    "_token": "{{ csrf_token() }}",
-                    title
-                },
-                dataType:"text",  
-                success:function(data){ 
+                success:function(data){
                     alert(data);
                     fetch_data();  
                 } 
@@ -59,6 +47,4 @@
               
     });
 </script>
-
-
 
