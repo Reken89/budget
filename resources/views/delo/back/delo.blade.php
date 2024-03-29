@@ -170,7 +170,7 @@
                                             <th style="min-width: 80px; width: 80px;" class="account__table--header__child--items" bgcolor="#66CDAA">Автор</th> 
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody class="cart__table--body">
                                         <tr>
                                             <input type="hidden" class="variant" value="{{ $info['variant'] }}">
                                             <input type="hidden" class="author" value="{{ $info['name'] }}">
@@ -208,7 +208,7 @@
                                             </td>
                                         </tr>
                                         @foreach ($info['documents'] as $value) 
-                                            <tr>
+                                            <tr class="cart__table--body__items">
                                                 @if ($info['name'] == $value['author'])
                                                     <td><a class="header__info--link" href="{{ route('editor', $value['id'])}}"><b>{{ $value['number'] }}</b></a></td>
                                                 @elseif ($info['role'] == "deloadm")
