@@ -90,6 +90,11 @@
                                         Входящая почта
                                     </a>
                                 </li>
+                                <li class="categories__menu--items">
+                                    <a class="categories__menu--link" href="{{ route('filters')}}">
+                                        Фильтры
+                                    </a>
+                                </li>
                                 @if ($info['role'] == "deloadm")
                                     <li class="categories__menu--items">
                                         <a class="categories__menu--link" href="{{ route('correspondents')}}">

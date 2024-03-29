@@ -90,6 +90,11 @@
                                         Входящая почта
                                     </a>
                                 </li>
+                                <li class="categories__menu--items">
+                                    <a class="categories__menu--link" href="{{ route('filters')}}">
+                                        Фильтры
+                                    </a>
+                                </li>
                                 @if ($info['role'] == "deloadm")
                                     <li class="categories__menu--items">
                                         <a class="categories__menu--link" href="{{ route('correspondents')}}">
@@ -180,7 +185,7 @@
                                             </td>
                                             <td>   
                                                 <select id="fruits" style="min-width: 130px; width: 130px;" name="correspondent" class="correspondent">
-                                                    <option selected value="6">Администрация КГО</option>
+                                                    <option selected value="4">Администрация КГО</option>
                                                     @foreach ($info['corr'] as $value) 
                                                         <option value="{{ $value['id'] }}">{{ $value['title'] }}</option>
                                                     @endforeach

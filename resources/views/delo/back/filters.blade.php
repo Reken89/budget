@@ -1,5 +1,5 @@
 @php
-    //var_dump($info['npa']);
+    
 @endphp
 
 <!doctype html>
@@ -90,18 +90,6 @@
                                         Входящая почта
                                     </a>
                                 </li>
-                                <li class="categories__menu--items">
-                                    <a class="categories__menu--link" href="{{ route('filters')}}">
-                                        Фильтры
-                                    </a>
-                                </li>
-                                @if ($info['role'] == "deloadm")
-                                    <li class="categories__menu--items">
-                                        <a class="categories__menu--link" href="{{ route('correspondents')}}">
-                                            Корреспонденты
-                                        </a>
-                                    </li>
-                                @endif
                             </ul>   
                         </div>
                     </div>
@@ -133,7 +121,7 @@
         <!-- my account section start -->
         <section class="my__account--section section--padding">
             
-                <form id="communal" method="get"> 
+                <form id="filters" method="get"> 
                 
                 <section class="shipping__section">
             <div class="container">
@@ -143,16 +131,117 @@
                     <b><u>Корреспондент</u></b> - Выбирается из списка</br>
                     <b><u>Дата</u></b> - Дата регистрации</br>
                     <b><u>Исполнитель</u></b> - Ответственное лицо</br>
-                    <b><u>Содержание</u></b> - Краткое содержание документа</br>
-                    <b><u>Изменить</u></b> - Кнопка фиксации изменений
+                    <b><u>Содержание</u></b> - Краткое содержание документа
                 </p>
+                <div class="shipping__inner style2 d-flex">
+                    <div class="shipping__items style2 d-flex align-items-center">                       
+                        <div class="shipping__content">
+                            <h2 class="shipping__content--title h3">НПА</h2>
+                            <div class="single__widget widget__bg">
+                            <ul class="widget__form--check">                               
+                                <li class="widget__form--check__list">
+                                    <select id="fruits" style="min-width: 100px; width: 100px;" name="npa" class="npa">
+                                        <option selected value="no">Не выбран</option>
+                                        @foreach ($info['npa'] as $value) 
+                                            <option value="{{ $value['id'] }}">{{ $value['title'] }}</option>
+                                        @endforeach
+                                    </select>
+                                </li>
+                            </ul>
+                            </div>    
+                        </div>
+                    </div>                  
+                    <div class="shipping__items style2 d-flex align-items-center">                       
+                        <div class="shipping__content">
+                            <h2 class="shipping__content--title h3">Корреспондент</h2>
+                            <div class="single__widget widget__bg">
+                            <ul class="widget__form--check">                               
+                                <li class="widget__form--check__list">
+                                    <select id="fruits" style="min-width: 130px; width: 130px;" name="correspondent" class="correspondent">
+                                        <option selected value="no">Не выбран</option>
+                                        @foreach ($info['corr'] as $value) 
+                                            <option value="{{ $value['id'] }}">{{ $value['title'] }}</option>
+                                        @endforeach
+                                    </select>
+                                </li>
+                            </ul>
+                            </div>    
+                        </div>
+                    </div>
+                    <div class="shipping__items style2 d-flex align-items-center">                       
+                        <div class="shipping__content">
+                            <h2 class="shipping__content--title h3">Исполнитель</h2>
+                            <div class="single__widget widget__bg">
+                            <ul class="widget__form--check">                               
+                                <li class="widget__form--check__list">
+                                    <select id="fruits" style="min-width: 130px; width: 130px;" name="user" class="user">
+                                        <option selected value="no">Не выбран</option>
+                                        @foreach ($info['users'] as $value) 
+                                            <option value="{{ $value['id'] }}">{{ $value['name'] }}</option>
+                                        @endforeach
+                                    </select>
+                                </li>
+                            </ul>
+                            </div>    
+                        </div>
+                    </div>
+                    <div class="shipping__items style2 d-flex align-items-center">                       
+                        <div class="shipping__content">
+                            <h2 class="shipping__content--title h3">Дата "начало"</h2>
+                            <div class="single__widget widget__bg">
+                            <ul class="widget__form--check">                               
+                                <li class="widget__form--check__list">
+                                    <input type="date" value="2024-01-01" id="date" name="datestart" class="date"/>
+                                </li>
+                            </ul>
+                            </div>    
+                        </div>
+                    </div>
+                    <div class="shipping__items style2 d-flex align-items-center">                       
+                        <div class="shipping__content">
+                            <h2 class="shipping__content--title h3">Дата "конец"</h2>
+                            <div class="single__widget widget__bg">
+                            <ul class="widget__form--check">                               
+                                <li class="widget__form--check__list">
+                                    <input type="date" value="2024-12-31" id="date" name="datestop" class="date"/>
+                                </li>
+                            </ul>
+                            </div>    
+                        </div>
+                    </div>
+                    <div class="shipping__items style2 d-flex align-items-center">                       
+                        <div class="shipping__content">
+                            <h2 class="shipping__content--title h3">Тип</h2>
+                            <div class="single__widget widget__bg">
+                            <ul class="widget__form--check">                               
+                                <li class="widget__form--check__list">
+                                    <select id="fruits" style="min-width: 130px; width: 130px;" name="type" class="type">
+                                        <option selected value="out">Исходящие</option>
+                                            <option value="out">Исходящие</option>
+                                            <option value="in">Входящие</option>
+                                    </select>
+                                </li>
+                            </ul>
+                            </div>    
+                        </div>
+                    </div>
+                                                                                               
+                    
+                </div>
+                <div class="shipping__items style2 d-flex align-items-center">                        
+                    <div class="shipping__content">                           
+                        <button style="width:200px;height:50px" class="primary__btn price__filter--btn" id="start" type="button">Сформировать</button>
+                        </br>
+                        </form>                          
+                    </div>
+                </div>
                 
+                @if ($table == true)
                 <div class="my__account--section__inner border-radius-10 d-flex">
                     <div class="account__wrapper">
                         <div class="account__content">
-                            <p><u>Редактор документа</u></p>
-
-                            
+                            <p><u>Таблица с учетом фильтров</u></p>
+                           
                             <div class="account__table--area">
                                 <table class="account__table">
                                     <thead class="account__table--header">
@@ -163,55 +252,31 @@
                                             <th style="min-width: 100px; width: 100px;" class="account__table--header__child--items" bgcolor="#66CDAA">Дата</th>
                                             <th style="min-width: 100px; width: 100px;" class="account__table--header__child--items" bgcolor="#66CDAA">Исполнитель</th>
                                             <th style="min-width: 200px; width: 200px;" class="account__table--header__child--items" bgcolor="#66CDAA">Содержание</th>    
-                                            <th style="min-width: 80px; width: 80px;" class="account__table--header__child--items" bgcolor="#66CDAA">Кнопка</th> 
+                                            <th style="min-width: 80px; width: 80px;" class="account__table--header__child--items" bgcolor="#66CDAA">Автор</th> 
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <input type="hidden" class="id" value="{{ $info['doc']['id'] }}">
-                                            <input type="hidden" class="variant" value="{{ $info['doc']['type'] }}">
-                                            <input type="hidden" class="exception" value="{{ $info['doc']['number'] }}">
-                                            <td><input style="min-width: 70px; width: 70px;" type="text" name="number" class="number" value="{{ $info['doc']['number'] }}"></td>
-                                            <td>
-                                                <select id="fruits" style="min-width: 100px; width: 100px;" name="npa" class="npa">
-                                                    <option selected value="{{ $info['doc']['npa_id'] }}">{{ $info['doc']['npa']['title'] }}</option>
-                                                    @foreach ($info['npa'] as $value) 
-                                                        <option value="{{ $value['id'] }}">{{ $value['title'] }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </td>
-                                            <td>   
-                                                <select id="fruits" style="min-width: 130px; width: 130px;" name="correspondent" class="correspondent">
-                                                    <option selected value="{{ $info['doc']['correspondent_id'] }}">{{ $info['doc']['correspondent']['title'] }}</option>
-                                                    @foreach ($info['corr'] as $value) 
-                                                        <option value="{{ $value['id'] }}">{{ $value['title'] }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </td>
-                                            <td>
-                                                <input type="date" value="{{ $info['doc']['date'] }}" id="date" name="date" class="date"/>
-                                            </td>
-                                            <td>   
-                                                <select id="fruits" style="min-width: 130px; width: 130px;" name="user" class="user">
-                                                    <option selected value="{{ $info['doc']['user_id'] }}">{{ $info['doc']['user']['name'] }}</option>
-                                                    @foreach ($info['users'] as $value) 
-                                                        <option value="{{ $value['id'] }}">{{ $value['name'] }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </td> 
-                                            <td class="col-id-no" scope="row"><textarea rows='3' cols='20' type=text name="content" class="content">{{ $info['doc']['content'] }}</textarea></td> 
-                                            <td>
-                                                <button style="width:200px;height:50px" class="primary__btn" id='btn_change' type="button">Изменить</button>
-                                            </td>
-                                        </tr>                                       
+                                        @foreach ($table as $value)
+                                            <tr>
+                                                <td>{{ $value['number'] }}</td>
+                                                <td>{{ $value['npa']['title'] }}</td>
+                                                <td>{{ $value['correspondent']['title'] }}</td>
+                                                <td>{{ $value['date'] }}</td>
+                                                <td>{{ $value['user']['name'] }}</td>
+                                                <td>{{ $value['content'] }}</td>
+                                                <td>{{ $value['author'] }}</td>
+                                            </tr>    
+                                        @endforeach
                                     </tbody>
                                 </table>
+                                
                                 </br>
                                 <p><b>*Для информации:</b> Модуль разработан, для замены рабочего места «Делопроизводство», системы «АС Бюджет»</p>
                             </div>
                         </div>
                     </div>
                 </div>
+                @endif
                 
             </div>                   
         </section>
@@ -283,6 +348,7 @@
   
 </body>
 </html>
+
 
 
 

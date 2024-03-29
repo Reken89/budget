@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Structure\DeloSection\User\Actions;
 
 use App\Core\Actions\BaseAction;
