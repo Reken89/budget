@@ -247,6 +247,7 @@ Route::post('/delo/docadd', [DeloController::class, 'DocAdd'])->middleware('auth
 Route::get('/delo/correspondents/table', [DeloCorrController::class, 'TableView'])->middleware('auth');
 Route::patch('/delo/correspondents/update', [DeloCorrController::class, 'UpdateTable'])->middleware('auth');
 Route::post('/delo/correspondents/add', [DeloCorrController::class, 'AddCorr'])->middleware('auth');
+Route::delete('/delo/correspondents/delete', [DeloCorrController::class, 'DeleteCorr'])->middleware('auth');
 Route::get('/delo/editor/table', [DeloEditorController::class, 'EditorView'])->middleware('auth');
 Route::patch('/delo/editor/update', [DeloEditorController::class, 'UpdateDoc'])->middleware('auth');
 Route::get('/delo/filters/table', [DeloFilterController::class, 'FilterView'])->middleware('auth');

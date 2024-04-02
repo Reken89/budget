@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Structure\DeloSection\User\Actions\DeloCorrAction;
 use App\Structure\DeloSection\User\Actions\DeloUpdateCorrAction;
 use App\Structure\DeloSection\User\Actions\DeloAddCorrAction;
+use App\Structure\DeloSection\User\Actions\DeloDeleteAction;
 
 class DeloCorrController extends Controller
 {
@@ -54,6 +55,17 @@ class DeloCorrController extends Controller
     {
         $result = $this->action(DeloAddCorrAction::class)->CreateCorr($request->title);
         return $result == true ? "Корреспондент успешно добавлен!" : "Что то пошло не так!";       
+    }
+    
+    /**
+     * Удаляем строку в таблицу correspondents
+     *
+     * @param Request $request
+     * @return 
+     */
+    public function DeleteCorr(Request $request)
+    {
+        $this->action(DeloDeleteAction::class)->DeleteCorr($request->id);   
     }
     
 }

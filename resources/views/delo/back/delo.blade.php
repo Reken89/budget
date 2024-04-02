@@ -158,19 +158,19 @@
                             @endif
                             
                             <div class="account__table--area">
-                                <table class="account__table">
-                                    <thead class="account__table--header">
-                                        <tr class="account__table--header__child">
-                                            <th style="min-width: 70px; width: 70px;" class="account__table--header__child--items" bgcolor="#66CDAA">Номер</th>
-                                            <th style="min-width: 70px; width: 70px;" class="account__table--header__child--items" bgcolor="#66CDAA">НПА</th>
-                                            <th style="min-width: 100px; width: 100px;" class="account__table--header__child--items" bgcolor="#66CDAA">Корреспондент</th>
-                                            <th style="min-width: 100px; width: 100px;" class="account__table--header__child--items" bgcolor="#66CDAA">Дата</th>
-                                            <th style="min-width: 100px; width: 100px;" class="account__table--header__child--items" bgcolor="#66CDAA">Исполнитель</th>
-                                            <th style="min-width: 200px; width: 200px;" class="account__table--header__child--items" bgcolor="#66CDAA">Содержание</th>    
-                                            <th style="min-width: 80px; width: 80px;" class="account__table--header__child--items" bgcolor="#66CDAA">Автор</th> 
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th style="min-width: 70px; width: 70px;" bgcolor="#66CDAA">Номер</th>
+                                            <th style="min-width: 70px; width: 70px;" bgcolor="#66CDAA">НПА</th>
+                                            <th style="min-width: 100px; width: 100px;" bgcolor="#66CDAA">Корреспондент</th>
+                                            <th style="min-width: 100px; width: 100px;" bgcolor="#66CDAA">Дата</th>
+                                            <th style="min-width: 100px; width: 100px;" bgcolor="#66CDAA">Исполнитель</th>
+                                            <th style="min-width: 200px; width: 200px;" bgcolor="#66CDAA">Содержание</th>    
+                                            <th style="min-width: 80px; width: 80px;" bgcolor="#66CDAA">Автор</th> 
                                         </tr>
                                     </thead>
-                                    <tbody class="cart__table--body">
+                                    <tbody>
                                         <tr>
                                             <input type="hidden" class="variant" value="{{ $info['variant'] }}">
                                             <input type="hidden" class="author" value="{{ $info['name'] }}">
@@ -208,7 +208,7 @@
                                             </td>
                                         </tr>
                                         @foreach ($info['documents'] as $value) 
-                                            <tr class="cart__table--body__items">
+                                            <tr>
                                                 @if ($info['name'] == $value['author'])
                                                     <td><a class="header__info--link" href="{{ route('editor', $value['id'])}}"><b>{{ $value['number'] }}</b></a></td>
                                                 @elseif ($info['role'] == "deloadm")

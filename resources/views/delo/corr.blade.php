@@ -56,6 +56,25 @@
                 } 
             }) 
         })
+        
+        //Выполняем действие (обновляем строку в таблицу)
+        $(document).on('click', '#delete', function(){
+            var tr = this.closest('tr');
+            var id = $('.id', tr).val();
+                        
+            $.ajax({
+                url:"/budget/public/delo/correspondents/delete",  
+                method:"delete",
+                data:{
+                    "_token": "{{ csrf_token() }}",
+                    id
+                },
+                dataType:"text",  
+                success:function(data){  
+                    fetch_data();  
+                } 
+            }) 
+        })
               
     });
 </script>

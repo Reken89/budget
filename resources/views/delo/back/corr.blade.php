@@ -145,23 +145,28 @@
                                 <table class="account__table">
                                     <thead class="account__table--header">
                                         <tr class="account__table--header__child">
-                                            <th style="min-width: 150px; width: 150px;" class="account__table--header__child--items" bgcolor="#66CDAA">Корреспондент</th>
+                                            <th style="min-width: 100px; width: 100px;" class="account__table--header__child--items" bgcolor="#66CDAA">Корреспондент</th>
                                             <th style="min-width: 80px; width: 80px;" class="account__table--header__child--items" bgcolor="#66CDAA">Кнопка</th>
+                                            <th style="min-width: 80px; width: 80px;" class="account__table--header__child--items" bgcolor="#66CDAA">Удаление</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>                                                                                      
-                                            <td class="col-id-no" scope="row"><textarea rows='3' cols='70' type=text name="content" class="title">Корреспондент</textarea></td> 
+                                            <td class="col-id-no" scope="row"><textarea rows='2' cols='50' type=text name="content" class="title">Корреспондент</textarea></td> 
                                             <td>
                                                 <button style="width:200px;height:50px" class="primary__btn" id='btn_add' type="button">Добавить</button>
                                             </td>
+                                            <td></td>
                                         </tr>
                                         @foreach ($info['corr'] as $value) 
                                             <tr>                                                
                                                 <input type="hidden" class="id" value="{{ $value['id'] }}">
-                                                <td class="col-id-no" scope="row"><textarea rows='3' cols='70' type=text name="content" class="title">{{ $value['title'] }}</textarea></td>
+                                                <td class="col-id-no" scope="row"><textarea rows='2' cols='50' type=text name="content" class="title">{{ $value['title'] }}</textarea></td>
                                                 <td>
                                                 <button style="width:200px;height:50px" class="primary__btn" id='btn_change' type="button">Изменить</button>
+                                                </td>
+                                                <td>
+                                                <button style="width:200px;height:50px" class="primary__btn" id='delete' type="button">Удалить</button>
                                                 </td>
                                             </tr>
                                         @endforeach
