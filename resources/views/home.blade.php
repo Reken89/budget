@@ -269,7 +269,7 @@
                               </div>
 
                               <div class="header__btn-4 ml-40 d-none d-sm-block d-lg-none d-xxl-block">
-                                 <a href="/budget/public/contact" >Информация</a>
+                                 <a href="/budget/public/logout" >Выход</a>
                               </div>
                            </div>
                         </div>

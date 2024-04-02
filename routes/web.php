@@ -21,6 +21,7 @@ use App\Structure\ReportingSection\Admin\Controllers\DebtController;
 use App\Structure\Ofs24Section\Admin\Controllers\AdminOfs24IndexController;
 use App\Structure\Ofs24Section\User\Controllers\Ofs24Controller;
 use App\Structure\DevSection\Admin\Controllers\DevController;
+use App\Structure\UserSection\Auth\Controllers\AuthController;
 use App\Structure\DeloSection\User\Controllers\DeloController;
 use App\Structure\DeloSection\User\Controllers\DeloCorrController;
 use App\Structure\DeloSection\User\Controllers\DeloEditorController;
@@ -259,5 +260,6 @@ Route::get('/delo/filters', [DeloFilterController::class, 'FrontView'])->middlew
 Route::get('/delo/correspondents', [DeloCorrController::class, 'FrontView'])->middleware('auth')->name('correspondents');
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
