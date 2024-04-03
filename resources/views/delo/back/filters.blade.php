@@ -239,27 +239,35 @@
                     <div class="shipping__content">                           
                         <button style="width:200px;height:50px" class="primary__btn price__filter--btn" id="start" type="button">Сформировать</button>
                         </br>
-                        </form>                          
+                        </form>    
+                        <br>
+                        <form action="/budget/public/delo/filters/export" method="get">
+                            <button style="width:200px;height:50px" class="primary__btn price__filter--btn" type="submit">Выгрузить в XLSX</button>
+                        </form>
                     </div>
                 </div>
                 
-                @if ($table == true)
+                @if ($table == true)              
                 <div class="my__account--section__inner border-radius-10 d-flex">
                     <div class="account__wrapper">
                         <div class="account__content">
                             <p><u>Таблица с учетом фильтров</u></p>
                            
                             <div class="account__table--area">
-                                <table class="account__table">
-                                    <thead class="account__table--header">
-                                        <tr class="account__table--header__child">
-                                            <th style="min-width: 70px; width: 70px;" class="account__table--header__child--items" bgcolor="#66CDAA">Номер</th>
-                                            <th style="min-width: 70px; width: 70px;" class="account__table--header__child--items" bgcolor="#66CDAA">НПА</th>
-                                            <th style="min-width: 100px; width: 100px;" class="account__table--header__child--items" bgcolor="#66CDAA">Корреспондент</th>
-                                            <th style="min-width: 100px; width: 100px;" class="account__table--header__child--items" bgcolor="#66CDAA">Дата</th>
-                                            <th style="min-width: 100px; width: 100px;" class="account__table--header__child--items" bgcolor="#66CDAA">Исполнитель</th>
-                                            <th style="min-width: 200px; width: 200px;" class="account__table--header__child--items" bgcolor="#66CDAA">Содержание</th>    
-                                            <th style="min-width: 80px; width: 80px;" class="account__table--header__child--items" bgcolor="#66CDAA">Автор</th> 
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th style="min-width: 70px; width: 70px;" bgcolor="#66CDAA">Номер</th>
+                                            <th style="min-width: 70px; width: 70px;" bgcolor="#66CDAA">НПА</th>
+                                            <th style="min-width: 100px; width: 100px;" bgcolor="#66CDAA">Корреспондент</th>
+                                            <th style="min-width: 100px; width: 100px;" bgcolor="#66CDAA">Дата</th>
+                                            @if($table[0]['type'] == "out")
+                                                <th style="min-width: 100px; width: 100px;" bgcolor="#66CDAA">Исполнитель</th>
+                                            @else
+                                                <th style="min-width: 100px; width: 100px;" bgcolor="#66CDAA">Резолюция</th>
+                                            @endif
+                                            <th style="min-width: 200px; width: 200px;" bgcolor="#66CDAA">Содержание</th>    
+                                            <th style="min-width: 80px; width: 80px;" bgcolor="#66CDAA">Автор</th> 
                                         </tr>
                                     </thead>
                                     <tbody>

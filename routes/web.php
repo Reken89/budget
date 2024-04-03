@@ -251,6 +251,7 @@ Route::delete('/delo/correspondents/delete', [DeloCorrController::class, 'Delete
 Route::get('/delo/editor/table', [DeloEditorController::class, 'EditorView'])->middleware('auth');
 Route::patch('/delo/editor/update', [DeloEditorController::class, 'UpdateDoc'])->middleware('auth');
 Route::get('/delo/filters/table', [DeloFilterController::class, 'FilterView'])->middleware('auth');
+Route::get('/delo/filters/export', [DeloFilterController::class, 'ExportTable'])->middleware('auth');
 Route::post('/delo/upload', [DeloController::class, 'Upload'])->middleware('auth');
 Route::get('/delo/uploadview', [DeloController::class, 'UploadView'])->middleware('auth')->name('uploadview');
 

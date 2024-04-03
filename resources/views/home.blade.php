@@ -229,11 +229,6 @@
                                                     <button type="submit" class="custom-btn btn-16"><b>Делопроизводство<b></button>
                                                  </form>
                                              </li>
-                                             <li>
-                                                 <form action="{{ route('uploadview')}}" method="get">
-                                                    <button type="submit" class="custom-btn btn-16"><b>Загрузка Excel<b></button>
-                                                 </form>
-                                             </li>
                                              @endif
                                           </ul>
                                        </li>

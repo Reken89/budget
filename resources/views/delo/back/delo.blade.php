@@ -165,7 +165,11 @@
                                             <th style="min-width: 70px; width: 70px;" bgcolor="#66CDAA">НПА</th>
                                             <th style="min-width: 100px; width: 100px;" bgcolor="#66CDAA">Корреспондент</th>
                                             <th style="min-width: 100px; width: 100px;" bgcolor="#66CDAA">Дата</th>
-                                            <th style="min-width: 100px; width: 100px;" bgcolor="#66CDAA">Исполнитель</th>
+                                            @if($info['variant'] == "out")
+                                                <th style="min-width: 100px; width: 100px;" bgcolor="#66CDAA">Исполнитель</th>
+                                            @else
+                                                <th style="min-width: 100px; width: 100px;" bgcolor="#66CDAA">Резолюция</th>
+                                            @endif
                                             <th style="min-width: 200px; width: 200px;" bgcolor="#66CDAA">Содержание</th>    
                                             <th style="min-width: 80px; width: 80px;" bgcolor="#66CDAA">Автор</th> 
                                         </tr>
