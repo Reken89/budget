@@ -258,7 +258,7 @@
                                     <thead>
                                         <tr>
                                             <th style="min-width: 70px; width: 70px;" bgcolor="#66CDAA">Номер</th>
-                                            <th style="min-width: 70px; width: 70px;" bgcolor="#66CDAA">НПА</th>
+                                            <th style="min-width: 70px; width: 70px;" bgcolor="#66CDAA">Вид документа</th>
                                             <th style="min-width: 100px; width: 100px;" bgcolor="#66CDAA">Корреспондент</th>
                                             <th style="min-width: 100px; width: 100px;" bgcolor="#66CDAA">Дата</th>
                                             @if($table[0]['type'] == "out")

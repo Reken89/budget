@@ -139,10 +139,10 @@
             <div class="container">
                 <p>Описание таблицы:</p>
                 <p><b><u>Номер</u></b> - Номер регистрации</br>
-                    <b><u>НПА</u></b> - Тип регистрируемого документа</br>
+                    <b><u>Вид документа</u></b> - Вид регистрируемого документа</br>
                     <b><u>Корреспондент</u></b> - Выбирается из списка</br>
                     <b><u>Дата</u></b> - Дата регистрации</br>
-                    <b><u>Исполнитель</u></b> - Ответственное лицо</br>
+                    <b><u>Исполнитель/Резолюция</u></b> - Ответственное лицо</br>
                     <b><u>Содержание</u></b> - Краткое содержание документа</br>
                     <b><u>Изменить</u></b> - Кнопка фиксации изменений
                 </p>
@@ -154,16 +154,20 @@
 
                             
                             <div class="account__table--area">
-                                <table class="account__table">
-                                    <thead class="account__table--header">
-                                        <tr class="account__table--header__child">
-                                            <th style="min-width: 70px; width: 70px;" class="account__table--header__child--items" bgcolor="#66CDAA">Номер</th>
-                                            <th style="min-width: 70px; width: 70px;" class="account__table--header__child--items" bgcolor="#66CDAA">НПА</th>
-                                            <th style="min-width: 100px; width: 100px;" class="account__table--header__child--items" bgcolor="#66CDAA">Корреспондент</th>
-                                            <th style="min-width: 100px; width: 100px;" class="account__table--header__child--items" bgcolor="#66CDAA">Дата</th>
-                                            <th style="min-width: 100px; width: 100px;" class="account__table--header__child--items" bgcolor="#66CDAA">Исполнитель</th>
-                                            <th style="min-width: 200px; width: 200px;" class="account__table--header__child--items" bgcolor="#66CDAA">Содержание</th>    
-                                            <th style="min-width: 80px; width: 80px;" class="account__table--header__child--items" bgcolor="#66CDAA">Кнопка</th> 
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th style="min-width: 70px; width: 70px;" bgcolor="#66CDAA">Номер</th>
+                                            <th style="min-width: 70px; width: 70px;" bgcolor="#66CDAA">Вид документа</th>
+                                            <th style="min-width: 100px; width: 100px;" bgcolor="#66CDAA">Корреспондент</th>
+                                            <th style="min-width: 100px; width: 100px;" bgcolor="#66CDAA">Дата</th>
+                                            @if ($info['doc']['type'] == "out")
+                                                <th style="min-width: 100px; width: 100px;" bgcolor="#66CDAA">Исполнитель</th>
+                                            @else
+                                                <th style="min-width: 100px; width: 100px;" bgcolor="#66CDAA">Резолюция</th>
+                                            @endif
+                                            <th style="min-width: 200px; width: 200px;" bgcolor="#66CDAA">Содержание</th>    
+                                            <th style="min-width: 80px; width: 80px;" bgcolor="#66CDAA">Кнопка</th> 
                                         </tr>
                                     </thead>
                                     <tbody>

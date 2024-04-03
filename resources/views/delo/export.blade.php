@@ -6,7 +6,7 @@
     <thead>
         <tr>
             <th style="min-width: 70px; width: 70px;">Номер</th>
-            <th style="min-width: 70px; width: 70px;">НПА</th>
+            <th style="min-width: 70px; width: 70px;">Вид документа</th>
             <th style="min-width: 100px; width: 100px;">Корреспондент</th>
             <th style="min-width: 100px; width: 100px;">Дата</th>
             @if($table[0]['type'] == "out")

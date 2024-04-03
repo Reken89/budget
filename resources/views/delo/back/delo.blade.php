@@ -139,10 +139,10 @@
             <div class="container">
                 <p>Описание таблицы:</p>
                 <p><b><u>Номер</u></b> - Номер регистрации</br>
-                    <b><u>НПА</u></b> - Тип регистрируемого документа</br>
+                    <b><u>Вид документа</u></b> - Вид регистрируемого документа</br>
                     <b><u>Корреспондент</u></b> - Выбирается из списка</br>
                     <b><u>Дата</u></b> - Дата регистрации</br>
-                    <b><u>Исполнитель</u></b> - Ответственное лицо</br>
+                    <b><u>Исполнитель/Резолюция</u></b> - Ответственное лицо</br>
                     <b><u>Содержание</u></b> - Краткое содержание документа</br>
                     <b><u>Автор</u></b> - Автор записи
                 </p>
@@ -162,7 +162,7 @@
                                     <thead>
                                         <tr>
                                             <th style="min-width: 70px; width: 70px;" bgcolor="#66CDAA">Номер</th>
-                                            <th style="min-width: 70px; width: 70px;" bgcolor="#66CDAA">НПА</th>
+                                            <th style="min-width: 70px; width: 70px;" bgcolor="#66CDAA">Вид документа</th>
                                             <th style="min-width: 100px; width: 100px;" bgcolor="#66CDAA">Корреспондент</th>
                                             <th style="min-width: 100px; width: 100px;" bgcolor="#66CDAA">Дата</th>
                                             @if($info['variant'] == "out")

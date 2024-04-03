@@ -134,6 +134,7 @@
                 <p><b><u>Корреспондент</u></b> - Введите название корреспондента</br>
                     <b><u>Добавить</u></b> - Кнопка добавления нового корреспондента</br>
                     <b><u>Изменить</u></b> - Кнопка изменения корреспондента</br>
+                    <b><u>Удалить</u></b> - Кнопка удаления корреспондента
                 </p>
                 
                 <div class="my__account--section__inner border-radius-10 d-flex">
@@ -142,12 +143,12 @@
                             <p><u>Корреспонденты</u></p>
                            
                             <div class="account__table--area">
-                                <table class="account__table">
-                                    <thead class="account__table--header">
-                                        <tr class="account__table--header__child">
-                                            <th style="min-width: 100px; width: 100px;" class="account__table--header__child--items" bgcolor="#66CDAA">Корреспондент</th>
-                                            <th style="min-width: 80px; width: 80px;" class="account__table--header__child--items" bgcolor="#66CDAA">Кнопка</th>
-                                            <th style="min-width: 80px; width: 80px;" class="account__table--header__child--items" bgcolor="#66CDAA">Удаление</th>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th style="min-width: 100px; width: 100px;" bgcolor="#66CDAA">Корреспондент</th>
+                                            <th style="min-width: 80px; width: 80px;" bgcolor="#66CDAA">Кнопка</th>
+                                            <th style="min-width: 80px; width: 80px;" bgcolor="#66CDAA">Удаление</th>
                                         </tr>
                                     </thead>
                                     <tbody>
