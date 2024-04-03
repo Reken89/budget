@@ -313,22 +313,22 @@
                         <div class="account__content">
                             <h2 class="account__content--title h3 mb-20">Год: @foreach ($year as $y) {{$y}}, @endforeach Месяц: @foreach ($mounth as $m) {{$name_mounth[$m]}}, @endforeach</h2>
                             <div class="account__table--area">
-                                <table class="account__table">
-                                    <thead class="account__table--header">
-                                        <tr class="account__table--header__child">
-                                            <th style="min-width: 80px; width: 80px;" class="account__table--header__child--items">Учреждение</th>
-                                            <th style="min-width: 80px; width: 80px;" class="account__table--header__child--items">Статус</th>
-                                            <th style="min-width: 140px; width: 150px;" colspan="2" class="account__table--header__child--items">Теплоснабжение</th> 
-                                            <th style="min-width: 140px; width: 150px;" colspan="2" class="account__table--header__child--items">Водоотведение</th> 
-                                            <th style="min-width: 140px; width: 150px;" colspan="2" class="account__table--header__child--items">Негативное воздействие</th> 
-                                            <th style="min-width: 140px; width: 150px;" colspan="2" class="account__table--header__child--items">Водоснабжение</th> 
-                                            <th style="min-width: 140px; width: 150px;" colspan="2" class="account__table--header__child--items">Электроснабжение</th> 
-                                            <th style="min-width: 140px; width: 150px;" colspan="2" class="account__table--header__child--items">Вывоз мусора</th>    
-                                            <th style="min-width: 80px; width: 80px;" rowspan="2" class="account__table--header__child--items">ИТОГО</th> 
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th style="min-width: 80px; width: 80px;">Учреждение</th>
+                                            <th style="min-width: 80px; width: 80px;">Статус</th>
+                                            <th style="min-width: 140px; width: 150px;" colspan="2">Теплоснабжение</th> 
+                                            <th style="min-width: 140px; width: 150px;" colspan="2">Водоотведение</th> 
+                                            <th style="min-width: 140px; width: 150px;" colspan="2">Негативное воздействие</th> 
+                                            <th style="min-width: 140px; width: 150px;" colspan="2">Водоснабжение</th> 
+                                            <th style="min-width: 140px; width: 150px;" colspan="2">Электроснабжение</th> 
+                                            <th style="min-width: 140px; width: 150px;" colspan="2">Вывоз мусора</th>    
+                                            <th style="min-width: 80px; width: 80px;" rowspan="2">ИТОГО</th> 
                                         </tr>
                                     </thead>
-                                    <tbody class="account__table--body mobile__none">
-                                        <tr class="account__table--body__child">
+                                    <tbody>
+                                        <tr>
                                             <td></td>
                                             <td></td>
                                             <td><b>Объем</b></td><td><b>Сумма</b></td>
@@ -367,7 +367,7 @@
                                             @foreach ($info['result'] as $value)                                         
                                                 <tr> 
                                                     <input type="hidden" class="id" value="{{ $value['id'] }}">
-                                                    <th>{{ $value['user']['name'] }}</th>
+                                                    <td>{{ $value['user']['name'] }}</td>
                                                     @if ($value['status'] == 3)
                                                         <td><input type=button class="button" id='btn_two' value='Изменить'></td>                                                       
                                                     @elseif ($value['status'] == 1)
