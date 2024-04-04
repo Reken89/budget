@@ -337,18 +337,18 @@
                             <p><u>После ввода каждой цифры, необходимо нажать клавишу «enter»</u></p>
                             <h2 class="account__content--title h3 mb-20">Год: {{ $info['result']['communal'][$key]['year'] }}, месяц: {{ $mounth[$info['result']['communal'][$key]['mounth']] }}</h2>
                             <div class="account__table--area">
-                                <table class="account__table">
-                                    <thead class="account__table--header">
-                                        <tr class="account__table--header__child">
-                                            <th style="min-width: 150px; width: 150px;" class="account__table--header__child--items" bgcolor="#66CDAA">Услуга</th>
-                                            <th style="min-width: 100px; width: 100px;" class="account__table--header__child--items" bgcolor="#66CDAA">Объем</th>
-                                            <th style="min-width: 100px; width: 100px;" class="account__table--header__child--items" bgcolor="#66CDAA">Сумма</th>
-                                            <th style="min-width: 100px; width: 100px;" class="account__table--header__child--items" bgcolor="#66CDAA">Ваш тариф*</th>
-                                            <th style="min-width: 100px; width: 100px;" class="account__table--header__child--items" bgcolor="#66CDAA">Тариф min</th>
-                                            <th style="min-width: 100px; width: 100px;" class="account__table--header__child--items" bgcolor="#66CDAA">Тариф max</th>                                           
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th style="min-width: 150px; width: 150px;" bgcolor="#66CDAA">Услуга</th>
+                                            <th style="min-width: 100px; width: 100px;" bgcolor="#66CDAA">Объем</th>
+                                            <th style="min-width: 100px; width: 100px;" bgcolor="#66CDAA">Сумма</th>
+                                            <th style="min-width: 100px; width: 100px;" bgcolor="#66CDAA">Ваш тариф*</th>
+                                            <th style="min-width: 100px; width: 100px;" bgcolor="#66CDAA">Тариф min</th>
+                                            <th style="min-width: 100px; width: 100px;" bgcolor="#66CDAA">Тариф max</th>                                           
                                         </tr>
                                     </thead>
-                                    <tbody class="account__table--body mobile__none">
+                                    <tbody>
                                         <tr>
                                             <input type="hidden" class="id" value="{{ $info['result']['communal'][$key]['id'] }}">
                                             <input type="hidden" class="service" value="heat">
@@ -572,7 +572,7 @@
         <div class="footer__bottom">
             <div class="container">
                 <div class="footer__bottom--inenr d-flex justify-content-between align-items-center">                    
-                    <p class="copyright__content"><span class="text__secondary">© 2023</span> Администрация Костомукшского городского округа</p>
+                    <p class="copyright__content"><span class="text__secondary">© 2024</span> Администрация Костомукшского городского округа</p>
                 </div>
             </div>
         </div>

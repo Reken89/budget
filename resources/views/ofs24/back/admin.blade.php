@@ -502,7 +502,7 @@
                     <div class="footer__logo">
                         <a class="footer__logo--link" href="index.html"><img src="assets/img/logo/nav-log-light.webp" alt="logo-img"></a>
                     </div>
-                    <p class="copyright__content"><span class="text__secondary">© 2023</span> Администрация Костомукшского городского округа</p>
+                    <p class="copyright__content"><span class="text__secondary">© 2024</span> Администрация Костомукшского городского округа</p>
                     <div class="footer__payment">
                         <img src="assets/img/icon/payment-img.webp" alt="payment-img">
                     </div>
