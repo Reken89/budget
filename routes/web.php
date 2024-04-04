@@ -26,6 +26,7 @@ use App\Structure\DeloSection\User\Controllers\DeloController;
 use App\Structure\DeloSection\User\Controllers\DeloCorrController;
 use App\Structure\DeloSection\User\Controllers\DeloEditorController;
 use App\Structure\DeloSection\User\Controllers\DeloFilterController;
+use App\Structure\Count24Section\Admin\Controllers\AdminCount24Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -261,6 +262,20 @@ Route::get('/delo/editor{id}', [DeloEditorController::class, 'FrontView'])->midd
 Route::get('/delo/filters', [DeloFilterController::class, 'FrontView'])->middleware('auth')->name('filters');
 Route::get('/delo/correspondents', [DeloCorrController::class, 'FrontView'])->middleware('auth')->name('correspondents');
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+ * 
+ * 
+ * 
+ */
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Роуты для Back (Модуль Смета2024)
+Route::get('/admin/count24/table', [AdminCount24Controller::class, 'TableView'])->middleware('auth', 'admin');
+
+//Роуты для Front (Модуль Смета2024)
+Route::get('/admin/count24', [AdminCount24Controller::class, 'FrontView'])->middleware('auth', 'admin')->name('admincount24');
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 
 Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
 Auth::routes();
