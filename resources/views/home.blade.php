@@ -158,17 +158,9 @@
                                                 <form action="{{ route('admincount')}}" method="get">
                                                     <input type='hidden' name='variant' value='1'>
                                                     <input type='hidden' name='year' value='2024'>
-                                                    <button type="submit" class="custom-btn btn-16">Смета</button>
+                                                    <button type="submit" class="custom-btn btn-16">Смета (2023 год)</button>
                                                 </form>
                                              </li>                                            
-                                             <li>
-                                                 <form action="{{ route('dev')}}" method="get">
-                                                    <input type='hidden' name='year' value='2024'>
-                                                    <input type='hidden' name='mounth' value='1'>                                                    
-                                                    <input type='hidden' name='info' value='no'>
-                                                    <button type="submit">Для Разработчика</button>
-                                                </form>
-                                             </li>
                                              @elseif ($role == "user")
                                              <li>
                                                  <form action="{{ route('usercommunal')}}" method="get">
