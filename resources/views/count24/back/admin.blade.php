@@ -116,22 +116,22 @@
                     <div class="account__wrapper">
                         <div class="account__content">
                             
-                            <div class="account__table--area">
-                                <div style="overflow-x: auto;">
-                                    <div class="scroll-table">
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th>Название блюда</th>
-                                                    <th>Белки</th>
-                                                    <th>Жиры</th>
-                                                    <th>Углеводы</th>
-                                                    <th>Ккал</th>
-                                                </tr>
-                                            </thead>
-                                        </table>	
-                                        <div class="scroll-table-body">
-                                            <table class="table">
+                            <div class="account__table--area">                               
+                                <div class="scroll-table">
+	
+                                    <div class="scroll-table-body">
+                                        <div class="big-table">
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th>Название блюда</th>
+                                                        <th>Белки</th>
+                                                        <th>Жиры</th>
+                                                        <th>Углеводы</th>
+                                                        <th>Ккал</th>
+                                                        <th>Дополнительно</th>
+                                                    </tr>
+                                                </thead>
                                                 <tbody>
                                                     @for ($i = 0 ; $i < 50 ; $i++)
                                                         <tr>
@@ -140,13 +140,14 @@
                                                             <td>14,2</td>
                                                             <td>10,2</td>
                                                             <td>214</td>
+                                                            <td>Дополнительно</td>
                                                         </tr>
                                                     @endfor
                                                 </tbody>
                                             </table>
-                                        </div>	
-                                    </div>
-                                </div>    
+                                        </div>    
+                                    </div>	
+                                </div>                                   
                                 </br>
                                 <p><b>*Для информации:</b> </p>
                             </div>
