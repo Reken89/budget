@@ -333,7 +333,7 @@
                                             @foreach ($info['result'] as $value)                                         
                                                 <tr> 
                                                     <input type="hidden" class="id" value="{{ $value['id'] }}">
-                                                    <th>{{ $value['user']['name'] }}</th>
+                                                    <td>{{ $value['user']['name'] }}</td>
                                                     @if ($value['status'] == 3)
                                                         <td><font color="green">отправлено</td>                                                      
                                                     @elseif ($value['status'] == 1)
