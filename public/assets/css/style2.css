@@ -13448,57 +13448,102 @@ body {
 }
 
 
-.scroll-table-body {
-    height: 300px;
-    overflow-x: auto;
-    margin-top: 0px;
-    margin-bottom: 20px;
-    border-bottom: 1px solid #eee;
+div.container_fix {
+    overflow: scroll;
 }
 
-.scroll-table table {
-    width:100%;
-    table-layout: fixed;
+.table2 {
+    width: 100%;
     border: none;
+    margin-bottom: 20px;
+}
+.table2 thead th {
+    font-weight: bold;
+    text-align: left;
+    border: none;
+    padding: 10px 15px;
+    background: #66CDAA;
+    font-size: 14px;
+    position: -webkit-sticky; /* for Safari */
+    position: sticky;
+    top: 0;
 }
 
-.scroll-table thead th {
-    top: 0;
+.table2 tbody th {
+    position: -webkit-sticky; /* for Safari */
     position: sticky;
-    min-width: 200px;
-    max-width: 200px;
-    font-weight: bold;
+    left: 0;
+}
+
+.table2 thead th:first-child {
+    left: 0;
+    z-index: 1;
+}
+/* Use overflow:scroll on your container to enable scrolling: */
+
+div.container_fix {
+    width: 1100px;
+    max-height: 700px;
+    overflow: scroll;
+}
+
+/* Use position: sticky to have it stick to the edge
+ * and top, right, or left to choose which edge to stick to: */
+
+.table2 thead th {
+  position: -webkit-sticky; /* for Safari */
+  position: sticky;
+  top: 0;
+}
+
+.table2 tbody th {
+  position: -webkit-sticky; /* for Safari */
+  position: sticky;
+  left: 0;
+}
+
+
+/* To have the header in the first column stick to the left: */
+
+.table2 thead th:first-child {
+  left: 0;
+  z-index: 1;
+}
+
+.table2 thead tr th:first-child {
+	border-radius: 8px 0 0 8px;
+}
+.table2 thead tr th:last-child {
+	border-radius: 0 8px 8px 0;
+}
+.table2 tbody td {
 	text-align: left;
 	border: none;
 	padding: 10px 15px;
-	background: #66CDAA;
-	font-size: 14px;
-}
-
-.scroll-table tbody td {
-    min-width: 120px;
-    max-width: 120px;
-    text-align: left;
-	border: none;
-	padding: 10px 15px;
 	font-size: 14px;
 	vertical-align: top;
 }
-
-
-
-
-.big-table {
-	overflow: auto;
-	position: relative;
+.table2 tbody tr:nth-child(even){
+	background: #f3f3f3;
+}
+.table2 tbody tr td:first-child {
+	border-radius: 8px 0 0 8px;
+}
+.table2 tbody tr td:last-child {
+	border-radius: 0 8px 8px 0;
 }
 
-.big-table table {
-	display: inline-block;
-	vertical-align: top;
-	max-width: 100%;
-	overflow-x: auto;
-	white-space: nowrap;
-	-webkit-overflow-scrolling: touch;
+/* Just to display it nicely: */
+.table2 tbody th {
+  background: #FFF;
+  border-right: 1px solid #CCC;
 }
-/*# sourceMappingURL=style.css.map */
+
+table2 {
+  border-collapse: collapse;
+}
+
+.table2 td,
+th {
+  padding: 0.5em;
+}

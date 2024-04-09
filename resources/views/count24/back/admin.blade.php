@@ -116,38 +116,47 @@
                     <div class="account__wrapper">
                         <div class="account__content">
                             
-                            <div class="account__table--area">                               
-                                <div class="scroll-table">
-	
-                                    <div class="scroll-table-body">
-                                        <div class="big-table">
+                            <div class="account__table--area">                               	
+                                    <div class="container_fix">
+                                        <div class="table2">
                                             <table>
                                                 <thead>
                                                     <tr>
-                                                        <th>Название блюда</th>
-                                                        <th>Белки</th>
-                                                        <th>Жиры</th>
-                                                        <th>Углеводы</th>
-                                                        <th>Ккал</th>
-                                                        <th>Дополнительно</th>
+                                                        <th style="min-width: 150px; width: 150px;">Наименование</th>
+                                                        <th style="min-width: 70px; width: 70px;">ЭКР</th>
+                                                        <th style="min-width: 100px; width: 100px;">Расходы (0104)</th>
+                                                        <th style="min-width: 100px; width: 100px;">Резервный фонд (0111)</th>
+                                                        <th style="min-width: 100px; width: 100px;">ГО и ЧС (0309)</th>
+                                                        <th style="min-width: 100px; width: 100px;">Транспорт (0408)</th>
+                                                        <th style="min-width: 100px; width: 100px;">Дорожный фонд (0409)</th>
+                                                        <th style="min-width: 100px; width: 100px;">Животные (0405)</th>
+                                                        <th style="min-width: 100px; width: 100px;">Город здоровья (0909)</th>
+                                                        <th style="min-width: 100px; width: 100px;">Социальная поддержка (1003)</th>
+                                                        <th style="min-width: 100px; width: 100px;">Пенсии (1001)</th>
+                                                        <th style="min-width: 100px; width: 100px;">Физкультура и спорт (1101)</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     @for ($i = 0 ; $i < 50 ; $i++)
                                                         <tr>
-                                                            <td>Азу</td>
-                                                            <td>11,9</td>
-                                                            <td>14,2</td>
-                                                            <td>10,2</td>
-                                                            <td>214</td>
-                                                            <td>Дополнительно</td>
+                                                            <th>Наименование расхода, может содержать большой текст</th>
+                                                            <td>7777</td>
+                                                            <td>10 000 000</td>
+                                                            <td>10 000 000</td>
+                                                            <td>10 000 000</td>
+                                                            <td>10 000 000</td>
+                                                            <td>10 000 000</td>
+                                                            <td>10 000 000</td>
+                                                            <td>10 000 000</td>
+                                                            <td>10 000 000</td>
+                                                            <td>10 000 000</td>
+                                                            <td>10 000 000</td>
                                                         </tr>
                                                     @endfor
                                                 </tbody>
                                             </table>
                                         </div>    
-                                    </div>	
-                                </div>                                   
+                                    </div>	                               
                                 </br>
                                 <p><b>*Для информации:</b> </p>
                             </div>
