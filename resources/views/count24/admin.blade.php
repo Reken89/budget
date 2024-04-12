@@ -105,7 +105,7 @@
         
         <!-- my account section start -->
         <section class="my__account--section section--padding">
-            
+            <div class="container2">
                 <form id="communal" method="get"> 
                 
                 <section class="shipping__section">
@@ -217,6 +217,9 @@
                     </div>
                 </div>
                 
+                </div>                   
+        </section>
+                
                 <div class="my__account--section__inner border-radius-10 d-flex">
                     <div class="account__wrapper">
                         <div class="account__content">
@@ -233,13 +236,10 @@
                         </div>
                     </div>
                 </div>
-                
-            </div>                   
-        </section>
         
                       
                 
-            
+            </div>    
         </section>
         <!-- my account section end -->
 
@@ -339,7 +339,7 @@
                             fetch_data(); 
                             //alert(data);
                         } 
-                    })                   
+                    })                    
                 }               
             })
         }

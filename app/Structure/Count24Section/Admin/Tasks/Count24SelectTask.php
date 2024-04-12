@@ -17,11 +17,12 @@ class Count24SelectTask extends BaseTask
     public function SelectAll(array $users, int $year): array
     {       
         
-        $info = Count24::select()
-            ->whereIn('user_id', $users)    
+        //$info = Count24::select()
+        $info = Count24::whereIn('user_id', $users)    
             ->where('year', $year)  
-            ->join('ekr', 'counts24.ekr_id', '=', 'ekr.id')     
-            //->with(['user:id,name', 'ekr'])  
+            ->join('ekr', 'counts24.ekr_id', '=', 'ekr.id')    
+            ->select('counts24.id', 'user_id', 'ekr_id', 'year', 'status', 'sum_fu', 'sum_cb')  
+            ->with(['user:id,name', 'ekr'])  
             ->orderBy('ekr.number', 'asc')
             ->orderBy('ekr.main', 'desc')
             ->orderBy('ekr.shared', 'desc')
