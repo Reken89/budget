@@ -110,7 +110,112 @@
                 
                 <section class="shipping__section">
             <div class="container">
-                <p>Описание таблицы:</p>
+                <div class="shipping__inner style2 d-flex">
+                    <div class="shipping__items style2 d-flex align-items-center">
+                        
+                        <div class="shipping__content">
+                            <h2 class="shipping__content--title h3">Год</h2>
+                            <div class="single__widget widget__bg">
+                            <ul class="widget__form--check">
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check6">2025</label>
+                                    <input class="widget__form--check__input" name="year" value="2024" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check7">2026</label>
+                                    <input class="widget__form--check__input" name="year" value="2023" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check8">2027</label>
+                                    <input class="widget__form--check__input" name="year" value="2022" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                            </ul>
+                            </div>    
+                        </div>
+                    </div>
+                    <div class="shipping__items style2 d-flex align-items-center">
+                        
+                        <div class="shipping__content">
+                            <h2 class="shipping__content--title h3">Раздел</h2>
+                            <div class="single__widget widget__bg">
+                            <ul class="widget__form--check">
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check6">Администрация</label>
+                                    <input class="widget__form--check__input" name="mounth" value="1" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check7">ОМСУ</label>
+                                    <input class="widget__form--check__input" name="mounth" value="2" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check8">ЦБ и Закупки</label>
+                                    <input class="widget__form--check__input" name="mounth" value="3" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check9">Детские сады</label>
+                                    <input class="widget__form--check__input" name="mounth" value="4" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>                          
+                            </ul>
+                            </div>    
+                        </div>
+                    </div>
+                    <div class="shipping__items style2 d-flex align-items-center">
+                        
+                        <div class="shipping__content">
+                            <h2 class="shipping__content--title h3">Раздел</h2>
+                            <div class="single__widget widget__bg">
+                            <ul class="widget__form--check">                                
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check10">ДХШ и ДМШ</label>
+                                    <input class="widget__form--check__input" name="mounth" value="7" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check10">ВСОШ</label>
+                                    <input class="widget__form--check__input" name="mounth" value="8" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check10">КУМС</label>
+                                    <input class="widget__form--check__input" name="mounth" value="9" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check10">Итого</label>
+                                    <input class="widget__form--check__input" name="mounth" value="10" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                            </ul>
+                            </div>    
+                        </div>
+                    </div>
+                    <div class="shipping__items style2 d-flex align-items-center">
+                        
+                        <div class="shipping__content">
+                            
+                        <button style="width:200px;height:50px" class="primary__btn price__filter--btn" id="btn_one" type="button">Сформировать</button>
+                        </br>
+                        </form>
+                        <br>
+                        <button style="width:200px;height:50px" name="formSubmit" id="btn_three" class="primary__btn price__filter--btn" type="button">Прогноз</button>
+                        </br>
+                        
+                        <br>
+                        <form action="/budget/public/admin/communal/export" method="get">
+                            <button style="width:200px;height:50px" class="primary__btn price__filter--btn" type="submit">Excel</button>
+                        </form>
+                        </br>
+
+                        </div>
+                    </div>
+                </div>
                 
                 <div class="my__account--section__inner border-radius-10 d-flex">
                     <div class="account__wrapper">
@@ -200,7 +305,44 @@
 <!-- Content -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> 
 <script>
-    $(document).ready(function(){   
+    $(document).ready(function(){ 
+        //Выполняем запись в БД при нажатии на клавишу ENTER
+        function setKeydownmyForm() {
+            $('input').keydown(function(e) {
+                if (e.keyCode === 13) {
+                    var td = this.closest('td');
+                    var id = $('.id', td).val(); 
+                   
+                    //Получаем значения, меняем запятую на точку и убираем пробелы в числе                   
+                    function structure(title){
+                        var volume = $(title, td).val();
+                        //Меняем запятую на точку
+                        //Убираем лишние пробелы
+                        //Выполняем арифметические действия в строке
+                        var volume = volume.replace(/\,/g,'.');
+                        var volume = volume.replace(/ /g,'');
+                        var volume = eval(volume);
+                        return volume;
+                    }
+                    
+                    var sum = structure('.sum');
+                                        
+                    $.ajax({
+                        url:"/budget/public/admin/count24/update",  
+                        method:"patch",  
+                        data:{
+                            "_token": "{{ csrf_token() }}",
+                            id, sum
+                        },
+                        dataType:"text",  
+                        success:function(data){
+                            fetch_data(); 
+                            //alert(data);
+                        } 
+                    })                   
+                }               
+            })
+        }
         
         //Подгружаем BACK шаблон отрисовки
         function fetch_data(){ 
@@ -209,7 +351,7 @@
                 method:"GET",
                 success:function(data){  
                     $('#table').html(data);  
-                    //setKeydownmyForm()
+                    setKeydownmyForm()
                 }   
             });  
         } 

@@ -154,7 +154,7 @@
         
         <!-- my account section start -->
         <section class="my__account--section section--padding">
-            <div class="container">
+            <div class="container2">
                 <form id="communal" method="get"> 
                 
                 <section class="shipping__section">
@@ -311,9 +311,7 @@
                         <div class="account__content">
                             <h2 class="account__content--title h3 mb-20">Год: @foreach ($year as $y) {{$y}}, @endforeach Месяц: @foreach ($mounth as $m) {{$name_mounth[$m]}}, @endforeach</h2>
                             <div class="account__table--area">
-                                <div class="container_fix">
-                                <div class="table2">
-                                <table>
+                                <table class="table">
                                     <thead>
                                         <tr>
                                             <th style="min-width: 80px; width: 80px;">Учреждение</th>
@@ -329,7 +327,7 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <th></th>
+                                            <td></td>
                                             <td></td>
                                             <td><b>Объем</b></td><td><b>Сумма</b></td>
                                             <td><b>Объем</b></td><td><b>Сумма</b></td>
@@ -347,7 +345,7 @@
                                         @endphp
                                         <tr>
                                             <input type="hidden" class="id" value="{{ $tarrif['id'] }}">
-                                            <th>Диапазон тарифов</th>
+                                            <td>Диапазон тарифов</td>
                                             <td></td>
                                             <td><input style="min-width: 80px; width: 80px;" type="text" class="heat_one" value="{{ number_format($tarrif['heat-one'], 3, ',', ' ') }}"></td>
                                             <td><input style="min-width: 80px; width: 80px;" type="text" class="heat_two" value="{{ number_format($tarrif['heat-two'], 3, ',', ' ') }}"></td>
@@ -367,7 +365,7 @@
                                             @foreach ($info['result'] as $value)                                         
                                                 <tr> 
                                                     <input type="hidden" class="id" value="{{ $value['id'] }}">
-                                                    <th>{{ $value['user']['name'] }}</th>
+                                                    <td>{{ $value['user']['name'] }}</td>
                                                     @if ($value['status'] == 3)
                                                         <td><input type=button class="button" id='btn_two' value='Изменить'></td>                                                       
                                                     @elseif ($value['status'] == 1)
@@ -394,7 +392,7 @@
                                         @elseif ($info['variant'] == "many")
                                             @foreach ($info['result'] as $value)
                                                 <tr>
-                                                    <th>{{ $value['user']['name'] }}</th>
+                                                    <td>{{ $value['user']['name'] }}</td>
                                                     <td></td>
                                                     <td>{{ number_format($value['heat_volume'], 3, ',', ' ') }}</td>
                                                     <td>{{ number_format($value['heat_sum'], 2, ',', ' ') }}</td>
@@ -413,7 +411,7 @@
                                             @endforeach
                                         @endif 
                                         <tr>
-                                            <th class="col-id-no" scope="row"><b>ИТОГО</b></th>
+                                            <td class="col-id-no" scope="row"><b>ИТОГО</b></td>
                                             <td></td>
                                             <td>{{ number_format($total['heat_volume'], 3, ',', ' ') }}</td>
                                             <td>{{ number_format($total['heat_sum'], 2, ',', ' ') }}</td>
@@ -432,8 +430,6 @@
                                     </tbody>
                                     
                                 </table>
-                                </div>
-                                </div>    
                             </div>
                         </div>
                     </div>
