@@ -106,7 +106,7 @@
         <!-- my account section start -->
         <section class="my__account--section section--padding">
             <div class="container2">
-                <form id="communal" method="get"> 
+                <form id="smeta" method="get"> 
                 
                 <section class="shipping__section">
             <div class="container">
@@ -119,17 +119,17 @@
                             <ul class="widget__form--check">
                                 <li class="widget__form--check__list">
                                     <label class="widget__form--check__label" for="check6">2025</label>
-                                    <input class="widget__form--check__input" name="year" value="2024" type="checkbox">
+                                    <input class="widget__form--check__input" name="year" value="2025" type="checkbox">
                                     <span class="widget__form--checkmark"></span>
                                 </li>
                                 <li class="widget__form--check__list">
                                     <label class="widget__form--check__label" for="check7">2026</label>
-                                    <input class="widget__form--check__input" name="year" value="2023" type="checkbox">
+                                    <input class="widget__form--check__input" name="year" value="2026" type="checkbox">
                                     <span class="widget__form--checkmark"></span>
                                 </li>
                                 <li class="widget__form--check__list">
                                     <label class="widget__form--check__label" for="check8">2027</label>
-                                    <input class="widget__form--check__input" name="year" value="2022" type="checkbox">
+                                    <input class="widget__form--check__input" name="year" value="2027" type="checkbox">
                                     <span class="widget__form--checkmark"></span>
                                 </li>
                             </ul>
@@ -144,22 +144,22 @@
                             <ul class="widget__form--check">
                                 <li class="widget__form--check__list">
                                     <label class="widget__form--check__label" for="check6">Администрация</label>
-                                    <input class="widget__form--check__input" name="mounth" value="1" type="checkbox">
+                                    <input class="widget__form--check__input" name="variant" value="1" type="checkbox">
                                     <span class="widget__form--checkmark"></span>
                                 </li>
                                 <li class="widget__form--check__list">
                                     <label class="widget__form--check__label" for="check7">ОМСУ</label>
-                                    <input class="widget__form--check__input" name="mounth" value="2" type="checkbox">
+                                    <input class="widget__form--check__input" name="variant" value="2" type="checkbox">
                                     <span class="widget__form--checkmark"></span>
                                 </li>
                                 <li class="widget__form--check__list">
                                     <label class="widget__form--check__label" for="check8">ЦБ и Закупки</label>
-                                    <input class="widget__form--check__input" name="mounth" value="3" type="checkbox">
+                                    <input class="widget__form--check__input" name="variant" value="3" type="checkbox">
                                     <span class="widget__form--checkmark"></span>
                                 </li>
                                 <li class="widget__form--check__list">
                                     <label class="widget__form--check__label" for="check9">Детские сады</label>
-                                    <input class="widget__form--check__input" name="mounth" value="4" type="checkbox">
+                                    <input class="widget__form--check__input" name="variant" value="4" type="checkbox">
                                     <span class="widget__form--checkmark"></span>
                                 </li>                          
                             </ul>
@@ -174,22 +174,22 @@
                             <ul class="widget__form--check">                                
                                 <li class="widget__form--check__list">
                                     <label class="widget__form--check__label" for="check10">ДХШ и ДМШ</label>
-                                    <input class="widget__form--check__input" name="mounth" value="7" type="checkbox">
+                                    <input class="widget__form--check__input" name="variant" value="5" type="checkbox">
                                     <span class="widget__form--checkmark"></span>
                                 </li>
                                 <li class="widget__form--check__list">
                                     <label class="widget__form--check__label" for="check10">ВСОШ</label>
-                                    <input class="widget__form--check__input" name="mounth" value="8" type="checkbox">
+                                    <input class="widget__form--check__input" name="variant" value="6" type="checkbox">
                                     <span class="widget__form--checkmark"></span>
                                 </li>
                                 <li class="widget__form--check__list">
                                     <label class="widget__form--check__label" for="check10">КУМС</label>
-                                    <input class="widget__form--check__input" name="mounth" value="9" type="checkbox">
+                                    <input class="widget__form--check__input" name="variant" value="7" type="checkbox">
                                     <span class="widget__form--checkmark"></span>
                                 </li>
                                 <li class="widget__form--check__list">
                                     <label class="widget__form--check__label" for="check10">Итого</label>
-                                    <input class="widget__form--check__input" name="mounth" value="10" type="checkbox">
+                                    <input class="widget__form--check__input" name="variant" value="8" type="checkbox">
                                     <span class="widget__form--checkmark"></span>
                                 </li>
                             </ul>
@@ -200,7 +200,7 @@
                         
                         <div class="shipping__content">
                             
-                        <button style="width:200px;height:50px" class="primary__btn price__filter--btn" id="btn_one" type="button">Сформировать</button>
+                        <button style="width:200px;height:50px" class="primary__btn price__filter--btn" id="start" type="button">Сформировать</button>
                         </br>
                         </form>
                         <br>
@@ -346,9 +346,16 @@
         
         //Подгружаем BACK шаблон отрисовки
         function fetch_data(){ 
+            var year = 2025;
+            var variant = 5;
+            
             $.ajax({  
                 url:"/budget/public/admin/count24/table",  
                 method:"GET",
+                data:{
+                    year, variant
+                },
+                dataType:"text", 
                 success:function(data){  
                     $('#table').html(data);  
                     setKeydownmyForm()
@@ -357,7 +364,41 @@
         } 
         fetch_data();
         
-             
+        //Выполняем действие (формируем таблицу) при нажатии на кнопку
+        $(document).on('click', '#start', function(){
+            let infomany = $('#smeta').serializeArray();
+
+            //Создаем пустые массивы
+            let many_year = [];
+            let many_variant = [];
+
+            //Получаем информацию по ключам         
+            for (const item of infomany) {
+                const value = item.value;
+                if (item.name === 'year') {
+                    many_year.push(value);
+                } else if (item.name === 'variant') {
+                    many_variant.push(value);
+                } 
+            }   
+            
+            let variant = many_variant[0];
+            let year = many_year[0];
+                
+            $.ajax({
+                url:"/budget/public/admin/count24/table",  
+                method:"get",
+                data:{
+                    year, variant
+                },
+                dataType:"text",  
+                success:function(data){ 
+                    $('#live_data').html(data);  
+                    setKeydownmyForm() 
+                    //alert(123);
+                } 
+            })               
+        })     
     });
 </script>
 

@@ -5,7 +5,9 @@ namespace App\Structure\Count24Section\Admin\Controllers;
 use App\Core\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Structure\Count24Section\Admin\Requests\Count24UpdateRequest;
+use App\Structure\Count24Section\Admin\Requests\Count24IndexRequest;
 use App\Structure\Count24Section\Admin\Dto\Count24UpdateDto;
+use App\Structure\Count24Section\Admin\Dto\Count24IndexDto;
 use App\Structure\Count24Section\Admin\Actions\Count24SelectAction;
 use App\Structure\Count24Section\Admin\Actions\Count24UpdateAction;
 
@@ -26,13 +28,14 @@ class AdminCount24Controller extends Controller
      * Back отрисовка 
      * Таблица Смета 2024 
      *
-     * @param 
+     * @param Count24IndexRequest $request
      * @return 
      */
-    public function TableView()
-    {
-        $info = $this->action(Count24SelectAction::class)->SelectInfo(5, 2025); 
-        return view('count24.back.admin', ['info' => $info]);         
+    public function TableView(Count24IndexRequest $request)
+    {  
+        $dto = Count24IndexDto::fromRequest($request);
+        $info = $this->action(Count24SelectAction::class)->SelectInfo($dto); 
+        return view('count24.back.admin', ['info' => $info]);  
     }
     
     /**
