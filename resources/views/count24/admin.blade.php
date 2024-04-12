@@ -224,7 +224,7 @@
                     <div class="account__wrapper">
                         <div class="account__content">
                             
-                            <div class="account__table--area">                               	
+                            <div class="account__table--area">                             
                                     <div class="container_fix">
                                         <div class="table2">
                                             <div id="table"></div>
