@@ -19,9 +19,13 @@ class AdminCount24Controller extends Controller
      * @param 
      * @return 
      */
-    public function FrontView()
+    public function FrontView(Count24IndexRequest $request)
     {
-        return view('count24.admin');   
+        $info = [
+            'year'    => $request->year,
+            'variant' => $request->variant,
+        ];
+        return view('count24.admin', ['info' => $info]);   
     }
     
      /**

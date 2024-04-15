@@ -163,6 +163,8 @@
                                              </li>  
                                              <li>
                                                 <form action="{{ route('admincount24')}}" method="get">
+                                                    <input type='hidden' name='variant' value='5'>
+                                                    <input type='hidden' name='year' value='2025'>
                                                     <button type="submit" class="custom-btn btn-16">Смета (2024 год)</button>
                                                 </form>
                                              </li>

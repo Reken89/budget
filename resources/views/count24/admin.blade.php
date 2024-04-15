@@ -106,7 +106,7 @@
         <!-- my account section start -->
         <section class="my__account--section section--padding">
             <div class="container2">
-                <form id="smeta" method="get"> 
+                <form id="smeta" action="/budget/public/admin/count24" method="get"> 
                 
                 <section class="shipping__section">
             <div class="container">
@@ -200,7 +200,7 @@
                         
                         <div class="shipping__content">
                             
-                        <button style="width:200px;height:50px" class="primary__btn price__filter--btn" id="start" type="button">Сформировать</button>
+                        <button style="width:200px;height:50px" class="primary__btn price__filter--btn" type="submit">Сформировать</button>
                         </br>
                         </form>
                         <br>
@@ -346,8 +346,9 @@
         
         //Подгружаем BACK шаблон отрисовки
         function fetch_data(){ 
-            var year = 2025;
-            var variant = 5;
+            var form = <?=json_encode($info)?>;
+            var year = form['year'];
+            var variant = form['variant'];
             
             $.ajax({  
                 url:"/budget/public/admin/count24/table",  
