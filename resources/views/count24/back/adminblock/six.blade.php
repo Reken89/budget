@@ -5,7 +5,12 @@
     $fu_garden = 0;
     $cb_school = 0;
     $cb_garden = 0;
-    $color = "red";
+    
+    if($info[0]['status'] == "2"){
+        $color = "red";
+    }else{
+        $color = "green";
+    }
 @endphp
 
 <!doctype html>

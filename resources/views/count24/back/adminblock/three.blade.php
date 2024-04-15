@@ -1,10 +1,8 @@
 @php
-    //var_dump($info[0]);
-    //var_dump(count($info));
-    $fu_dhsh = 0;
-    $fu_dmsh = 0;
-    $cb_dhsh = 0;
-    $cb_dmsh = 0;
+    $fu_zakupki = 0;
+    $fu_cb = 0;
+    $cb_zakupki = 0;
+    $cb_cb = 0;
     
     if($info[0]['status'] == "2"){
         $color = "red";
@@ -22,11 +20,11 @@
             <th style="min-width: 200px; width: 400px;">Наименование</th>
             <th style="min-width: 70px; width: 70px;">ЭКР</th>
             <th style="min-width: 150px; width: 150px;">Итог ФЭУ</th>
-            <th style="min-width: 150px; width: 150px;">ДХШ</th>
-            <th style="min-width: 150px; width: 150px;">ДМШ</th>
+            <th style="min-width: 150px; width: 150px;">Закупки</th>
+            <th style="min-width: 150px; width: 150px;">Централизованная бухгалтерия</th>
             <th style="min-width: 150px; width: 150px;">Итог ЦБ</th>
-            <th style="min-width: 150px; width: 150px;">(ЦБ) ДХШ</th>
-            <th style="min-width: 150px; width: 150px;">(ЦБ) ДМШ</th>
+            <th style="min-width: 150px; width: 150px;">(ЦБ) Закупки</th>
+            <th style="min-width: 150px; width: 150px;">(ЦБ) Централизованная бухгалтерия</th>
         </tr>
     </thead>
     <tbody>
@@ -59,10 +57,10 @@
                 @endif
                 @if($info[$i]['ekr']['shared'] == "No" && $info[$i]['ekr']['main'] == "Yes")
                     @php
-                        $fu_dhsh += $info[$i]['sum_fu'];
-                        $fu_dmsh += $info[$i+1]['sum_fu'];
-                        $cb_dhsh += $info[$i]['sum_cb'];
-                        $cb_dmsh += $info[$i+1]['sum_cb'];
+                        $fu_zakupki += $info[$i]['sum_fu'];
+                        $fu_cb += $info[$i+1]['sum_fu'];
+                        $cb_zakupki += $info[$i]['sum_cb'];
+                        $cb_cb += $info[$i+1]['sum_cb'];
                     @endphp
                 @endif
             @endif        
@@ -70,12 +68,12 @@
         <tr>
             <th>Итог</th>
             <td></td>
-            <td><b>{{ number_format($fu_dhsh + $fu_dmsh, 2, ',', ' ') }}<b></td>
-            <td><b>{{ number_format($fu_dhsh, 2, ',', ' ') }}</b></td> 
-            <td><b>{{ number_format($fu_dmsh, 2, ',', ' ') }}</b></td>  
-            <td><font color="{{ $color }}"><b>{{ number_format($cb_dhsh + $cb_dmsh, 2, ',', ' ') }}<b></td>
-            <td><font color="{{ $color }}"><b>{{ number_format($cb_dhsh, 2, ',', ' ') }}</b></td> 
-            <td><font color="{{ $color }}"><b>{{ number_format($cb_dmsh, 2, ',', ' ') }}</b></td> 
+            <td><b>{{ number_format($fu_zakupki + $fu_cb, 2, ',', ' ') }}<b></td>
+            <td><b>{{ number_format($fu_zakupki, 2, ',', ' ') }}</b></td> 
+            <td><b>{{ number_format($fu_cb, 2, ',', ' ') }}</b></td>  
+            <td><font color="{{ $color }}"><b>{{ number_format($cb_zakupki + $cb_cb, 2, ',', ' ') }}<b></td>
+            <td><font color="{{ $color }}"><b>{{ number_format($cb_zakupki, 2, ',', ' ') }}</b></td> 
+            <td><font color="{{ $color }}"><b>{{ number_format($cb_cb, 2, ',', ' ') }}</b></td> 
         </tr>
     </tbody>
 </table>

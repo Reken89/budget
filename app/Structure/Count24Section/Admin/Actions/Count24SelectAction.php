@@ -15,12 +15,21 @@ class Count24SelectAction extends BaseAction
      * @return array
      */
     public function SelectInfo(Count24IndexDto $dto): array
-    {      
+    {   
+        if($dto->variant == "3"){
+            $users = [26,29];
+        }
+        if($dto->variant == "4"){
+            $users = [9,10,11,12,13,14,15];
+        }
         if($dto->variant == "5"){
             $users = [18,19];
         }
         if($dto->variant == "6"){
             $users = [8,36];
+        }
+        if($dto->variant == "7"){
+            $users = [23,37,38];
         }
         
         $result = $this->task(Count24SelectTask::class)->SelectAll($users, $dto->year);

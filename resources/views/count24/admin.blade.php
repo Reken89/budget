@@ -208,9 +208,7 @@
                         </br>
                         
                         <br>
-                        <form action="/budget/public/admin/communal/export" method="get">
-                            <button style="width:200px;height:50px" class="primary__btn price__filter--btn" type="submit">Excel</button>
-                        </form>
+                            <button style="width:200px;height:50px" class="primary__btn price__filter--btn" id="test" type="button">Excel</button>
                         </br>
 
                         </div>
@@ -365,40 +363,9 @@
         } 
         fetch_data();
         
-        //Выполняем действие (формируем таблицу) при нажатии на кнопку
-        $(document).on('click', '#start', function(){
-            let infomany = $('#smeta').serializeArray();
-
-            //Создаем пустые массивы
-            let many_year = [];
-            let many_variant = [];
-
-            //Получаем информацию по ключам         
-            for (const item of infomany) {
-                const value = item.value;
-                if (item.name === 'year') {
-                    many_year.push(value);
-                } else if (item.name === 'variant') {
-                    many_variant.push(value);
-                } 
-            }   
-            
-            let variant = many_variant[0];
-            let year = many_year[0];
-                
-            $.ajax({
-                url:"/budget/public/admin/count24/table",  
-                method:"get",
-                data:{
-                    year, variant
-                },
-                dataType:"text",  
-                success:function(data){ 
-                    $('#live_data').html(data);  
-                    setKeydownmyForm() 
-                    //alert(123);
-                } 
-            })               
+        //Временная заглушка
+        $(document).on('click', '#test', function(){
+            alert("Выгрузка в EXCEL находится в разработке...");                                                    
         })     
     });
 </script>
