@@ -16,6 +16,14 @@ class Count24SelectAction extends BaseAction
      */
     public function SelectInfo(Count24IndexDto $dto): array
     {   
+        if($dto->variant == "1"){
+            $users = [53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68,];
+        }
+        
+        if($dto->variant == "2"){
+            $users = [27, 28, 35, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68,];
+        }
+        
         if($dto->variant == "3"){
             $users = [26,29];
         }

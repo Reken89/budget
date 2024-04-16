@@ -1,3 +1,13 @@
+<!-- Детализация администрации -->
+@if($info[0]['user_id'] == "53")
+    @include('count24.back.adminblock.one')
+@endif
+
+<!-- Если первое учреждение Совет -->
+@if($info[0]['user_id'] == "27")
+    @include('count24.back.adminblock.two')
+@endif
+
 <!-- Если первое учреждение Закупки -->
 @if($info[0]['user_id'] == "26")
     @include('count24.back.adminblock.three')
