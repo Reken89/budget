@@ -208,7 +208,9 @@
                         </br>
                         
                         <br>
-                            <button style="width:200px;height:50px" class="primary__btn price__filter--btn" id="test" type="button">Excel</button>
+                            <form action="/budget/public/admin/count24/export" method="get">
+                            <button type="submit" style="width:200px;height:50px" class="primary__btn price__filter--btn">EXCEL</button>
+                        </form>
                         </br>
 
                         </div>

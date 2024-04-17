@@ -3,7 +3,8 @@
 namespace App\Structure\Count24Section\Admin\Controllers;
 
 use App\Core\Controllers\Controller;
-use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Structure\Count24Section\Admin\Exports\ExportTable;
 use App\Structure\Count24Section\Admin\Requests\Count24UpdateRequest;
 use App\Structure\Count24Section\Admin\Requests\Count24IndexRequest;
 use App\Structure\Count24Section\Admin\Dto\Count24UpdateDto;
@@ -39,6 +40,10 @@ class AdminCount24Controller extends Controller
     {  
         $dto = Count24IndexDto::fromRequest($request);
         $info = $this->action(Count24SelectAction::class)->SelectInfo($dto); 
+        
+        //Сессия для выгрузки в EXCEL
+        session(['info' => $info]);
+        
         return view('count24.back.admin', ['info' => $info]);  
     }
     
@@ -53,6 +58,17 @@ class AdminCount24Controller extends Controller
         $dto = Count24UpdateDto::fromRequest($request);
         $info = $this->action(Count24UpdateAction::class)->UpdateInfo($dto);          
     }
+    
+    /**
+     * Выгрузка таблицы в EXCEL
+     * 
+     * @param 
+     * @return Excel
+     */
+    public function ExportTable()
+    { 
+        return Excel::download(new ExportTable, 'table.xlsx');
+    }  
     
 }
 
