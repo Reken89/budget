@@ -35,6 +35,35 @@ class Count24SelectTask extends BaseTask
         return $info;  
 
     }
+    
+    /**
+     * Возвращает свод сметы
+     * По всем пользователям
+     *
+     * @param int $year
+     * @return array
+     */
+    public function SelectVault(int $year): array
+    {       
+
+        $info = Count24::where('year', $year)  
+            ->join('ekr', 'counts24.ekr_id', '=', 'ekr.id')    
+            ->select('ekr_id', 'year')  
+            ->selectRaw('SUM(`sum_fu`) as sum_fu')
+            ->selectRaw('SUM(`sum_cb`) as sum_cb')     
+            ->with(['ekr'])  
+            ->orderBy('ekr.number', 'asc')
+            ->orderBy('ekr.main', 'desc')
+            ->orderBy('ekr.shared', 'desc')
+            ->orderBy('ekr.title', 'asc')
+            ->groupBy('ekr_id')   
+            ->groupBy('year')       
+            ->get()
+            ->toArray();
+        
+        return $info;  
+
+    }
 
      /**
      * Возвращает number

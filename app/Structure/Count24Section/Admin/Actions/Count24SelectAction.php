@@ -40,7 +40,12 @@ class Count24SelectAction extends BaseAction
             $users = [23,37,38];
         }
         
-        $result = $this->task(Count24SelectTask::class)->SelectAll($users, $dto->year);
+        if($dto->variant == "8"){
+            $result = $this->task(Count24SelectTask::class)->SelectVault($dto->year);
+        }else{
+            $result = $this->task(Count24SelectTask::class)->SelectAll($users, $dto->year);
+        }
+
         return $result;
 
     }

@@ -15,7 +15,6 @@
 
 <!doctype html>
 <html lang="en">
-<p><b>Выбранный год: {{ $info[0]['year'] }}</b> </p>   
 <table>
     <thead>
         <tr>

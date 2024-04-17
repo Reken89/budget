@@ -17,8 +17,7 @@
 @endphp
 
 <!doctype html>
-<html lang="en">
-<p><b>Выбранный год: {{ $info[0]['year'] }}</b> </p>   
+<html lang="en"> 
 <table>
     <thead>
         <tr>
