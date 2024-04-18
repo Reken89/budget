@@ -204,11 +204,11 @@
                         </br>
                         </form>
                         <br>
-                        <button style="width:200px;height:50px" name="formSubmit" id="btn_three" class="primary__btn price__filter--btn" type="button">Прогноз</button>
+                        <button style="width:200px;height:50px" name="formSubmit" id="communal" class="primary__btn price__filter--btn" type="button">Прогноз</button>
                         </br>
                         
                         <br>
-                            <form action="/budget/public/admin/count24/export" method="get">
+                        <form action="/budget/public/admin/count24/export" method="get">
                             <button type="submit" style="width:200px;height:50px" class="primary__btn price__filter--btn">EXCEL</button>
                         </form>
                         </br>
@@ -367,8 +367,16 @@
         fetch_data();
         
         //Временная заглушка
-        $(document).on('click', '#test', function(){
-            alert("Выгрузка в EXCEL находится в разработке...");                                                    
+        $(document).on('click', '#communal', function(){
+            $.ajax({
+                url:"/budget/public/admin/count24/communal",  
+                method:"get",   
+                success:function(data){
+                    fetch_data(); 
+                    alert(data);                    	
+                    location.reload();
+                } 
+            })                                                     
         })     
     });
 </script>

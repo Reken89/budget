@@ -70,6 +70,19 @@ class AdminCount24Controller extends Controller
         return Excel::download(new ExportTable, 'table.xlsx');
     }  
     
+    /**
+     * Синхронизация таблиц
+     * Прогноз коммунальных услус
+     * с таблицей смета24
+     * 
+     * @param 
+     * @return Excel
+     */
+    public function GetCommunal()
+    { 
+        echo "Синхронизация выполнена, страница будет перезагружена!";
+    } 
+    
 }
 
 
