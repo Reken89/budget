@@ -4,6 +4,7 @@ namespace App\Structure\Count24Section\Admin\Tasks;
 
 use App\Core\Task\BaseTask;
 use App\Structure\Count24Section\Admin\Models\Count24;
+use App\Structure\ForecastSection\Admin\Models\Forecastcommunal;
 use App\Structure\Count24Section\Admin\Dto\Count24UpdateDto;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -133,7 +134,40 @@ class Count24SelectTask extends BaseTask
             ->toArray();
         
         return $result; 
-    } 
+    }
+    
+    /**
+     * Возвращает прогноз по заданным параметрам
+     * Таблица forecast_communals
+     *
+     * @param int $user
+     * @return array
+     */
+    public function SelectCommunal(int $user): array
+    {              
+        $info = Forecastcommunal::selectRaw('(`sum_one` + `sum_two`) as sum_fu')
+            ->where('user_id', $user)       
+            ->get()
+            ->toArray();
+        
+        return $info;  
+    }
+    
+    /**
+     * Возвращает таблицу за 2025 год
+     *
+     * @param 
+     * @return array
+     */
+    public function SelectYear(): array
+    {              
+        $result = Count24::select()   
+            ->where('year', 2025)    
+            ->get()
+            ->toArray();
+        
+        return $result;   
+    }
 
 }
 

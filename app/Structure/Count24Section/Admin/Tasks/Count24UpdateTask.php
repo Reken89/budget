@@ -81,5 +81,50 @@ class Count24UpdateTask extends BaseTask
         return $result == true ? true : false;
 
     }
+    
+    /**
+     * Обновляет значения в таблице counts24
+     * Относительно коммунальных услуг
+     *
+     * @param int $key, int $user, float $sum
+     * @return 
+     */
+    public function UpdateCommunal(int $key, int $user, float $sum): bool
+    {        
+        $result = Count24::where('user_id', $user)
+            ->where('ekr_id', $key);
+        $result->update([                
+            'sum_fu' => $sum,
+        ]);
+        
+        return $result == true ? true : false;        
+    }
+    
+    /**
+     * Обновляет значения в таблице counts24
+     * Относительно коммунальных услуг
+     *
+     * @param array $info
+     * @return bool
+     */
+    public function UpdateYears(array $info): bool
+    {        
+        foreach ($info as $inf){
+            if($inf['sum_fu'] == 0){
+                //Заглушка
+                $result = true;
+            }else{
+                $result = Count24::where('user_id', $inf['user_id'])
+                ->whereIn('year', [2026,2027])
+                ->where('ekr_id', $inf['ekr_id']);          
+                $result->update([
+                    'sum_fu' => $inf['sum_fu'],
+                ]);
+            }
+              
+        } 
+        
+        return $result == true ? true : false;        
+    }
 }
 

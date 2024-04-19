@@ -11,6 +11,7 @@ use App\Structure\Count24Section\Admin\Dto\Count24UpdateDto;
 use App\Structure\Count24Section\Admin\Dto\Count24IndexDto;
 use App\Structure\Count24Section\Admin\Actions\Count24SelectAction;
 use App\Structure\Count24Section\Admin\Actions\Count24UpdateAction;
+use App\Structure\Count24Section\Admin\Actions\Count24SynchAction;
 
 class AdminCount24Controller extends Controller
 {
@@ -43,7 +44,7 @@ class AdminCount24Controller extends Controller
         
         //Сессия для выгрузки в EXCEL
         session(['info' => $info]);
-        
+      
         return view('count24.back.admin', ['info' => $info]);  
     }
     
@@ -76,11 +77,25 @@ class AdminCount24Controller extends Controller
      * с таблицей смета24
      * 
      * @param 
-     * @return Excel
+     * @return string
      */
-    public function GetCommunal()
+    public function GetCommunal(): string
     { 
-        echo "Синхронизация выполнена, страница будет перезагружена!";
+        $result = $this->action(Count24SynchAction::class)->SynchCommunal(); 
+        return $result == true ? "Информация обновлена!" : "Возникла ошибка!";        
+    } 
+    
+    /**
+     * Синхронизация таблиц
+     * Наполнение 2026 и 2027
+     * 
+     * @param 
+     * @return string
+     */
+    public function SynchYears()
+    { 
+        $result = $this->action(Count24SynchAction::class)->SynchYears(); 
+        return $result == true ? "Информация в 2026 и 2027 годах обновлена!" : "Возникла ошибка!";              
     } 
     
 }

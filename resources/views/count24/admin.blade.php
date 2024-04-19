@@ -206,6 +206,9 @@
                         <br>
                         <button style="width:200px;height:50px" name="formSubmit" id="communal" class="primary__btn price__filter--btn" type="button">Прогноз</button>
                         </br>
+                        <br>
+                        <button style="width:200px;height:50px" name="formSubmit" id="synch" class="primary__btn price__filter--btn" type="button">Синхронизация</button>
+                        </br>
                         
                         <br>
                         <form action="/budget/public/admin/count24/export" method="get">
@@ -366,7 +369,7 @@
         } 
         fetch_data();
         
-        //Временная заглушка
+        //Действие при нажатии кнопки (синхронизация communal)
         $(document).on('click', '#communal', function(){
             $.ajax({
                 url:"/budget/public/admin/count24/communal",  
@@ -377,7 +380,21 @@
                     location.reload();
                 } 
             })                                                     
-        })     
+        }) 
+        
+        //Действие при нажатии кнопки 
+        //Заполнение 2026 и 2027 года
+        $(document).on('click', '#synch', function(){
+            $.ajax({
+                url:"/budget/public/admin/count24/synch",  
+                method:"get",   
+                success:function(data){
+                    fetch_data(); 
+                    alert(data);                    	
+                    location.reload();
+                } 
+            })                                                     
+        }) 
     });
 </script>
 
