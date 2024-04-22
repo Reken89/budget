@@ -19,6 +19,22 @@
 <head>
     <meta charset="utf-8">
     <title>Таблица ОФС</title>
+    <script type="text/javascript">
+        function checkAll(obj) {
+            'use strict';
+            var items = obj.form.getElementsByTagName("input"), 
+                len, i;
+            for (i = 0, len = items.length; i < len; i += 1) {
+                if (items.item(i).type && items.item(i).id === "checkbox") {       
+                    if (obj.checked) {
+                      items.item(i).checked = true;
+                    } else {
+                        items.item(i).checked = false;
+                    }       
+                }
+            }
+        }
+    </script>
 </head>
 
 <div class="post-header">
@@ -49,66 +65,71 @@
 <h3>Выберите месяц</h3> 
 <div>
     <label class="checkbox style-f">
-        <input type="checkbox" name="mounth" value="1">
+        <input type="checkbox" id="checkbox" name="mounth" value="1">
         <div class="checkbox__checkmark"></div>
         <div class="checkbox__body">Январь</div>
     </label>
     <label class="checkbox style-f">
-        <input type="checkbox" name="mounth" value="2">
+        <input type="checkbox" id="checkbox" name="mounth" value="2">
         <div class="checkbox__checkmark"></div>
         <div class="checkbox__body">Февраль</div>
     </label>
     <label class="checkbox style-f">
-        <input type="checkbox" name="mounth" value="3">
+        <input type="checkbox" id="checkbox" name="mounth" value="3">
         <div class="checkbox__checkmark"></div>
         <div class="checkbox__body">Март</div>
     </label>
     <label class="checkbox style-f">
-        <input type="checkbox" name="mounth" value="4">
+        <input type="checkbox" id="checkbox" name="mounth" value="4">
         <div class="checkbox__checkmark"></div>
         <div class="checkbox__body">Апрель</div>
     </label>
     <label class="checkbox style-f">
-        <input type="checkbox" name="mounth" value="5">
+        <input type="checkbox" id="checkbox" name="mounth" value="5">
         <div class="checkbox__checkmark"></div>
         <div class="checkbox__body">Май</div>
     </label>
     <label class="checkbox style-f">
-        <input type="checkbox" name="mounth" value="6">
+        <input type="checkbox" id="checkbox" name="mounth" value="6">
         <div class="checkbox__checkmark"></div>
         <div class="checkbox__body">Июнь</div>
     </label>
     </br>
     <label class="checkbox style-f">
-        <input type="checkbox" name="mounth" value="7">
+        <input type="checkbox" id="checkbox" name="mounth" value="7">
         <div class="checkbox__checkmark"></div>
         <div class="checkbox__body">Июль</div>
     </label>
     <label class="checkbox style-f">
-        <input type="checkbox" name="mounth" value="8">
+        <input type="checkbox" id="checkbox" name="mounth" value="8">
         <div class="checkbox__checkmark"></div>
         <div class="checkbox__body">Август</div>
     </label>
     <label class="checkbox style-f">
-        <input type="checkbox" name="mounth" value="9">
+        <input type="checkbox" id="checkbox" name="mounth" value="9">
         <div class="checkbox__checkmark"></div>
         <div class="checkbox__body">Сентябрь</div>
     </label>
     <label class="checkbox style-f">
-        <input type="checkbox" name="mounth" value="10">
+        <input type="checkbox" id="checkbox" name="mounth" value="10">
         <div class="checkbox__checkmark"></div>
         <div class="checkbox__body">Октябрь</div>
     </label>
     <label class="checkbox style-f">
-        <input type="checkbox" name="mounth" value="11">
+        <input type="checkbox" id="checkbox" name="mounth" value="11">
         <div class="checkbox__checkmark"></div>
         <div class="checkbox__body">Ноябрь</div>
     </label>
     <label class="checkbox style-f">
-        <input type="checkbox" name="mounth" value="12">
+        <input type="checkbox" id="checkbox" name="mounth" value="12">
         <div class="checkbox__checkmark"></div>
         <div class="checkbox__body">Декабрь</div>
-    </label>                            
+    </label>
+    <label class="checkbox style-f">
+        <input type="checkbox" id="checkbox" onclick="checkAll(this)">
+        <div class="checkbox__checkmark"></div>
+        <div class="checkbox__body">Выбрать всё</div>
+    </label>
 </div>
 
 </br>
