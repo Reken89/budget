@@ -341,17 +341,17 @@
                                                     @else
                                                         <td><font color="red">В работе</td>
                                                     @endif
-                                                    <td>{{ number_format($value['heat-volume'], 3, ',', ' ') }}</td>
+                                                    <td>{{ number_format($value['heat-volume'], 4, ',', ' ') }}</td>
                                                     <td>{{ number_format($value['heat-sum'], 2, ',', ' ') }}</td>
-                                                    <td>{{ number_format($value['drainage-volume'], 3, ',', ' ') }}</td>
+                                                    <td>{{ number_format($value['drainage-volume'], 4, ',', ' ') }}</td>
                                                     <td>{{ number_format($value['drainage-sum'], 2, ',', ' ') }}</td>
-                                                    <td>{{ number_format($value['negative-volume'], 3, ',', ' ') }}</td>
+                                                    <td>{{ number_format($value['negative-volume'], 4, ',', ' ') }}</td>
                                                     <td>{{ number_format($value['negative-sum'], 2, ',', ' ') }}</td>
-                                                    <td>{{ number_format($value['water-volume'], 3, ',', ' ') }}</td>
+                                                    <td>{{ number_format($value['water-volume'], 4, ',', ' ') }}</td>
                                                     <td>{{ number_format($value['water-sum'], 2, ',', ' ') }}</td>
-                                                    <td>{{ number_format($value['power-volume'], 3, ',', ' ') }}</td>
+                                                    <td>{{ number_format($value['power-volume'], 4, ',', ' ') }}</td>
                                                     <td>{{ number_format($value['power-sum'], 2, ',', ' ') }}</td>
-                                                    <td>{{ number_format($value['trash-volume'], 3, ',', ' ') }}</td>
+                                                    <td>{{ number_format($value['trash-volume'], 4, ',', ' ') }}</td>
                                                     <td>{{ number_format($value['trash-sum'], 2, ',', ' ') }}</td>                                                
                                                     <td>{{ number_format($value['total'], 2, ',', ' ') }}</td>
                                                 </tr>
@@ -362,17 +362,17 @@
                                                 <tr>
                                                     <td>{{ $value['user']['name'] }}</td>
                                                     <td></td>
-                                                    <td>{{ number_format($value['heat_volume'], 3, ',', ' ') }}</td>
+                                                    <td>{{ number_format($value['heat_volume'], 4, ',', ' ') }}</td>
                                                     <td>{{ number_format($value['heat_sum'], 2, ',', ' ') }}</td>
-                                                    <td>{{ number_format($value['drainage_volume'], 3, ',', ' ') }}</td>
+                                                    <td>{{ number_format($value['drainage_volume'], 4, ',', ' ') }}</td>
                                                     <td>{{ number_format($value['drainage_sum'], 2, ',', ' ') }}</td>
-                                                    <td>{{ number_format($value['negative_volume'], 3, ',', ' ') }}</td>
+                                                    <td>{{ number_format($value['negative_volume'], 4, ',', ' ') }}</td>
                                                     <td>{{ number_format($value['negative_sum'], 2, ',', ' ') }}</td>
-                                                    <td>{{ number_format($value['water_volume'], 3, ',', ' ') }}</td>
+                                                    <td>{{ number_format($value['water_volume'], 4, ',', ' ') }}</td>
                                                     <td>{{ number_format($value['water_sum'], 2, ',', ' ') }}</td>
-                                                    <td>{{ number_format($value['power_volume'], 3, ',', ' ') }}</td>
+                                                    <td>{{ number_format($value['power_volume'], 4, ',', ' ') }}</td>
                                                     <td>{{ number_format($value['power_sum'], 2, ',', ' ') }}</td>
-                                                    <td>{{ number_format($value['trash_volume'], 3, ',', ' ') }}</td>
+                                                    <td>{{ number_format($value['trash_volume'], 4, ',', ' ') }}</td>
                                                     <td>{{ number_format($value['trash_sum'], 2, ',', ' ') }}</td>
                                                     <td>{{ number_format($value['total'], 2, ',', ' ') }}</td>
                                                 </tr>
@@ -381,17 +381,17 @@
                                         <tr>
                                             <td class="col-id-no" scope="row"><b>ИТОГО</b></td>
                                             <td></td>
-                                            <td>{{ number_format($total['heat_volume'], 3, ',', ' ') }}</td>
+                                            <td>{{ number_format($total['heat_volume'], 4, ',', ' ') }}</td>
                                             <td>{{ number_format($total['heat_sum'], 2, ',', ' ') }}</td>
-                                            <td>{{ number_format($total['drainage_volume'], 3, ',', ' ') }}</td>
+                                            <td>{{ number_format($total['drainage_volume'], 4, ',', ' ') }}</td>
                                             <td>{{ number_format($total['drainage_sum'], 2, ',', ' ') }}</td>
-                                            <td>{{ number_format($total['negative_volume'], 3, ',', ' ') }}</td>
+                                            <td>{{ number_format($total['negative_volume'], 4, ',', ' ') }}</td>
                                             <td>{{ number_format($total['negative_sum'], 2, ',', ' ') }}</td>
-                                            <td>{{ number_format($total['water_volume'], 3, ',', ' ') }}</td>
+                                            <td>{{ number_format($total['water_volume'], 4, ',', ' ') }}</td>
                                             <td>{{ number_format($total['water_sum'], 2, ',', ' ') }}</td>
-                                            <td>{{ number_format($total['power_volume'], 3, ',', ' ') }}</td>
+                                            <td>{{ number_format($total['power_volume'], 4, ',', ' ') }}</td>
                                             <td>{{ number_format($total['power_sum'], 2, ',', ' ') }}</td>
-                                            <td>{{ number_format($total['trash_volume'], 3, ',', ' ') }}</td>
+                                            <td>{{ number_format($total['trash_volume'], 4, ',', ' ') }}</td>
                                             <td>{{ number_format($total['trash_sum'], 2, ',', ' ') }}</td>
                                             <td>{{ number_format($total['total'], 2, ',', ' ') }}</td>
                                         </tr>
