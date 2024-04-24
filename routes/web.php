@@ -27,6 +27,7 @@ use App\Structure\DeloSection\User\Controllers\DeloCorrController;
 use App\Structure\DeloSection\User\Controllers\DeloEditorController;
 use App\Structure\DeloSection\User\Controllers\DeloFilterController;
 use App\Structure\Count24Section\Admin\Controllers\AdminCount24Controller;
+use App\Structure\Count24Section\User\Controllers\UserCount24Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -275,8 +276,13 @@ Route::get('/admin/count24/export', [AdminCount24Controller::class, 'ExportTable
 Route::get('/admin/count24/communal', [AdminCount24Controller::class, 'GetCommunal'])->middleware('auth', 'admin');
 Route::get('/admin/count24/synch', [AdminCount24Controller::class, 'SynchYears'])->middleware('auth', 'admin');
 
+Route::get('/user/count24/table', [UserCount24Controller::class, 'TableView'])->middleware('auth');
+Route::patch('/user/count24/update', [UserCount24Controller::class, 'UpdateInfo'])->middleware('auth');
+Route::patch('/user/count24/status', [UserCount24Controller::class, 'UpdateStatus'])->middleware('auth');
+
 //Роуты для Front (Модуль Смета2024)
 Route::get('/admin/count24', [AdminCount24Controller::class, 'FrontView'])->middleware('auth', 'admin')->name('admincount24');
+Route::get('/user/count24', [UserCount24Controller::class, 'FrontView'])->middleware('auth')->name('usercount24');
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 

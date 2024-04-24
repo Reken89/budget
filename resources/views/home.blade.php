@@ -168,6 +168,13 @@
                                                     <button type="submit" class="custom-btn btn-16">Смета (2024 год)</button>
                                                 </form>
                                              </li>
+                                             <li>
+                                                <form action="{{ route('usercount24')}}" method="get">
+                                                    <input type='hidden' name='variant' value='5'>
+                                                    <input type='hidden' name='year' value='2025'>
+                                                    <button type="submit" class="custom-btn btn-16">Разработка</button>
+                                                </form>
+                                             </li>
                                              @elseif ($role == "user")
                                              <li>
                                                  <form action="{{ route('usercommunal')}}" method="get">
