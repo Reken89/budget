@@ -106,7 +106,7 @@
         <!-- my account section start -->
         <section class="my__account--section section--padding">
             <div class="container2">
-                <form id="smeta" action="/budget/public/admin/count24" method="get"> 
+                <form id="smeta" action="/budget/public/user/count24" method="get"> 
                 
                 <section class="shipping__section">
             <div class="container">
@@ -396,7 +396,7 @@
         //Заполнение 2026 и 2027 года
         $(document).on('click', '#synch', function(){
             $.ajax({
-                url:"/budget/public/admin/count24/synch",  
+                url:"/budget/public/user/count24/synch",  
                 method:"get",   
                 success:function(data){
                     fetch_data(); 

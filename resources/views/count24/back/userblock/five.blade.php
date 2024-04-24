@@ -16,10 +16,10 @@
         <tr>
             <th style="min-width: 200px; width: 400px;">Наименование</th>
             <th style="min-width: 70px; width: 70px;">ЭКР</th>
-            <th style="min-width: 150px; width: 150px;">Итог ФЭУ</th>
+            <th style="min-width: 150px; width: 150px;">Итог ЦБ</th>
             <th style="min-width: 150px; width: 150px;">ДХШ</th>
             <th style="min-width: 150px; width: 150px;">ДМШ</th>
-            <th style="min-width: 150px; width: 150px;">Итог ЦБ</th>
+            <th style="min-width: 150px; width: 150px;">Итог ФЭУ</th>
             <th style="min-width: 150px; width: 150px;">(ФЭУ) ДХШ</th>
             <th style="min-width: 150px; width: 150px;">(ФЭУ) ДМШ</th>
         </tr>

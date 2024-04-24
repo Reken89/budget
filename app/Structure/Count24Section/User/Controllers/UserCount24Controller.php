@@ -10,6 +10,7 @@ use App\Structure\Count24Section\User\Dto\Count24UpdateDto;
 use App\Structure\Count24Section\User\Actions\Count24SelectAction;
 use App\Structure\Count24Section\User\Actions\Count24UpdateAction;
 use App\Structure\Count24Section\User\Actions\Count24StatusAction;
+use App\Structure\Count24Section\User\Actions\Count24SynchAction;
 
 class UserCount24Controller extends Controller
 {
@@ -71,5 +72,18 @@ class UserCount24Controller extends Controller
         
         return $info == true ? "Информация отправлена в ФЭУ!" : "Возникла ошибка!"; 
     }
+    
+    /**
+     * Синхронизация таблиц
+     * Наполнение 2026 и 2027
+     * 
+     * @param 
+     * @return string
+     */
+    public function SynchYears()
+    { 
+        $result = $this->action(Count24SynchAction::class)->SynchYears(); 
+        return $result == true ? "Информация в 2026 и 2027 годах обновлена!" : "Возникла ошибка!";              
+    } 
    
 }
