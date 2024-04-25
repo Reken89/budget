@@ -30,22 +30,22 @@
             <th style="min-width: 150px; width: 150px;">1101 (Физкультура и спорт)</th>
             <th style="min-width: 150px; width: 150px;">1301 (обслуживание МД)</th>
             
-            <th style="min-width: 150px; width: 150px;">0104 (Расходы администрации)</th>
-            <th style="min-width: 150px; width: 150px;">0105 (Судебная система)</th>
-            <th style="min-width: 150px; width: 150px;">0111 (Резервный фонд)</th>
-            <th style="min-width: 150px; width: 150px;">0113 (Другие общегосударственные расходы)</th>
-            <th style="min-width: 150px; width: 150px;">0309 (ГО и ЧС)</th>
-            <th style="min-width: 150px; width: 150px;">0405 (Животные)</th>
-            <th style="min-width: 150px; width: 150px;">0408 (Транспорт)</th>
-            <th style="min-width: 150px; width: 150px;">0409 (Дорожный фонд)</th>
-            <th style="min-width: 150px; width: 150px;">0412 (Другие вопросы нац. экономики)</th>
-            <th style="min-width: 150px; width: 150px;">0502 (Коммунальное хоз.)</th>
-            <th style="min-width: 150px; width: 150px;">0503 (Благоустройство)</th>
-            <th style="min-width: 150px; width: 150px;">0909 (Костомукша-город здоровья)</th>
-            <th style="min-width: 150px; width: 150px;">1001 (Пенсии)</th>
-            <th style="min-width: 150px; width: 150px;">1003 (Социальная поддержка граждан)</th>
-            <th style="min-width: 150px; width: 150px;">1101 (Физкультура и спорт)</th>
-            <th style="min-width: 150px; width: 150px;">1301 (обслуживание МД)</th>
+            <th style="min-width: 150px; width: 150px;">(ЦБ) 0104 (Расходы администрации)</th>
+            <th style="min-width: 150px; width: 150px;">(ЦБ) 0105 (Судебная система)</th>
+            <th style="min-width: 150px; width: 150px;">(ЦБ) 0111 (Резервный фонд)</th>
+            <th style="min-width: 150px; width: 150px;">(ЦБ) 0113 (Другие общегосударственные расходы)</th>
+            <th style="min-width: 150px; width: 150px;">(ЦБ) 0309 (ГО и ЧС)</th>
+            <th style="min-width: 150px; width: 150px;">(ЦБ) 0405 (Животные)</th>
+            <th style="min-width: 150px; width: 150px;">(ЦБ) 0408 (Транспорт)</th>
+            <th style="min-width: 150px; width: 150px;">(ЦБ) 0409 (Дорожный фонд)</th>
+            <th style="min-width: 150px; width: 150px;">(ЦБ) 0412 (Другие вопросы нац. экономики)</th>
+            <th style="min-width: 150px; width: 150px;">(ЦБ) 0502 (Коммунальное хоз.)</th>
+            <th style="min-width: 150px; width: 150px;">(ЦБ) 0503 (Благоустройство)</th>
+            <th style="min-width: 150px; width: 150px;">(ЦБ) 0909 (Костомукша-город здоровья)</th>
+            <th style="min-width: 150px; width: 150px;">(ЦБ) 1001 (Пенсии)</th>
+            <th style="min-width: 150px; width: 150px;">(ЦБ) 1003 (Социальная поддержка граждан)</th>
+            <th style="min-width: 150px; width: 150px;">(ЦБ) 1101 (Физкультура и спорт)</th>
+            <th style="min-width: 150px; width: 150px;">(ЦБ) 1301 (обслуживание МД)</th>
         </tr>
     </thead>
     <tbody>

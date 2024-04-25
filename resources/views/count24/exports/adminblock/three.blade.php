@@ -4,12 +4,6 @@
     $fu_cb = 0;
     $cb_zakupki = 0;
     $cb_cb = 0;
-    
-    if($info[0]['status'] == "2"){
-        $color = "red";
-    }else{
-        $color = "green";
-    }
 @endphp
 
 <p>Таблица выгружена {{ $date }} с использованием структуры Laravel</p>    

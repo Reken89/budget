@@ -272,7 +272,7 @@ Route::get('/delo/correspondents', [DeloCorrController::class, 'FrontView'])->mi
 //Роуты для Back (Модуль Смета2024)
 Route::get('/admin/count24/table', [AdminCount24Controller::class, 'TableView'])->middleware('auth', 'admin');
 Route::patch('/admin/count24/update', [AdminCount24Controller::class, 'UpdateInfo'])->middleware('auth', 'admin');
-Route::get('/admin/count24/export', [AdminCount24Controller::class, 'ExportTable'])->middleware('auth', 'admin');
+Route::get('/admin/count24/export', [AdminCount24Controller::class, 'ExportTable'])->middleware('auth');
 Route::get('/admin/count24/communal', [AdminCount24Controller::class, 'GetCommunal'])->middleware('auth', 'admin');
 Route::get('/admin/count24/synch', [AdminCount24Controller::class, 'SynchYears'])->middleware('auth', 'admin');
 
