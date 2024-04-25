@@ -1,4 +1,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> 
+<script src="https://snipp.ru/cdn/select2/4.0.13/dist/js/select2.min.js"></script>
+<script src="https://snipp.ru/cdn/select2/4.0.13/dist/js/i18n/ru.js"></script>
 <div id="live_data"></div>
 
 <script>
@@ -27,7 +29,7 @@
             });  
         } 
         fetch_data();
-        
+                
         //Выполняем действие (добавляем строку в таблицу)
         $(document).on('click', '#btn_add', function(){
             var tr = this.closest('tr');

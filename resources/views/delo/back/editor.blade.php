@@ -11,6 +11,7 @@
   <meta name="description" content="Morden Bootstrap HTML5 Template">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/img/favicon.ico') }}">
+  <link rel="stylesheet" href="https://snipp.ru/cdn/select2/4.0.13/dist/css/select2.min.css">
     
    <!-- ======= All CSS Plugins here ======== -->
    <link rel="stylesheet" href="{{ asset('assets/css/plugins/swiper-bundle.min.css') }}">
@@ -136,7 +137,7 @@
                 <form id="communal" method="get"> 
                 
                 <section class="shipping__section">
-            <div class="container">
+            <div class="container2">
                 <p>Описание таблицы:</p>
                 <p><b><u>Номер</u></b> - Номер регистрации</br>
                     <b><u>Вид документа</u></b> - Вид регистрируемого документа</br>
@@ -159,7 +160,7 @@
                                         <tr>
                                             <th style="min-width: 70px; width: 70px;" bgcolor="#66CDAA">Номер</th>
                                             <th style="min-width: 70px; width: 70px;" bgcolor="#66CDAA">Вид документа</th>
-                                            <th style="min-width: 100px; width: 100px;" bgcolor="#66CDAA">Корреспондент</th>
+                                            <th style="min-width: 150px; width: 150px;" bgcolor="#66CDAA">Корреспондент</th>
                                             <th style="min-width: 100px; width: 100px;" bgcolor="#66CDAA">Дата</th>
                                             @if ($info['doc']['type'] == "out")
                                                 <th style="min-width: 100px; width: 100px;" bgcolor="#66CDAA">Исполнитель</th>
@@ -178,15 +179,16 @@
                                             <td><input style="min-width: 70px; width: 70px;" type="text" name="number" class="number" value="{{ $info['doc']['number'] }}"></td>
                                             <td>
                                                 <select id="fruits" style="min-width: 100px; width: 100px;" name="npa" class="npa">
-                                                    <option selected value="{{ $info['doc']['npa_id'] }}">{{ $info['doc']['npa']['title'] }}</option>
+                                                    <option selected value="{{ $info['doc']['npa_id'] }}">{{ $info['doc']['npa']['title'] }}</option>                                                  
                                                     @foreach ($info['npa'] as $value) 
                                                         <option value="{{ $value['id'] }}">{{ $value['title'] }}</option>
                                                     @endforeach
                                                 </select>
                                             </td>
                                             <td>   
-                                                <select id="fruits" style="min-width: 130px; width: 130px;" name="correspondent" class="correspondent">
+                                                <select id="fruits" style="min-width: 200px; width: 200px;" name="correspondent" class="correspondent">
                                                     <option selected value="{{ $info['doc']['correspondent_id'] }}">{{ $info['doc']['correspondent']['title'] }}</option>
+                                                    <option value=""></option>
                                                     @foreach ($info['corr'] as $value) 
                                                         <option value="{{ $value['id'] }}">{{ $value['title'] }}</option>
                                                     @endforeach
@@ -277,6 +279,15 @@
     <button id="scroll__top"><svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M112 244l144-144 144 144M256 120v292"/></svg></button>
 
 <!-- All Script JS Plugins here  -->
+<script>
+    $(document).ready(function() {
+        $('.correspondent').select2({
+            maximumSelectionLength: 2,
+            language: "ru"
+        });
+    });
+</script>
+
 <script src="{{ asset('assets/js/vendor/popper.js') }}" defer="defer"></script>
 <script src="{{ asset('assets/js/vendor/bootstrap.min.js') }}" defer="defer"></script>
 <script src="{{ asset('assets/js/plugins/swiper-bundle.min.js') }}"></script>
