@@ -43,7 +43,7 @@ class EkrOfsAddSeeder extends Seeder
         // Добавляем значения в таблице Ekr
         $ekr = Ekr::create([
             'shared' => 'No',
-            'main'   => 'Yes',
+            'main'   => 'No',
             'number' => 45,
             'ekr'    => 347,
             'title'  => 'Увеличение стоимости материальных запасов для целей капитальных вложений',
