@@ -30,6 +30,11 @@ class Ofs24UpdateAction extends BaseAction
             $this->task(Ofs24UpdateSharedTask::class)->update($dto->user_id, $dto->mounth, $dto->chapter, $dto->number, $shared);
         }
         
+        if($dto->number == 45){
+            $shared = $this->task(Ofs24UpdateSharedTask::class)->select($dto->user_id, $dto->mounth, $dto->chapter, $dto->number);
+            $this->task(Ofs24UpdateSharedTask::class)->update($dto->user_id, $dto->mounth, $dto->chapter, $dto->number, $shared);
+        }
+        
         return true;
     }
 }

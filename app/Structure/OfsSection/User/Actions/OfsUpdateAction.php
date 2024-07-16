@@ -33,6 +33,11 @@ class OfsUpdateAction extends BaseAction
             $this->task(OfsUpdateSharedTask::class)->run($dto->shared_id, $shared);
         }
         
+        if($dto->number == 45){
+            $shared = $this->task(OfsSelectForSharedTask::class)->run($dto->user_id, $dto->year, $dto->mounth, $dto->chapter, $dto->number);
+            $this->task(OfsUpdateSharedTask::class)->run($dto->shared_id, $shared);
+        }
+        
         return true;
     }
 }

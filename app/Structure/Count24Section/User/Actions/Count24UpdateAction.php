@@ -25,7 +25,12 @@ class Count24UpdateAction extends BaseAction
         if($number['ekr']['number'] >= 17 && $number['ekr']['number'] <=42){
             $shared = $this->task(Count24SelectTask::class)->SelectSumShared($number);
             $update_shared = $this->task(Count24UpdateTask::class)->UpdateShared($shared ,$number);
-        }       
+        }      
+        
+        if($number['ekr']['number'] == 45){
+            $shared = $this->task(Count24SelectTask::class)->SelectSumShared($number);
+            $update_shared = $this->task(Count24UpdateTask::class)->UpdateShared($shared ,$number);
+        }
     }
 }
 

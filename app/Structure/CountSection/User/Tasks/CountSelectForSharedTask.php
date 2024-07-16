@@ -24,7 +24,9 @@ class CountSelectForSharedTask extends BaseTask
         } elseif($dto->number >= 27 && $dto->number <= 34){
             $number = [27, 28, 29, 30, 31, 32];
         } elseif($dto->number >= 36 && $dto->number <= 42){
-            $number = [36, 37, 38, 39, 40, 41, 42];
+            $number = [36, 37, 38, 39, 40, 41, 42, 45];
+        } elseif($dto->number == 45){
+            $number = [36, 37, 38, 39, 40, 41, 42, 45];
         }
                
         $info = Count::selectRaw('SUM(`sum_fu`) as sum_fu')

@@ -29,6 +29,11 @@ class CountUpdateAction extends BaseAction
             $this->task(CountMainUpdateTask::class)->run($dto->shared_id, $shared);
         }
         
+        if($dto->number == 45){
+            $shared = $this->task(CountSelectForSharedTask::class)->run($dto);
+            $this->task(CountMainUpdateTask::class)->run($dto->shared_id, $shared);
+        }
+        
     }
 }
 

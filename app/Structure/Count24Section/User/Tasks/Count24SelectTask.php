@@ -118,7 +118,9 @@ class Count24SelectTask extends BaseTask
         } elseif($number['ekr']['number'] >= 27 && $number['ekr']['number'] <= 34){
             $num = [27, 28, 29, 30, 31, 32];
         } elseif($number['ekr']['number'] >= 36 && $number['ekr']['number'] <= 42){
-            $num = [36, 37, 38, 39, 40, 41, 42];
+            $num = [36, 37, 38, 39, 40, 41, 42, 45];
+        } elseif($number['ekr']['number'] == 45){
+            $num = [36, 37, 38, 39, 40, 41, 42, 45];
         }
         
         $result = Count24::selectRaw('SUM(`sum_cb`) as sum_cb')

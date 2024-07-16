@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Structure\OfsSection\User\Models\Ofs;
 use App\Structure\Ofs24Section\Admin\Models\Ofs24;
 use App\Structure\CountSection\Admin\Models\Count;
+use App\Structure\Count24Section\Admin\Models\Count24;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Ekr extends Model
@@ -31,6 +32,11 @@ class Ekr extends Model
     public function count(): HasMany
     {
         return $this->hasMany(Count::class);
+    }
+    
+    public function count24(): HasMany
+    {
+        return $this->hasMany(Count24::class);
     }
     
 }

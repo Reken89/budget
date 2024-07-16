@@ -67,6 +67,8 @@ class Count24UpdateTask extends BaseTask
             $num = 26;
         } elseif($number['ekr']['number'] >= 36 && $number['ekr']['number'] <= 42){
             $num = 35;
+        } elseif($number['ekr']['number'] == 45){
+            $num = 35;
         }
         
         $result = Count24::where('user_id', $number['user_id'])

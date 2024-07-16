@@ -43,10 +43,10 @@ class EkrOfsAddSeeder extends Seeder
         // Добавляем значения в таблице Ekr
         $ekr = Ekr::create([
             'shared' => 'No',
-            'main'   => 'No',
-            'number' => 17,
-            'ekr'    => 241,
-            'title'  => 'На иные цели на денежную компенсацию арендной платы по договорам аренды (найма) жилья педагогическим работникам муниципальных общеобразовательных организаций Костомукшского городского округа',
+            'main'   => 'Yes',
+            'number' => 45,
+            'ekr'    => 347,
+            'title'  => 'Увеличение стоимости материальных запасов для целей капитальных вложений',
         ]);
         
         // Через связи добавляем значение в таблицу Ofs
@@ -58,7 +58,7 @@ class EkrOfsAddSeeder extends Seeder
                         'year'             => 2023,
                         'mounth'           => $mounth,
                         'chapter'          => $chapter,
-                        'status'           => 2,
+                        'status'           => 1,
                         'lbo'              => 0,
                         'prepaid'          => 0,
                         'credit_year_all'  => 0,
@@ -78,6 +78,7 @@ class EkrOfsAddSeeder extends Seeder
                 }
             }                                             
         }
+        
         
         // Через связи добавляем значение в таблицу Ofs 2024
         foreach ($users24 as $user24) {
@@ -116,6 +117,19 @@ class EkrOfsAddSeeder extends Seeder
                     'user_id' => $smeta,
                     'year'    => $year,
                     'status'  => 1,
+                    'sum_fu'  => 0,
+                    'sum_cb'  => 0, 
+                ]);                
+            }                                             
+        }
+        
+        // Через связи добавляем значение в таблицу Counts24
+        foreach ($users_smeta as $smeta) {
+            for ($year = 2025; $year < 2028; $year++){
+                $ekr->count24()->create([
+                    'user_id' => $smeta,
+                    'year'    => $year,
+                    'status'  => 2,
                     'sum_fu'  => 0,
                     'sum_cb'  => 0, 
                 ]);                
