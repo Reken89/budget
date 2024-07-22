@@ -18,8 +18,8 @@ class CreateIndicatorsTable extends Migration
             $table->string('shared', 10);
             $table->string('main', 10);
             $table->integer('number');
-            $table->integer('code');
-            $table->string('title', 1000);
+            $table->string('code', 30);
+            $table->string('title', 2000);
         });
     }
 
