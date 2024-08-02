@@ -3,7 +3,7 @@
 namespace App\Structure\CSection\Admin\Tasks;
 
 use App\Core\Task\BaseTask;
-use App\Structure\CSection\Admin\Models\Tc1;
+use App\Structure\CSection\Admin\Models\TableOne;
 use App\Structure\CSection\Admin\Dto\AdminSelectDto;
 use App\Structure\CSection\Admin\Dto\AdminUpdateDto;
 use Illuminate\Database\Eloquent\Builder;
@@ -18,7 +18,7 @@ class AdminSelectTask extends BaseTask
      */
     public function SelectAll(AdminSelectDto $dto): array
     {       
-        $info = Tc1::select('indicator_id')
+        $info = TableOne::select('indicator_id')
             ->selectRaw('SUM(`average`) as average')
             ->selectRaw('SUM(`report`) as report')
             ->selectRaw('SUM(`classes`) as classes')
@@ -48,7 +48,7 @@ class AdminSelectTask extends BaseTask
      */
     public function SelectMain(AdminUpdateDto $dto): array
     {      
-        $result = Tc1::selectRaw('SUM(`average`) as average')
+        $result = TableOne::selectRaw('SUM(`average`) as average')
             ->selectRaw('SUM(`report`) as report')
             ->selectRaw('SUM(`classes`) as classes')
             ->where('user_id', $dto->user)    
@@ -75,7 +75,7 @@ class AdminSelectTask extends BaseTask
     {      
         $num = [2, 3];
         
-        $result = Tc1::selectRaw('SUM(`average`) as average')
+        $result = TableOne::selectRaw('SUM(`average`) as average')
             ->selectRaw('SUM(`report`) as report')
             ->selectRaw('SUM(`classes`) as classes')
             ->where('user_id', $dto->user)    

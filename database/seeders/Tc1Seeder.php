@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Structure\CSection\Admin\Models\Tc1;
+use App\Structure\CSection\Admin\Models\TableOne;
 use Illuminate\Database\Seeder;
 
 class Tc1Seeder extends Seeder
@@ -25,7 +25,7 @@ class Tc1Seeder extends Seeder
             for ($ind = 1; $ind < 53; $ind++){
                 for ($year = 2024; $year < 2026; $year++){
                     for ($mounth = 1; $mounth < 13; $mounth++){
-                        Tc1::create([
+                        TableOne::create([
                             'user_id'      => $user,
                             'indicator_id' => $ind,
                             'year'         => $year,

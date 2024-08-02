@@ -3,7 +3,7 @@
 namespace App\Structure\CSection\Admin\Tasks;
 
 use App\Core\Task\BaseTask;
-use App\Structure\CSection\Admin\Models\Tc1;
+use App\Structure\CSection\Admin\Models\TableOne;
 use App\Structure\CSection\Admin\Dto\AdminUpdateDto;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -17,7 +17,7 @@ class AdminUpdateTask extends BaseTask
      */
     public function UpdateTable1(AdminUpdateDto $dto)
     {       
-        $result = Tc1::where('year', $dto->year) 
+        $result = TableOne::where('year', $dto->year) 
             ->where('user_id', $dto->user) 
             ->where('indicator_id', $dto->indicator) 
             ->where('mounth', $dto->mounth) 
@@ -38,7 +38,7 @@ class AdminUpdateTask extends BaseTask
      */
     public function UpdateMainTable1(AdminUpdateDto $dto, array $main): bool
     {        
-        $result = Tc1::where('user_id', $dto->user)
+        $result = TableOne::where('user_id', $dto->user)
             ->where('year', $dto->year) 
             ->where('mounth', $dto->mounth)     
             ->whereHas('indicator', function (Builder $query) use ($dto) {
@@ -64,7 +64,7 @@ class AdminUpdateTask extends BaseTask
      */
     public function UpdateSharedTable1(AdminUpdateDto $dto, array $shared): bool
     {        
-        $result = Tc1::where('user_id', $dto->user)
+        $result = TableOne::where('user_id', $dto->user)
             ->where('year', $dto->year) 
             ->where('mounth', $dto->mounth) 
             ->where('indicator_id', 1) 
