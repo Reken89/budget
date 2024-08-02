@@ -17,9 +17,19 @@ class AdminSelectAction extends BaseAction
     public function SelectInfo(AdminSelectDto $dto): array
     {   
         $result = $this->task(AdminSelectTask::class)->SelectAll($dto);
-
         return $result;
-
+    }
+    
+    /**
+     * Возвращаем пользователей
+     *
+     * @param AdminSelectDto $dto
+     * @return array
+     */
+    public function SelectUser(AdminSelectDto $dto): array
+    {   
+        $result = $this->task(AdminSelectTask::class)->SelectUser($dto);
+        return $result;
     }
 }
 

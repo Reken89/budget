@@ -50,9 +50,10 @@ class Admin1cController extends Controller
             'variant'  => $dto->variant,
             'info'     => $info,
             'position' => $position,
+            'users'    => $this->action(AdminSelectAction::class)->SelectUser($dto),
         ];
         
-        return view('csection.back.table_one', ['info' => $result]);  
+        return view('csection.back.table', ['info' => $result]);  
     }
     
     /**

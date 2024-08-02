@@ -1,6 +1,28 @@
-
+<?php
+    $mounth = [
+        '1'  => 'январь',
+        '2'  => 'февраль',
+        '3'  => 'март',
+        '4'  => 'апрель',
+        '5'  => 'май',
+        '6'  => 'июнь',
+        '7'  => 'июль',
+        '8'  => 'август',
+        '9'  => 'сентябрь',
+        '10' => 'октябрь',
+        '11' => 'ноябрь',
+        '12' => 'декабрь',
+    ];
+?>
 <!doctype html>
 <html lang="en">
+    <p><b>Параметры:
+        Год: {{ $info['year'] }},  
+        Месяц: {{ $mounth[$info['mounth']] }}</br>
+        Учреждения: @foreach($info['users'] AS $value)
+        {{ $value['name'] }}</br>
+        @endforeach
+        </b> </p>  
 <table>
     <thead>
         <tr>
@@ -23,7 +45,19 @@
             </tr>   
             @else
                 @if($info['position'] == "many")
-                    <tr>
+                    @if($info['info'][$i]['indicator']['code'] == "0111")
+                        <tr bgcolor="Aqua"><td><b>В том числе</b></td><td></td><td></td><td></td><td></td></tr>
+                    @endif
+                    @if($info['info'][$i]['indicator']['code'] == "01261")
+                        <tr bgcolor="Aqua"><td><b>В том числе</b></td><td></td><td></td><td></td><td></td></tr>
+                    @endif
+                    @if($info['info'][$i]['indicator']['code'] == "0131")
+                        <tr bgcolor="Aqua"><td><b>В том числе</b></td><td></td><td></td><td></td><td></td></tr>
+                    @endif
+                    @if($info['info'][$i]['indicator']['code'] == "01531")
+                        <tr bgcolor="Aqua"><td><b>В том числе</b></td><td></td><td></td><td></td><td></td></tr>
+                    @endif
+                    <tr>                       
                         <th>{{ $info['info'][$i]['indicator']['title'] }}</th>
                         <td>{{ $info['info'][$i]['indicator']['code'] }}</td>
                         <td>{{ number_format($info['info'][$i]['average'], 2, ',', ' ') }}</td>
@@ -31,10 +65,10 @@
                         <td>{{ number_format($info['info'][$i]['classes'], 2, ',', ' ') }}</td>
                     </tr>
                 @else
-                    @if($info['info'][$i]['indicator']['code'] == "01261")
+                    @if($info['info'][$i]['indicator']['code'] == "0111")
                         <tr bgcolor="Aqua"><td><b>В том числе</b></td><td></td><td></td><td></td><td></td></tr>
                     @endif
-                    @if($info['info'][$i]['indicator']['code'] == "0111")
+                    @if($info['info'][$i]['indicator']['code'] == "01261")
                         <tr bgcolor="Aqua"><td><b>В том числе</b></td><td></td><td></td><td></td><td></td></tr>
                     @endif
                     @if($info['info'][$i]['indicator']['code'] == "0131")

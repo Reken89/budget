@@ -4,6 +4,7 @@ namespace App\Structure\CSection\Admin\Tasks;
 
 use App\Core\Task\BaseTask;
 use App\Structure\CSection\Admin\Models\TableOne;
+use App\Structure\UserSection\Auth\Models\User;
 use App\Structure\CSection\Admin\Dto\AdminSelectDto;
 use App\Structure\CSection\Admin\Dto\AdminUpdateDto;
 use Illuminate\Database\Eloquent\Builder;
@@ -91,6 +92,22 @@ class AdminSelectTask extends BaseTask
         
         return $result; 
     }  
+    
+    /**
+     * Возвращает таблицу с пользователями
+     *
+     * @param AdminSelectDto $dto
+     * @return array
+     */
+    public function SelectUser(AdminSelectDto $dto): array
+    {       
+        $info = User::select('name')
+            ->whereIn('id', $dto->user)    
+            ->get()
+            ->toArray();
+        
+        return $info;  
+    }
 }
 
 

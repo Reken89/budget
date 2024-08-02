@@ -376,7 +376,6 @@
                         <div class="account__content">
                             
                             <div class="account__table--area">   
-                                <p><b>Выбранный год: </b> </p>  
                                     <div class="container_fix">
                                         <div class="table2">
                                             <div id="table"></div>
