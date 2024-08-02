@@ -28,6 +28,7 @@ use App\Structure\DeloSection\User\Controllers\DeloEditorController;
 use App\Structure\DeloSection\User\Controllers\DeloFilterController;
 use App\Structure\Count24Section\Admin\Controllers\AdminCount24Controller;
 use App\Structure\Count24Section\User\Controllers\UserCount24Controller;
+use App\Structure\CSection\Admin\Controllers\Admin1cController;
 
 /*
 |--------------------------------------------------------------------------
@@ -285,8 +286,19 @@ Route::get('/user/count24/synch', [UserCount24Controller::class, 'SynchYears'])-
 Route::get('/admin/count24', [AdminCount24Controller::class, 'FrontView'])->middleware('auth', 'admin')->name('admincount24');
 Route::get('/user/count24', [UserCount24Controller::class, 'FrontView'])->middleware('auth')->name('usercount24');
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+ * 
+ * 
+ * 
+ */
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Роуты для Back (Модуль 1С)
+Route::get('/admin/1c/table', [Admin1cController::class, 'TableView'])->middleware('auth', 'admin');
+Route::patch('/admin/1c/update', [Admin1cController::class, 'UpdateInfo'])->middleware('auth', 'admin');
 
-
+//Роуты для Front (Модуль 1С)
+Route::get('/admin/1c', [Admin1cController::class, 'FrontView'])->middleware('auth', 'admin')->name('admin1c');
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
 Auth::routes();
