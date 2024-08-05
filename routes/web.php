@@ -295,6 +295,7 @@ Route::get('/user/count24', [UserCount24Controller::class, 'FrontView'])->middle
 //Роуты для Back (Модуль 1С)
 Route::get('/admin/1c/table', [Admin1cController::class, 'TableView'])->middleware('auth', 'admin');
 Route::patch('/admin/1c/update', [Admin1cController::class, 'UpdateInfo'])->middleware('auth', 'admin');
+Route::patch('/admin/1c/status', [Admin1cController::class, 'UpdateStatus'])->middleware('auth', 'admin');
 
 //Роуты для Front (Модуль 1С)
 Route::get('/admin/1c', [Admin1cController::class, 'FrontView'])->middleware('auth', 'admin')->name('admin1c');

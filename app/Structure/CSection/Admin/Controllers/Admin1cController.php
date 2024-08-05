@@ -6,10 +6,13 @@ use Illuminate\Http\Request;
 use App\Core\Controllers\Controller;
 use App\Structure\CSection\Admin\Actions\AdminSelectAction;
 use App\Structure\CSection\Admin\Actions\AdminUpdateAction;
+use App\Structure\CSection\Admin\Actions\AdminStatusAction;
 use App\Structure\CSection\Admin\Dto\AdminSelectDto;
 use App\Structure\CSection\Admin\Dto\AdminUpdateDto;
+use App\Structure\CSection\Admin\Dto\AdminStatusDto;
 use App\Structure\CSection\Admin\Requests\AdminSelectRequest;
 use App\Structure\CSection\Admin\Requests\AdminUpdateRequest;
+use App\Structure\CSection\Admin\Requests\AdminStatusRequest;
 
 class Admin1cController extends Controller
 {
@@ -51,6 +54,7 @@ class Admin1cController extends Controller
             'info'     => $info,
             'position' => $position,
             'users'    => $this->action(AdminSelectAction::class)->SelectUser($dto),
+            'status'   => $this->action(AdminSelectAction::class)->SelectStatus($dto),
         ];
         
         return view('csection.back.table', ['info' => $result]);  
@@ -66,6 +70,18 @@ class Admin1cController extends Controller
     {
         $dto = AdminUpdateDto::fromRequest($request);
         $info = $this->action(AdminUpdateAction::class)->UpdateInfo($dto);          
+    }
+    
+    /**
+     * Обновляем статус
+     *
+     * @param AdminStatusRequest $request
+     * @return 
+     */
+    public function UpdateStatus(AdminStatusRequest $request)
+    {
+        $dto = AdminStatusDto::fromRequest($request);    
+        $this->action(AdminStatusAction::class)->UpdateStatus($dto); 
     }
    
 }

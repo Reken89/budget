@@ -101,8 +101,8 @@
     <!-- End header area -->
 
     <main class="main__content_wrapper">
-
         
+       
         <!-- my account section start -->
         <section class="my__account--section section--padding">
             <div class="container2">
@@ -134,12 +134,12 @@
                             <ul class="widget__form--check">
                                 <li class="widget__form--check__list">
                                     <label class="widget__form--check__label" for="check6">2024</label>
-                                    <input class="widget__form--check__input" name="year" value="2025" type="checkbox">
+                                    <input class="widget__form--check__input" name="year" value="2024" type="checkbox">
                                     <span class="widget__form--checkmark"></span>
                                 </li>
                                 <li class="widget__form--check__list">
                                     <label class="widget__form--check__label" for="check7">2025</label>
-                                    <input class="widget__form--check__input" name="year" value="2026" type="checkbox">
+                                    <input class="widget__form--check__input" name="year" value="2025" type="checkbox">
                                     <span class="widget__form--checkmark"></span>
                                 </li>
                             </ul>
@@ -353,16 +353,23 @@
                         <button style="width:200px;height:50px" class="primary__btn price__filter--btn" type="submit">Сформировать</button>
                         </br>
                         </form>
+                                                
                         <br>
-                        <button style="width:200px;height:50px" name="formSubmit" id="communal" class="primary__btn price__filter--btn" type="button">Открыть/закрыть</button>
-                        </br>
-                        
-                        
-                        <br>
-                        <form action="/budget/public/admin/count24/export" method="get">
+                        <form action="#" method="get">
                             <button type="submit" style="width:200px;height:50px" class="primary__btn price__filter--btn">EXCEL</button>
                         </form>
-                        </br>
+                        
+                        @if (count($info['user']) < 2)
+                            <br>
+                            <form id="status">
+                                <input type="hidden" name="year" value="{{ $info['year'] }}">
+                                <input type="hidden" name="mounth" value="{{ $info['mounth'] }}">
+                                <input type="hidden" name="variant" value="{{ $info['variant'] }}">
+                                <input type="hidden" name="user" value="{{ $info['user'][0] }}">
+                                <button type="button" style="width:200px;height:50px" id="status" class="primary__btn price__filter--btn">Открыть/Закрыть</button>
+                            </form>
+                            </br>
+                        @endif
 
                         </div>
                     </div>
@@ -526,6 +533,48 @@
             });  
         } 
         fetch_data();
+        
+        //Действие при нажатии кнопки (обновляем статус)
+        $(document).on('click', '#status', function(){
+            let infomany = $('#status').serializeArray();
+            let year_many = [];
+            let mounth_many = [];
+            let user_many = [];
+            let variant_many = [];
+            
+            for (const item of infomany) {
+                const value = item.value;
+                if (item.name === 'year') {
+                    year_many.push(value);
+                } else if (item.name === 'mounth') {
+                    mounth_many.push(value);
+                } else if (item.name === 'user') {
+                    user_many.push(value);
+                } else if (item.name === 'variant') {
+                    variant_many.push(value);
+                }
+            }
+            
+            let year = year_many[0];
+            let mounth = mounth_many[0];
+            let user = user_many[0];
+            let variant = variant_many[0];
+            
+            $.ajax({
+                url:"/budget/public/admin/1c/status",  
+                method:"patch",  
+                data:{
+                    "_token": "{{ csrf_token() }}",
+                    year, mounth, user, variant
+                },
+                dataType:"text", 
+                success:function(data){
+                    fetch_data(); 
+                    //alert(user);                    	
+                    //location.reload();
+                } 
+            })                                                     
+        }) 
         
     });
 </script>

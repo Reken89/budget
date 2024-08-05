@@ -108,6 +108,24 @@ class AdminSelectTask extends BaseTask
         
         return $info;  
     }
+    
+    /**
+     * Возвращает статус таблицы
+     *
+     * @param AdminSelectDto $dto
+     * @return array
+     */
+    public function SelectStatus(AdminSelectDto $dto): array
+    {      
+        $result = TableOne::select('status')
+            ->whereIn('user_id', $dto->user)    
+            ->where('year', $dto->year)  
+            ->where('mounth', $dto->mounth)     
+            ->first()
+            ->toArray();
+        
+        return $result; 
+    }  
 }
 
 

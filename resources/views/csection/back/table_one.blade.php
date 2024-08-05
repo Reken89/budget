@@ -16,6 +16,12 @@
 ?>
 <!doctype html>
 <html lang="en">
+    @if($info['position'] == "one" && $info['status']['status'] == "2")
+        <p style="background:#CD5C5C"><b>Централизованная бухгалтерия работает с цифрами</b></p>
+    @endif
+    @if($info['position'] == "one" && $info['status']['status'] == "1")
+        <p style="background:#00FF00"><b>Централизованная бухгалтерия завершила работу с цифрами</b></p>
+    @endif
     <p><b>Параметры:
         Год: {{ $info['year'] }},  
         Месяц: {{ $mounth[$info['mounth']] }}</br>

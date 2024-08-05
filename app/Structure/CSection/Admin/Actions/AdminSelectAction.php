@@ -31,6 +31,18 @@ class AdminSelectAction extends BaseAction
         $result = $this->task(AdminSelectTask::class)->SelectUser($dto);
         return $result;
     }
+    
+    /**
+     * Возвращаем статус
+     *
+     * @param AdminSelectDto $dto
+     * @return array
+     */
+    public function SelectStatus(AdminSelectDto $dto): array
+    {   
+        $result = $this->task(AdminSelectTask::class)->SelectStatus($dto);
+        return $result;
+    }
 }
 
 
