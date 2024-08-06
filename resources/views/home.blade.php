@@ -127,16 +127,7 @@
                                                     <input type='hidden' name='mounth[]' value='1'>
                                                     <button type="submit">Коммунальные услуги</button>
                                                 </form>
-                                             </li>
-                                             <li>
-                                                <form action="{{ route('admin1c')}}" method="get">
-                                                    <input type='hidden' name='year' value='2024'>
-                                                    <input type='hidden' name='mounth' value='9'>
-                                                    <input type='hidden' name='user[]' value='10'>
-                                                    <input type='hidden' name='variant' value='1'>
-                                                    <button type="submit" class="custom-btn btn-16">Отчет 1С (В разработке!)</button>
-                                                </form>
-                                             </li>
+                                             </li>                                           
                                              <li>
                                                 <form action="{{ route('adminofs')}}" method="get">
                                                     <input type='hidden' name='year[]' value='2023'>
