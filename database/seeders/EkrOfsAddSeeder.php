@@ -39,6 +39,18 @@ class EkrOfsAddSeeder extends Seeder
             23, 25, 26, 27, 28, 
             29, 35, 36, 37, 38
             ];
+        
+        //id из таблицы users (Для таблицы СМЕТА24)
+        $users_smeta24 = [
+            9, 10, 11, 12, 13,
+            14, 15, 18, 19, 8,
+            36, 23, 37, 38, 35,
+            25, 27, 28, 29, 26,
+            53, 54, 55, 56, 57,
+            58, 59, 60, 61, 62,
+            63, 64, 65, 66, 67,
+            68,
+            ];
  
         // Добавляем значения в таблице Ekr
         $ekr = Ekr::create([
@@ -124,10 +136,10 @@ class EkrOfsAddSeeder extends Seeder
         }
         
         // Через связи добавляем значение в таблицу Counts24
-        foreach ($users_smeta as $smeta) {
+        foreach ($users_smeta24 as $smeta24) {
             for ($year = 2025; $year < 2028; $year++){
                 $ekr->count24()->create([
-                    'user_id' => $smeta,
+                    'user_id' => $smeta24,
                     'year'    => $year,
                     'status'  => 2,
                     'sum_fu'  => 0,
