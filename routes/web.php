@@ -29,6 +29,7 @@ use App\Structure\DeloSection\User\Controllers\DeloFilterController;
 use App\Structure\Count24Section\Admin\Controllers\AdminCount24Controller;
 use App\Structure\Count24Section\User\Controllers\UserCount24Controller;
 use App\Structure\CSection\Admin\Controllers\Admin1cController;
+use App\Structure\Ofs25Section\User\Controllers\Ofs25Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,6 +71,18 @@ Route::get('/ugkh/communal/back', [UgkhCommunalController::class, 'index'])->mid
 Route::get('/admin/communal', [AdminCommunalController::class, 'user'])->middleware('auth', 'admin')->name('admincommunal');
 Route::get('/user/communal', [CommunalController::class, 'user'])->middleware('auth')->name('usercommunal');
 Route::get('/ugkh/communal', [UgkhCommunalController::class, 'user'])->middleware('auth')->name('ugkh');
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+ * 
+ * 
+ * 
+ */
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Роуты для Back (Модуль ОФС 2025)
+Route::get('/user/ofs25/table', [Ofs25Controller::class, 'TableView'])->middleware('auth');
+
+//Роуты для Front (Модуль ОФС 2025)
+Route::get('/user/ofs25', [Ofs25Controller::class, 'FrontView'])->middleware('auth')->name('userofs25');
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
  * 

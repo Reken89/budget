@@ -199,6 +199,11 @@
                                                 </form>
                                              </li>
                                              <li>
+                                                 <form action="{{ route('userofs25')}}" method="get">
+                                                    <button type="submit" class="custom-btn btn-16"><b>ОФС 2025 (Разработка)<b></button>
+                                                </form>
+                                             </li>
+                                             <li>
                                                  <form action="{{ route('usercount')}}" method="get">
                                                     <input type='hidden' name='variant' value='1'>
                                                     <input type='hidden' name='year' value='2024'>
@@ -314,7 +319,7 @@
                   <div class="col-xxl-7 col-xl-8">
                      <div class="slider__content-4">
                         <span class="text-popins">Сбор отчетности</span>
-                        <h3 class="slider__title-4 text-popins">WEB приложение <span class="slider-title-line">Laravel</span></h3>
+                        <h3 class="slider__title-4 text-popins">WEB приложение <span class="slider-title-line"></span></h3>
                         <p>WEB приложение разработано для администрации Костомукшского городского округа</p>
 
                         <a href="#" class="d-btn-bus">Информация</a>
@@ -398,9 +403,7 @@
                      <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-7">
                         <div class="footer__widget footer__info-padding-2">
                            <div class="footer__logo mb-25">
-                              <a>
-                                 <img src="{{ asset('assets/img/logo/logo-4.png') }}" alt="">
-                              </a>
+                              <h3 class="footer__widget-title footer__widget-title-3">Приложение</h3>
                            </div>
                            <div class="footer__widget-content">
                               <div class="footer__info footer__info-4">
