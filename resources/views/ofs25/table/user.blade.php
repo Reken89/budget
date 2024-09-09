@@ -1,3 +1,47 @@
+@php
+    $total = [
+        'lbo'              => 0,
+        'prepaid'          => 0,
+        'credit_year_all'  => 0,
+        'credit_year_term' => 0,
+        'debit_year_all'   => 0,
+        'debit_year_term'  => 0,
+        'fact_all'         => 0,
+        'fact_mounth'      => 0,
+        'kassa_all'        => 0,
+        'kassa_mounth'     => 0,
+        'credit_end_all'   => 0,
+        'credit_end_term'  => 0,
+        'debit_end_all'    => 0,
+        'debit_end_term'   => 0,
+        'return_old_year'  => 0,
+        'total1'           => 0,
+        'total2'           => 0,
+    ];
+
+    foreach($info['table'] as $value){
+        if($value['ekr']['main'] == "yes" && $value['ekr']['shared'] == "no"){
+            $total['lbo'] = $total['lbo'] + $value['lbo'];
+            $total['prepaid'] = $total['prepaid'] + $value['prepaid'];
+            $total['credit_year_all'] = $total['credit_year_all'] + $value['credit_year_all'];
+            $total['credit_year_term'] = $total['credit_year_term'] + $value['credit_year_term'];
+            $total['debit_year_all'] = $total['debit_year_all'] + $value['debit_year_all'];
+            $total['debit_year_term'] = $total['debit_year_term'] + $value['debit_year_term'];
+            $total['fact_all'] = $total['fact_all'] + $value['fact_all'];
+            $total['fact_mounth'] = $total['fact_mounth'] + $value['fact_mounth'];
+            $total['kassa_all'] = $total['kassa_all'] + $value['kassa_all'];
+            $total['kassa_mounth'] = $total['kassa_mounth'] + $value['kassa_mounth'];
+            $total['credit_end_all'] = $total['credit_end_all'] + $value['credit_end_all'];
+            $total['credit_end_term'] = $total['credit_end_term'] + $value['credit_end_term'];
+            $total['debit_end_all'] = $total['debit_end_all'] + $value['debit_end_all'];
+            $total['debit_end_term'] = $total['debit_end_term'] + $value['debit_end_term'];
+            $total['return_old_year'] = $total['return_old_year'] + $value['return_old_year'];
+            $total['total1'] = $total['total1'] + $value['total1'];
+            $total['total2'] = $total['total2'] + $value['total2'];
+        }
+    }
+@endphp
+
 @if ($info['table'] == true)  
     <table>             
     <thead>
@@ -125,7 +169,28 @@
                     </tr>
                 @endif                   
             @endforeach  
-
+        <tr>
+            <th class="col-id-no" scope="row">ИТОГ</th>
+            <td></td>
+            <td></td>
+            <td>{{ number_format($total['lbo'], 2, ',', ' ') }}</td>  
+            <td>{{ number_format($total['prepaid'], 2, ',', ' ') }}</td>
+            <td>{{ number_format($total['credit_year_all'], 2, ',', ' ') }}</td>
+            <td>{{ number_format($total['credit_year_term'], 2, ',', ' ') }}</td>
+            <td>{{ number_format($total['debit_year_all'], 2, ',', ' ') }}</td>
+            <td>{{ number_format($total['debit_year_term'], 2, ',', ' ') }}</td>
+            <td>{{ number_format($total['fact_all'], 2, ',', ' ') }}</td>
+            <td>{{ number_format($total['fact_mounth'], 2, ',', ' ') }}</td>
+            <td>{{ number_format($total['kassa_all'], 2, ',', ' ') }}</td>
+            <td>{{ number_format($total['kassa_mounth'], 2, ',', ' ') }}</td>
+            <td>{{ number_format($total['credit_end_all'], 2, ',', ' ') }}</td>
+            <td>{{ number_format($total['credit_end_term'], 2, ',', ' ') }}</td>
+            <td>{{ number_format($total['debit_end_all'], 2, ',', ' ') }}</td>
+            <td>{{ number_format($total['debit_end_term'], 2, ',', ' ') }}</td>
+            <td>{{ number_format($total['return_old_year'], 2, ',', ' ') }}</td>
+            <td>{{ number_format($total['total1'], 2, ',', ' ') }}</td>
+            <td>{{ number_format($total['total2'], 2, ',', ' ') }}</td>
+        </tr>
     </tbody>
 </table>
 @else

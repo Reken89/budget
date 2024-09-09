@@ -296,6 +296,103 @@
                                     </li>
                                 </ul>
                             @endif
+                            @if ($info['role'] == "cb_school")    
+                                <ul class="widget__form--check">                                
+                                    <li class="widget__form--check__list">
+                                        <label class="widget__form--check__label" for="check10">Школа №1</label>
+                                        <input class="widget__form--check__input" name="user" value="3" type="checkbox">
+                                        <span class="widget__form--checkmark"></span>
+                                    </li>
+                                    <li class="widget__form--check__list">
+                                        <label class="widget__form--check__label" for="check10">Школа №2</label>
+                                        <input class="widget__form--check__input" name="user" value="6" type="checkbox">
+                                        <span class="widget__form--checkmark"></span>
+                                    </li>
+                                    <li class="widget__form--check__list">
+                                        <label class="widget__form--check__label" for="check10">Школа №3</label>
+                                        <input class="widget__form--check__input" name="user" value="5" type="checkbox">
+                                        <span class="widget__form--checkmark"></span>
+                                    </li>
+                                    <li class="widget__form--check__list">
+                                        <label class="widget__form--check__label" for="check10">Гимназия</label>
+                                        <input class="widget__form--check__input" name="user" value="7" type="checkbox">
+                                        <span class="widget__form--checkmark"></span>
+                                    </li>
+                                    <li class="widget__form--check__list">
+                                        <label class="widget__form--check__label" for="check10">ВСОШ</label>
+                                        <input class="widget__form--check__input" name="user" value="8" type="checkbox">
+                                        <span class="widget__form--checkmark"></span>
+                                    </li>
+                                </ul>
+                            @endif
+                            @if ($info['role'] == "cb_kultura")    
+                                <ul class="widget__form--check">                                
+                                    <li class="widget__form--check__list">
+                                        <label class="widget__form--check__label" for="check10">ЦВР</label>
+                                        <input class="widget__form--check__input" name="user" value="17" type="checkbox">
+                                        <span class="widget__form--checkmark"></span>
+                                    </li>
+                                    <li class="widget__form--check__list">
+                                        <label class="widget__form--check__label" for="check10">ДХШ</label>
+                                        <input class="widget__form--check__input" name="user" value="18" type="checkbox">
+                                        <span class="widget__form--checkmark"></span>
+                                    </li>
+                                    <li class="widget__form--check__list">
+                                        <label class="widget__form--check__label" for="check10">ДМШ</label>
+                                        <input class="widget__form--check__input" name="user" value="19" type="checkbox">
+                                        <span class="widget__form--checkmark"></span>
+                                    </li>
+                                    <li class="widget__form--check__list">
+                                        <label class="widget__form--check__label" for="check10">СпортШкола</label>
+                                        <input class="widget__form--check__input" name="user" value="16" type="checkbox">
+                                        <span class="widget__form--checkmark"></span>
+                                    </li>
+                                    <li class="widget__form--check__list">
+                                        <label class="widget__form--check__label" for="check10">МАиЦБ</label>
+                                        <input class="widget__form--check__input" name="user" value="20" type="checkbox">
+                                        <span class="widget__form--checkmark"></span>
+                                    </li>
+                                    <li class="widget__form--check__list">
+                                        <label class="widget__form--check__label" for="check10">ЦКР</label>
+                                        <input class="widget__form--check__input" name="user" value="21" type="checkbox">
+                                        <span class="widget__form--checkmark"></span>
+                                    </li>
+                                    <li class="widget__form--check__list">
+                                        <label class="widget__form--check__label" for="check10">ЦРО</label>
+                                        <input class="widget__form--check__input" name="user" value="22" type="checkbox">
+                                        <span class="widget__form--checkmark"></span>
+                                    </li>
+                                </ul>
+                            @endif
+                            @if ($info['role'] == "cb_kinder")    
+                                <ul class="widget__form--check">                                
+                                    <li class="widget__form--check__list">
+                                        <label class="widget__form--check__label" for="check10">Ауринко</label>
+                                        <input class="widget__form--check__input" name="user" value="9" type="checkbox">
+                                        <span class="widget__form--checkmark"></span>
+                                    </li>
+                                    <li class="widget__form--check__list">
+                                        <label class="widget__form--check__label" for="check10">Солнышко</label>
+                                        <input class="widget__form--check__input" name="user" value="15" type="checkbox">
+                                        <span class="widget__form--checkmark"></span>
+                                    </li>
+                                    <li class="widget__form--check__list">
+                                        <label class="widget__form--check__label" for="check10">Кораблик</label>
+                                        <input class="widget__form--check__input" name="user" value="13" type="checkbox">
+                                        <span class="widget__form--checkmark"></span>
+                                    </li>
+                                    <li class="widget__form--check__list">
+                                        <label class="widget__form--check__label" for="check10">Ключик</label>
+                                        <input class="widget__form--check__input" name="user" value="12" type="checkbox">
+                                        <span class="widget__form--checkmark"></span>
+                                    </li>
+                                    <li class="widget__form--check__list">
+                                        <label class="widget__form--check__label" for="check10">Березка</label>
+                                        <input class="widget__form--check__input" name="user" value="10" type="checkbox">
+                                        <span class="widget__form--checkmark"></span>
+                                    </li>
+                                </ul>
+                            @endif
                             </div>    
                         </div>
                     </div>
@@ -332,7 +429,7 @@
                             
                             <div class="account__table--area">  
                                 @if(isset($info['mounth']))
-                                <p><b>Параметры: месяц {{ $mounth[$info['mounth']] }}, раздел {{ $chapter[$info['chapter'][0]] }}</b> </p>
+                                <p><b>Параметры: месяц {{ $mounth[$info['mounth']] }}, раздел @foreach($info['chapter'] AS $value) {{ $chapter[$value] }}, @endforeach</b> </p>
                                 @else
                                 <p><b>Параметры: Параметры не выбраны</b> </p>
                                 @endif
