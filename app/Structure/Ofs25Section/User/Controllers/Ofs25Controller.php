@@ -5,8 +5,11 @@ namespace App\Structure\Ofs25Section\User\Controllers;
 use App\Core\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Structure\Ofs25Section\User\Requests\Ofs25UpdateRequest;
 use App\Structure\Ofs25Section\User\Dto\Ofs25SelectDto;
+use App\Structure\Ofs25Section\User\Dto\Ofs25UpdateDto;
 use App\Structure\Ofs25Section\User\Actions\Ofs25SelectAction;
+use App\Structure\Ofs25Section\User\Actions\Ofs25UpdateAction;
 
 class Ofs25Controller extends Controller
 {
@@ -58,6 +61,19 @@ class Ofs25Controller extends Controller
             'chapter' => $chapter,
         ];
         return view('ofs25.table.user', ['info' => $info]);  
+    }
+    
+    /**
+     * Обновляем информацию в ОФС
+     *
+     * @param Ofs25UpdateRequest $request
+     * @return 
+     */
+    public function UpdateInfo(Ofs25UpdateRequest $request)
+    {  
+        $dto = Ofs25UpdateDto::fromRequest($request);
+        $this->action(Ofs25UpdateAction::class)->UpdateInfo($dto);
+
     }
    
 }
