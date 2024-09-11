@@ -8,7 +8,6 @@ use App\Structure\Ofs25Section\User\Models\Ofs252;
 use App\Structure\Ofs25Section\User\Models\Ofs253;
 use App\Structure\Ofs25Section\User\Models\Ofs254;
 use App\Structure\Ofs25Section\User\Models\Ofs255;
-use App\Structure\Ofs25Section\User\Dto\Ofs25UpdateDto;
 use Illuminate\Database\Eloquent\Builder;
 
 class Ofs25UpdateSharedTask extends BaseTask
@@ -16,35 +15,35 @@ class Ofs25UpdateSharedTask extends BaseTask
     /**
      * Возвращает сумму для shared по заданным параметрам
      *
-     * @param Ofs25UpdateDto $dto
+     * @param int $user_id, int $mounth, int $chapter, int $number
      * @return array
      */
-    public function SelectShared(Ofs25UpdateDto $dto): array
+    public function SelectShared(int $user_id, int $mounth, int $chapter, int $number): array
     {   
-        if($dto->chapter == "1"){
+        if($chapter == "1"){
             $ofs = new Ofs251;
         }
-        if($dto->chapter == "2"){
+        if($chapter == "2"){
             $ofs = new Ofs252;
         }
-        if($dto->chapter == "3"){
+        if($chapter == "3"){
             $ofs = new Ofs253;
         }
-        if($dto->chapter == "4"){
+        if($chapter == "4"){
             $ofs = new Ofs254;
         }
-        if($dto->chapter == "5"){
+        if($chapter == "5"){
             $ofs = new Ofs255;
         }
         
-        if($dto->number >= 17 && $dto->number <= 19){
-            $number = [17, 18, 19];
-        } elseif($dto->number >= 21 && $dto->number <= 25){
-            $number = [21, 22, 23, 24, 25];
-        } elseif($dto->number >= 27 && $dto->number <= 34){
-            $number = [27, 28, 29, 30, 31, 32];
-        } elseif($dto->number >= 36 && $dto->number <= 42 || $dto->number == 45){
-            $number = [36, 37, 38, 39, 40, 41, 42, 45];
+        if($number >= 17 && $number <= 19){
+            $num = [17, 18, 19];
+        } elseif($number >= 21 && $number <= 25){
+            $num = [21, 22, 23, 24, 25];
+        } elseif($number >= 27 && $number <= 34){
+            $num = [27, 28, 29, 30, 31, 32];
+        } elseif($number >= 36 && $number <= 42 || $number == 45){
+            $num = [36, 37, 38, 39, 40, 41, 42, 45];
         }
         
         $total = $ofs::selectRaw('SUM(`lbo`) as lbo')
@@ -62,12 +61,12 @@ class Ofs25UpdateSharedTask extends BaseTask
             ->selectRaw('SUM(`debit_end_all`) as debit_end_all')
             ->selectRaw('SUM(`debit_end_term`) as debit_end_term')
             ->selectRaw('SUM(`return_old_year`) as return_old_year')
-            ->where('user_id', $dto->user_id)
-            ->where('mounth', $dto->mounth)
-            ->whereHas('ekr', function (Builder $query) use ($number) {
+            ->where('user_id', $user_id)
+            ->where('mounth', $mounth)
+            ->whereHas('ekr', function (Builder $query) use ($num) {
                 $query->where('shared', 'No');
                 $query->where('main', 'Yes');
-                $query->whereIn('number', $number);
+                $query->whereIn('number', $num);
             })
             //->groupBy('year')            
             ->first()

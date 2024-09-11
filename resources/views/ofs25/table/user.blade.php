@@ -125,7 +125,7 @@
                         <input type="hidden" class="chapter" value="{{ $info['chapter'] }}">
                         <th class="col-id-no" scope="row">{{ $value['ekr']['title'] }}</th>
                         <td>{{ $value['ekr']['ekr'] }}</td>
-                        <td><input type=button class='button' id='btn_one' value='Сброс'></td>
+                        <td><input type=button class='button' id='reset' value='Сброс'></td>
                         <td><input type="text" class="lbo" value="{{ number_format($value['lbo'], 2, ',', ' ') }}"></td>  
                         <td><input type="text" class="prepaid" value="{{ number_format($value['prepaid'], 2, ',', ' ') }}"></td>
                         <td><input type="text" class="credit_year_all" value="{{ number_format($value['credit_year_all'], 2, ',', ' ') }}"></td>

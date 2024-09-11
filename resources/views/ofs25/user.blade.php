@@ -406,15 +406,24 @@
                         <br>
                         <button style="width:200px;height:50px" name="formSubmit" id="synch" class="primary__btn price__filter--btn" type="button">Синхронизация</button>
                         </br>
-                        <br>
-                        <button style="width:200px;height:50px" name="formSubmit" id="status" class="primary__btn price__filter--btn" type="button">Отпрвить в ФЭУ</button>
-                        </br>
                         
                         <br>
-                        <form action="#" method="get">
-                            <button type="submit" style="width:200px;height:50px" class="primary__btn price__filter--btn">EXCEL</button>
+                        @if(isset($info['mounth']))
+                            <form action="#" method="get">
+                                <button type="submit" style="width:200px;height:50px" class="primary__btn price__filter--btn">EXCEL</button>
+                            </form>
+                        @endif
+                        
+                        <br>
+                        @if(isset($info['chapter']) && count($info['chapter']) < 2)
+                        <form id="info"> 
+                            <input type='hidden' name='mounth' value="{{ $info['mounth'] }}">
+                            <input type='hidden' name='chapter' value="{{ $info['chapter'][0] }}">
+                            <input type='hidden' name='user' value="{{ $info['user'] }}">
+                            <button style="width:200px;height:50px" id="status" class="primary__btn price__filter--btn" type="button">Отправить в ФЭУ</button>
                         </form>
-                        </br>
+                        @endif
+
 
                         </div>
                     </div>
@@ -601,6 +610,69 @@
         } 
         fetch_data();
         
+        //Выполняем действие (сбрасываем значения) при нажатии на кнопку reset
+        $(document).on('click', '#reset', function(){          
+            var tr = this.closest('tr');
+                var number = $('.number', tr).val();
+                var mounth = $('.mounth', tr).val();
+                var chapter = $('.chapter', tr).val();
+                var user_id = $('.user_id', tr).val();
+                var ekr_id = $('.ekr_id', tr).val();
+                
+            $.ajax({
+                url:"/budget/public/user/ofs25/reset",  
+                method:"patch",
+                data:{
+                    "_token": "{{ csrf_token() }}",
+                    number, mounth, chapter,
+                    user_id, ekr_id
+                },
+                dataType:"text",  
+                success:function(data){
+                    fetch_data();
+                    //alert(data);
+                } 
+            })               
+        })
+        
+        //Меняем статус в таблице ofs
+        $(document).on('click', '#status', function(){
+            let info = $('#info').serializeArray();
+           
+            //Создаем пустые массивы
+            let many_chapter = [];
+            let many_mounth = [];
+            let many_user = [];
+                  
+            for (const item of info) {
+                const value = item.value;
+                if (item.name === 'chapter') {
+                    many_chapter.push(value);
+                } else if (item.name === 'mounth') {
+                    many_mounth.push(value);
+                } else if (item.name === 'user') {
+                    many_user.push(value);
+                }
+            }            
+             
+            let chapter = many_chapter[0]; 
+            let mounth = many_mounth[0];
+            let user = many_user[0];
+                
+            $.ajax({
+                url:"/budget/public/user/ofs25/status",  
+                method:"patch",
+                data:{
+                    "_token": "{{ csrf_token() }}",
+                    chapter, mounth, user
+                },
+                dataType:"text",  
+                success:function(data){ 
+                    fetch_data();
+                    alert(data);
+                } 
+            })               
+        })
 
     });
 </script>

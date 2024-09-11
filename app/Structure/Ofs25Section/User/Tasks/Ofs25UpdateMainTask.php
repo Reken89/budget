@@ -8,7 +8,6 @@ use App\Structure\Ofs25Section\User\Models\Ofs252;
 use App\Structure\Ofs25Section\User\Models\Ofs253;
 use App\Structure\Ofs25Section\User\Models\Ofs254;
 use App\Structure\Ofs25Section\User\Models\Ofs255;
-use App\Structure\Ofs25Section\User\Dto\Ofs25UpdateDto;
 
 use Illuminate\Database\Eloquent\Builder;
 
@@ -17,28 +16,27 @@ class Ofs25UpdateMainTask extends BaseTask
     /**
      * Возвращает сумму для main по заданным параметрам
      *
-     * @param Ofs25UpdateDto $dto
+     * @param int $user_id, int $mounth, int $chapter, int $number
      * @return array
      */
-    public function SelectMain(Ofs25UpdateDto $dto): array
+    public function SelectMain(int $user_id, int $mounth, int $chapter, int $number): array
     {     
-        if($dto->chapter == "1"){
+        if($chapter == "1"){
             $ofs = new Ofs251;
         }
-        if($dto->chapter == "2"){
+        if($chapter == "2"){
             $ofs = new Ofs252;
         }
-        if($dto->chapter == "3"){
+        if($chapter == "3"){
             $ofs = new Ofs253;
         }
-        if($dto->chapter == "4"){
+        if($chapter == "4"){
             $ofs = new Ofs254;
         }
-        if($dto->chapter == "5"){
+        if($chapter == "5"){
             $ofs = new Ofs255;
         }
         
-        $number = $dto->number;
         $total = $ofs::selectRaw('SUM(`lbo`) as lbo')
             ->selectRaw('SUM(`prepaid`) as prepaid')
             ->selectRaw('SUM(`credit_year_all`) as credit_year_all')
@@ -54,8 +52,8 @@ class Ofs25UpdateMainTask extends BaseTask
             ->selectRaw('SUM(`debit_end_all`) as debit_end_all')
             ->selectRaw('SUM(`debit_end_term`) as debit_end_term')
             ->selectRaw('SUM(`return_old_year`) as return_old_year')
-            ->where('user_id', $dto->user_id)
-            ->where('mounth', $dto->mounth)
+            ->where('user_id', $user_id)
+            ->where('mounth', $mounth)
             ->whereHas('ekr', function (Builder $query) use ($number) {
                 $query->where('shared', 'No');
                 $query->where('main', 'No');

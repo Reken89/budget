@@ -3,24 +3,28 @@
 namespace App\Structure\Ofs25Section\User\Actions;
 
 use App\Core\Actions\BaseAction;
-use App\Structure\Ofs25Section\User\Dto\Ofs25UpdateDto;
-use App\Structure\Ofs25Section\User\Tasks\Ofs25UpdateTask;
+use App\Structure\Ofs25Section\User\Dto\Ofs25ResetDto;
+use App\Structure\Ofs25Section\User\Tasks\Ofs25ResetTask;
 use App\Structure\Ofs25Section\User\Tasks\Ofs25UpdateMainTask;
 use App\Structure\Ofs25Section\User\Tasks\Ofs25UpdateSharedTask;
 
-class Ofs25UpdateAction extends BaseAction
+class Ofs25ResetAction extends BaseAction
 {
     /**
-     * Обновляет значения в таблице ofs
+     * Сбрасывает значения в таблице ofs
      *
-     * @param Ofs25UpdateDto $dto
+     * @param Ofs25ResetDto $dto
      * @return array
      */
-    public function UpdateInfo(Ofs25UpdateDto $dto)
+    public function ResetInfo(Ofs25ResetDto $dto)
     {   
-        $this->task(Ofs25UpdateTask::class)->UpdateFact($dto);
-        $this->task(Ofs25UpdateTask::class)->UpdateKassa($dto);
-        $this->task(Ofs25UpdateTask::class)->UpdateInfo($dto);
+        if ($dto->mounth == '1'){
+            $value = ['fact_all' => 0, 'kassa_all' => 0];
+        } else {
+            $value = $this->task(Ofs25ResetTask::class)->SelectInfo($dto);
+        }
+        
+        $this->task(Ofs25ResetTask::class)->ResetInfo($dto, $value);
         
         $main = $this->task(Ofs25UpdateMainTask::class)->SelectMain($dto->user_id, $dto->mounth, $dto->chapter, $dto->number);        
         $this->task(Ofs25UpdateMainTask::class)->UpdateMain($dto->user_id, $dto->mounth, $dto->chapter, $dto->number, $main);
@@ -29,7 +33,9 @@ class Ofs25UpdateAction extends BaseAction
             $shared = $this->task(Ofs25UpdateSharedTask::class)->SelectShared($dto->user_id, $dto->mounth, $dto->chapter, $dto->number);
             $this->task(Ofs25UpdateSharedTask::class)->UpdateShared($dto->user_id, $dto->mounth, $dto->chapter, $dto->number, $shared);
         }
-
+        
+        return true;
+        
     }
 }
 

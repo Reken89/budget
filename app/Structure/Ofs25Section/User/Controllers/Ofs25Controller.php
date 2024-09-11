@@ -6,10 +6,14 @@ use App\Core\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Structure\Ofs25Section\User\Requests\Ofs25UpdateRequest;
+use App\Structure\Ofs25Section\User\Requests\Ofs25ResetRequest;
 use App\Structure\Ofs25Section\User\Dto\Ofs25SelectDto;
 use App\Structure\Ofs25Section\User\Dto\Ofs25UpdateDto;
+use App\Structure\Ofs25Section\User\Dto\Ofs25ResetDto;
 use App\Structure\Ofs25Section\User\Actions\Ofs25SelectAction;
 use App\Structure\Ofs25Section\User\Actions\Ofs25UpdateAction;
+use App\Structure\Ofs25Section\User\Actions\Ofs25ResetAction;
+use App\Structure\Ofs25Section\User\Actions\Ofs25StatusAction;
 
 class Ofs25Controller extends Controller
 {
@@ -74,6 +78,35 @@ class Ofs25Controller extends Controller
         $dto = Ofs25UpdateDto::fromRequest($request);
         $this->action(Ofs25UpdateAction::class)->UpdateInfo($dto);
 
+    }
+    
+    /**
+     * Выполняем сброс информации в ОФС
+     *
+     * @param Ofs25ResetRequest $request
+     * @return 
+     */
+    public function ResetInfo(Ofs25ResetRequest $request)
+    {  
+        $dto = Ofs25ResetDto::fromRequest($request);
+        $this->action(Ofs25ResetAction::class)->ResetInfo($dto);
+
+    }
+    
+    /**
+     * Обновляем статус в таблице ofs
+     *
+     * @param Request $request
+     * @return 
+     */
+    public function UpdateStatus(Request $request)
+    {  
+        $result = $this->action(Ofs25StatusAction::class)->UpdateStatus($request->mounth, $request->chapter, $request->user);
+        if ($result == true){
+            echo "Информация отправлена в ФЭУ";
+        }else{
+            echo "Информация не отправлена в ФЭУ, в таблице присутствуют ошибки";
+        }
     }
    
 }
