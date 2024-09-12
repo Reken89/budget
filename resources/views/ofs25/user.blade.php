@@ -139,7 +139,10 @@
                     <b><u>Синхронизация</u></b> - Синхронизация с прошлым месяцем</br>
                     <b><u>Отправить в ФЭУ</u></b> - Закрывает возможность редактировать таблицу</br>
                     <b><u>Excel</u></b> - Выгрузка таблицы в excel файл</br>
-                    *** Если таблица выходит за пределы рамки, используйте масштабирование страницы, зажмите левый Ctrl и покрутите колесо мышки
+                    *** Если таблица выходит за пределы рамки, используйте масштабирование страницы, зажмите левый Ctrl и покрутите колесо мышки</br>
+                    <font color='red'>*** Обращаем Ваше внимание, что при выполнении синхронизации в январе, значения из колонок 14, 15, 16, 17 
+                    (Кредиторская и дебиторская задолженность на конец отчетного периода) с декабря 2024г. скопируются в колонки 6, 7, 8, 9 
+                    (Кредиторская и дебиторская задолженность на начало года) в январь 2025г. <u>Процесс выполнения синхронизации может длится до 60 сек!</u></font> 
                 </p>
                 <div class="shipping__inner style2 d-flex">
                     <div class="shipping__items style2 d-flex align-items-center">
@@ -403,15 +406,23 @@
                         <button style="width:200px;height:50px" class="primary__btn price__filter--btn" type="submit">Сформировать</button>
                         </br>
                         </form>
-                        <br>
-                        <button style="width:200px;height:50px" name="formSubmit" id="synch" class="primary__btn price__filter--btn" type="button">Синхронизация</button>
-                        </br>
-                        
+                
                         <br>
                         @if(isset($info['mounth']))
-                            <form action="#" method="get">
+                            <form action="/budget/public/user/ofs25/export" method="get">
+                                <input type='hidden' name='user' value="{{ $info['user'] }}">
                                 <button type="submit" style="width:200px;height:50px" class="primary__btn price__filter--btn">EXCEL</button>
                             </form>
+                        @endif
+                               
+                        <br>
+                        @if(isset($info['chapter']) && count($info['chapter']) < 2)
+                        <form id="help"> 
+                            <input type='hidden' name='mounth' value="{{ $info['mounth'] }}">
+                            <input type='hidden' name='chapter' value="{{ $info['chapter'][0] }}">
+                            <input type='hidden' name='user' value="{{ $info['user'] }}">
+                            <button style="width:200px;height:50px" id="synch" class="primary__btn price__filter--btn" type="button">Синхронизация</button>
+                        </form>
                         @endif
                         
                         <br>

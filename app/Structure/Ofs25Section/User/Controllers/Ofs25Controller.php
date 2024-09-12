@@ -3,6 +3,7 @@
 namespace App\Structure\Ofs25Section\User\Controllers;
 
 use App\Core\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Structure\Ofs25Section\User\Requests\Ofs25UpdateRequest;
@@ -14,6 +15,7 @@ use App\Structure\Ofs25Section\User\Actions\Ofs25SelectAction;
 use App\Structure\Ofs25Section\User\Actions\Ofs25UpdateAction;
 use App\Structure\Ofs25Section\User\Actions\Ofs25ResetAction;
 use App\Structure\Ofs25Section\User\Actions\Ofs25StatusAction;
+use App\Structure\Ofs25Section\User\Exports\Export25UserTable;
 
 class Ofs25Controller extends Controller
 {
@@ -64,6 +66,11 @@ class Ofs25Controller extends Controller
             'variant' => $variant,
             'chapter' => $chapter,
         ];
+        
+        //Сохраняем таблицу в сессию
+        //Для использования при выгрузке в excel
+        session(['table' => $table]);
+        
         return view('ofs25.table.user', ['info' => $info]);  
     }
     
@@ -107,6 +114,17 @@ class Ofs25Controller extends Controller
         }else{
             echo "Информация не отправлена в ФЭУ, в таблице присутствуют ошибки";
         }
+    }
+    
+    /**
+     * Выгрузка таблицы в excel
+     *
+     * @param Request $request
+     * @return 
+     */
+    public function ExportTable(Request $request)
+    {  
+        return Excel::download(new Export25UserTable, 'table.xlsx');
     }
    
 }
