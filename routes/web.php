@@ -83,6 +83,7 @@ Route::get('/user/ofs25/table', [Ofs25Controller::class, 'TableView'])->middlewa
 Route::patch('/user/ofs25/update', [Ofs25Controller::class, 'UpdateInfo'])->middleware('auth');
 Route::patch('/user/ofs25/reset', [Ofs25Controller::class, 'ResetInfo'])->middleware('auth');
 Route::patch('/user/ofs25/status', [Ofs25Controller::class, 'UpdateStatus'])->middleware('auth');
+Route::patch('/user/ofs25/synch', [Ofs25Controller::class, 'SynchInfo'])->middleware('auth');
 Route::get('/user/ofs25/export', [Ofs25Controller::class, 'ExportTable'])->middleware('auth');
 
 //Роуты для Front (Модуль ОФС 2025)

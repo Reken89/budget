@@ -414,17 +414,7 @@
                                 <button type="submit" style="width:200px;height:50px" class="primary__btn price__filter--btn">EXCEL</button>
                             </form>
                         @endif
-                               
-                        <br>
-                        @if(isset($info['chapter']) && count($info['chapter']) < 2)
-                        <form id="help"> 
-                            <input type='hidden' name='mounth' value="{{ $info['mounth'] }}">
-                            <input type='hidden' name='chapter' value="{{ $info['chapter'][0] }}">
-                            <input type='hidden' name='user' value="{{ $info['user'] }}">
-                            <button style="width:200px;height:50px" id="synch" class="primary__btn price__filter--btn" type="button">Синхронизация</button>
-                        </form>
-                        @endif
-                        
+                           
                         <br>
                         @if(isset($info['chapter']) && count($info['chapter']) < 2)
                         <form id="info"> 
@@ -434,7 +424,18 @@
                             <button style="width:200px;height:50px" id="status" class="primary__btn price__filter--btn" type="button">Отправить в ФЭУ</button>
                         </form>
                         @endif
-
+                        
+                        <br>
+                        @if(isset($info['chapter']) && count($info['chapter']) < 2)
+                        <div id="block">
+                            <form id="help"> 
+                                <input type='hidden' name='mounth' value="{{ $info['mounth'] }}">
+                                <input type='hidden' name='chapter' value="{{ $info['chapter'][0] }}">
+                                <input type='hidden' name='user' value="{{ $info['user'] }}">
+                                <button style="width:200px;height:50px" id="synch" class="primary__btn price__filter--btn" type="button">Синхронизация</button>
+                            </form>
+                        </div> 
+                        @endif
 
                         </div>
                     </div>
@@ -672,6 +673,46 @@
                 
             $.ajax({
                 url:"/budget/public/user/ofs25/status",  
+                method:"patch",
+                data:{
+                    "_token": "{{ csrf_token() }}",
+                    chapter, mounth, user
+                },
+                dataType:"text",  
+                success:function(data){ 
+                    fetch_data();
+                    alert(data);
+                } 
+            })               
+        })
+        
+        //Меняем статус в таблице ofs
+        $(document).on('click', '#synch', function(){
+            let info = $('#help').serializeArray();
+           
+            //Создаем пустые массивы
+            let many_chapter = [];
+            let many_mounth = [];
+            let many_user = [];
+                  
+            for (const item of info) {
+                const value = item.value;
+                if (item.name === 'chapter') {
+                    many_chapter.push(value);
+                } else if (item.name === 'mounth') {
+                    many_mounth.push(value);
+                } else if (item.name === 'user') {
+                    many_user.push(value);
+                }
+            }            
+             
+            let chapter = many_chapter[0]; 
+            let mounth = many_mounth[0];
+            let user = many_user[0];
+               
+            $("#block").css("display", "none");//Скрываем кнопку   
+            $.ajax({
+                url:"/budget/public/user/ofs25/synch",  
                 method:"patch",
                 data:{
                     "_token": "{{ csrf_token() }}",

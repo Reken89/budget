@@ -15,6 +15,7 @@ use App\Structure\Ofs25Section\User\Actions\Ofs25SelectAction;
 use App\Structure\Ofs25Section\User\Actions\Ofs25UpdateAction;
 use App\Structure\Ofs25Section\User\Actions\Ofs25ResetAction;
 use App\Structure\Ofs25Section\User\Actions\Ofs25StatusAction;
+use App\Structure\Ofs25Section\User\Actions\Ofs25SynchAction;
 use App\Structure\Ofs25Section\User\Exports\Export25UserTable;
 
 class Ofs25Controller extends Controller
@@ -125,6 +126,18 @@ class Ofs25Controller extends Controller
     public function ExportTable(Request $request)
     {  
         return Excel::download(new Export25UserTable, 'table.xlsx');
+    }
+    
+    /**
+     * Синхронизация таблицы
+     *
+     * @param Request $request
+     * @return 
+     */
+    public function SynchInfo(Request $request)
+    {  
+        $this->action(Ofs25SynchAction::class)->StartSynch($request->mounth, $request->chapter, $request->user);  
+        echo "Синхронизация успешно выполнена!";
     }
    
 }
