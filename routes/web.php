@@ -30,6 +30,7 @@ use App\Structure\Count24Section\Admin\Controllers\AdminCount24Controller;
 use App\Structure\Count24Section\User\Controllers\UserCount24Controller;
 use App\Structure\CSection\Admin\Controllers\Admin1cController;
 use App\Structure\Ofs25Section\User\Controllers\Ofs25Controller;
+use App\Structure\Ofs25Section\Admin\Controllers\AdminOfs25Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -79,6 +80,8 @@ Route::get('/ugkh/communal', [UgkhCommunalController::class, 'user'])->middlewar
  */
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Роуты для Back (Модуль ОФС 2025)
+Route::get('/admin/ofs25/table', [AdminOfs25Controller::class, 'TableView'])->middleware('auth');
+
 Route::get('/user/ofs25/table', [Ofs25Controller::class, 'TableView'])->middleware('auth');
 Route::patch('/user/ofs25/update', [Ofs25Controller::class, 'UpdateInfo'])->middleware('auth');
 Route::patch('/user/ofs25/reset', [Ofs25Controller::class, 'ResetInfo'])->middleware('auth');
@@ -87,6 +90,7 @@ Route::patch('/user/ofs25/synch', [Ofs25Controller::class, 'SynchInfo'])->middle
 Route::get('/user/ofs25/export', [Ofs25Controller::class, 'ExportTable'])->middleware('auth');
 
 //Роуты для Front (Модуль ОФС 2025)
+Route::get('/admin/ofs25', [AdminOfs25Controller::class, 'FrontView'])->middleware('auth')->name('ofs25');
 Route::get('/user/ofs25', [Ofs25Controller::class, 'FrontView'])->middleware('auth')->name('userofs25');
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*

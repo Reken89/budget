@@ -147,7 +147,12 @@
                                                     <input type='hidden' name='info' value='no'>
                                                     <button type="submit">ОФС 2024</button>
                                                 </form>
-                                             </li>                                            
+                                             </li>  
+                                             <li>
+                                                 <form action="{{ route('ofs25')}}" method="get">
+                                                    <button type="submit" class="custom-btn btn-16">ОФС 2025 (разработка)</button>
+                                                </form>
+                                             </li>
                                              <li>
                                                 <form action="{{ route('forecast')}}" method="get">
                                                     <input type='hidden' name='chapter' value='heat'>
@@ -200,7 +205,7 @@
                                              </li>
                                              <li>
                                                  <form action="{{ route('userofs25')}}" method="get">
-                                                    <button type="submit" class="custom-btn btn-16"><b>ОФС 2025 (Разработка)<b></button>
+                                                    <button type="submit" class="custom-btn btn-16"><b>ОФС 2025 год<b></button>
                                                 </form>
                                              </li>
                                              <li>
