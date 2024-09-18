@@ -16,7 +16,7 @@ class TarrifsSeeder extends Seeder
     {
         for ($mounth = 1; $mounth < 13; $mounth++){
             Tarrifs::create([
-                'year'         => 2024,
+                'year'         => 2025,
                 'mounth'       => $mounth,
                 'heat-one'     => 1.000,
                 'heat-two'     => 1.000,

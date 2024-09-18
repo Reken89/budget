@@ -16,7 +16,7 @@ class CommunalSeeder extends Seeder
     {
         //id из таблицы users
         $users = [
-            3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 14,
+            3, 4, 5, 7, 8, 9, 10, 12, 13,
             15, 16, 17, 18, 19, 20, 21, 22, 23
             ];
                 
@@ -25,7 +25,7 @@ class CommunalSeeder extends Seeder
             for ($mounth = 1; $mounth < 13; $mounth++){
                 Communal::create([
                     'user_id'         => $user,
-                    'year'            => 2024,
+                    'year'            => 2025,
                     'mounth'          => $mounth,
                     'status'          => 2,
                     'heat-volume'     => 0,

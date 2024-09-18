@@ -49,7 +49,7 @@
                 <div class="header__topbar--inner d-flex align-items-center justify-content-between">
                     <ul class="header__topbar--info d-none d-lg-flex">
                         <li class="header__info--list">
-                            <a class="header__info--link">ГЛАВНАЯ</a>
+                            <a class="header__info--link" href="{{ route('home')}}">ГЛАВНАЯ</a>
                         </li>
                         <li class="header__info--list">
                             <a class="header__info--link" href="mailto:info@example.com">
@@ -93,7 +93,7 @@
                                 <rect y="13.3333" width="17" height="1.5" fill="currentColor"/>
                                 </svg>
 
-                            <span class="categories__menu--title">Laravel</span>
+                            <span class="categories__menu--title">Меню</span>
                             <svg class="categories__arrowdown--icon" xmlns="http://www.w3.org/2000/svg" width="12.355" height="8.394" viewBox="0 0 10.355 6.394">
                                 <path  d="M15.138,8.59l-3.961,3.952L7.217,8.59,6,9.807l5.178,5.178,5.178-5.178Z" transform="translate(-6 -8.59)" fill="currentColor"/>
                             </svg>
@@ -166,6 +166,11 @@
                             <h2 class="shipping__content--title h3">Год</h2>
                             <div class="single__widget widget__bg">
                             <ul class="widget__form--check">
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check6">2025</label>
+                                    <input class="widget__form--check__input" name="year" value="2025" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
                                 <li class="widget__form--check__list">
                                     <label class="widget__form--check__label" for="check6">2024</label>
                                     <input class="widget__form--check__input" name="year" value="2024" type="checkbox">
@@ -450,7 +455,7 @@
             <div class="newsletter__area">
                 <div class="newsletter__inner d-flex justify-content-between align-items-center">
                     <div class="newsletter__content">
-                        <h2 class="newsletter__title">WEB приложение <span class="text__secondary">Laravel</span></h2>
+                        <h2 class="newsletter__title">WEB приложение <span class="text__secondary"></span></h2>
                         <p class="newsletter__desc">Разработано для автоматизации вычислительных процессов</p>
                     </div>
                     
@@ -468,7 +473,6 @@
                             <ul class="footer__widget--menu footer__widget--inner">
                                 
                                 <li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="https://kostomuksha-city.ru/" target="_blank">Сайт Костомукшского городского округа</a></li>
-                                <li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="http://minfin.karelia.ru/" target="_blank">Министерство финансов Республики Карелия</a></li>
                                 
                             </ul>
                         </div>
