@@ -150,7 +150,7 @@
                                              </li>  
                                              <li>
                                                  <form action="{{ route('ofs25')}}" method="get">
-                                                    <button type="submit" class="custom-btn btn-16">ОФС 2025 (разработка)</button>
+                                                    <button type="submit" class="custom-btn btn-16">ОФС 2025</button>
                                                 </form>
                                              </li>
                                              <li>
@@ -163,14 +163,14 @@
                                                 <form action="{{ route('admincount')}}" method="get">
                                                     <input type='hidden' name='variant' value='1'>
                                                     <input type='hidden' name='year' value='2024'>
-                                                    <button type="submit" class="custom-btn btn-16">Смета (2023 год)</button>
+                                                    <button type="submit" class="custom-btn btn-16">Смета 2023 год</button>
                                                 </form>
                                              </li>  
                                              <li>
                                                 <form action="{{ route('admincount24')}}" method="get">
                                                     <input type='hidden' name='variant' value='5'>
                                                     <input type='hidden' name='year' value='2025'>
-                                                    <button type="submit" class="custom-btn btn-16">Смета (2024 год)</button>
+                                                    <button type="submit" class="custom-btn btn-16">Смета 2024 год</button>
                                                 </form>
                                              </li>
                                              @elseif ($role == "user")
@@ -212,14 +212,14 @@
                                                  <form action="{{ route('usercount')}}" method="get">
                                                     <input type='hidden' name='variant' value='1'>
                                                     <input type='hidden' name='year' value='2024'>
-                                                    <button type="submit" class="custom-btn btn-16"><b>Смета (2023 год)<b></button>
+                                                    <button type="submit" class="custom-btn btn-16"><b>Смета 2023 год<b></button>
                                                 </form>
                                              </li>  
                                              <li>
                                                 <form action="{{ route('usercount24')}}" method="get">
                                                     <input type='hidden' name='variant' value='5'>
                                                     <input type='hidden' name='year' value='2025'>
-                                                    <button type="submit" class="custom-btn btn-16"><b>Смета (2024 год)</b></button>
+                                                    <button type="submit" class="custom-btn btn-16"><b>Смета 2024 год</b></button>
                                                 </form>
                                              </li>
                                              @elseif ($role == "build")

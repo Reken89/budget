@@ -440,23 +440,23 @@
                                                 <button style="width:200px;height:50px" class="primary__btn price__filter--btn" type="submit">Сформировать</button>
                                                 </form>
                                             </div>                                                  
-                                            @if(isset($info['mounth']))
+                                            @if(isset($info['mounth']) && isset($info['chapter']) && isset($info['user']))
                                                 <div class="single__widget widget__bg">  
                                                     <form action="/budget/public/user/ofs25/export" method="get">
                                                         <button type="submit" style="width:200px;height:50px" class="primary__btn price__filter--btn">EXCEL</button>
                                                     </form>
                                                 </div>    
+                                                @if(count($info['chapter']) < 2 && count($info['user']) < 2 && count($info['mounth']) < 2)
+                                                <div class="single__widget widget__bg">  
+                                                    <form id="info"> 
+                                                        <input type='hidden' name='mounth' value="{{ $info['mounth'][0] }}">
+                                                        <input type='hidden' name='chapter' value="{{ $info['chapter'][0] }}">
+                                                        <input type='hidden' name='user' value="{{ $info['user'][0] }}">
+                                                        <button style="width:200px;height:50px" id="status" class="primary__btn price__filter--btn" type="button">Редактирование</button>
+                                                    </form>
+                                                </div>
+                                                @endif
                                             @endif 
-                                            @if(isset($info['chapter']) && count($info['chapter']) < 2 && count($info['user']) < 2 && count($info['mounth']) < 2)
-                                            <div class="single__widget widget__bg">  
-                                                <form id="info"> 
-                                                    <input type='hidden' name='mounth' value="{{ $info['mounth'][0] }}">
-                                                    <input type='hidden' name='chapter' value="{{ $info['chapter'][0] }}">
-                                                    <input type='hidden' name='user' value="{{ $info['user'][0] }}">
-                                                    <button style="width:200px;height:50px" id="status" class="primary__btn price__filter--btn" type="button">Редактирование</button>
-                                                </form>
-                                            </div>
-                                            @endif
                                         </div>
                                     </article>
                                 </div>

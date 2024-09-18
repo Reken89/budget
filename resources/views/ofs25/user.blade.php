@@ -23,29 +23,29 @@
     ];
     
     $companies = [
-            '3'  => 'Средняя общеобразовательная школа №1',
-            '4'  => 'Средняя общеобразовательная школа №2', 
-            '5'  => 'Средняя общеобразовательная школа №3', 
-            '7'  => 'МБОУ КГО Гимназия', 
-            '8'  => 'Вокнаволокская средняя общеобразовательная школа',
-            '9'  => 'МКДОУ Ауринко', 
-            '10' => 'МКДОУ Березка', 
-            '12' => 'МКДОУ Золотой Ключик', 
-            '13' => 'МКДОУ Кораблик',
-            '15' => 'МКДОУ Солнышко', 
-            '16' => 'Спортивная школа', 
-            '17' => 'Центр внешкольной работы', 
-            '18' => 'Детская художественная школа',
-            '19' => 'Детская музыкальная школа', 
-            '20' => 'Муниципальный архив и центральная библиотека', 
-            '21' => 'Центр культурного развития', 
-            '22' => 'Центр развития образования',
-            '23' => 'Комитет по управлению муниципальной собственностью', 
-            '25' => 'Администрация КГО', 
-            '26' => 'МКУ Закупки', 
-            '27' => 'Совет КГО',
-            '28' => 'КСО Костомукша', 
-            '29' => 'Централизованная бухгалтерия',
+        '3'  => 'Средняя общеобразовательная школа №1',
+        '4'  => 'Средняя общеобразовательная школа №2', 
+        '5'  => 'Средняя общеобразовательная школа №3', 
+        '7'  => 'МБОУ КГО Гимназия', 
+        '8'  => 'Вокнаволокская средняя общеобразовательная школа',
+        '9'  => 'МКДОУ Ауринко', 
+        '10' => 'МКДОУ Березка', 
+        '12' => 'МКДОУ Золотой Ключик', 
+        '13' => 'МКДОУ Кораблик',
+        '15' => 'МКДОУ Солнышко', 
+        '16' => 'Спортивная школа', 
+        '17' => 'Центр внешкольной работы', 
+        '18' => 'Детская художественная школа',
+        '19' => 'Детская музыкальная школа', 
+        '20' => 'Муниципальный архив и центральная библиотека', 
+        '21' => 'Центр культурного развития', 
+        '22' => 'Центр развития образования',
+        '23' => 'Комитет по управлению муниципальной собственностью', 
+        '25' => 'Администрация КГО', 
+        '26' => 'МКУ Закупки', 
+        '27' => 'Совет КГО',
+        '28' => 'КСО Костомукша', 
+        '29' => 'Централизованная бухгалтерия',
     ];
 @endphp
 <!doctype html>
@@ -433,33 +433,33 @@
                         </form>
                 
                         <br>
-                        @if(isset($info['mounth']))
+                        @if(isset($info['mounth']) && isset($info['chapter']) && isset($info['user']))
                             <form action="/budget/public/user/ofs25/export" method="get">
                                 <input type='hidden' name='user' value="{{ $info['user'] }}">
                                 <button type="submit" style="width:200px;height:50px" class="primary__btn price__filter--btn">EXCEL</button>
                             </form>
-                        @endif
                            
-                        <br>
-                        @if(isset($info['chapter']) && count($info['chapter']) < 2)
-                        <form id="info"> 
-                            <input type='hidden' name='mounth' value="{{ $info['mounth'] }}">
-                            <input type='hidden' name='chapter' value="{{ $info['chapter'][0] }}">
-                            <input type='hidden' name='user' value="{{ $info['user'] }}">
-                            <button style="width:200px;height:50px" id="status" class="primary__btn price__filter--btn" type="button">Отправить в ФЭУ</button>
-                        </form>
-                        @endif
-                        
-                        <br>
-                        @if(isset($info['chapter']) && count($info['chapter']) < 2)
-                        <div id="block">
-                            <form id="help"> 
+                            <br>
+                            @if(count($info['chapter']) < 2)
+                            <form id="info"> 
                                 <input type='hidden' name='mounth' value="{{ $info['mounth'] }}">
                                 <input type='hidden' name='chapter' value="{{ $info['chapter'][0] }}">
                                 <input type='hidden' name='user' value="{{ $info['user'] }}">
-                                <button style="width:200px;height:50px" id="synch" class="primary__btn price__filter--btn" type="button">Синхронизация</button>
+                                <button style="width:200px;height:50px" id="status" class="primary__btn price__filter--btn" type="button">Отправить в ФЭУ</button>
                             </form>
-                        </div> 
+                            @endif
+                        
+                            <br>
+                            @if(count($info['chapter']) < 2)
+                            <div id="block">
+                                <form id="help"> 
+                                    <input type='hidden' name='mounth' value="{{ $info['mounth'] }}">
+                                    <input type='hidden' name='chapter' value="{{ $info['chapter'][0] }}">
+                                    <input type='hidden' name='user' value="{{ $info['user'] }}">
+                                    <button style="width:200px;height:50px" id="synch" class="primary__btn price__filter--btn" type="button">Синхронизация</button>
+                                </form>
+                            </div> 
+                            @endif
                         @endif
 
                         </div>
@@ -474,7 +474,7 @@
                         <div class="account__content">
                             
                             <div class="account__table--area">  
-                                @if(isset($info['mounth']))
+                                @if(isset($info['mounth']) && isset($info['chapter']) && isset($info['user']))
                                 <p><b>Параметры: месяц <font color='blue'>{{ $mounth[$info['mounth']] }},</font> раздел @foreach($info['chapter'] AS $value) <font color='blue'>{{ $chapter[$value] }},</font> @endforeach учреждение <font color='blue'>{{ $companies[$info['user']] }},</font></b> </p>
                                 @else
                                 <p><b>Параметры: Параметры не выбраны</b> </p>
