@@ -286,7 +286,7 @@
                                 </table>
                                 
                                 </br>
-                                <p><b>*Для информации:</b> Модуль разработан, для замены рабочего места «Делопроизводство», системы «АС Бюджет»</p>
+                                <p><b>*Для информации:</b> Модуль разработан, для регистрации корреспонденции</p>
                             </div>
                         </div>
                     </div>
@@ -312,7 +312,7 @@
             <div class="newsletter__area">
                 <div class="newsletter__inner d-flex justify-content-between align-items-center">
                     <div class="newsletter__content">
-                        <h2 class="newsletter__title">WEB приложение <span class="text__secondary">Laravel</span></h2>
+                        <h2 class="newsletter__title">WEB приложение <span class="text__secondary"></span></h2>
                         <p class="newsletter__desc">Разработано для автоматизации вычислительных процессов</p>
                     </div>
                     
@@ -330,8 +330,7 @@
                             <ul class="footer__widget--menu footer__widget--inner">
                                 
                                 <li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="https://kostomuksha-city.ru/" target="_blank">Сайт Костомукшского городского округа</a></li>
-                                <li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="http://minfin.karelia.ru/" target="_blank">Министерство финансов Республики Карелия</a></li>
-                                
+                               
                             </ul>
                         </div>
                     </div>

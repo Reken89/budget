@@ -249,20 +249,6 @@
                                           </ul>
                                        </li>
                                        
-                                       <li>
-                                          <a href="">Сайт <i class="fal fa-plus"></i></a>
-                                          <ul class="submenu">
-                                             @if ($role == "admin") 
-                                             <li>
-                                                <a href="/finance/">Модуль выключен</a>
-                                             </li>                                             
-                                             @else
-                                             <li>
-                                                <a href="https://kostamail.ru/finance/">Бюджет для граждан</a>
-                                             </li>
-                                             @endif
-                                          </ul>
-                                       </li>
 
                                        <li>
                                           <a href="">Новости <i class="fal fa-plus"></i></a>
@@ -355,7 +341,7 @@
                         </div>
                            <img class="about__thumb-4-2" src="{{ asset('assets/img/about/4/about-2.jpg') }}" alt="">
                         <div class="about__experience d-flex align-items-center">
-                           <h3 class="about__experience-counter text-rubik mr-20"><span class="counter">4</span>+</h3>
+                           <h3 class="about__experience-counter text-rubik mr-20"><span class="counter">5</span>+</h3>
                            <p>Года разработки</p>
                         </div>
                      </div>
@@ -429,9 +415,6 @@
                                     <li>
                                        <a href="https://kostomuksha-city.ru/">Официальный сайт Костомукшского городского округа</a>
                                     </li>  
-                                    <li>
-                                       <a href="http://minfin.karelia.ru/">Министерство финансов Республики Карелия</a>
-                                    </li> 
                                  </ul>
                               </div>
                            </div>
