@@ -1,5 +1,52 @@
 @php
-
+    $mounth = [
+        '1' => 'Январь',
+        '2' => 'Февраль',
+        '3' => 'Март',
+        '4' => 'Апрель',
+        '5' => 'Май',
+        '6' => 'Июнь',
+        '7' => 'Июль',
+        '8' => 'Август',
+        '9' => 'Сентябрь',
+        '10' => 'Октябрь',
+        '11' => 'Ноябрь',
+        '12' => 'Декабрь',
+    ];
+    
+    $chapter = [
+        '1' => 'МБ МЗ(МБ)',
+        '2' => 'МБ ИЦ',
+        '3' => 'РК МЗ(РК)',
+        '4' => 'РК ИЦ',
+        '5' => 'ПД',
+    ];
+    
+    $companies = [
+        '3'  => 'Средняя общеобразовательная школа №1',
+        '4'  => 'Средняя общеобразовательная школа №2', 
+        '5'  => 'Средняя общеобразовательная школа №3', 
+        '7'  => 'МБОУ КГО Гимназия', 
+        '8'  => 'Вокнаволокская средняя общеобразовательная школа',
+        '9'  => 'МКДОУ Ауринко', 
+        '10' => 'МКДОУ Березка', 
+        '12' => 'МКДОУ Золотой Ключик', 
+        '13' => 'МКДОУ Кораблик',
+        '15' => 'МКДОУ Солнышко', 
+        '16' => 'Спортивная школа', 
+        '17' => 'Центр внешкольной работы', 
+        '18' => 'Детская художественная школа',
+        '19' => 'Детская музыкальная школа', 
+        '20' => 'Муниципальный архив и центральная библиотека', 
+        '21' => 'Центр культурного развития', 
+        '22' => 'Центр развития образования',
+        '23' => 'Комитет по управлению муниципальной собственностью', 
+        '25' => 'Администрация КГО', 
+        '26' => 'МКУ Закупки', 
+        '27' => 'Совет КГО',
+        '28' => 'КСО Костомукша', 
+        '29' => 'Централизованная бухгалтерия',
+    ];
 @endphp
 <!doctype html>
 <html lang="en">
@@ -392,7 +439,24 @@
                                             <div class="single__widget widget__bg">
                                                 <button style="width:200px;height:50px" class="primary__btn price__filter--btn" type="submit">Сформировать</button>
                                                 </form>
+                                            </div>                                                  
+                                            @if(isset($info['mounth']))
+                                                <div class="single__widget widget__bg">  
+                                                    <form action="/budget/public/user/ofs25/export" method="get">
+                                                        <button type="submit" style="width:200px;height:50px" class="primary__btn price__filter--btn">EXCEL</button>
+                                                    </form>
+                                                </div>    
+                                            @endif 
+                                            @if(isset($info['chapter']) && count($info['chapter']) < 2 && count($info['user']) < 2 && count($info['mounth']) < 2)
+                                            <div class="single__widget widget__bg">  
+                                                <form id="info"> 
+                                                    <input type='hidden' name='mounth' value="{{ $info['mounth'][0] }}">
+                                                    <input type='hidden' name='chapter' value="{{ $info['chapter'][0] }}">
+                                                    <input type='hidden' name='user' value="{{ $info['user'][0] }}">
+                                                    <button style="width:200px;height:50px" id="status" class="primary__btn price__filter--btn" type="button">Редактирование</button>
+                                                </form>
                                             </div>
+                                            @endif
                                         </div>
                                     </article>
                                 </div>
@@ -413,8 +477,12 @@
                         <div class="account__content">
                             
                             <div class="account__table--area">  
-                                @if(isset($info['mounth']))
-                                <p><b>Параметры:</b></p>
+                                @if(isset($info['mounth']) && isset($info['chapter']) && isset($info['user']))
+                                    @if(count($info['chapter']) < 2 && count($info['user']) < 2 && count($info['mounth']) < 2)
+                                        <p><b>Параметры: месяц <font color='blue'>{{ $mounth[$info['mounth'][0]] }},</font> раздел <font color='blue'>{{ $chapter[$info['chapter'][0]] }},</font> учреждение <font color='blue'>{{ $companies[$info['user'][0]] }},</font></b> </p>
+                                    @else
+                                        <p><b>Параметры: Выбрано несколько значений</b></p>
+                                    @endif
                                 @else
                                 <p><b>Параметры: Параметры не выбраны</b> </p>
                                 @endif
@@ -542,6 +610,45 @@
             });  
         } 
         fetch_data();
+        
+        //Меняем статус в таблице ofs
+        $(document).on('click', '#status', function(){
+            let info = $('#info').serializeArray();
+           
+            //Создаем пустые массивы
+            let many_chapter = [];
+            let many_mounth = [];
+            let many_user = [];
+                  
+            for (const item of info) {
+                const value = item.value;
+                if (item.name === 'chapter') {
+                    many_chapter.push(value);
+                } else if (item.name === 'mounth') {
+                    many_mounth.push(value);
+                } else if (item.name === 'user') {
+                    many_user.push(value);
+                }
+            }            
+             
+            let chapter = many_chapter[0]; 
+            let mounth = many_mounth[0];
+            let user = many_user[0];
+                
+            $.ajax({
+                url:"/budget/public/admin/ofs25/status",  
+                method:"patch",
+                data:{
+                    "_token": "{{ csrf_token() }}",
+                    chapter, mounth, user
+                },
+                dataType:"text",  
+                success:function(data){ 
+                    fetch_data();
+                    alert(data);
+                } 
+            })               
+        })
         
     });
 </script>

@@ -81,6 +81,7 @@ Route::get('/ugkh/communal', [UgkhCommunalController::class, 'user'])->middlewar
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Роуты для Back (Модуль ОФС 2025)
 Route::get('/admin/ofs25/table', [AdminOfs25Controller::class, 'TableView'])->middleware('auth');
+Route::patch('/admin/ofs25/status', [AdminOfs25Controller::class, 'UpdateStatus'])->middleware('auth');
 
 Route::get('/user/ofs25/table', [Ofs25Controller::class, 'TableView'])->middleware('auth');
 Route::patch('/user/ofs25/update', [Ofs25Controller::class, 'UpdateInfo'])->middleware('auth');

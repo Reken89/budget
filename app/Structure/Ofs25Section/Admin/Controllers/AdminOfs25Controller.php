@@ -3,9 +3,9 @@
 namespace App\Structure\Ofs25Section\Admin\Controllers;
 
 use App\Core\Controllers\Controller;
-use Maatwebsite\Excel\Facades\Excel;
 use App\Structure\Ofs25Section\Admin\Dto\Ofs25SelectDto;
 use App\Structure\Ofs25Section\Admin\Actions\Ofs25SelectAction;
+use App\Structure\Ofs25Section\Admin\Actions\Ofs25StatusAction;
 use Illuminate\Http\Request;
 
 class AdminOfs25Controller extends Controller
@@ -61,6 +61,22 @@ class AdminOfs25Controller extends Controller
         session(['table' => $table]);
         
         return view('ofs25.table.admin', ['info' => $info]);  
+    }
+    
+    /**
+     * Обновляем статус в таблице ofs
+     *
+     * @param Request $request
+     * @return 
+     */
+    public function UpdateStatus(Request $request)
+    {  
+        $result = $this->action(Ofs25StatusAction::class)->UpdateStatus($request->mounth, $request->chapter, $request->user);
+        if ($result == true){
+            echo "Вы разрешили редактирование для централизованной бухгалтерии";
+        }else{
+            echo "Ошибка открытия редактирования!";
+        }
     }
        
 }

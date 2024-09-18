@@ -21,7 +21,7 @@
     ];
 
     foreach($info as $value){
-        if($value['ekr']['main'] == "yes" && $value['ekr']['shared'] == "no"){
+        if($value['ekr']['main'] == "Yes" && $value['ekr']['shared'] == "No"){
             $total['lbo'] = $total['lbo'] + $value['lbo'];
             $total['prepaid'] = $total['prepaid'] + $value['prepaid'];
             $total['credit_year_all'] = $total['credit_year_all'] + $value['credit_year_all'];
