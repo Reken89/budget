@@ -416,6 +416,16 @@
                                         <input class="widget__form--check__input" name="user" value="10" type="checkbox">
                                         <span class="widget__form--checkmark"></span>
                                     </li>
+                                    <li class="widget__form--check__list">
+                                        <label class="widget__form--check__label" for="check10">Гномик</label>
+                                        <input class="widget__form--check__input" name="user" value="11" type="checkbox">
+                                        <span class="widget__form--checkmark"></span>
+                                    </li>
+                                    <li class="widget__form--check__list">
+                                        <label class="widget__form--check__label" for="check10">Сказка</label>
+                                        <input class="widget__form--check__input" name="user" value="14" type="checkbox">
+                                        <span class="widget__form--checkmark"></span>
+                                    </li>
                                 </ul>
                             @endif
                             </div>    
