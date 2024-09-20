@@ -222,6 +222,11 @@
                                                     <button type="submit" class="custom-btn btn-16"><b>Смета 2024 год</b></button>
                                                 </form>
                                              </li>
+                                             <li>
+                                                 <form action="{{ route('userofs24new')}}" method="get">
+                                                    <button type="submit" class="custom-btn btn-16"><b>(Разработка)<b></button>
+                                                </form>
+                                             </li>
                                              @elseif ($role == "build")
                                              <li>
                                                  <form action="{{ route('build')}}" method="get">

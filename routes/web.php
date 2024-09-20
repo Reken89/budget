@@ -31,6 +31,7 @@ use App\Structure\Count24Section\User\Controllers\UserCount24Controller;
 use App\Structure\CSection\Admin\Controllers\Admin1cController;
 use App\Structure\Ofs25Section\User\Controllers\Ofs25Controller;
 use App\Structure\Ofs25Section\Admin\Controllers\AdminOfs25Controller;
+use App\Structure\Ofs2024Section\User\Controllers\Ofs2024Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -93,6 +94,23 @@ Route::get('/user/ofs25/export', [Ofs25Controller::class, 'ExportTable'])->middl
 //Роуты для Front (Модуль ОФС 2025)
 Route::get('/admin/ofs25', [AdminOfs25Controller::class, 'FrontView'])->middleware('auth')->name('ofs25');
 Route::get('/user/ofs25', [Ofs25Controller::class, 'FrontView'])->middleware('auth')->name('userofs25');
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+ * 
+ * 
+ * 
+ */
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Роуты для Back (Модуль ОФС 2024) Новый!
+Route::get('/user/ofs2024/table', [Ofs2024Controller::class, 'TableView'])->middleware('auth');
+Route::patch('/user/ofs2024/update', [Ofs2024Controller::class, 'UpdateInfo'])->middleware('auth');
+Route::patch('/user/ofs2024/reset', [Ofs2024Controller::class, 'ResetInfo'])->middleware('auth');
+Route::patch('/user/ofs2024/status', [Ofs2024Controller::class, 'UpdateStatus'])->middleware('auth');
+Route::patch('/user/ofs2024/synch', [Ofs2024Controller::class, 'SynchInfo'])->middleware('auth');
+Route::get('/user/ofs2024/export', [Ofs2024Controller::class, 'ExportTable'])->middleware('auth');
+
+//Роуты для Front (Модуль ОФС 2024) Новый!
+Route::get('/user/ofs2024', [Ofs2024Controller::class, 'FrontView'])->middleware('auth')->name('userofs24new');
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
  * 
