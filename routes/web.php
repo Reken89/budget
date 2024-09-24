@@ -138,7 +138,8 @@ Route::get('/user/ofs24/export', [Ofs24Controller::class, 'export'])->middleware
 
 //Роуты для Front (Модуль ОФС 2024)
 Route::get('/admin/ofs24', [AdminOfs24IndexController::class, 'front'])->middleware('auth', 'admin')->name('adminofs24');
-Route::get('/user/ofs24', [Ofs24Controller::class, 'front'])->middleware('auth')->name('userofs24');
+Route::get('/user/ofs24', [BlockController::class, 'index'])->middleware('auth')->name('userofs24');
+//Route::get('/user/ofs24', [Ofs24Controller::class, 'front'])->middleware('auth')->name('userofs24');
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
  * 
