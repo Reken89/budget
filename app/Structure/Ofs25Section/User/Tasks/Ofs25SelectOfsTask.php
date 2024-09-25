@@ -8,7 +8,11 @@ use App\Structure\Ofs25Section\User\Models\Ofs252;
 use App\Structure\Ofs25Section\User\Models\Ofs253;
 use App\Structure\Ofs25Section\User\Models\Ofs254;
 use App\Structure\Ofs25Section\User\Models\Ofs255;
-use App\Structure\Ofs24Section\Admin\Models\Ofs24;
+use App\Structure\Ofs2024Section\User\Models\Ofs241;
+use App\Structure\Ofs2024Section\User\Models\Ofs242;
+use App\Structure\Ofs2024Section\User\Models\Ofs243;
+use App\Structure\Ofs2024Section\User\Models\Ofs244;
+use App\Structure\Ofs2024Section\User\Models\Ofs245;
 
 class Ofs25SelectOfsTask extends BaseTask
 {
@@ -70,10 +74,25 @@ class Ofs25SelectOfsTask extends BaseTask
      */
     public function SelectOfs24(int $user, int $chapter): array
     {
-        $info = Ofs24::select('credit_end_all', 'credit_end_term', 'debit_end_all', 'debit_end_term', 'ekr_id')  
+        if($chapter == "1"){
+            $ofs = new Ofs241;
+        }
+        if($chapter == "2"){
+            $ofs = new Ofs242;
+        }
+        if($chapter == "3"){
+            $ofs = new Ofs243;
+        }
+        if($chapter == "4"){
+            $ofs = new Ofs244;
+        }
+        if($chapter == "5"){
+            $ofs = new Ofs245;
+        }
+        
+        $info = $ofs::select('credit_end_all', 'credit_end_term', 'debit_end_all', 'debit_end_term', 'ekr_id')  
             ->where('user_id', $user)
-            ->where('mounth', 12) 
-            ->where('chapter', $chapter)     
+            ->where('mounth', 12)      
             ->get()
             ->toArray();
         return $info; 
