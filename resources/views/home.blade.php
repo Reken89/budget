@@ -139,13 +139,8 @@
                                                 </form>
                                              </li>
                                              <li>
-                                                <form action="{{ route('adminofs24')}}" method="get">
-                                                    <input type='hidden' name='year[]' value='2024'>
-                                                    <input type='hidden' name='mounth[]' value='1'>
-                                                    <input type='hidden' name='user[]' value='3'>
-                                                    <input type='hidden' name='chapter[]' value='1'>
-                                                    <input type='hidden' name='info' value='no'>
-                                                    <button type="submit">ОФС 2024</button>
+                                                <form action="{{ route('adminofs2024')}}" method="get">
+                                                    <button type="submit" class="custom-btn btn-16">ОФС 2024</button>
                                                 </form>
                                              </li>  
                                              <li>
@@ -173,11 +168,6 @@
                                                     <button type="submit" class="custom-btn btn-16">Смета 2024 год</button>
                                                 </form>
                                              </li>
-                                             <li>
-                                                 <form action="{{ route('adminofs2024')}}" method="get">
-                                                    <button type="submit" class="custom-btn btn-16">(Разработка)</button>
-                                                </form>
-                                             </li>
                                              @elseif ($role == "user")
                                              <li>
                                                  <form action="{{ route('usercommunal')}}" method="get">
@@ -199,14 +189,9 @@
                                                 </form>
                                              </li>
                                              <li>
-                                                 <form action="{{ route('userofs24')}}" method="get">
-                                                    <input type='hidden' name='year' value='2024'>
-                                                    <input type='hidden' name='mounth' value='1'>
-                                                    <input type='hidden' name='user' value='3'>
-                                                    <input type='hidden' name='chapter[]' value='1'>
-                                                    <input type='hidden' name='info' value='no'>
+                                                 <form action="{{ route('userofs24new')}}" method="get">
                                                     <button type="submit" class="custom-btn btn-16"><b>ОФС 2024 год<b></button>
-                                                </form>
+                                                 </form>
                                              </li>
                                              <li>
                                                  <form action="{{ route('userofs25')}}" method="get">

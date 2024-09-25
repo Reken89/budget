@@ -124,21 +124,21 @@ Route::get('/user/ofs2024', [Ofs2024Controller::class, 'FrontView'])->middleware
  */
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Роуты для Back (Модуль ОФС 2024)
-Route::get('/admin/ofs24/back', [AdminOfs24IndexController::class, 'index'])->middleware('auth', 'admin');
-Route::get('/admin/ofs24/export', [AdminOfs24IndexController::class, 'export'])->middleware('auth', 'admin');
-Route::patch('/admin/ofs24/status', [AdminOfs24IndexController::class, 'status'])->middleware('auth', 'admin');
-Route::get('/admin/ofs24/web', [AdminOfs24IndexController::class, 'web'])->middleware('auth', 'admin');
+//Route::get('/admin/ofs24/back', [AdminOfs24IndexController::class, 'index'])->middleware('auth', 'admin');
+//Route::get('/admin/ofs24/export', [AdminOfs24IndexController::class, 'export'])->middleware('auth', 'admin');
+//Route::patch('/admin/ofs24/status', [AdminOfs24IndexController::class, 'status'])->middleware('auth', 'admin');
+//Route::get('/admin/ofs24/web', [AdminOfs24IndexController::class, 'web'])->middleware('auth', 'admin');
 
-Route::get('/user/ofs24/back', [Ofs24Controller::class, 'index'])->middleware('auth');
-Route::patch('/user/ofs24/update', [Ofs24Controller::class, 'update'])->middleware('auth');
-Route::patch('/user/ofs24/reset', [Ofs24Controller::class, 'reset'])->middleware('auth');
-Route::patch('/user/ofs24/synch', [Ofs24Controller::class, 'synch'])->middleware('auth');
-Route::patch('/user/ofs24/stat', [Ofs24Controller::class, 'stat'])->middleware('auth');
-Route::get('/user/ofs24/export', [Ofs24Controller::class, 'export'])->middleware('auth');
+//Route::get('/user/ofs24/back', [Ofs24Controller::class, 'index'])->middleware('auth');
+//Route::patch('/user/ofs24/update', [Ofs24Controller::class, 'update'])->middleware('auth');
+//Route::patch('/user/ofs24/reset', [Ofs24Controller::class, 'reset'])->middleware('auth');
+//Route::patch('/user/ofs24/synch', [Ofs24Controller::class, 'synch'])->middleware('auth');
+//Route::patch('/user/ofs24/stat', [Ofs24Controller::class, 'stat'])->middleware('auth');
+//Route::get('/user/ofs24/export', [Ofs24Controller::class, 'export'])->middleware('auth');
 
 //Роуты для Front (Модуль ОФС 2024)
-Route::get('/admin/ofs24', [AdminOfs24IndexController::class, 'front'])->middleware('auth', 'admin')->name('adminofs24');
-Route::get('/user/ofs24', [BlockController::class, 'index'])->middleware('auth')->name('userofs24');
+//Route::get('/admin/ofs24', [AdminOfs24IndexController::class, 'front'])->middleware('auth', 'admin')->name('adminofs24');
+//Route::get('/user/ofs24', [BlockController::class, 'index'])->middleware('auth')->name('userofs24');
 //Route::get('/user/ofs24', [Ofs24Controller::class, 'front'])->middleware('auth')->name('userofs24');
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
