@@ -13483,7 +13483,7 @@ div.container_fix {
 
 div.container_fix {
     width: 1400px;
-    max-height: 700px;
+    max-height: 600px;
     overflow: scroll;
 }
 
