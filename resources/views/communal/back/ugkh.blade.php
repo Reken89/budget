@@ -3,18 +3,18 @@
     $year = $info['year'];
     $mounth = $info['mounth'];
     $name_mounth = [
-    '1'  => 'январь',
-    '2'  => 'февраль',
-    '3'  => 'март',
-    '4'  => 'апрель',
-    '5'  => 'май',
-    '6'  => 'июнь',
-    '7'  => 'июль',
-    '8'  => 'август',
-    '9'  => 'сентябрь',
-    '10' => 'октябрь',
-    '11' => 'ноябрь',
-    '12' => 'декабрь',
+        '1'  => 'январь',
+        '2'  => 'февраль',
+        '3'  => 'март',
+        '4'  => 'апрель',
+        '5'  => 'май',
+        '6'  => 'июнь',
+        '7'  => 'июль',
+        '8'  => 'август',
+        '9'  => 'сентябрь',
+        '10' => 'октябрь',
+        '11' => 'ноябрь',
+        '12' => 'декабрь',
     ];
 @endphp
 
@@ -53,7 +53,7 @@
                         </li>
                         <li class="header__info--list">
                             <a class="header__info--link" href="mailto:info@example.com">
-                                ugkh@msu.kostomuksha-rk.ru</a>
+                                finanse@kostamail.ru</a>
                         </li>
                     </ul>
                     <div class="header__top--right d-flex align-items-center">
@@ -159,6 +159,13 @@
                 
                 <section class="shipping__section">
             <div class="container">
+                
+                <p>Описание функций кнопок:</p>
+                <p><b><u>Сформировать</u></b> - Формирует таблицу, по выбранным параметрам</br>
+                    <b><u>Excel</u></b> - Выгрузка таблицы в excel файл</br>
+                    </br>
+                </p>
+                
                 <div class="shipping__inner style2 d-flex">
                     <div class="shipping__items style2 d-flex align-items-center">
                         
@@ -299,37 +306,105 @@
                 </div>
             </div>
         </section>
-                <div class="my__account--section__inner border-radius-10 d-flex">
-                    
-                
+                <div class="my__account--section__inner border-radius-10 d-flex">                                    
                     <div class="account__wrapper">
                         <div class="account__content">
+                            <h2 class="account__content--title h3 mb-20">Таблица тарифов</h2>
+                                <div class="container_fix">
+                                    <table class="table2" width="200">
+                                        <thead>
+                                            <tr>
+                                                <th style="min-width: 80px; width: 80px;">Тариф</th>
+                                                <th style="min-width: 100px; width: 100px;">Теплоснабжение</th> 
+                                                <th style="min-width: 100px; width: 100px;">Водоотведение</th> 
+                                                <th style="min-width: 100px; width: 100px;">Негативное воздействие</th> 
+                                                <th style="min-width: 100px; width: 100px;">Водоснабжение</th> 
+                                                <th style="min-width: 100px; width: 100px;">Электроснабжение</th> 
+                                                <th style="min-width: 100px; width: 100px;">Вывоз мусора</th>    
+                                            </tr>
+                                        </thead>
+                                        @if ($info['variant'] == "one")
+                                        @php
+                                            $tarrif = $info['tarrif'];
+                                        @endphp
+                                        <tbody>
+                                            <tr>
+                                                <td>Минимальный тариф</td>
+                                                <td>{{ number_format($tarrif['heat-one'], 4, ',', ' ') }}</td>
+                                                <td>{{ number_format($tarrif['drainage-one'], 4, ',', ' ') }}</td>
+                                                <td>{{ number_format($tarrif['negative-one'], 4, ',', ' ') }}</td>
+                                                <td>{{ number_format($tarrif['water-one'], 4, ',', ' ') }}</td>
+                                                <td>{{ number_format($tarrif['power-one'], 4, ',', ' ') }}</td>
+                                                <td>{{ number_format($tarrif['trash-one'], 4, ',', ' ') }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Максимальный тариф</td>
+                                                <td>{{ number_format($tarrif['heat-two'], 4, ',', ' ') }}</td>
+                                                <td>{{ number_format($tarrif['drainage-two'], 4, ',', ' ') }}</td>
+                                                <td>{{ number_format($tarrif['negative-two'], 4, ',', ' ') }}</td>
+                                                <td>{{ number_format($tarrif['water-two'], 4, ',', ' ') }}</td>
+                                                <td>{{ number_format($tarrif['power-two'], 4, ',', ' ') }}</td>
+                                                <td>{{ number_format($tarrif['trash-two'], 4, ',', ' ') }}</td>
+                                            </tr>
+                                        </tbody>
+                                        @elseif ($info['variant'] == "many")
+                                            <tbody>
+                                                <tr>
+                                                    <td>Минимальный тариф</td>
+                                                    <td>---</td>
+                                                    <td>---</td>
+                                                    <td>---</td>
+                                                    <td>---</td>
+                                                    <td>---</td>
+                                                    <td>---</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Максимальный тариф</td>
+                                                    <td>---</td>
+                                                    <td>---</td>
+                                                    <td>---</td>
+                                                    <td>---</td>
+                                                    <td>---</td>
+                                                    <td>---</td>
+                                                </tr>
+                                            </tbody>
+                                        @endif
+                                    </table>
+                                </div> 
+                            </br>
                             <h2 class="account__content--title h3 mb-20">Год: @foreach ($year as $y) {{$y}}, @endforeach Месяц: @foreach ($mounth as $m) {{$name_mounth[$m]}}, @endforeach</h2>
+                            <p>Расшифровка подсветки цифр:</p>
+                            <p><b><font color="blue">|||||||</font></b> - Информация отправлена</br>
+                                <b><font color="green">|||||||</font></b> - Значения в процессе редактирования</br>
+                                <b><font color="red">|||||||</font></b> - Значения не укладываются в диапазон тарифа</br>
+                                </br>
+                            </p>
                             <div class="account__table--area">
-                                <table class="table">
+                                <div class="container_fix">
+                                <table class="table2">
                                     <thead>
                                         <tr>
                                             <th style="min-width: 80px; width: 80px;">Учреждение</th>
                                             <th style="min-width: 80px; width: 80px;">Статус</th>
-                                            <th style="min-width: 140px; width: 150px;" colspan="2">Теплоснабжение</th> 
-                                            <th style="min-width: 140px; width: 150px;" colspan="2">Водоотведение</th> 
-                                            <th style="min-width: 140px; width: 150px;" colspan="2">Негативное воздействие</th> 
-                                            <th style="min-width: 140px; width: 150px;" colspan="2">Водоснабжение</th> 
-                                            <th style="min-width: 140px; width: 150px;" colspan="2">Электроснабжение</th> 
-                                            <th style="min-width: 140px; width: 150px;" colspan="2">Вывоз мусора</th>    
-                                            <th style="min-width: 80px; width: 80px;" rowspan="2">ИТОГО</th> 
+                                            <th style="min-width: 200px; width: 200px;" colspan="2">Теплоснабжение</th> 
+                                            <th style="min-width: 200px; width: 200px;" colspan="2">Водоотведение</th> 
+                                            <th style="min-width: 200px; width: 200px;" colspan="2">Негативное воздействие</th> 
+                                            <th style="min-width: 200px; width: 200px;" colspan="2">Водоснабжение</th> 
+                                            <th style="min-width: 200px; width: 200px;" colspan="2">Электроснабжение</th> 
+                                            <th style="min-width: 200px; width: 200px;" colspan="2">Вывоз мусора</th>    
+                                            <th style="min-width: 150px; width: 150px;" rowspan="2">ИТОГО</th> 
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td><b>Объем</b></td><td><b>Сумма</b></td>
-                                            <td><b>Объем</b></td><td><b>Сумма</b></td>
-                                            <td><b>Объем</b></td><td><b>Сумма</b></td>
-                                            <td><b>Объем</b></td><td><b>Сумма</b></td>
-                                            <td><b>Объем</b></td><td><b>Сумма</b></td>
-                                            <td><b>Объем</b></td><td><b>Сумма</b></td>
+                                            <th></th>
+                                            <td style="min-width: 100px; width: 100px;"></td>
+                                            <td style="min-width: 150px; width: 150px;"><b>Объем</b></td><td style="min-width: 150px; width: 150px;"><b>Сумма</b></td>
+                                            <td style="min-width: 150px; width: 150px;"><b>Объем</b></td><td style="min-width: 150px; width: 150px;"><b>Сумма</b></td>
+                                            <td style="min-width: 150px; width: 150px;"><b>Объем</b></td><td style="min-width: 150px; width: 150px;"><b>Сумма</b></td>
+                                            <td style="min-width: 150px; width: 150px;"><b>Объем</b></td><td style="min-width: 150px; width: 150px;"><b>Сумма</b></td>
+                                            <td style="min-width: 150px; width: 150px;"><b>Объем</b></td><td style="min-width: 150px; width: 150px;"><b>Сумма</b></td>
+                                            <td style="min-width: 150px; width: 150px;"><b>Объем</b></td><td style="min-width: 150px; width: 150px;"><b>Сумма</b></td>
                                             <td></td>
                                         </tr>
                                         
@@ -338,71 +413,166 @@
                                             @foreach ($info['result'] as $value)                                         
                                                 <tr> 
                                                     <input type="hidden" class="id" value="{{ $value['id'] }}">
-                                                    <td>{{ $value['user']['name'] }}</td>
-                                                    @if ($value['status'] == 3)
-                                                        <td><font color="green">отправлено</td>                                                      
-                                                    @elseif ($value['status'] == 1)
-                                                        <td><font color="green">отправлено</td>
+                                                    <th>{{ $value['user']['name'] }}</th>
+                                                    @if ($value['status'] !== 2)                                                       
+                                                        <td><font color="blue">Отправлено</td>
+                                                        <td><font color="blue">{{ number_format($value['heat-volume'], 4, ',', ' ') }}</td>
+                                                        <td><font color="blue">{{ number_format($value['heat-sum'], 2, ',', ' ') }}</td>
+                                                        <td><font color="blue">{{ number_format($value['drainage-volume'], 4, ',', ' ') }}</td>
+                                                        <td><font color="blue">{{ number_format($value['drainage-sum'], 2, ',', ' ') }}</td>
+                                                        <td><font color="blue">{{ number_format($value['negative-volume'], 4, ',', ' ') }}</td>
+                                                        <td><font color="blue">{{ number_format($value['negative-sum'], 2, ',', ' ') }}</td>
+                                                        <td><font color="blue">{{ number_format($value['water-volume'], 4, ',', ' ') }}</td>
+                                                        <td><font color="blue">{{ number_format($value['water-sum'], 2, ',', ' ') }}</td>
+                                                        <td><font color="blue">{{ number_format($value['power-volume'], 4, ',', ' ') }}</td>
+                                                        <td><font color="blue">{{ number_format($value['power-sum'], 2, ',', ' ') }}</td>
+                                                        <td><font color="blue">{{ number_format($value['trash-volume'], 4, ',', ' ') }}</td>
+                                                        <td><font color="blue">{{ number_format($value['trash-sum'], 2, ',', ' ') }}</td>                                                
+                                                        <td><font color="blue">{{ number_format($value['total'], 2, ',', ' ') }}</td>
                                                     @else
-                                                        <td><font color="red">В работе</td>
+                                                        <td><font color="green">В работе</td>
+                                                        @if ($value['heat-volume'] == 0)
+                                                            <td><font color="green">{{ number_format($value['heat-volume'], 4, ',', ' ') }}</td>
+                                                            <td><font color="green">{{ number_format($value['heat-sum'], 2, ',', ' ') }}</td>
+                                                        @else   
+                                                            @php
+                                                                if($value['heat-sum'] / $value['heat-volume'] >= $tarrif['heat-one'] && 
+                                                                $value['heat-sum'] / $value['heat-volume'] <= $tarrif['heat-two']){
+                                                                    $color = "green";
+                                                                }else{
+                                                                    $color = "red";
+                                                                }
+                                                            @endphp
+                                                                <td><font color="{{ $color }}">{{ number_format($value['heat-volume'], 4, ',', ' ') }}</td>
+                                                                <td><font color="{{ $color }}">{{ number_format($value['heat-sum'], 2, ',', ' ') }}</td>
+                                                        @endif
+                                                        
+                                                        @if ($value['drainage-volume'] == 0)
+                                                            <td><font color="green">{{ number_format($value['drainage-volume'], 4, ',', ' ') }}</td>
+                                                            <td><font color="green">{{ number_format($value['drainage-sum'], 2, ',', ' ') }}</td>
+                                                        @else   
+                                                            @php
+                                                                if($value['drainage-sum'] / $value['drainage-volume'] >= $tarrif['drainage-one'] && 
+                                                                $value['drainage-sum'] / $value['drainage-volume'] <= $tarrif['drainage-two']){
+                                                                    $color = "green";
+                                                                }else{
+                                                                    $color = "red";
+                                                                }
+                                                            @endphp
+                                                                <td><font color="{{ $color }}">{{ number_format($value['drainage-volume'], 4, ',', ' ') }}</td>
+                                                                <td><font color="{{ $color }}">{{ number_format($value['drainage-sum'], 2, ',', ' ') }}</td>
+                                                        @endif
+                                                        
+                                                        @if ($value['negative-volume'] == 0)
+                                                            <td><font color="green">{{ number_format($value['negative-volume'], 4, ',', ' ') }}</td>
+                                                            <td><font color="green">{{ number_format($value['negative-sum'], 2, ',', ' ') }}</td>
+                                                        @else   
+                                                            @php
+                                                                if($value['negative-sum'] / $value['negative-volume'] >= $tarrif['negative-one'] && 
+                                                                $value['negative-sum'] / $value['negative-volume'] <= $tarrif['negative-two']){
+                                                                    $color = "green";
+                                                                }else{
+                                                                    $color = "red";
+                                                                }
+                                                            @endphp
+                                                                <td><font color="{{ $color }}">{{ number_format($value['negative-volume'], 4, ',', ' ') }}</td>
+                                                                <td><font color="{{ $color }}">{{ number_format($value['negative-sum'], 2, ',', ' ') }}</td>
+                                                        @endif
+                                                        
+                                                        @if ($value['water-volume'] == 0)
+                                                            <td><font color="green">{{ number_format($value['water-volume'], 4, ',', ' ') }}</td>
+                                                            <td><font color="green">{{ number_format($value['water-sum'], 2, ',', ' ') }}</td>
+                                                        @else   
+                                                            @php
+                                                                if($value['water-sum'] / $value['water-volume'] >= $tarrif['water-one'] && 
+                                                                $value['water-sum'] / $value['water-volume'] <= $tarrif['water-two']){
+                                                                    $color = "green";
+                                                                }else{
+                                                                    $color = "red";
+                                                                }
+                                                            @endphp
+                                                                <td><font color="{{ $color }}">{{ number_format($value['water-volume'], 4, ',', ' ') }}</td>
+                                                                <td><font color="{{ $color }}">{{ number_format($value['water-sum'], 2, ',', ' ') }}</td>
+                                                        @endif
+                                                        
+                                                        @if ($value['power-volume'] == 0)
+                                                            <td><font color="green">{{ number_format($value['power-volume'], 4, ',', ' ') }}</td>
+                                                            <td><font color="green">{{ number_format($value['power-sum'], 2, ',', ' ') }}</td>
+                                                        @else   
+                                                            @php
+                                                                if($value['power-sum'] / $value['power-volume'] >= $tarrif['power-one'] && 
+                                                                $value['power-sum'] / $value['power-volume'] <= $tarrif['power-two']){
+                                                                    $color = "green";
+                                                                }else{
+                                                                    $color = "red";
+                                                                }
+                                                            @endphp
+                                                                <td><font color="{{ $color }}">{{ number_format($value['power-volume'], 4, ',', ' ') }}</td>
+                                                                <td><font color="{{ $color }}">{{ number_format($value['power-sum'], 2, ',', ' ') }}</td>
+                                                        @endif
+                                                        
+                                                        @if ($value['trash-volume'] == 0)
+                                                            <td><font color="green">{{ number_format($value['trash-volume'], 4, ',', ' ') }}</td>
+                                                            <td><font color="green">{{ number_format($value['trash-sum'], 2, ',', ' ') }}</td>
+                                                        @else   
+                                                            @php
+                                                                if($value['trash-sum'] / $value['trash-volume'] >= $tarrif['trash-one'] && 
+                                                                $value['trash-sum'] / $value['trash-volume'] <= $tarrif['trash-two']){
+                                                                    $color = "green";
+                                                                }else{
+                                                                    $color = "red";
+                                                                }
+                                                            @endphp
+                                                                <td><font color="{{ $color }}">{{ number_format($value['trash-volume'], 4, ',', ' ') }}</td>
+                                                                <td><font color="{{ $color }}">{{ number_format($value['trash-sum'], 2, ',', ' ') }}</td>
+                                                        @endif                                               
+                                                        <td><font color="green">{{ number_format($value['total'], 2, ',', ' ') }}</td>
                                                     @endif
-                                                    <td>{{ number_format($value['heat-volume'], 4, ',', ' ') }}</td>
-                                                    <td>{{ number_format($value['heat-sum'], 2, ',', ' ') }}</td>
-                                                    <td>{{ number_format($value['drainage-volume'], 4, ',', ' ') }}</td>
-                                                    <td>{{ number_format($value['drainage-sum'], 2, ',', ' ') }}</td>
-                                                    <td>{{ number_format($value['negative-volume'], 4, ',', ' ') }}</td>
-                                                    <td>{{ number_format($value['negative-sum'], 2, ',', ' ') }}</td>
-                                                    <td>{{ number_format($value['water-volume'], 4, ',', ' ') }}</td>
-                                                    <td>{{ number_format($value['water-sum'], 2, ',', ' ') }}</td>
-                                                    <td>{{ number_format($value['power-volume'], 4, ',', ' ') }}</td>
-                                                    <td>{{ number_format($value['power-sum'], 2, ',', ' ') }}</td>
-                                                    <td>{{ number_format($value['trash-volume'], 4, ',', ' ') }}</td>
-                                                    <td>{{ number_format($value['trash-sum'], 2, ',', ' ') }}</td>                                                
-                                                    <td>{{ number_format($value['total'], 2, ',', ' ') }}</td>
                                                 </tr>
-
                                             @endforeach
+                                            
                                         @elseif ($info['variant'] == "many")
                                             @foreach ($info['result'] as $value)
                                                 <tr>
-                                                    <td>{{ $value['user']['name'] }}</td>
+                                                    <th>{{ $value['user']['name'] }}</th>
                                                     <td></td>
-                                                    <td>{{ number_format($value['heat_volume'], 4, ',', ' ') }}</td>
-                                                    <td>{{ number_format($value['heat_sum'], 2, ',', ' ') }}</td>
-                                                    <td>{{ number_format($value['drainage_volume'], 4, ',', ' ') }}</td>
-                                                    <td>{{ number_format($value['drainage_sum'], 2, ',', ' ') }}</td>
-                                                    <td>{{ number_format($value['negative_volume'], 4, ',', ' ') }}</td>
-                                                    <td>{{ number_format($value['negative_sum'], 2, ',', ' ') }}</td>
-                                                    <td>{{ number_format($value['water_volume'], 4, ',', ' ') }}</td>
-                                                    <td>{{ number_format($value['water_sum'], 2, ',', ' ') }}</td>
-                                                    <td>{{ number_format($value['power_volume'], 4, ',', ' ') }}</td>
-                                                    <td>{{ number_format($value['power_sum'], 2, ',', ' ') }}</td>
-                                                    <td>{{ number_format($value['trash_volume'], 4, ',', ' ') }}</td>
-                                                    <td>{{ number_format($value['trash_sum'], 2, ',', ' ') }}</td>
-                                                    <td>{{ number_format($value['total'], 2, ',', ' ') }}</td>
+                                                    <td><font color="blue">{{ number_format($value['heat_volume'], 4, ',', ' ') }}</td>
+                                                    <td><font color="blue">{{ number_format($value['heat_sum'], 2, ',', ' ') }}</td>
+                                                    <td><font color="blue">{{ number_format($value['drainage_volume'], 4, ',', ' ') }}</td>
+                                                    <td><font color="blue">{{ number_format($value['drainage_sum'], 2, ',', ' ') }}</td>
+                                                    <td><font color="blue">{{ number_format($value['negative_volume'], 4, ',', ' ') }}</td>
+                                                    <td><font color="blue">{{ number_format($value['negative_sum'], 2, ',', ' ') }}</td>
+                                                    <td><font color="blue">{{ number_format($value['water_volume'], 4, ',', ' ') }}</td>
+                                                    <td><font color="blue">{{ number_format($value['water_sum'], 2, ',', ' ') }}</td>
+                                                    <td><font color="blue">{{ number_format($value['power_volume'], 4, ',', ' ') }}</td>
+                                                    <td><font color="blue">{{ number_format($value['power_sum'], 2, ',', ' ') }}</td>
+                                                    <td><font color="blue">{{ number_format($value['trash_volume'], 4, ',', ' ') }}</td>
+                                                    <td><font color="blue">{{ number_format($value['trash_sum'], 2, ',', ' ') }}</td>
+                                                    <td><font color="blue">{{ number_format($value['total'], 2, ',', ' ') }}</td>
                                                 </tr>
                                             @endforeach
                                         @endif 
                                         <tr>
-                                            <td class="col-id-no" scope="row"><b>ИТОГО</b></td>
+                                            <th class="col-id-no" scope="row"><b>ИТОГО</b></th>
                                             <td></td>
-                                            <td>{{ number_format($total['heat_volume'], 4, ',', ' ') }}</td>
-                                            <td>{{ number_format($total['heat_sum'], 2, ',', ' ') }}</td>
-                                            <td>{{ number_format($total['drainage_volume'], 4, ',', ' ') }}</td>
-                                            <td>{{ number_format($total['drainage_sum'], 2, ',', ' ') }}</td>
-                                            <td>{{ number_format($total['negative_volume'], 4, ',', ' ') }}</td>
-                                            <td>{{ number_format($total['negative_sum'], 2, ',', ' ') }}</td>
-                                            <td>{{ number_format($total['water_volume'], 4, ',', ' ') }}</td>
-                                            <td>{{ number_format($total['water_sum'], 2, ',', ' ') }}</td>
-                                            <td>{{ number_format($total['power_volume'], 4, ',', ' ') }}</td>
-                                            <td>{{ number_format($total['power_sum'], 2, ',', ' ') }}</td>
-                                            <td>{{ number_format($total['trash_volume'], 4, ',', ' ') }}</td>
-                                            <td>{{ number_format($total['trash_sum'], 2, ',', ' ') }}</td>
-                                            <td>{{ number_format($total['total'], 2, ',', ' ') }}</td>
+                                            <td><font color="blue">{{ number_format($total['heat_volume'], 4, ',', ' ') }}</td>
+                                            <td><font color="blue">{{ number_format($total['heat_sum'], 2, ',', ' ') }}</td>
+                                            <td><font color="blue">{{ number_format($total['drainage_volume'], 4, ',', ' ') }}</td>
+                                            <td><font color="blue">{{ number_format($total['drainage_sum'], 2, ',', ' ') }}</td>
+                                            <td><font color="blue">{{ number_format($total['negative_volume'], 4, ',', ' ') }}</td>
+                                            <td><font color="blue">{{ number_format($total['negative_sum'], 2, ',', ' ') }}</td>
+                                            <td><font color="blue">{{ number_format($total['water_volume'], 4, ',', ' ') }}</td>
+                                            <td><font color="blue">{{ number_format($total['water_sum'], 2, ',', ' ') }}</td>
+                                            <td><font color="blue">{{ number_format($total['power_volume'], 4, ',', ' ') }}</td>
+                                            <td><font color="blue">{{ number_format($total['power_sum'], 2, ',', ' ') }}</td>
+                                            <td><font color="blue">{{ number_format($total['trash_volume'], 4, ',', ' ') }}</td>
+                                            <td><font color="blue">{{ number_format($total['trash_sum'], 2, ',', ' ') }}</td>
+                                            <td><font color="blue">{{ number_format($total['total'], 2, ',', ' ') }}</td>
                                         </tr>
                                     </tbody>
                                     
                                 </table>
+                                </div>    
                             </div>
                         </div>
                     </div>

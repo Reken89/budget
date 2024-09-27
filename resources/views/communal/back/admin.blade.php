@@ -401,6 +401,12 @@
                                 </div> 
                             </br>
                             <h2 class="account__content--title h3 mb-20">Год: @foreach ($year as $y) {{$y}}, @endforeach Месяц: @foreach ($mounth as $m) {{$name_mounth[$m]}}, @endforeach</h2>
+                            <p>Расшифровка подсветки цифр:</p>
+                            <p><b><font color="blue">|||||||</font></b> - Информация отправлена</br>
+                                <b><font color="green">|||||||</font></b> - Значения в процессе редактирования</br>
+                                <b><font color="red">|||||||</font></b> - Значения не укладываются в диапазон тарифа</br>
+                                </br>
+                            </p>
                             <div class="account__table--area">
                                 <div class="container_fix">
                                 <table class="table2">
@@ -467,7 +473,7 @@
                                                         <td><font color="blue">{{ number_format($value['trash-sum'], 2, ',', ' ') }}</td>                                                
                                                         <td><font color="blue">{{ number_format($value['total'], 2, ',', ' ') }}</td>
                                                     @else
-                                                        <td><font color="red">В работе</td>
+                                                        <td><font color="green">В работе</td>
                                                         @if ($value['heat-volume'] == 0)
                                                             <td><font color="green">{{ number_format($value['heat-volume'], 4, ',', ' ') }}</td>
                                                             <td><font color="green">{{ number_format($value['heat-sum'], 2, ',', ' ') }}</td>
