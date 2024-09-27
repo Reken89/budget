@@ -263,7 +263,7 @@
             <div class="newsletter__area">
                 <div class="newsletter__inner d-flex justify-content-between align-items-center">
                     <div class="newsletter__content">
-                        <h2 class="newsletter__title">WEB приложение <span class="text__secondary">Laravel</span></h2>
+                        <h2 class="newsletter__title">WEB приложение <span class="text__secondary"></span></h2>
                         <p class="newsletter__desc">Разработано для автоматизации вычислительных процессов</p>
                     </div>
                     
