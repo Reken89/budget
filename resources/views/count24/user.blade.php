@@ -281,7 +281,6 @@
                             <ul class="footer__widget--menu footer__widget--inner">
                                 
                                 <li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="https://kostomuksha-city.ru/" target="_blank">Сайт Костомукшского городского округа</a></li>
-                                <li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="http://minfin.karelia.ru/" target="_blank">Министерство финансов Республики Карелия</a></li>
                                 
                             </ul>
                         </div>

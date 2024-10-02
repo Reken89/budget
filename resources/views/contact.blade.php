@@ -72,14 +72,6 @@
                                  <ul>                                      
 
                                        <li>
-                                          <a href="">Новости <i class="fal fa-plus"></i></a>
-                                          <ul class="submenu">
-                                             <li>
-                                                <a href="">Лента новостей</a>
-                                             </li>
-                                          </ul>
-                                       </li>
-                                       <li>
                                           <a href="/budget/public/contact">Контакты</a>
                                        </li>
                                     </ul>
@@ -150,52 +142,7 @@
             <section class="contact__area grey-bg-13 pt-120 pb-120">
                <div class="container">
                   <div class="row">
-                     <div class="col-xxl-8 col-xl-8 col-lg-8">
-                        <div class="contact__form contact__form-2 white-bg">
-                           <h3 class="contact-form-title">Отправить письмо в ФЭУ</h3>
-                           <form action="#">
-                              <div class="row">
-                                 <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
-                                    <div class="contact__input contact__input-2 mb-30">
-                                       <input type="text" placeholder="Имя">
-                                    </div>
-                                 </div>
-                                 <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
-                                    <div class="contact__input contact__input-2 mb-30">
-                                       <input type="email" placeholder="Email">
-                                    </div>
-                                 </div>
-                                 <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
-                                    <div class="contact__input contact__input-2 mb-30">
-                                       <input type="tel" placeholder="Телефон">
-                                    </div>
-                                 </div>
-                                 <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
-                                    <div class="contact__input contact__input-2 mb-30">
-                                       <select>
-                                          <option>Тема</option>
-                                          <option>Технический вопрос</option>
-                                          <option>Организационный вопрос</option>
-                                          <option>Прочие вопросы</option>
-                                       </select>
-                                    </div>
-                                 </div>
-                                 <div class="col-xxl-12">
-                                    <div class="contact__input contact__input-2 mb-30">
-                                       <textarea placeholder="Текст письма"></textarea>
-                                    </div>
-                                 </div>
-                                 <div class="col-xl-12">
-                                    <div class="contact__form-btn-2">
-                                       <button type="submit">
-                                          <span class="d-flex align-items-center">Отправить <i class="flaticon-paper-plane"></i></span>
-                                       </button>
-                                    </div>
-                                 </div>
-                              </div>
-                           </form>
-                        </div>
-                     </div>
+                     
                      <div class="col-xxl-4 col-xl-4 col-lg-4">
                         <div class="contact__info white-bg">
                            <h3>Контактная информация</h3>
@@ -274,11 +221,8 @@
                               <div class="footer__link footer__link-4">
                                  <ul>
                                     <li>
-                                       <a href="https://kostomuksha-city.ru/">Официальный сайт Костомукшского городского округа</a>
+                                       <a href="https://kostomuksha-city.ru/" target="_blank">Официальный сайт Костомукшского городского округа</a>
                                     </li>  
-                                    <li>
-                                       <a href="http://minfin.karelia.ru/">Министерство финансов Республики Карелия</a>
-                                    </li>
                                  </ul>
                               </div>
                            </div>
@@ -293,7 +237,7 @@
                   <div class="row align-items-center">
                      <div class="col-xxl-6 col-xl-6 col-md-6">
                         <div class="footer__copyright footer__copyright-3">
-                           <p>© 2019-2023 Сайт администрации Костомукшского городского округа <a href="index.html"></a></p>
+                           <p>© 2019-2024 Сайт администрации Костомукшского городского округа <a href="index.html"></a></p>
                         </div>
                      </div>
 

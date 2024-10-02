@@ -238,16 +238,7 @@
                                              @endif
                                           </ul>
                                        </li>
-                                       
 
-                                       <li>
-                                          <a href="">Новости <i class="fal fa-plus"></i></a>
-                                          <ul class="submenu">
-                                             <li>
-                                                <a href="">Лента новостей</a>
-                                             </li>
-                                          </ul>
-                                       </li>
                                        <li>
                                           <a href="/budget/public/contact">Контакты</a>
                                        </li>
@@ -330,10 +321,7 @@
                            </div>
                         </div>
                            <img class="about__thumb-4-2" src="{{ asset('assets/img/about/4/about-2.jpg') }}" alt="">
-                        <div class="about__experience d-flex align-items-center">
-                           <h3 class="about__experience-counter text-rubik mr-20"><span class="counter">5</span>+</h3>
-                           <p>Года разработки</p>
-                        </div>
+                        
                      </div>
                   </div>
                   <div class="col-xxl-6 col-xl-6 col-lg-6">
@@ -342,7 +330,7 @@
                            <span class="section__title-pre-4 text-popins">Про портал</span>
                            <h3 class="section__title-4 text-popins">Отчетность и свод информации <span class="section__title-line">WEB</span> </h3>
                         </div>
-                        <p>Портал позволяет собирать отчетность с учреждений, выполняя автоматическую проверку и выгрузку в готовые таблицы</p>
+                        <p>Портал позволяет собирать отчетность с учреждений, выполняя автоматическую проверку и выгрузку в таблицы</p>
 
                         <div class="about__features">
                            <div class="row">
@@ -383,9 +371,7 @@
                   <div class="row">
                      <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-7">
                         <div class="footer__widget footer__info-padding-2">
-                           <div class="footer__logo mb-25">
-                              <h3 class="footer__widget-title footer__widget-title-3">Приложение</h3>
-                           </div>
+                           
                            <div class="footer__widget-content">
                               <div class="footer__info footer__info-4">
                                  <p>Комплексные решения для всех элементов ИТ</p>
@@ -403,7 +389,7 @@
                               <div class="footer__link footer__link-4">
                                  <ul>
                                     <li>
-                                       <a href="https://kostomuksha-city.ru/">Официальный сайт Костомукшского городского округа</a>
+                                       <a href="https://kostomuksha-city.ru/" target="_blank">Официальный сайт Костомукшского городского округа</a>
                                     </li>  
                                  </ul>
                               </div>
