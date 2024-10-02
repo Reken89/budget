@@ -22,6 +22,7 @@ class DeloSelectTask extends BaseTask
                 'correspondent'
                 ]) 
             ->where('type', $variant)  
+            ->limit(100)
             ->orderBy('id', 'desc')
             ->get()
             ->toArray();
