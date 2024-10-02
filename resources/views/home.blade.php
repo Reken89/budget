@@ -123,8 +123,8 @@
                                              @if ($role == "admin")
                                              <li>
                                                  <form action="{{ route('admincommunal')}}" method="get">
-                                                    <input type='hidden' name='year[]' value='2022'>
-                                                    <input type='hidden' name='mounth[]' value='1'>
+                                                    <input type='hidden' name='year[]' value='2023'>
+                                                    <input type='hidden' name='mounth[]' value='5'>
                                                     <button type="submit">Коммунальные услуги</button>
                                                 </form>
                                              </li>                                           
