@@ -68,7 +68,7 @@
                                     </div>
                                     <div class="header__info-content">
                                        <h4 class="text-rubik">Телефон</h4>
-                                       <a href="tel:+1-(555)-4517-0890">8 911 662 54 78</a>
+                                       <a href="tel:89116625478">8 911 662 54 78</a>
                                     </div>
                                  </div>
                               </li>
@@ -79,7 +79,7 @@
                                     </div>
                                     <div class="header__info-content">
                                        <h4 class="text-rubik">Электронная почта</h4>
-                                       <a href="mailto:info@exmaple.com">finanse@kostamail.ru</a>
+                                       <a href="mailto:finanse@kostamail.ru">finanse@kostamail.ru</a>
                                     </div>
                                  </div>
                               </li>
