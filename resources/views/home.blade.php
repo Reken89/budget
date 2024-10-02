@@ -90,7 +90,7 @@
                                     </div>
                                     <div class="header__info-content">
                                        <h4 class="text-rubik">Адрес</h4>
-                                       <a target="_blank" href="https://www.google.ru/maps/place/%D1%83%D0%BB.+%D0%9A%D0%B0%D0%BB%D0%B5%D0%B2%D0%B0%D0%BB%D0%B0,+13,+%D0%9A%D0%BE%D1%81%D1%82%D0%BE%D0%BC%D1%83%D0%BA%D1%88%D0%B0,+%D0%A0%D0%B5%D1%81%D0%BF.+%D0%9A%D0%B0%D1%80%D0%B5%D0%BB%D0%B8%D1%8F,+186931/@64.582453,30.6064917,17z/data=!3m1!4b1!4m6!3m5!1s0x4427e084ac24ec9f:0x505e070dfa73708f!8m2!3d64.582453!4d30.6064917!16s%2Fg%2F11c5f781gv?entry=ttu">Администрация ФЭУ</a>
+                                       <a target="_blank" href="https://yandex.ru/maps/10935/kostomucsha/?ll=30.607753%2C64.582614&mode=poi&poi%5Bpoint%5D=30.606540%2C64.582454&poi%5Buri%5D=ymapsbm1%3A%2F%2Forg%3Foid%3D136058229664&z=16.4">Администрация ФЭУ</a>
                                     </div>
                                  </div>
                               </li>

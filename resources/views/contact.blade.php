@@ -154,7 +154,7 @@
                                  <div class="contact__info-text">
                                     <p>Почта</p>
                                     <h5>
-                                       <a href="mailto:info@example.com">finanse@kostamail.ru</a>
+                                       <a href="mailto:finanse@kostamail.ru">finanse@kostamail.ru</a>
                                     </h5>
                                  </div>
                               </li>
@@ -176,7 +176,7 @@
                                  <div class="contact__info-text">
                                     <p>Адрес</p>
                                     <h5>
-                                       <a href="#">г. Костомукша, ул. Калевала 13</a>
+                                       <a target="_blank" href="https://yandex.ru/maps/10935/kostomucsha/?ll=30.607753%2C64.582614&mode=poi&poi%5Bpoint%5D=30.606540%2C64.582454&poi%5Buri%5D=ymapsbm1%3A%2F%2Forg%3Foid%3D136058229664&z=16.4">г. Костомукша, ул. Калевала 13</a>
                                     </h5>
                                  </div>
                               </li>
