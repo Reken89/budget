@@ -1,4 +1,4 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> 
+@include('layouts.version')
 <script src="https://snipp.ru/cdn/select2/4.0.13/dist/js/select2.min.js"></script>
 <script src="https://snipp.ru/cdn/select2/4.0.13/dist/js/i18n/ru.js"></script>
 <div id="live_data"></div>
