@@ -9,41 +9,14 @@
       <!-- Place favicon.ico in the root directory -->
       <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
       <!-- CSS here -->
-      <link rel="stylesheet" href="{{ asset('assets/css/preloader.css') }}">
       <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
-      <link rel="stylesheet" href="{{ asset('assets/css/meanmenu.css') }}">
-      <link rel="stylesheet" href="{{ asset('assets/css/animate.min.css') }}">
-      <link rel="stylesheet" href="{{ asset('assets/css/owl.carousel.min.css') }}">
-      <link rel="stylesheet" href="{{ asset('assets/css/swiper-bundle.css') }}">
       <link rel="stylesheet" href="{{ asset('assets/css/backToTop.css') }}">
-      <link rel="stylesheet" href="{{ asset('assets/css/magnific-popup.css') }}">
-      <link rel="stylesheet" href="{{ asset('assets/css/nice-select.css') }}">
       <link rel="stylesheet" href="{{ asset('assets/css/fontAwesome5Pro.css') }}">
       <link rel="stylesheet" href="{{ asset('assets/css/flaticon.css') }}">
       <link rel="stylesheet" href="{{ asset('assets/css/default.css') }}">
       <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
    </head>
    <body>
-      <!--[if lte IE 9]>
-      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-      <![endif]-->
-
-      <!-- Add your site or application content here -->
-
-      <!-- pre loader area start -->
-      <div id="loading">
-         <div id="loading-center">
-            <div id="loading-center-absolute">
-               <div class="object" id="object_one"></div>
-               <div class="object" id="object_two" ></div>
-               <div class="object" id="object_three"></div>
-               <div class="object" id="object_four"></div>
-               <div class="object" id="object_five"></div>
-            </div>
-         </div>
-      </div>
-      <!-- pre loader area end -->
-
       <!-- back to top start -->
       <div class="progress-wrap">
          <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
@@ -89,33 +62,7 @@
          </div>
       </header>
       <!-- header area end -->
-   
-      <div class="body-overlay"></div>
-      <!-- offcanvas area end -->
-
-      <!-- search overlay start -->
-      <section class="search__area d-flex align-items-center">
-         <div class="container">
-            <div class="row">
-               <div class="col-xxl-12">
-                  <div class="search__wrapper">
-                     <div class="search__close">
-                        <button class="search-close-btn"><i class="fal fa-times"></i></button>
-                     </div>
-                     <form action="#">
-                        <div class="search__input">
-                           <input type="text" placeholder="Search here...">
-                           <button type="submit"><i class="far fa-search"></i></button>
-                        </div>
-                     </form>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </section>
-      <!-- search overlay end -->
-
-
+        
       <main>
 
             <!-- page title area start -->
@@ -188,9 +135,6 @@
                </div>
             </section>
             <!-- contact area end -->
-
-
-
     
             <!-- brand area end -->
       </main>
