@@ -8,6 +8,7 @@ use App\Structure\CommunalSection\Admin\Tasks\CommunalSelectTask;
 use App\Structure\CommunalSection\Admin\Tasks\CommunalSelectAllTask;
 use App\Structure\CommunalSection\Admin\Tasks\CommunalSelectTotalTask;
 use App\Structure\CommunalSection\Admin\Tasks\TarrifsSelectTask;
+use App\Structure\CommunalSection\Admin\Tasks\PointsSelectTask;
 
 class CommunalIndexAction extends BaseAction
 {
@@ -30,6 +31,7 @@ class CommunalIndexAction extends BaseAction
             $tarrif = false;
             $variant = "many";
         }
+        $points = $this->task(PointsSelectTask::class)->SelectAll();
         $total = $this->task(CommunalSelectTotalTask::class)->run($year, $mounth);
         
         $info = [
@@ -39,6 +41,7 @@ class CommunalIndexAction extends BaseAction
             "tarrif"  => $tarrif,
             "year"    => $year,
             "mounth"  => $mounth,
+            "points"  => $points,
         ];
         
         return $info;
