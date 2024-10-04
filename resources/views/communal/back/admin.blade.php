@@ -17,6 +17,7 @@
         '12' => 'декабрь',
     ];
 @endphp
+@include('layouts.chart')
 
 <!doctype html>
 <html lang="en">
@@ -320,6 +321,25 @@
                 </div>
             </div>
         </section>
+                    
+            <div class="page-content">
+                <div class="row">
+                    <div class="col-12 col-lg-12">
+                        <div class="col d-flex">
+                            <div class="card radius-10 w-100">
+                                <div class="card-body">
+                                    <p class="font-weight-bold mb-1 text-secondary">Линейная диаграмма рейтинга по заполнению портала</p>
+
+                                    <div class="chart-container-0">
+                                        <canvas id="chart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                       
+                    </div>  
+                </div>                           
+            </div>
+                   
                 <div class="my__account--section__inner border-radius-10 d-flex">                                    
                     <div class="account__wrapper">
                         <div class="account__content">
