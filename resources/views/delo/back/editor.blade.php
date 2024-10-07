@@ -267,7 +267,7 @@
         <div class="footer__bottom">
             <div class="container">
                 <div class="footer__bottom--inenr d-flex justify-content-between align-items-center">                    
-                    <p class="copyright__content"><span class="text__secondary">© 2024</span> Администрация Костомукшского городского округа</p>
+                    <p class="copyright__content"><span class="text__secondary">© {{ date("Y") }}</span> Администрация Костомукшского городского округа</p>
                 </div>
             </div>
         </div>

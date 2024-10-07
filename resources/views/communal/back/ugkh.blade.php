@@ -17,6 +17,7 @@
         '12' => 'декабрь',
     ];
 @endphp
+@include('layouts.chart')
 
 <!doctype html>
 <html lang="en">
@@ -306,6 +307,47 @@
                 </div>
             </div>
         </section>
+                    
+        <div
+            class='hidden'   
+            data-point01="{{ $info['points'][0]['points'] }}"
+            data-point02="{{ $info['points'][1]['points'] }}"
+            data-point03="{{ $info['points'][2]['points'] }}"
+            data-point04="{{ $info['points'][3]['points'] }}"
+            data-point05="{{ $info['points'][4]['points'] }}"
+            data-point06="{{ $info['points'][5]['points'] }}"
+            data-point07="{{ $info['points'][6]['points'] }}"
+            data-point08="{{ $info['points'][7]['points'] }}"
+            data-point09="{{ $info['points'][8]['points'] }}"
+            data-point10="{{ $info['points'][9]['points'] }}"
+            data-point11="{{ $info['points'][10]['points'] }}"
+            data-point12="{{ $info['points'][11]['points'] }}"
+            data-point13="{{ $info['points'][12]['points'] }}"
+            data-point14="{{ $info['points'][13]['points'] }}"
+            data-point15="{{ $info['points'][14]['points'] }}"
+            data-point16="{{ $info['points'][15]['points'] }}"
+            data-point17="{{ $info['points'][16]['points'] }}"
+            data-point18="{{ $info['points'][17]['points'] }}"
+        ></div>        
+                    
+            <div class="page-content">
+                <div class="row">
+                    <div class="col-12 col-lg-12">
+                        <div class="col d-flex">
+                            <div class="card radius-10 w-100">
+                                <div class="card-body">
+                                    <p class="font-weight-bold mb-1 text-secondary">Линейная диаграмма рейтинга по заполнению портала</p>
+
+                                    <div class="chart-container-0">
+                                        <canvas id="chart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                       
+                    </div>  
+                </div>                           
+            </div>            
+                    
                 <div class="my__account--section__inner border-radius-10 d-flex">                                    
                     <div class="account__wrapper">
                         <div class="account__content">
@@ -620,7 +662,7 @@
         <div class="footer__bottom">
             <div class="container">
                 <div class="footer__bottom--inenr d-flex justify-content-between align-items-center">                  
-                    <p class="copyright__content"><span class="text__secondary">© 2024</span> Администрация Костомукшского городского округа</p>                   
+                    <p class="copyright__content"><span class="text__secondary">© {{ date("Y") }}</span> Администрация Костомукшского городского округа</p>                   
                 </div>
             </div>
         </div>
