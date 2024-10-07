@@ -146,7 +146,7 @@
                     year_array.push(value);
                 } else if (item.name === 'mounth') {
                     mounth_array.push(value);
-                }   
+                }  
             }
             
             let id = id_array[0];

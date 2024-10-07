@@ -326,24 +326,24 @@
               
             <div
                 class='hidden'   
-                data-point01='<?= $info['points'][0]['points'] ?>'
-                data-point02='<?= $info['points'][1]['points'] ?>'
-                data-point03='<?= $info['points'][2]['points'] ?>'
-                data-point04='<?= $info['points'][3]['points'] ?>'
-                data-point05='<?= $info['points'][4]['points'] ?>'
-                data-point06='<?= $info['points'][5]['points'] ?>'
-                data-point07='<?= $info['points'][6]['points'] ?>'
-                data-point08='<?= $info['points'][7]['points'] ?>'
-                data-point09='<?= $info['points'][8]['points'] ?>'
-                data-point10='<?= $info['points'][9]['points'] ?>'
-                data-point11='<?= $info['points'][10]['points'] ?>'
-                data-point12='<?= $info['points'][11]['points'] ?>'
-                data-point13='<?= $info['points'][12]['points'] ?>'
-                data-point14='<?= $info['points'][13]['points'] ?>'
-                data-point15='<?= $info['points'][14]['points'] ?>'
-                data-point16='<?= $info['points'][15]['points'] ?>'
-                data-point17='<?= $info['points'][16]['points'] ?>'
-                data-point18='<?= $info['points'][17]['points'] ?>'
+                data-point01="{{ $info['points'][0]['points'] }}"
+                data-point02="{{ $info['points'][1]['points'] }}"
+                data-point03="{{ $info['points'][2]['points'] }}"
+                data-point04="{{ $info['points'][3]['points'] }}"
+                data-point05="{{ $info['points'][4]['points'] }}"
+                data-point06="{{ $info['points'][5]['points'] }}"
+                data-point07="{{ $info['points'][6]['points'] }}"
+                data-point08="{{ $info['points'][7]['points'] }}"
+                data-point09="{{ $info['points'][8]['points'] }}"
+                data-point10="{{ $info['points'][9]['points'] }}"
+                data-point11="{{ $info['points'][10]['points'] }}"
+                data-point12="{{ $info['points'][11]['points'] }}"
+                data-point13="{{ $info['points'][12]['points'] }}"
+                data-point14="{{ $info['points'][13]['points'] }}"
+                data-point15="{{ $info['points'][14]['points'] }}"
+                data-point16="{{ $info['points'][15]['points'] }}"
+                data-point17="{{ $info['points'][16]['points'] }}"
+                data-point18="{{ $info['points'][17]['points'] }}"
             ></div>        
                     
             <div class="page-content">
