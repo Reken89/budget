@@ -40,7 +40,12 @@ class OfsSelectAllTask extends BaseTask
             ->whereIn('user_id', $dto->user)    
             ->whereIn('year', $dto->year)
             ->whereIn('mounth', $dto->mounth) 
-            ->whereIn('chapter', $dto->chapter)     
+            ->whereIn('chapter', $dto->chapter)
+            ->join('ekr', 'ofs.ekr_id', '=', 'ekr.id')  
+            ->orderBy('ekr.number', 'asc')
+            ->orderBy('ekr.main', 'desc')
+            ->orderBy('ekr.shared', 'desc')
+            ->orderBy('ekr.title', 'asc')  
             ->groupBy('ekr_id')
             ->get()
             ->toArray();
