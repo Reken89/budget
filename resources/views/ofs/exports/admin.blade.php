@@ -34,34 +34,32 @@
             <td></td><td></td><td></td>
         </tr>
         
-        @for ($n = 1; $n <= $info['number']; $n++)
-            @foreach ($info['result'] as $value)                  
-                @if ($value['ekr']['main'] == 'Yes' && $value['ekr']['number'] == $n)
-                    <tr>
-                        <td><b>{{ $value['ekr']['title'] }}</b></td>
-                        <td></td>
-                        <td><b>{{ $value['ekr']['ekr'] }}</b></td>
-                        <td><b>{{ $value['lbo'] }}</b></td>
-                        <td><b>{{ $value['prepaid'] }}</b></td>
-                        <td><b>{{ $value['credit_year_all'] }}</b></td>
-                        <td><b>{{ $value['credit_year_term'] }}</b></td>
-                        <td><b>{{ $value['debit_year_all'] }}</b></td>
-                        <td><b>{{ $value['debit_year_term'] }}</b></td>
-                        <td><b>{{ $value['fact_all'] }}</b></td>
-                        <td><b>{{ $value['fact_mounth'] }}</b></td>
-                        <td><b>{{ $value['kassa_all'] }}</b></td>
-                        <td><b>{{ $value['kassa_mounth'] }}</b></td>
-                        <td><b>{{ $value['credit_end_all'] }}</b></td>
-                        <td><b>{{ $value['credit_end_term'] }}</b></td>
-                        <td><b>{{ $value['debit_end_all'] }}</b></td>
-                        <td><b>{{ $value['debit_end_term'] }}</b></td>
-                        <td><b>{{ $value['return_old_year'] }}</b></td>
-                        <td><b>{{ $value['total1'] }}</b></td>
-                        <td><b>{{ $value['total2'] }}</b></td>
-                    </tr>
-                @endif
-                
-                @if ($value['ekr']['main'] == 'No' && $value['ekr']['number'] == $n)
+            @foreach ($info['result'] as $value)  
+                @if ($value['ekr'] !== NULL)
+                    @if ($value['ekr']['main'] == 'Yes')
+                        <tr>
+                            <td><b>{{ $value['ekr']['title'] }}</b></td>
+                            <td></td>
+                            <td><b>{{ $value['ekr']['ekr'] }}</b></td>
+                            <td><b>{{ $value['lbo'] }}</b></td>
+                            <td><b>{{ $value['prepaid'] }}</b></td>
+                            <td><b>{{ $value['credit_year_all'] }}</b></td>
+                            <td><b>{{ $value['credit_year_term'] }}</b></td>
+                            <td><b>{{ $value['debit_year_all'] }}</b></td>
+                            <td><b>{{ $value['debit_year_term'] }}</b></td>
+                            <td><b>{{ $value['fact_all'] }}</b></td>
+                            <td><b>{{ $value['fact_mounth'] }}</b></td>
+                            <td><b>{{ $value['kassa_all'] }}</b></td>
+                            <td><b>{{ $value['kassa_mounth'] }}</b></td>
+                            <td><b>{{ $value['credit_end_all'] }}</b></td>
+                            <td><b>{{ $value['credit_end_term'] }}</b></td>
+                            <td><b>{{ $value['debit_end_all'] }}</b></td>
+                            <td><b>{{ $value['debit_end_term'] }}</b></td>
+                            <td><b>{{ $value['return_old_year'] }}</b></td>
+                            <td><b>{{ $value['total1'] }}</b></td>
+                            <td><b>{{ $value['total2'] }}</b></td>
+                        </tr>
+                    @else
                         <tr>
                             <td>{{ $value['ekr']['title'] }}</td>
                             <td></td>
@@ -84,10 +82,9 @@
                             <td>{{ $value['total1'] }}</td>
                             <td>{{ $value['total2'] }}</td>
                         </tr>
+                    @endif
                 @endif
-            @endforeach 
-        @endfor
-        
+            @endforeach        
         @php
             $total = $info['total'];
         @endphp

@@ -455,7 +455,7 @@
                                             </div>                                                  
                                             @if(isset($info['mounth']) && isset($info['chapter']) && isset($info['user']))
                                                 <div class="single__widget widget__bg">  
-                                                    <form action="/budget/public/user/ofs2024/export" method="get">
+                                                    <form action="/budget/public/admin/ofs/export" method="get">
                                                         <button type="submit" style="width:200px;height:50px" class="primary__btn price__filter--btn">EXCEL</button>
                                                     </form>
                                                 </div>    
