@@ -13487,6 +13487,12 @@ div.container_fix {
     overflow: scroll;
 }
 
+div.container_fix2 {
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+}
+
 /* Use position: sticky to have it stick to the edge
  * and top, right, or left to choose which edge to stick to: */
 

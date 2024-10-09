@@ -468,6 +468,16 @@
                                 </form>
                             </div> 
                             @endif
+                            
+                            <br>
+                            @if(count($info['chapter']) < 2)
+                            <form action="/budget/public/scale/ofs2024" method="get"> 
+                                <input type='hidden' name='mounth' value="{{ $info['mounth'] }}">
+                                <input type='hidden' name='chapter[]' value="{{ $info['chapter'][0] }}">
+                                <input type='hidden' name='user' value="{{ $info['user'] }}">
+                                <button type="submit" style="width:200px;height:50px" class="primary__btn price__filter--btn">Развернуть</button>
+                            </form>
+                            @endif
                         @endif
 
                         </div>

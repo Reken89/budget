@@ -107,6 +107,7 @@ Route::get('/admin/ofs2024/table', [AdminOfs2024Controller::class, 'TableView'])
 Route::patch('/admin/ofs2024/status', [AdminOfs2024Controller::class, 'UpdateStatus'])->middleware('auth');
 
 Route::get('/user/ofs2024/table', [Ofs2024Controller::class, 'TableView'])->middleware('auth');
+Route::get('/scale/ofs2024/table', [Ofs2024Controller::class, 'TableScaleView'])->middleware('auth');
 Route::patch('/user/ofs2024/update', [Ofs2024Controller::class, 'UpdateInfo'])->middleware('auth');
 Route::patch('/user/ofs2024/reset', [Ofs2024Controller::class, 'ResetInfo'])->middleware('auth');
 Route::patch('/user/ofs2024/status', [Ofs2024Controller::class, 'UpdateStatus'])->middleware('auth');
@@ -115,6 +116,7 @@ Route::get('/user/ofs2024/export', [Ofs2024Controller::class, 'ExportTable'])->m
 
 //Роуты для Front (Модуль ОФС 2024) Новый
 Route::get('/admin/ofs2024', [AdminOfs2024Controller::class, 'FrontView'])->middleware('auth')->name('adminofs2024');
+Route::get('/scale/ofs2024', [Ofs2024Controller::class, 'ScaleView'])->middleware('auth');
 Route::get('/user/ofs2024', [Ofs2024Controller::class, 'FrontView'])->middleware('auth')->name('userofs24new');
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
