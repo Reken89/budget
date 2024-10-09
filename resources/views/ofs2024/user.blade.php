@@ -166,6 +166,7 @@
                     <b><u>Синхронизация</u></b> - Синхронизация с прошлым месяцем</br>
                     <b><u>Отправить в ФЭУ</u></b> - Закрывает возможность редактировать таблицу</br>
                     <b><u>Excel</u></b> - Выгрузка таблицы в excel файл</br>
+                    <b><u>Развернуть</u></b> - Раскрывает таблицу на весь экран</br>
                 </p>
                 <div class="shipping__inner style2 d-flex">
                     <div class="shipping__items style2 d-flex align-items-center">
