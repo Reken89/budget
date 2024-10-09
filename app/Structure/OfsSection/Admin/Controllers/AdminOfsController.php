@@ -4,6 +4,7 @@ namespace App\Structure\OfsSection\Admin\Controllers;
 
 use App\Core\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Http\Request;
 use App\Structure\OfsSection\Admin\Dto\OfsIndexDto;
 use App\Structure\OfsSection\Admin\Requests\OfsIndexRequest;
 use App\Structure\OfsSection\Admin\Actions\OfsIndexAction;
@@ -19,11 +20,10 @@ class AdminOfsController extends Controller
      * @param OfsIndexRequest $request
      * @return array
      */
-    public function index(OfsIndexRequest $request)
+    public function index(Request $request)
     { 
-        if ($request->info == "no"){
-            $info = ['info' => 'no',];
-        } else {
+        if (isset($request->mounth) && isset($request->chapter) && isset($request->user)){
+            
             $dto = OfsIndexDto::fromRequest($request);
             $info = $this->action(OfsIndexAction::class)->run($dto);
             
@@ -31,6 +31,9 @@ class AdminOfsController extends Controller
             session(['year' => $request->year]);
             session(['mounth' => $request->mounth]);
             session(['chapter' => $request->chapter]);
+        } else {
+            $info = ['info' => 'no',];
+
         }
         
         session(['info' => $info]);
@@ -46,7 +49,7 @@ class AdminOfsController extends Controller
      * @param OfsIndexRequest $request
      * @return view
      */
-    public function user(OfsIndexRequest $request)
+    public function user(Request $request)
     {    
         $info = [
             'year'    => $request->year,

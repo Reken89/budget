@@ -3,7 +3,8 @@
 namespace App\Structure\OfsSection\Admin\Dto;
 
 use App\Core\Dto\BaseDto;
-use App\Structure\OfsSection\Admin\Requests\OfsIndexRequest;
+//use App\Structure\OfsSection\Admin\Requests\OfsIndexRequest;
+use Illuminate\Http\Request;
 
 class OfsIndexDto extends BaseDto
 {
@@ -16,10 +17,10 @@ class OfsIndexDto extends BaseDto
     /**
      * Возвращает DTO из объекта Request
      *
-     * @param OfsIndexRequest $request
+     * @param Request $request
      * @return static
      */
-    public static function fromRequest(OfsIndexRequest $request): self
+    public static function fromRequest(Request $request): self
     {
         return new self([
             'mounth'  => $request->get('mounth'),
