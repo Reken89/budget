@@ -13482,7 +13482,7 @@ div.container_fix {
 /* Use overflow:scroll on your container to enable scrolling: */
 
 div.container_fix {
-    width: 1400px;
+    width: 100%;
     max-height: 600px;
     overflow: scroll;
 }
