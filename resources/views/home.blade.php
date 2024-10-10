@@ -149,11 +149,6 @@
                                              @elseif ($role == "cb_buh" || $role == "cb_school" || $role == "cb_kultura" || $role == "cb_kinder")
                                              <li>
                                                  <form action="{{ route('userofs')}}" method="get">
-                                                    <input type='hidden' name='year' value='2023'>
-                                                    <input type='hidden' name='mounth' value='1'>
-                                                    <input type='hidden' name='user' value='3'>
-                                                    <input type='hidden' name='chapter[]' value='1'>
-                                                    <input type='hidden' name='info' value='no'>
                                                     <button type="submit" class="custom-btn btn-16"><b>ОФС 2023 год<b></button>
                                                 </form>
                                              </li>

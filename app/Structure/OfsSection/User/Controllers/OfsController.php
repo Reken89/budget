@@ -4,6 +4,8 @@ namespace App\Structure\OfsSection\User\Controllers;
 
 use App\Core\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 use App\Structure\OfsSection\User\Dto\OfsUpdateDto;
 use App\Structure\OfsSection\User\Dto\OfsResetDto;
 use App\Structure\OfsSection\User\Requests\OfsIndexRequest;
@@ -23,38 +25,28 @@ class OfsController extends Controller
      * Back отрисовка страницы
      * Возвращает ОФС
      *
-     * @param OfsIndexRequest $request
+     * @param Request $request
      * @return array
      */
-    public function index(OfsIndexRequest $request)
+    public function index(Request $request)
     {   
         //Отрисовка таблицы при нажатии кнопки "сформировать таблицу"
-        if (session('option') == NULL || session('option') == FALSE){
-            if ($request->info == "no"){
-                $info = ['info' => 'no',];
-            } else {
-                $user = $request->user;
-                session(['user' => $request->user]);
-                $year = $request->year;
-                session(['year' => $request->year]);
-                $mounth = $request->mounth;
-                session(['mounth' => $request->mounth]);
-                $chapter = $request->chapter;
-                session(['chapter' => $request->chapter]);
-                
-                $info = $this->action(OfsIndexAction::class)->run($user, $year, $mounth, $chapter);
-            }
-        
-        //Отрисовка таблице при нажатии клавиши "ENTER"    
-        } else {
-            $user = session('user');
-            $year = session('year');
-            $mounth = session('mounth');
-            $chapter = session('chapter');
+        if (isset($request->mounth) && isset($request->chapter) && isset($request->user)){
             
-            $info = $this->action(OfsIndexAction::class)->run($user, $year, $mounth, $chapter);
-            session(['option' => false]);
+            $user = $request->user;
+            session(['user' => $request->user]);
+            $year = $request->year;
+            session(['year' => $request->year]);
+            $mounth = $request->mounth;
+            session(['mounth' => $request->mounth]);
+            $chapter = $request->chapter;
+            session(['chapter' => $request->chapter]);
+
+            $info = $this->action(OfsIndexAction::class)->run($user, $year, $mounth, $chapter);           
+        } else {
+            $info = ['info' => 'no',];
         }
+        
         session(['info' => $info]);
                
         return view('ofs.back.user', ['info' => $info]); 
@@ -65,12 +57,13 @@ class OfsController extends Controller
      * Возвращает front шаблон
      * Так же передает информацию 
      *
-     * @param OfsUserRequest $request
+     * @param Request $request
      * @return view
      */
-    public function user(OfsIndexRequest $request)
+    public function user(Request $request)
     {        
         $info = [
+            'role'    => Auth::user()->role(),
             'year'    => $request->year,
             'mounth'  => $request->mounth,
             'user'    => $request->user,

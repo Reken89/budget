@@ -24,6 +24,11 @@ class OfsSelectAllTask extends BaseTask
             ->where('year', $year) 
             ->where('mounth', $mounth) 
             ->whereIn('chapter', $chapter)
+            ->join('ekr', 'ofs.ekr_id', '=', 'ekr.id')  
+            ->orderBy('ekr.number', 'asc')
+            ->orderBy('ekr.main', 'desc')
+            ->orderBy('ekr.shared', 'desc')
+            ->orderBy('ekr.title', 'asc')  
             ->with([
                 'ekr', 
                 'user:id,name',
@@ -70,7 +75,12 @@ class OfsSelectAllTask extends BaseTask
             ->where('user_id', $user)    
             ->where('year', $year)
             ->where('mounth', $mounth) 
-            ->whereIn('chapter', $chapter)     
+            ->whereIn('chapter', $chapter) 
+            ->join('ekr', 'ofs.ekr_id', '=', 'ekr.id')  
+            ->orderBy('ekr.number', 'asc')
+            ->orderBy('ekr.main', 'desc')
+            ->orderBy('ekr.shared', 'desc')
+            ->orderBy('ekr.title', 'asc')  
             ->groupBy(['ekr_id', 'user_id'])    
             ->get()
             ->toArray();
