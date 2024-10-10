@@ -183,10 +183,7 @@
                                              </li>                                            
                                              @elseif ($role == "build")
                                              <li>
-                                                 <form action="{{ route('build')}}" method="get">
-                                                    <input type='hidden' name='year' value='2023'>
-                                                    <input type='hidden' name='mounth[]' value='1'>
-                                                    <input type='hidden' name='variant' value='1'>
+                                                 <form action="#" method="get">
                                                     <button type="submit" class="custom-btn btn-16"><b>Строительство<b></button>
                                                 </form>
                                              </li>

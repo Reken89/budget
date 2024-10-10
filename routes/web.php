@@ -6,21 +6,21 @@ use App\Structure\OfsSection\Admin\Controllers\AdminOfsController;
 use App\Structure\CommunalSection\User\Controllers\CommunalController;
 use App\Structure\CommunalSection\Admin\Controllers\AdminCommunalController;
 use App\Structure\CommunalSection\Ugkh\Controllers\UgkhCommunalController;
-use App\Structure\BuildSection\Admin\Controllers\AdminBuildController;
-use App\Structure\BuildSection\User\Controllers\UserBuildController;
-use App\Structure\BuildSection\Build\Controllers\BuildController;
+//use App\Structure\BuildSection\Admin\Controllers\AdminBuildController;
+//use App\Structure\BuildSection\User\Controllers\UserBuildController;
+//use App\Structure\BuildSection\Build\Controllers\BuildController;
 use App\Structure\ForecastSection\Admin\Controllers\ForecastController;
 use App\Structure\CountSection\Admin\Controllers\AdminCountController;
 use App\Structure\CountSection\User\Controllers\CountController;
-use App\Structure\TaxSection\Admin\Controllers\TaxController;
+//use App\Structure\TaxSection\Admin\Controllers\TaxController;
 use App\Structure\BlockSection\Admin\Controllers\BlockController;
-use App\Structure\ReportingSection\Admin\Controllers\ReportingController;
-use App\Structure\ReportingSection\Admin\Controllers\ReportingDetailingController;
-use App\Structure\ReportingSection\Admin\Controllers\PlanController;
-use App\Structure\ReportingSection\Admin\Controllers\DebtController;
-use App\Structure\Ofs24Section\Admin\Controllers\AdminOfs24IndexController;
-use App\Structure\Ofs24Section\User\Controllers\Ofs24Controller;
-use App\Structure\DevSection\Admin\Controllers\DevController;
+//use App\Structure\ReportingSection\Admin\Controllers\ReportingController;
+//use App\Structure\ReportingSection\Admin\Controllers\ReportingDetailingController;
+//use App\Structure\ReportingSection\Admin\Controllers\PlanController;
+//use App\Structure\ReportingSection\Admin\Controllers\DebtController;
+//use App\Structure\Ofs24Section\Admin\Controllers\AdminOfs24IndexController;
+//use App\Structure\Ofs24Section\User\Controllers\Ofs24Controller;
+//use App\Structure\DevSection\Admin\Controllers\DevController;
 use App\Structure\UserSection\Auth\Controllers\AuthController;
 use App\Structure\DeloSection\User\Controllers\DeloController;
 use App\Structure\DeloSection\User\Controllers\DeloCorrController;
@@ -28,7 +28,7 @@ use App\Structure\DeloSection\User\Controllers\DeloEditorController;
 use App\Structure\DeloSection\User\Controllers\DeloFilterController;
 use App\Structure\Count24Section\Admin\Controllers\AdminCount24Controller;
 use App\Structure\Count24Section\User\Controllers\UserCount24Controller;
-use App\Structure\CSection\Admin\Controllers\Admin1cController;
+//use App\Structure\CSection\Admin\Controllers\Admin1cController;
 use App\Structure\Ofs25Section\User\Controllers\Ofs25Controller;
 use App\Structure\Ofs25Section\Admin\Controllers\AdminOfs25Controller;
 use App\Structure\Ofs2024Section\User\Controllers\Ofs2024Controller;
@@ -172,25 +172,26 @@ Route::get('/user/ofs', [OfsController::class, 'user'])->middleware('auth')->nam
  */
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Роуты для Back (Модуль Строительство)
-Route::get('/admin/build/back', [AdminBuildController::class, 'index'])->middleware('auth', 'admin');
-Route::patch('/admin/build/update', [AdminBuildController::class, 'update'])->middleware('auth', 'admin');
-Route::post('/admin/build/add', [AdminBuildController::class, 'add'])->middleware('auth', 'admin');
-Route::get('/admin/build/plug', [AdminBuildController::class, 'plug'])->middleware('auth', 'admin');
-Route::get('/admin/build/export', [AdminBuildController::class, 'export'])->middleware('auth');
+//Route::get('/admin/build/back', [AdminBuildController::class, 'index'])->middleware('auth', 'admin');
+//Route::patch('/admin/build/update', [AdminBuildController::class, 'update'])->middleware('auth', 'admin');
+//Route::post('/admin/build/add', [AdminBuildController::class, 'add'])->middleware('auth', 'admin');
+//Route::get('/admin/build/plug', [AdminBuildController::class, 'plug'])->middleware('auth', 'admin');
+//Route::get('/admin/build/export', [AdminBuildController::class, 'export'])->middleware('auth');
 
-Route::get('/user/build/back', [UserBuildController::class, 'index'])->middleware('auth');
-Route::patch('/user/build/update', [UserBuildController::class, 'update'])->middleware('auth');
-Route::post('/user/build/add', [UserBuildController::class, 'add'])->middleware('auth');
+//Route::get('/user/build/back', [UserBuildController::class, 'index'])->middleware('auth');
+//Route::patch('/user/build/update', [UserBuildController::class, 'update'])->middleware('auth');
+//Route::post('/user/build/add', [UserBuildController::class, 'add'])->middleware('auth');
 
-Route::get('/build/back', [BuildController::class, 'index'])->middleware('auth');
+//Route::get('/build/back', [BuildController::class, 'index'])->middleware('auth');
 
 //Роуты для Front (Модуль Строительство)
 //Route::get('/admin/build', [AdminBuildController::class, 'user'])->middleware('auth', 'admin')->name('adminbuild');
 //Route::get('/user/build', [UserBuildController::class, 'user'])->middleware('auth')->name('userbuild');
 //Route::get('/build', [BuildController::class, 'user'])->middleware('auth')->name('build');
-Route::get('/admin/build', [BlockController::class, 'index'])->middleware('auth')->name('adminbuild');
-Route::get('/user/build', [BlockController::class, 'index'])->middleware('auth')->name('userbuild');
-Route::get('/build', [BlockController::class, 'index'])->middleware('auth')->name('build');
+
+//Route::get('/admin/build', [BlockController::class, 'index'])->middleware('auth')->name('adminbuild');
+//Route::get('/user/build', [BlockController::class, 'index'])->middleware('auth')->name('userbuild');
+//Route::get('/build', [BlockController::class, 'index'])->middleware('auth')->name('build');
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
  * 
@@ -236,14 +237,13 @@ Route::get('/user/count', [CountController::class, 'user'])->middleware('auth')-
  */
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Роуты для Back (Модуль налоги)
-Route::get('/admin/tax/back', [TaxController::class, 'index'])->middleware('auth', 'admin');
-Route::post('/admin/tax/upload', [TaxController::class, 'upload'])->middleware('auth', 'admin');
-Route::post('/admin/tax/upload/kbk', [TaxController::class, 'kbk'])->middleware('auth', 'admin');
-Route::get('/admin/tax/export', [TaxController::class, 'export'])->middleware('auth', 'admin');
-
+//Route::get('/admin/tax/back', [TaxController::class, 'index'])->middleware('auth', 'admin');
+//Route::post('/admin/tax/upload', [TaxController::class, 'upload'])->middleware('auth', 'admin');
+//Route::post('/admin/tax/upload/kbk', [TaxController::class, 'kbk'])->middleware('auth', 'admin');
+//Route::get('/admin/tax/export', [TaxController::class, 'export'])->middleware('auth', 'admin');
 
 //Роуты для Front (Модуль налоги)
-Route::get('/admin/tax', [TaxController::class, 'user'])->middleware('auth', 'admin')->name('admintax');
+//Route::get('/admin/tax', [TaxController::class, 'user'])->middleware('auth', 'admin')->name('admintax');
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
  * 
@@ -252,22 +252,21 @@ Route::get('/admin/tax', [TaxController::class, 'user'])->middleware('auth', 'ad
  */
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Роуты для Back (Модуль исполнение бюджета)
-Route::get('/admin/reporting/back', [ReportingController::class, 'index'])->middleware('auth', 'admin');
-Route::post('/admin/reporting/upload', [ReportingController::class, 'upload'])->middleware('auth', 'admin');
-Route::get('/admin/reporting/detailing/back', [ReportingDetailingController::class, 'index'])->middleware('auth', 'admin');
-Route::delete('/admin/reporting/detailing/delete', [ReportingDetailingController::class, 'delete'])->middleware('auth', 'admin');
-Route::get('/admin/plan/back', [PlanController::class, 'index'])->middleware('auth', 'admin')->name('plan');
-Route::post('/admin/plan/upload', [PlanController::class, 'upload'])->middleware('auth', 'admin');
-Route::get('/admin/debts/back', [DebtController::class, 'index'])->middleware('auth', 'admin');
-Route::patch('/admin/debts/update', [DebtController::class, 'update'])->middleware('auth', 'admin');
-Route::post('/admin/mbt/upload', [PlanController::class, 'uploadmbt'])->middleware('auth', 'admin');
-Route::get('/admin/mbt/delete', [PlanController::class, 'delete'])->middleware('auth', 'admin');
-
+//Route::get('/admin/reporting/back', [ReportingController::class, 'index'])->middleware('auth', 'admin');
+//Route::post('/admin/reporting/upload', [ReportingController::class, 'upload'])->middleware('auth', 'admin');
+//Route::get('/admin/reporting/detailing/back', [ReportingDetailingController::class, 'index'])->middleware('auth', 'admin');
+//Route::delete('/admin/reporting/detailing/delete', [ReportingDetailingController::class, 'delete'])->middleware('auth', 'admin');
+//Route::get('/admin/plan/back', [PlanController::class, 'index'])->middleware('auth', 'admin')->name('plan');
+//Route::post('/admin/plan/upload', [PlanController::class, 'upload'])->middleware('auth', 'admin');
+//Route::get('/admin/debts/back', [DebtController::class, 'index'])->middleware('auth', 'admin');
+//Route::patch('/admin/debts/update', [DebtController::class, 'update'])->middleware('auth', 'admin');
+//Route::post('/admin/mbt/upload', [PlanController::class, 'uploadmbt'])->middleware('auth', 'admin');
+//Route::get('/admin/mbt/delete', [PlanController::class, 'delete'])->middleware('auth', 'admin');
 
 //Роуты для Front (Модуль исполнение бюджета)
-Route::get('/admin/reporting', [ReportingController::class, 'user'])->middleware('auth', 'admin')->name('reporting');
-Route::get('/admin/reporting/detailing', [ReportingDetailingController::class, 'user'])->middleware('auth', 'admin')->name('detailing');
-Route::get('/admin/debts', [DebtController::class, 'user'])->middleware('auth', 'admin')->name('debts');
+//Route::get('/admin/reporting', [ReportingController::class, 'user'])->middleware('auth', 'admin')->name('reporting');
+//Route::get('/admin/reporting/detailing', [ReportingDetailingController::class, 'user'])->middleware('auth', 'admin')->name('detailing');
+//Route::get('/admin/debts', [DebtController::class, 'user'])->middleware('auth', 'admin')->name('debts');
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
  * 
@@ -276,15 +275,15 @@ Route::get('/admin/debts', [DebtController::class, 'user'])->middleware('auth', 
  */
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Роуты для Back (Модуль разработки)
-Route::get('/admin/dev/back', [DevController::class, 'index'])->middleware('auth', 'admin');
-Route::get('/admin/dev/web', [DevController::class, 'web'])->middleware('auth', 'admin');
-Route::get('/admin/dev/export', [DevController::class, 'export'])->middleware('auth');
-Route::patch('/admin/dev/update', [DevController::class, 'update'])->middleware('auth', 'admin');
-Route::patch('/admin/dev/sending', [DevController::class, 'sending'])->middleware('auth', 'admin');
-Route::patch('/admin/dev/change', [DevController::class, 'change'])->middleware('auth', 'admin');
+//Route::get('/admin/dev/back', [DevController::class, 'index'])->middleware('auth', 'admin');
+//Route::get('/admin/dev/web', [DevController::class, 'web'])->middleware('auth', 'admin');
+//Route::get('/admin/dev/export', [DevController::class, 'export'])->middleware('auth');
+//Route::patch('/admin/dev/update', [DevController::class, 'update'])->middleware('auth', 'admin');
+//Route::patch('/admin/dev/sending', [DevController::class, 'sending'])->middleware('auth', 'admin');
+//Route::patch('/admin/dev/change', [DevController::class, 'change'])->middleware('auth', 'admin');
 
 //Роуты для Front (Модуль разработки)
-Route::get('/admin/dev', [DevController::class, 'user'])->middleware('auth', 'admin')->name('dev');
+//Route::get('/admin/dev', [DevController::class, 'user'])->middleware('auth', 'admin')->name('dev');
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
  * 
@@ -342,12 +341,12 @@ Route::get('/user/count24', [UserCount24Controller::class, 'FrontView'])->middle
  */
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Роуты для Back (Модуль 1С)
-Route::get('/admin/1c/table', [Admin1cController::class, 'TableView'])->middleware('auth', 'admin');
-Route::patch('/admin/1c/update', [Admin1cController::class, 'UpdateInfo'])->middleware('auth', 'admin');
-Route::patch('/admin/1c/status', [Admin1cController::class, 'UpdateStatus'])->middleware('auth', 'admin');
+//Route::get('/admin/1c/table', [Admin1cController::class, 'TableView'])->middleware('auth', 'admin');
+//Route::patch('/admin/1c/update', [Admin1cController::class, 'UpdateInfo'])->middleware('auth', 'admin');
+//Route::patch('/admin/1c/status', [Admin1cController::class, 'UpdateStatus'])->middleware('auth', 'admin');
 
 //Роуты для Front (Модуль 1С)
-Route::get('/admin/1c', [Admin1cController::class, 'FrontView'])->middleware('auth', 'admin')->name('admin1c');
+//Route::get('/admin/1c', [Admin1cController::class, 'FrontView'])->middleware('auth', 'admin')->name('admin1c');
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
