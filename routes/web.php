@@ -86,6 +86,7 @@ Route::get('/admin/ofs25/table', [AdminOfs25Controller::class, 'TableView'])->mi
 Route::patch('/admin/ofs25/status', [AdminOfs25Controller::class, 'UpdateStatus'])->middleware('auth');
 
 Route::get('/user/ofs25/table', [Ofs25Controller::class, 'TableView'])->middleware('auth');
+Route::get('/scale/ofs25/table', [Ofs25Controller::class, 'TableScaleView'])->middleware('auth');
 Route::patch('/user/ofs25/update', [Ofs25Controller::class, 'UpdateInfo'])->middleware('auth');
 Route::patch('/user/ofs25/reset', [Ofs25Controller::class, 'ResetInfo'])->middleware('auth');
 Route::patch('/user/ofs25/status', [Ofs25Controller::class, 'UpdateStatus'])->middleware('auth');
@@ -94,6 +95,7 @@ Route::get('/user/ofs25/export', [Ofs25Controller::class, 'ExportTable'])->middl
 
 //Роуты для Front (Модуль ОФС 2025)
 Route::get('/admin/ofs25', [AdminOfs25Controller::class, 'FrontView'])->middleware('auth')->name('ofs25');
+Route::get('/scale/ofs25', [Ofs25Controller::class, 'ScaleView'])->middleware('auth');
 Route::get('/user/ofs25', [Ofs25Controller::class, 'FrontView'])->middleware('auth')->name('userofs25');
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*

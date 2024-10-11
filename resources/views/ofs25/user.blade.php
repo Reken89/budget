@@ -164,6 +164,7 @@
                     <b><u>Синхронизация</u></b> - Синхронизация с прошлым месяцем</br>
                     <b><u>Отправить в ФЭУ</u></b> - Закрывает возможность редактировать таблицу</br>
                     <b><u>Excel</u></b> - Выгрузка таблицы в excel файл</br>
+                    <b><u>Развернуть</u></b> - Раскрывает таблицу на весь экран</br>
                     <font color='red'>*** Обращаем Ваше внимание, что при выполнении синхронизации в январе, значения из колонок 14, 15, 16, 17 
                     (Кредиторская и дебиторская задолженность на конец отчетного периода) с декабря 2024г. скопируются в колонки 6, 7, 8, 9 
                     (Кредиторская и дебиторская задолженность на начало года) в январь 2025г. <u>Процесс выполнения синхронизации может длится до 60 сек!</u></font> 
@@ -459,6 +460,16 @@
                                 </form>
                             </div> 
                             @endif
+                            
+                            <br>
+                            @if(count($info['chapter']) < 2)
+                            <form action="/budget/public/scale/ofs25" method="get"> 
+                                <input type='hidden' name='mounth' value="{{ $info['mounth'] }}">
+                                <input type='hidden' name='chapter[]' value="{{ $info['chapter'][0] }}">
+                                <input type='hidden' name='user' value="{{ $info['user'] }}">
+                                <button type="submit" style="width:200px;height:50px" class="primary__btn price__filter--btn">Развернуть</button>
+                            </form>
+                            @endif                           
                         @endif
 
                         </div>

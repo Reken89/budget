@@ -76,6 +76,61 @@ class Ofs25Controller extends Controller
     }
     
     /**
+     * Front отрисовка страницы
+     * Увеличенный масштаб таблицы
+     *
+     * @param 
+     * @return 
+     */
+    public function ScaleView(Request $request)
+    {
+        $info = [
+            'mounth'  => $request->mounth,
+            'chapter' => $request->chapter,
+            'user'    => $request->user,
+        ];
+        
+        return view('ofs25.scale', ['info' => $info]);   
+    }
+    
+    /**
+     * Back отрисовка 
+     *
+     * @param
+     * @return 
+     */
+    public function TableScaleView(Request $request)
+    {  
+        if(isset($request->mounth) && isset($request->chapter) && isset($request->user)){
+            $dto = Ofs25SelectDto::fromRequest($request);
+            $table = $this->action(Ofs25SelectAction::class)->SelectInfo($dto);
+        }else{
+            $table = false;
+        }
+        
+        if(count($request->chapter) < 2){
+            $variant = "one";
+            $chapter = $request->chapter[0];
+        }else{
+            $variant = "many";
+            $chapter = $request->chapter[0];
+        }
+        
+        $info = [
+            'role'    => Auth::user()->role(),
+            'table'   => $table,
+            'variant' => $variant,
+            'chapter' => $chapter,
+        ];
+        
+        //Сохраняем таблицу в сессию
+        //Для использования при выгрузке в excel
+        session(['table' => $table]);
+        
+        return view('ofs25.table.scale', ['info' => $info]);  
+    }
+    
+    /**
      * Обновляем информацию в ОФС
      *
      * @param Ofs25UpdateRequest $request
