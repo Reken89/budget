@@ -395,12 +395,12 @@
                                                 <input type="hidden" class="power_two" value="{{ $tarrif['power-two'] }}">
                                                 <input type="hidden" class="trash_two" value="{{ $tarrif['trash-two'] }}">
                                                 <td>Минимальный тариф</td>
-                                                <td><input style="min-width: 80px; width: 80px;" type="text" class="heat_one" value="{{ number_format($tarrif['heat-one'], 4, ',', ' ') }}"></td>
-                                                <td><input style="min-width: 80px; width: 80px;" type="text" class="drainage_one" value="{{ number_format($tarrif['drainage-one'], 4, ',', ' ') }}"></td>
-                                                <td><input style="min-width: 80px; width: 80px;" type="text" class="negative_one" value="{{ number_format($tarrif['negative-one'], 4, ',', ' ') }}"></td>
-                                                <td><input style="min-width: 80px; width: 80px;" type="text" class="water_one" value="{{ number_format($tarrif['water-one'], 4, ',', ' ') }}"></td>
-                                                <td><input style="min-width: 80px; width: 80px;" type="text" class="power_one" value="{{ number_format($tarrif['power-one'], 4, ',', ' ') }}"></td>
-                                                <td><input style="min-width: 80px; width: 80px;" type="text" class="trash_one" value="{{ number_format($tarrif['trash-one'], 4, ',', ' ') }}"></td>
+                                                <td><input type="text" class="heat_one" value="{{ number_format($tarrif['heat-one'], 4, ',', ' ') }}"></td>
+                                                <td><input type="text" class="drainage_one" value="{{ number_format($tarrif['drainage-one'], 4, ',', ' ') }}"></td>
+                                                <td><input type="text" class="negative_one" value="{{ number_format($tarrif['negative-one'], 4, ',', ' ') }}"></td>
+                                                <td><input type="text" class="water_one" value="{{ number_format($tarrif['water-one'], 4, ',', ' ') }}"></td>
+                                                <td><input type="text" class="power_one" value="{{ number_format($tarrif['power-one'], 4, ',', ' ') }}"></td>
+                                                <td><input type="text" class="trash_one" value="{{ number_format($tarrif['trash-one'], 4, ',', ' ') }}"></td>
                                             </tr>
                                             <tr>
                                                 <input type="hidden" class="id" value="{{ $tarrif['id'] }}">
@@ -411,12 +411,12 @@
                                                 <input type="hidden" class="power_one" value="{{ $tarrif['power-one'] }}">
                                                 <input type="hidden" class="trash_one" value="{{ $tarrif['trash-one'] }}">
                                                 <td>Максимальный тариф</td>
-                                                <td><input style="min-width: 80px; width: 80px;" type="text" class="heat_two" value="{{ number_format($tarrif['heat-two'], 4, ',', ' ') }}"></td>
-                                                <td><input style="min-width: 80px; width: 80px;" type="text" class="drainage_two" value="{{ number_format($tarrif['drainage-two'], 4, ',', ' ') }}"></td>
-                                                <td><input style="min-width: 80px; width: 80px;" type="text" class="negative_two" value="{{ number_format($tarrif['negative-two'], 4, ',', ' ') }}"></td>
-                                                <td><input style="min-width: 80px; width: 80px;" type="text" class="water_two" value="{{ number_format($tarrif['water-two'], 4, ',', ' ') }}"></td>
-                                                <td><input style="min-width: 80px; width: 80px;" type="text" class="power_two" value="{{ number_format($tarrif['power-two'], 4, ',', ' ') }}"></td>
-                                                <td><input style="min-width: 80px; width: 80px;" type="text" class="trash_two" value="{{ number_format($tarrif['trash-two'], 4, ',', ' ') }}"></td>
+                                                <td><input type="text" class="heat_two" value="{{ number_format($tarrif['heat-two'], 4, ',', ' ') }}"></td>
+                                                <td><input type="text" class="drainage_two" value="{{ number_format($tarrif['drainage-two'], 4, ',', ' ') }}"></td>
+                                                <td><input type="text" class="negative_two" value="{{ number_format($tarrif['negative-two'], 4, ',', ' ') }}"></td>
+                                                <td><input type="text" class="water_two" value="{{ number_format($tarrif['water-two'], 4, ',', ' ') }}"></td>
+                                                <td><input type="text" class="power_two" value="{{ number_format($tarrif['power-two'], 4, ',', ' ') }}"></td>
+                                                <td><input type="text" class="trash_two" value="{{ number_format($tarrif['trash-two'], 4, ',', ' ') }}"></td>
                                             </tr>
                                         </tbody>
                                         @elseif ($info['variant'] == "many")
