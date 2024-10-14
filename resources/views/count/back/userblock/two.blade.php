@@ -48,9 +48,9 @@
                     <td><b>{{ number_format($info['result']['zakupki'][$numb]['sum_cb'], 2, ',', ' ') }}</b></td>                    
                     <td><b>{{ number_format($info['result']['cb'][$numb]['sum_cb'] + $info['result']['zakupki'][$numb]['sum_cb'], 2, ',', ' ') }}</b></td>
                     
-                    <td><b>{{ number_format($info['result']['cb'][$numb]['sum_fu'], 2, ',', ' ') }}</b></td>
-                    <td><b>{{ number_format($info['result']['zakupki'][$numb]['sum_fu'], 2, ',', ' ') }}</b></td>                    
-                    <td><b>{{ number_format($info['result']['cb'][$numb]['sum_fu'] + $info['result']['zakupki'][$numb]['sum_fu'], 2, ',', ' ') }}</b></td>
+                    <td><b><font color="blue">{{ number_format($info['result']['cb'][$numb]['sum_fu'], 2, ',', ' ') }}</b></td>
+                    <td><b><font color="blue">{{ number_format($info['result']['zakupki'][$numb]['sum_fu'], 2, ',', ' ') }}</b></td>                    
+                    <td><b><font color="blue">{{ number_format($info['result']['cb'][$numb]['sum_fu'] + $info['result']['zakupki'][$numb]['sum_fu'], 2, ',', ' ') }}</b></td>
                 </tr>
             @endif
             
@@ -60,33 +60,14 @@
                     <input type="hidden" class="year" value="{{ $info['year'] }}">
                     <td class="col-id-no" scope="row">{{ $info['result']['cb'][$numb]['ekr']['title'] }}</td>
                     <td>{{ $info['result']['cb'][$numb]['ekr']['ekr'] }}</td>
-                    
-                    @if ($info['result']['cb'][2]['status'] == '2')
-                        <td><input type="hidden" class="shared_id" value="{{ $shared_cb_id }}">
-                            <input type="hidden" class="main_id" value="{{ $main_cb_id }}">
-                            <input type="hidden" class="user_id" value="29">
-                            <input type="hidden" class="id" value="{{ $info['result']['cb'][$numb]['id'] }}">
-                            <input type="text" class="sum_cb" value="{{ number_format($info['result']['cb'][$numb]['sum_cb'], 2, ',', ' ') }}"></td>
 
-                        <td><input type="hidden" class="shared_id" value="{{ $shared_zakupki_id }}">
-                            <input type="hidden" class="main_id" value="{{ $main_zakupki_id }}">
-                            <input type="hidden" class="user_id" value="26">
-                            <input type="hidden" class="id" value="{{ $info['result']['zakupki'][$numb]['id'] }}">
-                            <input type="text" class="sum_cb" value="{{ number_format($info['result']['zakupki'][$numb]['sum_cb'], 2, ',', ' ') }}"></td> 
-                        <td>{{ number_format($info['result']['cb'][$numb]['sum_cb'] + $info['result']['zakupki'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
-                        
-                        <td>{{ number_format($info['result']['cb'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
-                        <td>{{ number_format($info['result']['zakupki'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
-                        <td>{{ number_format($info['result']['cb'][$numb]['sum_fu'] + $info['result']['zakupki'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
-                    @else
-                        <td>{{ number_format($info['result']['cb'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
-                        <td>{{ number_format($info['result']['zakupki'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
-                        <td>{{ number_format($info['result']['cb'][$numb]['sum_cb'] + $info['result']['zakupki'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
-                        
-                        <td>{{ number_format($info['result']['cb'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
-                        <td>{{ number_format($info['result']['zakupki'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
-                        <td>{{ number_format($info['result']['cb'][$numb]['sum_fu'] + $info['result']['zakupki'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
-                    @endif
+                    <td>{{ number_format($info['result']['cb'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
+                    <td>{{ number_format($info['result']['zakupki'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
+                    <td>{{ number_format($info['result']['cb'][$numb]['sum_cb'] + $info['result']['zakupki'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
+
+                    <td><font color="blue">{{ number_format($info['result']['cb'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
+                    <td><font color="blue">{{ number_format($info['result']['zakupki'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
+                    <td><font color="blue">{{ number_format($info['result']['cb'][$numb]['sum_fu'] + $info['result']['zakupki'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
                     
                 </tr>
             @endif
@@ -100,9 +81,9 @@
         <td><b>{{ number_format($info['total']['zakupki']['sum_cb'], 2, ',', ' ') }}</b></td> 
         <td><b>{{ number_format($info['total']['cb']['sum_cb'] + $info['total']['zakupki']['sum_cb'], 2, ',', ' ') }}</b></td>
         
-        <td><b>{{ number_format($info['total']['cb']['sum_fu'], 2, ',', ' ') }}</b></td>
-        <td><b>{{ number_format($info['total']['zakupki']['sum_fu'], 2, ',', ' ') }}</b></td> 
-        <td><b>{{ number_format($info['total']['cb']['sum_fu'] + $info['total']['zakupki']['sum_fu'], 2, ',', ' ') }}</b></td>
+        <td><b><font color="blue">{{ number_format($info['total']['cb']['sum_fu'], 2, ',', ' ') }}</b></td>
+        <td><b><font color="blue">{{ number_format($info['total']['zakupki']['sum_fu'], 2, ',', ' ') }}</b></td> 
+        <td><b><font color="blue">{{ number_format($info['total']['cb']['sum_fu'] + $info['total']['zakupki']['sum_fu'], 2, ',', ' ') }}</b></td>
     </tr>
     </tbody>
 </table>
