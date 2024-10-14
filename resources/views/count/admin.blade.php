@@ -1,4 +1,4 @@
-@include('layouts.main')
+@include('layouts.version')
 <div id="live_data"></div>
 
 <script>

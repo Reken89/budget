@@ -1,10 +1,3 @@
-@if ($info['result']['glava'][2]['status'] == '2')
-    <blockquote class="blockquote-7">
-        <p><b><font color='red'>Централизованная бухгалтерия ещё работает с таблицей!</font></b></p>
-        <cite></cite>
-    </blockquote>
-@endif
-
 @php
     $number = (count($info['result']['glava']));
 @endphp
@@ -67,11 +60,11 @@
                     <td><b>{{ number_format($info['result']['sovet'][$numb]['sum_fu'], 2, ',', ' ') }}</b></td>
                     <td><b>{{ number_format($info['result']['kso'][$numb]['sum_fu'], 2, ',', ' ') }}</b></td>
                     
-                    <td><b>{{ number_format($info['result']['glava'][$numb]['sum_cb'] + $info['result']['adm'][$numb]['sum_cb'] + $info['result']['sovet'][$numb]['sum_cb'] + $info['result']['kso'][$numb]['sum_cb'], 2, ',', ' ') }}</b></td>
-                    <td><b>{{ number_format($info['result']['glava'][$numb]['sum_cb'], 2, ',', ' ') }}</b></td>
-                    <td><b>{{ number_format($info['result']['adm'][$numb]['sum_cb'], 2, ',', ' ') }}</b></td>
-                    <td><b>{{ number_format($info['result']['sovet'][$numb]['sum_cb'], 2, ',', ' ') }}</b></td>
-                    <td><b>{{ number_format($info['result']['kso'][$numb]['sum_cb'], 2, ',', ' ') }}</b></td>
+                    <td><b><font color="blue">{{ number_format($info['result']['glava'][$numb]['sum_cb'] + $info['result']['adm'][$numb]['sum_cb'] + $info['result']['sovet'][$numb]['sum_cb'] + $info['result']['kso'][$numb]['sum_cb'], 2, ',', ' ') }}</b></td>
+                    <td><b><font color="blue">{{ number_format($info['result']['glava'][$numb]['sum_cb'], 2, ',', ' ') }}</b></td>
+                    <td><b><font color="blue">{{ number_format($info['result']['adm'][$numb]['sum_cb'], 2, ',', ' ') }}</b></td>
+                    <td><b><font color="blue">{{ number_format($info['result']['sovet'][$numb]['sum_cb'], 2, ',', ' ') }}</b></td>
+                    <td><b><font color="blue">{{ number_format($info['result']['kso'][$numb]['sum_cb'], 2, ',', ' ') }}</b></td>
                 </tr>
             @endif
             
@@ -82,35 +75,16 @@
                     <td class="col-id-no" scope="row">{{ $info['result']['glava'][$numb]['ekr']['title'] }}</td>
                     <td>{{ $info['result']['glava'][$numb]['ekr']['ekr'] }}</td>
                     <td>{{ number_format($info['result']['glava'][$numb]['sum_fu'] + $info['result']['adm'][$numb]['sum_fu'] + $info['result']['sovet'][$numb]['sum_fu'] + $info['result']['kso'][$numb]['sum_fu'], 2, ',', ' ') }}</td>
-                    <td><input type="hidden" class="shared_id" value="{{ $shared_glava_id }}">
-                        <input type="hidden" class="main_id" value="{{ $main_glava_id }}">
-                        <input type="hidden" class="user_id" value="35">
-                        <input type="hidden" class="id" value="{{ $info['result']['glava'][$numb]['id'] }}">
-                        <input type="text" class="sum_fu" value="{{ number_format($info['result']['glava'][$numb]['sum_fu'], 2, ',', ' ') }}"></td>
+                    <td>{{ number_format($info['result']['glava'][$numb]['sum_fu'], 2, ',', ' ') }}</td>                   
+                    <td>{{ number_format($info['result']['adm'][$numb]['sum_fu'], 2, ',', ' ') }}</td>                    
+                    <td>{{ number_format($info['result']['sovet'][$numb]['sum_fu'], 2, ',', ' ') }}</td>                    
+                    <td>{{ number_format($info['result']['kso'][$numb]['sum_fu'], 2, ',', ' ') }}</td> 
                     
-                    <td><input type="hidden" class="shared_id" value="{{ $shared_adm_id }}">
-                        <input type="hidden" class="main_id" value="{{ $main_adm_id }}">
-                        <input type="hidden" class="user_id" value="25">
-                        <input type="hidden" class="id" value="{{ $info['result']['adm'][$numb]['id'] }}">
-                        <input type="text" class="sum_fu" value="{{ number_format($info['result']['adm'][$numb]['sum_fu'], 2, ',', ' ') }}"></td> 
-                    
-                    <td><input type="hidden" class="shared_id" value="{{ $shared_sovet_id }}">
-                        <input type="hidden" class="main_id" value="{{ $main_sovet_id }}">
-                        <input type="hidden" class="user_id" value="27">
-                        <input type="hidden" class="id" value="{{ $info['result']['sovet'][$numb]['id'] }}">
-                        <input type="text" class="sum_fu" value="{{ number_format($info['result']['sovet'][$numb]['sum_fu'], 2, ',', ' ') }}"></td> 
-                    
-                    <td><input type="hidden" class="shared_id" value="{{ $shared_kso_id }}">
-                        <input type="hidden" class="main_id" value="{{ $main_kso_id }}">
-                        <input type="hidden" class="user_id" value="28">
-                        <input type="hidden" class="id" value="{{ $info['result']['kso'][$numb]['id'] }}">
-                        <input type="text" class="sum_fu" value="{{ number_format($info['result']['kso'][$numb]['sum_fu'], 2, ',', ' ') }}"></td> 
-                    
-                    <td>{{ number_format($info['result']['glava'][$numb]['sum_cb'] + $info['result']['adm'][$numb]['sum_cb'] + $info['result']['sovet'][$numb]['sum_cb'] + $info['result']['kso'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
-                    <td>{{ number_format($info['result']['glava'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
-                    <td>{{ number_format($info['result']['adm'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
-                    <td>{{ number_format($info['result']['sovet'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
-                    <td>{{ number_format($info['result']['kso'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
+                    <td><font color="blue">{{ number_format($info['result']['glava'][$numb]['sum_cb'] + $info['result']['adm'][$numb]['sum_cb'] + $info['result']['sovet'][$numb]['sum_cb'] + $info['result']['kso'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
+                    <td><font color="blue">{{ number_format($info['result']['glava'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
+                    <td><font color="blue">{{ number_format($info['result']['adm'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
+                    <td><font color="blue">{{ number_format($info['result']['sovet'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
+                    <td><font color="blue">{{ number_format($info['result']['kso'][$numb]['sum_cb'], 2, ',', ' ') }}</td>
                 </tr>
             @endif
         @endfor  
@@ -124,11 +98,11 @@
         <td><b>{{ number_format($info['total']['adm']['sum_fu'], 2, ',', ' ') }}</b></td>
         <td><b>{{ number_format($info['total']['sovet']['sum_fu'], 2, ',', ' ') }}</b></td>
         <td><b>{{ number_format($info['total']['kso']['sum_fu'], 2, ',', ' ') }}</b></td>  
-        <td><b>{{ number_format($info['total']['glava']['sum_cb'] + $info['total']['adm']['sum_cb'] + $info['total']['sovet']['sum_cb'] + $info['total']['kso']['sum_cb'], 2, ',', ' ') }}</b></td>
-        <td><b>{{ number_format($info['total']['glava']['sum_cb'], 2, ',', ' ') }}</b></td>
-        <td><b>{{ number_format($info['total']['adm']['sum_cb'], 2, ',', ' ') }}</b></td>
-        <td><b>{{ number_format($info['total']['sovet']['sum_cb'], 2, ',', ' ') }}</b></td>
-        <td><b>{{ number_format($info['total']['kso']['sum_cb'], 2, ',', ' ') }}</b></td> 
+        <td><b><font color="blue">{{ number_format($info['total']['glava']['sum_cb'] + $info['total']['adm']['sum_cb'] + $info['total']['sovet']['sum_cb'] + $info['total']['kso']['sum_cb'], 2, ',', ' ') }}</b></td>
+        <td><b><font color="blue">{{ number_format($info['total']['glava']['sum_cb'], 2, ',', ' ') }}</b></td>
+        <td><b><font color="blue">{{ number_format($info['total']['adm']['sum_cb'], 2, ',', ' ') }}</b></td>
+        <td><b><font color="blue">{{ number_format($info['total']['sovet']['sum_cb'], 2, ',', ' ') }}</b></td>
+        <td><b><font color="blue">{{ number_format($info['total']['kso']['sum_cb'], 2, ',', ' ') }}</b></td> 
     </tr>
     </tbody>
 </table>
