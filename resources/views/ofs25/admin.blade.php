@@ -332,7 +332,7 @@
                                                     </li>
                                                     <li class="widget__form--check__list">
                                                         <label class="widget__form--check__label" for="check10">Школа №2</label>
-                                                        <input id="checkbox" class="widget__form--check__input" name="user[]" value="6" type="checkbox">
+                                                        <input id="checkbox" class="widget__form--check__input" name="user[]" value="4" type="checkbox">
                                                         <span class="widget__form--checkmark"></span>
                                                     </li>
                                                     <li class="widget__form--check__list">
