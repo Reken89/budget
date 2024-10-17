@@ -17,7 +17,13 @@
         '12' => 'декабрь',
     ];
     
-    //var_dump($info['points']);
+    //var_dump($year);
+    if($year[0] == "2023" && $mounth[0] == "5"){
+        $gamma = "OrangeRed"; //г.Сочи ресторан "Бриз"
+    }else{
+        $gamma = "blue";
+    }
+    
 @endphp
 @include('layouts.chart')
 
@@ -446,7 +452,7 @@
                             </br>
                             <h2 class="account__content--title h3 mb-20">Год: @foreach ($year as $y) {{$y}}, @endforeach Месяц: @foreach ($mounth as $m) {{$name_mounth[$m]}}, @endforeach</h2>
                             <p>Расшифровка подсветки цифр:</p>
-                            <p><b><font color="blue">|||||||</font></b> - Информация отправлена</br>
+                            <p><b><font color="{{ $gamma }}">|||||||</font></b> - Информация отправлена</br>
                                 <b><font color="green">|||||||</font></b> - Значения в процессе редактирования</br>
                                 <b><font color="red">|||||||</font></b> - Значения не укладываются в диапазон тарифа</br>
                                 </br>
@@ -488,34 +494,34 @@
                                                     <th>{{ $value['user']['name'] }}</th>
                                                     @if ($value['status'] == 3)
                                                         <td><input type=button class="button" id='btn_two' value='Изменить'></td>   
-                                                        <td><font color="blue">{{ number_format($value['heat-volume'], 4, ',', ' ') }}</td>
-                                                        <td><font color="blue">{{ number_format($value['heat-sum'], 2, ',', ' ') }}</td>
-                                                        <td><font color="blue">{{ number_format($value['drainage-volume'], 4, ',', ' ') }}</td>
-                                                        <td><font color="blue">{{ number_format($value['drainage-sum'], 2, ',', ' ') }}</td>
-                                                        <td><font color="blue">{{ number_format($value['negative-volume'], 4, ',', ' ') }}</td>
-                                                        <td><font color="blue">{{ number_format($value['negative-sum'], 2, ',', ' ') }}</td>
-                                                        <td><font color="blue">{{ number_format($value['water-volume'], 4, ',', ' ') }}</td>
-                                                        <td><font color="blue">{{ number_format($value['water-sum'], 2, ',', ' ') }}</td>
-                                                        <td><font color="blue">{{ number_format($value['power-volume'], 4, ',', ' ') }}</td>
-                                                        <td><font color="blue">{{ number_format($value['power-sum'], 2, ',', ' ') }}</td>
-                                                        <td><font color="blue">{{ number_format($value['trash-volume'], 4, ',', ' ') }}</td>
-                                                        <td><font color="blue">{{ number_format($value['trash-sum'], 2, ',', ' ') }}</td>                                                
-                                                        <td><font color="blue">{{ number_format($value['total'], 2, ',', ' ') }}</td>
+                                                        <td><font color="{{ $gamma }}">{{ number_format($value['heat-volume'], 4, ',', ' ') }}</td>
+                                                        <td><font color="{{ $gamma }}">{{ number_format($value['heat-sum'], 2, ',', ' ') }}</td>
+                                                        <td><font color="{{ $gamma }}">{{ number_format($value['drainage-volume'], 4, ',', ' ') }}</td>
+                                                        <td><font color="{{ $gamma }}">{{ number_format($value['drainage-sum'], 2, ',', ' ') }}</td>
+                                                        <td><font color="{{ $gamma }}">{{ number_format($value['negative-volume'], 4, ',', ' ') }}</td>
+                                                        <td><font color="{{ $gamma }}">{{ number_format($value['negative-sum'], 2, ',', ' ') }}</td>
+                                                        <td><font color="{{ $gamma }}">{{ number_format($value['water-volume'], 4, ',', ' ') }}</td>
+                                                        <td><font color="{{ $gamma }}">{{ number_format($value['water-sum'], 2, ',', ' ') }}</td>
+                                                        <td><font color="{{ $gamma }}">{{ number_format($value['power-volume'], 4, ',', ' ') }}</td>
+                                                        <td><font color="{{ $gamma }}">{{ number_format($value['power-sum'], 2, ',', ' ') }}</td>
+                                                        <td><font color="{{ $gamma }}">{{ number_format($value['trash-volume'], 4, ',', ' ') }}</td>
+                                                        <td><font color="{{ $gamma }}">{{ number_format($value['trash-sum'], 2, ',', ' ') }}</td>                                                
+                                                        <td><font color="{{ $gamma }}">{{ number_format($value['total'], 2, ',', ' ') }}</td>
                                                     @elseif ($value['status'] == 1)
-                                                        <td><font color="blue">Отправлено</td>
-                                                        <td><font color="blue">{{ number_format($value['heat-volume'], 4, ',', ' ') }}</td>
-                                                        <td><font color="blue">{{ number_format($value['heat-sum'], 2, ',', ' ') }}</td>
-                                                        <td><font color="blue">{{ number_format($value['drainage-volume'], 4, ',', ' ') }}</td>
-                                                        <td><font color="blue">{{ number_format($value['drainage-sum'], 2, ',', ' ') }}</td>
-                                                        <td><font color="blue">{{ number_format($value['negative-volume'], 4, ',', ' ') }}</td>
-                                                        <td><font color="blue">{{ number_format($value['negative-sum'], 2, ',', ' ') }}</td>
-                                                        <td><font color="blue">{{ number_format($value['water-volume'], 4, ',', ' ') }}</td>
-                                                        <td><font color="blue">{{ number_format($value['water-sum'], 2, ',', ' ') }}</td>
-                                                        <td><font color="blue">{{ number_format($value['power-volume'], 4, ',', ' ') }}</td>
-                                                        <td><font color="blue">{{ number_format($value['power-sum'], 2, ',', ' ') }}</td>
-                                                        <td><font color="blue">{{ number_format($value['trash-volume'], 4, ',', ' ') }}</td>
-                                                        <td><font color="blue">{{ number_format($value['trash-sum'], 2, ',', ' ') }}</td>                                                
-                                                        <td><font color="blue">{{ number_format($value['total'], 2, ',', ' ') }}</td>
+                                                        <td><font color="{{ $gamma }}">Отправлено</td>
+                                                        <td><font color="{{ $gamma }}">{{ number_format($value['heat-volume'], 4, ',', ' ') }}</td>
+                                                        <td><font color="{{ $gamma }}">{{ number_format($value['heat-sum'], 2, ',', ' ') }}</td>
+                                                        <td><font color="{{ $gamma }}">{{ number_format($value['drainage-volume'], 4, ',', ' ') }}</td>
+                                                        <td><font color="{{ $gamma }}">{{ number_format($value['drainage-sum'], 2, ',', ' ') }}</td>
+                                                        <td><font color="{{ $gamma }}">{{ number_format($value['negative-volume'], 4, ',', ' ') }}</td>
+                                                        <td><font color="{{ $gamma }}">{{ number_format($value['negative-sum'], 2, ',', ' ') }}</td>
+                                                        <td><font color="{{ $gamma }}">{{ number_format($value['water-volume'], 4, ',', ' ') }}</td>
+                                                        <td><font color="{{ $gamma }}">{{ number_format($value['water-sum'], 2, ',', ' ') }}</td>
+                                                        <td><font color="{{ $gamma }}">{{ number_format($value['power-volume'], 4, ',', ' ') }}</td>
+                                                        <td><font color="{{ $gamma }}">{{ number_format($value['power-sum'], 2, ',', ' ') }}</td>
+                                                        <td><font color="{{ $gamma }}">{{ number_format($value['trash-volume'], 4, ',', ' ') }}</td>
+                                                        <td><font color="{{ $gamma }}">{{ number_format($value['trash-sum'], 2, ',', ' ') }}</td>                                                
+                                                        <td><font color="{{ $gamma }}">{{ number_format($value['total'], 2, ',', ' ') }}</td>
                                                     @else
                                                         <td><font color="green">В работе</td>
                                                         @if ($value['heat-volume'] == 0)
@@ -623,38 +629,38 @@
                                                 <tr>
                                                     <th>{{ $value['user']['name'] }}</th>
                                                     <td></td>
-                                                    <td><font color="blue">{{ number_format($value['heat_volume'], 4, ',', ' ') }}</td>
-                                                    <td><font color="blue">{{ number_format($value['heat_sum'], 2, ',', ' ') }}</td>
-                                                    <td><font color="blue">{{ number_format($value['drainage_volume'], 4, ',', ' ') }}</td>
-                                                    <td><font color="blue">{{ number_format($value['drainage_sum'], 2, ',', ' ') }}</td>
-                                                    <td><font color="blue">{{ number_format($value['negative_volume'], 4, ',', ' ') }}</td>
-                                                    <td><font color="blue">{{ number_format($value['negative_sum'], 2, ',', ' ') }}</td>
-                                                    <td><font color="blue">{{ number_format($value['water_volume'], 4, ',', ' ') }}</td>
-                                                    <td><font color="blue">{{ number_format($value['water_sum'], 2, ',', ' ') }}</td>
-                                                    <td><font color="blue">{{ number_format($value['power_volume'], 4, ',', ' ') }}</td>
-                                                    <td><font color="blue">{{ number_format($value['power_sum'], 2, ',', ' ') }}</td>
-                                                    <td><font color="blue">{{ number_format($value['trash_volume'], 4, ',', ' ') }}</td>
-                                                    <td><font color="blue">{{ number_format($value['trash_sum'], 2, ',', ' ') }}</td>
-                                                    <td><font color="blue">{{ number_format($value['total'], 2, ',', ' ') }}</td>
+                                                    <td><font color="{{ $gamma }}">{{ number_format($value['heat_volume'], 4, ',', ' ') }}</td>
+                                                    <td><font color="{{ $gamma }}">{{ number_format($value['heat_sum'], 2, ',', ' ') }}</td>
+                                                    <td><font color="{{ $gamma }}">{{ number_format($value['drainage_volume'], 4, ',', ' ') }}</td>
+                                                    <td><font color="{{ $gamma }}">{{ number_format($value['drainage_sum'], 2, ',', ' ') }}</td>
+                                                    <td><font color="{{ $gamma }}">{{ number_format($value['negative_volume'], 4, ',', ' ') }}</td>
+                                                    <td><font color="{{ $gamma }}">{{ number_format($value['negative_sum'], 2, ',', ' ') }}</td>
+                                                    <td><font color="{{ $gamma }}">{{ number_format($value['water_volume'], 4, ',', ' ') }}</td>
+                                                    <td><font color="{{ $gamma }}">{{ number_format($value['water_sum'], 2, ',', ' ') }}</td>
+                                                    <td><font color="{{ $gamma }}">{{ number_format($value['power_volume'], 4, ',', ' ') }}</td>
+                                                    <td><font color="{{ $gamma }}">{{ number_format($value['power_sum'], 2, ',', ' ') }}</td>
+                                                    <td><font color="{{ $gamma }}">{{ number_format($value['trash_volume'], 4, ',', ' ') }}</td>
+                                                    <td><font color="{{ $gamma }}">{{ number_format($value['trash_sum'], 2, ',', ' ') }}</td>
+                                                    <td><font color="{{ $gamma }}">{{ number_format($value['total'], 2, ',', ' ') }}</td>
                                                 </tr>
                                             @endforeach
                                         @endif 
                                         <tr>
                                             <th class="col-id-no" scope="row"><b>ИТОГО</b></th>
                                             <td></td>
-                                            <td><font color="blue">{{ number_format($total['heat_volume'], 4, ',', ' ') }}</td>
-                                            <td><font color="blue">{{ number_format($total['heat_sum'], 2, ',', ' ') }}</td>
-                                            <td><font color="blue">{{ number_format($total['drainage_volume'], 4, ',', ' ') }}</td>
-                                            <td><font color="blue">{{ number_format($total['drainage_sum'], 2, ',', ' ') }}</td>
-                                            <td><font color="blue">{{ number_format($total['negative_volume'], 4, ',', ' ') }}</td>
-                                            <td><font color="blue">{{ number_format($total['negative_sum'], 2, ',', ' ') }}</td>
-                                            <td><font color="blue">{{ number_format($total['water_volume'], 4, ',', ' ') }}</td>
-                                            <td><font color="blue">{{ number_format($total['water_sum'], 2, ',', ' ') }}</td>
-                                            <td><font color="blue">{{ number_format($total['power_volume'], 4, ',', ' ') }}</td>
-                                            <td><font color="blue">{{ number_format($total['power_sum'], 2, ',', ' ') }}</td>
-                                            <td><font color="blue">{{ number_format($total['trash_volume'], 4, ',', ' ') }}</td>
-                                            <td><font color="blue">{{ number_format($total['trash_sum'], 2, ',', ' ') }}</td>
-                                            <td><font color="blue">{{ number_format($total['total'], 2, ',', ' ') }}</td>
+                                            <td><font color="{{ $gamma }}">{{ number_format($total['heat_volume'], 4, ',', ' ') }}</td>
+                                            <td><font color="{{ $gamma }}">{{ number_format($total['heat_sum'], 2, ',', ' ') }}</td>
+                                            <td><font color="{{ $gamma }}">{{ number_format($total['drainage_volume'], 4, ',', ' ') }}</td>
+                                            <td><font color="{{ $gamma }}">{{ number_format($total['drainage_sum'], 2, ',', ' ') }}</td>
+                                            <td><font color="{{ $gamma }}">{{ number_format($total['negative_volume'], 4, ',', ' ') }}</td>
+                                            <td><font color="{{ $gamma }}">{{ number_format($total['negative_sum'], 2, ',', ' ') }}</td>
+                                            <td><font color="{{ $gamma }}">{{ number_format($total['water_volume'], 4, ',', ' ') }}</td>
+                                            <td><font color="{{ $gamma }}">{{ number_format($total['water_sum'], 2, ',', ' ') }}</td>
+                                            <td><font color="{{ $gamma }}">{{ number_format($total['power_volume'], 4, ',', ' ') }}</td>
+                                            <td><font color="{{ $gamma }}">{{ number_format($total['power_sum'], 2, ',', ' ') }}</td>
+                                            <td><font color="{{ $gamma }}">{{ number_format($total['trash_volume'], 4, ',', ' ') }}</td>
+                                            <td><font color="{{ $gamma }}">{{ number_format($total['trash_sum'], 2, ',', ' ') }}</td>
+                                            <td><font color="{{ $gamma }}">{{ number_format($total['total'], 2, ',', ' ') }}</td>
                                         </tr>
                                     </tbody>
                                     
