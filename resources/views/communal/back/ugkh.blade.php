@@ -336,7 +336,7 @@
                         <div class="col d-flex">
                             <div class="card radius-10 w-100">
                                 <div class="card-body">
-                                    <p class="font-weight-bold mb-1 text-secondary">Линейная диаграмма рейтинга по заполнению портала</p>
+                                    <p class="font-weight-bold mb-1 text-secondary">Линейная диаграмма рейтинга по заполнению портала на отчетную дату (рейтинг начисляется с 01-07-2024г.)</p>
 
                                     <div class="chart-container-0">
                                         <canvas id="chart"></canvas>
