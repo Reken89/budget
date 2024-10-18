@@ -234,7 +234,11 @@
                     <div class="account__wrapper">
                         <div class="account__content">
                             
-                            <div class="account__table--area">   
+                            <div class="account__table--area"> 
+                                <p>Расшифровка подсветки цифр:</p>
+                                <b><font color="green">|||||||</font></b> - <u>Централизованная бухгалтерия завершила работу</u></br>
+                                <b><font color="red">|||||||</font></b> - <u>Централизованная бухгалтерия ещё заполняет информацию</u></br>
+                                </br>
                                 <p><b>Выбранный год: {{ $info['year'] }}</b> </p>  
                                     <div class="container_fix">
                                         <div class="table2">
