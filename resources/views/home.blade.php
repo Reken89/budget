@@ -196,6 +196,12 @@
                                                     <button type="submit" class="custom-btn btn-16"><b>Делопроизводство<b></button>
                                                  </form>
                                              </li>
+                                             @elseif ($role == "master")
+                                             <li>
+                                                 <form action="{{ route('stop')}}" method="get">
+                                                    <button type="submit" class="custom-btn btn-16"><b>Мастерская<b></button>
+                                                 </form>
+                                             </li>
                                              @endif
                                           </ul>
                                        </li>

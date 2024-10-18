@@ -33,6 +33,7 @@ use App\Structure\Ofs25Section\User\Controllers\Ofs25Controller;
 use App\Structure\Ofs25Section\Admin\Controllers\AdminOfs25Controller;
 use App\Structure\Ofs2024Section\User\Controllers\Ofs2024Controller;
 use App\Structure\Ofs2024Section\Admin\Controllers\AdminOfs2024Controller;
+use App\Structure\BlockSection\Admin\Controllers\StopController;
 
 /*
 |--------------------------------------------------------------------------
@@ -351,6 +352,14 @@ Route::get('/user/count24', [UserCount24Controller::class, 'FrontView'])->middle
 //Route::get('/admin/1c', [Admin1cController::class, 'FrontView'])->middleware('auth', 'admin')->name('admin1c');
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+//Выполнение приказа 66
+Route::get('/stop', [StopController::class, 'ShowPage'])->middleware('auth', 'master')->name('stop');
+Route::get('/stop/order{key}', [StopController::class, 'ExecuteOrder'])->middleware('auth', 'master')->name('order');
+/*
+ * 
+ * 
+ * 
+ */
 Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
