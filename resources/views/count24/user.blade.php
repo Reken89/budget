@@ -217,7 +217,7 @@
                         </br>
                         
                         <br>
-                        <form action="/budget/public/admin/count24/export" method="get">
+                        <form action="/budget/public/user/count24/export" method="get">
                             <button type="submit" style="width:200px;height:50px" class="primary__btn price__filter--btn">EXCEL</button>
                         </form>
                         </br>

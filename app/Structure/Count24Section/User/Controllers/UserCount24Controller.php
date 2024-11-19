@@ -3,6 +3,8 @@
 namespace App\Structure\Count24Section\User\Controllers;
 
 use App\Core\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Structure\Count24Section\User\Exports\ExportTable;
 use App\Structure\Count24Section\User\Requests\Count24IndexRequest;
 use App\Structure\Count24Section\User\Requests\Count24UpdateRequest;
 use App\Structure\Count24Section\User\Dto\Count24IndexDto;
@@ -85,5 +87,16 @@ class UserCount24Controller extends Controller
         $result = $this->action(Count24SynchAction::class)->SynchYears(); 
         return $result == true ? "Информация в 2026 и 2027 годах обновлена!" : "Возникла ошибка!";              
     } 
+    
+    /**
+     * Выгрузка таблицы в EXCEL
+     * 
+     * @param 
+     * @return Excel
+     */
+    public function ExportTable()
+    { 
+        return Excel::download(new ExportTable, 'table.xlsx');
+    }  
    
 }

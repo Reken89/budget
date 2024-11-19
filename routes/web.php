@@ -332,6 +332,7 @@ Route::get('/user/count24/table', [UserCount24Controller::class, 'TableView'])->
 Route::patch('/user/count24/update', [UserCount24Controller::class, 'UpdateInfo'])->middleware('auth');
 Route::patch('/user/count24/status', [UserCount24Controller::class, 'UpdateStatus'])->middleware('auth');
 Route::get('/user/count24/synch', [UserCount24Controller::class, 'SynchYears'])->middleware('auth');
+Route::get('/user/count24/export', [UserCount24Controller::class, 'ExportTable'])->middleware('auth');
 
 //Роуты для Front (Модуль Смета2024)
 Route::get('/admin/count24', [AdminCount24Controller::class, 'FrontView'])->middleware('auth', 'admin')->name('admincount24');
