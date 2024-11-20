@@ -137,6 +137,18 @@
                                                     <button type="submit" class="custom-btn btn-16">Смета 2024 год</button>
                                                 </form>
                                              </li>
+                                             <li>                                               
+                                                <button type="button" id='admin' class="custom-btn btn-16">Администратор</button>
+                                                @include('layouts.version')
+                                                <script>
+                                                    $(document).ready(function(){
+                                                        $(document).on('click', '#admin', function(){
+                                                            let code = prompt('Введите код доступа!', );
+                                                            window.location.href = '/budget/public/adm?code='+code;
+                                                        })
+                                                    });
+                                                </script>
+                                             </li>
                                              @elseif ($role == "user")
                                              <li>
                                                  <form action="{{ route('usercommunal')}}" method="get">

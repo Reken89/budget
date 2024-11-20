@@ -35,6 +35,7 @@ use App\Structure\Ofs25Section\Admin\Controllers\AdminOfs25Controller;
 use App\Structure\Ofs2024Section\User\Controllers\Ofs2024Controller;
 use App\Structure\Ofs2024Section\Admin\Controllers\AdminOfs2024Controller;
 use App\Structure\BlockSection\Admin\Controllers\StopController;
+use App\Structure\AdminSection\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -356,6 +357,9 @@ Route::get('/user/count24', [UserCount24Controller::class, 'FrontView'])->middle
 //Роуты для Front (Модуль 1С)
 //Route::get('/admin/1c', [Admin1cController::class, 'FrontView'])->middleware('auth', 'admin')->name('admin1c');
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//Админка
+Route::get('/adm', [AdminController::class, 'FrontView'])->middleware('auth', 'admin');
 
 //Выполнение приказа 66
 Route::get('/stop', [StopController::class, 'ShowPage'])->middleware('auth', 'master')->name('stop');
