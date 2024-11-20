@@ -26,6 +26,7 @@ use App\Structure\DeloSection\User\Controllers\DeloController;
 use App\Structure\DeloSection\User\Controllers\DeloCorrController;
 use App\Structure\DeloSection\User\Controllers\DeloEditorController;
 use App\Structure\DeloSection\User\Controllers\DeloFilterController;
+use App\Structure\DeloSection\User\Controllers\DeloDirectoryController;
 use App\Structure\Count24Section\Admin\Controllers\AdminCount24Controller;
 use App\Structure\Count24Section\User\Controllers\UserCount24Controller;
 //use App\Structure\CSection\Admin\Controllers\Admin1cController;
@@ -308,12 +309,15 @@ Route::get('/delo/filters/table', [DeloFilterController::class, 'FilterView'])->
 Route::get('/delo/filters/export', [DeloFilterController::class, 'ExportTable'])->middleware('auth');
 Route::post('/delo/upload', [DeloController::class, 'Upload'])->middleware('auth');
 Route::get('/delo/uploadview', [DeloController::class, 'UploadView'])->middleware('auth')->name('uploadview');
+Route::get('/delo/directory/table', [DeloDirectoryController::class, 'TableView'])->middleware('auth');
+Route::post('/delo/directory/add', [DeloDirectoryController::class, 'AddNpa'])->middleware('auth');
 
 //Роуты для Front (Модуль Дело)
 Route::get('/delo{variant}', [DeloController::class, 'FrontView'])->middleware('auth')->name('delo');
 Route::get('/delo/editor{id}', [DeloEditorController::class, 'FrontView'])->middleware('auth')->name('editor');
 Route::get('/delo/filters', [DeloFilterController::class, 'FrontView'])->middleware('auth')->name('filters');
 Route::get('/delo/correspondents', [DeloCorrController::class, 'FrontView'])->middleware('auth')->name('correspondents');
+Route::get('/delo/directory', [DeloDirectoryController::class, 'FrontView'])->middleware('auth')->name('directory');
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
  * 

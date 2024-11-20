@@ -1,5 +1,5 @@
 @php
-    //var_dump($info['documents']);
+
 @endphp
 
 <!doctype html>
@@ -11,8 +11,7 @@
   <meta name="description" content="Morden Bootstrap HTML5 Template">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/img/favicon.ico') }}">
-  <link rel="stylesheet" href="https://snipp.ru/cdn/select2/4.0.13/dist/css/select2.min.css">
-   
+    
    <!-- ======= All CSS Plugins here ======== -->
    <link rel="stylesheet" href="{{ asset('assets/css/plugins/swiper-bundle.min.css') }}">
    <link rel="stylesheet" href="{{ asset('assets/css/plugins/glightbox.min.css') }}">
@@ -96,18 +95,6 @@
                                         Фильтры
                                     </a>
                                 </li>
-                                @if ($info['role'] == "deloadm")
-                                    <li class="categories__menu--items">
-                                        <a class="categories__menu--link" href="{{ route('correspondents')}}">
-                                            Корреспонденты
-                                        </a>
-                                    </li>
-                                    <li class="categories__menu--items">
-                                        <a class="categories__menu--link" href="{{ route('directory')}}">
-                                            Справочники
-                                        </a>
-                                    </li>
-                                @endif
                             </ul>   
                         </div>
                     </div>
@@ -142,103 +129,42 @@
                 <form id="communal" method="get"> 
                 
                 <section class="shipping__section">
-            <div class="container2">
+            <div class="container">
                 <p>Описание таблицы:</p>
-                <p><b><u>Номер</u></b> - Номер регистрации</br>
-                    <b><u>Вид документа</u></b> - Вид регистрируемого документа</br>
-                    <b><u>Корреспондент</u></b> - Выбирается из списка</br>
-                    <b><u>Дата</u></b> - Дата регистрации</br>
-                    <b><u>Исполнитель/Резолюция</u></b> - Ответственное лицо</br>
-                    <b><u>Содержание</u></b> - Краткое содержание документа</br>
-                    <b><u>Автор</u></b> - Автор записи
+                <p><b><u>Тип документа</u></b> - Введите название вида документа</br>
+                    <b><u>Добавить</u></b> - Кнопка добавления нового вида документа</br>
                 </p>
                 
                 <div class="my__account--section__inner border-radius-10 d-flex">
                     <div class="account__wrapper">
                         <div class="account__content">
-                            @if ($info['variant'] == "out")
-                                <p><u>Исходящая почта</u></p>
-                            @endif
-                            @if ($info['variant'] == "in")
-                                <p><u>Входящая почта</u></p>
-                            @endif
-                            
+                            <p><u>Справочники</u></p>
+                           
                             <div class="account__table--area">
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th style="min-width: 70px; width: 70px;" bgcolor="#66CDAA">Номер</th>
-                                            <th style="min-width: 70px; width: 70px;" bgcolor="#66CDAA">Вид документа</th>
-                                            <th style="min-width: 150px; width: 150px;" bgcolor="#66CDAA">Корреспондент</th>
-                                            <th style="min-width: 100px; width: 100px;" bgcolor="#66CDAA">Дата</th>
-                                            @if($info['variant'] == "out")
-                                                <th style="min-width: 100px; width: 100px;" bgcolor="#66CDAA">Исполнитель</th>
-                                            @else
-                                                <th style="min-width: 100px; width: 100px;" bgcolor="#66CDAA">Резолюция</th>
-                                            @endif
-                                            <th style="min-width: 200px; width: 200px;" bgcolor="#66CDAA">Содержание</th>    
-                                            <th style="min-width: 80px; width: 80px;" bgcolor="#66CDAA">Автор</th> 
+                                            <th style="min-width: 100px; width: 100px;" bgcolor="#66CDAA">Тид документа</th>
+                                            <th style="min-width: 80px; width: 80px;" bgcolor="#66CDAA">Кнопка</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <input type="hidden" class="variant" value="{{ $info['variant'] }}">
-                                            <input type="hidden" class="author" value="{{ $info['name'] }}">
-                                            <td><input style="min-width: 70px; width: 70px;" type="text" name="number" class="number" value="0"></td>
-                                            <td>
-                                                <select id="fruits" style="min-width: 100px; width: 100px;" name="npa" class="npa">
-                                                    <option selected value="6">Письмо</option>
-                                                    @foreach ($info['npa'] as $value) 
-                                                        <option value="{{ $value['id'] }}">{{ $value['title'] }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </td>
-                                            <td>   
-                                                <select id="fruits" style="min-width: 150px; width: 150px;" name="correspondent" class="correspondent">
-                                                    <option selected value="4">Администрация КГО</option>
-                                                    <option value=""></option>
-                                                    @foreach ($info['corr'] as $value) 
-                                                        <option value="{{ $value['id'] }}">{{ $value['title'] }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </td>
-                                            <td>
-                                                <input type="date" value="<?php echo date('Y-m-d'); ?>" id="date" name="date" class="date"/>
-                                            </td>
-                                            <td>   
-                                                <select id="fruits" style="min-width: 130px; width: 130px;" name="user" class="user">
-                                                    <option selected value="40">Стременовская Ж.В.</option>
-                                                    @foreach ($info['users'] as $value) 
-                                                        <option value="{{ $value['id'] }}">{{ $value['name'] }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </td>                                           
-                                            <td class="col-id-no" scope="row"><textarea rows='3' cols='20' type=text name="content" class="content">Содержание</textarea></td> 
+                                        <tr>                                                                                      
+                                            <td class="col-id-no" scope="row"><textarea rows='2' cols='50' type=text name="content" class="title">Тип документа</textarea></td> 
                                             <td>
                                                 <button style="width:200px;height:50px" class="primary__btn" id='btn_add' type="button">Добавить</button>
                                             </td>
                                         </tr>
-                                        @foreach ($info['documents'] as $value) 
-                                            <tr>
-                                                @if ($info['name'] == $value['author'])
-                                                    <td><a class="header__info--link" href="{{ route('editor', $value['id'])}}"><b>{{ $value['number'] }}</b></a></td>
-                                                @elseif ($info['role'] == "deloadm")
-                                                    <td><a class="header__info--link" href="{{ route('editor', $value['id'])}}"><b>{{ $value['number'] }}</b></a></td>
-                                                @else
-                                                    <td>{{ $value['number'] }}</td>
-                                                @endif
-                                                <td>{{ $value['npa']['title'] }}</td>
-                                                <td>{{ $value['correspondent']['title'] }}</td>
-                                                <td>{{ $value['date'] }}</td>
-                                                <td>{{ $value['user']['name'] }}</td>
-                                                <td>{{ $value['content'] }}</td>
-                                                <td>{{ $value['author'] }}</td>
+                                        @foreach ($info as $value) 
+                                            <tr>                                                
+                                                <td>{{ $value['title'] }}</td>
+                                                <td></td>
                                             </tr>
-                                        @endforeach
+                                        @endforeach                                        
                                     </tbody>                                
                                 </table>
                                 </br>
-                                <p><b>*Для информации:</b> Модуль разработан, для регистрации корреспонденции</p>
+                                <p><b>*Для информации:</b> Модуль разработан, для регистрации документов</p>
                             </div>
                         </div>
                     </div>
@@ -281,7 +207,7 @@
                             <ul class="footer__widget--menu footer__widget--inner">
                                 
                                 <li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="https://kostomuksha-city.ru/" target="_blank">Сайт Костомукшского городского округа</a></li>
-                                
+                               
                             </ul>
                         </div>
                     </div>
@@ -303,8 +229,6 @@
     <button id="scroll__top"><svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M112 244l144-144 144 144M256 120v292"/></svg></button>
 
 <!-- All Script JS Plugins here  -->
-
-
 <script src="{{ asset('assets/js/vendor/popper.js') }}" defer="defer"></script>
 <script src="{{ asset('assets/js/vendor/bootstrap.min.js') }}" defer="defer"></script>
 <script src="{{ asset('assets/js/plugins/swiper-bundle.min.js') }}"></script>
@@ -315,4 +239,7 @@
   
 </body>
 </html>
+
+
+
 
