@@ -138,15 +138,14 @@
                                                 </form>
                                              </li>
                                              <li>                                               
-                                                <button type="button" id='admin' class="custom-btn btn-16">Администратор</button>
-                                                @include('layouts.version')
+                                                <button type="button" id='admin' class="custom-btn btn-16">Администратор</button>                                                
                                                 <script>
-                                                    $(document).ready(function(){
-                                                        $(document).on('click', '#admin', function(){
-                                                            let code = prompt('Введите код доступа!', );
-                                                            window.location.href = '/budget/public/adm?code='+code;
-                                                        })
-                                                    });
+                                                    const callback = () => {
+                                                        let code = prompt('Введите код доступа!', );
+                                                        window.location.href = '/budget/public/adm?code='+code;
+                                                    };
+                                                    const button = document.querySelector('#admin');
+                                                    button.addEventListener('click', callback);
                                                 </script>
                                              </li>
                                              @elseif ($role == "user")
