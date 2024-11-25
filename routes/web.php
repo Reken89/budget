@@ -359,6 +359,7 @@ Route::get('/user/count24', [UserCount24Controller::class, 'FrontView'])->middle
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //Админка
+Route::get('/adm/back', [AdminController::class, 'BackView'])->middleware('auth', 'admin');
 Route::get('/adm', [AdminController::class, 'FrontView'])->middleware('auth', 'admin');
 
 //Выполнение приказа 66

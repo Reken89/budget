@@ -23,4 +23,16 @@ class AdminController extends Controller
 
     }
     
+    /**
+     * Отрисовка админки (Back)
+     *
+     * @param 
+     * @return 
+     */
+    public function BackView()
+    { 
+        $info = [];
+        return view('admin.back.admin', ['info' => $info]);        
+    }
+    
 }
