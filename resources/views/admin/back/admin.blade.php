@@ -1,4 +1,6 @@
-
+@php
+    //var_dump($info);
+@endphp
 <!doctype html>
 <html lang="en">
 
@@ -110,9 +112,63 @@
             <section class="shipping__section">
                 <div class="container">
                     <p>Регистрация нового пользователя</p>
-                    <div class="shipping__inner style2 d-flex">
-
+                    
+                    <div class="my__account--section__inner border-radius-10 d-flex">
+                        <div class="account__wrapper">
+                            <div class="account__content">
+                                <p><u>Регистрация нового пользователя</u></p>
+                                <div class="account__table--area">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th style="min-width: 80px; width: 80px;" bgcolor="#66CDAA">Имя</th>
+                                                <th style="min-width: 80px; width: 80px;" bgcolor="#66CDAA">Email</th>
+                                                <th style="min-width: 80px; width: 80px;" bgcolor="#66CDAA">Пароль</th>
+                                                <th style="min-width: 80px; width: 80px;" bgcolor="#66CDAA">Кнопка</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>                                                                                      
+                                                <td><input type="text" class="name" value="ФИО"></td>
+                                                <td><input type="text" class="email" value="email"></td>
+                                                <td><input type="password" class="password"></td>
+                                                <td>
+                                                    <button style="width:200px;height:50px" class="primary__btn" id='btn_add' type="button">Добавить</button>
+                                                </td>
+                                            </tr>                                  
+                                        </tbody>                                
+                                    </table>
+                                </div>
+                                <p><u>Обновление существующих пользователей</u></p>
+                                <div class="account__table--area">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th style="min-width: 80px; width: 80px;" bgcolor="#66CDAA">Имя</th>
+                                                <th style="min-width: 80px; width: 80px;" bgcolor="#66CDAA">Email</th>
+                                                <th style="min-width: 80px; width: 80px;" bgcolor="#66CDAA">Роль</th>
+                                                <th style="min-width: 80px; width: 80px;" bgcolor="#66CDAA">Кнопка</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($info as $value) 
+                                                <tr>                                                
+                                                    <input type="hidden" class="id" value="{{ $value['id'] }}">
+                                                    <td><input type="text" class="name" value="{{ $value['name'] }}"></td>
+                                                    <td><input type="text" class="email" value="{{ $value['email'] }}"></td>
+                                                    <td><input type="text" class="role" value="{{ $value['role'] }}"></td>
+                                                    <td>
+                                                        <button style="width:200px;height:50px" class="primary__btn" id='btn_change' type="button">Изменить</button>
+                                                    </td>
+                                                </tr>
+                                            @endforeach                                
+                                        </tbody>                                
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    
                 </div>                   
             </section>
 

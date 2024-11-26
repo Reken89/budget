@@ -2,6 +2,7 @@
 
 namespace App\Structure\AdminSection\Controllers;
 
+use App\Structure\AdminSection\Actions\UserSelectAction;
 use App\Core\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -31,7 +32,7 @@ class AdminController extends Controller
      */
     public function BackView()
     { 
-        $info = [];
+        $info = $this->action(UserSelectAction::class)->SelectUsers();
         return view('admin.back.admin', ['info' => $info]);        
     }
     
