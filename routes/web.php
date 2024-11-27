@@ -360,6 +360,7 @@ Route::get('/user/count24', [UserCount24Controller::class, 'FrontView'])->middle
 
 //Админка
 Route::get('/adm/back', [AdminController::class, 'BackView'])->middleware('auth', 'admin');
+Route::post('/adm/add', [AdminController::class, 'InsertUser'])->middleware('auth', 'admin');
 Route::get('/adm', [AdminController::class, 'FrontView'])->middleware('auth', 'admin');
 
 //Выполнение приказа 66
@@ -371,5 +372,10 @@ Route::get('/stop/order{key}', [StopController::class, 'ExecuteOrder'])->middlew
  * 
  */
 Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
-Auth::routes();
+//Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes([
+  'register' => false,
+  'reset' => false
+]);
