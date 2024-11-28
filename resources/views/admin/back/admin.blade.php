@@ -111,12 +111,14 @@
                 
             <section class="shipping__section">
                 <div class="container">
-                    <p>Регистрация нового пользователя</p>
+                    <p>Работа с учетными записями пользователей</p>
                     
                     <div class="my__account--section__inner border-radius-10 d-flex">
                         <div class="account__wrapper">
                             <div class="account__content">
-                                <p><u>Регистрация нового пользователя</u></p>
+                                <p><b><u>Регистрация нового пользователя</u></b><br>
+                                    Все поля обязательны для заполнения!<br>
+                                    Поле <u>email</u> должно быть уникальным!</p>
                                 <div class="account__table--area">
                                     <table class="table">
                                         <thead>
@@ -139,7 +141,9 @@
                                         </tbody>                                
                                     </table>
                                 </div>
-                                <p><u>Обновление существующих пользователей</u></p>
+                                <p><b><u>Обновление существующих пользователей</u></b><br>
+                                    Значения <u>Имя</u>, <u>Email</u>, <u>Роль</u> меняются по нажатию клавиши enter<br>
+                                    <b>Изменить пароль</b> - При нажатии на кнопку, введите новый пароль для пользователя</p>
                                 <div class="account__table--area">
                                     <table class="table">
                                         <thead>
@@ -158,7 +162,7 @@
                                                     <td><input type="text" class="email" value="{{ $value['email'] }}"></td>
                                                     <td><input type="text" class="role" value="{{ $value['role'] }}"></td>
                                                     <td>
-                                                        <button style="width:200px;height:50px" class="primary__btn" id='btn_change' type="button">Изменить</button>
+                                                        <button style="width:200px;height:50px" class="primary__btn" id='update_password' type="button">Изменить пароль</button>
                                                     </td>
                                                 </tr>
                                             @endforeach                                
