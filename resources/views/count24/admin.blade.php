@@ -211,10 +211,10 @@
                         </br>
                         </form>
                         <br>
-                        <button style="width:200px;height:50px" name="formSubmit" id="communal" class="primary__btn price__filter--btn" type="button">Прогноз</button>
+                        <button style="width:200px;height:50px" name="formSubmit" id="nothing" class="primary__btn price__filter--btn" type="button">Прогноз</button>
                         </br>
                         <br>
-                        <button style="width:200px;height:50px" name="formSubmit" id="synch" class="primary__btn price__filter--btn" type="button">Синхронизация</button>
+                        <button style="width:200px;height:50px" name="formSubmit" id="nothing" class="primary__btn price__filter--btn" type="button">Синхронизация</button>
                         </br>
                         
                         <br>
@@ -404,6 +404,13 @@
                     location.reload();
                 } 
             })                                                     
+        }) 
+        
+        //Действие при нажатии кнопки 
+        //Заполнение 2026 и 2027 года
+        $(document).on('click', '#nothing', function(){
+            let message = "Функция отключена!";
+            alert(message);                                                      
         }) 
     });
 </script>
