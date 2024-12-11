@@ -210,10 +210,10 @@
                         </br>
                         </form>
                         <br>
-                        <button style="width:200px;height:50px" name="formSubmit" id="synch" class="primary__btn price__filter--btn" type="button">Синхронизация</button>
+                        <button style="width:200px;height:50px" name="formSubmit" id="nothing" class="primary__btn price__filter--btn" type="button">Синхронизация</button>
                         </br>
                         <br>
-                        <button style="width:200px;height:50px" name="formSubmit" id="status" class="primary__btn price__filter--btn" type="button">Отпрвить в ФЭУ</button>
+                        <button style="width:200px;height:50px" name="formSubmit" id="nothing" class="primary__btn price__filter--btn" type="button">Отпрвить в ФЭУ</button>
                         </br>
                         
                         <br>
@@ -409,6 +409,12 @@
                     location.reload();
                 } 
             })                                                     
+        }) 
+        
+        //Заглушка
+        $(document).on('click', '#nothing', function(){
+            let message = "Функция отключена!";
+            alert(message);                                                      
         }) 
     });
 </script>
