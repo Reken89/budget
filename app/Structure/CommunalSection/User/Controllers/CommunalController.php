@@ -106,7 +106,12 @@ class CommunalController extends Controller
         if (!$this->action(CommunalUpdateAction::class)->status_editor($id)) {
 	    echo "Обнаружена системная ошибка, сообщите разработчику!";
 	} else {
-            echo "Запрос отправлен в финансово-экономическое управление";
+            $date = date("d");
+            if ($date < 18){
+                echo "Запрос на редактирование согласован";
+            }else{
+                echo "Запрос отправлен в финансово-экономическое управление";
+            }
         }
     }
     

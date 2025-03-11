@@ -20,8 +20,14 @@ class CommunalUpdateAction extends BaseAction
      */
     public function status_editor(string $id): bool
     {   
-        $result = $this->task(CommunalUpdateTask::class)->status($id, 3);  
-        $this->task(CommunalEmailTask::class)->sendEmail($id);  
+        $date = date("d");
+        if ($date < 18){
+            $status = 2;
+        }else{
+            $status = 3;
+            $this->task(CommunalEmailTask::class)->sendEmail($id); 
+        }
+        $result = $this->task(CommunalUpdateTask::class)->status($id, $status);  
         return $result == true ? true : false;        
     }
     
