@@ -339,6 +339,9 @@
                 <div class="my__account--section__inner border-radius-10 d-flex">
                     <div class="account__wrapper">
                         <div class="account__content">
+                            <font color='red'>*** Обращаем Ваше внимание, что при нажатии кнопки «Редактировать» до 17 числа месяца (включительно), 
+                            Вам автоматически будет разрешено, редактировать данные. <u>После 17 числа, только после согласования в ФЭУ</u></font>
+                                
                             <p><u>После ввода каждой цифры, необходимо нажать клавишу «enter»</u></p>
                             <h2 class="account__content--title h3 mb-20">Год: {{ $info['result']['communal'][$key]['year'] }}, месяц: {{ $mounth[$info['result']['communal'][$key]['mounth']] }}</h2>
                             <div class="account__table--area">

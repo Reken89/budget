@@ -121,6 +121,7 @@
                     },
                     dataType:"text",  
                     success:function(data){  
+                        //alert(data);
                         fetch_data();  
                     } 
                 })               
