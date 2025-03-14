@@ -36,6 +36,7 @@ use App\Structure\Ofs2024Section\User\Controllers\Ofs2024Controller;
 use App\Structure\Ofs2024Section\Admin\Controllers\AdminOfs2024Controller;
 use App\Structure\BlockSection\Admin\Controllers\StopController;
 use App\Structure\AdminSection\Controllers\AdminController;
+use App\Structure\Forecast25Section\Admin\Controllers\Forecast25Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -357,6 +358,16 @@ Route::get('/user/count24', [UserCount24Controller::class, 'FrontView'])->middle
 //Роуты для Front (Модуль 1С)
 //Route::get('/admin/1c', [Admin1cController::class, 'FrontView'])->middleware('auth', 'admin')->name('admin1c');
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+ * 
+ * 
+ * 
+ */
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Роуты для Back (Модуль Прогноз 2025)
+Route::get('/forecast25/back', [Forecast25Controller::class, 'BackView'])->middleware('auth', 'admin');
+//Роуты для Front (Модуль Прогноз 2025)
+Route::get('/forecast25', [Forecast25Controller::class, 'FrontView'])->middleware('auth', 'admin')->name('forecast25');
 
 //Админка
 Route::get('/adm/back', [AdminController::class, 'BackView'])->middleware('auth', 'admin');

@@ -124,6 +124,11 @@
                                                 </form>
                                              </li>
                                              <li>
+                                                <form action="{{ route('forecast25')}}" method="get">
+                                                    <button type="submit" class="custom-btn btn-16">Прогноз 2025</button>
+                                                </form>
+                                             </li>
+                                             <li>
                                                 <form action="{{ route('admincount')}}" method="get">
                                                     <input type='hidden' name='variant' value='1'>
                                                     <input type='hidden' name='year' value='2024'>
