@@ -1,5 +1,5 @@
 @php
-    //var_dump($info);
+    var_dump($info['tarrif']);
 @endphp
 
 @include('layouts.tableprognoz')
@@ -161,7 +161,7 @@
                                     <tbody>
                                         <tr>
                                             <td><b>2024</b></td>
-                                            @foreach ($info['2024'] as $value)
+                                            @foreach ($info['examin']['2024'] as $value)
                                                 @if ($value == 'true')
                                                     <td><span class="badge bg-gradient-bloody text-white shadow-sm w-100">ошибка</span></td>
                                                 @else
@@ -171,7 +171,7 @@
                                         </tr>  
                                         <tr>
                                             <td><b>2025</b></td>
-                                            @foreach ($info['2025'] as $value)
+                                            @foreach ($info['examin']['2025'] as $value)
                                                 @if ($value == 'true')
                                                     <td><span class="badge bg-gradient-bloody text-white shadow-sm w-100">ошибка</span></td>
                                                 @else
@@ -185,7 +185,31 @@
                         </div>
                     </div>
                 </div>
-            </div>                                                      
+            </div>  
+            </br>
+            <div class="container2">
+                <div class="my__account--section__inner border-radius-10 d-flex">                                    
+                    <div class="account__wrapper">
+                        <div class="account__content">
+                            <h2 class="account__content--title h3 mb-20">Таблица тарифов</h2>
+                            <div class="account__table--area">
+                                <table style="min-width: 450px; width: 450px;" class="table align-middle mb-0">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th style="min-width: 150px; width: 150px;">Тарифы</th>
+                                            <th style="min-width: 150px; width: 150px;">Первое полугодие</th>
+                                            <th style="min-width: 150px; width: 150px;">Второе полугодие</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        
+                                    </tbody>
+                                </table>	
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>  
         </section>
         <!-- my account section end -->    
     </main>
