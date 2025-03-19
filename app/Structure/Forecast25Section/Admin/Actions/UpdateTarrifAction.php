@@ -18,8 +18,8 @@ class UpdateTarrifAction extends BaseAction
     {        
         $update = Tarrif::find($dto->id)
             ->update([                
-                 'tarrif_one' => $dto->tarrif_one,
-                 'tarrif_two' => $dto->tarrif_two,
+                'tarrif_one' => $dto->tarrif_one,
+                'tarrif_two' => $dto->tarrif_two,
             ]);                    
         return $update == true ? true : false;
     }   

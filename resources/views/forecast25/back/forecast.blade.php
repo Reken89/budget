@@ -1,5 +1,5 @@
 @php
-    //var_dump($info['tarrif']);
+    var_dump($info['forecast']);
 @endphp
 
 @include('layouts.tableprognoz')

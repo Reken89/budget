@@ -39,9 +39,16 @@
    
         //Подгружаем BACK шаблон отрисовки
         function fetch_data(){
+            var info = <?=json_encode($info)?>;
+            var title = info['title'];
 
             $.ajax({                
-                url:"/budget/public/forecast25/back", 
+                url:"/budget/public/forecast25/back",
+                method:"get",
+                data:{
+                    title
+                },
+                dataType:"text",
                 success:function(data){  
                     $('#live_data').html(data); 
                     setKeydownmyForm()

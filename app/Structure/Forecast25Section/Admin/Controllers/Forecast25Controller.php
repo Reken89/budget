@@ -10,6 +10,7 @@ use App\Structure\Forecast25Section\Admin\Dto\UpdateDto;
 use App\Structure\Forecast25Section\Admin\Actions\ExaminCommunalAction;
 use App\Structure\Forecast25Section\Admin\Actions\SelectTarrifAction;
 use App\Structure\Forecast25Section\Admin\Actions\UpdateTarrifAction;
+use App\Structure\Forecast25Section\Admin\Actions\SelectForecastAction;
 
 class Forecast25Controller extends Controller
 {
@@ -19,9 +20,18 @@ class Forecast25Controller extends Controller
      * @param
      * @return 
      */
-    public function FrontView()
+    public function FrontView(Request $request)
     {
-        return view('forecast25.forecast');   
+        if(isset($request->title)){
+            $title = $request->title;
+        }else{
+            $title = "heat";
+        }
+        $info = [
+            'title' => $title,
+        ];
+        
+        return view('forecast25.forecast', ['info' => $info]);   
     }
     
      /**
@@ -30,7 +40,7 @@ class Forecast25Controller extends Controller
      * @param 
      * @return 
      */
-    public function BackView()
+    public function BackView(Request $request)
     { 
         $examin = [
             '2024' => $this->action(ExaminCommunalAction::class)->ExaminCommunal(2024),
@@ -38,8 +48,9 @@ class Forecast25Controller extends Controller
         ];
         
         $info = [
-            'examin' => $examin,
-            'tarrif' => $this->action(SelectTarrifAction::class)->SelectAll(),
+            'examin'   => $examin,
+            'tarrif'   => $this->action(SelectTarrifAction::class)->SelectAll(),
+            'forecast' => $this->action(SelectForecastAction::class)->SelectForecast($request->title),
         ];
         
         return view('forecast25.back.forecast', ['info' => $info]);         
