@@ -1,5 +1,33 @@
 @php
-    var_dump($info['forecast']);
+    //var_dump($info['forecast']);
+    
+    $variant = [
+        'heat'     => 'теплоснабжение',
+        'water'    => 'водоснабжение',
+        'drainage' => 'водоотведение',
+        'energy'   => 'электроснабжение',
+        'trash'    => 'вывоз мусора',
+        'negative' => 'негативное воздействие',
+    ];
+    
+    $total = [
+        'volume_one'  => 0,
+        'volume_two'  => 0,
+        'volume_year' => 0,
+        'sum_one'     => 0,
+        'sum_two'     => 0,
+        'sum_year'    => 0,
+    ];
+    
+    foreach($info['forecast'] as $value){
+        $total['volume_one'] = $total['volume_one'] + $value['volume_one'];
+        $total['volume_two'] = $total['volume_two'] + $value['volume_two'];
+        $total['volume_year'] = $total['volume_year'] + $value['volume_year'];
+        $total['sum_one'] = $total['sum_one'] + $value['sum_one'];
+        $total['sum_two'] = $total['sum_two'] + $value['sum_two'];
+        $total['sum_year'] = $total['sum_year'] + $value['sum_year'];      
+    }
+    
 @endphp
 
 @include('layouts.tableprognoz')
@@ -242,7 +270,7 @@
                                         </tr>
                                     </tbody>
                                 </table>	
-                            </div>                           
+                            </div>                                                       
                         </div>
                     </div>
                 </div>    
@@ -255,13 +283,155 @@
                                 </br>Объем прогноза за первое полугодие = Сумма объема таблицы коммунальные услуги за первое полугодие 2025 года.
                                 </br>Сумма прогноза за первое полугодие = Сумма объема таблицы коммунальные услуги за первое полугодие 2025 года умноженная на тариф первого полугодия
                                 </br>Объем прогноза за второе полугодие = Сумма объема таблицы коммунальные услуги за второе полугодие 2024 года.
-                                </br>Сумма прогноза за второе полугодие = Сумма объема таблицы коммунальные услуги за второе полугодие 2024 года умноженная на тариф второго полугодия
+                                </br>Сумма прогноза за второе полугодие = Сумма объема таблицы коммунальные услуги за второе полугодие 2024 года умноженная на тариф второго полугодия                              
                             </p>
-                            
+                            <p><font color="red">***Важно - при синхронизации таблиц, значения Д.С. "Гномик", "Золотой ключик", "Сказка" добавляются к Д.С. "Кораблик", "Ауринко", "Березка" соответственно</font></p>
                         </div>
                     </div>    
                 </div>     
-            </div>  
+            </div> 
+                   
+            </br>        
+            <section class="shipping__section">
+                <div class="container2">
+                    <form id="forecast" method="get"> 
+                    <div class="shipping__inner style2 d-flex">
+                        
+                        <div class="shipping__items style2 d-flex align-items-center">
+                            <div class="shipping__content">
+                                <h2 class="shipping__content--title h3">Раздел</h2>
+                                <div class="single__widget widget__bg">
+                                <ul class="widget__form--check">
+                                    <li class="widget__form--check__list">
+                                        <label class="widget__form--check__label" for="check6">Теплоснабжение</label>
+                                        <input class="widget__form--check__input" name="title" value="heat" type="checkbox">
+                                        <span class="widget__form--checkmark"></span>
+                                    </li>
+                                    <li class="widget__form--check__list">
+                                        <label class="widget__form--check__label" for="check6">Водоснабжение</label>
+                                        <input class="widget__form--check__input" name="title" value="water" type="checkbox">
+                                        <span class="widget__form--checkmark"></span>
+                                    </li>
+                                    <li class="widget__form--check__list">
+                                        <label class="widget__form--check__label" for="check7">Водоотведение</label>
+                                        <input class="widget__form--check__input" name="title" value="drainage" type="checkbox">
+                                        <span class="widget__form--checkmark"></span>
+                                    </li>
+                                </ul>
+                                </div>    
+                            </div>
+                        </div>
+                        
+                        <div class="shipping__items style2 d-flex align-items-center">
+                            <div class="shipping__content">
+                                <h2 class="shipping__content--title h3">Раздел</h2>
+                                <div class="single__widget widget__bg">
+                                <ul class="widget__form--check"> 
+                                    <li class="widget__form--check__list">
+                                        <label class="widget__form--check__label" for="check8">Электроснабжение</label>
+                                        <input class="widget__form--check__input" name="title" value="energy" type="checkbox">
+                                        <span class="widget__form--checkmark"></span>
+                                    </li>
+                                    <li class="widget__form--check__list">
+                                        <label class="widget__form--check__label" for="check9">Вывоз мусора</label>
+                                        <input class="widget__form--check__input" name="title" value="trash" type="checkbox">
+                                        <span class="widget__form--checkmark"></span>
+                                    </li>
+                                    <li class="widget__form--check__list">
+                                        <label class="widget__form--check__label" for="check10">Негативное воздействие</label>
+                                        <input class="widget__form--check__input" name="title" value="negative" type="checkbox">
+                                        <span class="widget__form--checkmark"></span>
+                                    </li>
+                                    <li class="widget__form--check__list">
+                                        <label class="widget__form--check__label" for="check10">Свод</label>
+                                        <input class="widget__form--check__input" name="title" value="all" type="checkbox">
+                                        <span class="widget__form--checkmark"></span>
+                                    </li>
+                                </ul>
+                                </div>    
+                            </div>
+                        </div>
+                        
+                        <div class="shipping__items style2 d-flex align-items-center">
+                            <div class="shipping__content">
+
+                            <button style="width:200px;height:50px" class="primary__btn price__filter--btn" id="btn_one" type="button">Сформировать</button>
+                            </br>
+                            </form>
+                            <br>
+                            <button style="width:200px;height:50px" name="formSubmit" id="btn_two" class="primary__btn price__filter--btn" type="button">Синхронизация</button>
+                            </br>
+
+                            <br>
+                            <form action="#" method="get">
+                                <button style="width:200px;height:50px" class="primary__btn price__filter--btn" type="submit">Excel</button>
+                            </form>
+                            
+                            </div>
+                        </div>
+                                                                     
+                        <div class="shipping__items style2 d-flex align-items-center">
+                            <div class="about__content">
+                            <span class="about__content--subtitle text__secondary mb-20">Описание кнопок</span>
+                            <p class="about__content--desc mb-20"><b>Сформировать -</b> Формирует таблицу прогноза по выбранному разделу</br>
+                                <b>Синхронизация -</b> Выполняет синхронизацию таблицы "Коммунальные услуги" с таблицей "Прогноз"</br>
+                                <b>Excel -</b> Выгружает сформированную таблицу прогноза в excel формат
+                            </p>
+                           
+                            
+                            </div>
+                        </div>
+                                               
+                    </div>
+                </div>
+            </section>
+               
+            <div class="container2">
+                <div class="my__account--section__inner border-radius-10 d-flex">                                    
+                    <div class="account__wrapper">
+                        <div class="account__content">
+                            <h2 class="account__content--title h3 mb-20">Таблица прогноза {{ $variant[$info['forecast'][0]['title']] }}</h2>
+                            <div class="account__table--area">
+                                <table class="table align-middle mb-0">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th style="min-width: 100px; width: 100px;">Учреждение</th>
+                                            <th style="min-width: 100px; width: 100px;">Объем 1-полугодие</th>
+                                            <th style="min-width: 100px; width: 100px;">Сумма 1-полугодие</th>
+                                            <th style="min-width: 100px; width: 100px;">Объем 2-полугодие</th>
+                                            <th style="min-width: 100px; width: 100px;">Сумма 2-полугодие</th>
+                                            <th style="min-width: 100px; width: 100px;">Объем за год</th>
+                                            <th style="min-width: 100px; width: 100px;">Сумма за год</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($info['forecast'] as $value) 
+                                            <tr>
+                                                <td>{{ $value['user']['name'] }}</td>
+                                                <td>{{ number_format($value['volume_one'], 3, ',', ' ') }}</td>
+                                                <td>{{ number_format($value['sum_one'], 2, ',', ' ') }}</td>
+                                                <td>{{ number_format($value['volume_two'], 3, ',', ' ') }}</td>
+                                                <td>{{ number_format($value['sum_two'], 2, ',', ' ') }}</td>
+                                                <td>{{ number_format($value['volume_year'], 3, ',', ' ') }}</td>
+                                                <td>{{ number_format($value['sum_year'], 2, ',', ' ') }}</td>
+                                            </tr>
+                                        @endforeach
+                                        <tr>
+                                            <td><b>Итого</b></td>
+                                            <td><b>{{ number_format($total['volume_one'], 3, ',', ' ') }}</b></td>
+                                            <td><b>{{ number_format($total['sum_one'], 2, ',', ' ') }}</b></td>
+                                            <td><b>{{ number_format($total['volume_two'], 3, ',', ' ') }}</b></td>
+                                            <td><b>{{ number_format($total['sum_two'], 2, ',', ' ') }}</b></td>
+                                            <td><b>{{ number_format($total['volume_year'], 3, ',', ' ') }}</b></td>
+                                            <td><b>{{ number_format($total['sum_year'], 2, ',', ' ') }}</b></td>
+                                        </tr>    
+                                    </tbody>
+                                </table>	
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
         </section>
         <!-- my account section end -->    
     </main>

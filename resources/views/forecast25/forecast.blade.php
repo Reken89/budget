@@ -56,6 +56,38 @@
             });  
         } 
         fetch_data();
+        
+        //Выполняем действие (формируем таблицу) при нажатии на кнопку
+        $(document).on('click', '#btn_one', function(){
+            let info = $('#forecast').serializeArray();
+           
+            //Создаем пустой массив
+            let title_many = [];
+            
+            //Заполняем в массив title_many, все значения
+            //из массива info, где ключ равен 'title'          
+            for (const item of info) {
+                const value = item.value;
+                if (item.name === 'title') {
+                    title_many.push(value);
+                } 
+            }
+            
+            let title = title_many[0];
+                
+            $.ajax({
+                url:"/budget/public/forecast25/back",  
+                method:"get",
+                data:{
+                    title
+                },
+                dataType:"text",  
+                success:function(data){ 
+                    $('#live_data').html(data);  
+                    setKeydownmyForm() 
+                } 
+            })               
+        })  
       
     });
 </script>
