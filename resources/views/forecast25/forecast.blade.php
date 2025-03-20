@@ -87,7 +87,23 @@
                     setKeydownmyForm() 
                 } 
             })               
-        })  
+        })
+        
+        //Выполняем синхронизацию таблиц
+        $(document).on('click', '#btn_two', function(){               
+            $.ajax({
+                url:"/budget/public/forecast25/synch",  
+                method:"patch",
+                data:{
+                    "_token": "{{ csrf_token() }}",
+                },
+                dataType:"text",  
+                success:function(data){ 
+                    alert(data);
+                    fetch_data();
+                } 
+            })               
+        }) 
       
     });
 </script>

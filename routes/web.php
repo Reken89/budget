@@ -367,6 +367,7 @@ Route::get('/user/count24', [UserCount24Controller::class, 'FrontView'])->middle
 //Роуты для Back (Модуль Прогноз 2025)
 Route::get('/forecast25/back', [Forecast25Controller::class, 'BackView'])->middleware('auth', 'admin');
 Route::patch('/forecast25/update', [Forecast25Controller::class, 'UpdateTarrif'])->middleware('auth', 'admin');
+Route::patch('/forecast25/synch', [Forecast25Controller::class, 'SynchTable'])->middleware('auth', 'admin');
 //Роуты для Front (Модуль Прогноз 2025)
 Route::get('/forecast25', [Forecast25Controller::class, 'FrontView'])->middleware('auth', 'admin')->name('forecast25');
 

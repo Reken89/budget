@@ -11,6 +11,7 @@ use App\Structure\Forecast25Section\Admin\Actions\ExaminCommunalAction;
 use App\Structure\Forecast25Section\Admin\Actions\SelectTarrifAction;
 use App\Structure\Forecast25Section\Admin\Actions\UpdateTarrifAction;
 use App\Structure\Forecast25Section\Admin\Actions\SelectForecastAction;
+use App\Structure\Forecast25Section\Admin\Actions\SynchTableAction;
 
 class Forecast25Controller extends Controller
 {
@@ -66,6 +67,23 @@ class Forecast25Controller extends Controller
     { 
         $dto = UpdateDto::fromRequest($request);
         return $this->action(UpdateTarrifAction::class)->UpdateTarrif($dto);
+    }
+    
+    /**
+     * Синхронизация таблиц
+     * communals и forecast25
+     *
+     * @param 
+     * @return 
+     */
+    public function SynchTable()
+    { 
+        $result = $this->action(SynchTableAction::class)->SynchTable();
+        if($result == true){
+            echo "Синхронизация выполнена успешно!";
+        }else{
+            echo "Что то пошло не так...";
+        }
     }
     
 }

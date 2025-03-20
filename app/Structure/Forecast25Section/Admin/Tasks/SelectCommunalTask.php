@@ -21,6 +21,28 @@ class SelectCommunalTask extends BaseTask
             ->whereIn('status', [2, 3])          
             ->count() > 0;
     }
+    
+    /**
+     * Возвращает информацию из таблицы communals
+     * по заданным параметрам
+     *
+     * @param int $year, array $mounth, int $user
+     * @return array
+     */
+    public function SelectInfo(int $year, array $mounth, int $user): array
+    {    
+        return Communal::selectRaw('SUM(`heat-volume`) as heat')
+            ->selectRaw('SUM(`drainage-volume`) as drainage')
+            ->selectRaw('SUM(`negative-volume`) as negative') 
+            ->selectRaw('SUM(`water-volume`) as water')
+            ->selectRaw('SUM(`power-volume`) as energy') 
+            ->selectRaw('SUM(`trash-volume`) as trash')   
+            ->where('year', $year)
+            ->where('user_id', $user)
+            ->whereIn('mounth', $mounth)
+            ->first()
+            ->toArray();
+    }
 }
 
 
