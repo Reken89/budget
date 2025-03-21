@@ -12,6 +12,7 @@ use App\Structure\Forecast25Section\Admin\Actions\SelectTarrifAction;
 use App\Structure\Forecast25Section\Admin\Actions\UpdateTarrifAction;
 use App\Structure\Forecast25Section\Admin\Actions\SelectForecastAction;
 use App\Structure\Forecast25Section\Admin\Actions\SynchTableAction;
+use App\Structure\Forecast25Section\Admin\Actions\CalculatorInfoAction;
 
 class Forecast25Controller extends Controller
 {
@@ -48,10 +49,13 @@ class Forecast25Controller extends Controller
             '2025' => $this->action(ExaminCommunalAction::class)->ExaminCommunal(2025),
         ];
         
+        $forecast = $this->action(SelectForecastAction::class)->SelectForecast($request->title);
+        
         $info = [
-            'examin'   => $examin,
-            'tarrif'   => $this->action(SelectTarrifAction::class)->SelectAll(),
-            'forecast' => $this->action(SelectForecastAction::class)->SelectForecast($request->title),
+            'examin'     => $examin,
+            'tarrif'     => $this->action(SelectTarrifAction::class)->SelectAll(),
+            'forecast'   => $forecast,
+            'calculator' => $this->action(CalculatorInfoAction::class)->CalculatorInfo($forecast),
         ];
         
         return view('forecast25.back.forecast', ['info' => $info]);         
