@@ -33,6 +33,7 @@ class ForecastSeeder extends Seeder
                     'sum_one'    => 0,
                     'sum_two'    => 0,
                     'title'      => 'heat',
+                    'date'       => date('Y-m-d'),
                 ],
                 [
                     'year'       => 2025,
@@ -42,6 +43,7 @@ class ForecastSeeder extends Seeder
                     'sum_one'    => 0,
                     'sum_two'    => 0,
                     'title'      => 'water',
+                    'date'       => date('Y-m-d'),
                 ],
                 [
                     'year'       => 2025,
@@ -51,6 +53,7 @@ class ForecastSeeder extends Seeder
                     'sum_one'    => 0,
                     'sum_two'    => 0,
                     'title'      => 'drainage',
+                    'date'       => date('Y-m-d'),
                 ],
                 [
                     'year'       => 2025,
@@ -60,6 +63,7 @@ class ForecastSeeder extends Seeder
                     'sum_one'    => 0,
                     'sum_two'    => 0,
                     'title'      => 'energy',
+                    'date'       => date('Y-m-d'),
                 ],
                 [
                     'year'       => 2025,
@@ -69,6 +73,7 @@ class ForecastSeeder extends Seeder
                     'sum_one'    => 0,
                     'sum_two'    => 0,
                     'title'      => 'trash',
+                    'date'       => date('Y-m-d'),
                 ],
                 [
                     'year'       => 2025,
@@ -78,6 +83,7 @@ class ForecastSeeder extends Seeder
                     'sum_one'    => 0,
                     'sum_two'    => 0,
                     'title'      => 'negative',
+                    'date'       => date('Y-m-d'),
                 ],           
             ]);
         }

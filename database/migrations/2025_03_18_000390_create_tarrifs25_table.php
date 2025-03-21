@@ -19,6 +19,7 @@ class CreateTarrifs25Table extends Migration
             $table->decimal('tarrif_one', 15, 3);
             $table->decimal('tarrif_two', 15, 3);
             $table->string('title', 100);
+            $table->date('date');
         });
     }
 

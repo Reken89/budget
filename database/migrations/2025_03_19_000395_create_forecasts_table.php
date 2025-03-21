@@ -22,6 +22,7 @@ class CreateForecastsTable extends Migration
             $table->decimal('sum_one', 15, 2);
             $table->decimal('sum_two', 15, 2);
             $table->string('title', 100);
+            $table->date('date');
         });
     }
 

@@ -79,7 +79,9 @@ class Forecast25Controller extends Controller
     public function SynchTable()
     { 
         $result = $this->action(SynchTableAction::class)->SynchTable();
-        if($result == true){
+        $modify = $this->action(SynchTableAction::class)->ModifyTable();
+        
+        if($result == true && $modify == true){
             echo "Синхронизация выполнена успешно!";
         }else{
             echo "Что то пошло не так...";

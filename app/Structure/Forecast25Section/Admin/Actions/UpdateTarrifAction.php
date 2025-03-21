@@ -20,6 +20,7 @@ class UpdateTarrifAction extends BaseAction
             ->update([                
                 'tarrif_one' => $dto->tarrif_one,
                 'tarrif_two' => $dto->tarrif_two,
+                'date'       => date('Y-m-d'),
             ]);                    
         return $update == true ? true : false;
     }   
