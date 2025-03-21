@@ -223,12 +223,13 @@
                         <div class="account__content">                              
                             <h2 class="account__content--title h3 mb-20">Таблица тарифов</h2>
                             <div class="account__table--area">
-                                <table style="min-width: 450px; width: 450px;" class="table align-middle mb-0">
+                                <table style="min-width: 200px; width: 200px;" class="table align-middle mb-0">
                                     <thead class="table-light">
                                         <tr>
-                                            <th style="min-width: 150px; width: 150px;">Тарифы</th>
-                                            <th style="min-width: 150px; width: 150px;">Первое полугодие</th>
-                                            <th style="min-width: 150px; width: 150px;">Второе полугодие</th>
+                                            <th style="min-width: 50px; width: 50px;">Тарифы</th>
+                                            <th style="min-width: 50px; width: 50px;">Первое полугодие</th>
+                                            <th style="min-width: 50px; width: 50px;">Второе полугодие</th>
+                                            <th style="min-width: 50px; width: 50px;">Дата обновления тарифа</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -237,40 +238,47 @@
                                             <input type="hidden" class="id" value="{{ $info['tarrif'][0]['id'] }}">
                                             <td><input type="text" class="tarrif_one" value="{{ number_format($info['tarrif'][0]['tarrif_one'], 3, ',', ' ') }}"></td>
                                             <td><input type="text" class="tarrif_two" value="{{ number_format($info['tarrif'][0]['tarrif_two'], 3, ',', ' ') }}"></td>
+                                            <td>{{ $info['tarrif'][0]['date'] }}</td>
                                         </tr>   
                                         <tr>
                                             <td><b>Водоснабжение</b></td>
                                             <input type="hidden" class="id" value="{{ $info['tarrif'][1]['id'] }}">
                                             <td><input type="text" class="tarrif_one" value="{{ number_format($info['tarrif'][1]['tarrif_one'], 3, ',', ' ') }}"></td>
                                             <td><input type="text" class="tarrif_two" value="{{ number_format($info['tarrif'][1]['tarrif_two'], 3, ',', ' ') }}"></td>
+                                            <td>{{ $info['tarrif'][1]['date'] }}</td>
                                         </tr>
                                         <tr>
                                             <td><b>Водоотведение</b></td>
                                             <input type="hidden" class="id" value="{{ $info['tarrif'][2]['id'] }}">
                                             <td><input type="text" class="tarrif_one" value="{{ number_format($info['tarrif'][2]['tarrif_one'], 3, ',', ' ') }}"></td>
                                             <td><input type="text" class="tarrif_two" value="{{ number_format($info['tarrif'][2]['tarrif_two'], 3, ',', ' ') }}"></td>
+                                            <td>{{ $info['tarrif'][2]['date'] }}</td>
                                         </tr>
                                         <tr>
                                             <td><b>Электроснабжение</b></td>
                                             <input type="hidden" class="id" value="{{ $info['tarrif'][3]['id'] }}">
                                             <td><input type="text" class="tarrif_one" value="{{ number_format($info['tarrif'][3]['tarrif_one'], 3, ',', ' ') }}"></td>
                                             <td><input type="text" class="tarrif_two" value="{{ number_format($info['tarrif'][3]['tarrif_two'], 3, ',', ' ') }}"></td>
+                                            <td>{{ $info['tarrif'][3]['date'] }}</td>
                                         </tr>
                                         <tr>
                                             <td><b>Вывоз мусора</b></td>
                                             <input type="hidden" class="id" value="{{ $info['tarrif'][4]['id'] }}">
                                             <td><input type="text" class="tarrif_one" value="{{ number_format($info['tarrif'][4]['tarrif_one'], 3, ',', ' ') }}"></td>
                                             <td><input type="text" class="tarrif_two" value="{{ number_format($info['tarrif'][4]['tarrif_two'], 3, ',', ' ') }}"></td>
+                                            <td>{{ $info['tarrif'][4]['date'] }}</td>
                                         </tr>
                                         <tr>
                                             <td><b>Негативное воздействие</b></td>
                                             <input type="hidden" class="id" value="{{ $info['tarrif'][5]['id'] }}">
                                             <td><input type="text" class="tarrif_one" value="{{ number_format($info['tarrif'][5]['tarrif_one'], 3, ',', ' ') }}"></td>
                                             <td><input type="text" class="tarrif_two" value="{{ number_format($info['tarrif'][5]['tarrif_two'], 3, ',', ' ') }}"></td>
+                                            <td>{{ $info['tarrif'][5]['date'] }}</td>
                                         </tr>
                                     </tbody>
                                 </table>	
-                            </div>                                                       
+                            </div>   
+                            <p><font color="red">Для обновления тарифа необходимо нажать клавишу «ENTER»</font></p>
                         </div>
                     </div>
                 </div>    
@@ -391,6 +399,7 @@
                     <div class="account__wrapper">
                         <div class="account__content">
                             <h2 class="account__content--title h3 mb-20">Таблица прогноза {{ $variant[$info['forecast'][0]['title']] }}</h2>
+                            <p><font color="red">Дата последней синхронизации с таблицей коммунальные услуги <b>{{ $info['forecast'][0]['date'] }}</b></font></p>
                             <div class="account__table--area">
                                 <table class="table align-middle mb-0">
                                     <thead class="table-light">

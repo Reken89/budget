@@ -39,7 +39,7 @@ class SelectCommunalTask extends BaseTask
             ->selectRaw('SUM(`trash-volume`) as trash')   
             ->where('year', $year)
             ->where('user_id', $user)
-            ->whereIn('mounth', $mounth)
+            ->whereIn('mounth', $mounth)  
             ->first()
             ->toArray();
     }
