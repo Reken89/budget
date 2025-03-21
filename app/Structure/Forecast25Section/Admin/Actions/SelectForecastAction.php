@@ -16,7 +16,7 @@ class SelectForecastAction extends BaseAction
     public function SelectForecast(string $title): array
     {        
         if($title == "all"){
-            
+            return $this->task(SelectForecastTask::class)->SelectAll();
         }else{
             return $this->task(SelectForecastTask::class)->SelectSection($title);
         }

@@ -26,5 +26,24 @@ class SelectForecastTask extends BaseTask
         
         return $info; 
     }
+    
+    /**
+     * Возвращаем таблицу прогноза
+     *
+     * @param 
+     * @return array
+     */
+    public function SelectAll(): array
+    {    
+        $info = Forecast::select()
+            ->selectRaw("(`volume_one` + `volume_two`) AS volume_year")
+            ->selectRaw("(`sum_one` + `sum_two`) AS sum_year")   
+            ->with(['user:id,name'])    
+            ->where('year', 2025)    
+            ->get()
+            ->toArray();
+        
+        return $info; 
+    }
 }
 
