@@ -13,6 +13,7 @@ use App\Structure\Forecast25Section\Admin\Actions\UpdateTarrifAction;
 use App\Structure\Forecast25Section\Admin\Actions\SelectForecastAction;
 use App\Structure\Forecast25Section\Admin\Actions\SynchTableAction;
 use App\Structure\Forecast25Section\Admin\Actions\CalculatorInfoAction;
+use App\Structure\Forecast25Section\Admin\Exports\ExportTable;
 
 class Forecast25Controller extends Controller
 {
@@ -58,6 +59,7 @@ class Forecast25Controller extends Controller
             'calculator' => $this->action(CalculatorInfoAction::class)->CalculatorInfo($forecast),
         ];
         
+        session(['info' => $info]);
         return view('forecast25.back.forecast', ['info' => $info]);         
     }
     
@@ -90,6 +92,17 @@ class Forecast25Controller extends Controller
         }else{
             echo "Что то пошло не так...";
         }
+    }
+    
+    /**
+     * Выгрузка таблицы в EXCEL
+     * 
+     * @param 
+     * @return xlsx
+     */
+    public function ExportTable()
+    { 
+        return Excel::download(new ExportTable, 'table.xlsx');
     }
     
 }
