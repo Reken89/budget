@@ -43,6 +43,23 @@ class SelectCommunalTask extends BaseTask
             ->first()
             ->toArray();
     }
+    
+    /**
+     * Возвращает информацию из таблицы communals
+     * по заданным параметрам
+     *
+     * @param int $year, int $mounth
+     * @return array
+     */
+    public function SelectStatus(int $year, int $mounth): array
+    {    
+        return Communal::select('user_id', 'status', 'year', 'mounth') 
+            ->with(['user:id,name'])     
+            ->where('year', $year)
+            ->where('mounth', $mounth)  
+            ->get()
+            ->toArray();
+    }
 }
 
 

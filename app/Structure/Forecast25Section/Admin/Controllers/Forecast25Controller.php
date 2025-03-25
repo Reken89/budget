@@ -13,6 +13,7 @@ use App\Structure\Forecast25Section\Admin\Actions\UpdateTarrifAction;
 use App\Structure\Forecast25Section\Admin\Actions\SelectForecastAction;
 use App\Structure\Forecast25Section\Admin\Actions\SynchTableAction;
 use App\Structure\Forecast25Section\Admin\Actions\CalculatorInfoAction;
+use App\Structure\Forecast25Section\Admin\Actions\DetailingAction;
 use App\Structure\Forecast25Section\Admin\Exports\ExportTable;
 
 class Forecast25Controller extends Controller
@@ -103,6 +104,18 @@ class Forecast25Controller extends Controller
     public function ExportTable()
     { 
         return Excel::download(new ExportTable, 'table.xlsx');
+    }
+    
+    /**
+     * Шаблон детализации
+     * 
+     * @param Request $request
+     * @return 
+     */
+    public function DetailingView(Request $request)
+    { 
+        $result = $this->action(DetailingAction::class)->DetailingStatus($request->year, $request->mounth);
+        return view('forecast25.detailing', ['info' => $result]);  
     }
     
 }

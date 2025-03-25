@@ -371,6 +371,7 @@ Route::patch('/forecast25/synch', [Forecast25Controller::class, 'SynchTable'])->
 Route::get('/forecast25/export', [Forecast25Controller::class, 'ExportTable'])->middleware('auth', 'admin');
 //Роуты для Front (Модуль Прогноз 2025)
 Route::get('/forecast25', [Forecast25Controller::class, 'FrontView'])->middleware('auth', 'admin')->name('forecast25');
+Route::get('/forecast25/detailing/{year}/{mounth}', [Forecast25Controller::class, 'DetailingView'])->middleware('auth', 'admin')->name('detailing');
 
 //Админка
 Route::get('/adm/back', [AdminController::class, 'BackView'])->middleware('auth', 'admin');

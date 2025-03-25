@@ -161,27 +161,32 @@
                                     <tbody>
                                         <tr>
                                             <td><b>2024</b></td>
+                                            @php $mounth = 0; @endphp
                                             @foreach ($info['examin']['2024'] as $value)
+                                                @php $mounth++; @endphp
                                                 @if ($value == 'true')
-                                                    <td><span class="badge bg-gradient-bloody text-white shadow-sm w-100">ошибка</span></td>
+                                                <td><span class="badge bg-gradient-bloody text-white shadow-sm w-100"><a class="header__info--link" href="{{ route('detailing', [2024, $mounth])}}" target="_blank">ошибка</a></span></td>
                                                 @else
-                                                    <td><span class="badge bg-gradient-quepal text-white shadow-sm w-100">отлично</span></td>
+                                                <td><span class="badge bg-gradient-quepal text-white shadow-sm w-100"><a class="header__info--link" href="{{ route('detailing', [2024, $mounth])}}" target="_blank">отлично</a></span></td>
                                                 @endif
                                             @endforeach
                                         </tr>  
                                         <tr>
                                             <td><b>2025</b></td>
+                                            @php $mounth = 0; @endphp
                                             @foreach ($info['examin']['2025'] as $value)
+                                                @php $mounth++; @endphp
                                                 @if ($value == 'true')
-                                                    <td><span class="badge bg-gradient-bloody text-white shadow-sm w-100">ошибка</span></td>
+                                                <td><span class="badge bg-gradient-bloody text-white shadow-sm w-100"><a class="header__info--link" href="{{ route('detailing', [2025, $mounth])}}" target="_blank">ошибка</a></span></td>
                                                 @else
-                                                    <td><span class="badge bg-gradient-quepal text-white shadow-sm w-100">отлично</span></td>
+                                                <td><span class="badge bg-gradient-quepal text-white shadow-sm w-100"><a class="header__info--link" href="{{ route('detailing', [2025, $mounth])}}" target="_blank">отлично</a></span></td>
                                                 @endif
                                             @endforeach
                                         </tr> 
                                     </tbody>
                                 </table>	
                             </div>
+                            <p><font color="red">Для просмотра детализации статуса, необходимо нажать на ячейку статуса</font></p>
                         </div>
                     </div>
                 </div>
