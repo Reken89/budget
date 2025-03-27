@@ -37,6 +37,7 @@ use App\Structure\Ofs2024Section\Admin\Controllers\AdminOfs2024Controller;
 use App\Structure\BlockSection\Admin\Controllers\StopController;
 use App\Structure\AdminSection\Controllers\AdminController;
 use App\Structure\Forecast25Section\Admin\Controllers\Forecast25Controller;
+use App\Structure\APISection\Controllers\APIController;
 
 /*
 |--------------------------------------------------------------------------
@@ -372,13 +373,24 @@ Route::get('/forecast25/export', [Forecast25Controller::class, 'ExportTable'])->
 //Роуты для Front (Модуль Прогноз 2025)
 Route::get('/forecast25', [Forecast25Controller::class, 'FrontView'])->middleware('auth', 'admin')->name('forecast25');
 Route::get('/forecast25/detailing/{year}/{mounth}', [Forecast25Controller::class, 'DetailingView'])->middleware('auth', 'admin')->name('detailing');
-
+/*
+ * 
+ * 
+ * 
+ */
 //Админка
 Route::get('/adm/back', [AdminController::class, 'BackView'])->middleware('auth', 'admin');
 Route::post('/adm/add', [AdminController::class, 'InsertUser'])->middleware('auth', 'admin');
 Route::patch('/adm/update', [AdminController::class, 'UpdateUser'])->middleware('auth', 'admin');
 Route::patch('/adm/password', [AdminController::class, 'UpdatePassword'])->middleware('auth', 'admin');
 Route::get('/adm', [AdminController::class, 'FrontView'])->middleware('auth', 'admin');
+/*
+ * 
+ * 
+ * 
+ */
+// API защищенный ключом
+Route::get('/api/communal', [APIController::class, 'CommunalInfo']);
 
 //Выполнение приказа 66
 Route::get('/stop', [StopController::class, 'ShowPage'])->middleware('auth', 'master')->name('stop');
