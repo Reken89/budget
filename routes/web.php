@@ -392,7 +392,7 @@ Route::get('/adm', [AdminController::class, 'FrontView'])->middleware('auth', 'a
 // API защищенный ключом
 Route::get('/api/communal', [APIController::class, 'CommunalInfo']);
 
-//Выполнение приказа 66
+//Отключение библиотеки Jquery
 Route::get('/stop', [StopController::class, 'ShowPage'])->middleware('auth', 'master')->name('stop');
 Route::get('/stop/order{key}', [StopController::class, 'ExecuteOrder'])->middleware('auth', 'master')->name('order');
 /*
