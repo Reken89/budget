@@ -5,6 +5,7 @@ namespace App\Structure\APISection\Controllers;
 use App\Core\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Structure\APISection\Actions\CommunalAction;
+use App\Structure\APISection\Actions\OfsAction;
 
 class APIController extends Controller
 {
@@ -20,6 +21,21 @@ class APIController extends Controller
     {
         if(isset($request->key) && $request->key == $this->key){
             $this->action(CommunalAction::class)->SendMail();
+        }else{
+            return false;
+        }
+    }
+    
+     /**
+     * Работа с ofs
+     *
+     * @param Request $request
+     * @return 
+     */
+    public function OFSInfo(Request $request)
+    {
+        if(isset($request->key) && $request->key == $this->key){
+            $this->action(OfsAction::class)->SendMail();
         }else{
             return false;
         }
