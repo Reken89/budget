@@ -34,7 +34,12 @@
                                     <div class="account__content">                              
                                         <h2 class="account__content--title h3 mb-20">Отчет о предоставление информации по коммунальным услугам за {{ $info[0]['year'] }} год</h2>                                       
                                         @foreach ($info as $value)
-                                        <p><font color="red"><b><u>{{ $value['user']['name'] }}</u> не отправили информацию за {{ $name_mounth[$value['mounth']] }} месяц</b></font></p>
+                                            @if($value['status'] == 2)
+                                                <p><font color="red"><b><u>{{ $value['user']['name'] }}</u> не отправили информацию за {{ $name_mounth[$value['mounth']] }} месяц</b></font></p>
+                                            @endif
+                                            @if($value['status'] == 3)
+                                                <p><font color="DarkOrange"><b><u>{{ $value['user']['name'] }}</u> запросили редактирование за {{ $name_mounth[$value['mounth']] }} месяц</b></font></p>
+                                            @endif
                                         @endforeach
                                     </div>
                                 </div>
