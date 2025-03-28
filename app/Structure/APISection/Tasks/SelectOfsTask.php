@@ -39,6 +39,7 @@ class SelectOfsTask extends BaseTask
         
         return $ofs::select()
             ->where('mounth', $mounth)
+            ->where('status', 2)
             ->whereIn('user_id', $users)          
             ->count() > 0;
     }
