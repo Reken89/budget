@@ -8,7 +8,8 @@ use App\Structure\APISection\Tasks\SendMailTask;
 
 class CommunalAction extends BaseAction
 {
-    private string $email = "admin@kostamail.ru";
+    //кому отправить
+    private string $email = "portal@kostamail.ru";
     private string $topic = "Отчет по коммунальным услугам";
     
     /**

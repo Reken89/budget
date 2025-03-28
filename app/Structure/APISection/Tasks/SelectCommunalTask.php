@@ -21,7 +21,7 @@ class SelectCommunalTask extends BaseTask
             ->with(['user:id,name'])     
             ->where('year', $year)
             ->where('mounth', '<', $mounth)  
-            ->whereIn('status', [2, 3])     
+            ->whereIn('status', [7, 8])     
             ->get()
             ->toArray();
     }
