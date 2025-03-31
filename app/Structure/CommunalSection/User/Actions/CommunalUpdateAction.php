@@ -15,13 +15,13 @@ class CommunalUpdateAction extends BaseAction
     /**
      * Обновляет значения таблицы communals по id
      *
-     * @param string $id
+     * @param string $id, int $mounth
      * @return bool
      */
-    public function status_editor(string $id): bool
+    public function status_editor(string $id, int $mounth): bool
     {   
         $date = date("d");
-        if ($date < 18){
+        if ($date < 18 && ltrim(date('m'),'0') - 1 == $mounth){
             $status = 2;
         }else{
             $status = 3;

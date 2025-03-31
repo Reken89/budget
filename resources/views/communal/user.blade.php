@@ -106,22 +106,26 @@
         $(document).on('click', '#btn_two', function(){
             let infomany = $('#update').serializeArray();
             let id_many = [];
+            let mounth_array = [];
             
             for (const item of infomany) {
                 const value = item.value;
                 if (item.name === 'id') {
                     id_many.push(value);
-                } 
+                } else if (item.name === 'mounth') {
+                    mounth_array.push(value);
+                }  
             }
             
             let id = id_many[0];
+            let mounth = mounth_array[0];
             
             $.ajax({
                 url:"/budget/public/user/communal/update",  
                 method:"patch",
                 data:{
                     "_token": "{{ csrf_token() }}",
-                    id
+                    id, mounth
                 },
                 dataType:"text",  
                 success:function(data){  

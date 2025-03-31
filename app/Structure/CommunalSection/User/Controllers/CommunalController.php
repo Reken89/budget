@@ -100,14 +100,15 @@ class CommunalController extends Controller
     public function update(Request $request)
     {
         $id = $request->input('id');
+        $mounth = $request->input('mounth');
         //Значение для варианта отрисовки таблицы
         session(['option' => true]);
         
-        if (!$this->action(CommunalUpdateAction::class)->status_editor($id)) {
+        if (!$this->action(CommunalUpdateAction::class)->status_editor($id, $mounth)) {
 	    echo "Обнаружена системная ошибка, сообщите разработчику!";
 	} else {
             $date = date("d");
-            if ($date < 18){
+            if ($date < 18 && ltrim(date('m'),'0') - 1 == $mounth){
                 echo "Запрос на редактирование согласован";
             }else{
                 echo "Запрос отправлен в финансово-экономическое управление";

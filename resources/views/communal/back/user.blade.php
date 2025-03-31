@@ -324,6 +324,7 @@
                             @elseif ($info['result']['communal'][$key]['status'] == 1)
                                 <br>
                                 <form id="update" method="get"> 
+                                    <input type='hidden' name='mounth' value='{{ $info['result']['communal'][$key]['mounth'] }}'> 
                                     <input type='hidden' name='id' value='{{ $info['result']['communal'][$key]['id'] }}'>    
                                     <button style="width:200px;height:50px" class="primary__btn price__filter--btn" id='btn_two' type="button">Редактировать</button>
                                 </form>
