@@ -26,8 +26,10 @@ class OfsAction extends BaseAction
         $status = [];
         
         for($i = 0 ; $i < 4 ; $i++){
-            for($j = 1 ; $j < 6 ; $j++){
-                $status[$i][$j] = $this->task(SelectOfsTask::class)->SelectStatus($j, $mounth, $users[$i]);
+            foreach ($users[$i] as $value) {                         
+                for($j = 1 ; $j < 6 ; $j++){
+                    $status[$i][$value][$j] = $this->task(SelectOfsTask::class)->SelectStatus($j, $mounth, $value);
+                }
             }
         }
         

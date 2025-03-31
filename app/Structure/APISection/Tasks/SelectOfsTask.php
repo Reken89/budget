@@ -17,9 +17,9 @@ class SelectOfsTask extends BaseTask
      * 
      *
      * @param 
-     * @return bool
+     * @return array
      */
-    public function SelectStatus(int $chapter, int $mounth, array $users): bool
+    public function SelectStatus(int $chapter, int $mounth, int $user): array
     {    
         if($chapter == "1"){
             $ofs = new Ofs251;
@@ -37,10 +37,13 @@ class SelectOfsTask extends BaseTask
             $ofs = new Ofs255;
         }
         
-        return $ofs::select()
+        return $ofs::select('user_id', 'status')
             ->where('mounth', $mounth)
-            ->where('status', 2)
-            ->whereIn('user_id', $users)          
-            ->count() > 0;
+            //->where('status', 2)
+            ->where('user_id', $user)   
+            ->with('user:id,name')  
+            //->count() > 0;
+            ->first()
+            ->toArray();
     }
 }
