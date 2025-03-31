@@ -4,6 +4,7 @@ namespace App\Structure\APISection\Actions;
 
 use App\Core\Actions\BaseAction;
 use App\Structure\APISection\Tasks\SelectOfsTask;
+use App\Structure\APISection\Tasks\SendMailTask;
 
 class OfsAction extends BaseAction
 {    
@@ -11,6 +12,10 @@ class OfsAction extends BaseAction
     private array $school = [3, 4, 5, 7, 8];
     private array $kultura = [16, 17, 18, 19, 20, 21, 22];
     private array $kinder = [9, 10, 12, 13, 15];
+    
+    //кому отправить
+    private string $email = "portal@kostamail.ru";
+    private string $topic = "Статистика заполнения портала ОФС";
     
     /**
      * 
@@ -39,7 +44,10 @@ class OfsAction extends BaseAction
             'status' => $status,
         ];
         $message = view('api.ofs', ['info' => $info]); 
-        echo $message;
+        
+        if($mounth >= 1){
+            $this->task(SendMailTask::class)->SendMail($this->topic, $message, $this->email);
+        }
     }
 }
 
