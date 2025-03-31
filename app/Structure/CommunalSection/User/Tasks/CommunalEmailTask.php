@@ -8,6 +8,8 @@ use App\Structure\UserSection\Auth\Models\User;
 
 class CommunalEmailTask extends BaseTask
 {
+    private string $from = "portal@kostamail.ru";
+    
     /**
      * Получаем email пользователя и месяц по id
      * Отправляем письмо в ФЭУ
@@ -44,7 +46,17 @@ class CommunalEmailTask extends BaseTask
         
         $mounth = $mounths[$info['mounth']];
         
-        mail('portal@kostamail.ru', "Запрос на редактирование", "$name просит открыть на редактирование информацию за $mounth месяц $year года!","FROM: portal@kostamail.ru \r\n");
+        $html = [
+            'name'   => $name,
+            'mounth' => $mounth,
+            'year'   => $year,
+        ];
+        
+        $message = view('communal.message', ['info' => $info]); 
+        $headers = "Content-type: text/html; charset= UTF-8 \r\n";
+        $headers .= "From: $this->from\r\n";
+        
+        mail('portal@kostamail.ru', "Запрос на редактирование", $message, $headers);
 
     }
 }
