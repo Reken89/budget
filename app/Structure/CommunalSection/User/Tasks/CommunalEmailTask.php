@@ -52,7 +52,7 @@ class CommunalEmailTask extends BaseTask
             'year'   => $year,
         ];
         
-        $message = view('communal.message', ['info' => $info]); 
+        $message = view('communal.message', ['info' => $html]); 
         $headers = "Content-type: text/html; charset= UTF-8 \r\n";
         $headers .= "From: $this->from\r\n";
         
