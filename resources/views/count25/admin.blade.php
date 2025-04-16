@@ -1,4 +1,6 @@
-
+@php
+    var_dump($info);
+@endphp
 <!doctype html>
 <html lang="en">
 
