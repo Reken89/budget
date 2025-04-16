@@ -23,7 +23,7 @@ class SelectCountTask extends BaseTask
     }
     
     /**
-     * Проверяем таблицу на наличие записей со статусом 2
+     * Определяем максимальную дату в таблицы
      *
      * @param array $user
      * @return array
