@@ -1,6 +1,7 @@
 @php
-    var_dump($info);
+    //var_dump($info);
 @endphp
+@include('layouts.tableprognoz')
 <!doctype html>
 <html lang="en">
 
@@ -114,22 +115,51 @@
                                 <table class="table align-middle mb-0">
                                     <thead class="table-light">
                                         <tr>
-                                            <th style="min-width: 80px; width: 80px;">Год</th>
-                                            <th style="min-width: 100px; width: 100px;">Администрация</th>
-                                            <th style="min-width: 100px; width: 100px;">ОМСУ</th>
-                                            <th style="min-width: 100px; width: 100px;">ЦБ и Закупки</th>
-                                            <th style="min-width: 100px; width: 100px;">Детские сады</th>
-                                            <th style="min-width: 100px; width: 100px;">ДМШ и ДХШ</th>
-                                            <th style="min-width: 100px; width: 100px;">ВСОШ</th>
-                                            <th style="min-width: 100px; width: 100px;">КУМС</th>
+                                            <th style="min-width: 5%; width: 5%;">Год</th>
+                                            <th style="min-width: 12%; width: 12%;">Администрация</th>
+                                            <th style="min-width: 12%; width: 12%;">ОМСУ</th>
+                                            <th style="min-width: 12%; width: 12%;">ЦБ и Закупки</th>
+                                            <th style="min-width: 12%; width: 12%;">Детские сады</th>
+                                            <th style="min-width: 12%; width: 12%;">ДМШ и ДХШ</th>
+                                            <th style="min-width: 12%; width: 12%;">ВСОШ</th>
+                                            <th style="min-width: 12%; width: 12%;">КУМС</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        
+                                        <tr>
+                                            <td><b>2026</b></td>
+                                            @foreach ($info['examin']['2026'] as $value)
+                                                @if ($value == 'true')
+                                                <td><span class="badge bg-gradient-bloody text-white shadow-sm w-100">В работе</span></td>
+                                                @else
+                                                <td><span class="badge bg-gradient-quepal text-white shadow-sm w-100">Завершено</span></td>
+                                                @endif
+                                            @endforeach
+                                        </tr>
+                                        <tr>
+                                            <td><b>2027</b></td>
+                                            @foreach ($info['examin']['2027'] as $value)
+                                                @if ($value == 'true')
+                                                <td><span class="badge bg-gradient-bloody text-white shadow-sm w-100">В работе</span></td>
+                                                @else
+                                                <td><span class="badge bg-gradient-quepal text-white shadow-sm w-100">Завершено</span></td>
+                                                @endif
+                                            @endforeach
+                                        </tr>
+                                        <tr>
+                                            <td><b>2028</b></td>
+                                            @foreach ($info['examin']['2028'] as $value)
+                                                @if ($value == 'true')
+                                                <td><span class="badge bg-gradient-bloody text-white shadow-sm w-100">В работе</span></td>
+                                                @else
+                                                <td><span class="badge bg-gradient-quepal text-white shadow-sm w-100">Завершено</span></td>
+                                                @endif
+                                            @endforeach
+                                        </tr>
                                     </tbody>
                                 </table>	
                             </div>
-                            <p><font color="red">После 30-09-2025г. возможность вносить информацию, будет закрыта для "Централизованной бухгалтерии"</font></p>
+                            <p><font color="red">После <u>30-09-2025г.</u> возможность редактировать информацию, будет закрыта для "Централизованной бухгалтерии"</font></p>
                         </div>
                     </div>
                 </div>
