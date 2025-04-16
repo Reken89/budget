@@ -22,4 +22,19 @@ class SelectCountTask extends BaseTask
             ->count() > 0;
     }
     
+    /**
+     * Проверяем таблицу на наличие записей со статусом 2
+     *
+     * @param array $user
+     * @return array
+     */
+    public function MaxDate(array $user): array
+    {    
+        return Count25::selectRaw('MAX(date_fu) as date_fu')
+            ->selectRaw('MAX(date_cb) as date_cb')     
+            ->whereIn('user_id', $user)        
+            ->first()
+            ->toArray();
+    }
+    
 }

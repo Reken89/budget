@@ -1,5 +1,5 @@
 @php
-    //var_dump($info);
+    //var_dump($info['max_date']);
 @endphp
 @include('layouts.tableprognoz')
 <!doctype html>
@@ -164,6 +164,76 @@
                     </div>
                 </div>
             </div>
+            </br>
+            <div class="container2">
+                <div class="row">
+                <div class="col-lg-6">    
+                <div class="my__account--section__inner border-radius-10 d-flex">                                    
+                    <div class="account__wrapper">
+                        <div class="account__content">                              
+                            <h2 class="account__content--title h3 mb-20">Таблица фиксации даты обновления значений</h2>
+                            <div class="account__table--area">
+                                <table class="table align-middle mb-0">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th style="min-width: 15%; width: 15%;">Разделы</th>
+                                            <th style="min-width: 10%; width: 10%;">Дата ФЭУ</th>
+                                            <th style="min-width: 10%; width: 10%;">Дата ЦБ</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Администрация</td>
+                                            <td>{{ $info['max_date'][0]['date_fu'] }}</td>
+                                            <td>{{ $info['max_date'][0]['date_cb'] }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>ОМСУ</td>
+                                            <td>{{ $info['max_date'][1]['date_fu'] }}</td>
+                                            <td>{{ $info['max_date'][1]['date_cb'] }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>ЦБ и Закупки</td>
+                                            <td>{{ $info['max_date'][2]['date_fu'] }}</td>
+                                            <td>{{ $info['max_date'][2]['date_cb'] }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Детские сады</td>
+                                            <td>{{ $info['max_date'][3]['date_fu'] }}</td>
+                                            <td>{{ $info['max_date'][3]['date_cb'] }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>ДМШ и ДХШ</td>
+                                            <td>{{ $info['max_date'][4]['date_fu'] }}</td>
+                                            <td>{{ $info['max_date'][4]['date_cb'] }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>ВСОШ</td>
+                                            <td>{{ $info['max_date'][5]['date_fu'] }}</td>
+                                            <td>{{ $info['max_date'][5]['date_cb'] }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>КУМС</td>
+                                            <td>{{ $info['max_date'][6]['date_fu'] }}</td>
+                                            <td>{{ $info['max_date'][6]['date_cb'] }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>	
+                            </div>   
+                            <p><font color="red">Информация: Раздел учитывает 2026-2028 года</font></p>
+                        </div>
+                    </div>
+                </div>    
+                </div>
+                    <div class="col-lg-6">
+                        <div class="about__content">
+                            <span class="about__content--subtitle text__secondary mb-20"><u>Инструкция к модулю</u></span>
+                            
+                            <p><font color="red">***Важно </font></p>
+                        </div>
+                    </div>    
+                </div>     
+            </div> 
         </section>    
     </main>
 

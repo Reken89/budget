@@ -17,6 +17,7 @@ class AdminCount25Controller extends Controller
     {      
         $info = [
             'examin' => $this->action(ExaminCountAction::class)->ExaminCount(),
+            'max_date' => $this->action(ExaminCountAction::class)->DefineDate(),
         ];
         return view('count25.admin', ['info' => $info]);   
     }

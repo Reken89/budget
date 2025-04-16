@@ -34,4 +34,22 @@ class ExaminCountAction extends BaseAction
         }
         return $result;
     }
+    
+    /**
+     * Проверка таблицы counts25
+     * На определения статуса 2 
+     * Статус 2 = (ЦБ не отправили информацию в ФЭУ)
+     *
+     * @param 
+     * @return array
+     */
+    public function DefineDate()
+    {   
+        $result = [];
+        $users = ['0' => $this->admin, '1' => $this->omsu, '2' => $this->zakupki, '3' => $this->kinder, '4' => $this->music, '5' => $this->voknavolok, '6' => $this->kums];
+        for($i = 0; $i < 7; $i++){
+            $result[$i] = $this->task(SelectCountTask::class)->MaxDate($users[$i]);
+        }
+        return $result;
+    }
 }
