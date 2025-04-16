@@ -38,6 +38,7 @@ use App\Structure\BlockSection\Admin\Controllers\StopController;
 use App\Structure\AdminSection\Controllers\AdminController;
 use App\Structure\Forecast25Section\Admin\Controllers\Forecast25Controller;
 use App\Structure\APISection\Controllers\APIController;
+use App\Structure\Count25Section\Admin\Controllers\AdminCount25Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -373,6 +374,16 @@ Route::get('/forecast25/export', [Forecast25Controller::class, 'ExportTable'])->
 //Роуты для Front (Модуль Прогноз 2025)
 Route::get('/forecast25', [Forecast25Controller::class, 'FrontView'])->middleware('auth', 'admin')->name('forecast25');
 Route::get('/forecast25/detailing/{year}/{mounth}', [Forecast25Controller::class, 'DetailingView'])->middleware('auth', 'admin')->name('detailing');
+/*
+ * 
+ * 
+ * 
+ */
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Роуты для Back (Бюджет 2026/2027/2028)
+
+//Роуты для Front (Бюджет 2026/2027/2028)
+Route::get('/admin/count25', [AdminCount25Controller::class, 'FrontView'])->middleware('auth', 'admin')->name('admincount25');
 /*
  * 
  * 
