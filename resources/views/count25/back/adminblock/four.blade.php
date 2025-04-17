@@ -18,6 +18,20 @@
         </tr>
     </thead>
     <tbody>
+        <tr>
+            <th><font color="blue">ДАТА РЕДАКТИРОВАНИЯ</th>
+            <td></td>
+            <td></td>
+            <td><font color="blue"><b>{{ $info['date'][9]['date_fu'] }}</b></td>
+            <td><font color="blue"><b>{{ $info['date'][10]['date_fu'] }}</b></td>
+            <td><font color="blue"><b>{{ $info['date'][13]['date_fu'] }}</b></td>
+            <td><font color="blue"><b>{{ $info['date'][15]['date_fu'] }}</b></td>
+            <td></td>
+            <td><font color="blue"><b>{{ $info['date'][9]['date_cb'] }}</b></td>
+            <td><font color="blue"><b>{{ $info['date'][10]['date_cb'] }}</b></td>
+            <td><font color="blue"><b>{{ $info['date'][13]['date_cb'] }}</b></td>
+            <td><font color="blue"><b>{{ $info['date'][15]['date_cb'] }}</b></td>
+        </tr>
         @for ($i = 0; $i < count($info['result']) - 1; $i++)
             @if(($i % 4) == 0 || $i == 0)
                 @if($info['result'][$i]['ekr']['shared'] == "Yes" || $info['result'][$i]['ekr']['main'] == "Yes")

@@ -23,7 +23,7 @@ class SelectCountTask extends BaseTask
     }
     
     /**
-     * Определяем максимальную дату в таблицы
+     * Определяем максимальную дату в таблице
      *
      * @param array $user
      * @return array
@@ -33,6 +33,22 @@ class SelectCountTask extends BaseTask
         return Count25::selectRaw('MAX(date_fu) as date_fu')
             ->selectRaw('MAX(date_cb) as date_cb')     
             ->whereIn('user_id', $user)        
+            ->first()
+            ->toArray();
+    }
+    
+    /**
+     * Определяем максимальную дату в таблице
+     * Для одного учреждения
+     *
+     * @param int $user
+     * @return array
+     */
+    public function OneDate(int $user): array
+    {    
+        return Count25::selectRaw('MAX(date_fu) as date_fu')
+            ->selectRaw('MAX(date_cb) as date_cb')     
+            ->where('user_id', $user)        
             ->first()
             ->toArray();
     }

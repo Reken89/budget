@@ -1,3 +1,6 @@
+@php
+    //var_dump($info['date']);
+@endphp
 <!doctype html>
 <html lang="en">
 <table>
@@ -14,6 +17,16 @@
         </tr>
     </thead>
     <tbody>
+        <tr>
+            <th><font color="blue">ДАТА РЕДАКТИРОВАНИЯ</th>
+            <td></td>
+            <td></td>
+            <td><font color="blue"><b>{{ $info['date'][18]['date_fu'] }}</b></td>
+            <td><font color="blue"><b>{{ $info['date'][19]['date_fu'] }}</b></td>
+            <td></td>
+            <td><font color="blue"><b>{{ $info['date'][18]['date_cb'] }}</b></td>
+            <td><font color="blue"><b>{{ $info['date'][19]['date_cb'] }}</b></td>
+        </tr>
         @for ($i = 0; $i < count($info['result']) - 1; $i++)
             @if(($i % 2) == 0 || $i == 0)
                 @if($info['result'][$i]['ekr']['shared'] == "Yes" || $info['result'][$i]['ekr']['main'] == "Yes")

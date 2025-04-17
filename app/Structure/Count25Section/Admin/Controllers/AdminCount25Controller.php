@@ -41,6 +41,7 @@ class AdminCount25Controller extends Controller
         $color = $result[0]['status'] == 2 ? "red" : "green";
         $info = [
             'color'  => $color,
+            'date'   => $this->action(ExaminCountAction::class)->ChapterDate($dto->variant),
             'result' => $result,
             'total'  => $this->action(CalculatorCountAction::class)->CalculatorTotal($dto->variant, $result),
         ];

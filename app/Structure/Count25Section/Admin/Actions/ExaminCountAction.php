@@ -37,9 +37,9 @@ class ExaminCountAction extends BaseAction
     }
     
     /**
-     * Проверка таблицы counts25
-     * На определения статуса 2 
-     * Статус 2 = (ЦБ не отправили информацию в ФЭУ)
+     * Получаем даты
+     * Последнего редактирования
+     * По всем разделам
      *
      * @param 
      * @return array
@@ -51,6 +51,24 @@ class ExaminCountAction extends BaseAction
         for($i = 0; $i < 7; $i++){
             $result[$i] = $this->task(SelectCountTask::class)->MaxDate($users[$i]);
         }
+        return $result;
+    }
+    
+    /**
+     * Получаем даты
+     * Последнего редактирования
+     * Для одного раздела
+     *
+     * @param int $variant
+     * @return array
+     */
+    public function ChapterDate(int $variant)
+    {   
+        $users = ['1' => $this->admin, '2' => $this->omsu, '3' => $this->zakupki, '4' => $this->kinder, '5' => $this->music, '6' => $this->voknavolok, '7' => $this->kums]; 
+        $result = [];
+        foreach ($users[$variant] as $value) {
+            $result[$value] = $this->task(SelectCountTask::class)->OneDate($value);   
+        }    
         return $result;
     }
     
