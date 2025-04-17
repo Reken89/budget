@@ -332,7 +332,15 @@
                                 </form>
                             </div>
                         </div>
-                                                                     
+                        
+                        <div class="shipping__items style2 d-flex align-items-center">
+                            <div class="about__content">
+                                <span class="about__content--subtitle text__secondary mb-20"><u>Описание кнопок</u></span>
+                                <p class="about__content--desc mb-20"><b>Сформировать -</b> Формирует таблицу прогноза по выбранному разделу</br>
+                                    <b>Excel -</b> Выгружает сформированную таблицу прогноза в excel формат
+                                </p>                                                     
+                            </div>
+                        </div>
                                                                        
                     </div>
                 </div>
