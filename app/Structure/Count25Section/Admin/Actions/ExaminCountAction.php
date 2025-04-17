@@ -4,6 +4,7 @@ namespace App\Structure\Count25Section\Admin\Actions;
 
 use App\Core\Actions\BaseAction;
 use App\Structure\Count25Section\Admin\Tasks\SelectCountTask;
+use App\Structure\Count25Section\Admin\Dto\IndexDto;
 
 class ExaminCountAction extends BaseAction
 {
@@ -50,6 +51,20 @@ class ExaminCountAction extends BaseAction
         for($i = 0; $i < 7; $i++){
             $result[$i] = $this->task(SelectCountTask::class)->MaxDate($users[$i]);
         }
+        return $result;
+    }
+    
+    /**
+     * Получаем информацию из таблицы count25
+     * По заданным параметрам
+     *
+     * @param IndexDto $dto
+     * @return array
+     */
+    public function SelectInfo(IndexDto $dto)
+    {   
+        $users = ['1' => $this->admin, '2' => $this->omsu, '3' => $this->zakupki, '4' => $this->kinder, '5' => $this->music, '6' => $this->voknavolok, '7' => $this->kums];
+        $result = $this->task(SelectCountTask::class)->SelectAll($users[$dto->variant], $dto->year);
         return $result;
     }
 }

@@ -381,7 +381,7 @@ Route::get('/forecast25/detailing/{year}/{mounth}', [Forecast25Controller::class
  */
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Роуты для Back (Бюджет 2026/2027/2028)
-
+Route::get('/admin/count25/table', [AdminCount25Controller::class, 'TableView'])->middleware('auth', 'admin');
 //Роуты для Front (Бюджет 2026/2027/2028)
 Route::get('/admin/count25', [AdminCount25Controller::class, 'FrontView'])->middleware('auth', 'admin')->name('admincount25');
 /*

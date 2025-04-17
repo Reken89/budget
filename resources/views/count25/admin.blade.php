@@ -234,6 +234,129 @@
                     </div>    
                 </div>     
             </div> 
+            </br>
+            <section class="shipping__section">
+                <div class="container2">
+                    <form id="smeta" action="/budget/public/admin/count25" method="get">
+                    <div class="shipping__inner style2 d-flex">
+                        
+                        <div class="shipping__items style2 d-flex align-items-center">
+                            <div class="shipping__content">
+                                <h2 class="shipping__content--title h3">Год</h2>
+                                <div class="single__widget widget__bg">
+                                    <ul class="widget__form--check">
+                                        <li class="widget__form--check__list">
+                                            <label class="widget__form--check__label" for="check6">2026</label>
+                                            <input class="widget__form--check__input" name="year" value="2026" type="checkbox">
+                                            <span class="widget__form--checkmark"></span>
+                                        </li>
+                                        <li class="widget__form--check__list">
+                                            <label class="widget__form--check__label" for="check7">2027</label>
+                                            <input class="widget__form--check__input" name="year" value="2027" type="checkbox">
+                                            <span class="widget__form--checkmark"></span>
+                                        </li>
+                                        <li class="widget__form--check__list">
+                                            <label class="widget__form--check__label" for="check8">2028</label>
+                                            <input class="widget__form--check__input" name="year" value="2028" type="checkbox">
+                                            <span class="widget__form--checkmark"></span>
+                                        </li>
+                                    </ul>
+                                </div>   
+                            </div>
+                        </div>
+                        
+                        <div class="shipping__items style2 d-flex align-items-center">
+                            <div class="shipping__content">
+                                <h2 class="shipping__content--title h3">Раздел</h2>
+                                <div class="single__widget widget__bg">
+                                    <ul class="widget__form--check">
+                                        <li class="widget__form--check__list">
+                                            <label class="widget__form--check__label" for="check6">Администрация</label>
+                                            <input class="widget__form--check__input" name="variant" value="1" type="checkbox">
+                                            <span class="widget__form--checkmark"></span>
+                                        </li>
+                                        <li class="widget__form--check__list">
+                                            <label class="widget__form--check__label" for="check7">ОМСУ</label>
+                                            <input class="widget__form--check__input" name="variant" value="2" type="checkbox">
+                                            <span class="widget__form--checkmark"></span>
+                                        </li>
+                                        <li class="widget__form--check__list">
+                                            <label class="widget__form--check__label" for="check8">ЦБ и Закупки</label>
+                                            <input class="widget__form--check__input" name="variant" value="3" type="checkbox">
+                                            <span class="widget__form--checkmark"></span>
+                                        </li>
+                                        <li class="widget__form--check__list">
+                                            <label class="widget__form--check__label" for="check9">Детские сады</label>
+                                            <input class="widget__form--check__input" name="variant" value="4" type="checkbox">
+                                            <span class="widget__form--checkmark"></span>
+                                        </li>                          
+                                    </ul>
+                                </div>  
+                            </div>
+                        </div>
+                        
+                        <div class="shipping__items style2 d-flex align-items-center">                       
+                            <div class="shipping__content">
+                                <h2 class="shipping__content--title h3">Раздел</h2>
+                                <div class="single__widget widget__bg">
+                                    <ul class="widget__form--check">                                
+                                        <li class="widget__form--check__list">
+                                            <label class="widget__form--check__label" for="check10">ДХШ и ДМШ</label>
+                                            <input class="widget__form--check__input" name="variant" value="5" type="checkbox">
+                                            <span class="widget__form--checkmark"></span>
+                                        </li>
+                                        <li class="widget__form--check__list">
+                                            <label class="widget__form--check__label" for="check10">ВСОШ</label>
+                                            <input class="widget__form--check__input" name="variant" value="6" type="checkbox">
+                                            <span class="widget__form--checkmark"></span>
+                                        </li>
+                                        <li class="widget__form--check__list">
+                                            <label class="widget__form--check__label" for="check10">КУМС</label>
+                                            <input class="widget__form--check__input" name="variant" value="7" type="checkbox">
+                                            <span class="widget__form--checkmark"></span>
+                                        </li>
+                                        <li class="widget__form--check__list">
+                                            <label class="widget__form--check__label" for="check10">Итого</label>
+                                            <input class="widget__form--check__input" name="variant" value="8" type="checkbox">
+                                            <span class="widget__form--checkmark"></span>
+                                        </li>
+                                    </ul>
+                                </div>    
+                            </div>
+                        </div>
+                        
+                        <div class="shipping__items style2 d-flex align-items-center">
+                            <div class="shipping__content">
+                                <button style="width:200px;height:50px" class="primary__btn price__filter--btn" type="submit">Сформировать</button>
+                                </br>
+                                </form>
+                            </div>
+                        </div>
+                                                                     
+                                                                       
+                    </div>
+                </div>
+            </section>
+            </br>
+            <div class="container2">
+                <div class="my__account--section__inner border-radius-10 d-flex">
+                    <div class="account__wrapper">
+                        <div class="account__content">
+                            
+                            <div class="account__table--area">                                                              
+                                <div class="container_fix">
+                                    <div class="table2">
+                                        <div id="table"></div>
+                                    </div>    
+                                </div>	                               
+                                </br>
+                                <p><b>*Для информации:</b> </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
         </section>    
     </main>
 
@@ -294,7 +417,28 @@
 <!-- Content -->
 @include('layouts.version')
 <script>
-   
+    $(document).ready(function(){ 
+        //Подгружаем BACK шаблон отрисовки
+        function fetch_data(){ 
+            var form = <?=json_encode($info)?>;
+            var year = form['year'];
+            var variant = form['variant'];
+            
+            $.ajax({  
+                url:"/budget/public/admin/count25/table",  
+                method:"GET",
+                data:{
+                    year, variant
+                },
+                dataType:"text", 
+                success:function(data){  
+                    $('#table').html(data);  
+                    //setKeydownmyForm()
+                }   
+            });  
+        } 
+        fetch_data();
+    });
 </script>
 
 </body>

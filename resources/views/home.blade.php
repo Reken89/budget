@@ -137,7 +137,9 @@
                                                 </form>
                                              </li>
                                              <li>
-                                                <form action="{{ route('admincount25')}}" method="get">                                                    
+                                                <form action="{{ route('admincount25')}}" method="get">  
+                                                    <input type='hidden' name='variant' value='5'>
+                                                    <input type='hidden' name='year' value='2026'>
                                                     <button type="submit" class="custom-btn btn-16">Бюджет 2026-2028</button>
                                                 </form>
                                              </li>
