@@ -33,6 +33,41 @@ class CalculatorCountAction extends BaseAction
         return $result;
     }
     
+    /**
+     * Возвращает массив
+     * Номера для таблицы Ekr
+     * Раздел Shared
+     *
+     * @param array $number
+     * @return array
+     */
+    public function SelectEkr(array $number)
+    {   
+        if($number['ekr']['number'] >= 17 && $number['ekr']['number'] <= 19){
+            return [
+                'group' => [17, 18, 19],
+                'key'   => 16,
+            ];
+        } elseif($number['ekr']['number'] >= 21 && $number['ekr']['number'] <= 25){
+            return [
+                'group' => [21, 22, 23, 24, 25],
+                'key'   => 20,
+            ];
+        } elseif($number['ekr']['number'] >= 27 && $number['ekr']['number'] <= 34){
+            return [
+                'group' => [27, 28, 29, 30, 31, 32],
+                'key'   => 26,
+            ];
+        } elseif($number['ekr']['number'] >= 36 && $number['ekr']['number'] <= 42 || $number['ekr']['number'] == 45){
+            return [
+                'group' => [36, 37, 38, 39, 40, 41, 42, 45],
+                'key'   => 35,
+            ];
+        } else {
+            return [];
+        }
+    }
+    
 }
 
 

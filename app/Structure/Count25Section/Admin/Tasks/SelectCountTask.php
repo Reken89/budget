@@ -4,6 +4,7 @@ namespace App\Structure\Count25Section\Admin\Tasks;
 
 use App\Core\Task\BaseTask;
 use App\Structure\Count25Section\Admin\Models\Count25;
+use Illuminate\Database\Eloquent\Builder;
 
 class SelectCountTask extends BaseTask
 {
@@ -98,6 +99,63 @@ class SelectCountTask extends BaseTask
             ->groupBy('ekr_id')   
             ->groupBy('year')       
             ->get()
+            ->toArray();
+    }
+    
+    /**
+     * Возвращает number
+     * Относительно таблицы ekr
+     *
+     * @param int $id
+     * @return array
+     */
+    public function SelectNumber(int $id): array
+    {      
+        $result = Count25::select()
+            ->where('id', $id)
+            ->with(['ekr:id,number'])
+            ->first()
+            ->toArray();
+        return $result;
+    }
+    
+    /**
+     * Возвращает сумму поля Main
+     *
+     * @param array $number
+     * @return array
+     */
+    public function SelectMain(array $number): array
+    {      
+        return Count25::selectRaw('SUM(`sum_fu`) as sum_fu')
+            ->where('user_id', $number['user_id'])    
+            ->where('year', $number['year']) 
+            ->whereHas('ekr', function (Builder $query) use ($number) {
+                $query->where('shared', 'No');
+                $query->where('main', 'No');
+                $query->where('number', $number['ekr']['number']);
+            })    
+            ->first()
+            ->toArray();
+    }   
+    
+    /**
+     * Возвращает сумму поля Shared
+     *
+     * @param array $number, array $ekr
+     * @return array
+     */
+    public function SelectShared(array $number, array $ekr): array
+    {             
+        return Count25::selectRaw('SUM(`sum_fu`) as sum_fu')
+            ->where('user_id', $number['user_id'])    
+            ->where('year', $number['year']) 
+            ->whereHas('ekr', function (Builder $query) use ($ekr) {
+                $query->where('shared', 'No');
+                $query->where('main', 'Yes');
+                $query->whereIn('number', $ekr['group']);
+            })    
+            ->first()
             ->toArray();
     }
     

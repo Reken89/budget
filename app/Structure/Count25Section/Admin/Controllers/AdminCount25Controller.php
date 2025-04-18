@@ -5,8 +5,11 @@ namespace App\Structure\Count25Section\Admin\Controllers;
 use App\Core\Controllers\Controller;
 use App\Structure\Count25Section\Admin\Actions\ExaminCountAction;
 use App\Structure\Count25Section\Admin\Actions\CalculatorCountAction;
+use App\Structure\Count25Section\Admin\Actions\UpdateCountAction;
 use App\Structure\Count25Section\Admin\Requests\IndexRequest;
+use App\Structure\Count25Section\Admin\Requests\UpdateRequest;
 use App\Structure\Count25Section\Admin\Dto\IndexDto;
+use App\Structure\Count25Section\Admin\Dto\UpdateDto;
 
 class AdminCount25Controller extends Controller
 {
@@ -55,6 +58,21 @@ class AdminCount25Controller extends Controller
         ];
    
         return view('count25.back.admin', ['info' => $info]);  
+    }
+    
+    /**
+     * Обновляем значения в таблице counts25
+     *
+     * @param UpdateRequest $request
+     * @return 
+     */
+    public function UpdateInfo(UpdateRequest $request)
+    {
+        $dto = UpdateDto::fromRequest($request);
+        $this->action(UpdateCountAction::class)->UpdateLine($dto);    
+        $number = $this->action(UpdateCountAction::class)->UpdateMain($dto);
+        $ekr = $this->action(CalculatorCountAction::class)->SelectEkr($number);
+        $this->action(UpdateCountAction::class)->UpdateShared($number, $ekr); 
     }
     
 }
