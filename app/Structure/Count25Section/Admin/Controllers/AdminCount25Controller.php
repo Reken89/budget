@@ -38,12 +38,20 @@ class AdminCount25Controller extends Controller
     {  
         $dto = IndexDto::fromRequest($request);
         $result = $this->action(ExaminCountAction::class)->SelectInfo($dto);
-        $color = $result[0]['status'] == 2 ? "red" : "green";
+        if($dto->variant == 8){
+            $color = "blue";
+            $total = [];
+            $date = [];
+        }else{
+            $color = $result[0]['status'] == 2 ? "red" : "green";
+            $total = $this->action(CalculatorCountAction::class)->CalculatorTotal($dto->variant, $result);
+            $date = $this->action(ExaminCountAction::class)->ChapterDate($dto->variant);
+        }
         $info = [
             'color'  => $color,
-            'date'   => $this->action(ExaminCountAction::class)->ChapterDate($dto->variant),
+            'date'   => $date,
             'result' => $result,
-            'total'  => $this->action(CalculatorCountAction::class)->CalculatorTotal($dto->variant, $result),
+            'total'  => $total,
         ];
    
         return view('count25.back.admin', ['info' => $info]);  

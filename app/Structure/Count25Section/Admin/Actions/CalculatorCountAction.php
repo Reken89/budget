@@ -15,7 +15,7 @@ class CalculatorCountAction extends BaseAction
      */
     public function CalculatorTotal(int $variant, array $info)
     {   
-        $key = ['1' => 18, '2' => 3, '3' => 2, '4' => 4, '5' => 2, '6' => 2, '7' => 3];
+        $key = ['1' => 18, '2' => 21, '3' => 2, '4' => 4, '5' => 2, '6' => 2, '7' => 3];
         $result = [];
         
         for ($j = 0; $j < $key[$variant]; $j++){

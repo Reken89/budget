@@ -75,4 +75,30 @@ class SelectCountTask extends BaseTask
             ->toArray();
     }
     
+    /**
+     * Возвращает информацию из таблицы counts25
+     * По всем пользователям
+     *
+     * @param int $year
+     * @return array
+     */
+    public function SelectVault(int $year): array
+    {       
+
+        return Count25::where('year', $year)  
+            ->join('ekr', 'counts25.ekr_id', '=', 'ekr.id')    
+            ->select('ekr_id', 'year')  
+            ->selectRaw('SUM(`sum_fu`) as sum_fu')
+            ->selectRaw('SUM(`sum_cb`) as sum_cb')     
+            ->with(['ekr'])  
+            ->orderBy('ekr.number', 'asc')
+            ->orderBy('ekr.main', 'desc')
+            ->orderBy('ekr.shared', 'desc')
+            ->orderBy('ekr.title', 'asc')
+            ->groupBy('ekr_id')   
+            ->groupBy('year')       
+            ->get()
+            ->toArray();
+    }
+    
 }
