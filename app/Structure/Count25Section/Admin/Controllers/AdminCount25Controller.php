@@ -6,6 +6,7 @@ use App\Core\Controllers\Controller;
 use App\Structure\Count25Section\Admin\Actions\ExaminCountAction;
 use App\Structure\Count25Section\Admin\Actions\CalculatorCountAction;
 use App\Structure\Count25Section\Admin\Actions\UpdateCountAction;
+use App\Structure\Count25Section\Admin\Actions\SynchCountAction;
 use App\Structure\Count25Section\Admin\Requests\IndexRequest;
 use App\Structure\Count25Section\Admin\Requests\UpdateRequest;
 use App\Structure\Count25Section\Admin\Dto\IndexDto;
@@ -74,5 +75,32 @@ class AdminCount25Controller extends Controller
         $ekr = $this->action(CalculatorCountAction::class)->SelectEkr($number);
         $this->action(UpdateCountAction::class)->UpdateShared($number, $ekr); 
     }
+    
+    /**
+     * Синхронизация таблиц
+     * Прогноз коммунальных услус
+     * с таблицей бюджет 2026-2028
+     * 
+     * @param 
+     * @return string
+     */
+    public function UpdateCommunal(): string
+    { 
+        $result = $this->action(SynchCountAction::class)->SynchCommunal(); 
+        return $result == true ? "Информация обновлена!" : "Возникла ошибка!";        
+    } 
+    
+    /**
+     * Синхронизация таблиц
+     * Наполнение 2026 и 2027
+     * 
+     * @param 
+     * @return string
+     */
+    public function UpdateYears()
+    { 
+        $this->action(SynchCountAction::class)->SynchYears(); 
+        echo "Информация в 2027 и 2028 годах обновлена!";              
+    } 
     
 }

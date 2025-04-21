@@ -159,4 +159,18 @@ class SelectCountTask extends BaseTask
             ->toArray();
     }
     
+    /**
+     * Возвращает таблицу за 2026 год
+     *
+     * @param 
+     * @return array
+     */
+    public function SelectYear(): array
+    {              
+        return Count25::select()   
+            ->where('year', 2026)    
+            ->get()
+            ->toArray();
+    }
+    
 }

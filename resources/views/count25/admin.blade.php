@@ -330,6 +330,15 @@
                                 <button style="width:200px;height:50px" class="primary__btn price__filter--btn" type="submit">Сформировать</button>
                                 </br>
                                 </form>
+                                <br>
+                                    <div id="block">
+                                        <button style="width:200px;height:50px" name="formSubmit" id="communal" class="primary__btn price__filter--btn" type="button">Прогноз</button>
+                                    </div>                               
+                                <br>
+                                    <div id="block">
+                                        <button style="width:200px;height:50px" name="formSubmit" id="synch" class="primary__btn price__filter--btn" type="button">Синхронизация</button>
+                                    </diV>
+                                </br>
                             </div>
                         </div>
                         
@@ -484,6 +493,43 @@
             });  
         } 
         fetch_data();
+        
+        //Действие при нажатии кнопки (синхронизация communal)
+        $(document).on('click', '#communal', function(){
+            $("#block").css("display", "none");//Скрываем кнопку  
+            $.ajax({
+                url:"/budget/public/admin/count25/communal",  
+                method:"patch",  
+                data:{
+                    "_token": "{{ csrf_token() }}",
+                },
+                dataType:"text",   
+                success:function(data){
+                    fetch_data(); 
+                    alert(data);                    	
+                    location.reload();
+                } 
+            })                                                     
+        }) 
+        
+        //Действие при нажатии кнопки 
+        //Заполнение 2027 и 2028 года
+        $(document).on('click', '#synch', function(){
+            $("#block").css("display", "none");//Скрываем кнопку   
+            $.ajax({
+                url:"/budget/public/admin/count25/synch",  
+                method:"patch",  
+                data:{
+                    "_token": "{{ csrf_token() }}",
+                },
+                dataType:"text",   
+                success:function(data){
+                    fetch_data(); 
+                    alert(data);                    	
+                    location.reload();
+                } 
+            })                                                     
+        }) 
     });
 </script>
 

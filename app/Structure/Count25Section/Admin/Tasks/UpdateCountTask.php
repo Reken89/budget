@@ -69,4 +69,41 @@ class UpdateCountTask extends BaseTask
             ]);        
         return $result == true ? true : false;
     }
+    
+    /**
+     * Обновляет значения в таблице counts25
+     * Относительно коммунальных услуг
+     *
+     * @param int $ekr, int $user, float $sum
+     * @return 
+     */
+    public function UpdateCommunal(int $ekr, int $user, float $sum): bool
+    {        
+        $result = Count25::where('user_id', $user)
+            ->where('ekr_id', $ekr);
+        $result->update([                
+            'sum_fu'  => $sum,
+            'date_fu' => date('Y-m-d'),
+        ]);        
+        return $result == true ? true : false;        
+    }
+    
+    /**
+     * Обновляет значения в таблице counts25
+     * Записывает значения 2026 года в 2027-2028
+     *
+     * @param array $info
+     * @return bool
+     */
+    public function UpdateYears(array $info): bool
+    {        
+        $result = Count25::where('user_id', $info['user_id'])
+        ->whereIn('year', [2027,2028])
+        ->where('ekr_id', $info['ekr_id']);          
+        $result->update([
+            'sum_fu' => $info['sum_fu'],
+            'date_fu' => date('Y-m-d'),
+        ]);       
+        return $result == true ? true : false;        
+    }
 }
