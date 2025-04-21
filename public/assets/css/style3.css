@@ -13450,9 +13450,9 @@ div.container_fix {
     overflow: scroll;
 }
 
-div.container_fixed {
+div.container_fix2 {
     width: 100%;
-    height: 700px;
+    height: 100%;
     overflow: scroll;
 }
 

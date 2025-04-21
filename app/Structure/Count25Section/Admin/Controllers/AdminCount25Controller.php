@@ -32,6 +32,21 @@ class AdminCount25Controller extends Controller
     }
     
     /**
+     * Front отрисовка развернутой таблицы
+     *
+     * @param IndexRequest $request
+     * @return 
+     */
+    public function FrontScale(IndexRequest $request)
+    {      
+        $info = [
+            'year'     => $request->year,
+            'variant'  => $request->variant,
+        ];
+        return view('count25.admin_scale', ['info' => $info]);   
+    }
+    
+    /**
      * Back отрисовка 
      * Таблица бюджета 2026-2028
      *

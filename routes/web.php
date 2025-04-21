@@ -387,6 +387,7 @@ Route::patch('/admin/count25/communal', [AdminCount25Controller::class, 'UpdateC
 Route::patch('/admin/count25/synch', [AdminCount25Controller::class, 'UpdateYears'])->middleware('auth', 'admin');
 //Роуты для Front (Бюджет 2026/2027/2028)
 Route::get('/admin/count25', [AdminCount25Controller::class, 'FrontView'])->middleware('auth', 'admin')->name('admincount25');
+Route::get('/admin/count25/scale', [AdminCount25Controller::class, 'FrontScale'])->middleware('auth', 'admin');
 /*
  * 
  * 
