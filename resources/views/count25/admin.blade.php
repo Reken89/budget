@@ -331,11 +331,11 @@
                                 </br>
                                 </form>
                                 <br>
-                                    <div id="block">
+                                    <div id="block_one">
                                         <button style="width:200px;height:50px" name="formSubmit" id="communal" class="primary__btn price__filter--btn" type="button">Прогноз</button>
                                     </div>                               
                                 <br>
-                                    <div id="block">
+                                    <div id="block_two">
                                         <button style="width:200px;height:50px" name="formSubmit" id="synch" class="primary__btn price__filter--btn" type="button">Синхронизация</button>
                                     </diV>
                                 </br>
@@ -496,7 +496,7 @@
         
         //Действие при нажатии кнопки (синхронизация communal)
         $(document).on('click', '#communal', function(){
-            $("#block").css("display", "none");//Скрываем кнопку  
+            $("#block_one").css("display", "none");//Скрываем кнопку  
             $.ajax({
                 url:"/budget/public/admin/count25/communal",  
                 method:"patch",  
@@ -515,7 +515,7 @@
         //Действие при нажатии кнопки 
         //Заполнение 2027 и 2028 года
         $(document).on('click', '#synch', function(){
-            $("#block").css("display", "none");//Скрываем кнопку   
+            $("#block_two").css("display", "none");//Скрываем кнопку   
             $.ajax({
                 url:"/budget/public/admin/count25/synch",  
                 method:"patch",  
