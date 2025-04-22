@@ -3,6 +3,8 @@
 namespace App\Structure\Count25Section\Admin\Controllers;
 
 use App\Core\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Structure\Count25Section\Admin\Exports\ExportTable;
 use App\Structure\Count25Section\Admin\Actions\ExaminCountAction;
 use App\Structure\Count25Section\Admin\Actions\CalculatorCountAction;
 use App\Structure\Count25Section\Admin\Actions\UpdateCountAction;
@@ -72,6 +74,9 @@ class AdminCount25Controller extends Controller
             'result' => $result,
             'total'  => $total,
         ];
+        
+        //Сессия для выгрузки в EXCEL
+        session(['info' => $info]);
    
         return view('count25.back.admin', ['info' => $info]);  
     }
@@ -116,6 +121,17 @@ class AdminCount25Controller extends Controller
     { 
         $this->action(SynchCountAction::class)->SynchYears(); 
         echo "Информация в 2027 и 2028 годах обновлена!";              
+    } 
+    
+    /**
+     * Выгрузка таблицы в EXCEL
+     * 
+     * @param 
+     * @return Excel
+     */
+    public function ExportTable()
+    { 
+        return Excel::download(new ExportTable, 'table.xlsx');
     } 
     
 }
