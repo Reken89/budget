@@ -39,6 +39,7 @@ use App\Structure\AdminSection\Controllers\AdminController;
 use App\Structure\Forecast25Section\Admin\Controllers\Forecast25Controller;
 use App\Structure\APISection\Controllers\APIController;
 use App\Structure\Count25Section\Admin\Controllers\AdminCount25Controller;
+use App\Structure\Count25Section\User\Controllers\UserCount25Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -386,9 +387,12 @@ Route::patch('/admin/count25/update', [AdminCount25Controller::class, 'UpdateInf
 Route::patch('/admin/count25/communal', [AdminCount25Controller::class, 'UpdateCommunal'])->middleware('auth', 'admin');
 Route::patch('/admin/count25/synch', [AdminCount25Controller::class, 'UpdateYears'])->middleware('auth', 'admin');
 Route::get('/admin/count25/export', [AdminCount25Controller::class, 'ExportTable'])->middleware('auth', 'admin');
+
+Route::get('/user/count25/table', [UserCount25Controller::class, 'TableView'])->middleware('auth');
 //Роуты для Front (Бюджет 2026/2027/2028)
 Route::get('/admin/count25', [AdminCount25Controller::class, 'FrontView'])->middleware('auth', 'admin')->name('admincount25');
 Route::get('/admin/count25/scale', [AdminCount25Controller::class, 'FrontScale'])->middleware('auth', 'admin');
+Route::get('/user/count25', [UserCount25Controller::class, 'FrontView'])->middleware('auth')->name('usercount25');
 /*
  * 
  * 

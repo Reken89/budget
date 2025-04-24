@@ -183,16 +183,21 @@
                                                  <form action="{{ route('usercount')}}" method="get">
                                                     <input type='hidden' name='variant' value='1'>
                                                     <input type='hidden' name='year' value='2024'>
-                                                    <button type="submit" class="custom-btn btn-16"><b>Смета 2023 год<b></button>
+                                                    <button type="submit" class="custom-btn btn-16"><b>Бюджет 2024-2026<b></button>
                                                 </form>
                                              </li>  
                                              <li>
                                                 <form action="{{ route('usercount24')}}" method="get">
                                                     <input type='hidden' name='variant' value='5'>
                                                     <input type='hidden' name='year' value='2025'>
-                                                    <button type="submit" class="custom-btn btn-16"><b>Смета 2024 год</b></button>
+                                                    <button type="submit" class="custom-btn btn-16"><b>Бюджет 2025-2027</b></button>
                                                 </form>
-                                             </li>                                            
+                                             </li>    
+                                             <li>
+                                                <form action="{{ route('usercount25')}}" method="get">
+                                                    <button type="submit" class="custom-btn btn-16"><b>Бюджет 2026-2028</b></button>
+                                                </form>
+                                             </li> 
                                              @elseif ($role == "build")
                                              <li>
                                                  <form action="#" method="get">
