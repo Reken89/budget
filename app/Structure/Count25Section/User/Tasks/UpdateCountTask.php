@@ -96,6 +96,23 @@ class UpdateCountTask extends BaseTask
         ]);       
         return $result == true ? true : false;        
     }
+    
+    /**
+     * Обновляет значение статуса в таблице count25
+     *
+     * @param array $users, int $year
+     * @return bool
+     */
+    public function UpdateStatus(array $users, int $year): bool
+    {     
+        $result = Count25::where('year', $year)
+            ->whereIn('user_id', $users)  
+            ->update([                
+                'status' => '1',
+            ]);
+           
+        return $result == true ? true : false;        
+    }
 
 }
 

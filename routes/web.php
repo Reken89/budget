@@ -391,10 +391,12 @@ Route::get('/admin/count25/export', [AdminCount25Controller::class, 'ExportTable
 Route::get('/user/count25/table', [UserCount25Controller::class, 'TableView'])->middleware('auth');
 Route::patch('/user/count25/update', [UserCount25Controller::class, 'UpdateInfo'])->middleware('auth');
 Route::patch('/user/count25/synch', [UserCount25Controller::class, 'UpdateYears'])->middleware('auth');
+Route::patch('/user/count25/status', [UserCount25Controller::class, 'UpdateStatus'])->middleware('auth');
 //Роуты для Front (Бюджет 2026/2027/2028)
 Route::get('/admin/count25', [AdminCount25Controller::class, 'FrontView'])->middleware('auth', 'admin')->name('admincount25');
 Route::get('/admin/count25/scale', [AdminCount25Controller::class, 'FrontScale'])->middleware('auth', 'admin');
 Route::get('/user/count25', [UserCount25Controller::class, 'FrontView'])->middleware('auth')->name('usercount25');
+Route::get('/user/count25/scale', [UserCount25Controller::class, 'FrontScale'])->middleware('auth');
 /*
  * 
  * 

@@ -104,8 +104,12 @@
                         <th>{{ $info['result'][$i]['ekr']['title'] }}</th>
                         <td>{{ $info['result'][$i]['ekr']['ekr'] }}</td>
                         @for ($n = 0 ; $n < 18 ; $n++)
-                            <td><input type="hidden" class="id" value="{{ $info['result'][$i+$n]['id'] }}">
-                            <input type="text" class="sum" value="{{ number_format($info['result'][$i+$n]['sum_cb'], 2, ',', ' ') }}"></td>
+                            @if ($info['status'] == "yes")
+                                <td><input type="hidden" class="id" value="{{ $info['result'][$i+$n]['id'] }}">
+                                <input type="text" class="sum" value="{{ number_format($info['result'][$i+$n]['sum_cb'], 2, ',', ' ') }}"></td>
+                            @else
+                                <td>{{ number_format($info['result'][$i+$n]['sum_cb'], 2, ',', ' ') }}</td>
+                            @endif
                         @endfor
                         @for ($n = 0 ; $n < 18 ; $n++)
                             <td><font color="blue">{{ number_format($info['result'][$i+$n]['sum_fu'], 2, ',', ' ') }}</td>

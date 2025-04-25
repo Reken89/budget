@@ -8,6 +8,7 @@ use App\Structure\Count25Section\User\Actions\SelectCountAction;
 use App\Structure\Count25Section\User\Actions\CalculatorCountAction;
 use App\Structure\Count25Section\User\Actions\UpdateCountAction;
 use App\Structure\Count25Section\User\Actions\SynchCountAction;
+use App\Structure\Count25Section\User\Actions\StatusCountAction;
 use App\Structure\Count25Section\User\Requests\IndexRequest;
 use App\Structure\Count25Section\User\Requests\UpdateRequest;
 use App\Structure\Count25Section\User\Dto\IndexDto;
@@ -38,9 +39,13 @@ class UserCount25Controller extends Controller
      * @param IndexRequest $request
      * @return 
      */
-    public function FrontScale()
+    public function FrontScale(IndexRequest $request)
     {      
- 
+        $info = [
+            'year'     => $request->year,
+            'variant'  => $request->variant,
+        ];
+        return view('count25.user_scale', ['info' => $info]);   
     }
     
     /**
@@ -58,16 +63,20 @@ class UserCount25Controller extends Controller
             $color = "blue";
             $total = [];
             $date = [];
+            $status = "no";
         }else{
             $color = $result[0]['status'] == 2 ? "red" : "green";
             $total = $this->action(CalculatorCountAction::class)->CalculatorTotal($dto->variant, $result);
             $date = $this->action(SelectCountAction::class)->ChapterDate($dto->variant);
+            $status = $result[0]['status'] == 2 ? "yes" : "no";
         }
+        
         $info = [
             'color'  => $color,
             'date'   => $date,
             'result' => $result,
             'total'  => $total,
+            'status' => $status,
         ];
         
         //Сессия для выгрузки в EXCEL
@@ -102,6 +111,19 @@ class UserCount25Controller extends Controller
     { 
         $this->action(SynchCountAction::class)->SynchYears(); 
         echo "Информация в 2027 и 2028 годах обновлена!";                    
+    } 
+    
+    /**
+     * Обновляем статус в таблице counts25
+     * 
+     * @param IndexRequest $request
+     * @return string
+     */
+    public function UpdateStatus(IndexRequest $request)
+    { 
+        $dto = IndexDto::fromRequest($request);
+        $info = $this->action(StatusCountAction::class)->UpdateStatus($dto);        
+        return $info == true ? "Информация отправлена в ФЭУ!" : "Возникла ошибка!";                   
     } 
     
     /**

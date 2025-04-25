@@ -285,9 +285,9 @@
                                         <button style="width:200px;height:50px" name="formSubmit" id="synch" class="primary__btn price__filter--btn" type="button">Синхронизация</button>
                                     </diV>
                                 </br>
-                                <form action="#" method="get"> 
-                                    <input type='hidden' name='year' value="">
-                                    <input type='hidden' name='variant' value="">
+                                <form action="/budget/public/user/count25/scale" method="get"> 
+                                    <input type='hidden' name='year' value="{{ $info['year'] }}">
+                                    <input type='hidden' name='variant' value="{{ $info['variant'] }}">
                                     <button type="submit" style="width:200px;height:50px" class="primary__btn price__filter--btn">Развернуть</button>
                                 </form>
                                 <br>
@@ -467,6 +467,29 @@
                     fetch_data(); 
                     alert(data);                    	
                     location.reload();
+                } 
+            })                                                     
+        }) 
+        
+        //Действие при нажатии кнопки 
+        //Заполнение статуса в таблице count24
+        $(document).on('click', '#push', function(){
+            var form = <?=json_encode($info)?>;
+            var year = form['year'];
+            var variant = form['variant'];
+            
+            $.ajax({
+                url:"/budget/public/user/count25/status",  
+                method:"patch", 
+                data:{
+                    "_token": "{{ csrf_token() }}",
+                    year, variant
+                },
+                dataType:"text",
+                success:function(data){
+                    fetch_data(); 
+                    alert(data);                    	
+                    //location.reload();
                 } 
             })                                                     
         }) 
