@@ -16,6 +16,8 @@ use App\Structure\Count25Section\User\Dto\UpdateDto;
 
 class UserCount25Controller extends Controller
 {
+    private string $day_x = "2025-10-01";
+       
     /**
      * Front отрисовка страницы
      *
@@ -28,6 +30,8 @@ class UserCount25Controller extends Controller
             'year'     => $request->year,
             'variant'  => $request->variant,
             'max_date' => $this->action(SelectCountAction::class)->DefineDate(),
+            'today'  => date('Y-m-d'),
+            'day_x'  => $this->day_x,
         ];
         
         return view('count25.user', ['info' => $info]);   
@@ -77,6 +81,8 @@ class UserCount25Controller extends Controller
             'result' => $result,
             'total'  => $total,
             'status' => $status,
+            'today'  => date('Y-m-d'),
+            'day_x'  => $this->day_x,
         ];
         
         //Сессия для выгрузки в EXCEL

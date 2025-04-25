@@ -104,7 +104,7 @@
                         <th>{{ $info['result'][$i]['ekr']['title'] }}</th>
                         <td>{{ $info['result'][$i]['ekr']['ekr'] }}</td>
                         @for ($n = 0 ; $n < 18 ; $n++)
-                            @if ($info['status'] == "yes")
+                            @if ($info['status'] == "yes" && $info['today'] < $info['day_x'])
                                 <td><input type="hidden" class="id" value="{{ $info['result'][$i+$n]['id'] }}">
                                 <input type="text" class="sum" value="{{ number_format($info['result'][$i+$n]['sum_cb'], 2, ',', ' ') }}"></td>
                             @else

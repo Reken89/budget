@@ -171,7 +171,7 @@
                             <span class="about__content--subtitle text__secondary mb-20"><u>Инструкция к модулю</u></span>
                             <p class="about__content--desc mb-25">Инструкция к таблицам:                                  
                                 </br><u>Таблица фиксации даты</u> = показывает дату последнего редактирования разделов (учитываются 2026-2028 года) 
-                                </br><u>Таблица бюджета</u> = 
+                                </br><u>Таблица бюджета</u> = таблица с суммами "Централизованной бухгалтерии" и "Финансово-экономического управления"
                             </p>
                             <p><font color="red">***Важно 
                                 <br> С <u>01-10-2025г.</u> Автоматическое закрытие, возможности редактировать информацию для «Централизованной бухгалтерии»
@@ -276,14 +276,16 @@
                                 <button style="width:200px;height:50px" class="primary__btn price__filter--btn" type="submit">Сформировать</button>
                                 </br>
                                 </form>
-                                <br>
-                                    <div id="block_one">
-                                        <button style="width:200px;height:50px" name="formSubmit" id="push" class="primary__btn price__filter--btn" type="button">Отправить</button>
-                                    </div>                               
-                                <br>
+                                    @if($info['today'] < $info['day_x'])
+                                    <br>
+                                        <div id="block_one">
+                                            <button style="width:200px;height:50px" name="formSubmit" id="push" class="primary__btn price__filter--btn" type="button">Отправить</button>
+                                        </div>                               
+                                    <br>                 
                                     <div id="block_two">
                                         <button style="width:200px;height:50px" name="formSubmit" id="synch" class="primary__btn price__filter--btn" type="button">Синхронизация</button>
                                     </diV>
+                                    @endif
                                 </br>
                                 <form action="/budget/public/user/count25/scale" method="get"> 
                                     <input type='hidden' name='year' value="{{ $info['year'] }}">
@@ -319,7 +321,7 @@
                         <div class="account__content">
                             
                             <div class="account__table--area">  
-                                <p><b><u>Выбранный год: {{ $info['year'] }}</u></b></p>  
+                                <p><b><u>Выбранный год: {{ $info['year'] }}</u> @if($info['today'] > $info['day_x'])<font color="red"> Обращаем Ваше внимание, что после 01-10-2025г. редактирование таблицы невозможно! @endif </b></p>  
                                 <div class="container_fix">
                                     <div class="table2">
                                         <div id="table"></div>

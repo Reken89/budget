@@ -82,7 +82,7 @@
                         <th>{{ $info['result'][$i]['ekr']['title'] }}</th>
                         <td>{{ $info['result'][$i]['ekr']['ekr'] }}</td>
                         <td>{{ number_format($info['result'][$i]['sum_cb'] + $info['result'][$i+1]['sum_cb'] + $info['result'][$i+2]['sum_cb'] + $cb_adm, 2, ',', ' ') }}</td>
-                        @if ($info['status'] == "yes")
+                        @if ($info['status'] == "yes" && $info['today'] < $info['day_x'])
                             <td><input type="hidden" class="id" value="{{ $info['result'][$i]['id'] }}">
                                 <input type="text" class="sum" value="{{ number_format($info['result'][$i]['sum_cb'], 2, ',', ' ') }}"></td>
                             <td><input type="hidden" class="id" value="{{ $info['result'][$i+1]['id'] }}">
