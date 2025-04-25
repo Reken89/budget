@@ -195,6 +195,8 @@
                                              </li>    
                                              <li>
                                                 <form action="{{ route('usercount25')}}" method="get">
+                                                    <input type='hidden' name='variant' value='5'>
+                                                    <input type='hidden' name='year' value='2026'>
                                                     <button type="submit" class="custom-btn btn-16"><b>Бюджет 2026-2028</b></button>
                                                 </form>
                                              </li> 

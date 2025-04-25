@@ -4,6 +4,14 @@ namespace App\Structure\Count25Section\User\Controllers;
 
 use App\Core\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Structure\Count25Section\User\Actions\SelectCountAction;
+use App\Structure\Count25Section\User\Actions\CalculatorCountAction;
+use App\Structure\Count25Section\User\Actions\UpdateCountAction;
+use App\Structure\Count25Section\User\Actions\SynchCountAction;
+use App\Structure\Count25Section\User\Requests\IndexRequest;
+use App\Structure\Count25Section\User\Requests\UpdateRequest;
+use App\Structure\Count25Section\User\Dto\IndexDto;
+use App\Structure\Count25Section\User\Dto\UpdateDto;
 
 class UserCount25Controller extends Controller
 {
@@ -13,9 +21,15 @@ class UserCount25Controller extends Controller
      * @param IndexRequest $request
      * @return 
      */
-    public function FrontView()
+    public function FrontView(IndexRequest $request)
     {      
-        return view('count25.user');   
+        $info = [
+            'year'     => $request->year,
+            'variant'  => $request->variant,
+            'max_date' => $this->action(SelectCountAction::class)->DefineDate(),
+        ];
+        
+        return view('count25.user', ['info' => $info]);   
     }
     
     /**
@@ -36,9 +50,30 @@ class UserCount25Controller extends Controller
      * @param IndexRequest $request
      * @return 
      */
-    public function TableView()
+    public function TableView(IndexRequest $request)
     {     
-        return view('count25.back.user');  
+        $dto = IndexDto::fromRequest($request);
+        $result = $this->action(SelectCountAction::class)->SelectInfo($dto);
+        if($dto->variant == 8){
+            $color = "blue";
+            $total = [];
+            $date = [];
+        }else{
+            $color = $result[0]['status'] == 2 ? "red" : "green";
+            $total = $this->action(CalculatorCountAction::class)->CalculatorTotal($dto->variant, $result);
+            $date = $this->action(SelectCountAction::class)->ChapterDate($dto->variant);
+        }
+        $info = [
+            'color'  => $color,
+            'date'   => $date,
+            'result' => $result,
+            'total'  => $total,
+        ];
+        
+        //Сессия для выгрузки в EXCEL
+        session(['info' => $info]);
+        
+        return view('count25.back.user', ['info' => $info]);  
     }
     
     /**
@@ -47,9 +82,13 @@ class UserCount25Controller extends Controller
      * @param UpdateRequest $request
      * @return 
      */
-    public function UpdateInfo()
+    public function UpdateInfo(UpdateRequest $request)
     {
-
+        $dto = UpdateDto::fromRequest($request);
+        $this->action(UpdateCountAction::class)->UpdateLine($dto);    
+        $number = $this->action(UpdateCountAction::class)->UpdateMain($dto);
+        $ekr = $this->action(CalculatorCountAction::class)->SelectEkr($number);
+        $this->action(UpdateCountAction::class)->UpdateShared($number, $ekr); 
     }
        
     /**
@@ -61,7 +100,8 @@ class UserCount25Controller extends Controller
      */
     public function UpdateYears()
     { 
-                    
+        $this->action(SynchCountAction::class)->SynchYears(); 
+        echo "Информация в 2027 и 2028 годах обновлена!";                    
     } 
     
     /**

@@ -125,38 +125,38 @@
                                     <tbody>
                                         <tr>
                                             <td>Администрация</td>
-                                            <td></td>
-                                            <td></td>
+                                            <td>{{ $info['max_date'][0]['date_fu'] }}</td>
+                                            <td>{{ $info['max_date'][0]['date_cb'] }}</td>
                                         </tr>
                                         <tr>
                                             <td>ОМСУ</td>
-                                            <td></td>
-                                            <td></td>
+                                            <td>{{ $info['max_date'][1]['date_fu'] }}</td>
+                                            <td>{{ $info['max_date'][1]['date_cb'] }}</td>
                                         </tr>
                                         <tr>
                                             <td>ЦБ и Закупки</td>
-                                            <td></td>
-                                            <td></td>
+                                            <td>{{ $info['max_date'][2]['date_fu'] }}</td>
+                                            <td>{{ $info['max_date'][2]['date_cb'] }}</td>
                                         </tr>
                                         <tr>
                                             <td>Детские сады</td>
-                                            <td></td>
-                                            <td></td>
+                                            <td>{{ $info['max_date'][3]['date_fu'] }}</td>
+                                            <td>{{ $info['max_date'][3]['date_cb'] }}</td>
                                         </tr>
                                         <tr>
                                             <td>ДМШ и ДХШ</td>
-                                            <td></td>
-                                            <td></td>
+                                            <td>{{ $info['max_date'][4]['date_fu'] }}</td>
+                                            <td>{{ $info['max_date'][4]['date_cb'] }}</td>
                                         </tr>
                                         <tr>
                                             <td>ВСОШ</td>
-                                            <td></td>
-                                            <td></td>
+                                            <td>{{ $info['max_date'][5]['date_fu'] }}</td>
+                                            <td>{{ $info['max_date'][5]['date_cb'] }}</td>
                                         </tr>
                                         <tr>
                                             <td>КУМС</td>
-                                            <td></td>
-                                            <td></td>
+                                            <td>{{ $info['max_date'][6]['date_fu'] }}</td>
+                                            <td>{{ $info['max_date'][6]['date_cb'] }}</td>
                                         </tr>
                                     </tbody>
                                 </table>	
@@ -319,7 +319,7 @@
                         <div class="account__content">
                             
                             <div class="account__table--area">  
-                                <p><b><u>Выбранный год: </u></b></p>  
+                                <p><b><u>Выбранный год: {{ $info['year'] }}</u></b></p>  
                                 <div class="container_fix">
                                     <div class="table2">
                                         <div id="table"></div>
@@ -394,20 +394,82 @@
 @include('layouts.version')
 <script>
     $(document).ready(function(){ 
+        //Выполняем запись в БД при нажатии на клавишу ENTER
+        function setKeydownmyForm() {
+            $('input').keydown(function(e) {
+                if (e.keyCode === 13) {
+                    var td = this.closest('td');
+                    var id = $('.id', td).val(); 
+                   
+                    //Получаем значения, меняем запятую на точку и убираем пробелы в числе                   
+                    function structure(title){
+                        var volume = $(title, td).val();
+                        //Меняем запятую на точку
+                        //Убираем лишние пробелы
+                        //Выполняем арифметические действия в строке
+                        var volume = volume.replace(/\,/g,'.');
+                        var volume = volume.replace(/ /g,'');
+                        var volume = eval(volume);
+                        return volume;
+                    }
+                    
+                    var sum = structure('.sum');
+                                        
+                    $.ajax({
+                        url:"/budget/public/user/count25/update",  
+                        method:"patch",  
+                        data:{
+                            "_token": "{{ csrf_token() }}",
+                            id, sum
+                        },
+                        dataType:"text",  
+                        success:function(data){
+                            fetch_data(); 
+                        } 
+                    })                    
+                }               
+            })
+        }
                 
         //Подгружаем BACK шаблон отрисовки
         function fetch_data(){ 
+            var form = <?=json_encode($info)?>;
+            var year = form['year'];
+            var variant = form['variant'];
             
             $.ajax({  
                 url:"/budget/public/user/count25/table",  
                 method:"GET",
+                data:{
+                    year, variant
+                },
+                dataType:"text", 
                 success:function(data){  
                     $('#table').html(data);  
-                    //setKeydownmyForm()
+                    setKeydownmyForm()
                 }   
             });  
         } 
         fetch_data();
+        
+        //Действие при нажатии кнопки 
+        //Заполнение 2027 и 2028 года
+        $(document).on('click', '#synch', function(){
+            $("#block_two").css("display", "none");//Скрываем кнопку   
+            $.ajax({
+                url:"/budget/public/user/count25/synch",  
+                method:"patch",  
+                data:{
+                    "_token": "{{ csrf_token() }}",
+                },
+                dataType:"text",   
+                success:function(data){
+                    fetch_data(); 
+                    alert(data);                    	
+                    location.reload();
+                } 
+            })                                                     
+        }) 
 
     });
 </script>
