@@ -4,6 +4,7 @@ namespace App\Structure\Count25Section\User\Controllers;
 
 use App\Core\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Structure\Count25Section\User\Exports\ExportTable;
 use App\Structure\Count25Section\User\Actions\SelectCountAction;
 use App\Structure\Count25Section\User\Actions\CalculatorCountAction;
 use App\Structure\Count25Section\User\Actions\UpdateCountAction;
@@ -140,7 +141,7 @@ class UserCount25Controller extends Controller
      */
     public function ExportTable()
     { 
-        
+        return Excel::download(new ExportTable, 'table.xlsx');
     } 
     
 }

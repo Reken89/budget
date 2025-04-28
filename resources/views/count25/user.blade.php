@@ -293,7 +293,7 @@
                                     <button type="submit" style="width:200px;height:50px" class="primary__btn price__filter--btn">Развернуть</button>
                                 </form>
                                 <br>
-                                    <form action="#" method="get">
+                                    <form action="/budget/public/user/count25/export" method="get">
                                         <button type="submit" style="width:200px;height:50px" class="primary__btn">XLSX</button>
                                     </form>
                             </div>
