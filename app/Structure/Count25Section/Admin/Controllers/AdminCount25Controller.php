@@ -32,9 +32,9 @@ class AdminCount25Controller extends Controller
             'variant'  => $request->variant,
             'examin'   => $this->action(ExaminCountAction::class)->ExaminCount(),
             'max_date' => $this->action(ExaminCountAction::class)->DefineDate(),
-            'today'  => date('Y-m-d'),
-            'day_x'  => $this->day_x,
-            'day_y'  => $this->day_y,
+            'today'    => date('Y-m-d'),
+            'day_x'    => $this->day_x,
+            'day_y'    => $this->day_y,
         ];
         return view('count25.admin', ['info' => $info]);   
     }
