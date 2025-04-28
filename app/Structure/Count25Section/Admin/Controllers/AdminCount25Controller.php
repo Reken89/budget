@@ -16,6 +16,9 @@ use App\Structure\Count25Section\Admin\Dto\UpdateDto;
 
 class AdminCount25Controller extends Controller
 {
+    private string $day_x = "2025-10-20"; //День отключения синхронизации с "прогнозом коммуналки"
+    private string $day_y = "2025-12-01"; //День закрытия возможности редактирования для ФЭУ
+    
     /**
      * Front отрисовка страницы
      *
@@ -29,6 +32,9 @@ class AdminCount25Controller extends Controller
             'variant'  => $request->variant,
             'examin'   => $this->action(ExaminCountAction::class)->ExaminCount(),
             'max_date' => $this->action(ExaminCountAction::class)->DefineDate(),
+            'today'  => date('Y-m-d'),
+            'day_x'  => $this->day_x,
+            'day_y'  => $this->day_y,
         ];
         return view('count25.admin', ['info' => $info]);   
     }
@@ -73,6 +79,8 @@ class AdminCount25Controller extends Controller
             'date'   => $date,
             'result' => $result,
             'total'  => $total,
+            'today'  => date('Y-m-d'),
+            'day_y'  => $this->day_y,
         ];
         
         //Сессия для выгрузки в EXCEL

@@ -1,5 +1,6 @@
 @php
     //var_dump($info['max_date']);
+    $prognoz = $info['today'] < $info['day_x'] ? "communal" : "stop";
 @endphp
 @include('layouts.tableprognoz')
 <!doctype html>
@@ -237,7 +238,7 @@
                             </p>
                             <p><font color="red">***Важно 
                                 <br> С <u>01-10-2025г.</u> Автоматическое закрытие, возможности редактировать информацию для «Централизованной бухгалтерии»
-                                <br> С <u>20-10-2025г.</u> Автоматическое отключение кнопок «Прогноз» и «Синхронизация» для «ФЭУ»
+                                <br> С <u>20-10-2025г.</u> Автоматическое отключение кнопки «Прогноз» для «ФЭУ»
                                 <br> С <u>01-12-2025г.</u> Автоматическое закрытие, возможности редактировать информацию для «ФЭУ»
                                 </font></p>
                         </div>
@@ -342,12 +343,14 @@
                                 </form>
                                 <br>
                                     <div id="block_one">
-                                        <button style="width:200px;height:50px" name="formSubmit" id="communal" class="primary__btn price__filter--btn" type="button">Прогноз</button>
+                                        <button style="width:200px;height:50px" name="formSubmit" id="{{ $prognoz }}" class="primary__btn price__filter--btn" type="button">Прогноз</button>
                                     </div>                               
                                 <br>
+                                    @if ($info['today'] < $info['day_y'])
                                     <div id="block_two">
                                         <button style="width:200px;height:50px" name="formSubmit" id="synch" class="primary__btn price__filter--btn" type="button">Синхронизация</button>
                                     </diV>
+                                    @endif
                                 </br>
                                 <form action="/budget/public/admin/count25/scale" method="get"> 
                                     <input type='hidden' name='year' value="{{ $info['year'] }}">
@@ -383,7 +386,7 @@
                         <div class="account__content">
                             
                             <div class="account__table--area">  
-                                <p><b><u>Выбранный год: {{ $info['year'] }}</u></b></p>  
+                                <p><b><u>Выбранный год: {{ $info['year'] }}</u> @if($info['today'] >= $info['day_y'])<font color="red"> Обращаем Ваше внимание, что после 01-12-2025г. редактирование таблицы невозможно! @endif</b></p>  
                                 <div class="container_fix">
                                     <div class="table2">
                                         <div id="table"></div>
@@ -551,6 +554,12 @@
                     location.reload();
                 } 
             })                                                     
+        }) 
+        
+        //Заглушка
+        $(document).on('click', '#stop', function(){
+            let message = "Функция отключена c 20-10-2025г.";
+            alert(message);                                                      
         }) 
     });
 </script>
