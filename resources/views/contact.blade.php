@@ -181,7 +181,7 @@
                   <div class="row align-items-center">
                      <div class="col-xxl-6 col-xl-6 col-md-6">
                         <div class="footer__copyright footer__copyright-3">
-                           <p>© 2019-{{ date("Y") }} Сайт администрации Костомукшского городского округа <a href="index.html"></a></p>
+                           <p>© 2019-{{ date("Y") }} WEB-приложение финансово-экономического управления <a href="index.html"></a></p>
                         </div>
                      </div>
 

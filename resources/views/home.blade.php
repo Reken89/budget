@@ -64,7 +64,7 @@
                                     </div>
                                     <div class="header__info-content">
                                        <h4 class="text-rubik">Адрес</h4>
-                                       <a target="_blank" href="https://yandex.ru/maps/10935/kostomucsha/?ll=30.607753%2C64.582614&mode=poi&poi%5Bpoint%5D=30.606540%2C64.582454&poi%5Buri%5D=ymapsbm1%3A%2F%2Forg%3Foid%3D136058229664&z=16.4">Администрация ФЭУ</a>
+                                       <a target="_blank" href="https://yandex.ru/maps/10935/kostomucsha/?ll=30.607753%2C64.582614&mode=poi&poi%5Bpoint%5D=30.606540%2C64.582454&poi%5Buri%5D=ymapsbm1%3A%2F%2Forg%3Foid%3D136058229664&z=16.4">ФЭУ</a>
                                     </div>
                                  </div>
                               </li>
@@ -259,7 +259,7 @@
                      <div class="slider__content-4">
                         <span class="text-popins">Сбор отчетности</span>
                         <h3 class="slider__title-4 text-popins">WEB приложение <span class="slider-title-line"></span></h3>
-                        <p>WEB приложение разработано для администрации Костомукшского городского округа</p>
+                        <p>WEB приложение разработано для финансово-экономического управления</p>
 
                         <a href="#" class="d-btn-bus">Информация</a>
                      </div>
@@ -308,7 +308,7 @@
                                     </div>
                                     <div class="about__features-content">
                                        <h3 class="text-rubik">Разработка</h3>
-                                       <p>Администрация Костомукшского городского округа</p>
+                                       <p>Финансово-экономическое управление</p>
                                     </div>
                                  </div>
                               </div>
@@ -367,7 +367,7 @@
                   <div class="row align-items-center">
                      <div class="col-xxl-6 col-xl-6 col-md-6">
                         <div class="footer__copyright footer__copyright-4">
-                           <p>© 2019-{{ date("Y") }} Сайт администрации Костомукшского городского округа <a href="index.html"></a></p>
+                           <p>© 2019-{{ date("Y") }} WEB-приложение финансово-экономического управления <a href="index.html"></a></p>
                         </div>
                      </div>
 
