@@ -154,6 +154,13 @@
                                                     button.addEventListener('click', callback);
                                                 </script>
                                              </li>
+                                             <li>
+                                                 <form action="{{ route('adminutilities')}}" method="get">
+                                                    <input type='hidden' name='year[]' value='2023'>
+                                                    <input type='hidden' name='mounth[]' value='5'>
+                                                    <button type="submit">Utilities</button>
+                                                </form>
+                                             </li>  
                                              @elseif ($role == "user")
                                              <li>
                                                  <form action="{{ route('usercommunal')}}" method="get">

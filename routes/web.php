@@ -40,6 +40,7 @@ use App\Structure\Forecast25Section\Admin\Controllers\Forecast25Controller;
 use App\Structure\APISection\Controllers\APIController;
 use App\Structure\Count25Section\Admin\Controllers\AdminCount25Controller;
 use App\Structure\Count25Section\User\Controllers\UserCount25Controller;
+use App\Structure\UtilitiesSection\Admin\Controllers\AdminUtilitiesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -398,6 +399,17 @@ Route::get('/admin/count25', [AdminCount25Controller::class, 'FrontView'])->midd
 Route::get('/admin/count25/scale', [AdminCount25Controller::class, 'FrontScale'])->middleware('auth', 'admin');
 Route::get('/user/count25', [UserCount25Controller::class, 'FrontView'])->middleware('auth')->name('usercount25');
 Route::get('/user/count25/scale', [UserCount25Controller::class, 'FrontScale'])->middleware('auth');
+/*
+ * 
+ * 
+ * 
+ */
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Новый модуль "Коммунальные услуги" (BACK)
+Route::get('/admin/utilities/table', [AdminUtilitiesController::class, 'TableView'])->middleware('auth', 'admin');
+Route::get('/admin/utilities/table/tarrifs', [AdminUtilitiesController::class, 'TableTarrifs'])->middleware('auth', 'admin');
+//Новый модуль "Коммунальные услуги" (FRONT)
+Route::get('/admin/utilities', [AdminUtilitiesController::class, 'FrontView'])->middleware('auth', 'admin')->name('adminutilities');
 /*
  * 
  * 

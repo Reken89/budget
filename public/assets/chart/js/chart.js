@@ -34,7 +34,7 @@ var gradientStroke1 = ctx.createLinearGradient(0, 0, 0, 300);
             datasets: [{
                 label: 'Рейтинг',
                 data: [point01, point02, point03, point04, point05, point06, point07, point08, point09, point10, point11, point12, point13, point14, point15, point16, point17, point18],
-                //lineTension: 0,
+                lineTension: 0, //
                 pointBorderWidth: 2,
                 pointHoverBackgroundColor: gradientStroke1,
                 backgroundColor: gradientStroke1,
