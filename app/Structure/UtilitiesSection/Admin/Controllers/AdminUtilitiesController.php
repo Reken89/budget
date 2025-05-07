@@ -5,8 +5,11 @@ namespace App\Structure\UtilitiesSection\Admin\Controllers;
 use App\Core\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Structure\UtilitiesSection\Admin\Requests\IndexRequest;
+use App\Structure\UtilitiesSection\Admin\Requests\UpdateTarrifsRequest;
 use App\Structure\UtilitiesSection\Admin\Dto\IndexDto;
+use App\Structure\UtilitiesSection\Admin\Dto\UpdateTarrifsDto;
 use App\Structure\UtilitiesSection\Admin\Actions\IndexAction;
+use App\Structure\UtilitiesSection\Admin\Actions\UpdateAction;
 
 class AdminUtilitiesController extends Controller
 {
@@ -49,17 +52,30 @@ class AdminUtilitiesController extends Controller
      * Таблица тарифы
      *
      * @param Request $request
-     * @return 
+     * @return
      */
     public function TableTarrifs(IndexRequest $request)
     {  
         $dto = IndexDto::fromRequest($request);
         $info = [
-            'year'   => $dto->year,
-            'mounth' => $dto->mounth,
+            'year'    => $dto->year,
+            'mounth'  => $dto->mounth,
+            'tarrifs' => $this->action(IndexAction::class)->SelectTarrifs($dto),
         ];
    
         return view('utilities.back.tarrifs', ['info' => $info]);  
+    }
+    
+    /**
+     * Обновление тарифов
+     *
+     * @param UpdateTarrifsRequest $request
+     * @return bool
+     */
+    public function UpdateTarrifs(UpdateTarrifsRequest $request): bool
+    {  
+        $dto = UpdateTarrifsDto::fromRequest($request);
+        return $this->action(UpdateAction::class)->UpdateTarrifs($dto);
     }
     
 }

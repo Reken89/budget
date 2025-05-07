@@ -227,6 +227,41 @@
 
 <script>
     $(document).ready(function(){ 
+        //Выполняем запись в БД при нажатии на клавишу ENTER
+        function setKeydownmyForm() {
+            $('input').keydown(function(e) {
+                if (e.keyCode === 13) {
+                    var tr = this.closest('tr');
+                    var id = $('.id', tr).val(); 
+                    
+                    //Получаем значения, меняем запятую на точку и убираем пробелы в числе                   
+                    function structure(title){
+                        var volume = $(title, tr).val();
+                        var volume = volume.replace(",",".");
+                        var volume = volume.replace(/ /g,'');
+                        return volume;
+                    }
+                    
+                    var tarrif_min = structure('.tarrif_min');
+                    var tarrif_max = structure('.tarrif_max');
+                                        
+                    $.ajax({
+                        url:"/budget/public/admin/utilities/tarrifs/update",  
+                        method:"patch",  
+                        data:{
+                            "_token": "{{ csrf_token() }}",
+                            id, tarrif_min, tarrif_max
+                        },
+                        dataType:"text",  
+                        success:function(data){  
+                            fetch_data(); 
+                            //alert(data);
+                        } 
+                    })                   
+                }               
+            })
+        }
+        
         //Подгружаем BACK шаблон отрисовки
         function fetch_data(){ 
             var form = <?=json_encode($info)?>;
@@ -242,7 +277,7 @@
                 dataType:"text", 
                 success:function(data){  
                     $('#table').html(data);  
-                    //setKeydownmyForm()
+                    setKeydownmyForm()
                 }   
             });  
         } 
