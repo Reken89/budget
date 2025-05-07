@@ -3,6 +3,7 @@
 @endphp
 
 @include('layouts.chart')
+@include('layouts.tableprognoz')
 <!doctype html>
 <html lang="en">
 
@@ -171,7 +172,61 @@
                         </div>                       
                     </div>  
                 </div>                           
-            </div>   
+            </div>  
+            
+            <div class="container2">
+                <div class="my__account--section__inner border-radius-10 d-flex">                                    
+                    <div class="account__wrapper">
+                        <div class="account__content">
+                            <h2 class="account__content--title h3 mb-20">Таблица контроля ошибок модуля "Коммунальные услуги"</h2>
+                            <div class="account__table--area">
+                                <table class="table align-middle mb-0">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th style="min-width: 80px; width: 80px;">Год</th>
+                                            <th style="min-width: 100px; width: 100px;">Январь</th>
+                                            <th style="min-width: 100px; width: 100px;">Февраль</th>
+                                            <th style="min-width: 100px; width: 100px;">Март</th>
+                                            <th style="min-width: 100px; width: 100px;">Апрель</th>
+                                            <th style="min-width: 100px; width: 100px;">Май</th>
+                                            <th style="min-width: 100px; width: 100px;">Июнь</th>
+                                            <th style="min-width: 100px; width: 100px;">Июль</th>
+                                            <th style="min-width: 100px; width: 100px;">Август</th>
+                                            <th style="min-width: 100px; width: 100px;">Сентябрь</th>
+                                            <th style="min-width: 100px; width: 100px;">Октябрь</th>
+                                            <th style="min-width: 100px; width: 100px;">Ноябрь</th>
+                                            <th style="min-width: 100px; width: 100px;">Декабрь</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><b>2024</b></td>
+                                            @foreach ($info['examin']['2024'] as $value)                                                
+                                                @if ($value == 'true')
+                                                <td><span class="badge bg-gradient-bloody text-white shadow-sm w-100">ошибка</span></td>
+                                                @else
+                                                <td><span class="badge bg-gradient-quepal text-white shadow-sm w-100">отлично</span></td>
+                                                @endif
+                                            @endforeach
+                                        </tr>  
+                                        <tr>
+                                            <td><b>2025</b></td>
+                                            @foreach ($info['examin']['2025'] as $value)
+                                                @if ($value == 'true')
+                                                <td><span class="badge bg-gradient-bloody text-white shadow-sm w-100">ошибка</span></td>
+                                                @else
+                                                <td><span class="badge bg-gradient-quepal text-white shadow-sm w-100">отлично</span></td>
+                                                @endif
+                                            @endforeach
+                                        </tr> 
+                                    </tbody>
+                                </table>	
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            </br>
             
             <div class="container2">
                 <div class="row">

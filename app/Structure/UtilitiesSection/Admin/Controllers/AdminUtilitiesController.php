@@ -37,11 +37,17 @@ class AdminUtilitiesController extends Controller
      */
     public function TableView(IndexRequest $request)
     {  
+        $examin = [
+            '2024' => $this->action(IndexAction::class)->ExaminCommunals(2024),
+            '2025' => $this->action(IndexAction::class)->ExaminCommunals(2025),
+        ];
+        
         $dto = IndexDto::fromRequest($request);
         $info = [
             'year'   => $dto->year,
             'mounth' => $dto->mounth,
             'info'   => $this->action(IndexAction::class)->SelectInfo($dto),
+            'examin' => $examin,
         ];
    
         return view('utilities.back.admin', ['info' => $info]);  
