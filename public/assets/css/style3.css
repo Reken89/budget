@@ -13411,7 +13411,7 @@ div.container_fix {
     overflow: scroll;
 }
 
-div.container_fixed {
+div.container_fix2 {
     overflow: scroll;
 }
 
@@ -13451,8 +13451,8 @@ div.container_fix {
 }
 
 div.container_fix2 {
-    width: 100%;
-    height: 100%;
+    width: 110%;
+    height: 600px;
     overflow: scroll;
 }
 

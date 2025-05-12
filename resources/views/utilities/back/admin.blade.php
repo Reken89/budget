@@ -245,20 +245,239 @@
                 </div>
                     <div class="col-lg-6">
                         <div class="about__content">
-                            <span class="about__content--subtitle text__secondary mb-20"><u>Инструкция к модулю</u></span>
-                            <p class="about__content--desc mb-20">Таблица контроля модуля «Коммунальные услуги». Показывает наличие ошибок, в таблице коммунальных услуг. Красная подсветка ячейки, означает, что какое то учреждение не отправило информацию либо запросило редактирование данных. Зеленая подсветка означает, что ошибок нет.</p>
-                            <p class="about__content--desc mb-25">Процесс синхронизации таблицы «Коммунальные услуги» и таблицы «Прогноз», выполняется следующим образом:
-                                </br><u>Объем прогноза за первое полугодие</u> = Сумма объема таблицы коммунальные услуги за первое полугодие 2025 года.
-                                </br><u>Сумма прогноза за первое полугодие</u> = Сумма объема таблицы коммунальные услуги за первое полугодие 2025 года умноженная на тариф первого полугодия
-                                </br><u>Объем прогноза за второе полугодие</u> = Сумма объема таблицы коммунальные услуги за второе полугодие 2024 года.
-                                </br><u>Сумма прогноза за второе полугодие</u> = Сумма объема таблицы коммунальные услуги за второе полугодие 2024 года умноженная на тариф второго полугодия                              
+                            <span class="about__content--subtitle text__secondary mb-20"><u>Инструкция к модулю</u></span>                           
+                            <p class="about__content--desc mb-25">
+                                </br><u>Таблица рейтинга</u> - показывает рейтинг учреждений, по заполнению портала на отчетную дату (17 число месяца).
+                                </br><u>Таблица контроля</u> - показывает состояние информации по коммунальным услугам. Статус отлично означает, что все учреждения отправили информацию
+                                </br><u>Таблица тарифов</u> - определяет минимальный и максимальный тариф                             
                             </p>
-                            <p><font color="red">***Важно - при синхронизации таблиц, значения Д.С. "Гномик", "Золотой ключик", "Сказка" добавляются к Д.С. "Кораблик", "Ауринко", "Березка" соответственно</font></p>
+                            <p><font color="red">***Важно - после каждого 17 числа месяца, портал автоматически ежедневно будет отправлять письма-напоминания о необходимости заполнить информацию, учреждениям которые не отправили информацию.</font></p>
                         </div>
                     </div>    
                 </div>     
             </div> 
         </section>
+        
+        </br>        
+        <section class="shipping__section">
+            <div class="container2">
+                <form id="forecast" method="get"> 
+                <div class="shipping__inner style2 d-flex">
+
+                    <div class="shipping__items style2 d-flex align-items-center">
+                        <div class="shipping__content">
+                            <h2 class="shipping__content--title h3">Год</h2>
+                            <div class="single__widget widget__bg">
+                            <ul class="widget__form--check">
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check6">2025</label>
+                                    <input class="widget__form--check__input" name="year" value="2025" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check6">2024</label>
+                                    <input class="widget__form--check__input" name="year" value="2024" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check7">2023</label>
+                                    <input class="widget__form--check__input" name="year" value="2023" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check7">2022</label>
+                                    <input class="widget__form--check__input" name="year" value="2022" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check7">2021</label>
+                                    <input class="widget__form--check__input" name="year" value="2021" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check7">2020</label>
+                                    <input class="widget__form--check__input" name="year" value="2020" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                            </ul>
+                            </div>    
+                        </div>
+                    </div>
+                    
+                    <div class="shipping__items style2 d-flex align-items-center">
+                        <div class="shipping__content">
+                            <h2 class="shipping__content--title h3">Месяц</h2>
+                            <div class="single__widget widget__bg">
+                            <ul class="widget__form--check">
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check6">Январь</label>
+                                    <input class="widget__form--check__input" name="mounth" value="1" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check7">Февраль</label>
+                                    <input class="widget__form--check__input" name="mounth" value="2" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check8">Март</label>
+                                    <input class="widget__form--check__input" name="mounth" value="3" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check9">Апрель</label>
+                                    <input class="widget__form--check__input" name="mounth" value="4" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check10">Май</label>
+                                    <input class="widget__form--check__input" name="mounth" value="5" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check10">Июнь</label>
+                                    <input class="widget__form--check__input" name="mounth" value="6" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>  
+                            </ul>
+                            </div>    
+                        </div>
+                    </div>
+
+                    <div class="shipping__items style2 d-flex align-items-center">
+                        <div class="shipping__content">
+                            <h2 class="shipping__content--title h3">Месяц</h2>
+                            <div class="single__widget widget__bg">
+                            <ul class="widget__form--check"> 
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check10">Июль</label>
+                                    <input class="widget__form--check__input" name="mounth" value="7" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check10">Август</label>
+                                    <input class="widget__form--check__input" name="mounth" value="8" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check10">Сентябрь</label>
+                                    <input class="widget__form--check__input" name="mounth" value="9" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check10">Октябрь</label>
+                                    <input class="widget__form--check__input" name="mounth" value="10" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check10">Ноябрь</label>
+                                    <input class="widget__form--check__input" name="mounth" value="11" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check10">Декабрь</label>
+                                    <input class="widget__form--check__input" name="mounth" value="12" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                            </ul>
+                            </div>    
+                        </div>
+                    </div>
+
+                    <div class="shipping__items style2 d-flex align-items-center">
+                        <div class="shipping__content">
+
+                        <button style="width:200px;height:50px" class="primary__btn price__filter--btn" id="btn_one" type="button">Сформировать</button>
+                        </br>
+                        </form>
+                        <br>
+                        <button style="width:200px;height:50px" name="formSubmit" id="btn_two" class="primary__btn price__filter--btn" type="button">Синхронизация</button>
+                        </br>
+
+                        <br>
+                        <form action="/budget/public/forecast25/export" method="get">
+                            <button style="width:200px;height:50px" class="primary__btn price__filter--btn" type="submit">Excel</button>
+                        </form>
+
+                        </div>
+                    </div>
+
+                    <div class="shipping__items style2 d-flex align-items-center">
+                        <div class="about__content">
+                            <span class="about__content--subtitle text__secondary mb-20"><u>Описание кнопок</u></span>
+                        <p class="about__content--desc mb-20"><b>Сформировать -</b> Формирует таблицу по выбранным параметрам</br>
+                            <b>Синхронизация -</b> Синхронизация тарифов с прошлым месяцем</br>
+                            <b>Excel -</b> Выгрузка таблицы в excel файл
+                        </p>
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        
+        <div class="container2">
+                <div class="my__account--section__inner border-radius-10 d-flex">                                    
+                    <div class="account__wrapper">
+                        <div class="account__content">
+                            <div class="account__table--area">
+                                <div class="container_fix2">
+                                <table class="table align-middle mb-0">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th style="min-width: 80px; width: 80px;">Учреждение</th>
+                                            <th style="min-width: 80px; width: 80px;">Статус</th>
+                                            <th style="min-width: 200px; width: 200px;" colspan="2">Теплоснабжение</th> 
+                                            <th style="min-width: 200px; width: 200px;" colspan="2">Водоотведение</th> 
+                                            <th style="min-width: 200px; width: 200px;" colspan="2">Негативное воздействие</th> 
+                                            <th style="min-width: 200px; width: 200px;" colspan="2">Водоснабжение</th> 
+                                            <th style="min-width: 200px; width: 200px;" colspan="2">Электроснабжение</th> 
+                                            <th style="min-width: 200px; width: 200px;" colspan="2">Вывоз мусора</th>    
+                                            <th style="min-width: 150px; width: 150px;" rowspan="2">ИТОГО</th> 
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th></th>
+                                            <td style="min-width: 100px; width: 100px;"></td>
+                                            <td style="min-width: 150px; width: 150px;"><b>Объем</b></td><td style="min-width: 150px; width: 150px;"><b>Сумма</b></td>
+                                            <td style="min-width: 150px; width: 150px;"><b>Объем</b></td><td style="min-width: 150px; width: 150px;"><b>Сумма</b></td>
+                                            <td style="min-width: 150px; width: 150px;"><b>Объем</b></td><td style="min-width: 150px; width: 150px;"><b>Сумма</b></td>
+                                            <td style="min-width: 150px; width: 150px;"><b>Объем</b></td><td style="min-width: 150px; width: 150px;"><b>Сумма</b></td>
+                                            <td style="min-width: 150px; width: 150px;"><b>Объем</b></td><td style="min-width: 150px; width: 150px;"><b>Сумма</b></td>
+                                            <td style="min-width: 150px; width: 150px;"><b>Объем</b></td><td style="min-width: 150px; width: 150px;"><b>Сумма</b></td>
+                                            <td></td>
+                                        </tr>  
+                                        @for($i = 0; $i < 200; $i++)
+                                        <tr>
+                                            <th>Учреждение</th>
+                                            <td>Отправлено</td>
+                                            <td><font color="green">{{ number_format(10000, 4, ',', ' ') }}</td>
+                                            <td>{{ number_format(10000, 2, ',', ' ') }}</td>
+                                            <td>{{ number_format(10000, 4, ',', ' ') }}</td>
+                                            <td>{{ number_format(10000, 2, ',', ' ') }}</td>
+                                            <td>{{ number_format(10000, 4, ',', ' ') }}</td>
+                                            <td>{{ number_format(10000, 2, ',', ' ') }}</td>
+                                            <td>{{ number_format(10000, 4, ',', ' ') }}</td>
+                                            <td>{{ number_format(10000, 2, ',', ' ') }}</td>
+                                            <td>{{ number_format(10000, 4, ',', ' ') }}</td>
+                                            <td>{{ number_format(10000, 2, ',', ' ') }}</td>
+                                            <td>{{ number_format(10000, 4, ',', ' ') }}</td>
+                                            <td>{{ number_format(10000, 2, ',', ' ') }}</td>                                              
+                                            <td>{{ number_format(10000, 2, ',', ' ') }}</td>
+                                        </tr>
+                                        @endfor
+                                    </tbody>
+                                </table>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
         <!-- my account section end -->    
     </main>
 
