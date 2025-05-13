@@ -22,5 +22,21 @@ class SelectTarrifsTask extends BaseTask
             ->get()
             ->toArray();
     }
+    
+    /**
+     * Возвращает один выбранный тариф
+     *
+     * @param int $year, int $mounth, string $title
+     * @return array
+     */
+    public function SelectOneTarrif(int $year, int $mounth, string $title): array
+    {        
+        return Limit::select()    
+            ->where('year', $year)
+            ->where('mounth', $mounth - 1) 
+            ->where('title', $title)     
+            ->first()
+            ->toArray();
+    }
 }
 

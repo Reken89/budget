@@ -9,6 +9,7 @@
             <th style="min-width: 50px; width: 50px;">MAX тариф</th>
         </tr>
     </thead>
+    @if($info['variant'] == "one")
     <tbody>
         <tr>
             <td><b>Теплоснабжение</b></td>
@@ -47,5 +48,39 @@
             <td><input type="text" class="tarrif_max" value="{{ number_format($info['tarrifs'][5]['tarrif_max'], 4, ',', ' ') }}"></td>
         </tr>
     </tbody>
+    @else
+        <tbody>
+            <tr>
+                <td><b>Теплоснабжение</b></td>
+                <td style="min-width: 180px; width: 180px;">----|----</td>
+                <td style="min-width: 180px; width: 180px;">----|----</td>
+            </tr>   
+            <tr>
+                <td><b>Водоснабжение</b></td>
+                <td>----|----</td>
+                <td>----|----</td>
+            </tr>
+            <tr>
+                <td><b>Водоотведение</b></td>
+                <td>----|----</td>
+                <td>----|----</td>
+            </tr>
+            <tr>
+                <td><b>Электроснабжение</b></td>
+                <td>----|----</td>
+                <td>----|----</td>
+            </tr>
+            <tr>
+                <td><b>Вывоз мусора</b></td>
+                <td>----|----</td>
+                <td>----|----</td>
+            </tr>
+            <tr>
+                <td><b>Негативное воздействие</b></td>
+                <td>----|----</td>
+                <td>----|----</td>
+            </tr>
+        </tbody>
+    @endif
 </table>
 

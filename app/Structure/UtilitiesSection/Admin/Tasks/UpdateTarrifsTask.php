@@ -24,5 +24,24 @@ class UpdateTarrifsTask extends BaseTask
             ]);                    
         return $update == true ? true : false;
     }   
+    
+    /**
+     * Обновляем один выбранный тариф
+     *
+     * @param array $tarrif
+     * @return bool
+     */
+    public function UpdateOneTarrif(int $year, int $mounth, string $title, array $tarrif): bool
+    {   
+        $result = Limit::where('year', $year)
+            ->where('mounth', $mounth) 
+            ->where('title', $title);    
+        $result->update([                
+            'tarrif_min' => $tarrif['tarrif_min'],
+            'tarrif_max' => $tarrif['tarrif_max'],
+            'date'       => date('Y-m-d'),
+        ]);
+        return $result == true ? true : false;
+    } 
 }
 

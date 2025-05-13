@@ -6,13 +6,19 @@ use App\Core\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Structure\UtilitiesSection\Admin\Requests\IndexRequest;
 use App\Structure\UtilitiesSection\Admin\Requests\UpdateTarrifsRequest;
+use App\Structure\UtilitiesSection\Admin\Requests\SynchTarrifsRequest;
 use App\Structure\UtilitiesSection\Admin\Dto\IndexDto;
 use App\Structure\UtilitiesSection\Admin\Dto\UpdateTarrifsDto;
+use App\Structure\UtilitiesSection\Admin\Dto\SynchTarrifsDto;
 use App\Structure\UtilitiesSection\Admin\Actions\IndexAction;
 use App\Structure\UtilitiesSection\Admin\Actions\UpdateAction;
 
 class AdminUtilitiesController extends Controller
 {
+    private array $mounth = ['null', 'январь', 'февраль', 'март', 'апрель', 'май', 'июнь', 'июль', 'август', 'сентябрь', 'октябрь', 'ноябрь', 'декабрь'];
+    private string $message = "Синхронизация тарифов выполнена!";
+    private string $stop = "Синхронизация в январе невозможна!";
+    
     /**
      * Front отрисовка страницы
      *
@@ -37,17 +43,24 @@ class AdminUtilitiesController extends Controller
      */
     public function TableView(IndexRequest $request)
     {  
+        $dto = IndexDto::fromRequest($request);
         $examin = [
             '2024' => $this->action(IndexAction::class)->ExaminCommunals(2024),
             '2025' => $this->action(IndexAction::class)->ExaminCommunals(2025),
         ];
         
-        $dto = IndexDto::fromRequest($request);
+        $mounth = [];       
+        foreach ($dto->mounth as $key => $value) {
+            $mounth[$key] = $this->mounth[$value];
+        }
+        
         $info = [
-            'year'   => $dto->year,
-            'mounth' => $dto->mounth,
-            'info'   => $this->action(IndexAction::class)->SelectInfo($dto),
-            'examin' => $examin,
+            'year'         => $dto->year,
+            'mounth'       => $dto->mounth,
+            'mounth_name'  => $mounth,
+            'info'         => $this->action(IndexAction::class)->SelectInfo($dto),
+            'variant'      => $this->action(IndexAction::class)->DefineVariant($dto),
+            'examin'       => $examin,
         ];
    
         return view('utilities.back.admin', ['info' => $info]);  
@@ -66,6 +79,7 @@ class AdminUtilitiesController extends Controller
         $info = [
             'year'    => $dto->year,
             'mounth'  => $dto->mounth,
+            'variant' => $this->action(IndexAction::class)->DefineVariant($dto),
             'tarrifs' => $this->action(IndexAction::class)->SelectTarrifs($dto),
         ];
    
@@ -82,6 +96,24 @@ class AdminUtilitiesController extends Controller
     {  
         $dto = UpdateTarrifsDto::fromRequest($request);
         return $this->action(UpdateAction::class)->UpdateTarrifs($dto);
+    }
+    
+    /**
+     * Синхронизация тарифов
+     *
+     * @param SynchTarrifsRequest $request
+     * @return 
+     */
+    public function SynchTarrifs(SynchTarrifsRequest $request)
+    {  
+        $dto = SynchTarrifsDto::fromRequest($request);
+        if($dto->mounth == "1"){
+            echo $this->stop;
+        }else{
+            $this->action(UpdateAction::class)->SynchTarrifs($dto);
+            echo $this->message;
+        }
+        
     }
     
 }

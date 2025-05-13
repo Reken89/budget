@@ -57,6 +57,22 @@ class IndexAction extends BaseAction
         return $result;
     }
     
+    /**
+     * Определяем, сколько параметров в запросе
+     * Один или много
+     *
+     * @param IndexDto $dto
+     * @return string
+     */
+    public function DefineVariant(IndexDto $dto): string
+    {   
+        if (count($dto->year) == '1' AND count($dto->mounth) == '1'){
+            return "one";
+        }else{
+            return "many";
+        }      
+    }
+    
            
 }
 

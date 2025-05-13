@@ -1,5 +1,5 @@
 @php
-    //var_dump($info);
+    //var_dump($info['mounth_name']);
 @endphp
 
 @include('layouts.chart')
@@ -234,11 +234,11 @@
                 <div class="my__account--section__inner border-radius-10 d-flex">                                    
                     <div class="account__wrapper">
                         <div class="account__content">                              
-                            <h2 class="account__content--title h3 mb-20">Таблица тарифов</h2>
+                            <h2 class="account__content--title h3 mb-20">Таблица тарифов: @if($info['variant'] == "one") <u>год {{$info['year'][0]}} месяц {{$info['mounth_name'][0]}}</u> @endif</h2>
                             <div class="account__table--area">
                                 <div id="table"></div>
                             </div>   
-                            <p><font color="red">Для обновления тарифа необходимо нажать клавишу «ENTER»</font></p>
+                            <p><font color="red">@if($info['variant'] == "many") В режиме сводной таблицы, тарифы не отображаются @endif</font></p>
                         </div>
                     </div>
                 </div>    
@@ -261,7 +261,7 @@
         </br>        
         <section class="shipping__section">
             <div class="container2">
-                <form id="forecast" method="get"> 
+                <form id="communal" method="get"> 
                 <div class="shipping__inner style2 d-flex">
 
                     <div class="shipping__items style2 d-flex align-items-center">
@@ -391,8 +391,15 @@
                         </br>
                         </form>
                         <br>
-                        <button style="width:200px;height:50px" name="formSubmit" id="btn_two" class="primary__btn price__filter--btn" type="button">Синхронизация</button>
-                        </br>
+                        @php if($info['variant'] == "one"){ $synch = "synch"; }else{ $synch = "stop"; } @endphp
+                        <form id="tarrifs" method="patch">
+                            @if($info['variant'] == "one")
+                                <input type='hidden' name='year' value="{{ $info['year'][0] }}">
+                                <input type='hidden' name='mounth' value="{{ $info['mounth'][0] }}">
+                            @endif
+                            <button style="width:200px;height:50px" name="formSubmit" id="{{ $synch }}" class="primary__btn price__filter--btn" type="button">Синхронизация</button>
+                        </form>
+                        
 
                         <br>
                         <form action="/budget/public/forecast25/export" method="get">
@@ -422,6 +429,7 @@
                 <div class="my__account--section__inner border-radius-10 d-flex">                                    
                     <div class="account__wrapper">
                         <div class="account__content">
+                            <h2 class="account__content--title h3 mb-20">Выбранные параметры: <u>год</u> @foreach($info['year'] AS $value) {{ $value }}, @endforeach <u>месяц</u> @foreach($info['mounth_name'] AS $value) {{ $value }}, @endforeach</h2>
                             <div class="account__table--area">
                                 <div class="container_fix2">
                                 <table class="table align-middle mb-0">
@@ -453,20 +461,20 @@
                                         @for($i = 0; $i < 200; $i++)
                                         <tr>
                                             <th>Учреждение</th>
-                                            <td>Отправлено</td>
-                                            <td><font color="green">{{ number_format(10000, 4, ',', ' ') }}</td>
-                                            <td>{{ number_format(10000, 2, ',', ' ') }}</td>
-                                            <td>{{ number_format(10000, 4, ',', ' ') }}</td>
-                                            <td>{{ number_format(10000, 2, ',', ' ') }}</td>
-                                            <td>{{ number_format(10000, 4, ',', ' ') }}</td>
-                                            <td>{{ number_format(10000, 2, ',', ' ') }}</td>
-                                            <td>{{ number_format(10000, 4, ',', ' ') }}</td>
-                                            <td>{{ number_format(10000, 2, ',', ' ') }}</td>
-                                            <td>{{ number_format(10000, 4, ',', ' ') }}</td>
-                                            <td>{{ number_format(10000, 2, ',', ' ') }}</td>
-                                            <td>{{ number_format(10000, 4, ',', ' ') }}</td>
-                                            <td>{{ number_format(10000, 2, ',', ' ') }}</td>                                              
-                                            <td>{{ number_format(10000, 2, ',', ' ') }}</td>
+                                            <td><font color="green">Отправлено</td>
+                                            <td>{{ number_format(rand(1000, 10000), 4, ',', ' ') }}</td>
+                                            <td>{{ number_format(rand(1000, 10000), 2, ',', ' ') }}</td>
+                                            <td>{{ number_format(rand(1000, 10000), 4, ',', ' ') }}</td>
+                                            <td>{{ number_format(rand(1000, 10000), 2, ',', ' ') }}</td>
+                                            <td>{{ number_format(rand(1000, 10000), 4, ',', ' ') }}</td>
+                                            <td>{{ number_format(rand(1000, 10000), 2, ',', ' ') }}</td>
+                                            <td>{{ number_format(rand(1000, 10000), 4, ',', ' ') }}</td>
+                                            <td>{{ number_format(rand(1000, 10000), 2, ',', ' ') }}</td>
+                                            <td>{{ number_format(rand(1000, 10000), 4, ',', ' ') }}</td>
+                                            <td>{{ number_format(rand(1000, 10000), 2, ',', ' ') }}</td>
+                                            <td>{{ number_format(rand(1000, 10000), 4, ',', ' ') }}</td>
+                                            <td>{{ number_format(rand(1000, 10000), 2, ',', ' ') }}</td>                                              
+                                            <td>{{ number_format(rand(1000, 10000), 2, ',', ' ') }}</td>
                                         </tr>
                                         @endfor
                                     </tbody>
