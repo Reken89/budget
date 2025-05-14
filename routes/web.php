@@ -410,6 +410,7 @@ Route::get('/admin/utilities/table', [AdminUtilitiesController::class, 'TableVie
 Route::get('/admin/utilities/table/tarrifs', [AdminUtilitiesController::class, 'TableTarrifs'])->middleware('auth', 'admin');
 Route::patch('/admin/utilities/tarrifs/update', [AdminUtilitiesController::class, 'UpdateTarrifs'])->middleware('auth', 'admin');
 Route::patch('/admin/utilities/tarrifs/synch', [AdminUtilitiesController::class, 'SynchTarrifs'])->middleware('auth', 'admin');
+Route::patch('/admin/utilities/updatestatus', [AdminUtilitiesController::class, 'UpdateStatus'])->middleware('auth', 'admin');
 //Новый модуль "Коммунальные услуги" (FRONT)
 Route::get('/admin/utilities', [AdminUtilitiesController::class, 'FrontView'])->middleware('auth', 'admin')->name('adminutilities');
 /*

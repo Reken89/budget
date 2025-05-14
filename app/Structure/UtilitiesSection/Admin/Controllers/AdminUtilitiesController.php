@@ -7,9 +7,11 @@ use Illuminate\Http\Request;
 use App\Structure\UtilitiesSection\Admin\Requests\IndexRequest;
 use App\Structure\UtilitiesSection\Admin\Requests\UpdateTarrifsRequest;
 use App\Structure\UtilitiesSection\Admin\Requests\SynchTarrifsRequest;
+use App\Structure\UtilitiesSection\Admin\Requests\UpdateStatusRequest;
 use App\Structure\UtilitiesSection\Admin\Dto\IndexDto;
 use App\Structure\UtilitiesSection\Admin\Dto\UpdateTarrifsDto;
 use App\Structure\UtilitiesSection\Admin\Dto\SynchTarrifsDto;
+use App\Structure\UtilitiesSection\Admin\Dto\UpdateStatusDto;
 use App\Structure\UtilitiesSection\Admin\Actions\IndexAction;
 use App\Structure\UtilitiesSection\Admin\Actions\UpdateAction;
 
@@ -60,6 +62,8 @@ class AdminUtilitiesController extends Controller
             'mounth_name'  => $mounth,
             'info'         => $this->action(IndexAction::class)->SelectInfo($dto),
             'variant'      => $this->action(IndexAction::class)->DefineVariant($dto),
+            'communals'    => $this->action(IndexAction::class)->SelectCommunals($dto),
+            'total'        => $this->action(IndexAction::class)->SelectTotal($dto),
             'examin'       => $examin,
         ];
    
@@ -85,7 +89,7 @@ class AdminUtilitiesController extends Controller
    
         return view('utilities.back.tarrifs', ['info' => $info]);  
     }
-    
+     
     /**
      * Обновление тарифов
      *
@@ -112,8 +116,19 @@ class AdminUtilitiesController extends Controller
         }else{
             $this->action(UpdateAction::class)->SynchTarrifs($dto);
             echo $this->message;
-        }
-        
+        }       
+    }
+    
+    /**
+     * Обновление статуса
+     *
+     * @param UpdateStatusRequest $request
+     * @return bool
+     */
+    public function UpdateStatus(UpdateStatusRequest $request): bool
+    {  
+        $dto = UpdateStatusDto::fromRequest($request);
+        return $this->action(UpdateAction::class)->UpdateStatus($dto);
     }
     
 }

@@ -26,6 +26,34 @@ class IndexAction extends BaseAction
     }
     
     /**
+     * Получаем коммунальные услуги
+     * по заданным параметрам
+     *
+     * @param IndexDto $dto
+     * @return array
+     */
+    public function SelectCommunals(IndexDto $dto): array
+    {   
+        if (count($dto->year) == '1' AND count($dto->mounth) == '1'){
+            return $this->task(SelectCommunalsTask::class)->SelectTable($dto);
+        }else{
+            return $this->task(SelectCommunalsTask::class)->SelectSet($dto);
+        }      
+    }
+    
+    /**
+     * Получаем итоговую строку
+     * таблицы communals
+     *
+     * @param IndexDto $dto
+     * @return array
+     */
+    public function SelectTotal(IndexDto $dto): array
+    {   
+        return $this->task(SelectCommunalsTask::class)->SelectTotal($dto);  
+    }
+    
+    /**
      * Получаем тарифы
      * по заданным параметрам
      *

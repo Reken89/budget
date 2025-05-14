@@ -59,6 +59,25 @@
             })               
         })
         
+        //Выполняем действие (изменение статуса) при нажатии на кнопку
+        $(document).on('click', '#btn_two', function(){
+            var tr = this.closest('tr');
+            var id = $('.id', tr).val();
+            $.ajax({
+                url:"/budget/public/admin/utilities/updatestatus",  
+                method:"patch",
+                data:{
+                    "_token": "{{ csrf_token() }}",
+                    id
+                },
+                dataType:"text",  
+                success:function(data){  
+                    //alert(data);
+                    fetch_data();  
+                } 
+            })               
+        })
+        
         //Синхронизация тарифов
         $(document).on('click', '#synch', function(){
             let info = $('#tarrifs').serializeArray();

@@ -5,8 +5,10 @@ namespace App\Structure\UtilitiesSection\Admin\Actions;
 use App\Core\Actions\BaseAction;
 use App\Structure\UtilitiesSection\Admin\Dto\UpdateTarrifsDto;
 use App\Structure\UtilitiesSection\Admin\Dto\SynchTarrifsDto;
+use App\Structure\UtilitiesSection\Admin\Dto\UpdateStatusDto;
 use App\Structure\UtilitiesSection\Admin\Tasks\SelectTarrifsTask;
 use App\Structure\UtilitiesSection\Admin\Tasks\UpdateTarrifsTask;
+use App\Structure\UtilitiesSection\Admin\Tasks\UpdateCommunalsTask;
 
 class UpdateAction extends BaseAction
 {
@@ -36,6 +38,18 @@ class UpdateAction extends BaseAction
             $this->task(UpdateTarrifsTask::class)->UpdateOneTarrif($dto->year, $dto->mounth, $value, $tarrif);
         }
 
+    }
+    
+    /**
+     * Обновление статуса
+     * записи в таблице communals
+     *
+     * @param UpdateStatusDto $dto
+     * @return bool
+     */
+    public function UpdateStatus(UpdateStatusDto $dto): bool
+    {           
+        return $this->task(UpdateCommunalsTask::class)->UpdateStatus($dto);
     }
               
 }

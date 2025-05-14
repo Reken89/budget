@@ -1,5 +1,5 @@
 @php
-    //var_dump($info['mounth_name']);
+    //var_dump($info['communals']);
 @endphp
 
 @include('layouts.chart')
@@ -432,53 +432,97 @@
                             <h2 class="account__content--title h3 mb-20">Выбранные параметры: <u>год</u> @foreach($info['year'] AS $value) {{ $value }}, @endforeach <u>месяц</u> @foreach($info['mounth_name'] AS $value) {{ $value }}, @endforeach</h2>
                             <div class="account__table--area">
                                 <div class="container_fix2">
-                                <table class="table align-middle mb-0">
-                                    <thead class="table-light">
-                                        <tr>
-                                            <th style="min-width: 80px; width: 80px;">Учреждение</th>
-                                            <th style="min-width: 80px; width: 80px;">Статус</th>
-                                            <th style="min-width: 200px; width: 200px;" colspan="2">Теплоснабжение</th> 
-                                            <th style="min-width: 200px; width: 200px;" colspan="2">Водоотведение</th> 
-                                            <th style="min-width: 200px; width: 200px;" colspan="2">Негативное воздействие</th> 
-                                            <th style="min-width: 200px; width: 200px;" colspan="2">Водоснабжение</th> 
-                                            <th style="min-width: 200px; width: 200px;" colspan="2">Электроснабжение</th> 
-                                            <th style="min-width: 200px; width: 200px;" colspan="2">Вывоз мусора</th>    
-                                            <th style="min-width: 150px; width: 150px;" rowspan="2">ИТОГО</th> 
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th></th>
-                                            <td style="min-width: 100px; width: 100px;"></td>
-                                            <td style="min-width: 150px; width: 150px;"><b>Объем</b></td><td style="min-width: 150px; width: 150px;"><b>Сумма</b></td>
-                                            <td style="min-width: 150px; width: 150px;"><b>Объем</b></td><td style="min-width: 150px; width: 150px;"><b>Сумма</b></td>
-                                            <td style="min-width: 150px; width: 150px;"><b>Объем</b></td><td style="min-width: 150px; width: 150px;"><b>Сумма</b></td>
-                                            <td style="min-width: 150px; width: 150px;"><b>Объем</b></td><td style="min-width: 150px; width: 150px;"><b>Сумма</b></td>
-                                            <td style="min-width: 150px; width: 150px;"><b>Объем</b></td><td style="min-width: 150px; width: 150px;"><b>Сумма</b></td>
-                                            <td style="min-width: 150px; width: 150px;"><b>Объем</b></td><td style="min-width: 150px; width: 150px;"><b>Сумма</b></td>
-                                            <td></td>
-                                        </tr>  
-                                        @for($i = 0; $i < 200; $i++)
-                                        <tr>
-                                            <th>Учреждение</th>
-                                            <td><font color="green">Отправлено</td>
-                                            <td>{{ number_format(rand(1000, 10000), 4, ',', ' ') }}</td>
-                                            <td>{{ number_format(rand(1000, 10000), 2, ',', ' ') }}</td>
-                                            <td>{{ number_format(rand(1000, 10000), 4, ',', ' ') }}</td>
-                                            <td>{{ number_format(rand(1000, 10000), 2, ',', ' ') }}</td>
-                                            <td>{{ number_format(rand(1000, 10000), 4, ',', ' ') }}</td>
-                                            <td>{{ number_format(rand(1000, 10000), 2, ',', ' ') }}</td>
-                                            <td>{{ number_format(rand(1000, 10000), 4, ',', ' ') }}</td>
-                                            <td>{{ number_format(rand(1000, 10000), 2, ',', ' ') }}</td>
-                                            <td>{{ number_format(rand(1000, 10000), 4, ',', ' ') }}</td>
-                                            <td>{{ number_format(rand(1000, 10000), 2, ',', ' ') }}</td>
-                                            <td>{{ number_format(rand(1000, 10000), 4, ',', ' ') }}</td>
-                                            <td>{{ number_format(rand(1000, 10000), 2, ',', ' ') }}</td>                                              
-                                            <td>{{ number_format(rand(1000, 10000), 2, ',', ' ') }}</td>
-                                        </tr>
-                                        @endfor
-                                    </tbody>
-                                </table>
+                                    <table class="table2">
+                                        <thead>
+                                            <tr>
+                                                <th style="min-width: 80px; width: 80px;">Учреждение</th>
+                                                <th style="min-width: 80px; width: 80px;">Статус</th>
+                                                <th style="min-width: 200px; width: 200px;" colspan="2">Теплоснабжение</th> 
+                                                <th style="min-width: 200px; width: 200px;" colspan="2">Водоотведение</th> 
+                                                <th style="min-width: 200px; width: 200px;" colspan="2">Негативное воздействие</th> 
+                                                <th style="min-width: 200px; width: 200px;" colspan="2">Водоснабжение</th> 
+                                                <th style="min-width: 200px; width: 200px;" colspan="2">Электроснабжение</th> 
+                                                <th style="min-width: 200px; width: 200px;" colspan="2">Вывоз мусора</th>    
+                                                <th style="min-width: 150px; width: 150px;" rowspan="2">ИТОГО</th> 
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th></th>
+                                                <td style="min-width: 100px; width: 100px;"></td>
+                                                <td style="min-width: 150px; width: 150px;"><b>Объем</b></td><td style="min-width: 150px; width: 150px;"><b>Сумма</b></td>
+                                                <td style="min-width: 150px; width: 150px;"><b>Объем</b></td><td style="min-width: 150px; width: 150px;"><b>Сумма</b></td>
+                                                <td style="min-width: 150px; width: 150px;"><b>Объем</b></td><td style="min-width: 150px; width: 150px;"><b>Сумма</b></td>
+                                                <td style="min-width: 150px; width: 150px;"><b>Объем</b></td><td style="min-width: 150px; width: 150px;"><b>Сумма</b></td>
+                                                <td style="min-width: 150px; width: 150px;"><b>Объем</b></td><td style="min-width: 150px; width: 150px;"><b>Сумма</b></td>
+                                                <td style="min-width: 150px; width: 150px;"><b>Объем</b></td><td style="min-width: 150px; width: 150px;"><b>Сумма</b></td>
+                                                <td></td>
+                                            </tr>  
+                                            @foreach ($info['communals'] as $value) 
+                                                @if($info['variant'] == "one")
+                                                    <tr>
+                                                        <input type="hidden" class="id" value="{{ $value['id'] }}">
+                                                        <th>{{ $value['user']['name'] }}</th>
+                                                        @if ($value['status'] == 1)
+                                                            <td><font color="green">Отправлено</td>
+                                                        @elseif ($value['status'] == 3)
+                                                            <td><input type=button class="button" id='btn_two' value='Изменить'></td>  
+                                                        @else
+                                                            <td><font color="red">В работе</td>
+                                                        @endif
+                                                        <td>{{ number_format($value['heat-volume'], 4, ',', ' ') }}</td>
+                                                        <td>{{ number_format($value['heat-sum'], 2, ',', ' ') }}</td>
+                                                        <td>{{ number_format($value['drainage-volume'], 4, ',', ' ') }}</td>
+                                                        <td>{{ number_format($value['drainage-sum'], 2, ',', ' ') }}</td>
+                                                        <td>{{ number_format($value['negative-volume'], 4, ',', ' ') }}</td>
+                                                        <td>{{ number_format($value['negative-sum'], 2, ',', ' ') }}</td>
+                                                        <td>{{ number_format($value['water-volume'], 4, ',', ' ') }}</td>
+                                                        <td>{{ number_format($value['water-sum'], 2, ',', ' ') }}</td>
+                                                        <td>{{ number_format($value['power-volume'], 4, ',', ' ') }}</td>
+                                                        <td>{{ number_format($value['power-sum'], 2, ',', ' ') }}</td>
+                                                        <td>{{ number_format($value['trash-volume'], 4, ',', ' ') }}</td>
+                                                        <td>{{ number_format($value['trash-sum'], 2, ',', ' ') }}</td>                                                
+                                                        <td>{{ number_format($value['total'], 2, ',', ' ') }}</td>
+                                                    </tr>
+                                                @else
+                                                    <tr>
+                                                        <th>{{ $value['user']['name'] }}</th>
+                                                        <td></td>
+                                                        <td>{{ number_format($value['heat_volume'], 4, ',', ' ') }}</td>
+                                                        <td>{{ number_format($value['heat_sum'], 2, ',', ' ') }}</td>
+                                                        <td>{{ number_format($value['drainage_volume'], 4, ',', ' ') }}</td>
+                                                        <td>{{ number_format($value['drainage_sum'], 2, ',', ' ') }}</td>
+                                                        <td>{{ number_format($value['negative_volume'], 4, ',', ' ') }}</td>
+                                                        <td>{{ number_format($value['negative_sum'], 2, ',', ' ') }}</td>
+                                                        <td>{{ number_format($value['water_volume'], 4, ',', ' ') }}</td>
+                                                        <td>{{ number_format($value['water_sum'], 2, ',', ' ') }}</td>
+                                                        <td>{{ number_format($value['power_volume'], 4, ',', ' ') }}</td>
+                                                        <td>{{ number_format($value['power_sum'], 2, ',', ' ') }}</td>
+                                                        <td>{{ number_format($value['trash_volume'], 4, ',', ' ') }}</td>
+                                                        <td>{{ number_format($value['trash_sum'], 2, ',', ' ') }}</td>                                                
+                                                        <td>{{ number_format($value['total'], 2, ',', ' ') }}</td>
+                                                    </tr>
+                                                @endif
+                                            @endforeach
+                                            <tr>
+                                                <th>Итог</th>
+                                                <td></td>
+                                                <td>{{ number_format($info['total']['heat_volume'], 4, ',', ' ') }}</td>
+                                                <td>{{ number_format($info['total']['heat_sum'], 2, ',', ' ') }}</td>
+                                                <td>{{ number_format($info['total']['drainage_volume'], 4, ',', ' ') }}</td>
+                                                <td>{{ number_format($info['total']['drainage_sum'], 2, ',', ' ') }}</td>
+                                                <td>{{ number_format($info['total']['negative_volume'], 4, ',', ' ') }}</td>
+                                                <td>{{ number_format($info['total']['negative_sum'], 2, ',', ' ') }}</td>
+                                                <td>{{ number_format($info['total']['water_volume'], 4, ',', ' ') }}</td>
+                                                <td>{{ number_format($info['total']['water_sum'], 2, ',', ' ') }}</td>
+                                                <td>{{ number_format($info['total']['power_volume'], 4, ',', ' ') }}</td>
+                                                <td>{{ number_format($info['total']['power_sum'], 2, ',', ' ') }}</td>
+                                                <td>{{ number_format($info['total']['trash_volume'], 4, ',', ' ') }}</td>
+                                                <td>{{ number_format($info['total']['trash_sum'], 2, ',', ' ') }}</td>                                                
+                                                <td>{{ number_format($info['total']['total'], 2, ',', ' ') }}</td>                                           
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
 
                             </div>
@@ -564,6 +608,25 @@
             });  
         } 
         fetch_data();
+        
+        //Выполняем действие (изменение статуса) при нажатии на кнопку
+        $(document).on('click', '#btn_two', function(){
+            var tr = this.closest('tr');
+            var id = $('.id', tr).val();
+                $.ajax({
+                    url:"/budget/public/admin/utilities/updatestatus",  
+                    method:"patch",
+                    data:{
+                        "_token": "{{ csrf_token() }}",
+                        id
+                    },
+                    dataType:"text",  
+                    success:function(data){  
+                        //alert(data);
+                        fetch_data();  
+                    } 
+                })               
+        })
         
     });
 </script>
