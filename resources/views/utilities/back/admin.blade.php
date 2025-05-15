@@ -1,7 +1,3 @@
-@php
-    //var_dump($info['communals']);
-@endphp
-
 @include('layouts.chart')
 @include('layouts.tableprognoz')
 <!doctype html>
@@ -402,7 +398,7 @@
                         
 
                         <br>
-                        <form action="/budget/public/forecast25/export" method="get">
+                        <form action="/budget/public/admin/utilities/export" method="get">
                             <button style="width:200px;height:50px" class="primary__btn price__filter--btn" type="submit">Excel</button>
                         </form>
 
@@ -608,25 +604,7 @@
             });  
         } 
         fetch_data();
-        
-        //Выполняем действие (изменение статуса) при нажатии на кнопку
-        $(document).on('click', '#btn_two', function(){
-            var tr = this.closest('tr');
-            var id = $('.id', tr).val();
-                $.ajax({
-                    url:"/budget/public/admin/utilities/updatestatus",  
-                    method:"patch",
-                    data:{
-                        "_token": "{{ csrf_token() }}",
-                        id
-                    },
-                    dataType:"text",  
-                    success:function(data){  
-                        //alert(data);
-                        fetch_data();  
-                    } 
-                })               
-        })
+
         
     });
 </script>

@@ -4,6 +4,7 @@ namespace App\Structure\UtilitiesSection\Admin\Controllers;
 
 use App\Core\Controllers\Controller;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Structure\UtilitiesSection\Admin\Requests\IndexRequest;
 use App\Structure\UtilitiesSection\Admin\Requests\UpdateTarrifsRequest;
 use App\Structure\UtilitiesSection\Admin\Requests\SynchTarrifsRequest;
@@ -14,6 +15,7 @@ use App\Structure\UtilitiesSection\Admin\Dto\SynchTarrifsDto;
 use App\Structure\UtilitiesSection\Admin\Dto\UpdateStatusDto;
 use App\Structure\UtilitiesSection\Admin\Actions\IndexAction;
 use App\Structure\UtilitiesSection\Admin\Actions\UpdateAction;
+use App\Structure\UtilitiesSection\Admin\Exports\ExportTable;
 
 class AdminUtilitiesController extends Controller
 {
@@ -30,6 +32,7 @@ class AdminUtilitiesController extends Controller
     public function FrontView(IndexRequest $request)
     {      
         $dto = IndexDto::fromRequest($request);
+    
         $info = [
             'year'   => $dto->year,
             'mounth' => $dto->mounth,
@@ -45,7 +48,16 @@ class AdminUtilitiesController extends Controller
      */
     public function TableView(IndexRequest $request)
     {  
-        $dto = IndexDto::fromRequest($request);
+        if(session('option') == NULL || session('option') == FALSE){
+            $dto = IndexDto::fromRequest($request);  
+            session(['year' => $dto->year]);
+            session(['mounth' => $dto->mounth]);
+        }else{
+            $request->merge(['year' => session('year'), 'mounth' => session('mounth')]);
+            $dto = IndexDto::fromRequest($request); 
+            session(['option' => false]);          
+        }
+
         $examin = [
             '2024' => $this->action(IndexAction::class)->ExaminCommunals(2024),
             '2025' => $this->action(IndexAction::class)->ExaminCommunals(2025),
@@ -67,6 +79,7 @@ class AdminUtilitiesController extends Controller
             'examin'       => $examin,
         ];
    
+        session(['info' => $info]);
         return view('utilities.back.admin', ['info' => $info]);  
     }
     
@@ -110,6 +123,7 @@ class AdminUtilitiesController extends Controller
      */
     public function SynchTarrifs(SynchTarrifsRequest $request)
     {  
+        session(['option' => true]);
         $dto = SynchTarrifsDto::fromRequest($request);
         if($dto->mounth == "1"){
             echo $this->stop;
@@ -127,8 +141,21 @@ class AdminUtilitiesController extends Controller
      */
     public function UpdateStatus(UpdateStatusRequest $request): bool
     {  
+        session(['option' => true]);
         $dto = UpdateStatusDto::fromRequest($request);
         return $this->action(UpdateAction::class)->UpdateStatus($dto);
+    }
+    
+    /**
+     * Выгрузка таблицы в EXCEL
+     * 
+     * @param 
+     * @return Excel
+     */
+    public function ExportTable()
+    { 
+        return Excel::download(new ExportTable, 'table.xlsx');
+
     }
     
 }
