@@ -170,6 +170,13 @@
                                                     <button type="submit">Коммунальные услуги</button>
                                                 </form>
                                              </li>
+                                             <li>
+                                                 <form action="{{ route('userutilities')}}" method="get">
+                                                    <input type='hidden' name='year[]' value='2023'>
+                                                    <input type='hidden' name='mounth[]' value='5'>
+                                                    <button type="submit">Utilities</button>
+                                                </form>
+                                             </li>  
                                              @elseif ($role == "cb_buh" || $role == "cb_school" || $role == "cb_kultura" || $role == "cb_kinder")
                                              <li>
                                                  <form action="{{ route('userofs')}}" method="get">

@@ -41,6 +41,7 @@ use App\Structure\APISection\Controllers\APIController;
 use App\Structure\Count25Section\Admin\Controllers\AdminCount25Controller;
 use App\Structure\Count25Section\User\Controllers\UserCount25Controller;
 use App\Structure\UtilitiesSection\Admin\Controllers\AdminUtilitiesController;
+use App\Structure\UtilitiesSection\User\Controllers\UserUtilitiesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -412,8 +413,11 @@ Route::patch('/admin/utilities/tarrifs/update', [AdminUtilitiesController::class
 Route::patch('/admin/utilities/tarrifs/synch', [AdminUtilitiesController::class, 'SynchTarrifs'])->middleware('auth', 'admin');
 Route::patch('/admin/utilities/updatestatus', [AdminUtilitiesController::class, 'UpdateStatus'])->middleware('auth', 'admin');
 Route::get('/admin/utilities/export', [AdminUtilitiesController::class, 'ExportTable'])->middleware('auth', 'admin');
+
+Route::get('/user/utilities/table', [UserUtilitiesController::class, 'TableView'])->middleware('auth');
 //Новый модуль "Коммунальные услуги" (FRONT)
 Route::get('/admin/utilities', [AdminUtilitiesController::class, 'FrontView'])->middleware('auth', 'admin')->name('adminutilities');
+Route::get('/user/utilities', [UserUtilitiesController::class, 'FrontView'])->middleware('auth')->name('userutilities');
 /*
  * 
  * 
