@@ -38,6 +38,7 @@ class UserUtilitiesController extends Controller
             'year'   => $dto->year,
             'mounth' => $dto->mounth,
             'examin' => $this->action(SelectAction::class)->ExaminCommunals(2025),
+            'points' => $this->action(SelectAction::class)->SelectPoints(),
         ];
 
         return view('utilities.back.user', ['info' => $info]);  

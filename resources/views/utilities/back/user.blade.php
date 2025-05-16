@@ -1,6 +1,8 @@
 @php
-    //var_dump($info['examin']);
+    //var_dump($info['points']);
 @endphp
+
+@include('layouts.raiting')
 @include('layouts.tableprognoz')
 <!doctype html>
 <html lang="en">
@@ -174,6 +176,33 @@
                 </div>
             </div> 
             </br>
+            <div class="container2">
+                <div
+                class='hidden'
+                data-points='{{ $info['points']['points']['points'] }}'
+                data-max='{{ $info['points']['max'] }}'
+                ></div>
+
+                <div class="row">
+                    <div class="col-12 col-lg-4">
+                        <div class="card radius-10"> 
+                            <div class="card-body">
+                                <div id="chart15"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="about__content">
+                            <span class="about__content--subtitle text__secondary mb-20"><u>Инструкция к модулю</u></span>                           
+                            <p class="about__content--desc mb-25">
+                                </br><u>Таблица контроля</u> - показывает состояние информации по коммунальным услугам. Статус отлично означает, что Вы отправили информацию
+                                </br><u>Диаграмма рейтинга учреждений</u> - формируется на основании отправленной информации на отчетную дату (17 число месяца). Если информация отправлена в ФЭУ до 17 числа включительно, начисляется +10 к рейтингу.                           
+                            </p>
+                            <p><font color="red">***Важно - после каждого 17 числа месяца, портал автоматически ежедневно будет отправлять письма-напоминания о необходимости заполнить информацию, учреждениям которые не отправили информацию.</font></p>
+                        </div>
+                    </div>  
+                </div>
+            </div>
         </section>           
     </main>
 

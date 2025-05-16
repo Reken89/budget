@@ -5,6 +5,7 @@ namespace App\Structure\UtilitiesSection\User\Actions;
 use App\Core\Actions\BaseAction;
 use \Illuminate\Support\Facades\Auth;
 use App\Structure\UtilitiesSection\User\Tasks\SelectCommunalsTask;
+use App\Structure\UtilitiesSection\User\Tasks\SelectPointsTask;
 
 class SelectAction extends BaseAction
 {
@@ -23,6 +24,21 @@ class SelectAction extends BaseAction
             $result[$m] = $this->task(SelectCommunalsTask::class)->ExaminStatus($year, $m, $user->id);
         }
         return $result;
+    }
+    
+    /**
+     * Получаем очки учреждения
+     *
+     * @param 
+     * @return array
+     */
+    public function SelectPoints(): array
+    {   
+        $user = Auth::user(); 
+        return [
+            'max'    => $this->task(SelectPointsTask::class)->SelectMaxPoints(),
+            'points' => $this->task(SelectPointsTask::class)->SelectPoints($user->id),
+        ];
     }
     
 }
