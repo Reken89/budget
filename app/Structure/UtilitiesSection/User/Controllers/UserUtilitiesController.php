@@ -35,13 +35,33 @@ class UserUtilitiesController extends Controller
     {  
         $dto = IndexDto::fromRequest($request);         
         $info = [
-            'year'   => $dto->year,
-            'mounth' => $dto->mounth,
-            'examin' => $this->action(SelectAction::class)->ExaminCommunals(2025),
-            'points' => $this->action(SelectAction::class)->SelectPoints(),
+            'year'      => $dto->year,
+            'mounth'    => $dto->mounth,
+            'examin'    => $this->action(SelectAction::class)->ExaminCommunals(2025),
+            'points'    => $this->action(SelectAction::class)->SelectPoints(),
         ];
 
         return view('utilities.back.user', ['info' => $info]);  
+    }
+    
+    /**
+     * Back отрисовка 
+     * Таблица коммунальных услуг
+     *
+     * @param Request $request
+     * @return 
+     */
+    public function TableCommunals(IndexRequest $request)
+    {  
+        $dto = IndexDto::fromRequest($request);         
+        $info = [
+            'year'      => $dto->year,
+            'mounth'    => $dto->mounth,
+            'communals' => $this->action(SelectAction::class)->SelectCommunals($dto),
+            'tarrifs'   => $this->action(SelectAction::class)->SelectTarrifs($dto),
+        ];
+
+        return view('utilities.back.communals', ['info' => $info]);  
     }
     
 }

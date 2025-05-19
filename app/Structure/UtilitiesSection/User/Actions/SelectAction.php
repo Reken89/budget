@@ -6,6 +6,8 @@ use App\Core\Actions\BaseAction;
 use \Illuminate\Support\Facades\Auth;
 use App\Structure\UtilitiesSection\User\Tasks\SelectCommunalsTask;
 use App\Structure\UtilitiesSection\User\Tasks\SelectPointsTask;
+use App\Structure\UtilitiesSection\User\Tasks\SelectTarrifsTask;
+use App\Structure\UtilitiesSection\User\Dto\IndexDto;
 
 class SelectAction extends BaseAction
 {
@@ -39,6 +41,29 @@ class SelectAction extends BaseAction
             'max'    => $this->task(SelectPointsTask::class)->SelectMaxPoints(),
             'points' => $this->task(SelectPointsTask::class)->SelectPoints($user->id),
         ];
+    }
+    
+    /**
+     * Получаем таблицу коммунальных услуг
+     *
+     * @param IndexDto $dto
+     * @return array
+     */
+    public function SelectCommunals(IndexDto $dto): array
+    {   
+        $user = Auth::user(); 
+        return $this->task(SelectCommunalsTask::class)->SelectTable($dto, $user->id);
+    }
+    
+    /**
+     * Получаем таблицу тарифов
+     *
+     * @param IndexDto $dto
+     * @return array
+     */
+    public function SelectTarrifs(IndexDto $dto): array
+    {   
+        return $this->task(SelectTarrifsTask::class)->SelectTarrifs($dto);
     }
     
 }

@@ -1,5 +1,5 @@
 @php
-    //var_dump($info['points']);
+    //var_dump($info['communals']);
 @endphp
 
 @include('layouts.raiting')
@@ -203,7 +203,181 @@
                     </div>  
                 </div>
             </div>
-        </section>           
+        </section>  
+        
+        </br>        
+        <section class="shipping__section">
+            <div class="container2">
+                <form id="communal" method="get"> 
+                <div class="shipping__inner style2 d-flex">
+
+                    <div class="shipping__items style2 d-flex align-items-center">
+                        <div class="shipping__content">
+                            <h2 class="shipping__content--title h3">Год</h2>
+                            <div class="single__widget widget__bg">
+                            <ul class="widget__form--check">
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check6">2025</label>
+                                    <input class="widget__form--check__input" name="year" value="2025" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check6">2024</label>
+                                    <input class="widget__form--check__input" name="year" value="2024" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check7">2023</label>
+                                    <input class="widget__form--check__input" name="year" value="2023" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check7">2022</label>
+                                    <input class="widget__form--check__input" name="year" value="2022" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check7">2021</label>
+                                    <input class="widget__form--check__input" name="year" value="2021" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check7">2020</label>
+                                    <input class="widget__form--check__input" name="year" value="2020" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                            </ul>
+                            </div>    
+                        </div>
+                    </div>
+                    
+                    <div class="shipping__items style2 d-flex align-items-center">
+                        <div class="shipping__content">
+                            <h2 class="shipping__content--title h3">Месяц</h2>
+                            <div class="single__widget widget__bg">
+                            <ul class="widget__form--check">
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check6">Январь</label>
+                                    <input class="widget__form--check__input" name="mounth" value="1" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check7">Февраль</label>
+                                    <input class="widget__form--check__input" name="mounth" value="2" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check8">Март</label>
+                                    <input class="widget__form--check__input" name="mounth" value="3" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check9">Апрель</label>
+                                    <input class="widget__form--check__input" name="mounth" value="4" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check10">Май</label>
+                                    <input class="widget__form--check__input" name="mounth" value="5" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check10">Июнь</label>
+                                    <input class="widget__form--check__input" name="mounth" value="6" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>  
+                            </ul>
+                            </div>    
+                        </div>
+                    </div>
+
+                    <div class="shipping__items style2 d-flex align-items-center">
+                        <div class="shipping__content">
+                            <h2 class="shipping__content--title h3">Месяц</h2>
+                            <div class="single__widget widget__bg">
+                            <ul class="widget__form--check"> 
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check10">Июль</label>
+                                    <input class="widget__form--check__input" name="mounth" value="7" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check10">Август</label>
+                                    <input class="widget__form--check__input" name="mounth" value="8" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check10">Сентябрь</label>
+                                    <input class="widget__form--check__input" name="mounth" value="9" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check10">Октябрь</label>
+                                    <input class="widget__form--check__input" name="mounth" value="10" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check10">Ноябрь</label>
+                                    <input class="widget__form--check__input" name="mounth" value="11" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                                <li class="widget__form--check__list">
+                                    <label class="widget__form--check__label" for="check10">Декабрь</label>
+                                    <input class="widget__form--check__input" name="mounth" value="12" type="checkbox">
+                                    <span class="widget__form--checkmark"></span>
+                                </li>
+                            </ul>
+                            </div>    
+                        </div>
+                    </div>
+
+                    <div class="shipping__items style2 d-flex align-items-center">
+                        <div class="shipping__content">
+
+                        <button style="width:200px;height:50px" class="primary__btn price__filter--btn" id="btn_one" type="button">Сформировать</button>
+                        </br>                       
+                        </form>
+                
+                        <br>
+                        <button style="width:200px;height:50px" name="formSubmit" id="" class="primary__btn price__filter--btn" type="button">WEB форма</button>
+                        </br>
+                        
+                        <br>
+                        <form action="#" method="get">
+                            <button style="width:200px;height:50px" class="primary__btn price__filter--btn" type="submit">Excel</button>
+                        </form>
+
+                        </div>
+                    </div>
+
+                    <div class="shipping__items style2 d-flex align-items-center">
+                        <div class="about__content">
+                            <span class="about__content--subtitle text__secondary mb-20"><u>Описание кнопок</u></span>
+                        <p class="about__content--desc mb-20"><b>Сформировать -</b> Формирует таблицу по выбранным параметрам</br>
+                            <b>WEB форма -</b> Открывает таблицу (все месяца) за выбранный год в новой вкладке</br>
+                            <b>Excel -</b> Выгрузка таблицы в excel файл
+                        </p>
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        
+        <div class="container2">
+            <div class="my__account--section__inner border-radius-10 d-flex">                                    
+                <div class="account__wrapper">
+                    <div class="account__content">
+                        <h2 class="account__content--title h3 mb-20">Выбранные параметры: <u>год</u> {{ $info['year'][0] }} <u>месяц</u> {{ $info['mounth'][0] }} </h2>
+                        <div class="account__table--area">
+                            <div id="table"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
     </main>
 
     <!-- Start footer section -->
@@ -223,6 +397,35 @@
 
 <!-- Customscript js -->
 <script src="{{ asset('assets/js/script.js') }}"></script>
+
+<script>
+    $(document).ready(function(){ 
+
+        
+        //Подгружаем BACK шаблон отрисовки
+        function fetch_data(){ 
+            var form = <?=json_encode($info)?>;
+            var year = form['year'];
+            var mounth = form['mounth'];
+            
+            $.ajax({  
+                url:"/budget/public/user/utilities/table/communals",  
+                method:"GET",
+                data:{
+                    year, mounth
+                },
+                dataType:"text", 
+                success:function(data){  
+                    $('#table').html(data);  
+                    //setKeydownmyForm()
+                }   
+            });  
+        } 
+        fetch_data();
+
+        
+    });
+</script>
 
 </body>
 </html>
