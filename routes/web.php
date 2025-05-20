@@ -416,6 +416,8 @@ Route::get('/admin/utilities/export', [AdminUtilitiesController::class, 'ExportT
 
 Route::get('/user/utilities/table', [UserUtilitiesController::class, 'TableView'])->middleware('auth');
 Route::get('/user/utilities/table/communals', [UserUtilitiesController::class, 'TableCommunals'])->middleware('auth');
+Route::patch('/user/utilities/table/update', [UserUtilitiesController::class, 'UpdateCommunals'])->middleware('auth');
+Route::get('/user/utilities/web', [UserUtilitiesController::class, 'TableWeb'])->middleware('auth');
 //Новый модуль "Коммунальные услуги" (FRONT)
 Route::get('/admin/utilities', [AdminUtilitiesController::class, 'FrontView'])->middleware('auth', 'admin')->name('adminutilities');
 Route::get('/user/utilities', [UserUtilitiesController::class, 'FrontView'])->middleware('auth')->name('userutilities');

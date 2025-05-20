@@ -8,8 +8,6 @@
             return "red";
         }
     }
-    $type = ['heat', 'water', 'drainage', 'power', 'trash', 'negative'];
-    $name = ['Теплоснабжение', 'Водоснабжение', 'Водоотведение', 'Электроснабжение', 'Вывоз мусора', 'Негативное воздействие'];
 @endphp
 <table class="table align-middle mb-0">
     <thead class="table-light">
@@ -26,9 +24,9 @@
         @for($i = 0; $i < 6; $i++)
             <tr>
                 <input type="hidden" class="id" value="{{ $info['communals']['id'] }}">
-                <input type="hidden" class="service" value="heat">
-                <td style="min-width: 15%; width: 15%;">{{ $name[$i] }}</td>
-                @php $volume = "$type[$i]-volume"; $sum = "$type[$i]-sum"; @endphp
+                <input type="hidden" class="service" value="{{ $info['type'][$i] }}">
+                <td style="min-width: 15%; width: 15%;">{{ $info['name'][$i] }}</td>
+                @php $type = $info['type']; $volume = "$type[$i]-volume"; $sum = "$type[$i]-sum"; @endphp
                 @if ($info['communals']['status'] == 2)
                     <td  style="min-width: 15%; width: 15%;"><input style="min-width: 100px; width: 100px;" type="text" class="volume" value="{{ number_format($info['communals'][$volume], 4, ',', ' ') }}"></td>
                     <td  style="min-width: 15%; width: 15%;"><input style="min-width: 100px; width: 100px;" type="text" class="sum" value="{{ number_format($info['communals'][$sum], 2, ',', ' ') }}"></td>

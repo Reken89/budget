@@ -56,6 +56,30 @@ class SelectAction extends BaseAction
     }
     
     /**
+     * Получаем таблицу коммунальных услуг
+     *
+     * @param IndexDto $dto
+     * @return array
+     */
+    public function SelectAllCommunals(IndexDto $dto): array
+    {   
+        $user = Auth::user(); 
+        return $this->task(SelectCommunalsTask::class)->SelectAllTable($dto, $user->id);
+    }
+    
+    /**
+     * Получаем таблицу коммунальных услуг
+     *
+     * @param IndexDto $dto
+     * @return array
+     */
+    public function SelectTotal(IndexDto $dto): array
+    {   
+        $user = Auth::user(); 
+        return $this->task(SelectCommunalsTask::class)->SelectTotal($dto, $user->id);
+    }
+    
+    /**
      * Получаем таблицу тарифов
      *
      * @param IndexDto $dto

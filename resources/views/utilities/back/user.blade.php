@@ -339,9 +339,12 @@
                         </form>
                 
                         <br>
-                        <button style="width:200px;height:50px" name="formSubmit" id="" class="primary__btn price__filter--btn" type="button">WEB форма</button>
-                        </br>
-                        
+                        <form action="/budget/public/user/utilities/web" method="get" target="_blank">
+                            <input type='hidden' name='year[]' value='{{ $info['year'][0] }}'>
+                            <input type='hidden' name='mounth[]' value='{{ $info['mounth'][0] }}'>
+                            <button style="width:200px;height:50px" name="formSubmit" id="" class="primary__btn price__filter--btn" type="submit">WEB форма</button>
+                        </form>
+                                               
                         <br>
                         <form action="#" method="get">
                             <button style="width:200px;height:50px" class="primary__btn price__filter--btn" type="submit">Excel</button>
@@ -370,10 +373,14 @@
             <div class="my__account--section__inner border-radius-10 d-flex">                                    
                 <div class="account__wrapper">
                     <div class="account__content">
-                        <h2 class="account__content--title h3 mb-20">Выбранные параметры: <u>год</u> {{ $info['year'][0] }} <u>месяц</u> {{ $info['mounth'][0] }} </h2>
+                        <h2 class="account__content--title h3 mb-20">Выбранные параметры: <u>год</u> {{ $info['year'][0] }} <u>месяц</u> {{ $info['mounth_name'][$info['mounth'][0]] }} </h2>
+                        <p><u>После ввода каждой цифры, необходимо нажать клавишу «enter»</u></p>
                         <div class="account__table--area">
                             <div id="table"></div>
                         </div>
+                        </br>
+                        <p><b>*Ваш тариф</b> = Тариф получается в результате деления суммы на объем.</br>
+                            Если цифра зеленого цвета, Вы укладываетесь в допустимый диапозон</p>
                     </div>
                 </div>
             </div>
@@ -400,8 +407,42 @@
 
 <script>
     $(document).ready(function(){ 
-
-        
+        //Выполняем запись в БД при нажатии на клавишу ENTER
+        function setKeydownmyForm() {
+            $('input').keydown(function(e) {
+                if (e.keyCode === 13) {
+                    var tr = this.closest('tr');
+                    var id = $('.id', tr).val();
+                    var service = $('.service', tr).val();
+                    
+                    //Получаем значения, меняем запятую на точку и убираем пробелы в числе                   
+                    function structure(title){
+                        var volume = $(title, tr).val();
+                        var volume = volume.replace(",",".");
+                        var volume = volume.replace(/ /g,'');
+                        return volume;
+                    }
+                    
+                    var volume = structure('.volume');
+                    var sum = structure('.sum');
+                                        
+                    $.ajax({
+                        url:"/budget/public/user/utilities/table/update",  
+                        method:"patch",  
+                        data:{
+                            "_token": "{{ csrf_token() }}",
+                            id, service, volume, sum
+                        },
+                        dataType:"text",  
+                        success:function(data){ 
+                            //alert(data);
+                            fetch_data(); 
+                        } 
+                    })                   
+                }               
+            })
+        }
+       
         //Подгружаем BACK шаблон отрисовки
         function fetch_data(){ 
             var form = <?=json_encode($info)?>;
@@ -417,7 +458,7 @@
                 dataType:"text", 
                 success:function(data){  
                     $('#table').html(data);  
-                    //setKeydownmyForm()
+                    setKeydownmyForm()
                 }   
             });  
         } 
