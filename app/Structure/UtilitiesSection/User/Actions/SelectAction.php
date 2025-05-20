@@ -87,7 +87,7 @@ class SelectAction extends BaseAction
      */
     public function SelectTarrifs(IndexDto $dto): array
     {   
-        return $this->task(SelectTarrifsTask::class)->SelectTarrifs($dto);
+        return $this->task(SelectTarrifsTask::class)->SelectTarrifs($dto->year[0], $dto->mounth[0]);
     }
     
 }

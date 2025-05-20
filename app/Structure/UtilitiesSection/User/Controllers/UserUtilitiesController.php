@@ -5,10 +5,13 @@ namespace App\Structure\UtilitiesSection\User\Controllers;
 use App\Core\Controllers\Controller;
 use App\Structure\UtilitiesSection\User\Requests\IndexRequest;
 use App\Structure\UtilitiesSection\User\Requests\UpdateRequest;
+use App\Structure\UtilitiesSection\User\Requests\StatusRequest;
 use App\Structure\UtilitiesSection\User\Dto\IndexDto;
 use App\Structure\UtilitiesSection\User\Dto\UpdateDto;
+use App\Structure\UtilitiesSection\User\Dto\StatusDto;
 use App\Structure\UtilitiesSection\User\Actions\SelectAction;
 use App\Structure\UtilitiesSection\User\Actions\UpdateAction;
+use App\Structure\UtilitiesSection\User\Actions\StatusAction;
 
 class UserUtilitiesController extends Controller
 {
@@ -46,6 +49,7 @@ class UserUtilitiesController extends Controller
             'mounth'       => $dto->mounth,
             'examin'       => $this->action(SelectAction::class)->ExaminCommunals(2025),
             'points'       => $this->action(SelectAction::class)->SelectPoints(),
+            'communals'    => $this->action(SelectAction::class)->SelectCommunals($dto),
             'mounth_name'  => $this->mounth,
         ];
 
@@ -102,6 +106,23 @@ class UserUtilitiesController extends Controller
     {  
         $dto = UpdateDto::fromRequest($request);  
         return $this->action(UpdateAction::class)->UpdateCommunals($dto);
+    }
+    
+    /**
+     * Обновление статуса в таблице
+     *
+     * @param StatusRequest $request
+     * @return 
+     */
+    public function UpdateStatus(StatusRequest $request)
+    {  
+        $dto = StatusDto::fromRequest($request);  
+        $result = $this->action(StatusAction::class)->ExaminStatus($dto, $this->type);
+        if($result == true){
+            echo "Ошибок нет!";
+        }else{
+            echo "Присутствуют ошибки!";
+        }
     }
     
 }

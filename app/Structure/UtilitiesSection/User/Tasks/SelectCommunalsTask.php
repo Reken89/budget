@@ -93,4 +93,19 @@ class SelectCommunalsTask extends BaseTask
             ->toArray();
     }
     
+    /**
+     * Получаем значения communals
+     * Для проверки по диапозону тарифов
+     *
+     * @param int $id
+     * @return array
+     */
+    public function SelectLine(int $id): array
+    {     
+        return Communal::select()     
+            ->where('id', $id)     
+            ->first()
+            ->toArray();       
+    }
+    
 }

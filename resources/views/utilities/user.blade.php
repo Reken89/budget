@@ -58,6 +58,40 @@
                 } 
             })               
         })
+        
+        //Обновление статуса
+        $(document).on('click', '#update_status', function(){
+            let infomany = $('#status').serializeArray();
+            let id_array = [];
+            let status_array = [];
+            
+            for (const item of infomany) {
+                const value = item.value;
+                if (item.name === 'id') {
+                    id_array.push(value);
+                } else if (item.name === 'status') {
+                    status_array.push(value);
+                } 
+            }
+            
+            let id = id_array[0];
+            let status = status_array[0];
+            
+            $.ajax({
+                url:"/budget/public/user/utilities/update/status",  
+                method:"patch",
+                data:{
+                    "_token": "{{ csrf_token() }}",
+                    id, status
+                },
+                dataType:"text",  
+                success:function(data){  
+                    alert(data);
+                    fetch_data();  
+                } 
+            })               
+        })
+        
     });
 </script>
 

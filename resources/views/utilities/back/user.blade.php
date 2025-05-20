@@ -344,7 +344,15 @@
                             <input type='hidden' name='mounth[]' value='{{ $info['mounth'][0] }}'>
                             <button style="width:200px;height:50px" name="formSubmit" id="" class="primary__btn price__filter--btn" type="submit">WEB форма</button>
                         </form>
-                                               
+                        
+                        <br>
+                        
+                        <form id="status" method="patch"> 
+                            <input type='hidden' name='id' value='{{ $info['communals']['id'] }}'> 
+                            <input type='hidden' name='status' value='{{ $info['communals']['status'] }}'> 
+                            <button style="width:200px;height:50px" class="primary__btn price__filter--btn" id='update_status' type="button">Отправить</button>
+                        </form>
+                        
                         <br>
                         <form action="#" method="get">
                             <button style="width:200px;height:50px" class="primary__btn price__filter--btn" type="submit">Excel</button>
