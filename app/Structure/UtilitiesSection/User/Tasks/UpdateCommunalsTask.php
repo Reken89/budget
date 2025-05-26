@@ -24,5 +24,20 @@ class UpdateCommunalsTask extends BaseTask
         return $result == true ? true : false;
     }
     
+    /**
+     * Обновляем статус строки
+     *
+     * @param int $id, int $status
+     * @return bool
+     */
+    public function UpdateStatus(int $id, int $status): bool
+    {        
+        $result = Communal::find($id)
+            ->update([                
+                "status" => $status,
+            ]);
+        return $result == true ? true : false;
+    }
+    
 }
 

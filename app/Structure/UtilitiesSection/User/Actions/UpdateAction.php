@@ -19,4 +19,14 @@ class UpdateAction extends BaseAction
         return $this->task(UpdateCommunalsTask::class)->UpdateCommunals($dto);
     }
     
+    /**
+     * Обновляем статус в строке
+     *
+     * @param int $id, int $status
+     * @return bool
+     */
+    public function UpdateStatus(int $id, int $status): bool
+    {   
+        return $this->task(UpdateCommunalsTask::class)->UpdateStatus($id, $status);
+    }
 }

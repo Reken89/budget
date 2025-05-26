@@ -18,6 +18,10 @@ class UserUtilitiesController extends Controller
     private array $mounth = ['null', 'январь', 'февраль', 'март', 'апрель', 'май', 'июнь', 'июль', 'август', 'сентябрь', 'октябрь', 'ноябрь', 'декабрь'];
     private array $type = ['heat', 'water', 'drainage', 'power', 'trash', 'negative'];
     private array $name = ['Теплоснабжение', 'Водоснабжение', 'Водоотведение', 'Электроснабжение', 'Вывоз мусора', 'Негативное воздействие'];
+    private string $message0 = "Вы отправили запрос на редактирование в ФЭУ!";
+    private string $message1 = "Вам разрешено редактировать данные!";
+    private string $message2 = "В таблице обнаружены ошибки!";
+    private string $message3 = "Вы уже отправляли в ФЭУ запрос на редактирование!";
     
     /**
      * Front отрисовка страницы
@@ -117,11 +121,17 @@ class UserUtilitiesController extends Controller
     public function UpdateStatus(StatusRequest $request)
     {  
         $dto = StatusDto::fromRequest($request);  
-        $result = $this->action(StatusAction::class)->ExaminStatus($dto, $this->type);
-        if($result == true){
-            echo "Ошибок нет!";
+        if($dto->status == 1){
+            //Выполняем проверку на дату и месяц!
+        }elseif ($dto->status == 2) {
+            $result = $this->action(StatusAction::class)->ExaminStatus($dto, $this->type);
+            if($result == true){
+                echo "Ошибок нет!";
+            }else{
+                echo $this->message2;
+            }
         }else{
-            echo "Присутствуют ошибки!";
+            echo $this->message3;
         }
     }
     
