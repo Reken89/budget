@@ -102,7 +102,8 @@ class SelectCommunalsTask extends BaseTask
      */
     public function SelectLine(int $id): array
     {     
-        return Communal::select()     
+        return Communal::select()
+            ->with(['user:id,name'])     
             ->where('id', $id)     
             ->first()
             ->toArray();       

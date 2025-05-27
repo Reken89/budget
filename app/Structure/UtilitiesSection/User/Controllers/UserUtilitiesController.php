@@ -132,6 +132,7 @@ class UserUtilitiesController extends Controller
             }else{
                 echo $this->message2;
                 $this->action(UpdateAction::class)->UpdateStatus($dto->id, 3);
+                $this->action(StatusAction::class)->SendMail($dto, $this->mounth);
             }
         }elseif ($dto->status == 2) {
             $result = $this->action(StatusAction::class)->ExaminStatus($dto, $this->type);

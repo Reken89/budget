@@ -32,4 +32,22 @@ class StatusAction extends BaseAction
         return true;       
     }
     
+    /**
+     * Отправляем уведомление в ФЭУ
+     *
+     * @param StatusDto $dto
+     * @return 
+     */
+    public function SendMail(StatusDto $dto, array $mounth)
+    {
+        $communals = $this->task(SelectCommunalsTask::class)->SelectLine($dto->id);
+        $info = [
+            'name'        => $communals['user']['name'],
+            'mounth'      => $communals['mounth'],
+            'year'        => $communals['year'],
+            'mounth_name' => $mounth,    
+        ];
+        return $info;
+    }
+    
 }
