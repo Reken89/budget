@@ -64,6 +64,7 @@
             let infomany = $('#status').serializeArray();
             let id_array = [];
             let status_array = [];
+            let mounth_array = [];
             
             for (const item of infomany) {
                 const value = item.value;
@@ -71,18 +72,21 @@
                     id_array.push(value);
                 } else if (item.name === 'status') {
                     status_array.push(value);
+                } else if (item.name === 'mounth') {
+                    mounth_array.push(value);
                 } 
             }
             
             let id = id_array[0];
             let status = status_array[0];
+            let mounth = mounth_array[0];
             
             $.ajax({
                 url:"/budget/public/user/utilities/update/status",  
                 method:"patch",
                 data:{
                     "_token": "{{ csrf_token() }}",
-                    id, status
+                    id, status, mounth
                 },
                 dataType:"text",  
                 success:function(data){  

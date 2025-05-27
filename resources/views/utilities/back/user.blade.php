@@ -350,11 +350,14 @@
                         <form id="status" method="patch"> 
                             <input type='hidden' name='id' value='{{ $info['communals']['id'] }}'> 
                             <input type='hidden' name='status' value='{{ $info['communals']['status'] }}'> 
+                            <input type='hidden' name='mounth' value='{{ $info['mounth'][0] }}'> 
                             <button style="width:200px;height:50px" class="primary__btn price__filter--btn" id='update_status' type="button">Отправить</button>
                         </form>
                         
                         <br>
-                        <form action="#" method="get">
+                        <form action="/budget/public/user/utilities/export" method="get">
+                            <input type='hidden' name='year[]' value='{{ $info['year'][0] }}'>
+                            <input type='hidden' name='mounth[]' value='{{ $info['mounth'][0] }}'>
                             <button style="width:200px;height:50px" class="primary__btn price__filter--btn" type="submit">Excel</button>
                         </form>
 

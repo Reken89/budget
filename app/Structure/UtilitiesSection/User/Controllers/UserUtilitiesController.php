@@ -3,6 +3,8 @@
 namespace App\Structure\UtilitiesSection\User\Controllers;
 
 use App\Core\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Structure\UtilitiesSection\User\Exports\ExportTable;
 use App\Structure\UtilitiesSection\User\Requests\IndexRequest;
 use App\Structure\UtilitiesSection\User\Requests\UpdateRequest;
 use App\Structure\UtilitiesSection\User\Requests\StatusRequest;
@@ -18,10 +20,11 @@ class UserUtilitiesController extends Controller
     private array $mounth = ['null', 'январь', 'февраль', 'март', 'апрель', 'май', 'июнь', 'июль', 'август', 'сентябрь', 'октябрь', 'ноябрь', 'декабрь'];
     private array $type = ['heat', 'water', 'drainage', 'power', 'trash', 'negative'];
     private array $name = ['Теплоснабжение', 'Водоснабжение', 'Водоотведение', 'Электроснабжение', 'Вывоз мусора', 'Негативное воздействие'];
-    private string $message0 = "Вы отправили запрос на редактирование в ФЭУ!";
     private string $message1 = "Вам разрешено редактировать данные!";
-    private string $message2 = "В таблице обнаружены ошибки!";
-    private string $message3 = "Вы уже отправляли в ФЭУ запрос на редактирование!";
+    private string $message2 = "Вы отправили запрос на редактирование в ФЭУ!";
+    private string $message3 = "Вы отправили инормацию в ФЭУ!";
+    private string $message4 = "В таблице обнаружены ошибки!";
+    private string $message5 = "Вы уже отправляли в ФЭУ запрос на редактирование!";
     
     /**
      * Front отрисовка страницы
@@ -123,16 +126,43 @@ class UserUtilitiesController extends Controller
         $dto = StatusDto::fromRequest($request);  
         if($dto->status == 1){
             //Выполняем проверку на дату и месяц!
+            if (date('d') < 18 && ltrim(date('m'),'0') - 1 == $dto->mounth){
+                echo $this->message1;
+                $this->action(UpdateAction::class)->UpdateStatus($dto->id, 2);
+            }else{
+                echo $this->message2;
+                $this->action(UpdateAction::class)->UpdateStatus($dto->id, 3);
+            }
         }elseif ($dto->status == 2) {
             $result = $this->action(StatusAction::class)->ExaminStatus($dto, $this->type);
             if($result == true){
-                echo "Ошибок нет!";
+                $this->action(UpdateAction::class)->UpdatePoints();
+                $this->action(UpdateAction::class)->UpdateStatus($dto->id, 1);
+                echo $this->message3;
             }else{
-                echo $this->message2;
+                echo $this->message4;
             }
         }else{
-            echo $this->message3;
+            echo $this->message5;
         }
+    }
+    
+    /**
+     * Экспорт таблицы в excel
+     *
+     * @param IndexRequest $request
+     * @return 
+     */
+    public function ExportTable(IndexRequest $request)
+    {     
+        $dto = IndexDto::fromRequest($request); 
+        $info = [
+            'mounth'    => $this->mounth,
+            'communals' => $this->action(SelectAction::class)->SelectAllCommunals($dto),
+            'total'     => $this->action(SelectAction::class)->SelectTotal($dto),
+        ];
+        session(['info' => $info]);
+        return Excel::download(new ExportTable, 'table.xlsx');
     }
     
 }

@@ -16,6 +16,7 @@ class StatusRequest extends FormRequest
         return [
             'id'     => 'required|integer',
             'status' => 'required|integer',
+            'mounth' => 'required|integer',
         ];
     }   
 }

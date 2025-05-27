@@ -9,6 +9,7 @@ class StatusDto extends BaseDto
 {
     public int    $id;
     public int    $status;
+    public int    $mounth;
 
     /**
      * Возвращает DTO из объекта Request
@@ -21,6 +22,7 @@ class StatusDto extends BaseDto
         return new self([
             'id'     => $request->get('id'),
             'status' => $request->get('status'),
+            'mounth' => $request->get('mounth'),
         ]);
     }
 }
