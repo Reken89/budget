@@ -7,6 +7,7 @@ use App\Structure\UtilitiesSection\User\Dto\StatusDto;
 use App\Structure\UtilitiesSection\User\Tasks\SelectCommunalsTask;
 use App\Structure\UtilitiesSection\User\Tasks\SelectTarrifsTask;
 use App\Structure\UtilitiesSection\User\Tasks\StatusTask;
+use App\Structure\UtilitiesSection\User\Tasks\EmailTask;
 
 class StatusAction extends BaseAction
 {    
@@ -47,7 +48,7 @@ class StatusAction extends BaseAction
             'year'        => $communals['year'],
             'mounth_name' => $mounth,    
         ];
-        return $info;
+        $this->task(EmailTask::class)->SendMail($info);      
     }
     
 }
