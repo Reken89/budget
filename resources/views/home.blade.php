@@ -155,9 +155,10 @@
                                                 </script>
                                              </li>
                                              <li>
+                                                 @php $mounth = ltrim(date('m'), '0'); if($mounth > 1){$mounth -= 1;} @endphp
                                                  <form action="{{ route('adminutilities')}}" method="get">
-                                                    <input type='hidden' name='year[]' value='2023'>
-                                                    <input type='hidden' name='mounth[]' value='5'>
+                                                    <input type='hidden' name='year[]' value='2025'>
+                                                    <input type='hidden' name='mounth[]' value='{{ $mounth }}'>
                                                     <button type="submit">Utilities</button>
                                                 </form>
                                              </li>  
