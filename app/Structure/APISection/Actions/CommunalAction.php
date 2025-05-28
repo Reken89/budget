@@ -50,9 +50,7 @@ class CommunalAction extends BaseAction
                 $message = view('api.communal_user', ['info' => $info]); 
                 $this->task(SendMailTask::class)->SendMail($this->topic_user, $message, $user['user']['email']);
             }
-        }
-
-        
+        }      
     }
 }
 

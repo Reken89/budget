@@ -32,11 +32,9 @@
                             <div class="my__account--section__inner border-radius-10 d-flex">                                    
                                 <div class="account__wrapper">
                                     <div class="account__content">                              
-                                        <h2 class="account__content--title h3 mb-20">Уведомление о не предоставлении информации по коммунальным услугам за {{ $info[0]['year'] }} год</h2>                                       
-                                        @foreach ($info as $value)
-                                            <p><b><u>{{ $value['user']['name'] }}</u> не отправили информацию за {{ $name_mounth[$value['mounth']] }} месяц</b></p>
-                                        @endforeach
-                                        <p>Это письмо отправлено автоматически, не отвечайте на него.</p>
+                                        <h2 class="account__content--title h3 mb-20">Уведомление о не предоставлении информации по коммунальным услугам за 2025 год</h2>                                       
+                                            <p><b><u>Лицей</u> не отправили информацию за май месяц</b></p>
+                                            <p>Это письмо отправлено автоматически, не отвечайте на него.</p>
                                     </div>
                                 </div>
                             </div>    

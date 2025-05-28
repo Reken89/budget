@@ -443,6 +443,7 @@ Route::get('/adm', [AdminController::class, 'FrontView'])->middleware('auth', 'a
 Route::get('/api/communal/users', [APIController::class, 'CommunalUsers']);
 Route::get('/api/communal', [APIController::class, 'CommunalInfo']);
 Route::get('/api/ofs', [APIController::class, 'OFSInfo']);
+Route::get('/api/test', [APIController::class, 'WorkTest']);
 
 //Отключение библиотеки Jquery
 Route::get('/stop', [StopController::class, 'ShowPage'])->middleware('auth', 'master')->name('stop');

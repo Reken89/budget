@@ -57,6 +57,17 @@ class APIController extends Controller
         }
     }
     
+    /**
+     * Тестовый роут!
+     *
+     * @param 
+     * @return 
+     */
+    public function WorkTest()
+    {
+        return view('api.test');  
+    }
+    
 }
 
 

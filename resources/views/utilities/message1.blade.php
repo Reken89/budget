@@ -16,7 +16,7 @@
                                 <div class="account__wrapper">
                                     <div class="account__content">                              
                                         <h2 class="account__content--title h3 mb-20">Запрос на редактирование информации</h2>                                                                               
-                                        <p><font color="red"><b><u>{{ $info['name'] }}</u> просит открыть на редактирование информацию за {{ $info['mounth_name'][$info['mounth']] }} месяц {{ $info['year'] }} года!</b></font></p>                                           
+                                        <p><b><u>{{ $info['name'] }}</u> просит открыть на редактирование информацию за {{ $info['mounth_name'][$info['mounth']] }} месяц {{ $info['year'] }} года!</b></p>                                           
                                 </div>
                             </div>    
                         </div>                        
