@@ -40,7 +40,8 @@ class CommunalAction extends BaseAction
      */
     public function ExaminUsers()
     {
-        $mounth = ltrim(date('d'),'0') > 17 ? ltrim(date('m'),'0') : ltrim(date('m'),'0') - 1;
+        //$mounth = ltrim(date('d'),'0') > 17 ? ltrim(date('m'),'0') : ltrim(date('m'),'0') - 1;
+        $mounth = 6;
         $year = date('Y');
         $users = $this->task(SelectCommunalTask::class)->SelectUsers($year, $mounth);
         
