@@ -440,6 +440,7 @@ Route::get('/adm', [AdminController::class, 'FrontView'])->middleware('auth', 'a
  * 
  */
 // API защищенный ключом
+Route::get('/api/communal/users', [APIController::class, 'CommunalUsers']);
 Route::get('/api/communal', [APIController::class, 'CommunalInfo']);
 Route::get('/api/ofs', [APIController::class, 'OFSInfo']);
 

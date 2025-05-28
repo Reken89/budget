@@ -11,6 +11,7 @@ class CommunalAction extends BaseAction
     //кому отправить
     private string $email = "portal@kostamail.ru";
     private string $topic = "Отчет по коммунальным услугам";
+    private string $topic_user = "Уведомление о не предоставлении информации";
     
     /**
      * 
@@ -28,6 +29,30 @@ class CommunalAction extends BaseAction
         if(!empty($info) && $mounth > 1){
             $this->task(SendMailTask::class)->SendMail($this->topic, $message, $this->email);
         }
+    }
+    
+    /**
+     * Проверяем пользователей на наличие ошибок в таблице communals
+     * В случае ошибки отправляем уведомление
+     *
+     * @param 
+     * @return
+     */
+    public function ExaminUsers()
+    {
+        $mounth = ltrim(date('d'),'0') > 17 ? ltrim(date('m'),'0') : ltrim(date('m'),'0') - 1;
+        $year = date('Y');
+        $users = $this->task(SelectCommunalTask::class)->SelectUsers($year, $mounth);
+        
+        if(!empty($users) && $mounth > 1){
+            foreach ($users as $user) {
+                $info = $this->task(SelectCommunalTask::class)->SelectInfo($user['user_id'], $year, $mounth);
+                $message = view('api.communal_user', ['info' => $info]); 
+                $this->task(SendMailTask::class)->SendMail($this->topic_user, $message, $this->email);
+            }
+        }
+
+        
     }
 }
 

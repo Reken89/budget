@@ -41,6 +41,22 @@ class APIController extends Controller
         }
     }
     
+    /**
+     * Работа с communals
+     * Отправка email уведомлений пользователям
+     *
+     * @param Request $request
+     * @return 
+     */
+    public function CommunalUsers(Request $request)
+    {
+        if(isset($request->key) && $request->key == $this->key){
+            $this->action(CommunalAction::class)->ExaminUsers();
+        }else{
+            return false;
+        }
+    }
+    
 }
 
 
