@@ -50,7 +50,16 @@ class UserUtilitiesController extends Controller
      */
     public function TableView(IndexRequest $request)
     {  
-        $dto = IndexDto::fromRequest($request);         
+        if(session('option') == NULL || session('option') == FALSE){
+            $dto = IndexDto::fromRequest($request);  
+            session(['year' => $dto->year]);
+            session(['mounth' => $dto->mounth]);
+        }else{
+            $request->merge(['year' => session('year'), 'mounth' => session('mounth')]);
+            $dto = IndexDto::fromRequest($request); 
+            session(['option' => false]); 
+        }
+        
         $info = [
             'year'         => $dto->year,
             'mounth'       => $dto->mounth,
@@ -123,6 +132,7 @@ class UserUtilitiesController extends Controller
      */
     public function UpdateStatus(StatusRequest $request)
     {  
+        session(['option' => true]);
         $dto = StatusDto::fromRequest($request);  
         if($dto->status == 1){
             //Выполняем проверку на дату и месяц!
