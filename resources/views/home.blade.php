@@ -96,9 +96,10 @@
                                           <ul class="submenu">
                                              @if ($role == "admin")
                                              <li>
-                                                 <form action="{{ route('admincommunal')}}" method="get">
-                                                    <input type='hidden' name='year[]' value='2023'>
-                                                    <input type='hidden' name='mounth[]' value='5'>
+                                                @php $mounth = ltrim(date('m'), '0'); if($mounth > 1){$mounth -= 1;} @endphp
+                                                <form action="{{ route('adminutilities')}}" method="get">
+                                                    <input type='hidden' name='year[]' value='2025'>
+                                                    <input type='hidden' name='mounth[]' value='{{ $mounth }}'>
                                                     <button type="submit">Коммунальные услуги</button>
                                                 </form>
                                              </li>                                           
@@ -153,30 +154,14 @@
                                                     const button = document.querySelector('#admin');
                                                     button.addEventListener('click', callback);
                                                 </script>
-                                             </li>
-                                             <li>
-                                                 @php $mounth = ltrim(date('m'), '0'); if($mounth > 1){$mounth -= 1;} @endphp
-                                                 <form action="{{ route('adminutilities')}}" method="get">
-                                                    <input type='hidden' name='year[]' value='2025'>
-                                                    <input type='hidden' name='mounth[]' value='{{ $mounth }}'>
-                                                    <button type="submit">Utilities</button>
-                                                </form>
-                                             </li>  
+                                             </li> 
                                              @elseif ($role == "user")
-                                             <li>
-                                                 <form action="{{ route('usercommunal')}}" method="get">
-                                                    <input type='hidden' name='year' value='2024'>
-                                                    <input type='hidden' name='mounth' value='1'>                                                    
-                                                    <input type='hidden' name='info' value='no'>
-                                                    <button type="submit">Коммунальные услуги</button>
-                                                </form>
-                                             </li>
                                              <li>
                                                  @php $mounth = ltrim(date('m'), '0'); if($mounth > 1){$mounth -= 1;} @endphp
                                                  <form action="{{ route('userutilities')}}" method="get">
                                                     <input type='hidden' name='year[]' value='2025'>
                                                     <input type='hidden' name='mounth[]' value='{{ $mounth }}'>
-                                                    <button type="submit">Utilities</button>
+                                                    <button type="submit">Коммунальные услуги</button>
                                                 </form>
                                              </li>  
                                              @elseif ($role == "cb_buh" || $role == "cb_school" || $role == "cb_kultura" || $role == "cb_kinder")

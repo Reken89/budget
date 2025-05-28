@@ -3,8 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Structure\OfsSection\User\Controllers\OfsController;
 use App\Structure\OfsSection\Admin\Controllers\AdminOfsController;
-use App\Structure\CommunalSection\User\Controllers\CommunalController;
-use App\Structure\CommunalSection\Admin\Controllers\AdminCommunalController;
+//use App\Structure\CommunalSection\User\Controllers\CommunalController;
+//use App\Structure\CommunalSection\Admin\Controllers\AdminCommunalController;
 use App\Structure\CommunalSection\Ugkh\Controllers\UgkhCommunalController;
 //use App\Structure\BuildSection\Admin\Controllers\AdminBuildController;
 //use App\Structure\BuildSection\User\Controllers\UserBuildController;
@@ -63,25 +63,25 @@ Route::get('/contact', function () {return view('contact');});
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Роуты для Back (Модуль коммунальные услуги)
-Route::get('/admin/communal/back', [AdminCommunalController::class, 'index'])->middleware('auth', 'admin');
-Route::patch('/admin/communal/updatestatus', [AdminCommunalController::class, 'updatestatus'])->middleware('auth', 'admin');
-Route::patch('/admin/communal/updatetarrif', [AdminCommunalController::class, 'updatetarrif'])->middleware('auth', 'admin');
-Route::patch('/admin/communal/synchronization', [AdminCommunalController::class, 'synchronization'])->middleware('auth', 'admin');
-Route::get('/admin/communal/export', [AdminCommunalController::class, 'export'])->middleware('auth');
-Route::get('/admin/communal/email', [AdminCommunalController::class, 'email'])->middleware('auth', 'admin');
+//Route::get('/admin/communal/back', [AdminCommunalController::class, 'index'])->middleware('auth', 'admin');
+//Route::patch('/admin/communal/updatestatus', [AdminCommunalController::class, 'updatestatus'])->middleware('auth', 'admin');
+//Route::patch('/admin/communal/updatetarrif', [AdminCommunalController::class, 'updatetarrif'])->middleware('auth', 'admin');
+//Route::patch('/admin/communal/synchronization', [AdminCommunalController::class, 'synchronization'])->middleware('auth', 'admin');
+//Route::get('/admin/communal/export', [AdminCommunalController::class, 'export'])->middleware('auth');
+//Route::get('/admin/communal/email', [AdminCommunalController::class, 'email'])->middleware('auth', 'admin');
 
-Route::get('/user/communal/back', [CommunalController::class, 'index'])->middleware('auth');
-Route::get('/user/communal/web', [CommunalController::class, 'web'])->middleware('auth');
-Route::get('/user/communal/export', [CommunalController::class, 'export'])->middleware('auth');
-Route::patch('/user/communal/update', [CommunalController::class, 'update'])->middleware('auth');
-Route::patch('/user/communal/sending', [CommunalController::class, 'sending'])->middleware('auth');
-Route::patch('/user/communal/change', [CommunalController::class, 'change'])->middleware('auth');
+//Route::get('/user/communal/back', [CommunalController::class, 'index'])->middleware('auth');
+//Route::get('/user/communal/web', [CommunalController::class, 'web'])->middleware('auth');
+//Route::get('/user/communal/export', [CommunalController::class, 'export'])->middleware('auth');
+//Route::patch('/user/communal/update', [CommunalController::class, 'update'])->middleware('auth');
+//Route::patch('/user/communal/sending', [CommunalController::class, 'sending'])->middleware('auth');
+//Route::patch('/user/communal/change', [CommunalController::class, 'change'])->middleware('auth');
 
 Route::get('/ugkh/communal/back', [UgkhCommunalController::class, 'index'])->middleware('auth');
 
 //Роуты для Front (Модуль коммунальные услуги)
-Route::get('/admin/communal', [AdminCommunalController::class, 'user'])->middleware('auth', 'admin')->name('admincommunal');
-Route::get('/user/communal', [CommunalController::class, 'user'])->middleware('auth')->name('usercommunal');
+//Route::get('/admin/communal', [AdminCommunalController::class, 'user'])->middleware('auth', 'admin')->name('admincommunal');
+//Route::get('/user/communal', [CommunalController::class, 'user'])->middleware('auth')->name('usercommunal');
 Route::get('/ugkh/communal', [UgkhCommunalController::class, 'user'])->middleware('auth')->name('ugkh');
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
