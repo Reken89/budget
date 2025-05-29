@@ -15,7 +15,6 @@ use App\Structure\UtilitiesSection\Admin\Tasks\EmailTask;
 class UpdateAction extends BaseAction
 {
     private array $tarrifs = ['heat', 'water', 'drainage', 'energy', 'trash', 'negative'];
-    private string $address = "portal@kostamail.ru";
     private string $topic = "Портал коммунальные услуги";
     
     /**
@@ -65,7 +64,7 @@ class UpdateAction extends BaseAction
     public function SendMail(UpdateStatusDto $dto)
     {
         $info = $this->task(SelectCommunalsTask::class)->SelectLine($dto->id);
-        $this->task(EmailTask::class)->SendMail($this->address, $this->topic, $info);  
+        $this->task(EmailTask::class)->SendMail($info['user']['email'], $this->topic, $info);  
     }
               
 }
