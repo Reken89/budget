@@ -32,7 +32,8 @@
                                 <div class="account__wrapper">
                                     <div class="account__content">                              
                                         <h2 class="account__content--title h3 mb-20">В финансово-экономическом управлении согласовали Ваш запрос на редактирование информации:</h2>                                                                               
-                                        <p><b>Учреждение {{ $info['user']['name'] }}, месяц {{ $name_mounth[$info['mounth']] }}, год {{ $info['year'] }}</b></p>                                           
+                                        <p><b>Учреждение <u>{{ $info['user']['name'] }}</u>, месяц {{ $name_mounth[$info['mounth']] }}, год {{ $info['year'] }}</b></p>   
+                                        <p>Это письмо отправлено автоматически, не отвечайте на него.</p>                                        
                                 </div>
                             </div>    
                         </div>                        
