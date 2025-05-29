@@ -11,6 +11,9 @@ use App\Structure\UtilitiesSection\User\Tasks\EmailTask;
 
 class StatusAction extends BaseAction
 {    
+    private string $address = "portal@kostamail.ru";
+    private string $topic1 = "Запрос на редактирование";
+    
     /**
      * Выполняем проверку на правильность информации
      * Сверяем значения с диапозоном тарифов
@@ -48,7 +51,7 @@ class StatusAction extends BaseAction
             'year'        => $communals['year'],
             'mounth_name' => $mounth,    
         ];
-        $this->task(EmailTask::class)->SendMail($info);      
+        $this->task(EmailTask::class)->SendMail($this->address, $this->topic1, $info);      
     }
     
 }

@@ -139,11 +139,12 @@ class AdminUtilitiesController extends Controller
      * @param UpdateStatusRequest $request
      * @return bool
      */
-    public function UpdateStatus(UpdateStatusRequest $request): bool
+    public function UpdateStatus(UpdateStatusRequest $request)
     {  
         session(['option' => true]);
         $dto = UpdateStatusDto::fromRequest($request);
-        return $this->action(UpdateAction::class)->UpdateStatus($dto);
+        $this->action(UpdateAction::class)->UpdateStatus($dto);
+        $this->action(UpdateAction::class)->SendMail($dto);
     }
     
     /**

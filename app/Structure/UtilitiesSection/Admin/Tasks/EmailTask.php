@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Structure\UtilitiesSection\User\Tasks;
+namespace App\Structure\UtilitiesSection\Admin\Tasks;
 
 use App\Core\Task\BaseTask;
 
@@ -17,7 +17,7 @@ class EmailTask extends BaseTask
      */
     public function SendMail(string $email, string $topic, array $info)
     {     
-        $message = view('utilities.message1', ['info' => $info]); 
+        $message = view('utilities.message2', ['info' => $info]); 
         $headers = "Content-type: text/html; charset= UTF-8 \r\n";
         $headers .= "From: $this->from\r\n";
         
@@ -26,6 +26,6 @@ class EmailTask extends BaseTask
         //message = содержание письма
         //headers = от кого отправить + способ html
         mail($email, $topic, $message, $headers);
-    }    
+    }
+    
 }
-

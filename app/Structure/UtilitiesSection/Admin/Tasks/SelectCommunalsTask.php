@@ -102,5 +102,21 @@ class SelectCommunalsTask extends BaseTask
             ->first()
             ->toArray();            
     }
+    
+    /**
+     * Получаем значения communals
+     * Для одной записи
+     *
+     * @param int $id
+     * @return array
+     */
+    public function SelectLine(int $id): array
+    {     
+        return Communal::select()
+            ->with(['user:id,name,email'])     
+            ->where('id', $id)     
+            ->first()
+            ->toArray();       
+    }
 }
 

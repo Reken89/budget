@@ -9,10 +9,14 @@ use App\Structure\UtilitiesSection\Admin\Dto\UpdateStatusDto;
 use App\Structure\UtilitiesSection\Admin\Tasks\SelectTarrifsTask;
 use App\Structure\UtilitiesSection\Admin\Tasks\UpdateTarrifsTask;
 use App\Structure\UtilitiesSection\Admin\Tasks\UpdateCommunalsTask;
+use App\Structure\UtilitiesSection\Admin\Tasks\SelectCommunalsTask;
+use App\Structure\UtilitiesSection\Admin\Tasks\EmailTask;
 
 class UpdateAction extends BaseAction
 {
     private array $tarrifs = ['heat', 'water', 'drainage', 'energy', 'trash', 'negative'];
+    private string $address = "portal@kostamail.ru";
+    private string $topic = "Портал коммунальные услуги";
     
     /**
      * Обновление тарифов
@@ -50,6 +54,18 @@ class UpdateAction extends BaseAction
     public function UpdateStatus(UpdateStatusDto $dto): bool
     {           
         return $this->task(UpdateCommunalsTask::class)->UpdateStatus($dto);
+    }
+    
+    /**
+     * Отправляем уведомление по email
+     *
+     * @param UpdateStatusDto $dto
+     * @return
+     */
+    public function SendMail(UpdateStatusDto $dto)
+    {
+        $info = $this->task(SelectCommunalsTask::class)->SelectLine($dto->id);
+        $this->task(EmailTask::class)->SendMail($this->address, $this->topic, $info);  
     }
               
 }
