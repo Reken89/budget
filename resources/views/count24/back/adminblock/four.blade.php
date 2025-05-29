@@ -76,20 +76,13 @@
                         <th>{{ $info[$i]['ekr']['title'] }}</th>
                         <td>{{ $info[$i]['ekr']['ekr'] }}</td>
                         <td>{{ number_format($info[$i]['sum_fu'] + $info[$i+1]['sum_fu'] + $info[$i+2]['sum_fu'] + $info[$i+3]['sum_fu'] + $info[$i+4]['sum_fu'] + $info[$i+5]['sum_fu'] + $info[$i+6]['sum_fu'], 2, ',', ' ') }}</td>
-                        <td><input type="hidden" class="id" value="{{ $info[$i]['id'] }}">
-                            <input type="text" class="sum" value="{{ number_format($info[$i]['sum_fu'], 2, ',', ' ') }}"></td>
-                        <td><input type="hidden" class="id" value="{{ $info[$i+1]['id'] }}">
-                            <input type="text" class="sum" value="{{ number_format($info[$i+1]['sum_fu'], 2, ',', ' ') }}"></td>
-                        <td><input type="hidden" class="id" value="{{ $info[$i+2]['id'] }}">
-                            <input type="text" class="sum" value="{{ number_format($info[$i+2]['sum_fu'], 2, ',', ' ') }}"></td>
-                        <td><input type="hidden" class="id" value="{{ $info[$i+3]['id'] }}">
-                            <input type="text" class="sum" value="{{ number_format($info[$i+3]['sum_fu'], 2, ',', ' ') }}"></td>
-                        <td><input type="hidden" class="id" value="{{ $info[$i+4]['id'] }}">
-                            <input type="text" class="sum" value="{{ number_format($info[$i+4]['sum_fu'], 2, ',', ' ') }}"></td>
-                        <td><input type="hidden" class="id" value="{{ $info[$i+5]['id'] }}">
-                            <input type="text" class="sum" value="{{ number_format($info[$i+5]['sum_fu'], 2, ',', ' ') }}"></td>
-                        <td><input type="hidden" class="id" value="{{ $info[$i+6]['id'] }}">
-                            <input type="text" class="sum" value="{{ number_format($info[$i+6]['sum_fu'], 2, ',', ' ') }}"></td>
+                        <td>{{ number_format($info[$i]['sum_fu'], 2, ',', ' ') }}</td>
+                        <td>{{ number_format($info[$i+1]['sum_fu'], 2, ',', ' ') }}</td>
+                        <td>{{ number_format($info[$i+2]['sum_fu'], 2, ',', ' ') }}</td>
+                        <td>{{ number_format($info[$i+3]['sum_fu'], 2, ',', ' ') }}</td>
+                        <td>{{ number_format($info[$i+4]['sum_fu'], 2, ',', ' ') }}</td>
+                        <td>{{ number_format($info[$i+5]['sum_fu'], 2, ',', ' ') }}</td>
+                        <td>{{ number_format($info[$i+6]['sum_fu'], 2, ',', ' ') }}</td>
                         <td><font color="{{ $color }}">{{ number_format($info[$i]['sum_cb'] + $info[$i+1]['sum_cb'] + $info[$i+2]['sum_cb'] + $info[$i+3]['sum_cb'] + $info[$i+4]['sum_cb'] + $info[$i+5]['sum_cb'] + $info[$i+6]['sum_cb'], 2, ',', ' ') }}</td>
                         <td><font color="{{ $color }}">{{ number_format($info[$i]['sum_cb'], 2, ',', ' ') }}</td>
                         <td><font color="{{ $color }}">{{ number_format($info[$i+1]['sum_cb'], 2, ',', ' ') }}</td>

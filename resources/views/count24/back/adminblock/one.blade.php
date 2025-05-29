@@ -74,8 +74,7 @@
                         <th>{{ $info[$i]['ekr']['title'] }}</th>
                         <td>{{ $info[$i]['ekr']['ekr'] }}</td>
                         @for ($n = 0 ; $n < 16 ; $n++)
-                            <td><input type="hidden" class="id" value="{{ $info[$i+$n]['id'] }}">
-                            <input type="text" class="sum" value="{{ number_format($info[$i+$n]['sum_fu'], 2, ',', ' ') }}"></td>
+                            <td>{{ number_format($info[$i+$n]['sum_fu'], 2, ',', ' ') }}</td>
                         @endfor
                         @for ($n = 0 ; $n < 16 ; $n++)
                             <td><font color="{{ $color }}">{{ number_format($info[$i+$n]['sum_cb'], 2, ',', ' ') }}</td>
