@@ -419,65 +419,70 @@
                                     </tbody>
                                 </table>
                                 @else
-                                <table class="table align-middle mb-0">
-                                    <thead class="table-light">
-                                        <tr>
-                                            <th style="min-width: 150px; width: 150px;">Учреждение</th>
-                                            <th style="min-width: 200px; width: 200px;" colspan="2">Теплоснабжение</th>
-                                            <th style="min-width: 200px; width: 200px;" colspan="2">Водоснабжение</th>
-                                            <th style="min-width: 200px; width: 200px;" colspan="2">Водоотведение</th>
-                                            <th style="min-width: 200px; width: 200px;" colspan="2">Электроснабжение</th>
-                                            <th style="min-width: 200px; width: 200px;" colspan="2">Вывоз мусора</th>
-                                            <th style="min-width: 200px; width: 200px;" colspan="2">Негативное воздействие</th>
-                                            <th style="min-width: 150px; width: 150px;">Итоговая сумма</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td></td>
-                                            <td>Объём</td><td>Сумма</td><td>Объём</td><td>Сумма</td>
-                                            <td>Объём</td><td>Сумма</td><td>Объём</td><td>Сумма</td>
-                                            <td>Объём</td><td>Сумма</td><td>Объём</td><td>Сумма</td>
-                                            <td></td>
-                                        </tr>
-                                        @for ($i = 0; $i < count($info['forecast']) - 1; $i++)
-                                            @if(($i % 6) == 0 || $i == 0)
+                                <div class="container_fix2">
+                                    <table class="table2">
+                                        <thead>
                                             <tr>
-                                                <td>{{ $info['forecast'][$i]['user']['name'] }}</td>
-                                                <td>{{ number_format($info['forecast'][$i]['volume_year'], 3, ',', ' ') }}</td>
-                                                <td>{{ number_format($info['forecast'][$i]['sum_year'], 2, ',', ' ') }}</td>
-                                                <td>{{ number_format($info['forecast'][$i+1]['volume_year'], 3, ',', ' ') }}</td>
-                                                <td>{{ number_format($info['forecast'][$i+1]['sum_year'], 2, ',', ' ') }}</td>
-                                                <td>{{ number_format($info['forecast'][$i+2]['volume_year'], 3, ',', ' ') }}</td>
-                                                <td>{{ number_format($info['forecast'][$i+2]['sum_year'], 2, ',', ' ') }}</td>
-                                                <td>{{ number_format($info['forecast'][$i+3]['volume_year'], 3, ',', ' ') }}</td>
-                                                <td>{{ number_format($info['forecast'][$i+3]['sum_year'], 2, ',', ' ') }}</td>
-                                                <td>{{ number_format($info['forecast'][$i+4]['volume_year'], 3, ',', ' ') }}</td>
-                                                <td>{{ number_format($info['forecast'][$i+4]['sum_year'], 2, ',', ' ') }}</td>
-                                                <td>{{ number_format($info['forecast'][$i+5]['volume_year'], 3, ',', ' ') }}</td>
-                                                <td>{{ number_format($info['forecast'][$i+5]['sum_year'], 2, ',', ' ') }}</td>
-                                                <td>{{ number_format($info['forecast'][$i]['sum_year'] + $info['forecast'][$i+1]['sum_year'] + $info['forecast'][$i+2]['sum_year'] + $info['forecast'][$i+3]['sum_year'] + $info['forecast'][$i+4]['sum_year'] + $info['forecast'][$i+5]['sum_year'], 2, ',', ' ') }}</td>
+                                                <th style="min-width: 150px; width: 150px;">Учреждение</th>
+                                                <th style="min-width: 200px; width: 200px;" colspan="2">Теплоснабжение</th>
+                                                <th style="min-width: 200px; width: 200px;" colspan="2">Водоснабжение</th>
+                                                <th style="min-width: 200px; width: 200px;" colspan="2">Водоотведение</th>
+                                                <th style="min-width: 200px; width: 200px;" colspan="2">Электроснабжение</th>
+                                                <th style="min-width: 200px; width: 200px;" colspan="2">Вывоз мусора</th>
+                                                <th style="min-width: 200px; width: 200px;" colspan="2">Негативное воздействие</th>
+                                                <th style="min-width: 150px; width: 150px;">Итоговая сумма</th>
                                             </tr>
-                                            @endif
-                                        @endfor
-                                        <tr>
-                                            <td><b>Итого</b></td>
-                                            <td><b>{{ number_format($info['calculator']['vault']['volume_heat'], 3, ',', ' ') }}</b></td>
-                                            <td><b>{{ number_format($info['calculator']['vault']['sum_heat'], 2, ',', ' ') }}</b></td>
-                                            <td><b>{{ number_format($info['calculator']['vault']['volume_water'], 3, ',', ' ') }}</b></td>
-                                            <td><b>{{ number_format($info['calculator']['vault']['sum_water'], 2, ',', ' ') }}</b></td>
-                                            <td><b>{{ number_format($info['calculator']['vault']['volume_drainage'], 3, ',', ' ') }}</b></td>
-                                            <td><b>{{ number_format($info['calculator']['vault']['sum_drainage'], 2, ',', ' ') }}</b></td>
-                                            <td><b>{{ number_format($info['calculator']['vault']['volume_energy'], 3, ',', ' ') }}</b></td>
-                                            <td><b>{{ number_format($info['calculator']['vault']['sum_energy'], 2, ',', ' ') }}</b></td>
-                                            <td><b>{{ number_format($info['calculator']['vault']['volume_trash'], 3, ',', ' ') }}</b></td>
-                                            <td><b>{{ number_format($info['calculator']['vault']['sum_trash'], 2, ',', ' ') }}</b></td>
-                                            <td><b>{{ number_format($info['calculator']['vault']['volume_negative'], 3, ',', ' ') }}</b></td>
-                                            <td><b>{{ number_format($info['calculator']['vault']['sum_negative'], 2, ',', ' ') }}</b></td>
-                                            <td><b>{{ number_format($info['calculator']['total']['sum_year'], 2, ',', ' ') }}</b></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td></td>
+                                                <td style="min-width: 140px; width: 140px;"><b>Объем</b></td><td style="min-width: 140px; width: 140px;"><b>Сумма</b></td>
+                                                <td style="min-width: 140px; width: 140px;"><b>Объем</b></td><td style="min-width: 140px; width: 140px;"><b>Сумма</b></td>
+                                                <td style="min-width: 140px; width: 140px;"><b>Объем</b></td><td style="min-width: 140px; width: 140px;"><b>Сумма</b></td>
+                                                <td style="min-width: 140px; width: 140px;"><b>Объем</b></td><td style="min-width: 140px; width: 140px;"><b>Сумма</b></td>
+                                                <td style="min-width: 140px; width: 140px;"><b>Объем</b></td><td style="min-width: 140px; width: 140px;"><b>Сумма</b></td>
+                                                <td style="min-width: 140px; width: 140px;"><b>Объем</b></td><td style="min-width: 140px; width: 140px;"><b>Сумма</b></td>
+                                                <td></td>
+                                            </tr>
+                                            @for ($i = 0; $i < count($info['forecast']) - 1; $i++)
+                                                @if(($i % 6) == 0 || $i == 0)
+                                                <tr>
+                                                    <td>{{ $info['forecast'][$i]['user']['name'] }}</td>
+                                                    <td>{{ number_format($info['forecast'][$i]['volume_year'], 3, ',', ' ') }}</td>
+                                                    <td>{{ number_format($info['forecast'][$i]['sum_year'], 2, ',', ' ') }}</td>
+                                                    <td>{{ number_format($info['forecast'][$i+1]['volume_year'], 3, ',', ' ') }}</td>
+                                                    <td>{{ number_format($info['forecast'][$i+1]['sum_year'], 2, ',', ' ') }}</td>
+                                                    <td>{{ number_format($info['forecast'][$i+2]['volume_year'], 3, ',', ' ') }}</td>
+                                                    <td>{{ number_format($info['forecast'][$i+2]['sum_year'], 2, ',', ' ') }}</td>
+                                                    <td>{{ number_format($info['forecast'][$i+3]['volume_year'], 3, ',', ' ') }}</td>
+                                                    <td>{{ number_format($info['forecast'][$i+3]['sum_year'], 2, ',', ' ') }}</td>
+                                                    <td>{{ number_format($info['forecast'][$i+4]['volume_year'], 3, ',', ' ') }}</td>
+                                                    <td>{{ number_format($info['forecast'][$i+4]['sum_year'], 2, ',', ' ') }}</td>
+                                                    <td>{{ number_format($info['forecast'][$i+5]['volume_year'], 3, ',', ' ') }}</td>
+                                                    <td>{{ number_format($info['forecast'][$i+5]['sum_year'], 2, ',', ' ') }}</td>
+                                                    <td>{{ number_format($info['forecast'][$i]['sum_year'] + $info['forecast'][$i+1]['sum_year'] + $info['forecast'][$i+2]['sum_year'] + $info['forecast'][$i+3]['sum_year'] + $info['forecast'][$i+4]['sum_year'] + $info['forecast'][$i+5]['sum_year'], 2, ',', ' ') }}</td>
+                                                </tr>
+                                                @endif
+                                            @endfor
+                                            <tr>
+                                                <td><b>Итого</b></td>
+                                                <td><b>{{ number_format($info['calculator']['vault']['volume_heat'], 3, ',', ' ') }}</b></td>
+                                                <td><b>{{ number_format($info['calculator']['vault']['sum_heat'], 2, ',', ' ') }}</b></td>
+                                                <td><b>{{ number_format($info['calculator']['vault']['volume_water'], 3, ',', ' ') }}</b></td>
+                                                <td><b>{{ number_format($info['calculator']['vault']['sum_water'], 2, ',', ' ') }}</b></td>
+                                                <td><b>{{ number_format($info['calculator']['vault']['volume_drainage'], 3, ',', ' ') }}</b></td>
+                                                <td><b>{{ number_format($info['calculator']['vault']['sum_drainage'], 2, ',', ' ') }}</b></td>
+                                                <td><b>{{ number_format($info['calculator']['vault']['volume_energy'], 3, ',', ' ') }}</b></td>
+                                                <td><b>{{ number_format($info['calculator']['vault']['sum_energy'], 2, ',', ' ') }}</b></td>
+                                                <td><b>{{ number_format($info['calculator']['vault']['volume_trash'], 3, ',', ' ') }}</b></td>
+                                                <td><b>{{ number_format($info['calculator']['vault']['sum_trash'], 2, ',', ' ') }}</b></td>
+                                                <td><b>{{ number_format($info['calculator']['vault']['volume_negative'], 3, ',', ' ') }}</b></td>
+                                                <td><b>{{ number_format($info['calculator']['vault']['sum_negative'], 2, ',', ' ') }}</b></td>
+                                                <td><b>{{ number_format($info['calculator']['total']['sum_year'], 2, ',', ' ') }}</b></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                                 @endif
                             </div>
                         </div>
