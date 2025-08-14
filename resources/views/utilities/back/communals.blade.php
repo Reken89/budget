@@ -27,7 +27,7 @@
                 <input type="hidden" class="service" value="{{ $info['type'][$i] }}">
                 <td style="min-width: 15%; width: 15%;">{{ $info['name'][$i] }}</td>
                 @php $type = $info['type']; $volume = "$type[$i]-volume"; $sum = "$type[$i]-sum"; @endphp
-                @if ($info['communals']['status'] == 2)
+                @if ($info['communals']['status'] == 2 && $info['type'][$i] !== "negative")
                     <td  style="min-width: 15%; width: 15%;"><input style="min-width: 100px; width: 100px;" type="text" class="volume" value="{{ number_format($info['communals'][$volume], 4, ',', ' ') }}"></td>
                     <td  style="min-width: 15%; width: 15%;"><input style="min-width: 100px; width: 100px;" type="text" class="sum" value="{{ number_format($info['communals'][$sum], 2, ',', ' ') }}"></td>
                 @else

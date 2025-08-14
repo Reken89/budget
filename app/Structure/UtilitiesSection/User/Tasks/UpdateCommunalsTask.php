@@ -39,5 +39,22 @@ class UpdateCommunalsTask extends BaseTask
         return $result == true ? true : false;
     }
     
+    /**
+     * Персональное обновление
+     * "Негативные воздействия"
+     *
+     * @param UpdateDto $dto
+     * @return bool
+     */
+    public function UpdateNegative(UpdateDto $dto): bool
+    {        
+        $result = Communal::find($dto->id)
+            ->update([                
+                "negative-volume" => $dto->volume*0.5,
+                "negative-sum"    => $dto->sum*0.5
+            ]);
+        return $result == true ? true : false;
+    }
+    
 }
 

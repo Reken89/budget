@@ -19,7 +19,11 @@ class UpdateAction extends BaseAction
      */
     public function UpdateCommunals(UpdateDto $dto): bool
     {   
-        return $this->task(UpdateCommunalsTask::class)->UpdateCommunals($dto);
+        $result = $this->task(UpdateCommunalsTask::class)->UpdateCommunals($dto);
+        if($dto->service == "drainage"){
+            $this->task(UpdateCommunalsTask::class)->UpdateNegative($dto);
+        }
+        return $result;
     }
     
     /**
