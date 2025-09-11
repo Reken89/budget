@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Structure\Ofs2024Section\User\Models\Ofs241;
-use App\Structure\Ofs2024Section\User\Models\Ofs242;
-use App\Structure\Ofs2024Section\User\Models\Ofs243;
-use App\Structure\Ofs2024Section\User\Models\Ofs244;
-use App\Structure\Ofs2024Section\User\Models\Ofs245;
+use App\Structure\Ofs25Section\User\Models\Ofs251;
+use App\Structure\Ofs25Section\User\Models\Ofs252;
+use App\Structure\Ofs25Section\User\Models\Ofs253;
+use App\Structure\Ofs25Section\User\Models\Ofs254;
+use App\Structure\Ofs25Section\User\Models\Ofs255;
 use App\Structure\APISection\Models\Archive;
 use Illuminate\Database\Seeder;
 
@@ -20,15 +20,15 @@ class FillingArchiveSeeder extends Seeder
     public function run()
     {
         $bd = [
-            '1' => new Ofs241,
-            '2' => new Ofs242,
-            '3' => new Ofs243,
-            '4' => new Ofs244,
-            '5' => new Ofs245,
+            '1' => new Ofs251,
+            '2' => new Ofs252,
+            '3' => new Ofs253,
+            '4' => new Ofs254,
+            '5' => new Ofs255,
         ];
         
         for($chapter = 1; $chapter < 6; $chapter++){
-            for($m = 1; $m < 13; $m++){
+            for($m = 1; $m < 7; $m++){
                 //Получаем информацию ОФС
                 $info = $bd[$chapter]::select()
                     ->where('mounth', $m) 
@@ -40,7 +40,7 @@ class FillingArchiveSeeder extends Seeder
                     Archive::create([
                         'user_id'          => $value['user_id'],
                         'ekr_id'           => $value['ekr_id'],
-                        'year'             => 2024,
+                        'year'             => 2025,
                         'mounth'           => $value['mounth'],
                         'chapter'          => $chapter,
                         'status'           => 1,
