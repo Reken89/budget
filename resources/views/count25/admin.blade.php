@@ -341,10 +341,12 @@
                                 <button style="width:200px;height:50px" class="primary__btn price__filter--btn" type="submit">Сформировать</button>
                                 </br>
                                 </form>
+                                <!-- 
                                 <br>
                                     <div id="block_one">
                                         <button style="width:200px;height:50px" name="formSubmit" id="{{ $prognoz }}" class="primary__btn price__filter--btn" type="button">Прогноз</button>
-                                    </div>                               
+                                    </div>  
+                                -->
                                 <br>
                                     @if ($info['today'] < $info['day_y'])
                                     <div id="block_two">
@@ -368,7 +370,7 @@
                             <div class="about__content">
                                 <span class="about__content--subtitle text__secondary mb-20"><u>Описание кнопок</u></span>
                                 <p class="about__content--desc mb-20"><b>Сформировать -</b> Формирует таблицу прогноза по выбранному разделу</br>
-                                    <b>Прогноз -</b> Синхронизация таблицы «прогноз» с таблицей «бюджет»</br>
+                                    <b>Прогноз -</b> <del>Синхронизация таблицы «прогноз» с таблицей «бюджет»</del></br>
                                     <b>Синхронизация -</b> Копирование информации из 2026г. в 2027-2028 года</br>
                                     <b>Развернуть -</b> Открыть таблицу в полно экранном режиме</br>
                                     <b>XLSX -</b> Выгрузить таблицу в xlsx формат
