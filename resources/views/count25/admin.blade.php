@@ -350,7 +350,7 @@
                                 <br>
                                     @if ($info['today'] < $info['day_y'])
                                     <div id="block_two">
-                                        <button style="width:200px;height:50px" name="formSubmit" id="synch" class="primary__btn price__filter--btn" type="button">Синхронизация</button>
+                                        <button style="width:200px;height:50px" name="formSubmit" id="stop" class="primary__btn price__filter--btn" type="button">-----</button>
                                     </diV>
                                     @endif
                                 </br>
@@ -371,7 +371,7 @@
                                 <span class="about__content--subtitle text__secondary mb-20"><u>Описание кнопок</u></span>
                                 <p class="about__content--desc mb-20"><b>Сформировать -</b> Формирует таблицу прогноза по выбранному разделу</br>
                                     <b>Прогноз -</b> <del>Синхронизация таблицы «прогноз» с таблицей «бюджет»</del></br>
-                                    <b>Синхронизация -</b> Копирование информации из 2026г. в 2027-2028 года</br>
+                                    <b>Синхронизация -</b> <del>Копирование информации из 2026г. в 2027-2028 года</del></br>
                                     <b>Развернуть -</b> Открыть таблицу в полно экранном режиме</br>
                                     <b>XLSX -</b> Выгрузить таблицу в xlsx формат
                                 </p>                                                     
@@ -524,7 +524,7 @@
         
         //Заглушка
         $(document).on('click', '#stop', function(){
-            let message = "Функция отключена c 20-10-2025г.";
+            let message = "Функция отключена!";
             alert(message);                                                      
         }) 
     });
