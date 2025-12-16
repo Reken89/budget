@@ -51,14 +51,34 @@ class EkrOfsAddSeeder extends Seeder
             63, 64, 65, 66, 67,
             68,
             ];
+        
+        //id для ОФС 2025
+        $ofs25 = [
+            3, 4, 5, 7, 8, 9,
+            10, 12, 13, 15, 16,
+            17, 18, 19, 20, 21,
+            22, 23, 25, 26, 27,
+            28, 29
+        ];
+        
+        //id для бюджета 2025
+        $smeta25 = [
+            27, 28, 35, 53, 54, 
+            55, 56, 57, 58, 59, 
+            60, 61, 62, 63, 64, 
+            65, 66, 67, 68, 73, 
+            74, 29, 26, 9, 10,
+            13, 15, 18, 19, 8, 
+            36, 23, 37, 38
+        ];
  
         // Добавляем значения в таблице Ekr
         $ekr = Ekr::create([
             'shared' => 'No',
             'main'   => 'No',
-            'number' => 45,
-            'ekr'    => 347,
-            'title'  => 'Увеличение стоимости материальных запасов для целей капитальных вложений',
+            'number' => 24,
+            'ekr'    => 264,
+            'title'  => 'Пособие по временной нетрудоспособности бывшим работникам',
         ]);
         
         // Через связи добавляем значение в таблицу Ofs
@@ -95,30 +115,212 @@ class EkrOfsAddSeeder extends Seeder
         // Через связи добавляем значение в таблицу Ofs 2024
         foreach ($users24 as $user24) {
             for ($mounth = 1; $mounth < 13; $mounth++){
-                for ($chapter = 1; $chapter < 6; $chapter++){
-                    $ekr->ofs24()->create([
-                        'user_id'          => $user24,
-                        'year'             => 2024,
-                        'mounth'           => $mounth,
-                        'chapter'          => $chapter,
-                        'status'           => 2,
-                        'lbo'              => 0,
-                        'prepaid'          => 0,
-                        'credit_year_all'  => 0,
-                        'credit_year_term' => 0,
-                        'debit_year_all'   => 0,
-                        'debit_year_term'  => 0,
-                        'fact_all'         => 0,
-                        'fact_mounth'      => 0,
-                        'kassa_all'        => 0,
-                        'kassa_mounth'     => 0,
-                        'credit_end_all'   => 0,
-                        'credit_end_term'  => 0,
-                        'debit_end_all'    => 0,
-                        'debit_end_term'   => 0,
-                        'return_old_year'  => 0, 
-                    ]);
-                }
+                $ekr->ofs241()->create([
+                    'user_id'          => $user24,
+                    'mounth'           => $mounth,
+                    'status'           => 1,
+                    'lbo'              => 0,
+                    'prepaid'          => 0,
+                    'credit_year_all'  => 0,
+                    'credit_year_term' => 0,
+                    'debit_year_all'   => 0,
+                    'debit_year_term'  => 0,
+                    'fact_all'         => 0,
+                    'fact_mounth'      => 0,
+                    'kassa_all'        => 0,
+                    'kassa_mounth'     => 0,
+                    'credit_end_all'   => 0,
+                    'credit_end_term'  => 0,
+                    'debit_end_all'    => 0,
+                    'debit_end_term'   => 0,
+                    'return_old_year'  => 0, 
+                ]);    
+                $ekr->ofs242()->create([
+                    'user_id'          => $user24,
+                    'mounth'           => $mounth,
+                    'status'           => 1,
+                    'lbo'              => 0,
+                    'prepaid'          => 0,
+                    'credit_year_all'  => 0,
+                    'credit_year_term' => 0,
+                    'debit_year_all'   => 0,
+                    'debit_year_term'  => 0,
+                    'fact_all'         => 0,
+                    'fact_mounth'      => 0,
+                    'kassa_all'        => 0,
+                    'kassa_mounth'     => 0,
+                    'credit_end_all'   => 0,
+                    'credit_end_term'  => 0,
+                    'debit_end_all'    => 0,
+                    'debit_end_term'   => 0,
+                    'return_old_year'  => 0, 
+                ]); 
+                $ekr->ofs243()->create([
+                    'user_id'          => $user24,
+                    'mounth'           => $mounth,
+                    'status'           => 1,
+                    'lbo'              => 0,
+                    'prepaid'          => 0,
+                    'credit_year_all'  => 0,
+                    'credit_year_term' => 0,
+                    'debit_year_all'   => 0,
+                    'debit_year_term'  => 0,
+                    'fact_all'         => 0,
+                    'fact_mounth'      => 0,
+                    'kassa_all'        => 0,
+                    'kassa_mounth'     => 0,
+                    'credit_end_all'   => 0,
+                    'credit_end_term'  => 0,
+                    'debit_end_all'    => 0,
+                    'debit_end_term'   => 0,
+                    'return_old_year'  => 0, 
+                ]); 
+                $ekr->ofs244()->create([
+                    'user_id'          => $user24,
+                    'mounth'           => $mounth,
+                    'status'           => 1,
+                    'lbo'              => 0,
+                    'prepaid'          => 0,
+                    'credit_year_all'  => 0,
+                    'credit_year_term' => 0,
+                    'debit_year_all'   => 0,
+                    'debit_year_term'  => 0,
+                    'fact_all'         => 0,
+                    'fact_mounth'      => 0,
+                    'kassa_all'        => 0,
+                    'kassa_mounth'     => 0,
+                    'credit_end_all'   => 0,
+                    'credit_end_term'  => 0,
+                    'debit_end_all'    => 0,
+                    'debit_end_term'   => 0,
+                    'return_old_year'  => 0, 
+                ]); 
+                $ekr->ofs245()->create([
+                    'user_id'          => $user24,
+                    'mounth'           => $mounth,
+                    'status'           => 1,
+                    'lbo'              => 0,
+                    'prepaid'          => 0,
+                    'credit_year_all'  => 0,
+                    'credit_year_term' => 0,
+                    'debit_year_all'   => 0,
+                    'debit_year_term'  => 0,
+                    'fact_all'         => 0,
+                    'fact_mounth'      => 0,
+                    'kassa_all'        => 0,
+                    'kassa_mounth'     => 0,
+                    'credit_end_all'   => 0,
+                    'credit_end_term'  => 0,
+                    'debit_end_all'    => 0,
+                    'debit_end_term'   => 0,
+                    'return_old_year'  => 0, 
+                ]);  
+            }                                             
+        }
+        
+        // Через связи добавляем значение в таблицу Ofs 2025
+        foreach ($ofs25 as $user25) {
+            for ($mounth = 1; $mounth < 13; $mounth++){               
+                $ekr->ofs251()->create([
+                    'user_id'          => $user25,
+                    'mounth'           => $mounth,
+                    'status'           => 2,
+                    'lbo'              => 0,
+                    'prepaid'          => 0,
+                    'credit_year_all'  => 0,
+                    'credit_year_term' => 0,
+                    'debit_year_all'   => 0,
+                    'debit_year_term'  => 0,
+                    'fact_all'         => 0,
+                    'fact_mounth'      => 0,
+                    'kassa_all'        => 0,
+                    'kassa_mounth'     => 0,
+                    'credit_end_all'   => 0,
+                    'credit_end_term'  => 0,
+                    'debit_end_all'    => 0,
+                    'debit_end_term'   => 0,
+                    'return_old_year'  => 0, 
+                ]);  
+                $ekr->ofs252()->create([
+                    'user_id'          => $user25,
+                    'mounth'           => $mounth,
+                    'status'           => 2,
+                    'lbo'              => 0,
+                    'prepaid'          => 0,
+                    'credit_year_all'  => 0,
+                    'credit_year_term' => 0,
+                    'debit_year_all'   => 0,
+                    'debit_year_term'  => 0,
+                    'fact_all'         => 0,
+                    'fact_mounth'      => 0,
+                    'kassa_all'        => 0,
+                    'kassa_mounth'     => 0,
+                    'credit_end_all'   => 0,
+                    'credit_end_term'  => 0,
+                    'debit_end_all'    => 0,
+                    'debit_end_term'   => 0,
+                    'return_old_year'  => 0, 
+                ]);
+                $ekr->ofs253()->create([
+                    'user_id'          => $user25,
+                    'mounth'           => $mounth,
+                    'status'           => 2,
+                    'lbo'              => 0,
+                    'prepaid'          => 0,
+                    'credit_year_all'  => 0,
+                    'credit_year_term' => 0,
+                    'debit_year_all'   => 0,
+                    'debit_year_term'  => 0,
+                    'fact_all'         => 0,
+                    'fact_mounth'      => 0,
+                    'kassa_all'        => 0,
+                    'kassa_mounth'     => 0,
+                    'credit_end_all'   => 0,
+                    'credit_end_term'  => 0,
+                    'debit_end_all'    => 0,
+                    'debit_end_term'   => 0,
+                    'return_old_year'  => 0, 
+                ]);
+                $ekr->ofs254()->create([
+                    'user_id'          => $user25,
+                    'mounth'           => $mounth,
+                    'status'           => 2,
+                    'lbo'              => 0,
+                    'prepaid'          => 0,
+                    'credit_year_all'  => 0,
+                    'credit_year_term' => 0,
+                    'debit_year_all'   => 0,
+                    'debit_year_term'  => 0,
+                    'fact_all'         => 0,
+                    'fact_mounth'      => 0,
+                    'kassa_all'        => 0,
+                    'kassa_mounth'     => 0,
+                    'credit_end_all'   => 0,
+                    'credit_end_term'  => 0,
+                    'debit_end_all'    => 0,
+                    'debit_end_term'   => 0,
+                    'return_old_year'  => 0, 
+                ]);
+                $ekr->ofs255()->create([
+                    'user_id'          => $user25,
+                    'mounth'           => $mounth,
+                    'status'           => 2,
+                    'lbo'              => 0,
+                    'prepaid'          => 0,
+                    'credit_year_all'  => 0,
+                    'credit_year_term' => 0,
+                    'debit_year_all'   => 0,
+                    'debit_year_term'  => 0,
+                    'fact_all'         => 0,
+                    'fact_mounth'      => 0,
+                    'kassa_all'        => 0,
+                    'kassa_mounth'     => 0,
+                    'credit_end_all'   => 0,
+                    'credit_end_term'  => 0,
+                    'debit_end_all'    => 0,
+                    'debit_end_term'   => 0,
+                    'return_old_year'  => 0, 
+                ]);
             }                                             
         }
         
@@ -141,9 +343,24 @@ class EkrOfsAddSeeder extends Seeder
                 $ekr->count24()->create([
                     'user_id' => $smeta24,
                     'year'    => $year,
-                    'status'  => 2,
+                    'status'  => 1,
                     'sum_fu'  => 0,
                     'sum_cb'  => 0, 
+                ]);                
+            }                                             
+        }
+        
+        // Через связи добавляем значение в таблицу Counts25
+        foreach ($smeta25 as $sm25) {
+            for ($year = 2026; $year < 2029; $year++){
+                $ekr->count25()->create([
+                    'user_id' => $sm25,
+                    'year'    => $year,
+                    'status'  => 1,
+                    'sum_fu'  => 0,
+                    'sum_cb'  => 0, 
+                    'date_fu' => date('Y-m-d'),
+                    'date_cb' => date('Y-m-d'),
                 ]);                
             }                                             
         }
