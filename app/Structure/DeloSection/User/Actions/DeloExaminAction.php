@@ -18,7 +18,7 @@ class DeloExaminAction extends BaseAction
         $result = Document::select()      
             ->where('number', $number)   
             ->where('type', $variant)
-            ->whereDate('date', '>=', '2025-01-01')
+            ->whereDate('date', '>=', '2026-01-01')
             ->first();
         return $result == true ? true : false;   
     }
