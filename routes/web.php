@@ -320,11 +320,18 @@ Route::get('/delo/directory/table', [DeloDirectoryController::class, 'TableView'
 Route::post('/delo/directory/add', [DeloDirectoryController::class, 'AddNpa'])->middleware('auth');
 
 //Роуты для Front (Модуль Дело)
-Route::get('/delo{variant}', [DeloController::class, 'FrontView'])->middleware('auth')->name('delo');
-Route::get('/delo/editor{id}', [DeloEditorController::class, 'FrontView'])->middleware('auth')->name('editor');
-Route::get('/delo/filters', [DeloFilterController::class, 'FrontView'])->middleware('auth')->name('filters');
-Route::get('/delo/correspondents', [DeloCorrController::class, 'FrontView'])->middleware('auth')->name('correspondents');
-Route::get('/delo/directory', [DeloDirectoryController::class, 'FrontView'])->middleware('auth')->name('directory');
+//Route::get('/delo{variant}', [DeloController::class, 'FrontView'])->middleware('auth')->name('delo');
+//Route::get('/delo/editor{id}', [DeloEditorController::class, 'FrontView'])->middleware('auth')->name('editor');
+//Route::get('/delo/filters', [DeloFilterController::class, 'FrontView'])->middleware('auth')->name('filters');
+//Route::get('/delo/correspondents', [DeloCorrController::class, 'FrontView'])->middleware('auth')->name('correspondents');
+//Route::get('/delo/directory', [DeloDirectoryController::class, 'FrontView'])->middleware('auth')->name('directory');
+
+Route::get('/delo{variant}', [BlockController::class, 'index'])->middleware('auth')->name('delo');
+Route::get('/delo/editor{id}', [BlockController::class, 'index'])->middleware('auth')->name('editor');
+Route::get('/delo/filters', [BlockController::class, 'index'])->middleware('auth')->name('filters');
+Route::get('/delo/correspondents', [BlockController::class, 'index'])->middleware('auth')->name('correspondents');
+Route::get('/delo/directory', [BlockController::class, 'index'])->middleware('auth')->name('directory');
+//Route::get('/delo/test', [BlockController::class, 'index'])->middleware('auth')->name('tes');
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
  * 
