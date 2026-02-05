@@ -77,12 +77,12 @@ Route::get('/contact', function () {return view('contact');});
 //Route::patch('/user/communal/sending', [CommunalController::class, 'sending'])->middleware('auth');
 //Route::patch('/user/communal/change', [CommunalController::class, 'change'])->middleware('auth');
 
-Route::get('/ugkh/communal/back', [UgkhCommunalController::class, 'index'])->middleware('auth');
+//Route::get('/ugkh/communal/back', [UgkhCommunalController::class, 'index'])->middleware('auth');
 
 //Роуты для Front (Модуль коммунальные услуги)
 //Route::get('/admin/communal', [AdminCommunalController::class, 'user'])->middleware('auth', 'admin')->name('admincommunal');
 //Route::get('/user/communal', [CommunalController::class, 'user'])->middleware('auth')->name('usercommunal');
-Route::get('/ugkh/communal', [UgkhCommunalController::class, 'user'])->middleware('auth')->name('ugkh');
+//Route::get('/ugkh/communal', [UgkhCommunalController::class, 'user'])->middleware('auth')->name('ugkh');
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
  * 
@@ -428,8 +428,10 @@ Route::get('/user/utilities/web', [UserUtilitiesController::class, 'TableWeb'])-
 Route::patch('/user/utilities/update/status', [UserUtilitiesController::class, 'UpdateStatus'])->middleware('auth');
 Route::get('/user/utilities/export', [UserUtilitiesController::class, 'ExportTable'])->middleware('auth');
 //Новый модуль "Коммунальные услуги" (FRONT)
-Route::get('/admin/utilities', [AdminUtilitiesController::class, 'FrontView'])->middleware('auth', 'admin')->name('adminutilities');
-Route::get('/user/utilities', [UserUtilitiesController::class, 'FrontView'])->middleware('auth')->name('userutilities');
+//Route::get('/admin/utilities', [AdminUtilitiesController::class, 'FrontView'])->middleware('auth', 'admin')->name('adminutilities');
+//Route::get('/user/utilities', [UserUtilitiesController::class, 'FrontView'])->middleware('auth')->name('userutilities');
+Route::get('/admin/utilities', [BlockController::class, 'index'])->middleware('auth', 'admin')->name('adminutilities');
+Route::get('/user/utilities', [BlockController::class, 'index'])->middleware('auth')->name('userutilities');
 /*
  * 
  * 
