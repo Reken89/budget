@@ -28,7 +28,7 @@ class FillingArchiveSeeder extends Seeder
         ];
         
         for($chapter = 1; $chapter < 6; $chapter++){
-            for($m = 1; $m < 7; $m++){
+            for($m = 1; $m < 13; $m++){
                 //Получаем информацию ОФС
                 $info = $bd[$chapter]::select()
                     ->where('mounth', $m) 
