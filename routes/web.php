@@ -103,9 +103,12 @@ Route::patch('/user/ofs25/synch', [Ofs25Controller::class, 'SynchInfo'])->middle
 Route::get('/user/ofs25/export', [Ofs25Controller::class, 'ExportTable'])->middleware('auth');
 
 //Роуты для Front (Модуль ОФС 2025)
-Route::get('/admin/ofs25', [AdminOfs25Controller::class, 'FrontView'])->middleware('auth')->name('ofs25');
-Route::get('/scale/ofs25', [Ofs25Controller::class, 'ScaleView'])->middleware('auth');
-Route::get('/user/ofs25', [Ofs25Controller::class, 'FrontView'])->middleware('auth')->name('userofs25');
+//Route::get('/admin/ofs25', [AdminOfs25Controller::class, 'FrontView'])->middleware('auth')->name('ofs25');
+//Route::get('/scale/ofs25', [Ofs25Controller::class, 'ScaleView'])->middleware('auth');
+//Route::get('/user/ofs25', [Ofs25Controller::class, 'FrontView'])->middleware('auth')->name('userofs25');
+Route::get('/admin/ofs25', [BlockController::class, 'index'])->middleware('auth')->name('ofs25');
+Route::get('/scale/ofs25', [BlockController::class, 'index'])->middleware('auth');
+Route::get('/user/ofs25', [BlockController::class, 'index'])->middleware('auth')->name('userofs25');
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
  * 
@@ -126,9 +129,12 @@ Route::patch('/user/ofs2024/synch', [Ofs2024Controller::class, 'SynchInfo'])->mi
 Route::get('/user/ofs2024/export', [Ofs2024Controller::class, 'ExportTable'])->middleware('auth');
 
 //Роуты для Front (Модуль ОФС 2024) Новый
-Route::get('/admin/ofs2024', [AdminOfs2024Controller::class, 'FrontView'])->middleware('auth')->name('adminofs2024');
-Route::get('/scale/ofs2024', [Ofs2024Controller::class, 'ScaleView'])->middleware('auth');
-Route::get('/user/ofs2024', [Ofs2024Controller::class, 'FrontView'])->middleware('auth')->name('userofs24new');
+//Route::get('/admin/ofs2024', [AdminOfs2024Controller::class, 'FrontView'])->middleware('auth')->name('adminofs2024');
+//Route::get('/scale/ofs2024', [Ofs2024Controller::class, 'ScaleView'])->middleware('auth');
+//Route::get('/user/ofs2024', [Ofs2024Controller::class, 'FrontView'])->middleware('auth')->name('userofs24new');
+Route::get('/admin/ofs2024', [BlockController::class, 'index'])->middleware('auth')->name('adminofs2024');
+Route::get('/scale/ofs2024', [BlockController::class, 'index'])->middleware('auth');
+Route::get('/user/ofs2024', [BlockController::class, 'index'])->middleware('auth')->name('userofs24new');
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
  * 
@@ -173,8 +179,10 @@ Route::patch('/user/ofs/synch', [OfsController::class, 'synch'])->middleware('au
 Route::get('/user/ofs/export', [OfsController::class, 'export'])->middleware('auth');
 
 //Роуты для Front (Модуль ОФС)
-Route::get('/admin/ofs', [AdminOfsController::class, 'user'])->middleware('auth', 'admin')->name('adminofs');
-Route::get('/user/ofs', [OfsController::class, 'user'])->middleware('auth')->name('userofs');
+//Route::get('/admin/ofs', [AdminOfsController::class, 'user'])->middleware('auth', 'admin')->name('adminofs');
+//Route::get('/user/ofs', [OfsController::class, 'user'])->middleware('auth')->name('userofs');
+Route::get('/admin/ofs', [BlockController::class, 'index'])->middleware('auth', 'admin')->name('adminofs');
+Route::get('/user/ofs', [BlockController::class, 'index'])->middleware('auth')->name('userofs');
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
  * 
