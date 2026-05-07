@@ -130,6 +130,7 @@ Route::get('/user/ofs2024/export', [Ofs2024Controller::class, 'ExportTable'])->m
 
 //Роуты для Front (Модуль ОФС 2024) Новый
 //Route::get('/admin/ofs2024', [AdminOfs2024Controller::class, 'FrontView'])->middleware('auth')->name('adminofs2024');
+Route::get('/admin/ofs2024', [BlockController::class, 'index'])->middleware('auth')->name('adminofs2024');
 //Route::get('/scale/ofs2024', [Ofs2024Controller::class, 'ScaleView'])->middleware('auth');
 //Route::get('/user/ofs2024', [Ofs2024Controller::class, 'FrontView'])->middleware('auth')->name('userofs24new');
 #Route::get('/admin/ofs2024', [BlockController::class, 'index'])->middleware('auth')->name('adminofs2024');
